@@ -1,0 +1,11 @@
+{
+  "id": "fa-de",
+  "schemaVersion": "1.0.0",
+  "revision": 1,
+  "status": "draft",
+  "sourceLanguage": "fa",
+  "targetLanguage": "de",
+  "blueprintRef": "universal:v1",
+  "grammarMapRef": null,
+  "availableLevels": []
+}

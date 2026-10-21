@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tutivar Versioned Exercise Instance",
+  "type": "object",
+  "required": ["id", "schemaVersion", "revision", "status", "pairId", "exerciseType", "rendererVersion", "mode", "prompt", "payload"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "minLength": 3 },
+    "schemaVersion": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "revision": { "type": "integer", "minimum": 1 },
+    "status": { "enum": ["draft", "validated", "approved", "published"] },
+    "pairId": { "type": "string", "pattern": "^[a-z]{2,3}-[a-z]{2,3}$" },
+    "exerciseType": { "type": "string", "minLength": 3 },
+    "rendererVersion": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "mode": { "enum": ["demonstration", "recognition", "retrieval", "guided-production", "independent-production"] },
+    "prompt": { "type": "string", "minLength": 1 },
+    "payload": { "type": "object" }
+  }
+}

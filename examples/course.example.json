@@ -1,0 +1,19 @@
+{
+  "id": "fa-de-a1-demo",
+  "schemaVersion": "1.0.0",
+  "revision": 1,
+  "status": "draft",
+  "pairId": "fa-de",
+  "level": "A1",
+  "blueprintRef": "universal:v1",
+  "chapters": [
+    {
+      "id": "demo-chapter",
+      "blueprintChapterId": "DEMO-NOT-CANONICAL",
+      "lessonIds": ["demo-lesson-1"]
+    }
+  ],
+  "lessonOrder": ["demo-lesson-1"],
+  "workshops": [],
+  "finalAssessmentRef": null
+}

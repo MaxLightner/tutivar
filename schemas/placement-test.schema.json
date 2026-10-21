@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tutivar Versioned Placement Test",
+  "type": "object",
+  "required": ["id", "schemaVersion", "revision", "status", "pairId", "mode", "scoringModelVersion", "assessedLevels", "items"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "minLength": 3 },
+    "schemaVersion": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "revision": { "type": "integer", "minimum": 1 },
+    "status": { "enum": ["draft", "validated", "approved", "published"] },
+    "pairId": { "type": "string", "pattern": "^[a-z]{2,3}-[a-z]{2,3}$" },
+    "mode": { "enum": ["fixed", "adaptive"] },
+    "scoringModelVersion": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "assessedLevels": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "enum": ["A0", "A1", "A2", "B1", "B2", "C1", "C2"] } },
+    "items": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["exerciseId", "revision", "targetLevel", "weight"], "properties": {
+      "exerciseId": { "type": "string" },
+      "revision": { "type": "integer", "minimum": 1 },
+      "targetLevel": { "enum": ["A0", "A1", "A2", "B1", "B2", "C1", "C2"] },
+      "weight": { "type": "number", "minimum": 0 }
+    } } }
+  }
+}

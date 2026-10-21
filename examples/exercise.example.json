@@ -1,0 +1,15 @@
+{
+  "id": "demo-exercise-1",
+  "schemaVersion": "1.0.0",
+  "revision": 1,
+  "status": "draft",
+  "pairId": "fa-de",
+  "exerciseType": "sentence-builder",
+  "rendererVersion": "1.0.0",
+  "mode": "guided-production",
+  "prompt": "Illustrative fixture only",
+  "payload": {
+    "tokens": ["Das", "ist", "ein", "Buch"],
+    "expectedOrder": [0, 1, 2, 3]
+  }
+}

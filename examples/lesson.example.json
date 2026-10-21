@@ -1,0 +1,22 @@
+{
+  "id": "demo-lesson-1",
+  "schemaVersion": "1.0.0",
+  "revision": 1,
+  "status": "draft",
+  "pairId": "fa-de",
+  "courseId": "fa-de-a1-demo",
+  "blueprintUnitId": "DEMO-NOT-CANONICAL",
+  "kind": "lesson",
+  "title": "Illustrative JSON structure (not a real lesson)",
+  "prerequisiteLessonIds": [],
+  "coverage": {
+    "introduced": [],
+    "practiced": [],
+    "explained": [],
+    "independentProduction": [],
+    "recycled": []
+  },
+  "activities": [
+    { "exerciseId": "demo-exercise-1", "revision": 1 }
+  ]
+}

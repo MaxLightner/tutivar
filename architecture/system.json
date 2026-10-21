@@ -1,0 +1,16 @@
+{
+  "id": "tutivar",
+  "architectureVersion": "0.1.0",
+  "status": "draft",
+  "style": "modular-monorepo",
+  "backendStyle": "modular-monolith-first",
+  "clients": ["web", "mobile", "admin"],
+  "sharedContracts": ["module", "language-pair", "course", "lesson", "exercise", "placement-test"],
+  "contentPublication": "draft-validate-approve-release",
+  "publishingRules": {
+    "stableIds": true,
+    "immutablePublishedRevisions": true,
+    "migrationRequiredForBreakingChanges": true,
+    "oneSourceOfTruthForLearnerProgress": true
+  }
+}

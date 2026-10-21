@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tutivar Revisioned Lesson",
+  "type": "object",
+  "required": ["id", "schemaVersion", "revision", "status", "pairId", "courseId", "blueprintUnitId", "kind", "title", "prerequisiteLessonIds", "coverage", "activities"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "minLength": 3 },
+    "schemaVersion": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "revision": { "type": "integer", "minimum": 1 },
+    "status": { "enum": ["draft", "validated", "approved", "published"] },
+    "pairId": { "type": "string", "pattern": "^[a-z]{2,3}-[a-z]{2,3}$" },
+    "courseId": { "type": "string", "minLength": 3 },
+    "blueprintUnitId": { "type": "string", "minLength": 3 },
+    "kind": { "enum": ["lesson", "workshop", "assessment", "consolidation"] },
+    "title": { "type": "string", "minLength": 1 },
+    "prerequisiteLessonIds": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+    "coverage": { "type": "object", "additionalProperties": false, "required": ["introduced", "practiced", "explained", "independentProduction", "recycled"], "properties": {
+      "introduced": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+      "practiced": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+      "explained": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+      "independentProduction": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+      "recycled": { "type": "array", "uniqueItems": true, "items": { "type": "string" } }
+    } },
+    "activities": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["exerciseId", "revision"], "properties": { "exerciseId": { "type": "string" }, "revision": { "type": "integer", "minimum": 1 } } } }
+  }
+}

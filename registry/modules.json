@@ -1,0 +1,16 @@
+{
+  "registryVersion": "0.1.0",
+  "modules": [
+    { "id": "identity", "version": "0.1.0", "status": "planned", "provides": ["user.identity", "user.profile"], "requires": [] },
+    { "id": "course-engine", "version": "0.1.0", "status": "planned", "provides": ["course.catalog", "course.navigation"], "requires": [] },
+    { "id": "exercise-engine", "version": "0.1.0", "status": "planned", "provides": ["exercise.run", "exercise.evaluate"], "requires": ["course.catalog"] },
+    { "id": "progress", "version": "0.1.0", "status": "planned", "provides": ["learner.progress"], "requires": ["user.identity", "exercise.evaluate", "course.navigation"] },
+    { "id": "placement", "version": "0.1.0", "status": "planned", "provides": ["placement.evaluate"], "requires": ["course.catalog", "exercise.evaluate"] },
+    { "id": "leitner", "version": "0.1.0", "status": "planned", "provides": ["review.schedule"], "requires": ["learner.progress", "exercise.evaluate"] },
+    { "id": "gamification", "version": "0.1.0", "status": "planned", "provides": ["leaderboard.score"], "requires": ["learner.progress"] },
+    { "id": "coach", "version": "0.1.0", "status": "planned", "provides": ["coach.conversation"], "requires": ["course.catalog", "learner.progress"] },
+    { "id": "avatar", "version": "0.1.0", "status": "planned", "provides": ["avatar.speech-presentation"], "requires": ["coach.conversation"] },
+    { "id": "discussion", "version": "0.1.0", "status": "planned", "provides": ["discussion.thread"], "requires": ["user.identity"] },
+    { "id": "blog", "version": "0.1.0", "status": "planned", "provides": ["blog.content"], "requires": [] }
+  ]
+}

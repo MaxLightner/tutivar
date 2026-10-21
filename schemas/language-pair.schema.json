@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tutivar Language Pair",
+  "type": "object",
+  "required": ["id", "schemaVersion", "revision", "status", "sourceLanguage", "targetLanguage", "blueprintRef", "grammarMapRef", "availableLevels"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z]{2,3}-[a-z]{2,3}$" },
+    "schemaVersion": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "revision": { "type": "integer", "minimum": 1 },
+    "status": { "enum": ["draft", "validated", "approved", "published"] },
+    "sourceLanguage": { "type": "string", "pattern": "^[a-z]{2,3}$" },
+    "targetLanguage": { "type": "string", "pattern": "^[a-z]{2,3}$" },
+    "blueprintRef": { "type": "string", "minLength": 3 },
+    "grammarMapRef": { "type": ["string", "null"] },
+    "availableLevels": { "type": "array", "uniqueItems": true, "items": { "enum": ["A0", "A1", "A2", "B1", "B2", "C1", "C2"] } }
+  }
+}
