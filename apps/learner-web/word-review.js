@@ -1,5 +1,7 @@
 /* Reusable vocabulary deck state machine. Every item comes from lesson JSON. */
 export const wordId = (entry) => String(entry.id || entry.en).trim();
+export const coreItems = (activity) => activity.items.filter((entry) => entry.role !== 'supplementary');
+export const supplementaryItems = (activity) => activity.items.filter((entry) => entry.role === 'supplementary');
 export const normalizeAnswer = (answer) => String(answer || '')
   .normalize('NFKC').toLowerCase().replace(/[’‘`]/g, "'")
   .replace(/\bi\s+am\b/g, "i'm")
@@ -11,26 +13,28 @@ export function checkWordAnswer(entry, answer) {
 }
 
 export function deckState(saved, activity) {
-  const ids = new Set(activity.items.map(wordId));
+  const items = coreItems(activity);
+  const ids = new Set(items.map(wordId));
   const revision = activity.deckRevision || 1;
   if (!saved || saved.revision !== revision) return { revision, phase: 'browse', index: 0, decisions: {}, queue: [], failed: {} };
   const decisions = Object.fromEntries(Object.entries(saved.decisions || {}).filter(([id]) => ids.has(id)));
   const queue = [...new Set((saved.queue || []).filter((id) => ids.has(id) && decisions[id] === 'test'))];
   const phase = ['browse', 'test', 'retry', 'done'].includes(saved.phase) ? saved.phase : 'browse';
-  const index = Math.min(Math.max(0, Number(saved.index) || 0), Math.max(0, activity.items.length - 1));
+  const index = Math.min(Math.max(0, Number(saved.index) || 0), Math.max(0, items.length - 1));
   return { revision, phase: (phase === 'test' || phase === 'retry') && !queue.length ? 'done' : phase, index, decisions, queue, failed: saved.failed || {}, lastWrong: saved.lastWrong || null };
 }
 
 export function advanceDeck(saved, activity, decision = null) {
   const state = deckState(saved, activity);
-  if (state.phase !== 'browse' || !activity.items.length) return state;
-  const id = wordId(activity.items[state.index]);
+  const items = coreItems(activity);
+  if (state.phase !== 'browse' || !items.length) return state;
+  const id = wordId(items[state.index]);
   if (decision === 'known' || decision === 'test') {
     state.decisions[id] = decision;
     state.queue = state.queue.filter((item) => item !== id);
     if (decision === 'test') state.queue.push(id);
   }
-  if (state.index + 1 < activity.items.length) state.index++;
+  if (state.index + 1 < items.length) state.index++;
   else state.phase = state.queue.length ? 'test' : 'done';
   return state;
 }
@@ -38,7 +42,7 @@ export function advanceDeck(saved, activity, decision = null) {
 export function jumpDeck(saved, activity, index) {
   const state = deckState(saved, activity);
   if (state.phase !== 'browse') return state;
-  state.index = Math.min(Math.max(0, Math.round(Number(index) || 0)), Math.max(0, activity.items.length - 1));
+  state.index = Math.min(Math.max(0, Math.round(Number(index) || 0)), Math.max(0, coreItems(activity).length - 1));
   return state;
 }
 
@@ -46,7 +50,7 @@ export function answerDeck(saved, activity, answer) {
   const state = deckState(saved, activity);
   if (state.phase !== 'test' || !state.queue.length) return { state, correct: null, entry: null };
   const id = state.queue[0];
-  const entry = activity.items.find((item) => wordId(item) === id);
+  const entry = coreItems(activity).find((item) => wordId(item) === id);
   const correct = checkWordAnswer(entry, answer);
   if (correct) {
     state.queue.shift();

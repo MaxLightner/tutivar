@@ -1,4 +1,4 @@
-import { deckState, wordId } from './word-review.js';
+import { coreItems, deckState, supplementaryItems, wordId } from './word-review.js';
 
 /*
  * Tutivar's teaching components. Lesson text, exercise items, answers and their
@@ -23,29 +23,33 @@ function intro(a, c) {
 function vocabulary(a, c) {
   const key = `${c.lessonId}:${a.id}`;
   const state = deckState(c.progress.wordProgress?.[key], a);
-  const total = a.items.length;
+  const items = coreItems(a);
+  const optionalItems = supplementaryItems(a);
+  const total = items.length;
+  const optional = optionalItems.length ? `<details class="vocab-supplementary"><summary><span><strong>عبارت‌های تکمیلی</strong><small>${optionalItems.length} عبارت برای یادگیری بیشتر · اختیاری</small></span><span class="supplementary-toggle">نمایش / بستن</span></summary><div class="supplementary-list">${optionalItems.map((item) => `<div class="supplementary-card"><div class="supplementary-main"><div><strong>${c.en(item.en)}</strong><p>${c.e(item.fa)}</p>${item.hint ? `<span class="word-hint">${c.e(item.hint)}</span>` : ''}</div>${soundButton(item.en, c.e, c.i)}</div>${item.examples?.length ? `<details class="supplementary-examples"><summary>سه مثال کاربردی</summary><div class="word-examples">${item.examples.map((line, index) => `<div class="word-example-line"><span class="example-number">${index + 1}</span>${c.en(line)}${soundButton(line, c.e, c.i)}</div>`).join('')}</div></details>` : ''}</div>`).join('')}</div></details>` : '';
+  const render = (body) => wrapper(`${body}${optional}`, a, c.index, c.e, 'module-vocabulary');
   const learned = Object.values(state.decisions).filter((value) => value === 'known').length;
   const tested = Object.values(state.decisions).filter((value) => value === 'test').length;
   if (!total || state.phase === 'done') {
     const difficult = Object.keys(state.failed).length;
-    return wrapper(`<div class="vocab-finished">${c.i('check')} مرور این بخش تمام شد. ${difficult ? `${difficult} مورد دشوار به لایتنر اصلی اضافه شد.` : ''}<button class="outline-btn" data-word-key="${c.e(key)}" data-word-action="restart">مرور دوباره</button></div>`, a, c.index, c.e, 'module-vocabulary');
+    return render(`<div class="vocab-finished">${c.i('check')} مرور واژه‌های اصلی تمام شد. ${difficult ? `${difficult} مورد دشوار به لایتنر اصلی اضافه شد.` : ''}<button class="outline-btn" data-word-key="${c.e(key)}" data-word-action="restart">مرور دوباره</button></div>`);
   }
   if (state.phase === 'test') {
-    const entry = a.items.find((item) => wordId(item) === state.queue[0]);
-    return wrapper(`<div class="vocab-deck-top"><span>مینی‌لایتنر · ${state.queue.length} کارت در صف آزمون</span><strong>${tested} انتخاب‌شده برای آزمون</strong></div><div class="word-test-card"><span class="word-test-label">معادل انگلیسی را بنویس</span><div class="word-test-question">${c.e(entry.testPrompt || entry.fa)}</div>${entry.testHint ? `<p class="word-hint">${c.e(entry.testHint)}</p>` : ''}<form class="word-test-form" data-word-form="${c.e(key)}"><input data-word-answer="${c.e(key)}" type="text" lang="en" dir="ltr" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="معادل انگلیسی ${c.e(entry.fa)}" placeholder="به انگلیسی بنویس…" required><button class="secondary-btn" type="submit">بررسی پاسخ</button></form><p class="word-test-help">پاسخ درست این کارت را از صف حذف می‌کند؛ پاسخ اشتباه آن را برای مرور برمی‌گرداند.</p></div>`, a, c.index, c.e, 'module-vocabulary');
+    const entry = items.find((item) => wordId(item) === state.queue[0]);
+    return render(`<div class="vocab-deck-top"><span>مینی‌لایتنر · ${state.queue.length} کارت در صف آزمون</span><strong>${tested} انتخاب‌شده برای آزمون</strong></div><div class="word-test-card"><span class="word-test-label">معادل انگلیسی را بنویس</span><div class="word-test-question">${c.e(entry.testPrompt || entry.fa)}</div>${entry.testHint ? `<p class="word-hint">${c.e(entry.testHint)}</p>` : ''}<form class="word-test-form" data-word-form="${c.e(key)}"><input data-word-answer="${c.e(key)}" type="text" lang="en" dir="ltr" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="معادل انگلیسی ${c.e(entry.fa)}" placeholder="به انگلیسی بنویس…" required><button class="secondary-btn" type="submit">بررسی پاسخ</button></form><p class="word-test-help">پاسخ درست این کارت را از صف حذف می‌کند؛ پاسخ اشتباه آن را برای مرور برمی‌گرداند.</p></div>`);
   }
-  const entry = state.phase === 'retry' ? a.items.find((item) => wordId(item) === state.lastWrong?.id) : a.items[state.index];
+  const entry = state.phase === 'retry' ? items.find((item) => wordId(item) === state.lastWrong?.id) : items[state.index];
   const index = state.index;
   const batchSize = Math.max(1, a.batchSize || 5);
   const batch = Math.floor(index / batchSize) + 1;
   const batches = Math.ceil(total / batchSize);
   const examples = (entry.examples?.length ? entry.examples : entry.example ? [entry.example] : []).map((line, i) => `<div class="word-example-line"><span class="example-number">${i + 1}</span>${c.en(line)}${soundButton(line, c.e, c.i)}</div>`).join('');
   if (state.phase === 'retry') {
-    return wrapper(`<div class="word-test-alert">این یکی هنوز نیاز به مرور دارد. پاسخ درست: ${c.en(entry.en)}</div><div class="vocab-focus-card"><div class="word-focus-title">${c.en(entry.en)}${soundButton(entry.en, c.e, c.i)}</div><div class="word-focus-meaning">${c.e(entry.fa)}</div><div class="word-examples">${examples}</div></div><div class="vocab-deck-actions"><button class="outline-btn" data-word-key="${c.e(key)}" data-word-action="skip-failed">فعلاً در لایتنر اصلی بماند</button><button class="secondary-btn" data-word-key="${c.e(key)}" data-word-action="resume">دوباره امتحانم کن</button></div>`, a, c.index, c.e, 'module-vocabulary');
+    return render(`<div class="word-test-alert">این یکی هنوز نیاز به مرور دارد. پاسخ درست: ${c.en(entry.en)}</div><div class="vocab-focus-card"><div class="word-focus-title">${c.en(entry.en)}${soundButton(entry.en, c.e, c.i)}</div><div class="word-focus-meaning">${c.e(entry.fa)}</div><div class="word-examples">${examples}</div></div><div class="vocab-deck-actions"><button class="outline-btn" data-word-key="${c.e(key)}" data-word-action="skip-failed">فعلاً در لایتنر اصلی بماند</button><button class="secondary-btn" data-word-key="${c.e(key)}" data-word-action="resume">دوباره امتحانم کن</button></div>`);
   }
-  const decisions = a.items.slice(0, index + 1).filter((item) => state.decisions[wordId(item)]).length;
+  const decisions = items.slice(0, index + 1).filter((item) => state.decisions[wordId(item)]).length;
   const slider = `<div class="vocab-navigation"><div class="vocab-range-label"><strong>مرور آزاد کلمات</strong><span>${index + 1} / ${total} · دسته ${batch} از ${batches}</span></div><div class="vocab-scrubber"><button type="button" class="word-nav-btn" data-word-key="${c.e(key)}" data-word-action="prev" ${index === 0 ? 'disabled' : ''} aria-label="کلمه قبلی">‹</button><input type="range" data-word-slider="${c.e(key)}" min="1" max="${total}" step="1" value="${index + 1}" aria-label="جابه‌جایی بین ${total} کلمه"><button type="button" class="word-nav-btn" data-word-key="${c.e(key)}" data-word-action="next" aria-label="کلمه بعدی یا پایان مرور">›</button></div><p>دستگیره را بکش یا کارت را ورق بزن؛ لازم نیست همهٔ کلمات را جداگانه تأیید کنی.</p></div>`;
-  return wrapper(`<div class="vocab-deck-top"><span>کارت ${index + 1} از ${total}</span><strong>${learned} بلدم · ${tested} امتحانم کن</strong></div><div class="vocab-deck-bar"><span style="width:${total ? (decisions / total) * 100 : 0}%"></span></div><div class="vocab-focus-card" data-word-swipe="${c.e(key)}" tabindex="0" aria-label="کارت واژه؛ برای جابه‌جایی از کلیدهای جهت‌نما استفاده کن"><div class="word-focus-title">${c.en(entry.en)}${soundButton(entry.en, c.e, c.i)}</div><div class="word-focus-meaning">${c.e(entry.fa)}</div>${entry.hint ? `<p class="word-hint">${c.e(entry.hint)}</p>` : ''}<div class="word-examples">${examples}</div></div><div class="vocab-deck-actions"><button class="outline-btn" data-word-key="${c.e(key)}" data-word-action="test">امتحانم کن</button><button class="secondary-btn" data-word-key="${c.e(key)}" data-word-action="known">اینو بلدم ${c.i('check')}</button></div>${slider}`, a, c.index, c.e, 'module-vocabulary');
+  return render(`<div class="vocab-deck-top"><span>کارت ${index + 1} از ${total}</span><strong>${learned} بلدم · ${tested} امتحانم کن</strong></div><div class="vocab-deck-bar"><span style="width:${total ? (decisions / total) * 100 : 0}%"></span></div><div class="vocab-focus-card" data-word-swipe="${c.e(key)}" tabindex="0" aria-label="کارت واژه؛ برای جابه‌جایی از کلیدهای جهت‌نما استفاده کن"><div class="word-focus-title">${c.en(entry.en)}${soundButton(entry.en, c.e, c.i)}</div><div class="word-focus-meaning">${c.e(entry.fa)}</div>${entry.hint ? `<p class="word-hint">${c.e(entry.hint)}</p>` : ''}<div class="word-examples">${examples}</div></div><div class="vocab-deck-actions"><button class="outline-btn" data-word-key="${c.e(key)}" data-word-action="test">امتحانم کن</button><button class="secondary-btn" data-word-key="${c.e(key)}" data-word-action="known">اینو بلدم ${c.i('check')}</button></div>${slider}`);
 }
 function phraseComposer(a, c) {
   const key = `${c.lessonId}:${a.id}`;

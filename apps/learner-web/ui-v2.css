@@ -124,6 +124,9 @@ p, .tiny, .small, .body-sm, .caps, .eyebrow, .brand-caption, .stat-label,
 .lesson-meta .meta-chip { font-size: 14px; }
 .lesson-tabs { top: 0; }
 .lesson-tab { font-size: 15px; }
+.lesson-tab[aria-current="step"] { box-shadow: 0 0 0 2px #a0d48e77; }
+.lesson-stage-note { display: flex; align-items: center; gap: 10px; border: 1px solid #d9e7d8; background: #eff7ea; color: #3d6c51; border-radius: 17px; padding: 14px 18px; margin-top: 17px; font-size: 15px; line-height: 1.85; }
+.lesson-stage-note .icon { flex: 0 0 auto; }
 .block-label { font-size: 14px; }
 .word-hint { color: #637d6b; }
 .word-card p { font-size: 15px; }
@@ -172,6 +175,21 @@ p, .tiny, .small, .body-sm, .caps, .eyebrow, .brand-caption, .stat-label,
 .word-test-alert { background: #fff2e2; border: 1px solid #f2d6b8; color: #8a542b; padding: 11px 14px; margin-bottom: 12px; border-radius: 12px; font-size: 16px; }
 .word-test-alert .en { font-size: 19px; font-weight: 900; }
 .vocab-finished { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-size: 17px; color: #39664a; }
+.vocab-supplementary { margin-top: 23px; border: 1px solid #dce9d8; background: #f6faf2; border-radius: 17px; overflow: hidden; }
+.vocab-supplementary > summary { display: flex; align-items: center; justify-content: space-between; gap: 13px; padding: 16px 19px; cursor: pointer; list-style: none; }
+.vocab-supplementary > summary::-webkit-details-marker { display: none; }
+.vocab-supplementary > summary strong { display: block; color: #305e43; font-size: 18px; }
+.vocab-supplementary > summary small { display: block; color: #607b67; margin-top: 4px; font-size: 14px; }
+.supplementary-toggle { white-space: nowrap; color: #317c50; font-size: 14px; font-weight: 750; }
+.supplementary-list { display: grid; gap: 11px; border-top: 1px solid #dce9d8; padding: 13px; }
+.supplementary-card { background: white; border: 1px solid #e4ece2; padding: 15px; border-radius: 13px; }
+.supplementary-main { display: flex; justify-content: space-between; align-items: center; gap: 13px; }
+.supplementary-main strong .en { color: #235439; font-size: 20px; }
+.supplementary-main p { color: #53735d; font-size: 16px; margin: 4px 0; }
+.supplementary-examples { border-top: 1px solid #edf1e9; margin-top: 12px; padding-top: 10px; }
+.supplementary-examples > summary { cursor: pointer; font-weight: 750; font-size: 15px; color: #41835b; }
+.supplementary-examples .word-examples { margin-top: 12px; }
+@media (max-width: 550px) { .vocab-supplementary > summary { padding: 14px; } .supplementary-toggle { white-space: normal; text-align: left; } .supplementary-list { padding: 9px; } }
 .phrase-composer { display: flex; flex-wrap: wrap; gap: 16px; direction: ltr; justify-content: flex-start; }
 .phrase-slot { display: grid; gap: 7px; min-width: 150px; }
 .phrase-slot > span { color: #54705f; font-size: 15px; font-weight: 750; direction: rtl; text-align: left; }

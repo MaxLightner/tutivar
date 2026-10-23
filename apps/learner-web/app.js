@@ -46,9 +46,14 @@ const ICONS = {
 const icon = (name, size = '') => `<span class="icon ${size}"><svg aria-hidden="true" viewBox="0 0 24 24">${ICONS[name] || ICONS.star}</svg></span>`;
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const en = (text) => `<span class="en" lang="en" dir="ltr">${escapeHtml(text)}</span>`;
-const defaultProgress = () => ({ completed: [], quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, guidedAnswers: {}, settings: { reminders: false, sound: true } });
+const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, guidedAnswers: {}, settings: { reminders: false, sound: true } });
 function readProgress() { try { const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); return { ...defaultProgress(), ...saved, settings: { ...defaultProgress().settings, ...(saved.settings || {}) } }; } catch { return defaultProgress(); } }
 const progress = readProgress();
+// Historical completion records predate separate lesson sections. Keep them valid.
+function completedSections(lessonId) {
+  return progress.sectionCompleted?.[lessonId] || (progress.completed.includes(lessonId) ? ['foundation', 'production'] : []);
+}
+function nextSection(lessonId) { return completedSections(lessonId).includes('foundation') ? 'production' : 'foundation'; }
 let manifest;
 let route = { page: 'home', lessonId: null, part: null };
 let lessonCache = new Map();
@@ -92,10 +97,10 @@ function sectionHeading(title, linkText, page) { return `<div class="section-hea
 function statCard(name, count, label, color) { return `<div class="card stat-card"><span class="stat-icon ${color}">${icon(name)}</span><span><span class="stat-number">${count}</span><br><span class="stat-label">${label}</span></span></div>`; }
 function homeView() {
   const lesson = nextLesson(); const done = progress.completed.length;
-  return `<div class="hero"><div><span class="eyebrow">آماده‌ای شروع کنیم؟</span><h1>هر روز یه چیز تازه،<br>به زبان خودت.</h1><p>انگلیسی را با گفت‌وگو و تمرین واقعی یاد بگیر.</p><button class="primary-btn" data-open-lesson="${lesson.id}">ادامه یادگیری ${icon('arrow')}</button></div><div class="hero-art" aria-hidden="true"><div class="art-circle"><div class="art-sheet"><small class="en">LET'S GO</small><div class="en">Hello!</div><small>سلام!</small></div></div><span class="art-speech">✳</span><span class="art-bubble">✦</span></div></div>
+  return `<div class="hero"><div><span class="eyebrow">آماده‌ای شروع کنیم؟</span><h1>هر روز یه چیز تازه،<br>به زبان خودت.</h1><p>انگلیسی را با گفت‌وگو و تمرین واقعی یاد بگیر.</p><button class="primary-btn" data-open-lesson="${lesson.id}" data-start-section="${nextSection(lesson.id)}">ادامه یادگیری ${icon('arrow')}</button></div><div class="hero-art" aria-hidden="true"><div class="art-circle"><div class="art-sheet"><small class="en">LET'S GO</small><div class="en">Hello!</div><small>سلام!</small></div></div><span class="art-speech">✳</span><span class="art-bubble">✦</span></div></div>
     <div class="stats-row">${statCard('flame', streak(), 'روز استمرار', 'soft-peach')}${statCard('book', done, 'درس تکمیل‌شده', 'soft-green')}${statCard('bolt', progress.reviewCount, 'کارت مرورشده', 'soft-lilac')}</div>
     <div class="two-col"><div class="stack"><div class="card mission-card"><div><span class="eyebrow">ماموریت امروز</span><h3 style="font-size:21px;margin-top:6px">${escapeHtml(manifest.home.dailyMission.title)}</h3><p class="muted body-sm">${escapeHtml(manifest.home.dailyMission.description)}</p><div class="micro-step">${icon('check')} ${progress.historyDates.includes(today()) ? 'امروز یک درس به پایان رساندی' : 'هنوز درس امروز را شروع نکردی'}</div><button class="link-button" style="margin-top:12px" data-open-lesson="${lesson.id}">برو سراغ درس ${icon('arrow')}</button></div><div class="round-progress" style="--progress:${progress.historyDates.includes(today()) ? 65 : 0}%"><strong>${progress.historyDates.includes(today()) ? '۱/۲' : '۰/۲'}</strong></div></div>
-      <div class="card activity-card"><span class="eyebrow">ادامه مسیر</span><h3>${escapeHtml(lesson.title)}</h3><p>${escapeHtml(lesson.subtitle)} · ${escapeHtml(lesson.feature)}</p><button class="secondary-btn" data-open-lesson="${lesson.id}">شروع درس ${icon('chevron')}</button></div></div>
+      <div class="card activity-card"><span class="eyebrow">ادامه مسیر</span><h3>${escapeHtml(lesson.title)}</h3><p>${escapeHtml(lesson.subtitle)} · ${escapeHtml(lesson.feature)}</p><button class="secondary-btn" data-open-lesson="${lesson.id}" data-start-section="${nextSection(lesson.id)}">ادامه درس ${icon('chevron')}</button></div></div>
       <div class="stack"><div class="card activity-card" style="background:#ece8fa"><span class="caps" style="color:#806dba">REVIEW TIME</span><h3>مرورهای بین‌درسی</h3><p>کلمه‌ها و جمله‌هایی که ارزش یک بار دیگر دیدن دارند.</p><button class="outline-btn" data-nav="leitner">مرور کارت‌ها ${icon('cards')}</button><div class="feature-spark">✳</div></div><div class="card activity-card" style="background:#e7f3ed"><span class="caps" style="color:#397965">YOUR COACH</span><h3>مربی همراه</h3><p>پرسش و تمرین آزاد با مربی هوشمند.</p><button class="outline-btn" data-action="coach">ورود به چت ${icon('message')}</button><div class="feature-spark">✧</div></div></div></div>
     ${sectionHeading('کمی فراتر از درس', '', null)}
     <div class="palette-row"><div class="card activity-card"><h3>موضوع آزاد امروز</h3><p>${en(manifest.home.dailyDiscussion.topic)}</p><p>${escapeHtml(manifest.home.dailyDiscussion.translation)}</p><button class="link-button" data-action="discussion">گفت‌وگوی آزاد ${icon('chevron')}</button></div><div class="card activity-card"><h3>کارت بازار</h3><p>${escapeHtml(manifest.home.market.description)}</p><button class="link-button" data-action="market">مشاهده کارت ${icon('bag')}</button></div></div>`;
@@ -103,7 +108,7 @@ function homeView() {
 
 function pathPartButton(lesson, part, isSecond = false) {
   const ready = lesson.status === 'sample';
-  const done = progress.completed.includes(lesson.id);
+  const done = completedSections(lesson.id).includes(part);
   const name = part === 'foundation' ? (lesson.icon || 'book') : 'message';
   const partLabel = part === 'foundation' ? 'واژه تا جمله' : 'دیالوگ تا تمرین';
   return `<button class="${isSecond ? 'path-subnode' : 'path-node'} ${done ? 'done' : ready ? 'sample' : 'planned'}" ${ready ? `data-open-lesson="${escapeHtml(lesson.id)}" data-start-section="${part}"` : 'disabled'} aria-label="${escapeHtml(lesson.title)}، ${partLabel}" title="${partLabel}">${icon(done ? 'check' : name)}</button>`;
@@ -167,12 +172,16 @@ function lessonOrientation(lesson) {
   return `<section class="lesson-orientation" aria-label="آغاز درس"><div class="orientation-content"><h2>در این درس چه یاد می‌گیری؟</h2><p>${escapeHtml(goal)}</p><div class="orientation-prerequisite"><strong>پیش‌نیاز این درس</strong><ul>${prerequisites}</ul></div>${previously}${challenge}</div><div class="lesson-visual"><div class="lesson-visual-frame ${visual.src ? 'has-image' : ''}">${image}</div>${visual.src && visual.caption ? `<p>${escapeHtml(visual.caption)}</p>` : ''}</div></section>`;
 }
 function lessonView(lesson) { if (!lesson) return `<div class="empty-level">درس مورد نظر پیدا نشد.</div>`;
-  const first = lesson.sections[0]; const second = lesson.sections[1];
-  return `<div class="lesson-page"><button class="back-link" data-nav="lessons">${icon('arrow')} بازگشت به مسیر درس‌ها</button><div class="lesson-hero"><span class="caps">${escapeHtml(lesson.id)} · دو بخش</span><h1>${escapeHtml(lesson.title)}</h1><div class="lesson-meta"><span class="meta-chip">◷ ${escapeHtml(lesson.duration)}</span><span class="meta-chip">✳ ${escapeHtml(lesson.feature)}</span></div></div>${lessonOrientation(lesson)}
-    <div class="lesson-tabs"><button class="lesson-tab active" data-section="foundation">۰۱ · ${escapeHtml(first.label)}</button><button class="lesson-tab" data-section="production">۰۲ · ${escapeHtml(second.label)}</button></div>
-    <div class="lesson-flow"><section id="lesson-foundation" class="lesson-section"><div class="phase-heading"><span class="phase-number">01</span><div><h2>${escapeHtml(first.label)}</h2><p>${escapeHtml(first.intro)}</p></div></div>${sectionActivities(first, lesson.id)}</section>
-    <section id="lesson-production" class="lesson-section"><div class="phase-heading"><span class="phase-number">02</span><div><h2>${escapeHtml(second.label)}</h2><p>${escapeHtml(second.intro)}</p></div></div>${sectionActivities(second, lesson.id)}</section></div>
-    <div class="lesson-end"><div><h3>آفرین، تا آخر درس رسیدی! ✳</h3><p>می‌توانی هر بخش را دوباره تمرین کنی یا پیشرفتت را ذخیره کنی.</p></div><button class="dark-btn" data-complete="${lesson.id}">${progress.completed.includes(lesson.id) ? 'ذخیره‌شده ✓' : 'پایان درس و ذخیره پیشرفت'}</button></div></div>`;
+  const activePart = lesson.sections.some((section) => section.id === route.part) ? route.part : lesson.sections[0].id;
+  const activeIndex = lesson.sections.findIndex((section) => section.id === activePart);
+  const activeSection = lesson.sections[activeIndex];
+  const isLast = activeIndex === lesson.sections.length - 1;
+  const alreadyDone = completedSections(lesson.id).includes(activePart);
+  return `<div class="lesson-page"><button class="back-link" data-nav="lessons">${icon('arrow')} بازگشت به مسیر درس‌ها</button><div class="lesson-hero"><span class="caps">${escapeHtml(lesson.id)} · بخش ${activeIndex + 1} از ${lesson.sections.length}</span><h1>${escapeHtml(lesson.title)}</h1><div class="lesson-meta"><span class="meta-chip">◷ ${escapeHtml(lesson.duration)}</span><span class="meta-chip">✳ ${escapeHtml(lesson.feature)}</span></div></div>
+    <div class="lesson-tabs" aria-label="بخش‌های مستقل درس">${lesson.sections.map((section, index) => `<button class="lesson-tab ${section.id === activePart ? 'active' : ''}" data-section="${escapeHtml(section.id)}" aria-current="${section.id === activePart ? 'step' : 'false'}">${completedSections(lesson.id).includes(section.id) ? '✓' : String(index + 1).padStart(2, '0')} · ${escapeHtml(section.label)}</button>`).join('')}</div>
+    ${activeIndex === 0 ? lessonOrientation(lesson) : `<div class="lesson-stage-note">${icon('message')} اکنون در بخش دوم هستی. این بخش مستقل از مرور واژه‌هاست و روی مکالمه و تولید تمرکز دارد.</div>`}
+    <div class="lesson-flow"><section id="lesson-${escapeHtml(activePart)}" class="lesson-section"><div class="phase-heading"><span class="phase-number">${String(activeIndex + 1).padStart(2, '0')}</span><div><h2>${escapeHtml(activeSection.label)}</h2><p>${escapeHtml(activeSection.intro || '')}</p></div></div>${sectionActivities(activeSection, lesson.id)}</section></div>
+    <div class="lesson-end"><div><h3>${alreadyDone ? 'این بخش قبلاً تمام شده ✓' : 'این بخش به پایان رسید ✳'}</h3><p>${isLast ? 'با ثبت این بخش، پیشرفت جداگانه‌اش ذخیره می‌شود.' : 'بخش اول را تمام کن و جداگانه وارد مکالمه شو.'}</p></div><button class="dark-btn" data-finish-section="${escapeHtml(activePart)}">${isLast ? 'پایان بخش دوم و بازگشت به مسیر' : 'پایان بخش اول · ورود به بخش دوم'}</button></div></div>`;
 }
 
 function leitnerView() { const cards = allLeitnerCards(); const card = cards[progress.currentReview % cards.length]; const completedThisReview = progress.reviewCount % cards.length;
@@ -191,8 +200,8 @@ function renderModal() { return `<div class="demo-modal" role="dialog" aria-moda
 function showModal(title, body) { modal = { title, body }; draw(true); }
 function showToast(message) { clearTimeout(toastTimeout); document.getElementById('toast-anchor')?.replaceChildren(); const toast = document.createElement('div'); toast.className = 'toast'; toast.textContent = message; document.getElementById('toast-anchor')?.append(toast); toastTimeout = setTimeout(() => toast.remove(), 3200); }
 function draw(keepScroll = false) { const scroll = window.scrollY; let content = route.page === 'home' ? homeView() : route.page === 'lessons' ? lessonsView() : route.page === 'leitner' ? leitnerView() : route.page === 'dashboard' ? dashboardView() : lessonView(lessonCache.get(route.lessonId)); $root.className = ''; $root.innerHTML = shell(content); if (keepScroll) window.scrollTo({ top: scroll, behavior: 'instant' }); }
-function parseHash() { const [page, id, part] = location.hash.replace(/^#\/?/, '').split('/'); if (page === 'lesson' && id) return { page: 'lesson', lessonId: decodeURIComponent(id), part: ['foundation', 'production'].includes(part) ? part : null }; return { page: ['home', 'lessons', 'leitner', 'dashboard'].includes(page) ? page : 'home', lessonId: null, part: null }; }
-async function syncRoute() { route = parseHash(); if (route.page === 'lesson') { try { const lesson = await loadLesson(route.lessonId); if (!lesson) { route = { page: 'lessons', lessonId: null, part: null }; } } catch { showModal('بارگذاری درس', 'محتوای این درس بارگذاری نشد. اتصال اینترنت را بررسی کن یا صفحه را تازه‌سازی کن.'); route = { page: 'lessons', lessonId: null, part: null }; } } draw(); if (route.page === 'lesson' && route.part) document.getElementById(`lesson-${route.part}`)?.scrollIntoView({block: 'start', behavior: 'instant'}); else window.scrollTo(0, 0); }
+function parseHash() { const [page, id, part] = location.hash.replace(/^#\/?/, '').split('/'); if (page === 'lesson' && id) return { page: 'lesson', lessonId: decodeURIComponent(id), part: ['foundation', 'production'].includes(part) ? part : 'foundation' }; return { page: ['home', 'lessons', 'leitner', 'dashboard'].includes(page) ? page : 'home', lessonId: null, part: null }; }
+async function syncRoute() { route = parseHash(); if (route.page === 'lesson') { try { const lesson = await loadLesson(route.lessonId); if (!lesson) { route = { page: 'lessons', lessonId: null, part: null }; } } catch { showModal('بارگذاری درس', 'محتوای این درس بارگذاری نشد. اتصال اینترنت را بررسی کن یا صفحه را تازه‌سازی کن.'); route = { page: 'lessons', lessonId: null, part: null }; } } draw(); window.scrollTo(0, 0); }
 function navigate(page, id = null, part = null) { const target = page === 'lesson' ? `#/lesson/${id}${part ? '/' + part : ''}` : `#/${page}`; if (location.hash === target) { syncRoute(); return; } location.hash = target; }
 function updateInline() { draw(true); }
 const lessonVocabulary = (key) => lessonCache.get(route.lessonId)?.sections.flatMap((section) => section.activities || []).find((item) => item.type === 'vocabulary' && `${route.lessonId}:${item.id}` === key);
@@ -236,14 +245,14 @@ function wordKeydown(event) {
   document.querySelector('[data-word-swipe]')?.focus({ preventScroll: true });
 }
 function onClick(event) {
-  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-complete],button[data-review],button[data-planned],button[data-speak],button[data-match],button[data-build-token],button[data-build-reset],button[data-roleplay],button[data-word-key],button[data-phrase-key],button[data-lab-key],button[data-guided-send],button[data-quick-skip]');
+  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-finish-section],button[data-review],button[data-planned],button[data-speak],button[data-match],button[data-build-token],button[data-build-reset],button[data-roleplay],button[data-word-key],button[data-phrase-key],button[data-lab-key],button[data-guided-send],button[data-quick-skip]');
   if (!el) return;
   if (el.dataset.nav) { modal = null; navigate(el.dataset.nav); return; }
   if (el.dataset.openLesson) { modal = null; activePerson = 0; ownerIdx = 0; objectIdx = 0; navigate('lesson', el.dataset.openLesson, el.dataset.startSection || null); return; }
   if (el.dataset.level) { progress.activeLevel = el.dataset.level; persist(); updateInline(); return; }
   if (el.dataset.stage) { progress.activeStage = el.dataset.stage; persist(); updateInline(); document.querySelector('.stage-summary')?.scrollIntoView({behavior:'smooth',block:'start'}); return; }
   if (el.dataset.planned) { showModal('درس قفل است', 'با آماده‌شدن این درس، امکان شروع آن فعال می‌شود.'); return; }
-  if (el.dataset.section) { const target = document.getElementById(`lesson-${el.dataset.section}`); document.querySelectorAll('[data-section]').forEach((tab) => tab.classList.toggle('active', tab === el)); target?.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+  if (el.dataset.section) { navigate('lesson', route.lessonId, el.dataset.section); return; }
   if (el.dataset.speak) { speech(el.dataset.speak); return; }
   if (el.dataset.quickSkip) {
     const ordered = samples();
@@ -316,7 +325,22 @@ function onClick(event) {
   if (el.dataset.quiz) { progress.quizAnswers[el.dataset.quiz] = Number(el.dataset.choice); persist(); updateInline(); return; }
   if (el.dataset.chat) { progress.chatAnswers[el.dataset.chat] = Number(el.dataset.choice); persist(); updateInline(); return; }
   if (el.dataset.person !== undefined) { activePerson = Number(el.dataset.person); updateInline(); return; }
-  if (el.dataset.complete) { const id = el.dataset.complete; if (!progress.completed.includes(id)) progress.completed.push(id); if (!progress.historyDates.includes(today())) progress.historyDates.push(today()); persist(); showToast('درس ذخیره شد. آفرین به اولین قدمت!'); navigate('lessons'); return; }
+  if (el.dataset.finishSection) {
+    const id = route.lessonId;
+    const lesson = lessonCache.get(id);
+    const part = el.dataset.finishSection;
+    if (!lesson || part !== route.part || !lesson.sections.some((section) => section.id === part)) return;
+    const sections = [...new Set([...completedSections(id), part])];
+    progress.sectionCompleted[id] = sections;
+    const allDone = lesson.sections.every((section) => sections.includes(section.id));
+    if (allDone && !progress.completed.includes(id)) progress.completed.push(id);
+    if (!progress.historyDates.includes(today())) progress.historyDates.push(today());
+    persist();
+    const index = lesson.sections.findIndex((section) => section.id === part);
+    if (index < lesson.sections.length - 1) navigate('lesson', id, lesson.sections[index + 1].id);
+    else navigate('lessons');
+    return;
+  }
   if (el.dataset.review) { progress.reviewCount++; progress.currentReview = (progress.currentReview + 1) % allLeitnerCards().length; progress.showTranslation = false; persist(); updateInline(); showToast('پاسخ ثبت شد؛ کارت بعدی'); return; }
   switch (el.dataset.action) {
     case 'language': showModal('زبان‌های توتیوار', 'اولین مسیر فعال «انگلیسی برای فارسی‌زبانان» است. با اضافه‌شدن جفت‌زبان‌های جدید، همین اپ محتوای آن‌ها را از فایل‌های مستقل بارگذاری می‌کند.'); break;

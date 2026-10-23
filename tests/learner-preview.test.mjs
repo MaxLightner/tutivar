@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { readJson, projectRoot, validateSchema } from '../tools/validate.mjs';
 import { renderActivity, supportedActivities } from '../apps/learner-web/lesson-modules.js';
-import { advanceDeck, answerDeck, checkWordAnswer, deckState, jumpDeck, resumeDeck } from '../apps/learner-web/word-review.js';
+import { advanceDeck, answerDeck, checkWordAnswer, coreItems, deckState, jumpDeck, resumeDeck, supplementaryItems } from '../apps/learner-web/word-review.js';
 
 const contentRoot = join(projectRoot, 'content/language-pairs/fa-en');
 const load = (file) => readJson(join(contentRoot, file));
@@ -106,6 +106,32 @@ test('first lesson activities render with separate content, including interactio
   for (const required of ['Good morning!', 'Good afternoon!', 'Good evening!', 'Good night!', 'How are you?', "What's your name?", "I'm fine, thanks.", 'And you?']) {
     assert.ok(words.some((entry) => entry.en === required), `${required}: missing first lesson greeting`);
   }
+  const vocabulary = lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary');
+  assert.equal(coreItems(vocabulary).length, 8, 'the first lesson starts with only essential expressions');
+  assert.deepEqual(supplementaryItems(vocabulary).map((entry) => entry.en), ['Good afternoon!', 'Good evening!', 'Good night!']);
+  assert.deepEqual(coreItems(vocabulary).map((entry) => entry.en).filter((word) => ['I', 'my', 'name', 'your'].includes(word)), [], 'grammar fragments belong in the phrase and sentence builders');
+  const html = renderActivity(vocabulary, { lessonId: 'A1-1', index: 0, e: String, en: String, i: () => '', progress: { wordProgress: {} } });
+  assert.match(html, /کارت 1 از 8/);
+  assert.match(html, /عبارت‌های تکمیلی/);
+  assert.match(html, /سه مثال کاربردی/);
+});
+
+test('supplementary phrases are excluded from all mandatory vocabulary stages', () => {
+  const activity = { deckRevision: 1, items: [
+    { en: 'Hello!', fa: 'سلام' },
+    { en: 'Good evening!', role: 'supplementary', fa: 'عصر بخیر' },
+    { en: 'Bye!', fa: 'خداحافظ' }
+  ] };
+  let state = advanceDeck(deckState(null, activity), activity, 'test');
+  assert.equal(state.index, 1);
+  assert.deepEqual(state.queue, ['Hello!']);
+  state = advanceDeck(state, activity, 'known');
+  assert.equal(state.phase, 'test');
+  assert.deepEqual(Object.keys(state.decisions), ['Hello!', 'Bye!']);
+  const done = answerDeck(state, activity, 'Hello!');
+  assert.equal(done.state.phase, 'done');
+  assert.equal(done.state.queue.length, 0);
+  assert.equal(deckState({ ...done.state, decisions: { ...done.state.decisions, 'Good evening!': 'test' }, queue: ['Good evening!'] }, activity).queue.length, 0);
 });
 
 test('mini-Leitner accepts flexible answers and removes successful cards', () => {
@@ -164,6 +190,10 @@ test('presentation is independent of course content and never hardcodes target p
   assert.ok(app.includes('renderActivity'));
   assert.ok(app.includes('lessonOrientation'));
   assert.ok(app.includes('lesson-visual-frame'));
+  assert.ok(app.includes('sectionCompleted'), 'each lesson half tracks its own completion');
+  assert.ok(app.includes('data-finish-section'), 'each half gets an independent completion action');
+  assert.ok(app.includes('activeSection'), 'the route chooses only the current half');
+  assert.ok(!app.includes('target?.scrollIntoView'), 'section navigation is by route, not scrolling');
   assert.ok(!app.includes("I'm Sara."));
   assert.ok(!app.includes('This is my mother.'));
   assert.ok(!app.includes('این مسیر بر اساس فهرست'));
