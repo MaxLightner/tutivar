@@ -37,6 +37,10 @@ python3 -m http.server 8080 --directory dist
 
 Then open `http://localhost:8080`. The app must be served over HTTP; it will not work directly from `file://` because lessons load as external JSON.
 
+### GitHub Pages
+
+`.github/workflows/deploy-pages.yml` validates the content, builds `dist/`, and deploys that folder on pushes to `main`. In repository **Settings → Pages → Build and deployment**, select **GitHub Actions** as the source. Once GitHub Pages is enabled and the workflow completes successfully, the learner preview is at `https://maxlightner.github.io/tutivar/`. The app uses relative paths to support this subdirectory. The site is publicly reachable even if GitHub permits the repository to remain private; do not put secrets into `content/`.
+
 The demo works without a backend. Completed lessons, review clicks, and written practice are saved only in this browser's `localStorage`. Review keys 1–7 **do not implement Leitner scheduling**. Chat, account sync, market and leaderboards are marked as upcoming.
 
 ### Editorial workflow
