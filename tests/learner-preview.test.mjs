@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { readJson, projectRoot, validateSchema } from '../tools/validate.mjs';
 import { renderActivity, supportedActivities } from '../apps/learner-web/lesson-modules.js';
+import { advanceDeck, answerDeck, checkWordAnswer, deckState, jumpDeck, resumeDeck } from '../apps/learner-web/word-review.js';
 
 const contentRoot = join(projectRoot, 'content/language-pairs/fa-en');
 const load = (file) => readJson(join(contentRoot, file));
@@ -92,6 +93,8 @@ test('first lesson activities render with separate content, including interactio
     }
   }
   assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary'), context), /data-word-key=/);
+  assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary'), context), /data-word-slider=/);
+  assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary'), context), /امتحانم کن/);
   assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'phrase-composer'), context), /data-phrase-key=/);
   assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'sentence-lab'), context), /data-lab-key=/);
   assert.match(renderActivity(lesson.sections[1].activities.find((activity) => activity.type === 'guided-dialogue'), context), /data-guided-send=/);
@@ -99,6 +102,57 @@ test('first lesson activities render with separate content, including interactio
   assert.ok(lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary').items.every((entry) => entry.examples.length === 3));
   assert.ok(Array.isArray(lesson.orientation.prerequisites));
   assert.equal(lesson.visual.src, null);
+  const words = lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary').items;
+  for (const required of ['Good morning!', 'Good afternoon!', 'Good evening!', 'Good night!', 'How are you?', "What's your name?", "I'm fine, thanks.", 'And you?']) {
+    assert.ok(words.some((entry) => entry.en === required), `${required}: missing first lesson greeting`);
+  }
+});
+
+test('mini-Leitner accepts flexible answers and removes successful cards', () => {
+  const activity = { deckRevision: 2, items: [
+    { en: 'Good morning!', fa: 'صبح بخیر' },
+    { en: "I'm fine, thanks.", fa: 'خوبم', testAnswers: ['I am fine, thank you'] },
+    { en: 'Bye!', fa: 'خداحافظ' }
+  ] };
+  let state = deckState(null, activity);
+  state = advanceDeck(state, activity, 'known');
+  state = advanceDeck(state, activity, 'test');
+  state = advanceDeck(state, activity, 'known');
+  assert.equal(state.phase, 'test');
+  assert.equal(state.queue.length, 1);
+  assert.equal(checkWordAnswer(activity.items[1], 'I am fine, thank you!'), true);
+  const answer = answerDeck(state, activity, 'i am fine thank you');
+  assert.equal(answer.correct, true);
+  assert.equal(answer.state.phase, 'done');
+  assert.equal(answer.state.queue.length, 0);
+});
+
+test('wrong answer triggers another review and remains in queue until passed or skipped', () => {
+  const activity = { deckRevision: 1, items: [{ en: 'How are you?', fa: 'حالت چطوره؟' }] };
+  let state = advanceDeck(deckState(null, activity), activity, 'test');
+  const wrong = answerDeck(state, activity, 'Good night');
+  assert.equal(wrong.correct, false);
+  assert.equal(wrong.state.phase, 'retry');
+  assert.equal(wrong.state.failed['How are you?'], 1);
+  assert.equal(wrong.state.queue.length, 1);
+  state = resumeDeck(wrong.state, activity);
+  assert.equal(state.phase, 'test');
+  assert.equal(answerDeck(state, activity, 'how are you').state.phase, 'done');
+  assert.equal(resumeDeck(wrong.state, activity, true).queue.length, 0);
+});
+
+test('100-word JSON list can be scrubbed without requiring 100 responses', () => {
+  const activity = { deckRevision: 1, batchSize: 10, items: Array.from({length: 100}, (_, i) => ({ en: `Word ${i + 1}`, fa: `کلمه ${i + 1}`, examples: ['One.', 'Two.', 'Three.'] })) };
+  let state = jumpDeck(null, activity, 94);
+  assert.equal(state.index, 94);
+  state = advanceDeck(state, activity, 'test');
+  state = jumpDeck(state, activity, 99);
+  state = advanceDeck(state, activity, 'known');
+  assert.equal(state.phase, 'test');
+  assert.deepEqual(state.queue, ['Word 95']);
+  const context = { lessonId: 'A1-1', index: 0, e: String, en: String, i: () => '', progress: { wordProgress: { 'A1-1:many': state } } };
+  const html = renderActivity({ ...activity, id: 'many', type: 'vocabulary', title: 'Many words' }, context);
+  assert.match(html, /کارت در صف آزمون/);
 });
 
 test('presentation is independent of course content and never hardcodes target phrases', () => {

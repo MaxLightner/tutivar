@@ -31,11 +31,16 @@ rewrite('index.html', [
   ['./ui-v2.css', `./ui-v2.css?v=${revision}`],
   ['src="./app.js"', `src="./app.js?v=${revision}"`]
 ]);
-rewrite('app.js', [["from './lesson-modules.js'", `from './lesson-modules.js?v=${revision}'`]]);
+rewrite('app.js', [
+  ["from './lesson-modules.js'", `from './lesson-modules.js?v=${revision}'`],
+  ["from './word-review.js'", `from './word-review.js?v=${revision}'`]
+]);
+rewrite('lesson-modules.js', [["from './word-review.js'", `from './word-review.js?v=${revision}'`]]);
 rewrite('sw.js', [
   ["const CACHE = 'tutivar-ui-v3-network-first';", `const CACHE = 'tutivar-${revision}';`],
   ["'./ui-v2.css'", `'./ui-v2.css?v=${revision}'`],
   ["'./app.js'", `'./app.js?v=${revision}'`],
-  ["'./lesson-modules.js'", `'./lesson-modules.js?v=${revision}'`]
+  ["'./lesson-modules.js'", `'./lesson-modules.js?v=${revision}'`],
+  ["'./word-review.js'", `'./word-review.js?v=${revision}'`]
 ]);
 console.log(`Built dist/ — fa-en independent content; revision ${revision}`);

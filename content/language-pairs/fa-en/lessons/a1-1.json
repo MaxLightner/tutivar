@@ -1,15 +1,15 @@
 {
   "id": "A1-1",
-  "revision": 2,
+  "revision": 3,
   "status": "draft",
   "title": "معرفی خود و شروع گفت‌وگو",
-  "goal": "در یک برخورد کوتاه سلام کنی، نامت را بگویی، نام طرف مقابل را بپرسی و مودبانه پاسخ بدهی.",
-  "duration": "حدود ۱۰ دقیقه",
+  "goal": "در یک برخورد کوتاه متناسب با ساعت سلام کنی، احوال بپرسی، خودت را معرفی کنی و گفت‌وگو را تمام کنی.",
+  "duration": "حدود ۱۰ تا ۱۵ دقیقه",
   "feature": "مکالمه نوبتی",
   "archetype": "conversation",
   "teachingModel": {"primary":"K4","support":"K3"},
   "orientation": {
-    "goal": "سلام کنی، خودت را معرفی کنی، نام طرف مقابل را بپرسی و یک گفت‌وگوی کوتاه را تمام کنی.",
+    "goal": "متناسب با زمان روز سلام کنی، حال طرف را بپرسی، خودت را معرفی کنی، نامش را بپرسی و خداحافظی کنی.",
     "prerequisites": []
   },
   "visual": {
@@ -21,19 +21,28 @@
     {
       "id": "foundation",
       "label": "از کلمه تا جمله",
-      "intro": "چند کلمه و عبارت کاربردی؛ بعد ساخت جمله.",
+      "intro": "عبارت‌های ضروری برای یک آشنایی واقعی را مرور کن؛ هرچه بلدی سریع رد شو.",
       "activities": [
         {
           "id": "hello-words",
           "type": "vocabulary",
           "title": "کارت‌های واژه و عبارت",
           "batchSize": 5,
+          "deckRevision": 2,
           "items": [
             {"en":"Hello!","fa":"سلام!","hint":"شروع گفت‌وگو","examples":["Hello, Emma!","Hello, Ali!","Hello! I'm Sara."]},
-            {"en":"I","fa":"من","hint":"برای معرفی خودت","examples":["I am Ali.","I am Sara.","I'm Emma."]},
-            {"en":"my","fa":"ـِ من","hint":"در عبارتِ my name","examples":["My name is Ali.","My name is Emma.","My name is Sara."]},
-            {"en":"name","fa":"نام","hint":"معرفی اسم","examples":["My name is Ali.","What's your name?","My name is Sara."]},
-            {"en":"your","fa":"ـِ تو / شما","hint":"نام طرف مقابل","examples":["What's your name?","What's your name, Emma?","What's your name, Ali?"]},
+            {"en":"Good morning!","fa":"صبح بخیر!","hint":"سلام در آغاز روز","examples":["Good morning, Ali!","Good morning! How are you?","Good morning, Emma!"]},
+            {"en":"Good afternoon!","fa":"روز بخیر! / بعدازظهر بخیر!","hint":"سلام از ظهر تا عصر","testPrompt":"روز بخیر / بعدازظهر بخیر","examples":["Good afternoon, Sara!","Good afternoon! How are you?","Good afternoon, everyone!"]},
+            {"en":"Good evening!","fa":"عصر بخیر!","hint":"سلام از هنگام غروب به بعد","examples":["Good evening, Ali!","Good evening! How are you?","Good evening, Emma!"]},
+            {"en":"Good night!","fa":"شب بخیر!","hint":"معمولاً برای خداحافظی در شب، نه شروع سلام","examples":["Good night, Emma!","Bye! Good night!","Good night! See you tomorrow!"]},
+            {"en":"How are you?","fa":"حالت چطوره؟ / حال شما چطوره؟","testPrompt":"حالت چطوره؟","hint":"پرسیدن حال طرف مقابل","examples":["Hello! How are you?","How are you, Ali?","Good morning! How are you?"]},
+            {"en":"I'm fine, thanks.","fa":"خوبم، ممنون.","hint":"جواب کوتاه و مودبانه به احوالپرسی","testAnswers":["I am fine, thanks.","I'm fine, thank you.","I am fine, thank you."],"examples":["I'm fine, thanks.","I'm fine, thanks. And you?","Hello! I'm fine, thanks."]},
+            {"en":"And you?","fa":"تو چطوری؟ / شما چطور؟","testPrompt":"تو چطوری؟ / شما چطور؟","hint":"برگرداندن همان سؤال به طرف مقابل","examples":["I'm fine. And you?","Good, thanks. And you?","I'm Ali. And you?"]},
+            {"en":"I","fa":"من","hint":"برای معرفی خودت","testPrompt":"ضمیر شخصی «من»","examples":["I am Ali.","I am Sara.","I'm Emma."]},
+            {"en":"my","fa":"ـِ من","hint":"در عبارتِ my name","testPrompt":"«من» در ترکیب «اسم من»","examples":["My name is Ali.","My name is Emma.","My name is Sara."]},
+            {"en":"name","fa":"نام / اسم","hint":"معرفی اسم","testPrompt":"نام / اسم","examples":["My name is Ali.","What's your name?","My name is Sara."]},
+            {"en":"your","fa":"ـِ تو / شما","hint":"در عبارتِ your name","testPrompt":"«تو / شما» در ترکیب «اسم تو»","examples":["What's your name?","What's your name, Emma?","What's your name, Ali?"]},
+            {"en":"What's your name?","fa":"اسمت چیه؟","hint":"پرسیدن نام طرف مقابل","testAnswers":["What is your name?"],"examples":["Hello! What's your name?","What's your name, Emma?","Excuse me, what's your name?"]},
             {"en":"Nice to meet you!","fa":"از آشنایی خوشوقتم!","hint":"پاسخ مودبانه","examples":["Nice to meet you, Ali!","Nice to meet you, Sara!","Nice to meet you, too!"]},
             {"en":"Bye!","fa":"خداحافظ!","hint":"پایان گفت‌وگو","examples":["Bye, Ali!","Bye, Emma!","Bye!"]}
           ]
@@ -70,17 +79,20 @@
     {
       "id": "production",
       "label": "از دیالوگ تا تولید",
-      "intro": "یک گفت‌وگوی کوتاه بشنو، بعد خودت جواب بده.",
+      "intro": "از سلام و احوالپرسی تا معرفی و خداحافظی؛ بعد خودت مکالمه بساز.",
       "activities": [
         {
           "id": "hello-dialogue",
           "type": "dialogue",
           "title": "اول یک گفت‌وگو را بشنو",
           "lines": [
-            {"speaker":"Emma","en":"Hello! I'm Emma. What's your name?","fa":"سلام! من اِما هستم. اسم تو چیه؟"},
-            {"speaker":"Ali","en":"Hello! I'm Ali. Nice to meet you!","fa":"سلام! من علی هستم. از آشنایی خوشوقتم!"},
-            {"speaker":"Emma","en":"Nice to meet you, Ali!","fa":"از آشنایی خوشوقتم، علی!"},
-            {"speaker":"Ali","en":"Nice to meet you, too! Bye!","fa":"من هم از آشنایی خوشوقتم! خداحافظ!"}
+            {"speaker":"Emma","en":"Good morning! How are you?","fa":"صبح بخیر! حالت چطوره؟"},
+            {"speaker":"Ali","en":"Good morning! I'm fine, thanks. And you?","fa":"صبح بخیر! خوبم، ممنون. تو چطوری؟"},
+            {"speaker":"Emma","en":"I'm fine, thanks. What's your name?","fa":"خوبم، ممنون. اسمت چیه؟"},
+            {"speaker":"Ali","en":"I'm Ali. What's your name?","fa":"من علی‌ام. اسم تو چیه؟"},
+            {"speaker":"Emma","en":"My name is Emma. Nice to meet you!","fa":"اسم من اِماست. از آشنایی خوشوقتم!"},
+            {"speaker":"Ali","en":"Nice to meet you, too! Bye!","fa":"من هم از آشنایی خوشوقتم! خداحافظ!"},
+            {"speaker":"Emma","en":"Bye!","fa":"خداحافظ!"}
           ]
         },
         {
@@ -89,16 +101,16 @@
           "title": "حالا نوبت جواب توست",
           "description": "پاسخ را خودت بنویس؛ بعد با یک نمونه مقایسه کن. راهنما اختیاری است.",
           "turns": [
-            {"speaker":"Emma","incoming":"Hello! I'm Emma. What's your name?","task":"به اِما جواب بده و اسمت را بگو.","hint":"I'm … / My name is …","example":"Hello! I'm Ali."},
-            {"speaker":"Emma","incoming":"Nice to meet you, Ali! Bye!","task":"مودبانه جواب بده و خداحافظی کن.","hint":"Nice to meet you, too! / Bye!","example":"Nice to meet you, too! Bye!"}
+            {"speaker":"Emma","incoming":"Good morning! How are you? What's your name?","task":"سلام کن، حالت را بگو و خودت را معرفی کن.","hint":"Good morning! / I'm fine, thanks. / I'm …","example":"Good morning! I'm fine, thanks. I'm Ali."},
+            {"speaker":"Emma","incoming":"Nice to meet you! Bye!","task":"مودبانه جواب بده و خداحافظی کن.","hint":"Nice to meet you, too! / Bye!","example":"Nice to meet you, too! Bye!"}
           ]
         },
         {
           "id": "hello-write",
           "type": "free-write",
           "title": "این بار با اسم خودت",
-          "prompt": "فرض کن برای اولین بار کسی را می‌بینی. سلام کن، نام خودت را بگو، نام او را بپرس و در پایان خداحافظی کن.",
-          "placeholder": "Hello! I'm … What's your name? … Bye!",
+          "prompt": "فرض کن صبح برای اولین بار کسی را می‌بینی. سلام کن، احوال بپرس، خودت را معرفی کن، نام او را بپرس و خداحافظی کن.",
+          "placeholder": "Good morning! How are you? I'm … What's your name? … Bye!",
           "hint": "می‌توانی از عبارت‌های کارت‌ها کمک بگیری. جواب باید متعلق به خودت باشد.",
           "kind": "free-text",
           "minWords": 4

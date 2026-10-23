@@ -1,4 +1,5 @@
 import { renderActivity } from './lesson-modules.js';
+import { advanceDeck, answerDeck, deckState, jumpDeck, resumeDeck, wordId } from './word-review.js';
 
 const $root = document.getElementById('app');
 // The compiled JS URL carries the deployment SHA. Use it for lesson and course
@@ -45,7 +46,7 @@ const ICONS = {
 const icon = (name, size = '') => `<span class="icon ${size}"><svg aria-hidden="true" viewBox="0 0 24 24">${ICONS[name] || ICONS.star}</svg></span>`;
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const en = (text) => `<span class="en" lang="en" dir="ltr">${escapeHtml(text)}</span>`;
-const defaultProgress = () => ({ completed: [], quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, phraseChoices: {}, sentenceLabs: {}, guidedAnswers: {}, settings: { reminders: false, sound: true } });
+const defaultProgress = () => ({ completed: [], quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, guidedAnswers: {}, settings: { reminders: false, sound: true } });
 function readProgress() { try { const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); return { ...defaultProgress(), ...saved, settings: { ...defaultProgress().settings, ...(saved.settings || {}) } }; } catch { return defaultProgress(); } }
 const progress = readProgress();
 let manifest;
@@ -61,6 +62,15 @@ const levelChapters = (level) => (manifest.levels[level]?.stages || [{ chapters:
 const samples = () => levelChapters('A1').flatMap((chapter) => chapter.lessons).filter((entry) => entry.status === 'sample');
 const nextLesson = () => samples().find((entry) => !progress.completed.includes(entry.id)) || samples()[0];
 function persist() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); } catch { /* local preview works without persistence */ } }
+const allLeitnerCards = () => {
+  const cards = [...(progress.leitnerAdded || []), ...manifest.leitner.cards];
+  return cards.filter((card, index) => cards.findIndex((other) => other.front.toLowerCase().trim() === card.front.toLowerCase().trim()) === index);
+};
+function addToLeitner(entry, lessonId) {
+  const front = entry.en.trim();
+  if (allLeitnerCards().some((card) => card.front.toLowerCase().trim() === front.toLowerCase())) return;
+  progress.leitnerAdded = [...(progress.leitnerAdded || []), { front, back: entry.fa, example: entry.examples?.[0] || entry.example || '', lessonId, id: `${lessonId}:${wordId(entry)}` }];
+}
 function today() { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; }
 function streak() { const days = new Set(progress.historyDates); let cursor = new Date(); if (!days.has(today())) cursor.setDate(cursor.getDate() - 1); let count = 0; for (let i = 0; i < 365; i++) { const date = `${cursor.getFullYear()}-${String(cursor.getMonth() + 1).padStart(2, '0')}-${String(cursor.getDate()).padStart(2, '0')}`; if (!days.has(date)) break; count++; cursor.setDate(cursor.getDate() - 1); } return count; }
 function navButton(page, label, name) { return `<button class="nav-link ${route.page === page ? 'active' : ''}" data-nav="${page}" aria-label="${label}">${icon(name, 'nav-icon')}<span>${label}</span></button>`; }
@@ -165,12 +175,12 @@ function lessonView(lesson) { if (!lesson) return `<div class="empty-level">در
     <div class="lesson-end"><div><h3>آفرین، تا آخر درس رسیدی! ✳</h3><p>می‌توانی هر بخش را دوباره تمرین کنی یا پیشرفتت را ذخیره کنی.</p></div><button class="dark-btn" data-complete="${lesson.id}">${progress.completed.includes(lesson.id) ? 'ذخیره‌شده ✓' : 'پایان درس و ذخیره پیشرفت'}</button></div></div>`;
 }
 
-function leitnerView() { const cards = manifest.leitner.cards; const card = cards[progress.currentReview % cards.length]; const completedThisReview = progress.reviewCount % cards.length;
+function leitnerView() { const cards = allLeitnerCards(); const card = cards[progress.currentReview % cards.length]; const completedThisReview = progress.reviewCount % cards.length;
   return `<div class="path-intro"><div><span class="eyebrow">مرور واژه‌ها</span><h1>لایتنر هفت‌کلیدی</h1><p>کلمه را ببین، معنی‌اش را به خاطر بیاور و پاسخ را آشکار کن.</p></div></div><div class="review-layout"><div><div class="flash-card"><div><span class="caps">TAP TO REVEAL</span><div style="margin:23px 0">${en(card.front)}</div>${progress.showTranslation ? `<div class="translation">${escapeHtml(card.back)}</div><p class="example">${en(card.example)}</p>` : '<p class="body-sm" style="color:#a4c8b4">معنی را در ذهن مرور کن</p>'}<button class="primary-btn" style="margin-top:20px" data-action="reveal">${progress.showTranslation ? 'پنهان‌کردن پاسخ' : 'نمایش پاسخ'}</button></div></div><div class="review-buttons" aria-label="کلیدهای هفت‌گانه مرور">${[1, 2, 3, 4, 5, 6, 7].map((key) => `<button class="review-key" data-review="${key}" title="کلید ${key}">${key}</button>`).join('')}</div></div><div class="card review-aside"><span class="eyebrow">جلسه مرور</span><h3 style="margin-top:10px">یک مرور کوتاه</h3><p>${escapeHtml(manifest.leitner.note)}</p><div class="review-tally">${progress.reviewCount} <span class="body-sm muted">مرور ثبت‌شده</span></div><div class="review-sequence">${cards.map((_, index) => `<span class="review-dot ${index < completedThisReview ? 'filled' : ''}"></span>`).join('')}</div><button class="outline-btn" style="margin-top:15px" data-nav="dashboard">تنظیمات لایتنر ${icon('settings')}</button></div></div>`;
 }
 function dashboardView() { return `<div class="path-intro"><div><span class="eyebrow">فضای شخصی</span><h2>داشبورد</h2></div><div class="avatar" style="width:66px;height:66px;border-radius:24px">تو</div></div><div class="stats-row">${statCard('book', progress.completed.length, 'درس کامل', 'soft-green')}${statCard('flame', streak(), 'روز استمرار', 'soft-peach')}${statCard('cards', progress.reviewCount, 'مرور کارت', 'soft-lilac')}</div><div class="dashboard-grid">
     <div class="card dash-card"><h3>${icon('settings')} تنظیمات یادگیری</h3><div class="settings-row"><span>زبان یادگیری</span><button class="language-chip" data-action="language">🇬🇧 انگلیسی</button></div><div class="settings-row"><span>زبان رابط</span><strong>🇮🇷 فارسی</strong></div><div class="settings-row"><span>سطح فعال</span><button class="outline-btn" data-nav="lessons">${escapeHtml(progress.activeLevel)}</button></div><div class="settings-row"><span>یادآوری روزانه</span><span class="muted">غیرفعال</span></div></div>
-    <div class="card dash-card"><h3>${icon('cards')} تنظیمات لایتنر</h3><div class="settings-list"><div class="setting-item"><span>جعبه‌های مرور</span><strong>۷ کلید</strong></div><div class="setting-item"><span>کارت‌های موجود</span><strong>${manifest.leitner.cards.length}</strong></div></div><button class="secondary-btn" style="margin-top:19px" data-nav="leitner">رفتن به لایتنر ${icon('arrow')}</button></div>
+    <div class="card dash-card"><h3>${icon('cards')} تنظیمات لایتنر</h3><div class="settings-list"><div class="setting-item"><span>جعبه‌های مرور</span><strong>۷ کلید</strong></div><div class="setting-item"><span>کارت‌های موجود</span><strong>${allLeitnerCards().length}</strong></div></div><button class="secondary-btn" style="margin-top:19px" data-nav="leitner">رفتن به لایتنر ${icon('arrow')}</button></div>
     <div class="card dash-card"><h3>${icon('chart')} آمار پیشرفت</h3><div class="settings-list"><div class="setting-item"><span>درس‌های کامل‌شده</span><strong>${progress.completed.length}</strong></div><div class="setting-item"><span>آخرین روز فعالیت</span><strong>${progress.historyDates.at(-1) || 'ثبت نشده'}</strong></div><div class="setting-item"><span>جمله‌های تمرینی ذخیره‌شده</span><strong>${Object.values(progress.written).filter(Boolean).length}</strong></div></div></div>
     <div class="card dash-card"><h3>${icon('users')} دوستان و رقابت</h3><div class="placeholder-callout" style="margin-top:15px"><div style="font-size:36px;margin-bottom:5px">✳</div>دوستان · لیگ هفتگی · رتبه‌بندی ماهانه</div></div>
     <div class="card dash-card"><h3>${icon('trophy')} نشان‌های من</h3><div class="badge-grid"><div class="achievement ${progress.completed.length ? '' : 'locked'}"><span class="emoji">🌱</span><strong>اولین قدم</strong><span>${progress.completed.length ? 'دریافت‌شده' : 'قفل'}</span></div><div class="achievement locked"><span class="emoji">🔥</span><strong>هفت روز</strong><span>بعداً</span></div><div class="achievement locked"><span class="emoji">⭐</span><strong>استاد جمله</strong><span>بعداً</span></div></div></div>
@@ -185,7 +195,46 @@ function parseHash() { const [page, id, part] = location.hash.replace(/^#\/?/, '
 async function syncRoute() { route = parseHash(); if (route.page === 'lesson') { try { const lesson = await loadLesson(route.lessonId); if (!lesson) { route = { page: 'lessons', lessonId: null, part: null }; } } catch { showModal('بارگذاری درس', 'محتوای این درس بارگذاری نشد. اتصال اینترنت را بررسی کن یا صفحه را تازه‌سازی کن.'); route = { page: 'lessons', lessonId: null, part: null }; } } draw(); if (route.page === 'lesson' && route.part) document.getElementById(`lesson-${route.part}`)?.scrollIntoView({block: 'start', behavior: 'instant'}); else window.scrollTo(0, 0); }
 function navigate(page, id = null, part = null) { const target = page === 'lesson' ? `#/lesson/${id}${part ? '/' + part : ''}` : `#/${page}`; if (location.hash === target) { syncRoute(); return; } location.hash = target; }
 function updateInline() { draw(true); }
+const lessonVocabulary = (key) => lessonCache.get(route.lessonId)?.sections.flatMap((section) => section.activities || []).find((item) => item.type === 'vocabulary' && `${route.lessonId}:${item.id}` === key);
+function saveDeckState(key, state) { progress.wordProgress[key] = state; persist(); updateInline(); }
+function submitWordAnswer(key, input) {
+  const activity = lessonVocabulary(key);
+  if (!activity || !input.trim()) return showToast('پاسخ را به انگلیسی بنویس.');
+  const result = answerDeck(progress.wordProgress[key], activity, input);
+  if (result.correct === false) addToLeitner(result.entry, route.lessonId);
+  saveDeckState(key, result.state);
+  if (result.correct === true && result.state.phase === 'test') document.querySelector('[data-word-answer]')?.focus({ preventScroll: true });
+  if (result.correct === true && result.state.phase === 'done') showToast('همهٔ کارت‌های آزمون را درست جواب دادی.');
+}
 async function speech(text) { if (!('speechSynthesis' in window)) { showToast('پخش صوت در این مرورگر پشتیبانی نمی‌شود.'); return; } window.speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance(text); utterance.lang = 'en-US'; utterance.rate = .84; window.speechSynthesis.speak(utterance); }
+let swipeStart = null;
+function wordSwipeStart(event) {
+  const card = event.target.closest('[data-word-swipe]');
+  if (!card || event.target.closest('button')) return;
+  swipeStart = { key: card.dataset.wordSwipe, x: event.touches[0].clientX, y: event.touches[0].clientY };
+}
+function wordSwipeEnd(event) {
+  if (!swipeStart) return;
+  const moveX = event.changedTouches[0].clientX - swipeStart.x;
+  const moveY = event.changedTouches[0].clientY - swipeStart.y;
+  const key = swipeStart.key; swipeStart = null;
+  if (Math.abs(moveX) < 55 || Math.abs(moveX) < Math.abs(moveY) * 1.4) return;
+  const activity = lessonVocabulary(key);
+  if (!activity) return;
+  const current = deckState(progress.wordProgress[key], activity);
+  saveDeckState(key, moveX < 0 ? advanceDeck(current, activity) : jumpDeck(current, activity, current.index - 1));
+}
+function wordKeydown(event) {
+  const card = event.target.closest('[data-word-swipe]');
+  if (!card || !['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+  const key = card.dataset.wordSwipe;
+  const activity = lessonVocabulary(key);
+  if (!activity) return;
+  event.preventDefault();
+  const current = deckState(progress.wordProgress[key], activity);
+  saveDeckState(key, event.key === 'ArrowLeft' ? advanceDeck(current, activity) : jumpDeck(current, activity, current.index - 1));
+  document.querySelector('[data-word-swipe]')?.focus({ preventScroll: true });
+}
 function onClick(event) {
   const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-complete],button[data-review],button[data-planned],button[data-speak],button[data-match],button[data-build-token],button[data-build-reset],button[data-roleplay],button[data-word-key],button[data-phrase-key],button[data-lab-key],button[data-guided-send],button[data-quick-skip]');
   if (!el) return;
@@ -205,17 +254,15 @@ function onClick(event) {
   }
   if (el.dataset.wordKey) {
     const key = el.dataset.wordKey;
-    const activity = lessonCache.get(route.lessonId)?.sections.flatMap((section) => section.activities || []).find((item) => `${route.lessonId}:${item.id}` === key);
-    if (!activity || activity.type !== 'vocabulary') return;
+    const activity = lessonVocabulary(key);
+    if (!activity) return;
     if (el.dataset.wordAction === 'restart') { delete progress.wordProgress[key]; persist(); updateInline(); return; }
-    const state = progress.wordProgress[key] || { index: 0, known: [] };
-    if (el.dataset.wordAction === 'known' && !state.known.includes(state.index)) state.known.push(state.index);
-    const groupSize = Math.max(1, activity.batchSize || 5);
-    const start = Math.floor(state.index / groupSize) * groupSize;
-    const end = Math.min(start + groupSize, activity.items.length);
-    const pending = Array.from({ length: end - start }, (_, i) => i + start).filter((i) => !state.known.includes(i));
-    state.index = pending.find((i) => i > state.index) ?? pending[0] ?? end;
-    progress.wordProgress[key] = state; persist(); updateInline(); return;
+    const state = deckState(progress.wordProgress[key], activity);
+    const action = el.dataset.wordAction;
+    if (action === 'known' || action === 'test' || action === 'next') return saveDeckState(key, advanceDeck(state, activity, action));
+    if (action === 'prev') return saveDeckState(key, jumpDeck(state, activity, state.index - 1));
+    if (action === 'resume' || action === 'skip-failed') return saveDeckState(key, resumeDeck(state, activity, action === 'skip-failed'));
+    return;
   }
   if (el.dataset.phraseKey) {
     const key = el.dataset.phraseKey;
@@ -270,7 +317,7 @@ function onClick(event) {
   if (el.dataset.chat) { progress.chatAnswers[el.dataset.chat] = Number(el.dataset.choice); persist(); updateInline(); return; }
   if (el.dataset.person !== undefined) { activePerson = Number(el.dataset.person); updateInline(); return; }
   if (el.dataset.complete) { const id = el.dataset.complete; if (!progress.completed.includes(id)) progress.completed.push(id); if (!progress.historyDates.includes(today())) progress.historyDates.push(today()); persist(); showToast('درس ذخیره شد. آفرین به اولین قدمت!'); navigate('lessons'); return; }
-  if (el.dataset.review) { progress.reviewCount++; progress.currentReview = (progress.currentReview + 1) % manifest.leitner.cards.length; progress.showTranslation = false; persist(); updateInline(); showToast('پاسخ ثبت شد؛ کارت بعدی'); return; }
+  if (el.dataset.review) { progress.reviewCount++; progress.currentReview = (progress.currentReview + 1) % allLeitnerCards().length; progress.showTranslation = false; persist(); updateInline(); showToast('پاسخ ثبت شد؛ کارت بعدی'); return; }
   switch (el.dataset.action) {
     case 'language': showModal('زبان‌های توتیوار', 'اولین مسیر فعال «انگلیسی برای فارسی‌زبانان» است. با اضافه‌شدن جفت‌زبان‌های جدید، همین اپ محتوای آن‌ها را از فایل‌های مستقل بارگذاری می‌کند.'); break;
     case 'coach': showModal('مربی توتیوار', 'جای چت مربی در صفحه اصلی تعیین شده است. فعلاً اتصال به مدل هوش مصنوعی و حافظه گفت‌وگو پیاده نشده‌اند.'); break;
@@ -284,7 +331,21 @@ function onClick(event) {
     case 'close-modal': modal = null; draw(true); break;
   }
 }
-function onChange(event) { if (!event.target.dataset.picker) return; if (event.target.dataset.picker === 'owner') ownerIdx = Number(event.target.value); else objectIdx = Number(event.target.value); const widget = lessonCache.get(route.lessonId)?.sections[1]?.featureWidget; if (!widget || widget.type !== 'ownership') return; const owner = widget.owners[ownerIdx], object = widget.objects[objectIdx]; const output = document.getElementById('widget-result'); if (output) output.innerHTML = en(`This is ${owner.en} ${object.en}.`); const art = document.getElementById('widget-object-art'); if (art) art.textContent = object.emoji; }
+function onChange(event) {
+  if (event.target.dataset.wordSlider) {
+    const key = event.target.dataset.wordSlider;
+    const activity = lessonVocabulary(key);
+    if (activity) saveDeckState(key, jumpDeck(progress.wordProgress[key], activity, Number(event.target.value) - 1));
+    return;
+  }
+  if (!event.target.dataset.picker) return;
+  if (event.target.dataset.picker === 'owner') ownerIdx = Number(event.target.value); else objectIdx = Number(event.target.value);
+  const widget = lessonCache.get(route.lessonId)?.sections[1]?.featureWidget;
+  if (!widget || widget.type !== 'ownership') return;
+  const owner = widget.owners[ownerIdx], object = widget.objects[objectIdx];
+  const output = document.getElementById('widget-result'); if (output) output.innerHTML = en(`This is ${owner.en} ${object.en}.`);
+  const art = document.getElementById('widget-object-art'); if (art) art.textContent = object.emoji;
+}
 async function hydrateCurricula() {
   for (const level of Object.values(manifest.levels)) {
     if (!level.curriculumFile) continue;
@@ -303,5 +364,5 @@ async function hydrateCurricula() {
     }));
   }
 }
-async function main() { try { const response = await fetch(contentUrl('manifest.json')); if (!response.ok) throw new Error(`HTTP ${response.status}`); manifest = await response.json(); if (manifest.pairId !== 'fa-en' || manifest.status !== 'draft') throw new Error('wrong course manifest'); await hydrateCurricula(); $root.addEventListener('click', onClick); $root.addEventListener('change', onChange); addEventListener('hashchange', syncRoute); await syncRoute(); if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('./sw.js').catch(() => {}); } catch (error) { console.error(error); $root.innerHTML = `<div class="boot"><span class="boot-logo">t.</span><strong>صفحه بارگذاری نشد</strong><p class="muted">اتصال را بررسی کن و دوباره تلاش کن.</p></div>`; } }
+async function main() { try { const response = await fetch(contentUrl('manifest.json')); if (!response.ok) throw new Error(`HTTP ${response.status}`); manifest = await response.json(); if (manifest.pairId !== 'fa-en' || manifest.status !== 'draft') throw new Error('wrong course manifest'); await hydrateCurricula(); $root.addEventListener('click', onClick); $root.addEventListener('change', onChange); $root.addEventListener('submit', (event) => { const form = event.target.closest('form[data-word-form]'); if (!form) return; event.preventDefault(); submitWordAnswer(form.dataset.wordForm, form.querySelector('[data-word-answer]')?.value || ''); }); $root.addEventListener('touchstart', wordSwipeStart, { passive: true }); $root.addEventListener('touchend', wordSwipeEnd, { passive: true }); $root.addEventListener('keydown', wordKeydown); addEventListener('hashchange', syncRoute); await syncRoute(); if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('./sw.js').catch(() => {}); } catch (error) { console.error(error); $root.innerHTML = `<div class="boot"><span class="boot-logo">t.</span><strong>صفحه بارگذاری نشد</strong><p class="muted">اتصال را بررسی کن و دوباره تلاش کن.</p></div>`; } }
 main();

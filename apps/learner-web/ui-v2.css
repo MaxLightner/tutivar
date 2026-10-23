@@ -152,16 +152,38 @@ p, .tiny, .small, .body-sm, .caps, .eyebrow, .brand-caption, .stat-label,
 .word-example-line .sound-btn { width: 38px; height: 38px; min-width: 38px; }
 .example-number { background: #e7f2df; border-radius: 9px; color: #477e5f; width: 28px; height: 28px; display: grid; place-items: center; font-size: 14px; }
 .vocab-deck-actions { display: flex; justify-content: space-between; gap: 12px; margin-top: 16px; }
+.vocab-deck-actions .outline-btn, .vocab-deck-actions .secondary-btn { min-height: 46px; flex: 1; font-size: 16px; }
+.vocab-focus-card { touch-action: pan-y; }
+.vocab-navigation { margin-top: 18px; padding: 13px 15px 10px; background: #f4f8f2; border-radius: 15px; border: 1px solid #e1e9df; }
+.vocab-range-label { display: flex; justify-content: space-between; gap: 14px; align-items: center; font-size: 15px; color: #456b51; }
+.vocab-range-label span { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.vocab-scrubber { direction: ltr; display: flex; gap: 12px; align-items: center; padding: 10px 0 6px; }
+.vocab-scrubber input[type="range"] { width: 100%; flex: 1; cursor: pointer; height: 31px; accent-color: #398458; touch-action: pan-x; }
+.word-nav-btn { border: 1px solid #bcd8bd; color: #33744d; background: #fff; border-radius: 12px; min-height: 38px; min-width: 38px; font-size: 29px; line-height: 1; }
+.word-nav-btn:disabled { opacity: .3; cursor: default; }
+.vocab-navigation > p { color: #597261; font-size: 14px; margin: 0; }
+.word-test-card { padding: 22px; border: 1px solid #dcead8; background: #f7faf4; border-radius: 18px; }
+.word-test-label { color: #4c7959; font-size: 15px; font-weight: 800; }
+.word-test-question { font-size: 26px; font-weight: 900; color: #24553b; margin: 8px 0 17px; }
+.word-test-form { display: flex; gap: 11px; flex-wrap: wrap; }
+.word-test-form input { flex: 1; min-width: 170px; min-height: 50px; padding: 9px 13px; border-radius: 12px; border: 2px solid #c8dec7; background: #fff; text-align: left; font-size: 19px; }
+.word-test-form .secondary-btn { min-height: 50px; }
+.word-test-help { font-size: 14px; color: #647c68; margin-top: 14px; }
+.word-test-alert { background: #fff2e2; border: 1px solid #f2d6b8; color: #8a542b; padding: 11px 14px; margin-bottom: 12px; border-radius: 12px; font-size: 16px; }
+.word-test-alert .en { font-size: 19px; font-weight: 900; }
 .vocab-finished { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-size: 17px; color: #39664a; }
-.phrase-composer { display: flex; flex-wrap: wrap; gap: 16px; }
+.phrase-composer { display: flex; flex-wrap: wrap; gap: 16px; direction: ltr; justify-content: flex-start; }
 .phrase-slot { display: grid; gap: 7px; min-width: 150px; }
-.phrase-slot > span { color: #54705f; font-size: 15px; font-weight: 750; }
+.phrase-slot > span { color: #54705f; font-size: 15px; font-weight: 750; direction: rtl; text-align: left; }
 .phrase-options, .lab-selector > div { display: flex; flex-wrap: wrap; gap: 8px; }
+.phrase-options { direction: ltr; }
 .phrase-option, .lab-option { min-height: 44px; border: 1px solid #cadbce; background: #fff; color: #42614d; padding: 9px 15px; border-radius: 12px; font-size: 17px; font-weight: 750; }
 .phrase-option.active, .lab-option.active { color: #fff; background: #286b4a; border-color: #286b4a; }
 .phrase-outcome, .lab-sentence { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 15px 19px; margin-top: 16px; border-radius: 14px; background: #eaf5e6; font-size: 22px; font-weight: 800; }
+.phrase-outcome, .lab-sentence { direction: ltr; justify-content: flex-start; text-align: left; }
 .phrase-outcome .en, .lab-sentence .en { font-size: 22px; }
-.phrase-outcome > span:last-child { color: #52785d; font-size: 16px; margin-right: auto; }
+.phrase-outcome > span:last-child { color: #52785d; font-size: 16px; margin-left: auto; text-align: right; }
+.spoken-line, .guided-prompt > div { direction: ltr; text-align: left; }
 .lab-switches { display: flex; flex-wrap: wrap; gap: 17px 25px; }
 .lab-selector { display: grid; gap: 9px; }
 .lab-selector > strong { font-size: 15px; color: #45684d; }
