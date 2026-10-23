@@ -50,9 +50,16 @@ const en = (text) => `<span class="en" lang="en" dir="ltr">${escapeHtml(text)}</
 const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
 function readProgress() { try { const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); return { ...defaultProgress(), ...saved, settings: { ...defaultProgress().settings, ...(saved.settings || {}) } }; } catch { return defaultProgress(); } }
 const progress = readProgress();
-// Historical completion records predate separate lesson sections. Keep them valid.
+// Historical completion records predate skill evidence. Preserve them in storage,
+// but don't label a revised activity as mastered before its new checks are passed.
 function completedSections(lessonId) {
-  return progress.sectionCompleted?.[lessonId] || (progress.completed.includes(lessonId) ? ['foundation', 'production'] : []);
+  const recorded = progress.sectionCompleted?.[lessonId] || (progress.completed.includes(lessonId) ? ['foundation', 'production'] : []);
+  const lesson = lessonCache.get(lessonId);
+  if (!lesson) return recorded;
+  return recorded.filter((id) => {
+    const section = lesson.sections.find((entry) => entry.id === id);
+    return section && masteryMissing(lesson, section).length === 0;
+  });
 }
 function nextSection(lessonId) { return completedSections(lessonId).includes('foundation') ? 'production' : 'foundation'; }
 let manifest;
@@ -116,7 +123,7 @@ function pathPartButton(lesson, part, isSecond = false) {
 }
 function pathLesson(lesson, index) {
   const isWorkshop = lesson.kind === 'workshop';
-  const done = progress.completed.includes(lesson.id);
+  const done = progress.completed.includes(lesson.id) && completedSections(lesson.id).length === (lessonCache.get(lesson.id)?.sections.length || 2);
   return `<div class="path-stop ${index % 2 ? 'swing-left' : 'swing-right'} ${isWorkshop ? 'workshop-stop' : ''}">
     <div class="path-orbit">${pathPartButton(lesson, 'foundation')}${isWorkshop ? '' : `<span class="path-link" aria-hidden="true"></span>${pathPartButton(lesson, 'production', true)}`}</div>
     <div class="node-info"><span class="node-code">${escapeHtml(lesson.id)}</span><h3>${escapeHtml(lesson.title)}</h3>${lesson.subtitle ? `<p>${escapeHtml(lesson.subtitle)}</p>` : ''}<div class="node-parts">${isWorkshop ? `<span>${icon('trophy')} کارگاه</span>` : `<span>۱ · واژه تا جمله</span><span>۲ · دیالوگ تا تمرین</span>`}${done ? `<span class="node-complete">✓ تکمیل شده</span>` : ''}</div></div>
