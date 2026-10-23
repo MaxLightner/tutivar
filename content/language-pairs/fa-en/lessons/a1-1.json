@@ -10,8 +10,7 @@
   "teachingModel": {"primary":"K4","support":"K3"},
   "orientation": {
     "goal": "سلام کنی، خودت را معرفی کنی، نام طرف مقابل را بپرسی و یک گفت‌وگوی کوتاه را تمام کنی.",
-    "prerequisites": [],
-    "previously": "این اولین درس است؛ لازم نیست از قبل انگلیسی بلد باشی."
+    "prerequisites": []
   },
   "visual": {
     "src": null,
