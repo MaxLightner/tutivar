@@ -10,11 +10,11 @@ self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET' || new URL(event.request.url).origin !== self.location.origin) return;
   // Check the network first on every visit, including scripts and styles.
   // Offline fallback is still available for previously cached resources.
-  const network = fetch(event.request);
-  event.respondWith(network.catch(() => caches.match(event.request)));
-  event.waitUntil(network.then((response) => {
-    if (!response.ok) return;
-    const copy = response.clone();
-    return caches.open(CACHE).then((cache) => cache.put(event.request, copy));
-  }).catch(() => {}));
+  event.respondWith(fetch(event.request).then((response) => {
+    if (response.ok) {
+      const copy = response.clone();
+      event.waitUntil(caches.open(CACHE).then((cache) => cache.put(event.request, copy)).catch(() => {}));
+    }
+    return response;
+  }).catch(() => caches.match(event.request)));
 });
