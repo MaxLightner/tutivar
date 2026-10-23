@@ -1,4 +1,5 @@
 import { coreItems, deckState, supplementaryItems, wordId } from './word-review.js';
+import { practiceState } from './practice-engine.js';
 
 /*
  * Tutivar's teaching components. Lesson text, exercise items, answers and their
@@ -9,7 +10,10 @@ const MODULE_LABELS = {
   'sentence-builder': 'جمله‌سازی', 'quiz-set': 'آزمون', dialogue: 'گفت‌وگو',
   roleplay: 'مکالمه', 'free-write': 'تولید مستقل',
   'phrase-composer': 'ترکیب واژه‌ها', 'sentence-lab': 'جمله‌ساز پویا',
-  'guided-dialogue': 'تمرین مکالمه'
+  'guided-dialogue': 'تمرین مکالمه',
+  'response-practice': 'ساختن پاسخ',
+  'sentence-transform': 'تبدیل جمله',
+  'dialogue-transfer': 'مکالمه در موقعیت تازه'
 };
 function wrapper(body, activity, idx, e, extra = '') {
   return `<div class="lesson-block module-block ${extra}" data-module="${e(activity.type)}"><div class="block-top"><div><span class="block-label">${String(idx + 1).padStart(2, '0')} / ${e(activity.typeLabel || MODULE_LABELS[activity.type] || 'فعالیت')}</span><h3>${e(activity.title || '')}</h3></div></div>${body}</div>`;
@@ -66,12 +70,38 @@ function sentenceLab(a, c) {
   const result = `${structure.before || ''}${variable}${structure.after || ''}`;
   return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="lab-switches"><div class="lab-selector"><strong>${c.e(a.structureLabel || 'چطور بگویی؟')}</strong><div>${a.structures.map((item, index) => `<button class="lab-option ${index === state.structure ? 'active' : ''}" data-lab-key="${c.e(key)}" data-lab-kind="structure" data-lab-index="${index}">${c.en(item.label)}</button>`).join('')}</div></div><div class="lab-selector"><strong>${c.e(a.variableLabel || 'چه کسی؟')}</strong><div>${a.variables.map((item, index) => `<button class="lab-option ${index === state.variable ? 'active' : ''}" data-lab-key="${c.e(key)}" data-lab-kind="variable" data-lab-index="${index}">${c.en(item)}</button>`).join('')}</div></div></div><div class="lab-sentence">${c.en(result)}${soundButton(result, c.e, c.i)}</div>${structure.note ? `<p class="lab-note">${c.e(structure.note)}</p>` : ''}`, a, c.index, c.e, 'module-sentence-lab');
 }
-function guidedDialogue(a, c) {
+function practiceSequence(a, c) {
   const key = `${c.lessonId}:${a.id}`;
-  const answers = c.progress.guidedAnswers?.[key] || [];
-  const turn = a.turns[answers.length];
-  const history = answers.map((answer, index) => `<div class="guided-history"><span>${c.e(a.turns[index].speaker)}: ${c.en(a.turns[index].incoming)}</span><strong>پاسخ تو: ${c.en(answer)}</strong><span>یک پاسخ ممکن: ${c.en(a.turns[index].example)}</span></div>`).join('');
-  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p>${history}${turn ? `<div class="guided-prompt"><strong>${c.e(turn.speaker)}</strong><div>${c.en(turn.incoming)}${soundButton(turn.incoming, c.e, c.i)}</div></div><label class="input-label" for="guided-response">${c.e(turn.task)}</label><input id="guided-response" class="guided-response" lang="en" dir="ltr" autocomplete="off" placeholder="پاسخ خودت را بنویس…"><details class="guided-hint"><summary>راهنمایی می‌خواهم</summary>${c.en(turn.hint)}</details><button class="secondary-btn" data-guided-send="${c.e(key)}">ارسال پاسخ</button>` : `<div class="module-result success">دو نوبت گفت‌وگو را با پاسخ خودت ساختی.</div>`}`, a, c.index, c.e, 'module-guided-dialogue');
+  const state = practiceState(c.progress.practiceStates?.[key], a);
+  const tasks = a.tasks || a.turns || [];
+  const task = tasks[state.answers.length];
+  const history = state.answers.length ? `<details class="practice-past"><summary>${state.answers.length} پاسخ ساخته‌شده · مرور</summary>${state.answers.map((answer, index) => `<div class="practice-answer-past"><span>✓ ${c.e(tasks[index].task)}</span><div>${c.en(answer)}${soundButton(answer, c.e, c.i)}</div></div>`).join('')}</details>` : '';
+  const markers = `<div class="practice-progress" aria-label="${state.answers.length} از ${tasks.length} پاسخ درست">${tasks.map((_, index) => `<span class="${index < state.answers.length ? 'complete' : index === state.answers.length ? 'active' : ''}"></span>`).join('')}</div>`;
+  const source = task?.incoming || task?.source;
+  const prompt = source ? `<div class="practice-source"><span>${c.e(task.speaker || task.sourceLabel || 'جملهٔ آغاز')}</span><div>${c.en(source)}${soundButton(source, c.e, c.i)}</div></div>` : '';
+  const feedback = state.feedback ? `<div class="practice-feedback error" role="status"><strong>${c.e(state.feedback.feedback)}</strong>${state.feedback.repair ? `<p>${c.e(state.feedback.repair)}</p>` : ''}<span>پاسخ را اصلاح کن و دوباره امتحان کن.</span></div>` : '';
+  const help = task ? `<details class="guided-hint" ${state.attempts > 1 ? 'open' : ''}><summary>راهنمایی ${state.attempts > 1 ? 'و یک نمونه پاسخ' : 'می‌خواهم'}</summary><p>${c.e(task.hint || '')}</p>${state.attempts > 1 && task.example ? `<div class="practice-model">${c.en(task.example)}${soundButton(task.example, c.e, c.i)}</div>` : ''}</details>` : '';
+  return `<div class="practice-sequence" data-practice-key="${c.e(key)}">${markers}${history}${task ? `${prompt}<label class="practice-instruction" for="practice-${c.e(a.id)}">${c.e(task.task)}</label><form class="practice-form" data-practice-form="${c.e(key)}"><input id="practice-${c.e(a.id)}" name="response" value="${c.e(state.draft)}" type="text" lang="en" dir="ltr" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="پاسخت را به انگلیسی بساز…" aria-label="${c.e(task.task)}" required><button class="secondary-btn" type="submit">بررسی پاسخ</button></form>${feedback}${help}` : `<div class="practice-finished" role="status"><strong>✓ این مهارت را در ${tasks.length} موقعیت تمرین کردی.</strong><p>${c.e(a.completion || 'حالا بدون راهنمایی، در بخش بعدی از آن استفاده کن.')}</p><button class="outline-btn" data-practice-reset="${c.e(key)}">تمرین دوباره</button></div>`}</div>`;
+}
+function responsePractice(a, c) {
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p>${practiceSequence(a, c)}`, a, c.index, c.e, 'module-response-practice');
+}
+function sentenceTransform(a, c) {
+  const key = `${c.lessonId}:${a.id}`;
+  const stage = c.progress.transformStages?.[key] || 'explore';
+  const selected = Math.max(0, Math.min(a.forms.length - 1, c.progress.transformChoices?.[key] || 0));
+  const form = a.forms[selected];
+  const sentence = `<div class="transform-sentence">${c.en(form.en)}${soundButton(form.en, c.e, c.i)}</div>`;
+  const modes = `<div class="transform-modes" role="group" aria-label="تبدیل جمله">${a.forms.map((entry, index) => `<button class="transform-mode ${index === selected ? 'active' : ''}" data-transform-key="${c.e(key)}" data-transform-index="${index}" aria-pressed="${index === selected}">${c.e(entry.label)}</button>`).join('')}</div>`;
+  const exploration = `<p class="module-description">${c.e(a.description || '')}</p>${modes}<div class="transform-card"><div class="transform-position">حالت ${selected + 1} از ${a.forms.length}</div>${sentence}<div class="transform-meaning">${c.e(form.fa)}</div><p class="transform-rule">${c.e(form.rule)}</p><div class="transform-actions"><button class="outline-btn" data-transform-key="${c.e(key)}" data-transform-index="${Math.max(0, selected - 1)}" ${selected === 0 ? 'disabled' : ''}>جملهٔ قبل</button><button class="secondary-btn" data-transform-key="${c.e(key)}" data-transform-index="${Math.min(a.forms.length - 1, selected + 1)}" ${selected === a.forms.length - 1 ? 'disabled' : ''}>تغییر بعدی ←</button></div></div><button class="transform-start secondary-btn" data-transform-stage="practice" data-transform-stage-key="${c.e(key)}">${c.e(a.practiceTitle || 'حالا خودت امتحان کن')} ←</button>`;
+  const practice = `<button class="transform-return outline-btn" data-transform-stage="explore" data-transform-stage-key="${c.e(key)}">← بازگشت به کارت‌های جمله</button><div class="transform-practice-heading"><strong>${c.e(a.practiceTitle || 'حالا خودت تغییر بده')}</strong><p>${c.e(a.practiceIntro || '')}</p></div>${practiceSequence(a, c)}`;
+  return wrapper(stage === 'practice' ? practice : exploration, a, c.index, c.e, 'module-sentence-transform');
+}
+function guidedDialogue(a, c) {
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p>${practiceSequence(a, c)}`, a, c.index, c.e, 'module-guided-dialogue');
+}
+function dialogueTransfer(a, c) {
+  return wrapper(`<div class="transfer-scenario"><strong>${c.e(a.sceneTitle)}</strong><p>${c.e(a.description)}</p></div>${practiceSequence(a, c)}`, a, c.index, c.e, 'module-dialogue-transfer');
 }
 function pattern(a, c) {
   return wrapper(`<p class="module-description">${c.e(a.explanation)}</p><div class="pattern-main">${c.en(a.formula)}</div><div class="example-row">${a.examples.map((line) => `<span class="example-pill">${c.en(line)}</span>`).join('')}</div>`, a, c.index, c.e);
@@ -111,13 +141,17 @@ function roleplay(a, c) {
 }
 function freeWrite(a, c) {
   const stored = c.progress.written[c.lessonId] || '';
-  return wrapper(`<label class="input-label" for="free-response">${c.e(a.prompt)}</label><textarea class="free-input" id="free-response" placeholder="${c.e(a.placeholder)}" rows="3">${c.e(stored)}</textarea><p class="hint">${c.e(a.hint)}</p><button class="secondary-btn" data-action="save-production">ذخیره پاسخ ${c.i('check')}</button>`, a, c.index, c.e);
+  const key = `${c.lessonId}:${a.id}`;
+  const feedback = c.progress.assessments?.[key];
+  const status = feedback ? `<div class="practice-feedback ${feedback.passed ? 'success' : 'error'}" role="status"><strong>${c.e(feedback.feedback)}</strong>${feedback.repair ? `<p>${c.e(feedback.repair)}</p>` : ''}${feedback.passed ? '<span>✓ نشانهٔ یادگیری این بخش ثبت شد.</span>' : '<span>متنت باقی می‌ماند؛ می‌توانی همان را اصلاح کنی.</span>'}</div>` : '';
+  return wrapper(`<label class="input-label" for="free-response">${c.e(a.prompt)}</label><textarea class="free-input" id="free-response" lang="en" dir="ltr" placeholder="${c.e(a.placeholder)}" rows="3">${c.e(stored)}</textarea><p class="hint">${c.e(a.hint)}</p><button class="secondary-btn" data-action="save-production">${a.assessment ? 'بررسی گفت‌وگوی من' : 'ذخیره پاسخ'} ${c.i('check')}</button>${status}${a.assessment ? '<p class="practice-caveat">بازخورد بر اساس ساختارهای مشخص همین درس است؛ تصحیح آزادِ همهٔ جمله‌های انگلیسی نیست.</p>' : ''}`, a, c.index, c.e);
 }
 const renderers = {
   intro, vocabulary, pattern, match, 'sentence-builder': sentenceBuilder,
   'quiz-set': quizSet, dialogue, roleplay, 'free-write': freeWrite,
   'phrase-composer': phraseComposer, 'sentence-lab': sentenceLab,
-  'guided-dialogue': guidedDialogue
+  'guided-dialogue': guidedDialogue, 'response-practice': responsePractice,
+  'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer
 };
 export function renderActivity(activity, context) {
   const renderer = renderers[activity.type];

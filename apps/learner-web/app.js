@@ -1,5 +1,6 @@
 import { renderActivity } from './lesson-modules.js';
 import { advanceDeck, answerDeck, deckState, jumpDeck, resumeDeck, wordId } from './word-review.js';
+import { evaluateResponse, practiceState, submitPractice } from './practice-engine.js';
 
 const $root = document.getElementById('app');
 // The compiled JS URL carries the deployment SHA. Use it for lesson and course
@@ -46,7 +47,7 @@ const ICONS = {
 const icon = (name, size = '') => `<span class="icon ${size}"><svg aria-hidden="true" viewBox="0 0 24 24">${ICONS[name] || ICONS.star}</svg></span>`;
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const en = (text) => `<span class="en" lang="en" dir="ltr">${escapeHtml(text)}</span>`;
-const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, guidedAnswers: {}, settings: { reminders: false, sound: true } });
+const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
 function readProgress() { try { const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); return { ...defaultProgress(), ...saved, settings: { ...defaultProgress().settings, ...(saved.settings || {}) } }; } catch { return defaultProgress(); } }
 const progress = readProgress();
 // Historical completion records predate separate lesson sections. Keep them valid.
@@ -160,6 +161,15 @@ function sectionActivities(section, lessonId) {
     ? vocabularyBlock(section) + patternBlock(section) + checkBlock(section, lessonId)
     : dialogueBlock(section) + widgetBlock(section.featureWidget, lessonId) + productionBlock(section, lessonId);
 }
+function masteryMissing(lesson, section) {
+  return (section.masteryActivityIds || []).filter((id) => {
+    const activity = section.activities?.find((entry) => entry.id === id);
+    if (!activity) return true;
+    const key = `${lesson.id}:${id}`;
+    if (activity.type === 'free-write') return !progress.assessments?.[key]?.passed || progress.assessments[key].revision !== (activity.assessment?.revision || 1);
+    return practiceState(progress.practiceStates?.[key], activity).answers.length < (activity.tasks || activity.turns || []).length;
+  });
+}
 function lessonOrientation(lesson) {
   const intro = lesson.orientation || {};
   const goal = intro.goal || lesson.goal;
@@ -177,11 +187,12 @@ function lessonView(lesson) { if (!lesson) return `<div class="empty-level">در
   const activeSection = lesson.sections[activeIndex];
   const isLast = activeIndex === lesson.sections.length - 1;
   const alreadyDone = completedSections(lesson.id).includes(activePart);
+  const missing = masteryMissing(lesson, activeSection);
   return `<div class="lesson-page"><button class="back-link" data-nav="lessons">${icon('arrow')} بازگشت به مسیر درس‌ها</button><div class="lesson-hero"><span class="caps">${escapeHtml(lesson.id)} · بخش ${activeIndex + 1} از ${lesson.sections.length}</span><h1>${escapeHtml(lesson.title)}</h1><div class="lesson-meta"><span class="meta-chip">◷ ${escapeHtml(lesson.duration)}</span><span class="meta-chip">✳ ${escapeHtml(lesson.feature)}</span></div></div>
     <div class="lesson-tabs" aria-label="بخش‌های مستقل درس">${lesson.sections.map((section, index) => `<button class="lesson-tab ${section.id === activePart ? 'active' : ''}" data-section="${escapeHtml(section.id)}" aria-current="${section.id === activePart ? 'step' : 'false'}">${completedSections(lesson.id).includes(section.id) ? '✓' : String(index + 1).padStart(2, '0')} · ${escapeHtml(section.label)}</button>`).join('')}</div>
     ${activeIndex === 0 ? lessonOrientation(lesson) : `<div class="lesson-stage-note">${icon('message')} اکنون در بخش دوم هستی. این بخش مستقل از مرور واژه‌هاست و روی مکالمه و تولید تمرکز دارد.</div>`}
     <div class="lesson-flow"><section id="lesson-${escapeHtml(activePart)}" class="lesson-section"><div class="phase-heading"><span class="phase-number">${String(activeIndex + 1).padStart(2, '0')}</span><div><h2>${escapeHtml(activeSection.label)}</h2><p>${escapeHtml(activeSection.intro || '')}</p></div></div>${sectionActivities(activeSection, lesson.id)}</section></div>
-    <div class="lesson-end"><div><h3>${alreadyDone ? 'این بخش قبلاً تمام شده ✓' : 'این بخش به پایان رسید ✳'}</h3><p>${isLast ? 'با ثبت این بخش، پیشرفت جداگانه‌اش ذخیره می‌شود.' : 'بخش اول را تمام کن و جداگانه وارد مکالمه شو.'}</p></div><button class="dark-btn" data-finish-section="${escapeHtml(activePart)}">${isLast ? 'پایان بخش دوم و بازگشت به مسیر' : 'پایان بخش اول · ورود به بخش دوم'}</button></div></div>`;
+    <div class="lesson-end"><div><h3>${missing.length ? 'برای ثبت یادگیری، یک تمرین مانده' : alreadyDone ? 'این بخش قبلاً تمام شده ✓' : 'آمادهٔ پایان این بخش هستی ✓'}</h3><p>${missing.length ? `${missing.length} فعالیتِ هدف هنوز تأیید نشده. مرور کلمات اجباری نیست؛ پاسخ‌های اصلی را بساز.` : 'پاسخ‌های اصلی بررسی شده‌اند؛ حالا می‌توانی وارد مرحلهٔ بعد شوی.'}</p></div><div class="lesson-end-actions"><button class="dark-btn" data-finish-section="${escapeHtml(activePart)}">${isLast ? 'ثبت یادگیری و بازگشت به مسیر' : 'ثبت بخش اول · ورود به بخش دوم'}</button>${missing.length ? `<button class="outline-btn" ${isLast ? 'data-nav="lessons"' : `data-section="${escapeHtml(lesson.sections[activeIndex + 1].id)}"`}>${isLast ? 'بازگشت بدون ثبت' : 'فعلاً ادامه می‌دهم'}</button>` : ''}</div></div></div>`;
 }
 
 function leitnerView() { const cards = allLeitnerCards(); const card = cards[progress.currentReview % cards.length]; const completedThisReview = progress.reviewCount % cards.length;
@@ -205,7 +216,20 @@ async function syncRoute() { route = parseHash(); if (route.page === 'lesson') {
 function navigate(page, id = null, part = null) { const target = page === 'lesson' ? `#/lesson/${id}${part ? '/' + part : ''}` : `#/${page}`; if (location.hash === target) { syncRoute(); return; } location.hash = target; }
 function updateInline() { draw(true); }
 const lessonVocabulary = (key) => lessonCache.get(route.lessonId)?.sections.flatMap((section) => section.activities || []).find((item) => item.type === 'vocabulary' && `${route.lessonId}:${item.id}` === key);
+const lessonActivity = (key) => lessonCache.get(route.lessonId)?.sections.flatMap((section) => section.activities || []).find((item) => `${route.lessonId}:${item.id}` === key);
 function saveDeckState(key, state) { progress.wordProgress[key] = state; persist(); updateInline(); }
+function submitPracticeAnswer(key, answer) {
+  const activity = lessonActivity(key);
+  if (!activity) return;
+  const { state, result } = submitPractice(progress.practiceStates?.[key], activity, answer);
+  progress.practiceStates[key] = state;
+  persist(); updateInline();
+  if (result.ok) {
+    if (state.answers.length === (activity.tasks || activity.turns || []).length) showToast('درست بود؛ این تمرین کامل شد.');
+  } else {
+    document.querySelector(`[data-practice-form="${key}"] input`)?.focus({ preventScroll: true });
+  }
+}
 function submitWordAnswer(key, input) {
   const activity = lessonVocabulary(key);
   if (!activity || !input.trim()) return showToast('پاسخ را به انگلیسی بنویس.');
@@ -245,7 +269,7 @@ function wordKeydown(event) {
   document.querySelector('[data-word-swipe]')?.focus({ preventScroll: true });
 }
 function onClick(event) {
-  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-finish-section],button[data-review],button[data-planned],button[data-speak],button[data-match],button[data-build-token],button[data-build-reset],button[data-roleplay],button[data-word-key],button[data-phrase-key],button[data-lab-key],button[data-guided-send],button[data-quick-skip]');
+  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-finish-section],button[data-review],button[data-planned],button[data-speak],button[data-match],button[data-build-token],button[data-build-reset],button[data-roleplay],button[data-word-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-practice-reset],button[data-quick-skip]');
   if (!el) return;
   if (el.dataset.nav) { modal = null; navigate(el.dataset.nav); return; }
   if (el.dataset.openLesson) { modal = null; activePerson = 0; ownerIdx = 0; objectIdx = 0; navigate('lesson', el.dataset.openLesson, el.dataset.startSection || null); return; }
@@ -285,14 +309,9 @@ function onClick(event) {
     state[el.dataset.labKind] = Number(el.dataset.labIndex);
     progress.sentenceLabs[key] = state; persist(); updateInline(); return;
   }
-  if (el.dataset.guidedSend) {
-    const answer = document.getElementById('guided-response')?.value.trim();
-    if (!answer) return showToast('اول جواب خودت را بنویس.');
-    const key = el.dataset.guidedSend;
-    const answers = progress.guidedAnswers[key] || [];
-    answers.push(answer);
-    progress.guidedAnswers[key] = answers; persist(); updateInline(); return;
-  }
+  if (el.dataset.transformKey) { progress.transformChoices[el.dataset.transformKey] = Number(el.dataset.transformIndex); persist(); updateInline(); return; }
+  if (el.dataset.transformStageKey) { progress.transformStages[el.dataset.transformStageKey] = el.dataset.transformStage; persist(); updateInline(); return; }
+  if (el.dataset.practiceReset) { delete progress.practiceStates[el.dataset.practiceReset]; persist(); updateInline(); return; }
   if (el.dataset.match) {
     const key = el.dataset.match;
     const pair = Number(el.dataset.pair);
@@ -329,7 +348,15 @@ function onClick(event) {
     const id = route.lessonId;
     const lesson = lessonCache.get(id);
     const part = el.dataset.finishSection;
-    if (!lesson || part !== route.part || !lesson.sections.some((section) => section.id === part)) return;
+    const section = lesson?.sections.find((entry) => entry.id === part);
+    if (!lesson || part !== route.part || !section) return;
+    const missing = masteryMissing(lesson, section);
+    if (missing.length) {
+      showToast('برای ثبت تسلط، تمرین‌های اصلی این بخش را کامل کن.');
+      const pendingPanel = document.querySelector(`[data-practice-key="${id}:${missing[0]}"]`) || document.querySelector('[data-module="free-write"]');
+      pendingPanel?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
     const sections = [...new Set([...completedSections(id), part])];
     progress.sectionCompleted[id] = sections;
     const allDone = lesson.sections.every((section) => sections.includes(section.id));
@@ -351,7 +378,18 @@ function onClick(event) {
     case 'toggle-reminders': progress.settings.reminders = !progress.settings.reminders; persist(); updateInline(); break;
     case 'toggle-translations': progress.showDialogueTranslation = !progress.showDialogueTranslation; persist(); updateInline(); break;
     case 'reveal': progress.showTranslation = !progress.showTranslation; persist(); updateInline(); break;
-    case 'save-production': { const value = document.getElementById('free-response')?.value.trim(); if (!value) return showToast('اول جمله خودت را بنویس.'); progress.written[route.lessonId] = value; persist(); showToast('جمله روی همین دستگاه ذخیره شد.'); break; }
+    case 'save-production': {
+      const value = document.getElementById('free-response')?.value.trim();
+      if (!value) return showToast('اول جمله خودت را بنویس.');
+      progress.written[route.lessonId] = value;
+      const activity = lessonCache.get(route.lessonId)?.sections.flatMap((section) => section.activities || []).find((item) => item.type === 'free-write');
+      if (activity?.assessment) {
+        const result = evaluateResponse(activity.assessment, value);
+        progress.assessments[`${route.lessonId}:${activity.id}`] = { passed: result.ok, feedback: result.feedback, repair: result.repair, revision: activity.assessment.revision || 1 };
+        persist(); updateInline();
+      } else { persist(); showToast('جمله روی همین دستگاه ذخیره شد.'); }
+      break;
+    }
     case 'close-modal': modal = null; draw(true); break;
   }
 }
@@ -388,5 +426,5 @@ async function hydrateCurricula() {
     }));
   }
 }
-async function main() { try { const response = await fetch(contentUrl('manifest.json')); if (!response.ok) throw new Error(`HTTP ${response.status}`); manifest = await response.json(); if (manifest.pairId !== 'fa-en' || manifest.status !== 'draft') throw new Error('wrong course manifest'); await hydrateCurricula(); $root.addEventListener('click', onClick); $root.addEventListener('change', onChange); $root.addEventListener('submit', (event) => { const form = event.target.closest('form[data-word-form]'); if (!form) return; event.preventDefault(); submitWordAnswer(form.dataset.wordForm, form.querySelector('[data-word-answer]')?.value || ''); }); $root.addEventListener('touchstart', wordSwipeStart, { passive: true }); $root.addEventListener('touchend', wordSwipeEnd, { passive: true }); $root.addEventListener('keydown', wordKeydown); addEventListener('hashchange', syncRoute); await syncRoute(); if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('./sw.js').catch(() => {}); } catch (error) { console.error(error); $root.innerHTML = `<div class="boot"><span class="boot-logo">t.</span><strong>صفحه بارگذاری نشد</strong><p class="muted">اتصال را بررسی کن و دوباره تلاش کن.</p></div>`; } }
+async function main() { try { const response = await fetch(contentUrl('manifest.json')); if (!response.ok) throw new Error(`HTTP ${response.status}`); manifest = await response.json(); if (manifest.pairId !== 'fa-en' || manifest.status !== 'draft') throw new Error('wrong course manifest'); await hydrateCurricula(); $root.addEventListener('click', onClick); $root.addEventListener('change', onChange); $root.addEventListener('submit', (event) => { const form = event.target.closest('form[data-word-form],form[data-practice-form]'); if (!form) return; event.preventDefault(); if (form.dataset.wordForm) submitWordAnswer(form.dataset.wordForm, form.querySelector('[data-word-answer]')?.value || ''); else submitPracticeAnswer(form.dataset.practiceForm, form.elements.response?.value || ''); }); $root.addEventListener('touchstart', wordSwipeStart, { passive: true }); $root.addEventListener('touchend', wordSwipeEnd, { passive: true }); $root.addEventListener('keydown', wordKeydown); addEventListener('hashchange', syncRoute); await syncRoute(); if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('./sw.js').catch(() => {}); } catch (error) { console.error(error); $root.innerHTML = `<div class="boot"><span class="boot-logo">t.</span><strong>صفحه بارگذاری نشد</strong><p class="muted">اتصال را بررسی کن و دوباره تلاش کن.</p></div>`; } }
 main();
