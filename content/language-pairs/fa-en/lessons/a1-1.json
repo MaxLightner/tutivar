@@ -109,7 +109,7 @@
           "turns": [
             {"speaker":"Emma","prompt":"Hi! I'm Emma. What's your name?","choices":["I'm Ali. Nice to meet you!","I am a book.","Good night, blue."],"correctIndex":0,"reply":"Nice to meet you, Ali!"},
             {"speaker":"Emma","prompt":"Nice to meet you, Ali!","choices":["My name is what?","Nice to meet you, too!","I am table."],"correctIndex":1,"reply":"Are you new here?"},
-            {"speaker":"Emma","prompt":"Are you new here?","choices":["My name am Ali.","Yes, I am. What's your name?","Hello is Tuesday."],"correctIndex":1,"reply":"Great! Let's go to class."}
+            {"speaker":"Emma","prompt":"Are you new here?","choices":["My name am Ali.","Yes, I am.","Hello is Tuesday."],"correctIndex":1,"reply":"Great! Let's go to class."}
           ]
         },
         {

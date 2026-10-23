@@ -13,10 +13,11 @@ p, .tiny, .small, .body-sm, .caps, .eyebrow, .brand-caption, .stat-label,
 .brand-caption, .node-code, .input-label, .review-key { font-size: 14px; }
 .caps { letter-spacing: .045em; }
 .small.muted, .tiny.muted { color: #607568; }
-.brand-row { display: flex; flex-wrap: wrap; gap: 13px; align-items: center; }
-.brand-row .logo-line { flex: 1; min-width: 128px; }
+.brand-row { display: flex; flex-wrap: nowrap; gap: 8px; align-items: center; }
+.brand-row .logo-line { flex: 1; min-width: 0; }
 .sidebar { padding-top: 26px; gap: 28px; }
-.brand-row .language-chip { padding: 6px 9px; }
+.brand-row .language-chip { padding: 5px 7px; flex-shrink: 0; min-width: 44px; }
+.brand-row .language-chip span:not(.flag) { display: none; }
 .language-chip { white-space: nowrap; font-size: 15px; gap: 7px; padding: 8px 12px; }
 .language-chip .flag { font-size: 20px; }
 .brand-caption { line-height: 1.2; }
