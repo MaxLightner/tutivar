@@ -5,7 +5,9 @@
 const MODULE_LABELS = {
   intro: 'موقعیت', vocabulary: 'واژه‌ها', pattern: 'ساختار', match: 'تطبیق',
   'sentence-builder': 'جمله‌سازی', 'quiz-set': 'آزمون', dialogue: 'گفت‌وگو',
-  roleplay: 'مکالمه', 'free-write': 'تولید مستقل'
+  roleplay: 'مکالمه', 'free-write': 'تولید مستقل',
+  'phrase-composer': 'ترکیب واژه‌ها', 'sentence-lab': 'جمله‌ساز پویا',
+  'guided-dialogue': 'تمرین مکالمه'
 };
 function wrapper(body, activity, idx, e, extra = '') {
   return `<div class="lesson-block module-block ${extra}" data-module="${e(activity.type)}"><div class="block-top"><div><span class="block-label">${String(idx + 1).padStart(2, '0')} / ${e(activity.typeLabel || MODULE_LABELS[activity.type] || 'فعالیت')}</span><h3>${e(activity.title || '')}</h3></div></div>${body}</div>`;
@@ -17,8 +19,42 @@ function intro(a, c) {
   return wrapper(`<p class="module-intro-text">${c.e(a.text)}</p><div class="module-intro-focus">${c.en(a.focus)}${soundButton(a.focus, c.e, c.i)}</div>`, a, c.index, c.e, 'module-intro');
 }
 function vocabulary(a, c) {
-  const cards = a.items.map((entry) => `<div class="word-card"><div><div class="word-primary">${c.en(entry.en)}</div><p>${c.e(entry.fa)}</p>${entry.hint ? `<span class="word-hint">${c.e(entry.hint)}</span>` : ''}${entry.example ? `<div class="word-example">${c.en(entry.example)}</div>` : ''}</div>${soundButton(entry.en, c.e, c.i)}</div>`).join('');
-  return wrapper(`<div class="vocab-grid">${cards}</div>`, a, c.index, c.e);
+  const key = `${c.lessonId}:${a.id}`;
+  const state = c.progress.wordProgress?.[key] || { index: 0, known: [] };
+  const total = a.items.length;
+  const count = state.known?.length || 0;
+  const index = Math.min(Math.max(0, state.index || 0), total);
+  if (index >= total || count >= total) {
+    return wrapper(`<div class="vocab-finished">${c.i('check')} واژه‌های این بخش را مرور کردی. <button class="outline-btn" data-word-key="${c.e(key)}" data-word-action="restart">مرور دوباره</button></div>`, a, c.index, c.e, 'module-vocabulary');
+  }
+  const entry = a.items[index];
+  const batchSize = Math.max(1, a.batchSize || 5);
+  const batch = Math.floor(index / batchSize) + 1;
+  const batches = Math.ceil(total / batchSize);
+  const examples = (entry.examples?.length ? entry.examples : entry.example ? [entry.example] : []).map((line, i) => `<div class="word-example-line"><span class="example-number">${i + 1}</span>${c.en(line)}${soundButton(line, c.e, c.i)}</div>`).join('');
+  return wrapper(`<div class="vocab-deck-top"><span>کارت ${index + 1} از ${total} · دسته ${batch} از ${batches}</span><strong>${count} یادگرفته‌شده</strong></div><div class="vocab-deck-bar"><span style="width:${total ? (count / total) * 100 : 0}%"></span></div><div class="vocab-focus-card"><div class="word-focus-title">${c.en(entry.en)}${soundButton(entry.en, c.e, c.i)}</div><div class="word-focus-meaning">${c.e(entry.fa)}</div>${entry.hint ? `<p class="word-hint">${c.e(entry.hint)}</p>` : ''}<div class="word-examples">${examples}</div></div><div class="vocab-deck-actions"><button class="outline-btn" data-word-key="${c.e(key)}" data-word-action="again">یک بار دیگر</button><button class="secondary-btn" data-word-key="${c.e(key)}" data-word-action="known">یاد گرفتم ${c.i('check')}</button></div>`, a, c.index, c.e, 'module-vocabulary');
+}
+function phraseComposer(a, c) {
+  const key = `${c.lessonId}:${a.id}`;
+  const selected = c.progress.phraseChoices?.[key] || a.slots.map(() => 0);
+  const slots = a.slots.map((slot, slotIndex) => `<div class="phrase-slot"><span>${c.e(slot.label)}</span><div class="phrase-options">${slot.options.map((option, optionIndex) => `<button class="phrase-option ${selected[slotIndex] === optionIndex ? 'active' : ''}" data-phrase-key="${c.e(key)}" data-phrase-slot="${slotIndex}" data-phrase-option="${optionIndex}">${c.en(option)}</button>`).join('')}</div></div>`).join('');
+  const outcome = a.outcomes.find((entry) => entry.selection.every((choice, index) => choice === (selected[index] || 0)));
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="phrase-composer">${slots}</div>${outcome ? `<div class="phrase-outcome">${c.en(outcome.en)}${soundButton(outcome.en, c.e, c.i)}<span>${c.e(outcome.fa)}</span></div>` : ''}`, a, c.index, c.e, 'module-phrase');
+}
+function sentenceLab(a, c) {
+  const key = `${c.lessonId}:${a.id}`;
+  const state = c.progress.sentenceLabs?.[key] || { structure: 0, variable: 0 };
+  const structure = a.structures[state.structure] || a.structures[0];
+  const variable = a.variables[state.variable] || a.variables[0];
+  const result = `${structure.before || ''}${variable}${structure.after || ''}`;
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="lab-switches"><div class="lab-selector"><strong>${c.e(a.structureLabel || 'چطور بگویی؟')}</strong><div>${a.structures.map((item, index) => `<button class="lab-option ${index === state.structure ? 'active' : ''}" data-lab-key="${c.e(key)}" data-lab-kind="structure" data-lab-index="${index}">${c.en(item.label)}</button>`).join('')}</div></div><div class="lab-selector"><strong>${c.e(a.variableLabel || 'چه کسی؟')}</strong><div>${a.variables.map((item, index) => `<button class="lab-option ${index === state.variable ? 'active' : ''}" data-lab-key="${c.e(key)}" data-lab-kind="variable" data-lab-index="${index}">${c.en(item)}</button>`).join('')}</div></div></div><div class="lab-sentence">${c.en(result)}${soundButton(result, c.e, c.i)}</div>${structure.note ? `<p class="lab-note">${c.e(structure.note)}</p>` : ''}`, a, c.index, c.e, 'module-sentence-lab');
+}
+function guidedDialogue(a, c) {
+  const key = `${c.lessonId}:${a.id}`;
+  const answers = c.progress.guidedAnswers?.[key] || [];
+  const turn = a.turns[answers.length];
+  const history = answers.map((answer, index) => `<div class="guided-history"><span>${c.e(a.turns[index].speaker)}: ${c.en(a.turns[index].incoming)}</span><strong>پاسخ تو: ${c.en(answer)}</strong><span>یک پاسخ ممکن: ${c.en(a.turns[index].example)}</span></div>`).join('');
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p>${history}${turn ? `<div class="guided-prompt"><strong>${c.e(turn.speaker)}</strong><div>${c.en(turn.incoming)}${soundButton(turn.incoming, c.e, c.i)}</div></div><label class="input-label" for="guided-response">${c.e(turn.task)}</label><input id="guided-response" class="guided-response" lang="en" dir="ltr" autocomplete="off" placeholder="پاسخ خودت را بنویس…"><details class="guided-hint"><summary>راهنمایی می‌خواهم</summary>${c.en(turn.hint)}</details><button class="secondary-btn" data-guided-send="${c.e(key)}">ارسال پاسخ</button>` : `<div class="module-result success">دو نوبت گفت‌وگو را با پاسخ خودت ساختی.</div>`}`, a, c.index, c.e, 'module-guided-dialogue');
 }
 function pattern(a, c) {
   return wrapper(`<p class="module-description">${c.e(a.explanation)}</p><div class="pattern-main">${c.en(a.formula)}</div><div class="example-row">${a.examples.map((line) => `<span class="example-pill">${c.en(line)}</span>`).join('')}</div>`, a, c.index, c.e);
@@ -62,7 +98,9 @@ function freeWrite(a, c) {
 }
 const renderers = {
   intro, vocabulary, pattern, match, 'sentence-builder': sentenceBuilder,
-  'quiz-set': quizSet, dialogue, roleplay, 'free-write': freeWrite
+  'quiz-set': quizSet, dialogue, roleplay, 'free-write': freeWrite,
+  'phrase-composer': phraseComposer, 'sentence-lab': sentenceLab,
+  'guided-dialogue': guidedDialogue
 };
 export function renderActivity(activity, context) {
   const renderer = renderers[activity.type];

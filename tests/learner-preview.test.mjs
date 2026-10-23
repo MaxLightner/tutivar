@@ -31,10 +31,11 @@ test('every sample path node references a real content file with two teaching se
     assert.equal(lesson.sections.length, 2);
     assert.deepEqual(lesson.sections.map((section) => section.id), ['foundation', 'production']);
     if (lesson.sections[0].activities) {
-      assert.ok(lesson.sections[0].activities.length >= 5);
-      assert.ok(lesson.sections[1].activities.length >= 4);
+      assert.ok(lesson.sections[0].activities.length >= 1);
+      assert.ok(lesson.sections[1].activities.length >= 1);
       assert.ok(lesson.sections[0].activities.some((activity) => activity.type === 'vocabulary'));
-      assert.ok(lesson.sections[1].activities.some((activity) => activity.type === 'roleplay'));
+      assert.ok(lesson.sections[1].activities.some((activity) => ['roleplay', 'guided-dialogue'].includes(activity.type)));
+      assert.ok(lesson.sections[1].activities.some((activity) => activity.type === 'free-write'));
       for (const section of lesson.sections) {
         for (const activity of section.activities) {
           assert.ok(supportedActivities.includes(activity.type), `${lesson.id}: unsupported ${activity.type}`);
@@ -81,7 +82,7 @@ test('first lesson activities render with separate content, including interactio
   const context = {
     lessonId: lesson.id, index: 0,
     e: (value) => String(value), en: (value) => `<span>${value}</span>`, i: () => '<svg></svg>',
-    progress: { matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, quizAnswers: {}, written: {}, showDialogueTranslation: true }
+    progress: { matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, quizAnswers: {}, written: {}, showDialogueTranslation: true, wordProgress: {}, phraseChoices: {}, sentenceLabs: {}, guidedAnswers: {} }
   };
   for (const section of lesson.sections) {
     for (const activity of section.activities) {
@@ -90,9 +91,14 @@ test('first lesson activities render with separate content, including interactio
       assert.ok(html.length > 80, activity.id);
     }
   }
-  assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'match'), context), /data-match=/);
-  assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'sentence-builder'), context), /data-build-token=/);
-  assert.match(renderActivity(lesson.sections[1].activities.find((activity) => activity.type === 'roleplay'), context), /data-roleplay=/);
+  assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary'), context), /data-word-key=/);
+  assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'phrase-composer'), context), /data-phrase-key=/);
+  assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'sentence-lab'), context), /data-lab-key=/);
+  assert.match(renderActivity(lesson.sections[1].activities.find((activity) => activity.type === 'guided-dialogue'), context), /data-guided-send=/);
+  assert.equal(lesson.sections.reduce((sum, section) => sum + section.activities.length, 0), 6, 'short first lesson');
+  assert.ok(lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary').items.every((entry) => entry.examples.length === 3));
+  assert.ok(Array.isArray(lesson.orientation.prerequisites));
+  assert.equal(lesson.visual.src, null);
 });
 
 test('presentation is independent of course content and never hardcodes target phrases', () => {
@@ -101,6 +107,8 @@ test('presentation is independent of course content and never hardcodes target p
   assert.ok(app.includes('entry.file'));
   assert.ok(app.includes("fetch(`./data/${level.curriculumFile}`)"));
   assert.ok(app.includes('renderActivity'));
+  assert.ok(app.includes('lessonOrientation'));
+  assert.ok(app.includes('lesson-visual-frame'));
   assert.ok(!app.includes("I'm Sara."));
   assert.ok(!app.includes('This is my mother.'));
   assert.ok(!app.includes('این مسیر بر اساس فهرست'));

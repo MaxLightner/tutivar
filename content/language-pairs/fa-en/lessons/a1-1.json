@@ -4,121 +4,103 @@
   "status": "draft",
   "title": "معرفی خود و شروع گفت‌وگو",
   "goal": "در یک برخورد کوتاه سلام کنی، نامت را بگویی، نام طرف مقابل را بپرسی و مودبانه پاسخ بدهی.",
-  "duration": "۱۲ دقیقه",
+  "duration": "حدود ۱۰ دقیقه",
   "feature": "مکالمه نوبتی",
   "archetype": "conversation",
+  "teachingModel": {"primary":"K4","support":"K3"},
+  "orientation": {
+    "goal": "سلام کنی، خودت را معرفی کنی، نام طرف مقابل را بپرسی و یک گفت‌وگوی کوتاه را تمام کنی.",
+    "prerequisites": [],
+    "previously": "این اولین درس است؛ لازم نیست از قبل انگلیسی بلد باشی."
+  },
+  "visual": {
+    "src": null,
+    "alt": "دو نفر که برای اولین بار با هم آشنا می‌شوند",
+    "caption": "جای تصویر صحنهٔ آشنایی دو نفر"
+  },
   "sections": [
     {
       "id": "foundation",
       "label": "از کلمه تا جمله",
-      "intro": "واژه‌ها را بشناس، چند جمله بساز و خودت را معرفی کن.",
+      "intro": "چند کلمه و عبارت کاربردی؛ بعد ساخت جمله.",
       "activities": [
-        {
-          "id": "hello-context",
-          "type": "intro",
-          "title": "یک آشنایی تازه",
-          "text": "تصور کن در یک کلاس تازه کنار کسی نشسته‌ای. اول سلام می‌کنی، بعد اسمت را می‌گویی و اسم او را می‌پرسی.",
-          "focus": "Hello! I'm Ali. What's your name?"
-        },
         {
           "id": "hello-words",
           "type": "vocabulary",
-          "title": "کلمه‌ها و عبارت‌های ضروری",
+          "title": "کارت‌های واژه و عبارت",
+          "batchSize": 5,
           "items": [
-            {"en":"Hello!","fa":"سلام!","hint":"شروع گفت‌وگو","example":"Hello, Emma!"},
-            {"en":"Hi!","fa":"سلام!","hint":"سلام صمیمانه","example":"Hi, I'm Sara."},
-            {"en":"I","fa":"من","hint":"درباره خودت","example":"I am Ali."},
-            {"en":"am","fa":"هستم","hint":"با I استفاده می‌شود","example":"I am Sara."},
-            {"en":"my","fa":"ـِ من / مال من","hint":"برای نام یا وسیله خودت","example":"My name is Ali."},
-            {"en":"name","fa":"نام","hint":"معرفی اسم","example":"My name is Emma."},
-            {"en":"your","fa":"ـِ تو / شما","hint":"درباره طرف مقابل","example":"What's your name?"},
-            {"en":"Nice to meet you!","fa":"از آشنایی خوشوقتم!","hint":"پاسخ مودبانه","example":"Nice to meet you, too!"}
+            {"en":"Hello!","fa":"سلام!","hint":"شروع گفت‌وگو","examples":["Hello, Emma!","Hello, Ali!","Hello! I'm Sara."]},
+            {"en":"I","fa":"من","hint":"برای معرفی خودت","examples":["I am Ali.","I am Sara.","I'm Emma."]},
+            {"en":"my","fa":"ـِ من","hint":"در عبارتِ my name","examples":["My name is Ali.","My name is Emma.","My name is Sara."]},
+            {"en":"name","fa":"نام","hint":"معرفی اسم","examples":["My name is Ali.","What's your name?","My name is Sara."]},
+            {"en":"your","fa":"ـِ تو / شما","hint":"نام طرف مقابل","examples":["What's your name?","What's your name, Emma?","What's your name, Ali?"]},
+            {"en":"Nice to meet you!","fa":"از آشنایی خوشوقتم!","hint":"پاسخ مودبانه","examples":["Nice to meet you, Ali!","Nice to meet you, Sara!","Nice to meet you, too!"]},
+            {"en":"Bye!","fa":"خداحافظ!","hint":"پایان گفت‌وگو","examples":["Bye, Ali!","Bye, Emma!","Bye!"]}
           ]
         },
         {
-          "id": "hello-patterns",
-          "type": "pattern",
-          "title": "سه راه کوتاه برای معرفی",
-          "formula": "I'm + name",
-          "explanation": "I'm شکل کوتاه I am است. برای گفتن نام می‌توانی از I'm یا My name is استفاده کنی. برای پرسیدن نام طرف مقابل بگو What's your name?",
-          "examples": ["I'm Ali.", "My name is Sara.", "What's your name?", "Nice to meet you."]
-        },
-        {
-          "id": "hello-match",
-          "type": "match",
-          "title": "معناها را به هم وصل کن",
-          "description": "اول یک عبارت انگلیسی، بعد معنای فارسی‌اش را بزن.",
-          "pairs": [
-            {"en":"Hello!","fa":"سلام!"},
-            {"en":"My name is Sara.","fa":"اسم من سارا است."},
-            {"en":"What's your name?","fa":"اسم تو چیست؟"},
-            {"en":"Nice to meet you.","fa":"از آشنایی خوشوقتم."}
+          "id": "hello-phrases",
+          "type": "phrase-composer",
+          "title": "کلمه‌ها چطور با هم می‌آیند؟",
+          "description": "روی my و your بزن و تفاوت معنا را ببین.",
+          "slots": [
+            {"label":"درباره چه کسی؟","options":["my","your"]},
+            {"label":"چه چیزی؟","options":["name"]}
           ],
-          "targetOrder": [2, 0, 3, 1]
-        },
-        {
-          "id": "hello-builder",
-          "type": "sentence-builder",
-          "title": "جمله را خودت بساز",
-          "description": "واژه‌ها را به ترتیب انتخاب کن تا جمله «اسم من سارا است» ساخته شود.",
-          "tokens": ["Sara.", "name", "My", "is"],
-          "correctOrder": [2, 1, 3, 0],
-          "translation": "اسم من سارا است."
-        },
-        {
-          "id": "hello-quiz",
-          "type": "quiz-set",
-          "title": "آماده‌ای گفت‌وگو کنی؟",
-          "questions": [
-            {"question":"کدام جمله یعنی «من سارا هستم»؟","choices":["I Sara.","I'm Sara.","My Sara."],"answer":1,"feedback":"درسته؛ I'm کوتاه‌شدهٔ I am است."},
-            {"question":"برای پرسیدن اسم یک نفر چه می‌گویی؟","choices":["What's your name?","My name is Sara.","Nice to meet you."],"answer":0,"feedback":"با What's your name? نام طرف مقابل را می‌پرسی."}
+          "outcomes": [
+            {"selection":[0,0],"en":"my name","fa":"نام من"},
+            {"selection":[1,0],"en":"your name","fa":"نام تو / شما"}
           ]
+        },
+        {
+          "id": "hello-sentence-lab",
+          "type": "sentence-lab",
+          "title": "یک معنا، دو راه برای گفتن",
+          "description": "شیوه معرفی و نام را عوض کن؛ جمله و تلفظش هم تغییر می‌کند.",
+          "structureLabel": "شیوه معرفی",
+          "variableLabel": "نام",
+          "structures": [
+            {"label":"I'm…","before":"I'm ","after":".","note":"I'm شکل کوتاه I am است."},
+            {"label":"My name is…","before":"My name is ","after":".","note":"هر دو جمله برای معرفی نام خودت هستند."}
+          ],
+          "variables": ["Ali","Sara","Emma"]
         }
       ]
     },
     {
       "id": "production",
       "label": "از دیالوگ تا تولید",
-      "intro": "حالا عبارت‌های آشنا را داخل یک گفت‌وگو ببین و خودت جواب بده.",
+      "intro": "یک گفت‌وگوی کوتاه بشنو، بعد خودت جواب بده.",
       "activities": [
         {
           "id": "hello-dialogue",
           "type": "dialogue",
           "title": "اول یک گفت‌وگو را بشنو",
           "lines": [
-            {"speaker":"Emma","en":"Hi! I'm Emma. What's your name?","fa":"سلام! من اِما هستم. اسم تو چیه؟"},
-            {"speaker":"Ali","en":"Hello! I'm Ali.","fa":"سلام! من علی هستم."},
+            {"speaker":"Emma","en":"Hello! I'm Emma. What's your name?","fa":"سلام! من اِما هستم. اسم تو چیه؟"},
+            {"speaker":"Ali","en":"Hello! I'm Ali. Nice to meet you!","fa":"سلام! من علی هستم. از آشنایی خوشوقتم!"},
             {"speaker":"Emma","en":"Nice to meet you, Ali!","fa":"از آشنایی خوشوقتم، علی!"},
-            {"speaker":"Ali","en":"Nice to meet you, too!","fa":"من هم از آشنایی خوشوقتم!"}
+            {"speaker":"Ali","en":"Nice to meet you, too! Bye!","fa":"من هم از آشنایی خوشوقتم! خداحافظ!"}
           ]
         },
         {
-          "id": "hello-understanding",
-          "type": "quiz-set",
-          "title": "از گفت‌وگو چه فهمیدی؟",
-          "questions": [
-            {"question":"اسم کسی که گفت‌وگو را شروع کرد چیست؟","choices":["Ali","Emma","Sara"],"answer":1,"feedback":"بله، اِما اول خودش را معرفی کرد."},
-            {"question":"علی بعد از شنیدن Nice to meet you چه گفت؟","choices":["Nice to meet you, too!","What's your name?","Good morning, Sara."],"answer":0,"feedback":"دقیقاً؛ too یعنی «من هم»."}
-          ]
-        },
-        {
-          "id": "hello-roleplay",
-          "type": "roleplay",
-          "title": "مکالمه را خودت جلو ببر",
-          "description": "در سه نوبت به اِما پاسخ بده. هر پاسخ درست گفت‌وگو را یک قدم جلو می‌برد.",
+          "id": "hello-guided-talk",
+          "type": "guided-dialogue",
+          "title": "حالا نوبت جواب توست",
+          "description": "پاسخ را خودت بنویس؛ بعد با یک نمونه مقایسه کن. راهنما اختیاری است.",
           "turns": [
-            {"speaker":"Emma","prompt":"Hi! I'm Emma. What's your name?","choices":["I'm Ali. Nice to meet you!","I am a book.","Good night, blue."],"correctIndex":0,"reply":"Nice to meet you, Ali!"},
-            {"speaker":"Emma","prompt":"Nice to meet you, Ali!","choices":["My name is what?","Nice to meet you, too!","I am table."],"correctIndex":1,"reply":"Are you new here?"},
-            {"speaker":"Emma","prompt":"Are you new here?","choices":["My name am Ali.","Yes, I am.","Hello is Tuesday."],"correctIndex":1,"reply":"Great! Let's go to class."}
+            {"speaker":"Emma","incoming":"Hello! I'm Emma. What's your name?","task":"به اِما جواب بده و اسمت را بگو.","hint":"I'm … / My name is …","example":"Hello! I'm Ali."},
+            {"speaker":"Emma","incoming":"Nice to meet you, Ali! Bye!","task":"مودبانه جواب بده و خداحافظی کن.","hint":"Nice to meet you, too! / Bye!","example":"Nice to meet you, too! Bye!"}
           ]
         },
         {
           "id": "hello-write",
           "type": "free-write",
           "title": "این بار با اسم خودت",
-          "prompt": "به انگلیسی سلام کن، اسمت را بگو و نام طرف مقابل را بپرس.",
-          "placeholder": "Hi! I'm ... What's your name?",
-          "hint": "اگر کمک خواستی، از الگوی Hello! I'm Maryam. What's your name? استفاده کن.",
+          "prompt": "فرض کن برای اولین بار کسی را می‌بینی. سلام کن، نام خودت را بگو، نام او را بپرس و در پایان خداحافظی کن.",
+          "placeholder": "Hello! I'm … What's your name? … Bye!",
+          "hint": "می‌توانی از عبارت‌های کارت‌ها کمک بگیری. جواب باید متعلق به خودت باشد.",
           "kind": "free-text",
           "minWords": 4
         }

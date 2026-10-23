@@ -17,6 +17,7 @@ const ICONS = {
   flame: '<path d="M12 22c4 0 7-3 7-7 0-3-2-5-4-7 0 3-2 3-2 3 0-4-2-7-4-9 0 6-4 8-4 13a7 7 0 0 0 7 7z"/>',
   bolt: '<path d="m13 2-9 12h7l-1 8 10-12h-7z"/>',
   sound: '<path d="M11 5 6 9H3v6h3l5 4zM15.5 8a5 5 0 0 1 0 8M19 5a10 10 0 0 1 0 14"/>',
+  image: '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="2"/><path d="m3 17 5-5 4 4 3-3 6 5"/>',
   check: '<path d="m20 6-11 11-5-5"/>',
   lock: '<rect x="5" y="11" width="14" height="11" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
   chart: '<path d="M3 3v18h18M7 15v3M12 10v8M17 6v12"/>',
@@ -40,7 +41,7 @@ const ICONS = {
 const icon = (name, size = '') => `<span class="icon ${size}"><svg aria-hidden="true" viewBox="0 0 24 24">${ICONS[name] || ICONS.star}</svg></span>`;
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const en = (text) => `<span class="en" lang="en" dir="ltr">${escapeHtml(text)}</span>`;
-const defaultProgress = () => ({ completed: [], quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, settings: { reminders: false, sound: true } });
+const defaultProgress = () => ({ completed: [], quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, phraseChoices: {}, sentenceLabs: {}, guidedAnswers: {}, settings: { reminders: false, sound: true } });
 function readProgress() { try { const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); return { ...defaultProgress(), ...saved, settings: { ...defaultProgress().settings, ...(saved.settings || {}) } }; } catch { return defaultProgress(); } }
 const progress = readProgress();
 let manifest;
@@ -140,9 +141,20 @@ function sectionActivities(section, lessonId) {
     ? vocabularyBlock(section) + patternBlock(section) + checkBlock(section, lessonId)
     : dialogueBlock(section) + widgetBlock(section.featureWidget, lessonId) + productionBlock(section, lessonId);
 }
+function lessonOrientation(lesson) {
+  const intro = lesson.orientation || {};
+  const goal = intro.goal || lesson.goal;
+  const prerequisites = intro.prerequisites?.length ? intro.prerequisites.map((item) => `<li>${escapeHtml(item)}</li>`).join('') : '<li>پیش‌نیاز اجباری ندارد.</li>';
+  const previously = intro.previously ? `<p class="orientation-before"><strong>تا اینجا یاد گرفته‌ای:</strong> ${escapeHtml(intro.previously)}</p>` : '';
+  const visual = lesson.visual || {};
+  const image = visual.src ? `<img src="${escapeHtml(visual.src)}" alt="${escapeHtml(visual.alt || '')}" loading="lazy">` : `<span class="visual-slot-icon">${icon('image')}</span><span>${escapeHtml(visual.caption || 'جای تصویر این درس')}</span>`;
+  const check = intro.quickCheck;
+  const challenge = check ? `<details class="lesson-quickcheck"><summary>${escapeHtml(check.title || 'این درس را از قبل بلدی؟')}</summary><p>${escapeHtml(check.question)}</p><div class="quickcheck-example">${en(check.example)} <button class="sound-btn" data-speak="${escapeHtml(check.example)}" aria-label="شنیدن مثال">${icon('sound')}</button></div><details class="quickcheck-solution"><summary>دیدن معنی و پاسخ</summary><p>${escapeHtml(check.explanation)}</p></details>${check.allowSkip ? `<button class="outline-btn" data-quick-skip="${escapeHtml(lesson.id)}">این را بلدم؛ رفتن به درس بعد</button>` : ''}</details>` : '';
+  return `<section class="lesson-orientation" aria-label="آغاز درس"><div class="orientation-content"><h2>در این درس چه یاد می‌گیری؟</h2><p>${escapeHtml(goal)}</p><div class="orientation-prerequisite"><strong>پیش‌نیاز این درس</strong><ul>${prerequisites}</ul></div>${previously}${challenge}</div><div class="lesson-visual"><div class="lesson-visual-frame ${visual.src ? 'has-image' : ''}">${image}</div>${visual.src && visual.caption ? `<p>${escapeHtml(visual.caption)}</p>` : ''}</div></section>`;
+}
 function lessonView(lesson) { if (!lesson) return `<div class="empty-level">درس مورد نظر پیدا نشد.</div>`;
   const first = lesson.sections[0]; const second = lesson.sections[1];
-  return `<div class="lesson-page"><button class="back-link" data-nav="lessons">${icon('arrow')} بازگشت به مسیر درس‌ها</button><div class="lesson-hero"><span class="caps">${escapeHtml(lesson.id)} · دو بخش</span><h1>${escapeHtml(lesson.title)}</h1><p>${escapeHtml(lesson.goal)}</p><div class="lesson-meta"><span class="meta-chip">◷ ${escapeHtml(lesson.duration)}</span><span class="meta-chip">✳ ${escapeHtml(lesson.feature)}</span></div></div>
+  return `<div class="lesson-page"><button class="back-link" data-nav="lessons">${icon('arrow')} بازگشت به مسیر درس‌ها</button><div class="lesson-hero"><span class="caps">${escapeHtml(lesson.id)} · دو بخش</span><h1>${escapeHtml(lesson.title)}</h1><div class="lesson-meta"><span class="meta-chip">◷ ${escapeHtml(lesson.duration)}</span><span class="meta-chip">✳ ${escapeHtml(lesson.feature)}</span></div></div>${lessonOrientation(lesson)}
     <div class="lesson-tabs"><button class="lesson-tab active" data-section="foundation">۰۱ · ${escapeHtml(first.label)}</button><button class="lesson-tab" data-section="production">۰۲ · ${escapeHtml(second.label)}</button></div>
     <div class="lesson-flow"><section id="lesson-foundation" class="lesson-section"><div class="phase-heading"><span class="phase-number">01</span><div><h2>${escapeHtml(first.label)}</h2><p>${escapeHtml(first.intro)}</p></div></div>${sectionActivities(first, lesson.id)}</section>
     <section id="lesson-production" class="lesson-section"><div class="phase-heading"><span class="phase-number">02</span><div><h2>${escapeHtml(second.label)}</h2><p>${escapeHtml(second.intro)}</p></div></div>${sectionActivities(second, lesson.id)}</section></div>
@@ -171,7 +183,7 @@ function navigate(page, id = null, part = null) { const target = page === 'lesso
 function updateInline() { draw(true); }
 async function speech(text) { if (!('speechSynthesis' in window)) { showToast('پخش صوت در این مرورگر پشتیبانی نمی‌شود.'); return; } window.speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance(text); utterance.lang = 'en-US'; utterance.rate = .84; window.speechSynthesis.speak(utterance); }
 function onClick(event) {
-  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-complete],button[data-review],button[data-planned],button[data-speak],button[data-match],button[data-build-token],button[data-build-reset],button[data-roleplay]');
+  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-complete],button[data-review],button[data-planned],button[data-speak],button[data-match],button[data-build-token],button[data-build-reset],button[data-roleplay],button[data-word-key],button[data-phrase-key],button[data-lab-key],button[data-guided-send],button[data-quick-skip]');
   if (!el) return;
   if (el.dataset.nav) { modal = null; navigate(el.dataset.nav); return; }
   if (el.dataset.openLesson) { modal = null; activePerson = 0; ownerIdx = 0; objectIdx = 0; navigate('lesson', el.dataset.openLesson, el.dataset.startSection || null); return; }
@@ -180,6 +192,47 @@ function onClick(event) {
   if (el.dataset.planned) { showModal('درس قفل است', 'با آماده‌شدن این درس، امکان شروع آن فعال می‌شود.'); return; }
   if (el.dataset.section) { const target = document.getElementById(`lesson-${el.dataset.section}`); document.querySelectorAll('[data-section]').forEach((tab) => tab.classList.toggle('active', tab === el)); target?.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
   if (el.dataset.speak) { speech(el.dataset.speak); return; }
+  if (el.dataset.quickSkip) {
+    const ordered = samples();
+    const index = ordered.findIndex((item) => item.id === el.dataset.quickSkip);
+    if (index >= 0 && ordered[index + 1]) navigate('lesson', ordered[index + 1].id);
+    else showToast('درس بعدی هنوز برای اجرا آماده نیست.');
+    return;
+  }
+  if (el.dataset.wordKey) {
+    const key = el.dataset.wordKey;
+    const activity = lessonCache.get(route.lessonId)?.sections.flatMap((section) => section.activities || []).find((item) => `${route.lessonId}:${item.id}` === key);
+    if (!activity || activity.type !== 'vocabulary') return;
+    if (el.dataset.wordAction === 'restart') { delete progress.wordProgress[key]; persist(); updateInline(); return; }
+    const state = progress.wordProgress[key] || { index: 0, known: [] };
+    if (el.dataset.wordAction === 'known' && !state.known.includes(state.index)) state.known.push(state.index);
+    const groupSize = Math.max(1, activity.batchSize || 5);
+    const start = Math.floor(state.index / groupSize) * groupSize;
+    const end = Math.min(start + groupSize, activity.items.length);
+    const pending = Array.from({ length: end - start }, (_, i) => i + start).filter((i) => !state.known.includes(i));
+    state.index = pending.find((i) => i > state.index) ?? pending[0] ?? end;
+    progress.wordProgress[key] = state; persist(); updateInline(); return;
+  }
+  if (el.dataset.phraseKey) {
+    const key = el.dataset.phraseKey;
+    const selection = progress.phraseChoices[key] || [];
+    selection[Number(el.dataset.phraseSlot)] = Number(el.dataset.phraseOption);
+    progress.phraseChoices[key] = selection; persist(); updateInline(); return;
+  }
+  if (el.dataset.labKey) {
+    const key = el.dataset.labKey;
+    const state = progress.sentenceLabs[key] || { structure: 0, variable: 0 };
+    state[el.dataset.labKind] = Number(el.dataset.labIndex);
+    progress.sentenceLabs[key] = state; persist(); updateInline(); return;
+  }
+  if (el.dataset.guidedSend) {
+    const answer = document.getElementById('guided-response')?.value.trim();
+    if (!answer) return showToast('اول جواب خودت را بنویس.');
+    const key = el.dataset.guidedSend;
+    const answers = progress.guidedAnswers[key] || [];
+    answers.push(answer);
+    progress.guidedAnswers[key] = answers; persist(); updateInline(); return;
+  }
   if (el.dataset.match) {
     const key = el.dataset.match;
     const pair = Number(el.dataset.pair);
