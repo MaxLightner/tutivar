@@ -1,6 +1,10 @@
 import { renderActivity } from './lesson-modules.js';
 
 const $root = document.getElementById('app');
+// The compiled JS URL carries the deployment SHA. Use it for lesson and course
+// data too, so old service-worker/CDN caches cannot mix versions after a push.
+const CONTENT_REVISION = new URL(import.meta.url).searchParams.get('v') || 'dev';
+const contentUrl = (path) => `./data/${path}?v=${encodeURIComponent(CONTENT_REVISION)}`;
 const STORAGE_KEY = 'tutivar:fa-en:preview:v1';
 const ICONS = {
   home: '<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/>',
@@ -134,7 +138,7 @@ function widgetBlock(widget, id) {
   return `<div class="banner-note">الگوی تعاملی «${escapeHtml(widget.type)}» هنوز پیاده‌سازی نشده است.</div>`;
 }
 function productionBlock(section, id) { const draft = progress.written[id] || ''; return `<div class="lesson-block"><div class="block-top"><div><span class="block-label">۰۶ / تولید مستقل</span><h3>حالا جمله خودت را بساز</h3></div>${icon('star')}</div><label class="input-label" for="free-response">${escapeHtml(section.production.prompt)}</label><textarea id="free-response" class="free-input" placeholder="${escapeHtml(section.production.placeholder)}" rows="3">${escapeHtml(draft)}</textarea><p class="hint">${escapeHtml(section.production.hint)}</p><button class="secondary-btn" data-action="save-production">ذخیره پاسخ ${icon('check')}</button><p class="tiny muted" style="margin-top:10px">این پاسخ فقط روی دستگاه شما ذخیره می‌شود؛ تصحیح هوشمند هنوز فعال نیست.</p></div>`; }
-async function loadLesson(lessonId) { if (lessonCache.has(lessonId)) return lessonCache.get(lessonId); const entry = samples().find((x) => x.id === lessonId); if (!entry) return null; const response = await fetch(`./data/${entry.file}`); if (!response.ok) throw new Error('lesson load failed'); const lesson = await response.json(); lessonCache.set(lessonId, lesson); return lesson; }
+async function loadLesson(lessonId) { if (lessonCache.has(lessonId)) return lessonCache.get(lessonId); const entry = samples().find((x) => x.id === lessonId); if (!entry) return null; const response = await fetch(contentUrl(entry.file)); if (!response.ok) throw new Error('lesson load failed'); const lesson = await response.json(); lessonCache.set(lessonId, lesson); return lesson; }
 function sectionActivities(section, lessonId) {
   if (section.activities) return section.activities.map((activity, index) => renderActivity(activity, { lessonId, index, e: escapeHtml, en, i: icon, progress })).join('');
   return section.id === 'foundation'
@@ -284,7 +288,7 @@ function onChange(event) { if (!event.target.dataset.picker) return; if (event.t
 async function hydrateCurricula() {
   for (const level of Object.values(manifest.levels)) {
     if (!level.curriculumFile) continue;
-    const response = await fetch(`./data/${level.curriculumFile}`);
+    const response = await fetch(contentUrl(level.curriculumFile));
     if (!response.ok) throw new Error('curriculum load failed');
     const curriculum = await response.json();
     level.stages = curriculum.stages.map((stage) => ({
@@ -299,5 +303,5 @@ async function hydrateCurricula() {
     }));
   }
 }
-async function main() { try { const response = await fetch('./data/manifest.json'); if (!response.ok) throw new Error(`HTTP ${response.status}`); manifest = await response.json(); if (manifest.pairId !== 'fa-en' || manifest.status !== 'draft') throw new Error('wrong course manifest'); await hydrateCurricula(); $root.addEventListener('click', onClick); $root.addEventListener('change', onChange); addEventListener('hashchange', syncRoute); await syncRoute(); if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('./sw.js').catch(() => {}); } catch (error) { console.error(error); $root.innerHTML = `<div class="boot"><span class="boot-logo">t.</span><strong>صفحه بارگذاری نشد</strong><p class="muted">اتصال را بررسی کن و دوباره تلاش کن.</p></div>`; } }
+async function main() { try { const response = await fetch(contentUrl('manifest.json')); if (!response.ok) throw new Error(`HTTP ${response.status}`); manifest = await response.json(); if (manifest.pairId !== 'fa-en' || manifest.status !== 'draft') throw new Error('wrong course manifest'); await hydrateCurricula(); $root.addEventListener('click', onClick); $root.addEventListener('change', onChange); addEventListener('hashchange', syncRoute); await syncRoute(); if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('./sw.js').catch(() => {}); } catch (error) { console.error(error); $root.innerHTML = `<div class="boot"><span class="boot-logo">t.</span><strong>صفحه بارگذاری نشد</strong><p class="muted">اتصال را بررسی کن و دوباره تلاش کن.</p></div>`; } }
 main();

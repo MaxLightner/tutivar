@@ -103,9 +103,10 @@ test('first lesson activities render with separate content, including interactio
 
 test('presentation is independent of course content and never hardcodes target phrases', () => {
   const app = readFileSync(join(projectRoot, 'apps/learner-web/app.js'), 'utf8');
-  assert.ok(app.includes("fetch('./data/manifest.json')"));
+  assert.ok(app.includes("contentUrl('manifest.json')"));
   assert.ok(app.includes('entry.file'));
-  assert.ok(app.includes("fetch(`./data/${level.curriculumFile}`)"));
+  assert.ok(app.includes('fetch(contentUrl(level.curriculumFile))'));
+  assert.ok(app.includes('new URL(import.meta.url).searchParams'));
   assert.ok(app.includes('renderActivity'));
   assert.ok(app.includes('lessonOrientation'));
   assert.ok(app.includes('lesson-visual-frame'));
