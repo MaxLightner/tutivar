@@ -1,12 +1,14 @@
 # Tutivar
 
-An extensible, language-pair-independent learning platform. This repository starts with **architecture and machine-readable content contracts**, not a finished application.
+An extensible, language-pair-independent learning platform. Content and app rendering are separate, so new language pairs do not require rebuilding the UI.
 
 ## Status
 
 - Architecture baseline: `0.1.0` (draft)
-- First language pair registered: Persian (`fa`) → German (`de`)
-- No real course lessons, placement examinations, backend, website, or mobile app have been implemented yet.
+- **Active pilot: Persian (`fa`) → English (`en`)**. Earlier `fa-de` stays as an unpopulated future pair.
+- Mobile-first PWA learner preview: `apps/learner-web` (draft UI)
+- Three runnable **illustrative, unapproved** A1 lessons, based on the A1-1, A1-2, A1-3 mechanisms in the 126-lesson review sheet. They do not supersede the approved Blueprint.
+- No production course, placement exam, backend, social account, AI coach, or real Leitner scheduling yet.
 - Files in `examples/` are illustrative fixtures, **not published educational content**.
 
 ## Structure
@@ -16,14 +18,37 @@ An extensible, language-pair-independent learning platform. This repository star
 | `architecture/` | Editable system boundaries and decisions |
 | `registry/` | Module capabilities, dependencies, and planned features |
 | `schemas/` | JSON content and module contracts |
-| `content/` | Real, versioned language-pair and educational content |
+| `content/` | Pair registrations, draft course manifests and sample teaching data |
 | `examples/` | Non-published JSON examples for implementers |
 | `tools/` | Validation and future content-publishing utilities |
-| `apps/` | Future web, mobile, and admin clients |
+| `apps/learner-web/` | Mobile-first PWA with Home, Lessons, Lesson Player, Leitner and Dashboard |
 | `packages/` | Future shared learning and UI engines |
 | `services/` | Future modular backend |
 
-Run `npm test` to validate the current JSON and check dependency rules (Node.js 20+). No dependency installation is needed at this stage.
+### Try the first UI + content slice
+
+```sh
+npm test
+npm run build
+# Serve the generated `dist/` folder with any static HTTP server.
+# Example if you have Python installed:
+python3 -m http.server 8080 --directory dist
+```
+
+Then open `http://localhost:8080`. The app must be served over HTTP; it will not work directly from `file://` because lessons load as external JSON.
+
+The demo works without a backend. Completed lessons, review clicks, and written practice are saved only in this browser's `localStorage`. Review keys 1–7 **do not implement Leitner scheduling**. Chat, account sync, market and leaderboards are marked as upcoming.
+
+### Editorial workflow
+
+- `content/language-pairs/fa-en/preview-manifest.json` controls learner-facing path, CEFR levels, home messages and review-card samples.
+- `content/language-pairs/fa-en/lessons/*.json` controls the lesson words, examples, dialogue, interaction data, and production prompts. Each lesson has two sections: word→sentence and dialogue→independent production.
+- `apps/learner-web/app.js` holds reusable UI renderers (`conversation`, `family`, `ownership`), not specific lesson text. Edit the JSON to review content independently from layout.
+- `content/language-pairs/fa-en/course.a1.demo.json` is a **draft** course contract; the real editorial course, workshops and final assessment must still be imported and approved.
+- `npm run build` copies authored data into `dist/data/`. Do not edit `dist/` directly.
+- To add future language pairs, create a new pair directory, data manifests and a pair selector. The rendering code should remain stable as new exercise types are registered.
+
+This demo's wording and teaching progression require pedagogical review; passing automated tests is not educational approval.
 
 ## Non-negotiable learning boundaries
 

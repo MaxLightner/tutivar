@@ -1,0 +1,5 @@
+{
+  "id": "fa-en-a1-demo", "schemaVersion": "1.0.0", "revision": 1, "status": "draft", "pairId": "fa-en", "level": "A1", "blueprintRef": "universal:v1",
+  "chapters": [{ "id": "a1-chapter-1", "blueprintChapterId": "universal-a1-chapter-1", "lessonIds": ["fa-en-a1-1", "fa-en-a1-2", "fa-en-a1-3"] }],
+  "lessonOrder": ["fa-en-a1-1", "fa-en-a1-2", "fa-en-a1-3"], "workshops": [], "finalAssessmentRef": null
+}

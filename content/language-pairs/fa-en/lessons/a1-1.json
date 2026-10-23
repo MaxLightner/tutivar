@@ -1,0 +1,18 @@
+{
+  "id": "A1-1", "revision": 1, "status": "draft", "title": "معرفی خود و شروع گفت‌وگو", "goal": "بتوانی به کسی سلام کنی، اسمت را بگویی و مکالمه را آغاز کنی.", "duration": "۸ دقیقه", "feature": "گفت‌وگوی نوبتی", "archetype": "conversation",
+  "sections": [
+    { "id": "foundation", "label": "از کلمه تا جمله", "intro": "اول آجرهای یک مکالمه کوتاه را می‌سازیم.", "vocabulary": [
+      { "en": "Hello", "fa": "سلام", "hint": "برای شروع گفتگو" }, { "en": "I", "fa": "من", "hint": "وقتی درباره خودت حرف می‌زنی" }, { "en": "My name", "fa": "نام من", "hint": "برای معرفی اسم" }, { "en": "Nice to meet you", "fa": "از آشنایی خوشوقتم", "hint": "پاسخ مودبانه" }
+    ], "pattern": { "title": "خودت را معرفی کن", "formula": "I'm + name", "explanation": "I'm شکل کوتاه I am است. بعد از آن اسم خودت را می‌گویی.", "examples": ["I'm Sara.", "I'm Amir.", "My name is Mina."] },
+      "check": { "question": "کدام جمله یعنی «من سارا هستم»؟", "choices": ["I Sara.", "I'm Sara.", "My Sara."], "answer": 1, "feedback": "آفرین! I'm Sara. یک معرفی طبیعی است." }
+    },
+    { "id": "production", "label": "از دیالوگ تا تولید", "intro": "حالا واژه‌ها را در یک گفت‌وگوی واقعی استفاده کن.", "dialogue": [
+      { "speaker": "Emma", "en": "Hi! I'm Emma. What's your name?", "fa": "سلام! من اِما هستم. اسم تو چیه؟" },
+      { "speaker": "You", "en": "Hello! I'm Ali.", "fa": "سلام! من علی هستم." },
+      { "speaker": "Emma", "en": "Nice to meet you, Ali!", "fa": "از آشنایی خوشوقتم علی!" },
+      { "speaker": "You", "en": "Nice to meet you, too!", "fa": "من هم از آشنایی خوشوقتم!" }
+    ], "featureWidget": { "type": "conversation", "title": "نوبت توست!", "description": "اِما گفتگو را شروع کرده؛ بهترین پاسخ را انتخاب کن.", "message": "Hi! I'm Emma. What's your name?", "choices": ["I'm Ali. Nice to meet you!", "I book in my room.", "Good night, apple."], "correctIndex": 0, "response": "Nice to meet you, Ali!", "success": "این بار گفتگو واقعاً پیش رفت." },
+      "production": { "prompt": "این بار اسم واقعی خودت را بگو و یک جمله انگلیسی بنویس.", "placeholder": "Hi! I'm ...", "hint": "مثال: Hello! I'm Maryam.", "kind": "free-text" }
+    }
+  ]
+}

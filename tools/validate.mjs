@@ -125,9 +125,15 @@ export function validateRepository(root = projectRoot) {
   if (architecture.id !== 'tutivar' || architecture.style !== 'modular-monorepo') errors.push('architecture mismatch');
   errors.push(...validateModules(get('registry/modules.json'), schemas.module));
   const pair = get('content/language-pairs/fa-de/pair.json');
-  errors.push(...validateSchema(schemas['language-pair'], pair, 'language-pair'));
-  if (pair.id !== pair.sourceLanguage + '-' + pair.targetLanguage || pair.sourceLanguage === pair.targetLanguage) errors.push('invalid pair identifier');
-  if (pair.status === 'published' && !pair.grammarMapRef) errors.push('published pair needs Grammar Map');
+  for (const pairId of ['fa-de', 'fa-en']) {
+    const registered = get(`content/language-pairs/${pairId}/pair.json`);
+    errors.push(...validateSchema(schemas['language-pair'], registered, 'language-pair:' + pairId));
+    if (registered.id !== registered.sourceLanguage + '-' + registered.targetLanguage || registered.sourceLanguage === registered.targetLanguage) errors.push('invalid pair identifier: ' + pairId);
+    if (registered.status === 'published' && !registered.grammarMapRef) errors.push('published pair needs Grammar Map: ' + pairId);
+  }
+  const a1PreviewCourse = get('content/language-pairs/fa-en/course.a1.demo.json');
+  errors.push(...validateSchema(schemas.course, a1PreviewCourse, 'fa-en-course'));
+  errors.push(...validateCourseSemantics(a1PreviewCourse));
   const fixtures = {
     course: get('examples/course.example.json'),
     lesson: get('examples/lesson.example.json'),

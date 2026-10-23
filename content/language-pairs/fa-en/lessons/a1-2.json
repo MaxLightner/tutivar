@@ -1,0 +1,19 @@
+{
+  "id": "A1-2", "revision": 1, "status": "draft", "title": "معرفی اعضای خانواده", "goal": "بتوانی اعضای خانواده را با نام و نسبت معرفی کنی.", "duration": "۹ دقیقه", "feature": "درخت خانواده", "archetype": "family",
+  "sections": [
+    { "id": "foundation", "label": "از کلمه تا جمله", "intro": "چه کسی، چه نسبتی با چه کسی دارد؟", "vocabulary": [
+      { "en": "Mother", "fa": "مادر", "hint": "مامان" }, { "en": "Father", "fa": "پدر", "hint": "بابا" }, { "en": "Sister", "fa": "خواهر", "hint": "عضو خانواده" }, { "en": "Brother", "fa": "برادر", "hint": "عضو خانواده" }
+    ], "pattern": { "title": "یک نفر را معرفی کن", "formula": "This is my + family member", "explanation": "This is برای نشان‌دادن یک شخص نزدیک به کار می‌رود.", "examples": ["This is my mother.", "This is my brother.", "Her name is Mary."] },
+      "check": { "question": "معادل «این برادر من است» کدام است؟", "choices": ["This is my brother.", "This is brother me.", "He my brother."], "answer": 0, "feedback": "درست است! my پیش از اسم می‌آید." }
+    },
+    { "id": "production", "label": "از دیالوگ تا تولید", "intro": "حالا یک خانواده فرضی را بشناس و توصیف کن.", "dialogue": [
+      { "speaker": "Lily", "en": "Who's this?", "fa": "این کیه؟" }, { "speaker": "Daniel", "en": "This is my sister, Anna.", "fa": "این خواهرم آناست." }, { "speaker": "Lily", "en": "And who is that?", "fa": "و اون کیه؟" }, { "speaker": "Daniel", "en": "That's my father.", "fa": "اون پدرمه." }
+    ], "featureWidget": { "type": "family", "title": "درخت خانواده", "description": "روی هر فرد بزن تا نسبت و جمله معرفی‌اش تغییر کند.", "people": [
+      { "name": "Nora", "relation": "Mother", "fa": "مادر", "sentence": "This is my mother, Nora.", "initial": "N" },
+      { "name": "David", "relation": "Father", "fa": "پدر", "sentence": "This is my father, David.", "initial": "D" },
+      { "name": "Anna", "relation": "Sister", "fa": "خواهر", "sentence": "This is my sister, Anna.", "initial": "A" },
+      { "name": "Sam", "relation": "Brother", "fa": "برادر", "sentence": "This is my brother, Sam.", "initial": "S" }
+    ] }, "production": { "prompt": "یکی از اعضای خانواده‌ات را با یک جمله معرفی کن.", "placeholder": "This is my ...", "hint": "مثال: This is my brother, Hami.", "kind": "free-text" }
+    }
+  ]
+}

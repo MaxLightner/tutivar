@@ -1,0 +1,17 @@
+{
+  "id": "A1-3", "revision": 1, "status": "draft", "title": "مالکیت و داشتن اشیا", "goal": "بتوانی بگویی یک وسیله متعلق به چه کسی است.", "duration": "۱۰ دقیقه", "feature": "جابه‌جایی مالک", "archetype": "ownership",
+  "sections": [
+    { "id": "foundation", "label": "از کلمه تا جمله", "intro": "یک تغییر کوچک در مالک، کل معنی جمله را عوض می‌کند.", "vocabulary": [
+      { "en": "Book", "fa": "کتاب", "hint": "یک شیء" }, { "en": "Bag", "fa": "کیف", "hint": "یک شیء" }, { "en": "My", "fa": "مال من / ـِ من", "hint": "برای مالکیت خودت" }, { "en": "Your", "fa": "مال تو / ـِ تو", "hint": "برای مخاطب" }
+    ], "pattern": { "title": "مالک و وسیله", "formula": "This is + my / your / his / her + object", "explanation": "my، your، his و her قبل از نام شیء می‌آیند.", "examples": ["This is my book.", "This is her bag.", "This is his phone."] },
+      "check": { "question": "«این کیف اوست» (برای یک دختر) چگونه گفته می‌شود؟", "choices": ["This is his bag.", "This is her bag.", "This her bag is."], "answer": 1, "feedback": "دقیقاً! her برای مالکیت یک زن یا دختر است." }
+    },
+    { "id": "production", "label": "از دیالوگ تا تولید", "intro": "مالک و شیء را تغییر بده؛ جمله همزمان تغییر می‌کند.", "dialogue": [
+      { "speaker": "Mia", "en": "Is this your book?", "fa": "این کتاب توئه؟" }, { "speaker": "Noah", "en": "No, it's her book.", "fa": "نه، این کتاب اونه." }, { "speaker": "Mia", "en": "Oh! Thank you.", "fa": "آهان! ممنون." }
+    ], "featureWidget": { "type": "ownership", "title": "آزمایشگاه جمله", "description": "مالک و وسیله را تغییر بده تا یک جمله جدید بسازی.", "owners": [
+      { "id": "my", "label": "من", "en": "my" }, { "id": "your", "label": "تو", "en": "your" }, { "id": "his", "label": "او (مذکر)", "en": "his" }, { "id": "her", "label": "او (مونث)", "en": "her" }
+    ], "objects": [ { "id": "book", "label": "کتاب", "en": "book", "emoji": "📖" }, { "id": "bag", "label": "کیف", "en": "bag", "emoji": "🎒" }, { "id": "phone", "label": "تلفن", "en": "phone", "emoji": "📱" } ] },
+      "production": { "prompt": "درباره یک وسیله اطرافت یک جمله انگلیسی بنویس.", "placeholder": "This is my ...", "hint": "مثال: This is my phone.", "kind": "free-text" }
+    }
+  ]
+}
