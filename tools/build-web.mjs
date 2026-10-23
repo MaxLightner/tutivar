@@ -12,5 +12,6 @@ rmSync(target, { recursive: true, force: true });
 mkdirSync(join(target, 'data'), { recursive: true });
 cpSync(source, target, { recursive: true });
 copyFileSync(join(content, 'preview-manifest.json'), join(target, 'data/manifest.json'));
+copyFileSync(join(content, 'curriculum.a1.json'), join(target, 'data/curriculum.a1.json'));
 cpSync(join(content, 'lessons'), join(target, 'data/lessons'), { recursive: true });
-console.log('Built dist/ — fa-en preview with independent content JSON');
+console.log('Built dist/ — fa-en app with independent course and lesson JSON');

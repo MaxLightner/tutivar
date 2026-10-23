@@ -1,18 +1,128 @@
 {
-  "id": "A1-1", "revision": 1, "status": "draft", "title": "معرفی خود و شروع گفت‌وگو", "goal": "بتوانی به کسی سلام کنی، اسمت را بگویی و مکالمه را آغاز کنی.", "duration": "۸ دقیقه", "feature": "گفت‌وگوی نوبتی", "archetype": "conversation",
+  "id": "A1-1",
+  "revision": 2,
+  "status": "draft",
+  "title": "معرفی خود و شروع گفت‌وگو",
+  "goal": "در یک برخورد کوتاه سلام کنی، نامت را بگویی، نام طرف مقابل را بپرسی و مودبانه پاسخ بدهی.",
+  "duration": "۱۲ دقیقه",
+  "feature": "مکالمه نوبتی",
+  "archetype": "conversation",
   "sections": [
-    { "id": "foundation", "label": "از کلمه تا جمله", "intro": "اول آجرهای یک مکالمه کوتاه را می‌سازیم.", "vocabulary": [
-      { "en": "Hello", "fa": "سلام", "hint": "برای شروع گفتگو" }, { "en": "I", "fa": "من", "hint": "وقتی درباره خودت حرف می‌زنی" }, { "en": "My name", "fa": "نام من", "hint": "برای معرفی اسم" }, { "en": "Nice to meet you", "fa": "از آشنایی خوشوقتم", "hint": "پاسخ مودبانه" }
-    ], "pattern": { "title": "خودت را معرفی کن", "formula": "I'm + name", "explanation": "I'm شکل کوتاه I am است. بعد از آن اسم خودت را می‌گویی.", "examples": ["I'm Sara.", "I'm Amir.", "My name is Mina."] },
-      "check": { "question": "کدام جمله یعنی «من سارا هستم»؟", "choices": ["I Sara.", "I'm Sara.", "My Sara."], "answer": 1, "feedback": "آفرین! I'm Sara. یک معرفی طبیعی است." }
+    {
+      "id": "foundation",
+      "label": "از کلمه تا جمله",
+      "intro": "واژه‌ها را بشناس، چند جمله بساز و خودت را معرفی کن.",
+      "activities": [
+        {
+          "id": "hello-context",
+          "type": "intro",
+          "title": "یک آشنایی تازه",
+          "text": "تصور کن در یک کلاس تازه کنار کسی نشسته‌ای. اول سلام می‌کنی، بعد اسمت را می‌گویی و اسم او را می‌پرسی.",
+          "focus": "Hello! I'm Ali. What's your name?"
+        },
+        {
+          "id": "hello-words",
+          "type": "vocabulary",
+          "title": "کلمه‌ها و عبارت‌های ضروری",
+          "items": [
+            {"en":"Hello!","fa":"سلام!","hint":"شروع گفت‌وگو","example":"Hello, Emma!"},
+            {"en":"Hi!","fa":"سلام!","hint":"سلام صمیمانه","example":"Hi, I'm Sara."},
+            {"en":"I","fa":"من","hint":"درباره خودت","example":"I am Ali."},
+            {"en":"am","fa":"هستم","hint":"با I استفاده می‌شود","example":"I am Sara."},
+            {"en":"my","fa":"ـِ من / مال من","hint":"برای نام یا وسیله خودت","example":"My name is Ali."},
+            {"en":"name","fa":"نام","hint":"معرفی اسم","example":"My name is Emma."},
+            {"en":"your","fa":"ـِ تو / شما","hint":"درباره طرف مقابل","example":"What's your name?"},
+            {"en":"Nice to meet you!","fa":"از آشنایی خوشوقتم!","hint":"پاسخ مودبانه","example":"Nice to meet you, too!"}
+          ]
+        },
+        {
+          "id": "hello-patterns",
+          "type": "pattern",
+          "title": "سه راه کوتاه برای معرفی",
+          "formula": "I'm + name",
+          "explanation": "I'm شکل کوتاه I am است. برای گفتن نام می‌توانی از I'm یا My name is استفاده کنی. برای پرسیدن نام طرف مقابل بگو What's your name?",
+          "examples": ["I'm Ali.", "My name is Sara.", "What's your name?", "Nice to meet you."]
+        },
+        {
+          "id": "hello-match",
+          "type": "match",
+          "title": "معناها را به هم وصل کن",
+          "description": "اول یک عبارت انگلیسی، بعد معنای فارسی‌اش را بزن.",
+          "pairs": [
+            {"en":"Hello!","fa":"سلام!"},
+            {"en":"My name is Sara.","fa":"اسم من سارا است."},
+            {"en":"What's your name?","fa":"اسم تو چیست؟"},
+            {"en":"Nice to meet you.","fa":"از آشنایی خوشوقتم."}
+          ],
+          "targetOrder": [2, 0, 3, 1]
+        },
+        {
+          "id": "hello-builder",
+          "type": "sentence-builder",
+          "title": "جمله را خودت بساز",
+          "description": "واژه‌ها را به ترتیب انتخاب کن تا جمله «اسم من سارا است» ساخته شود.",
+          "tokens": ["Sara.", "name", "My", "is"],
+          "correctOrder": [2, 1, 3, 0],
+          "translation": "اسم من سارا است."
+        },
+        {
+          "id": "hello-quiz",
+          "type": "quiz-set",
+          "title": "آماده‌ای گفت‌وگو کنی؟",
+          "questions": [
+            {"question":"کدام جمله یعنی «من سارا هستم»؟","choices":["I Sara.","I'm Sara.","My Sara."],"answer":1,"feedback":"درسته؛ I'm کوتاه‌شدهٔ I am است."},
+            {"question":"برای پرسیدن اسم یک نفر چه می‌گویی؟","choices":["What's your name?","My name is Sara.","Nice to meet you."],"answer":0,"feedback":"با What's your name? نام طرف مقابل را می‌پرسی."}
+          ]
+        }
+      ]
     },
-    { "id": "production", "label": "از دیالوگ تا تولید", "intro": "حالا واژه‌ها را در یک گفت‌وگوی واقعی استفاده کن.", "dialogue": [
-      { "speaker": "Emma", "en": "Hi! I'm Emma. What's your name?", "fa": "سلام! من اِما هستم. اسم تو چیه؟" },
-      { "speaker": "You", "en": "Hello! I'm Ali.", "fa": "سلام! من علی هستم." },
-      { "speaker": "Emma", "en": "Nice to meet you, Ali!", "fa": "از آشنایی خوشوقتم علی!" },
-      { "speaker": "You", "en": "Nice to meet you, too!", "fa": "من هم از آشنایی خوشوقتم!" }
-    ], "featureWidget": { "type": "conversation", "title": "نوبت توست!", "description": "اِما گفتگو را شروع کرده؛ بهترین پاسخ را انتخاب کن.", "message": "Hi! I'm Emma. What's your name?", "choices": ["I'm Ali. Nice to meet you!", "I book in my room.", "Good night, apple."], "correctIndex": 0, "response": "Nice to meet you, Ali!", "success": "این بار گفتگو واقعاً پیش رفت." },
-      "production": { "prompt": "این بار اسم واقعی خودت را بگو و یک جمله انگلیسی بنویس.", "placeholder": "Hi! I'm ...", "hint": "مثال: Hello! I'm Maryam.", "kind": "free-text" }
+    {
+      "id": "production",
+      "label": "از دیالوگ تا تولید",
+      "intro": "حالا عبارت‌های آشنا را داخل یک گفت‌وگو ببین و خودت جواب بده.",
+      "activities": [
+        {
+          "id": "hello-dialogue",
+          "type": "dialogue",
+          "title": "اول یک گفت‌وگو را بشنو",
+          "lines": [
+            {"speaker":"Emma","en":"Hi! I'm Emma. What's your name?","fa":"سلام! من اِما هستم. اسم تو چیه؟"},
+            {"speaker":"Ali","en":"Hello! I'm Ali.","fa":"سلام! من علی هستم."},
+            {"speaker":"Emma","en":"Nice to meet you, Ali!","fa":"از آشنایی خوشوقتم، علی!"},
+            {"speaker":"Ali","en":"Nice to meet you, too!","fa":"من هم از آشنایی خوشوقتم!"}
+          ]
+        },
+        {
+          "id": "hello-understanding",
+          "type": "quiz-set",
+          "title": "از گفت‌وگو چه فهمیدی؟",
+          "questions": [
+            {"question":"اسم کسی که گفت‌وگو را شروع کرد چیست؟","choices":["Ali","Emma","Sara"],"answer":1,"feedback":"بله، اِما اول خودش را معرفی کرد."},
+            {"question":"علی بعد از شنیدن Nice to meet you چه گفت؟","choices":["Nice to meet you, too!","What's your name?","Good morning, Sara."],"answer":0,"feedback":"دقیقاً؛ too یعنی «من هم»."}
+          ]
+        },
+        {
+          "id": "hello-roleplay",
+          "type": "roleplay",
+          "title": "مکالمه را خودت جلو ببر",
+          "description": "در سه نوبت به اِما پاسخ بده. هر پاسخ درست گفت‌وگو را یک قدم جلو می‌برد.",
+          "turns": [
+            {"speaker":"Emma","prompt":"Hi! I'm Emma. What's your name?","choices":["I'm Ali. Nice to meet you!","I am a book.","Good night, blue."],"correctIndex":0,"reply":"Nice to meet you, Ali!"},
+            {"speaker":"Emma","prompt":"Nice to meet you, Ali!","choices":["My name is what?","Nice to meet you, too!","I am table."],"correctIndex":1,"reply":"Are you new here?"},
+            {"speaker":"Emma","prompt":"Are you new here?","choices":["My name am Ali.","Yes, I am. What's your name?","Hello is Tuesday."],"correctIndex":1,"reply":"Great! Let's go to class."}
+          ]
+        },
+        {
+          "id": "hello-write",
+          "type": "free-write",
+          "title": "این بار با اسم خودت",
+          "prompt": "به انگلیسی سلام کن، اسمت را بگو و نام طرف مقابل را بپرس.",
+          "placeholder": "Hi! I'm ... What's your name?",
+          "hint": "اگر کمک خواستی، از الگوی Hello! I'm Maryam. What's your name? استفاده کن.",
+          "kind": "free-text",
+          "minWords": 4
+        }
+      ]
     }
   ]
 }

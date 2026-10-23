@@ -6,16 +6,7 @@
   "levels": {
     "A1": {
       "title": "اولین مکالمه‌ها", "subtitle": "از یک سلام ساده تا ساختن جمله‌های خودت",
-      "chapters": [{ "id": "a1-1", "title": "فصل ۱ · من و دنیای اطرافم", "description": "با واژه‌های کوچک، مکالمه‌های واقعی بساز.",
-        "lessons": [
-          { "id": "A1-1", "title": "معرفی خود و شروع گفت‌وگو", "subtitle": "سلام کن، خودت را معرفی کن", "icon": "message", "feature": "مکالمه نوبتی", "file": "lessons/a1-1.json", "status": "sample" },
-          { "id": "A1-2", "title": "معرفی اعضای خانواده", "subtitle": "افراد و نسبت‌ها را بشناس", "icon": "family", "feature": "درخت خانواده", "file": "lessons/a1-2.json", "status": "sample" },
-          { "id": "A1-3", "title": "مالکیت و داشتن اشیا", "subtitle": "بگو چه چیزی مال چه کسی است", "icon": "objects", "feature": "تغییر جمله", "file": "lessons/a1-3.json", "status": "sample" },
-          { "id": "A1-4", "title": "بیان موقعیت مکانی", "subtitle": "چیدمان اشیا و مکان‌ها", "icon": "pin", "feature": "صحنه تعاملی", "status": "planned" },
-          { "id": "A1-5", "title": "تعداد و شمارش اشیا", "subtitle": "عدد و اسم جمع", "icon": "numbers", "feature": "شمارش بصری", "status": "planned" },
-          { "id": "A1-W1", "title": "کارگاه پایان فصل", "subtitle": "مرور و کاربرد ترکیبی", "icon": "trophy", "feature": "کارگاه", "status": "planned", "kind": "workshop" }
-        ]
-      }]
+      "curriculumFile": "curriculum.a1.json"
     },
     "A2": { "title": "مکالمه‌های گسترده‌تر", "subtitle": "ساختار درس‌ها در حال آماده‌سازی است", "chapters": [] },
     "B1": { "title": "مستقل صحبت کن", "subtitle": "ساختار درس‌ها در حال آماده‌سازی است", "chapters": [] },
@@ -24,10 +15,10 @@
   "home": {
     "dailyMission": { "title": "امروز فقط ۱۰ دقیقه", "description": "یک درس کوتاه + ۳ کارت مرور", "targetMinutes": 10 },
     "dailyDiscussion": { "topic": "What makes a good friend?", "translation": "چه چیزی یک نفر را به دوست خوب تبدیل می‌کند؟", "status": "preview" },
-    "market": { "title": "بازار توتیوار", "description": "امتیازها و جایزه‌ها؛ فعلاً پیش‌نمایش" }
+    "market": { "title": "بازار توتیوار", "description": "امتیازها، نشان‌ها و جایزه‌های مسیر یادگیری" }
   },
   "leitner": {
-    "note": "این مرور فقط برای تست رابط است؛ قوانین جعبه‌های هفت‌گانه هنوز نهایی نشده‌اند.",
+    "note": "واژه‌ها را به خاطر بسپار و مرتب مرور کن.",
     "cards": [
       { "id": "en-hello", "front": "Hello!", "back": "سلام!", "example": "Hello, I'm Sara." },
       { "id": "en-sister", "front": "Sister", "back": "خواهر", "example": "This is my sister." },
