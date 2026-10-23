@@ -6,6 +6,7 @@ import { readJson, projectRoot, validateSchema } from '../tools/validate.mjs';
 import { renderActivity, supportedActivities } from '../apps/learner-web/lesson-modules.js';
 import { advanceDeck, answerDeck, checkWordAnswer, coreItems, deckState, jumpDeck, resumeDeck, supplementaryItems } from '../apps/learner-web/word-review.js';
 import { evaluateResponse, practiceState, submitPractice } from '../apps/learner-web/practice-engine.js';
+import { auditLesson } from '../tools/audit-lessons.mjs';
 
 const contentRoot = join(projectRoot, 'content/language-pairs/fa-en');
 const load = (file) => readJson(join(contentRoot, file));
@@ -126,9 +127,11 @@ test('sentence transformations have a single active sentence and a working free 
   const activity = load('lessons/a1-1.json').sections[1].activities[0];
   const context = { lessonId: 'A1-1', index: 0, e: String, en: String, i: () => '', progress: { transformChoices: {}, transformStages: {}, practiceStates: {} } };
   const first = renderActivity(activity, context);
-  assert.match(first, /How are you\?/);
+  assert.match(first, /Good morning!/);
   assert.doesNotMatch(first, /I'm not okay\./, 'other sentences stay hidden until selected');
-  context.progress.transformChoices['A1-1:hello-transform'] = 3;
+  context.progress.transformChoices['A1-1:hello-transform'] = 1;
+  assert.match(renderActivity(activity, context), /How are you\?/);
+  context.progress.transformChoices['A1-1:hello-transform'] = 4;
   assert.match(renderActivity(activity, context), /I'm not okay\./);
   context.progress.transformStages['A1-1:hello-transform'] = 'practice';
   assert.match(renderActivity(activity, context), /data-practice-form=/);
@@ -138,6 +141,41 @@ test('sentence transformations have a single active sentence and a working free 
   assert.equal(evaluateResponse(activity.tasks[1].assessment, 'You are okay.').ok, false);
   assert.match(evaluateResponse(activity.tasks[1].assessment, 'You are okay.').feedback, /خبری/);
   assert.equal(evaluateResponse(activity.tasks[1].assessment, 'Are you okay?').ok, true);
+  assert.equal(evaluateResponse(activity.tasks[2].assessment, "No, I'm not.").ok, true);
+  assert.equal(evaluateResponse(activity.tasks[2].assessment, 'Yes, I am.').ok, false);
+});
+
+test('first lesson retrieves morning greetings before the dialogue half', () => {
+  const lesson = load('lessons/a1-1.json');
+  const activity = lesson.sections[0].activities.find((entry) => entry.id === 'hello-intro-check');
+  assert.equal(activity.tasks.length, 2);
+  assert.equal(evaluateResponse(activity.tasks[0].assessment, 'Good morning! How are you?').ok, true);
+  assert.equal(evaluateResponse(activity.tasks[0].assessment, 'Hello! How are you?').ok, false);
+  assert.equal(evaluateResponse(activity.tasks[0].assessment, 'Good morning!').ok, false);
+  assert.equal(evaluateResponse(activity.tasks[1].assessment, "Hello! I'm Nima. What's your name?").ok, true);
+  const context = { lessonId: 'A1-1', index: 3, e: String, en: String, i: () => '', progress: { practiceStates: {} } };
+  const html = renderActivity(activity, context);
+  assert.doesNotMatch(html, /class="practice-source"/, 'a new task no longer supplies the complete answer as its source');
+});
+
+test('lesson audit identifies missing downstream production and keeps supplementary phrases optional', () => {
+  const lesson = load('lessons/a1-1.json');
+  const result = auditLesson(lesson);
+  assert.deepEqual(result.errors, []);
+  assert.equal(result.coreCount, 8);
+  assert.equal(result.supplementaryCount, 3);
+  const morning = result.rows.find((row) => row.phrase === 'Good morning!');
+  assert.ok(morning.guided.includes('hello-intro-check'));
+  assert.ok(morning.guided.includes('hello-guided-talk'));
+  assert.ok(morning.independent.includes('hello-write'));
+  const changed = structuredClone(lesson);
+  const final = changed.sections[1].activities.find((activity) => activity.id === 'hello-write');
+  final.assessment.required = final.assessment.required.filter((group) => !group.any?.includes('good morning'));
+  assert.ok(auditLesson(changed).errors.some((error) => error.includes('Good morning') && error.includes('independent')));
+  const loose = structuredClone(lesson);
+  const morningRequirement = loose.sections[1].activities.find((activity) => activity.id === 'hello-write').assessment.required[0];
+  morningRequirement.any.push('hello');
+  assert.ok(auditLesson(loose).errors.some((error) => error.includes('Good morning') && error.includes('alternatives')));
 });
 
 test('guided dialogue supports feedback, correction, alternate names, mastery and revised tasks', () => {
@@ -147,6 +185,12 @@ test('guided dialogue supports feedback, correction, alternate names, mastery an
   assert.match(evaluateResponse(key, "Your name is Ali. What's your name?").feedback, /Your name is/);
   assert.equal(evaluateResponse(key, "I'm Leila. What's your name?").ok, true);
   assert.equal(evaluateResponse(activity.turns[0].assessment, 'Good morning! I am fine, thanks. And you?').ok, true);
+  assert.equal(evaluateResponse(activity.turns[0].assessment, 'Hello! I am fine, thanks. And you?').ok, false, 'the morning greeting is actively retrieved');
+  assert.equal(evaluateResponse(activity.turns[0].assessment, 'Good morning! I am fine, thanks. How are you?').ok, false, 'practice the short return question');
+  const html = renderActivity(activity, { lessonId: 'A1-1', index: 2, e: String, en: String, i: () => '', progress: { practiceStates: {} } });
+  assert.match(html, /practice-listening/);
+  assert.match(html, /practice-audio-fallback/);
+  assert.match(html, /data-speak="Good morning! How are you\?"/);
   let state = practiceState(null, activity);
   const rejected = submitPractice(state, activity, 'Good morning!',);
   assert.equal(rejected.result.ok, false);
@@ -157,7 +201,7 @@ test('guided dialogue supports feedback, correction, alternate names, mastery an
   state = submitPractice(state, activity, "I'm Omar. What's your name?").state;
   state = submitPractice(state, activity, 'Nice to meet you too, goodbye!').state;
   assert.equal(state.answers.length, activity.turns.length);
-  assert.equal(practiceState(state, { ...activity, practiceRevision: 3 }).answers.length, 0, 'new exercise revision invalidates old answers');
+  assert.equal(practiceState(state, { ...activity, practiceRevision: 4 }).answers.length, 0, 'new exercise revision invalidates old answers');
 });
 
 test('transfer and independent production require communication, not arbitrary submissions', () => {
@@ -167,7 +211,8 @@ test('transfer and independent production require communication, not arbitrary s
   assert.equal(evaluateResponse(transfer.turns[0].assessment, "Hi, I'm good, thanks. My name is Leila.").ok, true);
   const production = lesson.sections[1].activities.find((entry) => entry.type === 'free-write');
   assert.equal(evaluateResponse(production.assessment, 'Hello!').ok, false);
-  assert.equal(evaluateResponse(production.assessment, "Hello! How are you? I'm Nima. What's your name? Bye!").ok, true);
+  assert.equal(evaluateResponse(production.assessment, "Good morning! How are you? I'm Nima. What's your name? Bye!").ok, false, 'both a response and a reciprocal question are necessary');
+  assert.equal(evaluateResponse(production.assessment, "Good morning! How are you? I'm fine, thanks. And you? I'm Nima. What's your name? Nice to meet you! Bye!").ok, true);
 });
 
 test('supplementary phrases are excluded from all mandatory vocabulary stages', () => {

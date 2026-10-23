@@ -247,6 +247,12 @@ p, .tiny, .small, .body-sm, .caps, .eyebrow, .brand-caption, .stat-label,
 .practice-source > span { font-size: 15px; color: #547c5d; font-weight: 800; }
 .practice-source > div { direction: ltr; text-align: left; display: flex; align-items: center; justify-content: space-between; gap: 11px; margin-top: 8px; }
 .practice-source .en { font-size: 20px; font-weight: 800; color: #285b40; }
+.practice-listening { background: #eaf1f8; }
+.practice-audio-prompt { display: flex; align-items: center; justify-content: flex-start; gap: 12px; color: #325d75; }
+.practice-audio-prompt .sound-btn { width: 45px; height: 45px; border: 1px solid #bdd5e1; background: #fff; }
+.practice-audio-fallback { margin-top: 10px; color: #486b7b; font-size: 14px; }
+.practice-audio-fallback summary { cursor: pointer; }
+.practice-audio-fallback > div { margin-top: 9px; direction: ltr; text-align: left; }
 .practice-instruction { display: block; font-size: 17px; line-height: 1.8; color: #345e47; font-weight: 800; margin-bottom: 10px; }
 .practice-form { display: flex; flex-wrap: wrap; gap: 11px; align-items: stretch; }
 .practice-form input { flex: 1; min-width: 210px; min-height: 53px; border: 2px solid #c7dec9; border-radius: 13px; padding: 11px 15px; font-size: 19px; text-align: left; background: #fff; }
