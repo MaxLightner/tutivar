@@ -47,7 +47,7 @@ const ICONS = {
 const icon = (name, size = '') => `<span class="icon ${size}"><svg aria-hidden="true" viewBox="0 0 24 24">${ICONS[name] || ICONS.star}</svg></span>`;
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const en = (text) => `<span class="en" lang="en" dir="ltr">${escapeHtml(text)}</span>`;
-const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
+const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
 function readProgress() { try { const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); return { ...defaultProgress(), ...saved, settings: { ...defaultProgress().settings, ...(saved.settings || {}) } }; } catch { return defaultProgress(); } }
 const progress = readProgress();
 // Historical completion records predate skill evidence. Preserve them in storage,
@@ -247,6 +247,32 @@ function submitWordAnswer(key, input) {
   if (result.correct === true && result.state.phase === 'done') showToast('همهٔ کارت‌های آزمون را درست جواب دادی.');
 }
 async function speech(text) { if (!('speechSynthesis' in window)) { showToast('پخش صوت در این مرورگر پشتیبانی نمی‌شود.'); return; } window.speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance(text); utterance.lang = 'en-US'; utterance.rate = .84; window.speechSynthesis.speak(utterance); }
+function speakPair(lines) {
+  if (!('speechSynthesis' in window)) { showToast('پخش صوت در این مرورگر پشتیبانی نمی‌شود.'); return; }
+  window.speechSynthesis.cancel();
+  for (const line of lines) {
+    const utterance = new SpeechSynthesisUtterance(line.en || line);
+    utterance.lang = 'en-US';
+    utterance.rate = .84;
+    window.speechSynthesis.speak(utterance);
+  }
+}
+function currentDialoguePair(key) {
+  const activity = lessonActivity(key);
+  if (activity?.type !== 'dialogue' || !activity.lines?.length) return [];
+  const maximum = Math.max(0, activity.lines.length - 2);
+  const step = Math.max(0, Math.min(maximum, Number(progress.dialogueSteps?.[key]) || 0));
+  return activity.lines.slice(step, step + 2);
+}
+function moveDialogue(key, newStep) {
+  const activity = lessonActivity(key);
+  if (activity?.type !== 'dialogue' || !activity.lines?.length) return;
+  const maximum = Math.max(0, activity.lines.length - 2);
+  progress.dialogueSteps[key] = Math.max(0, Math.min(maximum, Number(newStep) || 0));
+  persist();
+  updateInline();
+  speakPair(currentDialoguePair(key));
+}
 let swipeStart = null;
 function wordSwipeStart(event) {
   const card = event.target.closest('[data-word-swipe]');
@@ -276,7 +302,7 @@ function wordKeydown(event) {
   document.querySelector('[data-word-swipe]')?.focus({ preventScroll: true });
 }
 function onClick(event) {
-  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-finish-section],button[data-review],button[data-planned],button[data-speak],button[data-match],button[data-build-token],button[data-build-reset],button[data-roleplay],button[data-word-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-practice-reset],button[data-quick-skip]');
+  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-finish-section],button[data-review],button[data-planned],button[data-speak],button[data-match],button[data-build-token],button[data-build-reset],button[data-roleplay],button[data-word-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
   if (!el) return;
   if (el.dataset.nav) { modal = null; navigate(el.dataset.nav); return; }
   if (el.dataset.openLesson) { modal = null; activePerson = 0; ownerIdx = 0; objectIdx = 0; navigate('lesson', el.dataset.openLesson, el.dataset.startSection || null); return; }
@@ -316,6 +342,27 @@ function onClick(event) {
     state[el.dataset.labKind] = Number(el.dataset.labIndex);
     progress.sentenceLabs[key] = state; persist(); updateInline(); return;
   }
+  if (el.dataset.exchangeKey) {
+    const key = el.dataset.exchangeKey;
+    const activity = lessonActivity(key);
+    if (activity?.type !== 'exchange-lab') return;
+    const current = progress.exchangeChoices[key] || { pair: 0, variant: 0 };
+    const pair = el.dataset.exchangePair !== undefined ? Number(el.dataset.exchangePair) : current.pair;
+    const validPair = Math.max(0, Math.min(activity.pairs.length - 1, pair));
+    const variant = el.dataset.exchangePair !== undefined ? 0 : Number(el.dataset.exchangeVariant);
+    const validVariant = Math.max(0, Math.min(activity.pairs[validPair].variants.length - 1, variant));
+    progress.exchangeChoices[key] = { pair: validPair, variant: validVariant };
+    persist(); updateInline();
+    const entry = activity.pairs[validPair];
+    speakPair([entry.question, entry.variants[validVariant].en]);
+    return;
+  }
+  if (el.dataset.dialogueKey) {
+    const key = el.dataset.dialogueKey;
+    moveDialogue(key, (Number(progress.dialogueSteps[key]) || 0) + Number(el.dataset.dialogueNav));
+    return;
+  }
+  if (el.dataset.dialoguePlay) { speakPair(currentDialoguePair(el.dataset.dialoguePlay)); return; }
   if (el.dataset.transformKey) { progress.transformChoices[el.dataset.transformKey] = Number(el.dataset.transformIndex); persist(); updateInline(); return; }
   if (el.dataset.transformStageKey) { progress.transformStages[el.dataset.transformStageKey] = el.dataset.transformStage; persist(); updateInline(); return; }
   if (el.dataset.practiceReset) { delete progress.practiceStates[el.dataset.practiceReset]; persist(); updateInline(); return; }
@@ -401,6 +448,10 @@ function onClick(event) {
   }
 }
 function onChange(event) {
+  if (event.target.dataset.dialogueSlider) {
+    moveDialogue(event.target.dataset.dialogueSlider, Number(event.target.value));
+    return;
+  }
   if (event.target.dataset.wordSlider) {
     const key = event.target.dataset.wordSlider;
     const activity = lessonVocabulary(key);

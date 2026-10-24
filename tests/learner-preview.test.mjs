@@ -86,7 +86,7 @@ test('first lesson activities render with separate content, including interactio
   const context = {
     lessonId: lesson.id, index: 0,
     e: (value) => String(value), en: (value) => `<span>${value}</span>`, i: () => '<svg></svg>',
-    progress: { matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, quizAnswers: {}, written: {}, showDialogueTranslation: true, wordProgress: {}, phraseChoices: {}, sentenceLabs: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, practiceStates: {}, assessments: {} }
+    progress: { matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, quizAnswers: {}, written: {}, showDialogueTranslation: true, wordProgress: {}, phraseChoices: {}, sentenceLabs: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {} }
   };
   for (const section of lesson.sections) {
     for (const activity of section.activities) {
@@ -101,11 +101,13 @@ test('first lesson activities render with separate content, including interactio
   assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'phrase-composer'), context), /data-phrase-key=/);
   assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'sentence-lab'), context), /data-lab-key=/);
   assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'response-practice'), context), /data-practice-form=/);
-  assert.match(renderActivity(lesson.sections[1].activities.find((activity) => activity.type === 'sentence-transform'), context), /data-transform-key=/);
+  assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'sentence-transform'), context), /data-transform-key=/);
+  assert.match(renderActivity(lesson.sections[1].activities[0], context), /data-exchange-key=/);
   assert.match(renderActivity(lesson.sections[1].activities.find((activity) => activity.type === 'guided-dialogue'), context), /data-practice-form=/);
   assert.match(renderActivity(lesson.sections[1].activities.find((activity) => activity.type === 'dialogue-transfer'), context), /data-practice-form=/);
-  assert.equal(lesson.sections.reduce((sum, section) => sum + section.activities.length, 0), 9, 'one concise foundation and one sentence-first conversation half');
-  assert.deepEqual(lesson.sections[1].activities.map((item) => item.type), ['sentence-transform', 'dialogue', 'guided-dialogue', 'dialogue-transfer', 'free-write'], 'transformations precede dialogue');
+  assert.equal(lesson.sections.reduce((sum, section) => sum + section.activities.length, 0), 14, 'expanded examples and retrieval activities, without more core words');
+  assert.equal(lesson.sections[0].activities.at(-1).type, 'sentence-transform', 'single-sentence transformations conclude the first half');
+  assert.deepEqual(lesson.sections[1].activities.map((item) => item.type), ['exchange-lab', 'response-practice', 'dialogue', 'response-practice', 'dialogue', 'response-practice', 'guided-dialogue', 'dialogue-transfer', 'free-write'], 'question/answer exchange starts the conversation half');
   assert.ok(lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary').items.every((entry) => entry.examples.length === 3));
   assert.ok(Array.isArray(lesson.orientation.prerequisites));
   assert.equal(lesson.visual.src, null);
@@ -124,7 +126,7 @@ test('first lesson activities render with separate content, including interactio
 });
 
 test('sentence transformations have a single active sentence and a working free response', () => {
-  const activity = load('lessons/a1-1.json').sections[1].activities[0];
+  const activity = load('lessons/a1-1.json').sections[0].activities.at(-1);
   const context = { lessonId: 'A1-1', index: 0, e: String, en: String, i: () => '', progress: { transformChoices: {}, transformStages: {}, practiceStates: {} } };
   const first = renderActivity(activity, context);
   assert.match(first, /Good morning!/);
@@ -143,6 +145,53 @@ test('sentence transformations have a single active sentence and a working free 
   assert.equal(evaluateResponse(activity.tasks[1].assessment, 'Are you okay?').ok, true);
   assert.equal(evaluateResponse(activity.tasks[2].assessment, "No, I'm not.").ok, true);
   assert.equal(evaluateResponse(activity.tasks[2].assessment, 'Yes, I am.').ok, false);
+  assert.equal(evaluateResponse(activity.tasks[3].assessment, "I'm okay.").ok, true);
+  assert.equal(evaluateResponse(activity.tasks[4].assessment, 'Yes, I am.').ok, true);
+});
+
+test('production begins with two-turn question and answer, switching positive and negative', () => {
+  const lesson = load('lessons/a1-1.json');
+  const exchange = lesson.sections[1].activities[0];
+  const context = { lessonId: lesson.id, index: 0, e: String, en: String, i: () => '', progress: { exchangeChoices: {} } };
+  const positive = renderActivity(exchange, context);
+  assert.equal((positive.match(/class="exchange-bubble /g) || []).length, 2);
+  assert.match(positive, /How are you\?/);
+  assert.match(positive, /I'm fine, thanks\. And you\?/);
+  assert.doesNotMatch(positive, /I'm not okay/);
+  context.progress.exchangeChoices['A1-1:hello-exchanges'] = { pair: 0, variant: 1 };
+  const negative = renderActivity(exchange, context);
+  assert.match(negative, /I'm not okay/);
+  assert.doesNotMatch(negative, /I'm fine, thanks/);
+  context.progress.exchangeChoices['A1-1:hello-exchanges'] = { pair: 1, variant: 1 };
+  assert.match(renderActivity(exchange, context), /No, I'm not/);
+  const practice = lesson.sections[1].activities[1];
+  assert.equal(practice.tasks.length, 4);
+  assert.equal(evaluateResponse(practice.tasks[0].assessment, "I'm fine, thanks. And you?").ok, true);
+  assert.equal(evaluateResponse(practice.tasks[1].assessment, "No, I'm not.").ok, true);
+  assert.equal(evaluateResponse(practice.tasks[2].assessment, 'Yes, I am.').ok, true);
+});
+
+test('each dialogue timeline renders only two consecutive spoken lines and can scrub', () => {
+  const lesson = load('lessons/a1-1.json');
+  const dialogues = lesson.sections[1].activities.filter((activity) => activity.type === 'dialogue');
+  assert.equal(dialogues.length, 2, 'two distinct scenarios are modelled');
+  assert.ok(dialogues.reduce((sum, activity) => sum + activity.lines.length, 0) >= 16);
+  for (const dialogue of dialogues) {
+    const key = `${lesson.id}:${dialogue.id}`;
+    const context = { lessonId: lesson.id, index: 0, e: String, en: String, i: () => '', progress: { dialogueSteps: {}, showDialogueTranslation: true } };
+    const first = renderActivity(dialogue, context);
+    assert.match(first, /data-dialogue-slider=/);
+    assert.match(first, /data-dialogue-play=/);
+    assert.equal((first.match(/data-dialogue-line=/g) || []).length, 2, 'only two lines are present in DOM');
+    assert.match(first, new RegExp(dialogue.lines[0].speaker));
+    assert.ok(!first.includes(dialogue.lines[2].en), 'later lines cannot leak into the active two-line window');
+    context.progress.dialogueSteps[key] = dialogue.lines.length - 2;
+    const last = renderActivity(dialogue, context);
+    assert.equal((last.match(/data-dialogue-line=/g) || []).length, 2);
+    assert.ok(last.includes(dialogue.lines.at(-1).en));
+    assert.ok(!last.includes(dialogue.lines[0].en));
+    assert.match(last, /disabled aria-label="نوبت بعدی"/);
+  }
 });
 
 test('first lesson retrieves morning greetings before the dialogue half', () => {

@@ -12,6 +12,7 @@ const MODULE_LABELS = {
   'phrase-composer': 'ترکیب واژه‌ها', 'sentence-lab': 'جمله‌ساز پویا',
   'guided-dialogue': 'تمرین مکالمه',
   'response-practice': 'ساختن پاسخ',
+  'exchange-lab': 'سؤال و جواب',
   'sentence-transform': 'تبدیل جمله',
   'dialogue-transfer': 'مکالمه در موقعیت تازه'
 };
@@ -89,6 +90,19 @@ function practiceSequence(a, c) {
 function responsePractice(a, c) {
   return wrapper(`<p class="module-description">${c.e(a.description || '')}</p>${practiceSequence(a, c)}`, a, c.index, c.e, 'module-response-practice');
 }
+function exchangeLab(a, c) {
+  const key = `${c.lessonId}:${a.id}`;
+  const saved = c.progress.exchangeChoices?.[key] || { pair: 0, variant: 0 };
+  const pairIndex = Math.max(0, Math.min(a.pairs.length - 1, Number(saved.pair) || 0));
+  const pair = a.pairs[pairIndex];
+  const variantIndex = Math.max(0, Math.min(pair.variants.length - 1, Number(saved.variant) || 0));
+  const variant = pair.variants[variantIndex];
+  const question = `<div class="exchange-bubble question-bubble"><span class="exchange-speaker">نفر اول · سؤال</span><div class="exchange-spoken">${c.en(pair.question)}${soundButton(pair.question, c.e, c.i)}</div><small>${c.e(pair.questionFa)}</small></div>`;
+  const answer = `<div class="exchange-bubble answer-bubble"><span class="exchange-speaker">نفر دوم · پاسخ</span><div class="exchange-spoken">${c.en(variant.en)}${soundButton(variant.en, c.e, c.i)}</div><small>${c.e(variant.fa)}</small></div>`;
+  const pairNav = `<div class="exchange-pair-tabs" role="group" aria-label="انتخاب سؤال">${a.pairs.map((entry, index) => `<button type="button" class="exchange-pair-btn ${index === pairIndex ? 'active' : ''}" aria-pressed="${index === pairIndex}" data-exchange-key="${c.e(key)}" data-exchange-pair="${index}">سؤال ${index + 1}</button>`).join('')}</div>`;
+  const variants = `<div class="exchange-variants" role="group" aria-label="مقایسه پاسخ‌ها">${pair.variants.map((entry, index) => `<button type="button" class="exchange-variant-btn ${index === variantIndex ? 'active' : ''}" aria-pressed="${index === variantIndex}" data-exchange-key="${c.e(key)}" data-exchange-variant="${index}">${c.e(entry.label)}</button>`).join('')}</div>`;
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p>${pairNav}<div class="exchange-stage">${question}${answer}</div>${variants}<p class="exchange-note">${c.e(variant.note || '')}</p>`, a, c.index, c.e, 'module-exchange-lab');
+}
 function sentenceTransform(a, c) {
   const key = `${c.lessonId}:${a.id}`;
   const stage = c.progress.transformStages?.[key] || 'explore';
@@ -132,7 +146,14 @@ function quizSet(a, c) {
   }).join(''), a, c.index, c.e, 'module-quizzes');
 }
 function dialogue(a, c) {
-  return wrapper(`<div class="module-tools"><button class="outline-btn" data-action="toggle-translations">${c.progress.showDialogueTranslation ? 'پنهان‌کردن ترجمه' : 'نمایش ترجمه'}</button></div><div class="dialogue">${a.lines.map((line) => `<div class="dialogue-line"><span class="speaker-avatar">${c.e(line.speaker.slice(0, 1))}</span><div class="bubble"><strong class="speaker-name">${c.e(line.speaker)}</strong><div class="spoken-line">${c.en(line.en)}${soundButton(line.en, c.e, c.i)}</div>${c.progress.showDialogueTranslation ? `<p>${c.e(line.fa)}</p>` : ''}</div></div>`).join('')}</div>`, a, c.index, c.e);
+  const key = `${c.lessonId}:${a.id}`;
+  const maxStep = Math.max(0, a.lines.length - 2);
+  const stored = Number(c.progress.dialogueSteps?.[key]);
+  const step = Number.isFinite(stored) ? Math.max(0, Math.min(maxStep, stored)) : 0;
+  const visible = a.lines.slice(step, step + 2);
+  const transcript = visible.map((line) => `<div class="dialogue-line" data-dialogue-line="true"><span class="speaker-avatar">${c.e(line.speaker.slice(0, 1))}</span><div class="bubble"><strong class="speaker-name">${c.e(line.speaker)}</strong><div class="spoken-line">${c.en(line.en)}${soundButton(line.en, c.e, c.i)}</div>${c.progress.showDialogueTranslation ? `<p>${c.e(line.fa)}</p>` : ''}</div></div>`).join('');
+  const scrubber = `<div class="dialogue-timeline"><div class="dialogue-timeline-top"><strong>جمله‌های ${step + 1} و ${Math.min(step + 2, a.lines.length)} از ${a.lines.length}</strong><span>نوار را بکش تا دو نوبت بعدی دیده و خوانده شوند</span></div><div class="dialogue-timeline-controls"><button type="button" class="dialogue-nav" data-dialogue-key="${c.e(key)}" data-dialogue-nav="-1" ${step === 0 ? 'disabled' : ''} aria-label="نوبت قبلی">‹</button><input type="range" data-dialogue-slider="${c.e(key)}" min="0" max="${maxStep}" step="1" value="${step}" aria-label="نوار زمان مکالمه؛ جابه‌جایی بین ${maxStep + 1} نوبت"><button type="button" class="dialogue-nav" data-dialogue-key="${c.e(key)}" data-dialogue-nav="1" ${step === maxStep ? 'disabled' : ''} aria-label="نوبت بعدی">›</button></div><button type="button" class="dialogue-play outline-btn" data-dialogue-play="${c.e(key)}">${c.i('sound')} پخش دو جملهٔ روی صفحه</button></div>`;
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="module-tools"><button class="outline-btn" data-action="toggle-translations">${c.progress.showDialogueTranslation ? 'پنهان‌کردن ترجمه' : 'نمایش ترجمه'}</button></div><div class="dialogue dialogue-window" aria-live="polite">${transcript}</div>${scrubber}`, a, c.index, c.e, 'module-dialogue-timeline');
 }
 function roleplay(a, c) {
   const key = `${c.lessonId}:${a.id}`;
@@ -154,6 +175,7 @@ const renderers = {
   'quiz-set': quizSet, dialogue, roleplay, 'free-write': freeWrite,
   'phrase-composer': phraseComposer, 'sentence-lab': sentenceLab,
   'guided-dialogue': guidedDialogue, 'response-practice': responsePractice,
+  'exchange-lab': exchangeLab,
   'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer
 };
 export function renderActivity(activity, context) {

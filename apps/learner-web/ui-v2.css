@@ -296,6 +296,36 @@ p, .tiny, .small, .body-sm, .caps, .eyebrow, .brand-caption, .stat-label,
 .quiz-question + .quiz-question { border-top: 1px solid #e3e9e1; padding-top: 24px; margin-top: 24px; }
 .question-number { display: inline-block; padding: 4px 11px; border-radius: 20px; background: #f0f5e8; color: #4b7e60; font-size: 14px; font-weight: 800; margin-bottom: 9px; }
 .module-tools { display: flex; justify-content: flex-end; margin-bottom: 10px; }
+.exchange-pair-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 17px 0; }
+.exchange-pair-btn { border: 1px solid #cfe1d0; background: #f2f7ef; border-radius: 999px; color: #416b50; font-weight: 800; padding: 11px 16px; min-height: 42px; }
+.exchange-pair-btn.active { background: #2e7552; color: #fff; border-color: #2e7552; }
+.exchange-stage { display: grid; gap: 12px; direction: ltr; }
+.exchange-bubble { max-width: 92%; padding: 16px 19px; border-radius: 21px; background: #eaf4e9; border: 1px solid #d4e8d5; }
+.exchange-bubble.answer-bubble { justify-self: end; background: #f0ecfa; border-color: #e3dcf5; }
+.exchange-speaker { display: block; direction: rtl; text-align: left; color: #5c8065; font-size: 13px; font-weight: 800; }
+.answer-bubble .exchange-speaker { color: #786998; }
+.exchange-spoken { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 10px 0; text-align: left; }
+.exchange-spoken .en { color: #244d3a; font-size: clamp(19px, 3vw, 24px); font-weight: 850; line-height: 1.5; }
+.exchange-bubble small { display: block; direction: rtl; color: #617866; font-size: 15px; text-align: right; }
+.exchange-variants { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
+.exchange-variant-btn { padding: 12px 14px; min-height: 49px; background: #f4f7f2; color: #526b56; border: 1px solid #dbe6d8; border-radius: 13px; font-weight: 800; }
+.exchange-variant-btn.active { background: #e0f1da; color: #2f724a; border-color: #8dbb82; }
+.exchange-note { margin-top: 14px; background: #f7f9f3; border-radius: 12px; padding: 12px 15px; color: #55715a; font-size: 15px; line-height: 1.9; }
+.dialogue-window { min-height: 176px; padding: 17px; border: 1px solid #e0ebda; border-radius: 20px; background: linear-gradient(150deg, #fdfefd, #f3f9ef); }
+.dialogue-window .dialogue-line { animation: dialogue-appear .22s ease-out; }
+.dialogue-window .bubble { flex: 1; max-width: calc(100% - 55px); }
+.dialogue-window .bubble .en { direction: ltr; text-align: left; font-size: clamp(16px, 2.7vw, 19px); }
+.dialogue-timeline { border: 1px solid #dce7dc; background: #f9fbf7; border-radius: 18px; padding: 17px; margin-top: 15px; }
+.dialogue-timeline-top { display: flex; justify-content: space-between; gap: 8px 15px; flex-wrap: wrap; color: #506e58; font-size: 14px; }
+.dialogue-timeline-top span { color: #7b9382; font-size: 13px; }
+.dialogue-timeline-controls { display: flex; direction: ltr; gap: 13px; align-items: center; margin: 13px 0; }
+.dialogue-timeline-controls input[type="range"] { flex: 1; min-width: 0; accent-color: #2c7952; cursor: grab; height: 27px; }
+.dialogue-timeline-controls input[type="range"]:active { cursor: grabbing; }
+.dialogue-nav { width: 44px; height: 44px; flex: 0 0 44px; border-radius: 13px; border: 1px solid #c5ddc4; color: #2c6d49; background: #fff; font-size: 29px; }
+.dialogue-nav:disabled { opacity: .35; cursor: not-allowed; }
+.dialogue-play { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; }
+@keyframes dialogue-appear { from { opacity: .3; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .dialogue-window .dialogue-line { animation: none; } }
 .spoken-line { display: flex; gap: 9px; align-items: center; justify-content: space-between; }
 .speaker-name { font-size: 15px; color: #58715c; }
 .roleplay-progress { display: flex; gap: 7px; margin-bottom: 19px; }
@@ -321,6 +351,12 @@ button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3p
   .hero-art { height: 145px; }
 }
 @media(max-width: 680px) {
+  .exchange-bubble { max-width: 95%; padding: 12px; }
+  .exchange-spoken .en { font-size: 18px; }
+  .exchange-variant-btn { font-size: 14px; }
+  .dialogue-window { padding: 12px; }
+  .dialogue-timeline { padding: 12px; }
+  .dialogue-timeline-top span { width: 100%; }
   .transform-card { padding: 17px; }
   .transform-mode { font-size: 15px; padding: 8px 12px; }
   .practice-sequence { padding: 13px; }

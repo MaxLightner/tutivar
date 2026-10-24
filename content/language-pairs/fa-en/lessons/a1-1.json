@@ -1,10 +1,10 @@
 {
   "id": "A1-1",
-  "revision": 5,
+  "revision": 6,
   "status": "draft",
   "title": "معرفی خود و شروع گفت‌وگو",
   "goal": "در یک برخورد کوتاه متناسب با ساعت سلام کنی، احوال بپرسی، خودت را معرفی کنی و گفت‌وگو را تمام کنی.",
-  "duration": "حدود ۱۵ تا ۲۰ دقیقه",
+  "duration": "حدود ۲۵ تا ۳۵ دقیقه با تمرین‌های رفت‌وبرگشتی",
   "feature": "مکالمه نوبتی",
   "archetype": "conversation",
   "teachingModel": {"primary":"K4","support":"K3"},
@@ -28,8 +28,8 @@
     {
       "id": "foundation",
       "label": "از کلمه تا جمله",
-      "intro": "عبارت‌های ضروری را بشناس، بعد همان‌ها را در سلام صبحگاهی و معرفی خودت به کار ببر. کارت‌هایی که بلدی را سریع رد کن.",
-      "masteryActivityIds": ["hello-intro-check"],
+      "intro": "عبارت‌های ضروری را بشناس، با آن‌ها جمله بساز و در پایان شکل مثبت، منفی و سؤالی یک جمله را جداگانه تمرین کن. کارت‌هایی که بلدی را سریع رد کن.",
+      "masteryActivityIds": ["hello-intro-check", "hello-transform"],
       "activities": [
         {
           "id": "hello-words",
@@ -115,74 +115,127 @@
               }
             }
           ]
+        },
+        {
+          "id": "hello-transform",
+          "type": "sentence-transform",
+          "practiceRevision": 3,
+          "title": "پایان بخش اول: یک جمله؛ چند شکل",
+          "description": "هنوز وارد مکالمه نشده‌ایم. هر بار فقط یک جمله را ببین: مثبت، منفی یا پرسشی. تفاوت معنا و ترتیب کلمات را کشف کن.",
+          "practiceTitle": "حالا خودت جمله را تغییر بده",
+          "practiceIntro": "از روی یک جمله، شکل دیگرش را بنویس؛ بدون گزینه و جای‌خالی.",
+          "completion": "جمله‌های ساده را می‌توانی خبری، منفی و سؤالی کنی؛ بخش دوم با سؤال‌وجواب واقعی شروع می‌شود.",
+          "forms": [
+            {"label":"سلام صبح","en":"Good morning!","fa":"صبح بخیر!","rule":"برای دیدار در صبح است؛ بعد از سلام می‌توانی احوال بپرسی."},
+            {"label":"پرسیدن حال","en":"How are you?","fa":"حالت چطوره؟","rule":"سؤال دربارهٔ حال طرف مقابل است؛ پاسخ معمول با I'm شروع می‌شود."},
+            {"label":"جواب مثبت","en":"I'm fine, thanks.","fa":"خوبم، ممنون.","rule":"I'm کوتاه‌شدهٔ I am است؛ در پاسخ مثبت می‌گویی حالت خوب است."},
+            {"label":"خبر مثبت","en":"I'm okay.","fa":"حالم خوبه.","rule":"فاعل I و فعل am دربارهٔ خودت خبر می‌دهند."},
+            {"label":"خبر منفی","en":"I'm not okay.","fa":"حالم خوب نیست.","rule":"با افزودن not بعد از am معنی جمله برعکس می‌شود."},
+            {"label":"سؤال","en":"Are you okay?","fa":"حالت خوبه؟","rule":"برای سؤال از مخاطب، Are قبل از you می‌آید."},
+            {"label":"جواب بله","en":"Yes, I am.","fa":"بله، خوبم.","rule":"پاسخ مثبت کوتاه به Are you ...? است."},
+            {"label":"جواب نه","en":"No, I'm not.","fa":"نه، خوب نیستم.","rule":"پاسخ منفی کوتاه به Are you ...? است."}
+          ],
+          "tasks": [
+            {"source":"I'm okay.","task":"جمله را منفی کن؛ یعنی «حالم خوب نیست».","hint":"not بعد از am می‌آید.","example":"I'm not okay.","assessment":{"required":[{"any":["i'm not okay","i am not okay"],"feedback":"برای منفی‌کردنِ I'm okay، not را بعد از am بیاور."}],"success":"مثبت را منفی کردی."}},
+            {"source":"I'm okay.","task":"حالا همان حالت را از نفر مقابل بپرس: «حالت خوبه؟»","hint":"Are + you + okay?","example":"Are you okay?","assessment":{"required":[{"any":["are you okay"],"feedback":"سؤال را با Are you آغاز کن."}],"pitfalls":[{"any":["you are okay"],"feedback":"You are okay خبری است؛ سؤال با Are شروع می‌شود."}],"success":"از جملهٔ خبری سؤال ساختی."}},
+            {"source":"Are you okay?","task":"فرض کن حالت خوب نیست. کوتاه و منفی جواب بده.","hint":"No, I'm not.","example":"No, I'm not.","assessment":{"required":[{"any":["no i'm not","no i am not"],"feedback":"برای جواب کوتاه منفی بگو No, I'm not."}],"success":"جواب منفی کوتاه ساختی."}},
+            {"source":"I'm not okay.","task":"این بار جمله را مثبت کن: «حالم خوبه».","hint":"not را بردار.","example":"I'm okay.","assessment":{"required":[{"any":["i'm okay","i am okay"],"feedback":"در جملهٔ مثبت not وجود ندارد."}],"pitfalls":[{"any":["not okay"],"feedback":"برای جملهٔ مثبت not را حذف کن."}],"success":"منفی را به مثبت برگرداندی."}},
+            {"source":"Are you okay?","task":"این بار کوتاه و مثبت جواب بده.","hint":"Yes, I am.","example":"Yes, I am.","assessment":{"required":[{"any":["yes i am"],"feedback":"پاسخ مثبت کوتاه به Are you ...? عبارت Yes, I am. است."}],"success":"پاسخ مثبت کوتاه را هم تمرین کردی."}}
+          ]
         }
       ]
     },
     {
       "id": "production",
-      "label": "از دیالوگ تا تولید",
-      "intro": "از سلام صبحگاهی به یک سؤال و جواب می‌رسیم؛ جمله را مثبت، منفی و پرسشی کن. بعد همین عبارت‌ها را در مکالمه به کار ببر.",
-      "masteryActivityIds": ["hello-transform", "hello-guided-talk", "hello-transfer", "hello-write"],
+      "label": "از سؤال و جواب تا مکالمه",
+      "intro": "اینجا هر جمله پاسخی دارد و هر پاسخ می‌تواند یک سؤال تازه بسازد. ابتدا دو نفر را رفت‌وبرگشتی ببین؛ بعد پاسخ مثبت و منفی، دو مکالمه و تمرین‌های شنیدن و جواب‌دادن را انجام بده.",
+      "masteryActivityIds": ["hello-exchange-practice", "hello-guided-talk", "hello-transfer", "hello-write"],
       "activities": [
         {
-          "id": "hello-transform",
-          "type": "sentence-transform",
-          "practiceRevision": 2,
-          "title": "یک جمله؛ چند شکل و چند پاسخ",
-          "description": "هر بار فقط یک جمله را ببین. روی حالت‌های بالا بزن؛ شکل جمله، معنی و تلفظ آن عوض می‌شوند.",
-          "practiceTitle": "سه تغییر و پاسخ کوتاه با دست خودت",
-          "practiceIntro": "جاخالی و چهارگزینه‌ای نداریم؛ جملهٔ کامل را می‌سازی.",
-          "completion": "حالا می‌دانی not چطور نفی می‌سازد و Are you چطور سؤال می‌شود.",
-          "forms": [
-            {"label":"سلام صبح","en":"Good morning!","fa":"صبح بخیر!","rule":"این عبارت را هنگام دیدار در صبح به کار می‌بریم؛ می‌توانیم بعدش حال طرف مقابل را بپرسیم."},
-            {"label":"سؤال اول","en":"How are you?","fa":"حالت چطوره؟","rule":"در پاسخ، لازم نیست سؤال را تکرار کنی؛ حالت را بگو."},
-            {"label":"پاسخ","en":"I'm fine, thanks.","fa":"خوبم، ممنون.","rule":"I'm شکل کوتاه I am است. با یک جملهٔ مثبت جواب دادی."},
-            {"label":"مثبت","en":"I'm okay.","fa":"حالم خوبه.","rule":"درباره خودت خبر می‌دهی: I am / I'm + حالت."},
-            {"label":"منفی","en":"I'm not okay.","fa":"حالم خوب نیست.","rule":"فقط not اضافه شد؛ جمله همان جمله است، اما معنی برعکس شد."},
-            {"label":"سؤالی","en":"Are you okay?","fa":"حالت خوبه؟","rule":"حالا از طرف مقابل می‌پرسی؛ Are قبل از you می‌آید و ? در پایان سؤال قرار می‌گیرد."},
-            {"label":"پاسخ بله","en":"Yes, I am.","fa":"بله، خوبم.","rule":"برای جواب کوتاه مثبت به Are you ...? می‌توانی بگویی Yes, I am."},
-            {"label":"پاسخ نه","en":"No, I'm not.","fa":"نه، خوب نیستم.","rule":"برای جواب کوتاه منفی بگو No, I'm not. نیازی نیست جمله را کامل تکرار کنی."}
-          ],
-          "tasks": [
-            {
-              "source": "I'm okay.", "task": "همین جمله را دربارهٔ خودت منفی کن؛ یعنی «حالم خوب نیست».",
-              "hint": "I am + not + okay → I'm not okay.", "example": "I'm not okay.",
-              "assessment": {
-                "required": [{"any": ["i'm not okay", "i am not okay"], "feedback": "برای منفی کردنِ I'm okay، واژهٔ not را بعد از am بیاور.", "repair": "I'm okay. ← مثبت    |    I'm not okay. ← منفی"}],
-                "success": "با اضافه‌کردن not، خبرِ مثبت را به منفی تبدیل کردی."
-              }
-            },
-            {
-              "source": "I'm okay.", "task": "حالا همین مفهوم را از نفر مقابل سؤال کن: «حالت خوبه؟»",
-              "hint": "Are + you + okay?", "example": "Are you okay?",
-              "assessment": {
-                "required": [{"any": ["are you okay"], "feedback": "برای ساختن سؤال دربارهٔ مخاطب، با Are you شروع کن.", "repair": "I'm okay. ← خبری    |    Are you okay? ← پرسشی"}],
-                "pitfalls": [{"any": ["you are okay"], "feedback": "You are okay یک جملهٔ خبری است؛ در سؤال جای Are و you عوض می‌شود.", "repair": "Are you okay?"}],
-                "success": "درست است؛ از یک خبر، سؤال ساختی."
-              }
-            },
-            {
-              "source": "Are you okay?", "task": "فرض کن حالت خوب نیست. به این سؤال کوتاه و منفی جواب بده.",
-              "hint": "No, I'm not.", "example": "No, I'm not.",
-              "assessment": {
-                "required": [{"any": ["no i'm not", "no i am not"], "feedback": "برای پاسخ کوتاه منفی به Are you ...? بگو No, I'm not.", "repair": "Are you okay? ← No, I'm not."}],
-                "success": "به سؤالِ Are you ...? جواب منفی کوتاه دادی، بدون تکرار تمام جمله."
-              }
-            }
+          "id": "hello-exchanges", "type": "exchange-lab", "title": "یک سؤال، دو جور پاسخ",
+          "description": "در هر لحظه فقط یک رفت‌وبرگشت را ببین. روی «مثبت» و «منفی» بزن تا جواب و معنی عوض شود؛ بعد سؤال بعدی را انتخاب کن.",
+          "pairs": [
+            {"question":"How are you?","questionFa":"حالت چطوره؟","variants":[
+              {"label":"جواب مثبت","en":"I'm fine, thanks. And you?","fa":"خوبم، ممنون. تو چطوری؟","note":"حال خودت را گفتی و با And you? همان سؤال را برگرداندی."},
+              {"label":"جواب منفی","en":"I'm not okay. And you?","fa":"حالم خوب نیست. تو چطوری؟","note":"با not جمله منفی شد؛ همچنان می‌توانی سؤال را برگردانی."}
+            ]},
+            {"question":"Are you okay?","questionFa":"حالت خوبه؟","variants":[
+              {"label":"پاسخ بله","en":"Yes, I am.","fa":"بله، خوبم.","note":"به Are you ...? می‌توانی خیلی کوتاه Yes, I am. جواب بدهی."},
+              {"label":"پاسخ نه","en":"No, I'm not.","fa":"نه، خوب نیستم.","note":"No, I'm not. پاسخ کوتاه منفی است. با Yes, I'm not جواب نمی‌دهیم."}
+            ]},
+            {"question":"What's your name?","questionFa":"اسمت چیه؟","variants":[
+              {"label":"معرفی کوتاه","en":"I'm Ali. What's your name?","fa":"من علی‌ام. اسم تو چیه؟","note":"جواب دادی و پرسش نام را به طرف مقابل برگرداندی."},
+              {"label":"معرفی کامل","en":"My name is Ali. And you?","fa":"اسم من علی است. تو چی؟","note":"My name is ... روش دوم معرفی است؛ And you? در اینجا یعنی «اسم تو چیه؟»"}
+            ]},
+            {"question":"Good morning! How are you?","questionFa":"صبح بخیر! حالت چطوره؟","variants":[
+              {"label":"حال خوب","en":"Good morning! I'm fine, thanks. And you?","fa":"صبح بخیر! خوبم، ممنون. تو چطوری؟","note":"جواب سلام را هم می‌دهیم؛ خودِ سؤال نباید بی‌پاسخ بماند."},
+              {"label":"حال بد","en":"Good morning! I'm not okay. And you?","fa":"صبح بخیر! حالم خوب نیست. تو چطوری؟","note":"لازم نیست همیشه بگویی خوبم. منفی را متناسب با واقعیت انتخاب کن."}
+            ]}
+          ]
+        },
+        {
+          "id":"hello-exchange-practice","type":"response-practice","practiceRevision":1,
+          "title":"جواب بده، سؤال را برگردان","description":"این‌بار جواب را خودت بساز؛ هر موقعیت یک انتخاب معنایی متفاوت دارد.",
+          "completion":"چهار رفت‌وبرگشت با پاسخ مثبت و منفی را بدون گزینه ساختی.",
+          "tasks":[
+            {"incoming":"How are you?","speaker":"دوستت","task":"بگو خوبی، تشکر کن و دوباره از حال او بپرس.","hint":"I'm fine, thanks. + And you?","example":"I'm fine, thanks. And you?","assessment":{"required":[{"any":["i'm fine","i am fine","i'm good","i am good"],"feedback":"ابتدا بگو حالت خوب است."},{"any":["thanks","thank you"],"feedback":"یک تشکر کوتاه اضافه کن."},{"any":["and you"],"feedback":"سؤال را با And you? برگردان."}],"success":"جواب و سؤال بازگشتی را درست پیوند دادی."}},
+            {"incoming":"Are you okay?","speaker":"دوستت","task":"این بار حالت خوب نیست. کوتاه و منفی جواب بده.","hint":"No, I'm not.","example":"No, I'm not.","assessment":{"required":[{"any":["no i'm not","no i am not"],"feedback":"جواب کوتاه منفی No, I'm not. است."}],"pitfalls":[{"any":["yes"],"feedback":"در این موقعیت باید «نه» بگویی."}],"success":"منفی مناسب را انتخاب کردی."}},
+            {"incoming":"Are you okay?","speaker":"دوستت","task":"موقعیت عوض شد: الان حالت خوب است. کوتاه و مثبت جواب بده.","hint":"Yes, I am.","example":"Yes, I am.","assessment":{"required":[{"any":["yes i am"],"feedback":"این بار پاسخ مثبت Yes, I am. است."}],"pitfalls":[{"any":["not"],"feedback":"در پاسخ مثبت not لازم نیست."}],"success":"پاسخ مثبت و منفی را از هم تشخیص دادی."}},
+            {"incoming":"What's your name?","speaker":"همکلاسی","task":"با نام دلخواه خودت را معرفی کن و اسم طرف مقابل را هم بپرس.","hint":"I'm Nima. What's your name?","example":"I'm Nima. What's your name?","assessment":{"required":[{"patterns":["\\b(?:i'm|i am|my name is)\\s+(?!fine\\b|good\\b|okay\\b|not\\b|thanks\\b)[a-z]+\\b"],"feedback":"اسم خودت را با I'm ... یا My name is ... بگو."},{"any":["what's your name","what is your name","and you"],"feedback":"پرسش را به مخاطب برگردان."}],"success":"گفت‌وگو را بعد از معرفی متوقف نکردی."}}
           ]
         },
         {
           "id": "hello-dialogue",
           "type": "dialogue",
-          "title": "حالا این جمله‌ها را در گفت‌وگو بشنو",
+          "title": "مکالمهٔ اول: آشنایی صبحگاهی",
+          "description": "فقط دو جملهٔ پشت سر هم را ببین و گوش کن. با هر حرکت نوار یک جملهٔ تازه وارد مکالمه می‌شود.",
           "lines": [
             {"speaker":"Emma","en":"Good morning! How are you?","fa":"صبح بخیر! حالت چطوره؟"},
             {"speaker":"Ali","en":"Good morning! I'm fine, thanks. And you?","fa":"صبح بخیر! خوبم، ممنون. تو چطوری؟"},
             {"speaker":"Emma","en":"I'm fine, thanks. What's your name?","fa":"خوبم، ممنون. اسمت چیه؟"},
             {"speaker":"Ali","en":"I'm Ali. What's your name?","fa":"من علی‌ام. اسم تو چیه؟"},
             {"speaker":"Emma","en":"My name is Emma. Nice to meet you!","fa":"اسم من اِماست. از آشنایی خوشوقتم!"},
-            {"speaker":"Ali","en":"Nice to meet you, too! Bye!","fa":"من هم از آشنایی خوشوقتم! خداحافظ!"},
-            {"speaker":"Emma","en":"Bye!","fa":"خداحافظ!"}
+            {"speaker":"Ali","en":"Nice to meet you, too!","fa":"من هم از آشنایی خوشوقتم!"},
+            {"speaker":"Emma","en":"Bye, Ali!","fa":"خداحافظ علی!"},
+            {"speaker":"Ali","en":"Bye, Emma!","fa":"خداحافظ اِما!"}
+          ]
+        },
+        {
+          "id":"hello-dialogue-recall","type":"response-practice","practiceRevision":1,
+          "title":"بعد از شنیدن، خودت نوبت بعد را بگو",
+          "description":"مکالمهٔ اول را دیدی. حالا قبل از نوشتن، حدس بزن نفر مقابل چه جوابی لازم دارد.",
+          "completion":"سه نوبت اصلی مکالمه را از حافظه ساختی.",
+          "tasks":[
+            {"incoming":"Good morning! How are you?","speaker":"Emma","task":"جواب سلام صبحگاهی را بده؛ بگو خوبی، تشکر کن و سؤال را برگردان.","hint":"Good morning! I'm fine, thanks. And you?","example":"Good morning! I'm fine, thanks. And you?","assessment":{"required":[{"any":["good morning"],"feedback":"سلام صبحگاهی را پاسخ بده."},{"any":["i'm fine","i am fine","i'm good","i am good","i'm okay","i am okay"],"feedback":"حالت را بگو."},{"any":["and you"],"feedback":"حالا سؤال را با And you? برگردان."}],"success":"سه بخش نوبت اول را خودت ساختی."}},
+            {"incoming":"I'm fine, thanks. What's your name?","speaker":"Emma","task":"نام خودت را بگو و به جای متوقف‌شدن، نام او را هم بپرس.","hint":"I'm Ali. What's your name?","example":"I'm Ali. What's your name?","assessment":{"required":[{"patterns":["\\b(?:i'm|i am|my name is)\\s+(?!fine\\b|good\\b|okay\\b|not\\b|thanks\\b)[a-z]+\\b"],"feedback":"نام خودت را با I'm ... یا My name is ... بگو."},{"any":["what's your name","what is your name"],"feedback":"اسم مخاطب را هم بپرس."}],"success":"معرفی و سؤال را در یک نوبت گفتی."}},
+            {"incoming":"My name is Emma. Nice to meet you!","speaker":"Emma","task":"خوشوقتی را جواب بده و با نام او خداحافظی کن.","hint":"Nice to meet you, too! Bye, Emma!","example":"Nice to meet you, too! Bye, Emma!","assessment":{"required":[{"any":["nice to meet you"],"feedback":"خوشوقتی را جواب بده."},{"any":["bye","goodbye"],"feedback":"خداحافظی کن."},{"any":["emma"],"feedback":"از نام Emma در خداحافظی استفاده کن."}],"success":"مکالمه را طبیعی تمام کردی."}}
+          ]
+        },
+        {
+          "id":"hello-dialogue-contrast","type":"dialogue",
+          "title":"مکالمهٔ دوم: این بار جواب همیشه مثبت نیست",
+          "description":"دو نفر تازه آشنا می‌شوند. به تفاوت ترتیب سؤال‌ها و پاسخ مثبت و منفی توجه کن؛ نوار را با دست جلو ببر.",
+          "lines":[
+            {"speaker":"Sara","en":"Hello! What's your name?","fa":"سلام! اسمت چیه؟"},
+            {"speaker":"Nima","en":"I'm Nima. What's your name?","fa":"من نیما هستم. اسم تو چیه؟"},
+            {"speaker":"Sara","en":"My name is Sara. Nice to meet you!","fa":"اسم من سارا است. از آشنایی خوشوقتم!"},
+            {"speaker":"Nima","en":"Nice to meet you, too!","fa":"من هم از آشنایی خوشوقتم!"},
+            {"speaker":"Sara","en":"Are you okay?","fa":"حالت خوبه؟"},
+            {"speaker":"Nima","en":"No, I'm not. And you?","fa":"نه، خوب نیستم. تو چطور؟"},
+            {"speaker":"Sara","en":"Yes, I am. Thanks.","fa":"بله، خوبم. ممنون."},
+            {"speaker":"Nima","en":"Bye, Sara!","fa":"خداحافظ سارا!"},
+            {"speaker":"Sara","en":"Bye, Nima!","fa":"خداحافظ نیما!"}
+          ]
+        },
+        {
+          "id":"hello-contrast-practice","type":"response-practice","practiceRevision":1,
+          "title":"مقایسه کن: اگر جواب عوض شود، چه می‌گویی؟",
+          "description":"سؤال یکی است، اما شرایط تغییر می‌کند. هر بار پاسخی متناسب بساز.",
+          "completion":"توانستی با تغییر شرایط، پاسخ مثبت و منفی و سؤال مناسب را انتخاب کنی.",
+          "tasks":[
+            {"incoming":"Are you okay?","speaker":"Sara","task":"مثل نیما در مکالمهٔ دوم حالت خوب نیست. جواب منفی بده و از حال سارا هم بپرس.","hint":"No, I'm not. And you?","example":"No, I'm not. And you?","assessment":{"required":[{"any":["no i'm not","no i am not"],"feedback":"پاسخ منفی را با No, I'm not. شروع کن."},{"any":["and you"],"feedback":"سؤال را با And you? برگردان."}],"success":"پاسخ منفی را با سؤال بازگشتی ترکیب کردی."}},
+            {"incoming":"Are you okay?","speaker":"Sara","task":"برعکسِ قبل، حالت خوب است. با «بله» جواب بده و تشکر کن.","hint":"Yes, I am. Thanks.","example":"Yes, I am. Thanks.","assessment":{"required":[{"any":["yes i am"],"feedback":"این‌بار با Yes, I am. جواب بده."},{"any":["thanks","thank you"],"feedback":"تشکر را هم اضافه کن."}],"pitfalls":[{"any":["not"],"feedback":"این بار جوابت مثبت است؛ not را حذف کن."}],"success":"معنی سؤال همان بود؛ جواب را با توجه به وضعیت عوض کردی."}},
+            {"incoming":"I'm not okay.","speaker":"Nima","task":"دوستت گفته حالش خوب نیست. از او بپرس: «حالت خوبه؟»","hint":"Are you okay?","example":"Are you okay?","assessment":{"required":[{"any":["are you okay"],"feedback":"این سؤال را با Are you okay? می‌سازی."}],"pitfalls":[{"any":["you are okay"],"feedback":"You are okay خبر است؛ از او سؤال کن."}],"success":"از خبر منفی یک سؤال مناسب ساختی."}}
           ]
         },
         {
@@ -221,11 +274,11 @@
           ]
         },
         {
-          "id": "hello-transfer", "type": "dialogue-transfer", "practiceRevision": 1,
+          "id": "hello-transfer", "type": "dialogue-transfer", "practiceRevision": 2,
           "title": "یک تغییر کوچک؛ جواب تازه",
           "sceneTitle": "این بار طرف مقابل اول خودش را معرفی می‌کند",
           "description": "به جای حفظ‌کردن ترتیب دیالوگ قبلی، به اطلاعاتی که شنیدی واکنش بده. چون اسمش را گفته، دوباره اسمش را نپرس.",
-          "completion": "وقتی ترتیب گفت‌وگو عوض شد، توانستی واکنش مناسب بسازی.",
+          "completion": "وقتی ترتیب گفت‌وگو عوض شد، توانستی دو نوبت را با توجه به گفتهٔ مخاطب بسازی.",
           "turns": [{
             "speaker":"Sara", "incoming":"Hello! I'm Sara. How are you?", "task":"سلام کن، حالت را بگو و خودت را معرفی کن؛ نیازی نیست اسم او را بپرسی.",
             "hint":"Hello! I'm fine, thanks. I'm ...", "example":"Hello! I'm fine, thanks. I'm Nima.",
@@ -234,6 +287,15 @@
               {"any":["i'm fine","i am fine","i'm good","i am good","i'm okay","i am okay","fine thanks","good thanks"],"feedback":"سارا از حالت پرسیده؛ باید بگویی چطوری."},
               {"patterns":["\\b(?:i'm|i am|my name is)\\s+(?!fine\\b|good\\b|okay\\b|not\\b|thanks\\b)[a-z]+\\b"],"feedback":"در ادامه نام خودت را بگو تا او هم تو را بشناسد."}
             ],"pitfalls":[{"any":["what's your name","what is your name"],"feedback":"سارا قبلاً اسم خودش را گفت؛ این بار پرسیدنِ اسم او تکراری است.","repair":"یک بار دیگر متن او را بخوان و فقط خودت را معرفی کن."}],"success":"در موقعیت جدید، پاسخ را با توجه به گفتهٔ مخاطب تغییر دادی."}
+          },
+          {
+            "speaker":"Sara", "incoming":"Nice to meet you! Bye!", "task":"سارا حالا خداحافظی می‌کند. خوشوقتی را جواب بده و با اسمش خداحافظی کن.",
+            "hint":"Nice to meet you, too! Bye, Sara!", "example":"Nice to meet you, too! Bye, Sara!",
+            "assessment":{"required":[
+              {"any":["nice to meet you"],"feedback":"برای آشنایی جواب مودبانه بده."},
+              {"any":["bye","goodbye"],"feedback":"به خداحافظی او جواب بده."},
+              {"any":["sara"],"feedback":"اسم سارا را در خداحافظی به کار ببر."}
+            ],"success":"پایان این مکالمه را هم متناسب با موقعیت ساختی."}
           }]
         },
         {
