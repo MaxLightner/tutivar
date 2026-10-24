@@ -47,7 +47,7 @@ const ICONS = {
 const icon = (name, size = '') => `<span class="icon ${size}"><svg aria-hidden="true" viewBox="0 0 24 24">${ICONS[name] || ICONS.star}</svg></span>`;
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const en = (text) => `<span class="en" lang="en" dir="ltr">${escapeHtml(text)}</span>`;
-const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, familyPeople: {}, agreementChoices: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
+const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, sentenceComposers: {}, familyPeople: {}, agreementChoices: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
 function readProgress() { try { const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); return { ...defaultProgress(), ...saved, settings: { ...defaultProgress().settings, ...(saved.settings || {}) } }; } catch { return defaultProgress(); } }
 const progress = readProgress();
 // Historical completion records predate skill evidence. Preserve them in storage,
@@ -163,7 +163,7 @@ function widgetBlock(widget, id) {
 function productionBlock(section, id) { const draft = progress.written[id] || ''; return `<div class="lesson-block"><div class="block-top"><div><span class="block-label">۰۶ / تولید مستقل</span><h3>حالا جمله خودت را بساز</h3></div>${icon('star')}</div><label class="input-label" for="free-response">${escapeHtml(section.production.prompt)}</label><textarea id="free-response" class="free-input" placeholder="${escapeHtml(section.production.placeholder)}" rows="3">${escapeHtml(draft)}</textarea><p class="hint">${escapeHtml(section.production.hint)}</p><button class="secondary-btn" data-action="save-production">ذخیره پاسخ ${icon('check')}</button><p class="tiny muted" style="margin-top:10px">این پاسخ فقط روی دستگاه شما ذخیره می‌شود؛ تصحیح هوشمند هنوز فعال نیست.</p></div>`; }
 async function loadLesson(lessonId) { if (lessonCache.has(lessonId)) return lessonCache.get(lessonId); const entry = samples().find((x) => x.id === lessonId); if (!entry) return null; const response = await fetch(contentUrl(entry.file)); if (!response.ok) throw new Error('lesson load failed'); const lesson = await response.json(); lessonCache.set(lessonId, lesson); return lesson; }
 function sectionActivities(section, lessonId) {
-  if (section.activities) return section.activities.map((activity, index) => renderActivity(activity, { lessonId, index, e: escapeHtml, en, i: icon, progress })).join('');
+  if (section.activities) { const activitiesById = lessonActivitiesById(lessonId); return section.activities.map((activity, index) => renderActivity(activity, { lessonId, index, e: escapeHtml, en, i: icon, progress, activitiesById })).join(''); }
   return section.id === 'foundation'
     ? vocabularyBlock(section) + patternBlock(section) + checkBlock(section, lessonId)
     : dialogueBlock(section) + widgetBlock(section.featureWidget, lessonId) + productionBlock(section, lessonId);
@@ -223,6 +223,7 @@ function navigate(page, id = null, part = null) { const target = page === 'lesso
 function updateInline() { draw(true); }
 const lessonVocabulary = (key) => lessonCache.get(route.lessonId)?.sections.flatMap((section) => section.activities || []).find((item) => item.type === 'vocabulary' && `${route.lessonId}:${item.id}` === key);
 const lessonActivity = (key) => lessonCache.get(route.lessonId)?.sections.flatMap((section) => section.activities || []).find((item) => `${route.lessonId}:${item.id}` === key);
+const lessonActivitiesById = (lessonId) => Object.fromEntries((lessonCache.get(lessonId)?.sections || []).flatMap((section) => section.activities || []).map((activity) => [activity.id, activity]));
 function saveDeckState(key, state) { progress.wordProgress[key] = state; persist(); updateInline(); }
 function submitPracticeAnswer(key, answer) {
   const activity = lessonActivity(key);
@@ -332,7 +333,7 @@ function scrubWord(key, requestedIndex, { save = true } = {}) {
   const module = slider?.closest('.module-vocabulary');
   if (!module) { if (save) updateInline(); return; }
   const fresh = document.createElement('template');
-  fresh.innerHTML = renderActivity(activity, { lessonId: route.lessonId, index: 0, e: escapeHtml, en, i: icon, progress });
+  fresh.innerHTML = renderActivity(activity, { lessonId: route.lessonId, index: 0, e: escapeHtml, en, i: icon, progress, activitiesById: lessonActivitiesById(route.lessonId) });
   for (const selector of ['.vocab-deck-top', '.vocab-deck-bar', '.vocab-focus-card', '.vocab-range-label']) {
     const oldElement = module.querySelector(selector);
     const newElement = fresh.content.querySelector(selector);
@@ -385,7 +386,7 @@ function wordKeydown(event) {
   document.querySelector('[data-word-swipe]')?.focus({ preventScroll: true });
 }
 function onClick(event) {
-  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-family-key],button[data-agreement-key],button[data-finish-section],button[data-review],button[data-planned],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-roleplay],button[data-word-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
+  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-family-key],button[data-agreement-key],button[data-finish-section],button[data-review],button[data-planned],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-roleplay],button[data-word-key],button[data-composer-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
   if (!el) return;
   if (el.dataset.nav) { modal = null; navigate(el.dataset.nav); return; }
   if (el.dataset.openLesson) { modal = null; activePerson = 0; ownerIdx = 0; objectIdx = 0; navigate('lesson', el.dataset.openLesson, el.dataset.startSection || null); return; }
@@ -420,7 +421,7 @@ function onClick(event) {
       const section = lessonCache.get(route.lessonId)?.sections.find((item) => item.id === route.part);
       const index = section?.activities.findIndex((item) => item.id === activity.id) ?? 0;
       const fresh = document.createElement('template');
-      fresh.innerHTML = renderActivity(activity, { lessonId: route.lessonId, index, e: escapeHtml, en, i: icon, progress });
+      fresh.innerHTML = renderActivity(activity, { lessonId: route.lessonId, index, e: escapeHtml, en, i: icon, progress, activitiesById: lessonActivitiesById(route.lessonId) });
       module.replaceWith(fresh.content.firstElementChild);
       const focus = el.dataset.agreementChoice === 'member'
         ? [...document.querySelectorAll('[data-agreement-key]')].find((button) => button.dataset.agreementKey === key && button.dataset.agreementChoice === 'member' && Number(button.dataset.agreementIndex) === next.member)
@@ -447,6 +448,34 @@ function onClick(event) {
     if (action === 'prev') return saveDeckState(key, jumpDeck(state, activity, state.index - 1));
     if (action === 'resume' || action === 'skip-failed') return saveDeckState(key, resumeDeck(state, activity, action === 'skip-failed'));
     return;
+  }
+  if (el.dataset.composerKey) {
+    const key = el.dataset.composerKey;
+    const activity = lessonActivity(key);
+    if (activity?.type !== 'sentence-composer') return;
+    const saved = progress.sentenceComposers[key] || {};
+    const state = { slots: { ...(saved.slots || {}) }, pattern: saved.pattern || activity.defaultPattern, activeSlot: saved.activeSlot || null };
+    const action = el.dataset.composerAction;
+    if (action === 'open') {
+      const slot = activity.slots.find((entry) => entry.id === el.dataset.composerSlot);
+      if (!slot) return;
+      state.activeSlot = state.activeSlot === slot.id ? null : slot.id;
+    } else if (action === 'select') {
+      const slot = activity.slots.find((entry) => entry.id === el.dataset.composerSlot);
+      const item = slot && (activity.wordSets[slot.wordSet] || []).find((entry) => entry.id === el.dataset.composerValue);
+      if (!slot || !item) return;
+      if (slot.includeRoles?.length && !slot.includeRoles.includes(item.role || 'core')) return;
+      state.slots[slot.id] = item.id;
+      state.activeSlot = null;
+    } else if (action === 'pattern') {
+      if (!activity.patterns.some((entry) => entry.id === el.dataset.composerPattern)) return;
+      state.pattern = el.dataset.composerPattern;
+      state.activeSlot = null;
+    } else if (action === 'close') {
+      state.activeSlot = null;
+    } else return;
+    progress.sentenceComposers[key] = state;
+    persist(); updateInline(); return;
   }
   if (el.dataset.phraseKey) {
     const key = el.dataset.phraseKey;
@@ -566,6 +595,14 @@ function onClick(event) {
   }
 }
 function onInput(event) {
+  if (event.target.dataset.composerSearch !== undefined) {
+    const picker = event.target.closest('.composer-picker');
+    const query = event.target.value.trim().toLocaleLowerCase();
+    for (const option of picker?.querySelectorAll('.composer-choice') || []) {
+      option.hidden = !String(option.dataset.composerSearchText || '').includes(query);
+    }
+    return;
+  }
   if (event.target.dataset.dialogueSlider) {
     const key = event.target.dataset.dialogueSlider;
     const view = [...document.querySelectorAll('[data-dialogue-window]')].find((item) => item.dataset.dialogueWindow === key);
