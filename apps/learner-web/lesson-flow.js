@@ -7,7 +7,7 @@ import { validateVisualActivity } from './visual-learning.js';
 export const LESSON_TEMPLATE_ID = 'discovery-production-v1';
 export const LESSON_PHASES = Object.freeze({
   foundation: ['words', 'phrases', 'sentence', 'variants', 'puzzle', 'construction'],
-  production: ['correspondence', 'context', 'guided', 'independent']
+  production: ['correspondence', 'context', 'picture', 'guided', 'independent']
 });
 export const LESSON_PHASE_LABELS = Object.freeze({
   words: 'واژه‌ها',
@@ -18,6 +18,7 @@ export const LESSON_PHASE_LABELS = Object.freeze({
   construction: 'ساخت جمله',
   correspondence: 'جملات متناظر و سؤال‌وجواب',
   context: 'مکالمه و متن',
+  picture: 'توصیف تصویر',
   guided: 'ساختن با کمک',
   independent: 'ساختن مستقل'
 });
@@ -30,6 +31,7 @@ const TYPE_FOR_PHASE = {
   construction: ['response-practice'],
   correspondence: ['exchange-lab', 'response-practice'],
   context: ['dialogue', 'response-practice'],
+  picture: ['picture-description'],
   guided: ['guided-dialogue', 'dialogue-transfer'],
   independent: ['free-write']
 };
