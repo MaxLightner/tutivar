@@ -216,7 +216,7 @@ function dashboardView() { return `<div class="path-intro"><div><span class="eye
 function renderModal() { return `<div class="demo-modal" role="dialog" aria-modal="true" aria-labelledby="modal-heading"><div class="modal-content"><span class="eyebrow">در نقشه محصول</span><h2 id="modal-heading">${escapeHtml(modal.title)}</h2><p>${escapeHtml(modal.body)}</p><button class="dark-btn" data-action="close-modal">متوجه شدم</button></div></div>`; }
 function showModal(title, body) { modal = { title, body }; draw(true); }
 function showToast(message) { clearTimeout(toastTimeout); document.getElementById('toast-anchor')?.replaceChildren(); const toast = document.createElement('div'); toast.className = 'toast'; toast.textContent = message; document.getElementById('toast-anchor')?.append(toast); toastTimeout = setTimeout(() => toast.remove(), 3200); }
-function draw(keepScroll = false) { const scroll = window.scrollY; let content = route.page === 'home' ? homeView() : route.page === 'lessons' ? lessonsView() : route.page === 'leitner' ? leitnerView() : route.page === 'dashboard' ? dashboardView() : lessonView(lessonCache.get(route.lessonId)); $root.className = ''; $root.innerHTML = shell(content); if (keepScroll) window.scrollTo({ top: scroll, behavior: 'instant' }); }
+function draw(keepScroll = false) { const scroll = window.scrollY; let content = route.page === 'home' ? homeView() : route.page === 'lessons' ? lessonsView() : route.page === 'leitner' ? leitnerView() : route.page === 'dashboard' ? dashboardView() : lessonView(lessonCache.get(route.lessonId)); $root.className = ''; $root.innerHTML = shell(content); for (const view of $root.querySelectorAll('[data-dialogue-window]')) { const step = Number(view.dataset.dialoguePosition) || 0; view.scrollTop = step * (view.querySelector('.dialogue-line')?.offsetHeight || 124); } if (keepScroll) window.scrollTo({ top: scroll, behavior: 'instant' }); }
 function parseHash() { const [page, id, part] = location.hash.replace(/^#\/?/, '').split('/'); if (page === 'lesson' && id) return { page: 'lesson', lessonId: decodeURIComponent(id), part: ['foundation', 'production'].includes(part) ? part : 'foundation' }; return { page: ['home', 'lessons', 'leitner', 'dashboard'].includes(page) ? page : 'home', lessonId: null, part: null }; }
 async function syncRoute() { route = parseHash(); if (route.page === 'lesson') { try { const lesson = await loadLesson(route.lessonId); if (!lesson) { route = { page: 'lessons', lessonId: null, part: null }; } } catch { showModal('بارگذاری درس', 'محتوای این درس بارگذاری نشد. اتصال اینترنت را بررسی کن یا صفحه را تازه‌سازی کن.'); route = { page: 'lessons', lessonId: null, part: null }; } } draw(); window.scrollTo(0, 0); }
 function navigate(page, id = null, part = null) { const target = page === 'lesson' ? `#/lesson/${id}${part ? '/' + part : ''}` : `#/${page}`; if (location.hash === target) { syncRoute(); return; } location.hash = target; }
@@ -260,41 +260,66 @@ function currentDialoguePair(key) {
   const activity = lessonActivity(key);
   if (activity?.type !== 'dialogue' || !activity.lines?.length) return [];
   const maximum = Math.max(0, activity.lines.length - 2);
-  const step = Math.max(0, Math.min(maximum, Number(progress.dialogueSteps?.[key]) || 0));
+  const step = Math.max(0, Math.min(maximum, Math.round(Number(progress.dialogueSteps?.[key]) || 0)));
   return activity.lines.slice(step, step + 2);
 }
-function moveDialogue(key, newStep, { audible = true, save = true } = {}) {
-  const activity = lessonActivity(key);
-  if (activity?.type !== 'dialogue' || !activity.lines?.length) return;
-  const maximum = Math.max(0, activity.lines.length - 2);
-  const previous = Math.max(0, Math.min(maximum, Number(progress.dialogueSteps[key]) || 0));
-  const step = Math.max(0, Math.min(maximum, Number(newStep) || 0));
-  progress.dialogueSteps[key] = step;
-  if (save) persist();
-  const view = [...document.querySelectorAll('[data-dialogue-window]')].find((item) => item.dataset.dialogueWindow === key);
-  const timeline = view?.parentElement;
-  const newLine = step >= previous ? Math.min(step + 1, activity.lines.length - 1) : step;
-  if (view) {
-    const track = view.querySelector('.dialogue-track');
-    if (track) {
-      track.style.setProperty('--dialogue-step', step);
-      for (const line of track.querySelectorAll('[data-dialogue-line]')) {
-        const index = Number(line.dataset.dialogueLine);
-        const visible = index >= step && index < step + 2;
-        line.dataset.dialogueVisible = String(visible);
-        line.inert = !visible;
-        line.setAttribute('aria-hidden', String(!visible));
-      }
-    }
-  } else updateInline();
+const dialogueSettleTimers = new WeakMap();
+function dialogueRowHeight(view) { return view.querySelector('.dialogue-line')?.offsetHeight || 124; }
+function updateDialogueViewport(view, position) {
+  const lines = [...view.querySelectorAll('[data-dialogue-line]')];
+  const maximum = Math.max(0, lines.length - 2);
+  const step = Math.max(0, Math.min(maximum, position));
+  const start = Math.min(maximum, Math.floor(step + .001));
+  const entering = Math.abs(step - Math.round(step)) > .01;
+  for (const line of lines) {
+    const index = Number(line.dataset.dialogueLine);
+    const visible = index >= start && index < start + 2 + Number(entering);
+    line.dataset.dialogueVisible = String(visible);
+    line.inert = !visible;
+    line.setAttribute('aria-hidden', String(!visible));
+  }
+  const timeline = view.parentElement;
   const count = timeline?.querySelector('[data-dialogue-count]');
-  if (count) count.textContent = `${step + 1}–${Math.min(step + 2, activity.lines.length)} / ${activity.lines.length}`;
+  if (count) count.textContent = `${start + 1}–${Math.min(start + 2, lines.length)} / ${lines.length}`;
   const slider = timeline?.querySelector('[data-dialogue-slider]');
   if (slider) slider.value = String(step);
   for (const button of timeline?.querySelectorAll('[data-dialogue-key]') || []) {
-    button.disabled = Number(button.dataset.dialogueNav) < 0 ? step === 0 : step === maximum;
+    button.disabled = Number(button.dataset.dialogueNav) < 0 ? step < .01 : step > maximum - .01;
   }
-  if (audible && step !== previous) speech(activity.lines[newLine].en);
+}
+function onDialogueScroll(event) {
+  const view = event.target;
+  if (!(view instanceof HTMLElement) || !view.matches('[data-dialogue-window]')) return;
+  const key = view.dataset.dialogueWindow;
+  const step = view.scrollTop / dialogueRowHeight(view);
+  updateDialogueViewport(view, step);
+  clearTimeout(dialogueSettleTimers.get(view));
+  dialogueSettleTimers.set(view, setTimeout(() => {
+    if (!view.isConnected || view.dataset.scrubbing === 'true') return;
+    const rounded = Math.round(view.scrollTop / dialogueRowHeight(view));
+    const target = rounded * dialogueRowHeight(view);
+    progress.dialogueSteps[key] = rounded;
+    persist();
+    if (Math.abs(view.scrollTop - target) > 1) view.scrollTo({ top: target, behavior: 'smooth' });
+    else updateDialogueViewport(view, rounded);
+  }, 180));
+}
+function moveDialogue(key, newStep, { audible = true, save = true, behavior = 'smooth' } = {}) {
+  const activity = lessonActivity(key);
+  if (activity?.type !== 'dialogue' || !activity.lines?.length) return;
+  const maximum = Math.max(0, activity.lines.length - 2);
+  const previous = Math.max(0, Math.min(maximum, Math.round(Number(progress.dialogueSteps[key]) || 0)));
+  const step = Math.max(0, Math.min(maximum, Number(newStep) || 0));
+  const view = [...document.querySelectorAll('[data-dialogue-window]')].find((item) => item.dataset.dialogueWindow === key);
+  if (view) {
+    view.scrollTo({ top: step * dialogueRowHeight(view), behavior });
+    updateDialogueViewport(view, step);
+  } else updateInline();
+  if (save) { progress.dialogueSteps[key] = Math.round(step); persist(); }
+  if (audible && Math.round(step) !== previous) {
+    const newlyRevealed = step >= previous ? Math.min(Math.round(step) + 1, activity.lines.length - 1) : Math.round(step);
+    speech(activity.lines[newlyRevealed].en);
+  }
 }
 function scrubWord(key, requestedIndex, { save = true } = {}) {
   const activity = lessonVocabulary(key);
@@ -505,7 +530,10 @@ function onClick(event) {
 }
 function onInput(event) {
   if (event.target.dataset.dialogueSlider) {
-    moveDialogue(event.target.dataset.dialogueSlider, Number(event.target.value), { audible: false, save: false });
+    const key = event.target.dataset.dialogueSlider;
+    const view = [...document.querySelectorAll('[data-dialogue-window]')].find((item) => item.dataset.dialogueWindow === key);
+    if (view) view.dataset.scrubbing = 'true';
+    moveDialogue(key, Number(event.target.value), { audible: false, save: false, behavior: 'instant' });
     return;
   }
   if (event.target.dataset.wordSlider) scrubWord(event.target.dataset.wordSlider, Number(event.target.value) - 1, { save: false });
@@ -513,9 +541,11 @@ function onInput(event) {
 function onChange(event) {
   if (event.target.dataset.dialogueSlider) {
     const key = event.target.dataset.dialogueSlider;
-    moveDialogue(key, Number(event.target.value), { audible: false });
+    const view = [...document.querySelectorAll('[data-dialogue-window]')].find((item) => item.dataset.dialogueWindow === key);
+    if (view) delete view.dataset.scrubbing;
+    moveDialogue(key, Math.round(Number(event.target.value)), { audible: false });
     const activity = lessonActivity(key);
-    const step = Number(progress.dialogueSteps[key]) || 0;
+    const step = Math.round(Number(progress.dialogueSteps[key]) || 0);
     if (activity?.lines?.length) speech(activity.lines[Math.min(step + 1, activity.lines.length - 1)].en);
     return;
   }
@@ -556,5 +586,5 @@ async function hydrateCurricula() {
     }));
   }
 }
-async function main() { try { const response = await fetch(contentUrl('manifest.json')); if (!response.ok) throw new Error(`HTTP ${response.status}`); manifest = await response.json(); if (manifest.pairId !== 'fa-en' || manifest.status !== 'draft') throw new Error('wrong course manifest'); await hydrateCurricula(); $root.addEventListener('click', onClick); $root.addEventListener('input', onInput); $root.addEventListener('change', onChange); $root.addEventListener('submit', (event) => { const form = event.target.closest('form[data-word-form],form[data-practice-form]'); if (!form) return; event.preventDefault(); if (form.dataset.wordForm) submitWordAnswer(form.dataset.wordForm, form.querySelector('[data-word-answer]')?.value || ''); else submitPracticeAnswer(form.dataset.practiceForm, form.elements.response?.value || ''); }); $root.addEventListener('touchstart', wordSwipeStart, { passive: true }); $root.addEventListener('touchend', wordSwipeEnd, { passive: true }); $root.addEventListener('keydown', wordKeydown); addEventListener('hashchange', syncRoute); await syncRoute(); if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('./sw.js').catch(() => {}); } catch (error) { console.error(error); $root.innerHTML = `<div class="boot"><span class="boot-logo">t.</span><strong>صفحه بارگذاری نشد</strong><p class="muted">اتصال را بررسی کن و دوباره تلاش کن.</p></div>`; } }
+async function main() { try { const response = await fetch(contentUrl('manifest.json')); if (!response.ok) throw new Error(`HTTP ${response.status}`); manifest = await response.json(); if (manifest.pairId !== 'fa-en' || manifest.status !== 'draft') throw new Error('wrong course manifest'); await hydrateCurricula(); $root.addEventListener('click', onClick); $root.addEventListener('input', onInput); $root.addEventListener('change', onChange); $root.addEventListener('scroll', onDialogueScroll, true); $root.addEventListener('submit', (event) => { const form = event.target.closest('form[data-word-form],form[data-practice-form]'); if (!form) return; event.preventDefault(); if (form.dataset.wordForm) submitWordAnswer(form.dataset.wordForm, form.querySelector('[data-word-answer]')?.value || ''); else submitPracticeAnswer(form.dataset.practiceForm, form.elements.response?.value || ''); }); $root.addEventListener('touchstart', wordSwipeStart, { passive: true }); $root.addEventListener('touchend', wordSwipeEnd, { passive: true }); $root.addEventListener('keydown', wordKeydown); addEventListener('hashchange', syncRoute); await syncRoute(); if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('./sw.js').catch(() => {}); } catch (error) { console.error(error); $root.innerHTML = `<div class="boot"><span class="boot-logo">t.</span><strong>صفحه بارگذاری نشد</strong><p class="muted">اتصال را بررسی کن و دوباره تلاش کن.</p></div>`; } }
 main();

@@ -20,6 +20,10 @@ function visibleInputs(activity) {
   const inputs = [];
   for (const form of activity.forms || []) if (form.en) inputs.push(form.en);
   for (const line of activity.lines || []) if (line.en) inputs.push(line.en);
+  for (const pair of activity.pairs || []) {
+    if (pair.question) inputs.push(pair.question);
+    for (const variant of pair.variants || []) if (variant.en) inputs.push(variant.en);
+  }
   for (const outcome of activity.outcomes || []) if (outcome.en) inputs.push(outcome.en);
   for (const example of activity.examples || []) if (typeof example === 'string') inputs.push(example);
   for (const turn of [...(activity.tasks || []), ...(activity.turns || [])]) {

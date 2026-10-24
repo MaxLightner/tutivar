@@ -185,6 +185,7 @@ test('each dialogue timeline renders only two consecutive spoken lines and can s
     const context = { lessonId: lesson.id, index: 0, e: String, en: String, i: () => '', progress: { dialogueSteps: {}, showDialogueTranslation: true } };
     const first = renderActivity(dialogue, context);
     assert.match(first, /data-dialogue-slider=/);
+    assert.match(first, /step="0\.01"/, 'slider has continuous, sub-line precision instead of discrete jumps');
     assert.match(first, /data-dialogue-play=/);
     assert.equal((first.match(/data-dialogue-visible="true"/g) || []).length, 2, 'only two lines are exposed in the fixed-height viewport');
     assert.match(first, new RegExp(dialogue.lines[0].speaker));
@@ -195,7 +196,8 @@ test('each dialogue timeline renders only two consecutive spoken lines and can s
     assert.ok(last.includes(dialogue.lines.at(-1).en));
     assert.match(last, /data-dialogue-line="0" data-dialogue-visible="false" aria-hidden="true" inert/);
     assert.match(last, /disabled aria-label="نوبت بعدی"/);
-    assert.match(last, new RegExp(`--dialogue-step:${dialogue.lines.length - 2}`), 'scroll position matches the saved slider value');
+    assert.match(last, new RegExp(`data-dialogue-position="${dialogue.lines.length - 2}"`), 'native scroll position is restored after rendering');
+    assert.doesNotMatch(last, /--dialogue-step:/, 'the transcript is scrolled natively, not teleported with a CSS transform');
     const nextWindow = renderDialogueLines(dialogue, context, 1, 2);
     assert.match(nextWindow, /data-dialogue-line="2"/);
     assert.equal((nextWindow.match(/dialogue-entering/g) || []).length, 1, 'only one newly revealed sentence animates');
@@ -223,9 +225,9 @@ test('first lesson retrieves morning greetings before the dialogue half', () => 
 test('second lesson teaches family relationships with a live tree, retrieval and two conversations', () => {
   const lesson = load('lessons/a1-2.json');
   const [foundation, production] = lesson.sections;
-  assert.deepEqual(foundation.activities.map((item) => item.type), ['vocabulary', 'phrase-composer', 'sentence-lab', 'family-tree', 'response-practice', 'sentence-transform']);
+  assert.deepEqual(foundation.activities.map((item) => item.type), ['vocabulary', 'phrase-composer', 'sentence-lab', 'family-tree', 'sentence-transform', 'response-practice', 'sentence-transform']);
   assert.deepEqual(production.activities.map((item) => item.type), ['exchange-lab', 'response-practice', 'dialogue', 'response-practice', 'dialogue', 'response-practice', 'guided-dialogue', 'dialogue-transfer', 'free-write']);
-  assert.equal(coreItems(foundation.activities[0]).length, 8);
+  assert.equal(coreItems(foundation.activities[0]).length, 10);
   assert.equal(supplementaryItems(foundation.activities[0]).length, 3);
   assert.ok(foundation.activities[0].items.every((item) => item.examples.length === 3));
   assert.deepEqual(auditLesson(lesson).errors, [], 'core family phrases are retrieved later in the lesson');
@@ -235,9 +237,16 @@ test('second lesson teaches family relationships with a live tree, retrieval and
   assert.match(tree, /Her name is Nora/);
   context.progress.familyPeople['A1-2:family-tree'] = 1;
   assert.match(renderActivity(foundation.activities[3], context), /His name is David/);
-  assert.equal(evaluateResponse(foundation.activities[4].tasks[3].assessment, "Who's this?").ok, true);
-  assert.equal(evaluateResponse(foundation.activities[5].tasks[1].assessment, 'This is your brother.').ok, false);
-  assert.equal(evaluateResponse(foundation.activities[5].tasks[1].assessment, 'Is this your brother?').ok, true);
+  const selfRole = foundation.activities[4];
+  assert.ok(selfRole.forms.some((form) => form.en === "I'm a father."));
+  assert.ok(selfRole.forms.some((form) => form.en === "I'm his daughter."));
+  assert.equal(evaluateResponse(selfRole.tasks[0].assessment, "I'm a father.").ok, true);
+  assert.equal(evaluateResponse(selfRole.tasks[0].assessment, "I'm father.").ok, false, 'role noun requires an article');
+  assert.equal(evaluateResponse(selfRole.tasks[3].assessment, "I'm his daughter.").ok, true);
+  assert.equal(evaluateResponse(foundation.activities[5].tasks[3].assessment, "Who's this?").ok, true);
+  assert.equal(evaluateResponse(foundation.activities[6].tasks[1].assessment, 'This is your brother.').ok, false);
+  assert.equal(evaluateResponse(foundation.activities[6].tasks[1].assessment, 'Is this your brother?').ok, true);
+  assert.ok(production.activities[0].pairs.some((pair) => pair.variants.some((variant) => variant.en === 'This is my daughter.')));
   assert.equal(production.activities.filter((activity) => activity.type === 'dialogue').length, 2);
   assert.ok(production.activities.filter((activity) => activity.type === 'dialogue').every((activity) => activity.lines.length >= 8));
 });

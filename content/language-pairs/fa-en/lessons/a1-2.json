@@ -1,15 +1,15 @@
 {
   "id": "A1-2",
-  "revision": 2,
+  "revision": 3,
   "status": "draft",
   "title": "معرفی اعضای خانواده",
-  "goal": "بتوانی درباره اعضای خانواده سؤال کنی، آن‌ها را با نام و نسبت معرفی کنی و وقتی حدس اشتباه بود پاسخ مثبت یا منفی بدهی.",
+  "goal": "بتوانی درباره اعضای خانواده سؤال کنی، نقش خودت را در خانواده بگویی، دیگران را با نسبت معرفی کنی و حدس اشتباه را اصلاح کنی.",
   "duration": "حدود ۲۵ تا ۳۵ دقیقه با تمرین‌های گفت‌وگویی",
   "feature": "درخت خانوادهٔ تعاملی",
   "archetype": "family",
   "teachingModel": {"primary":"K4","support":"K3"},
   "orientation": {
-    "goal": "مادر، پدر، خواهر و برادر را معرفی کنی؛ بپرسی «این کیه؟»، نسبت را تأیید یا رد کنی و نام افراد را بپرسی.",
+    "goal": "مادر، پدر، خواهر، برادر، پسر و دختر را بشناسی؛ نقش خودت را بگویی؛ افراد را معرفی کنی و دربارهٔ نسبتشان سؤال بپرسی.",
     "prerequisites": ["سلام‌کردن، معرفی خود و پرسیدن نام"],
     "previously": "در درس اول با Hello، What's your name? و My name is ... آشنا شدی.",
     "quickCheck": {
@@ -22,7 +22,7 @@
   },
   "visual": {"src":null,"alt":"چهار عضو خانواده روی عکس","caption":"معرفی اعضای خانواده"},
   "learningAudit": {
-    "focusExpressions": ["sister", "brother", "Who's this?", "Is this your brother?"],
+    "focusExpressions": ["sister", "brother", "son", "daughter", "Who's this?", "Is this your brother?"],
     "specificIndependentExpressions": ["Is this your brother?"],
     "minDownstreamActivities": 2,
     "minGuidedActivities": 1,
@@ -32,16 +32,18 @@
     {
       "id":"foundation",
       "label":"از کلمه تا جمله",
-      "intro":"از نسبت‌های اصلی شروع کن، ترکیب my و your را تغییر بده، اعضای خانواده را روی تصویر فرضی انتخاب کن و در پایان جمله‌های خبری، منفی و سؤالی بساز.",
+      "intro":"از نسبت‌های اصلی شروع کن، ترکیب my و your را بساز، تفاوت «من پدر هستم» و «این پدر من است» را یاد بگیر و در پایان جمله‌های خبری، منفی و سؤالی بساز.",
       "masteryActivityIds":["family-intro-check","family-transform"],
       "activities":[
         {
           "id":"family-words","type":"vocabulary","title":"عبارت‌های اصلی خانواده","batchSize":4,"deckRevision":1,
           "items":[
-            {"en":"mother","fa":"مادر","hint":"در ترکیب my mother","examples":["This is my mother.","My mother is Nora.","Her name is Nora."]},
-            {"en":"father","fa":"پدر","hint":"در ترکیب my father","examples":["This is my father.","My father is David.","His name is David."]},
-            {"en":"sister","fa":"خواهر","hint":"یک عضو خانواده","examples":["This is my sister, Anna.","Is this your sister?","Her name is Anna."]},
-            {"en":"brother","fa":"برادر","hint":"یک عضو خانواده","examples":["This is my brother, Sam.","Is this your brother?","His name is Sam."]},
+            {"en":"mother","fa":"مادر","hint":"I'm a mother = من مادر هستم؛ my mother = مادرم","examples":["This is my mother.","I'm a mother.","Her name is Nora."]},
+            {"en":"father","fa":"پدر","hint":"I'm a father = من پدر هستم؛ my father = پدرم","examples":["This is my father.","I'm a father.","His name is David."]},
+            {"en":"sister","fa":"خواهر","hint":"یک نسبت خانوادگی","examples":["This is my sister, Anna.","I'm a sister.","Her name is Anna."]},
+            {"en":"brother","fa":"برادر","hint":"یک نسبت خانوادگی","examples":["This is my brother, Sam.","I'm a brother.","His name is Sam."]},
+            {"en":"son","fa":"پسرِ کسی / فرزند پسر","hint":"با boy («پسر بچه») فرق دارد؛ son نسبت خانوادگی است","examples":["I'm her son.","This is my son.","Is he your son?"]},
+            {"en":"daughter","fa":"دخترِ کسی / فرزند دختر","hint":"با girl («دختر») فرق دارد؛ daughter نسبت خانوادگی است","examples":["I'm his daughter.","This is my daughter.","Is she your daughter?"]},
             {"en":"Who's this?","fa":"این کیه؟","hint":"پرسیدن هویت فرد نزدیک","testAnswers":["Who is this?"],"examples":["Who's this?","Hello! Who's this?","Who's this, Anna?"]},
             {"en":"This is my sister.","fa":"این خواهر منه.","hint":"جملهٔ کامل برای معرفی","examples":["This is my sister.","Hello! This is my sister.","This is my sister, Anna."]},
             {"en":"Is this your brother?","fa":"این برادر توئه؟","hint":"پرسش بله یا نه","examples":["Is this your brother?","Hello! Is this your brother?","Is this your brother, Sam?"]},
@@ -81,6 +83,30 @@
             {"name":"David","fa":"پدر","initial":"D","sentence":"This is my father, David.","followup":"His name is David.","explanation":"father مرد است؛ برای نامش his می‌گوییم."},
             {"name":"Anna","fa":"خواهر","initial":"A","sentence":"This is my sister, Anna.","followup":"Her name is Anna.","explanation":"sister دختر یا زن است؛ her به کار می‌بریم."},
             {"name":"Sam","fa":"برادر","initial":"S","sentence":"This is my brother, Sam.","followup":"His name is Sam.","explanation":"brother پسر یا مرد است؛ his به کار می‌بریم."}
+          ]
+        },
+        {
+          "id":"family-self-role","type":"sentence-transform","practiceRevision":1,
+          "title":"من چه نسبتی دارم؟ یا این شخص کیست؟",
+          "description":"جمله دربارهٔ خودت با I'm شروع می‌شود؛ معرفی شخص دیگر با This is my. فرقِ a father و my father را ببین؛ پسرِ خانواده son است و دخترِ خانواده daughter.",
+          "practiceTitle":"این بار نقش خودت را بگو","practiceIntro":"بر اساس موقعیت، دربارهٔ خودت یا شخص دیگری جمله بساز.",
+          "completion":"توانستی میان I'm a ... / I'm her ... و This is my ... فرق بگذاری.",
+          "forms":[
+            {"label":"من مادرم","en":"I'm a mother.","fa":"من مادر هستم.","rule":"I'm کوتاه‌شدهٔ I am است. پیش از mother وقتی نقش خودت را می‌گویی a لازم است."},
+            {"label":"من پدرم","en":"I'm a father.","fa":"من پدر هستم.","rule":"برای گفتن نقش خودت از I'm a father استفاده کن، نه I'm father."},
+            {"label":"من پسرشم","en":"I'm her son.","fa":"من پسرِ او هستم (او زن است).","rule":"son یعنی فرزند پسر؛ her نشان می‌دهد پسرِ چه کسی هستی. I'm a son هم درست است ولی معمولاً نسبت را کامل‌تر می‌گوییم."},
+            {"label":"من دخترشم","en":"I'm his daughter.","fa":"من دخترِ او هستم (او مرد است).","rule":"daughter یعنی فرزند دختر؛ his نشان می‌دهد دخترِ چه کسی هستی."},
+            {"label":"این پسرمه","en":"This is my son.","fa":"این پسر من است.","rule":"در این جمله خودت را معرفی نمی‌کنی؛ دربارهٔ فرزندت حرف می‌زنی."},
+            {"label":"این دخترمه","en":"This is my daughter.","fa":"این دختر من است.","rule":"This is my daughter با I'm his daughter فرق دارد؛ اولی دربارهٔ فرزند توست، دومی دربارهٔ خود تو."},
+            {"label":"من پدر نیستم","en":"I'm not a father.","fa":"من پدر نیستم.","rule":"not بعد از am می‌آید؛ a پیش از father باقی می‌ماند."},
+            {"label":"تو پدری؟","en":"Are you a father?","fa":"تو پدر هستی؟","rule":"برای سؤال دربارهٔ مخاطب، Are را اول جمله می‌آوریم."}
+          ],
+          "tasks":[
+            {"source":"I'm a mother.","task":"از زبان یک پدر بگو: «من پدر هستم». برای نقش خودت a را فراموش نکن.","hint":"I'm a father.","example":"I'm a father.","assessment":{"required":[{"any":["i'm a father","i am a father"],"feedback":"برای نقش خودت بگو I'm a father؛ قبل از father باید a باشد."}],"success":"نقش خودت را با I'm a ... گفتی."}},
+            {"source":"I'm a father.","task":"حالا از زبان یک مادر بگو: «من مادر هستم».","hint":"I'm a mother.","example":"I'm a mother.","assessment":{"required":[{"any":["i'm a mother","i am a mother"],"feedback":"از I'm a mother استفاده کن."}],"success":"با mother هم نقش خودت را بیان کردی."}},
+            {"source":"This is my son.","task":"این بار خودت فرزند یک زن هستی. بگو: «من پسر او هستم».","hint":"I'm her son.","example":"I'm her son.","assessment":{"required":[{"any":["i'm her son","i am her son"],"feedback":"برای فرزند پسرِ یک زن بگو I'm her son."}],"success":"به‌جای معرفی فرزندت، نسبت خودت را گفتی."}},
+            {"source":"This is my daughter.","task":"خودت فرزند یک مرد هستی. بگو: «من دختر او هستم».","hint":"I'm his daughter.","example":"I'm his daughter.","assessment":{"required":[{"any":["i'm his daughter","i am his daughter"],"feedback":"برای فرزند دخترِ یک مرد بگو I'm his daughter."}],"success":"تفاوت son و daughter و his و her را به کار بردی."}},
+            {"source":"I'm his daughter.","task":"از زبان یک پدر این بار دختر خودت را معرفی کن: «این دختر من است».","hint":"This is my daughter.","example":"This is my daughter.","assessment":{"required":[{"any":["this is my daughter"],"feedback":"وقتی دربارهٔ دختر خودت حرف می‌زنی بگو This is my daughter."}],"success":"نقش خودت و معرفی شخص دیگر را جدا کردی."}}
           ]
         },
         {
@@ -142,6 +168,10 @@
             {"question":"What's his name?","questionFa":"اسم او چیه؟ (مرد یا پسر)","variants":[
               {"label":"نام برادر","en":"His name is Sam.","fa":"اسمش سام است.","note":"his برای پسر یا مرد است."},
               {"label":"نام پدر","en":"His name is David.","fa":"اسمش دیوید است.","note":"برای پدر هم his می‌گوییم."}
+            ]},
+            {"question":"Who's this?","questionFa":"این کیه؟ (از نگاه پدر یا مادر)","variants":[
+              {"label":"پسر من","en":"This is my son.","fa":"این پسر من است.","note":"son فرزند پسرِ گوینده است؛ با brother اشتباه نکن."},
+              {"label":"دختر من","en":"This is my daughter.","fa":"این دختر من است.","note":"daughter فرزند دخترِ گوینده است. I'm his daughter دربارهٔ خودِ دختر است."}
             ]}
           ]
         },
@@ -229,7 +259,7 @@
         },
         {
           "id":"family-write","type":"free-write","title":"یک عکس خانوادگی را گفت‌وگویی معرفی کن",
-          "prompt":"دو نفر یک عکس خانوادگی را نگاه می‌کنند. گفت‌وگوی چندنوبتی بنویس: با Hello شروع کن؛ یک نفر بپرسد Who's this? و طرف مقابل خواهرش را معرفی کند. سپس بپرس Is this your brother?؛ پاسخ مثبت یا منفی با یک توضیح بده. نام یک مرد را با his و نام یک زن را با her بگو و خداحافظی کن.",
+          "prompt":"دو نفر یک عکس خانوادگی را نگاه می‌کنند. گفت‌وگوی چندنوبتی بنویس: با Hello شروع کن؛ یک نفر بپرسد Who's this? و طرف مقابل خواهرش را معرفی کند. سپس بپرس Is this your brother?؛ پاسخ مثبت یا منفی با یک توضیح بده. نام یک مرد را با his و نام یک زن را با her بگو. بعد یک نفر نقش خودش را بگوید؛ مثلاً I'm a father یا I'm her daughter. در پایان خداحافظی کن.",
           "placeholder":"Emma: Hello! Who's this?\nYou: This is my sister, Anna.\nEmma: ...",
           "hint":"از نام‌های Anna، Sam، Nora یا David استفاده کن؛ گفت‌وگو باید رفت‌وبرگشت داشته باشد، نه فقط یک فهرست از نسبت‌ها.",
           "kind":"free-text","minWords":24,
@@ -242,6 +272,7 @@
             {"any":["brother"],"feedback":"به نسبت brother هم واکنش نشان بده."},
             {"any":["his name is"],"feedback":"نام یکی از مردها را با His name is ... بگو."},
             {"any":["her name is"],"feedback":"نام یکی از زن‌ها را با Her name is ... بگو."},
+            {"any":["i'm a father","i am a father","i'm a mother","i am a mother","i'm his son","i am his son","i'm her daughter","i am her daughter"],"feedback":"یکی از شخصیت‌ها نقش خودش را بیان کند؛ مثلاً I'm a mother یا I'm her son."},
             {"any":["bye","goodbye"],"feedback":"با خداحافظی، مکالمه را تمام کن."}
           ],"success":"گفت‌وگویی ساختی که شامل سؤال هویت، معرفی نسبت، تأیید یا رد حدس و نام‌گفتن با his و her است."}
         }
