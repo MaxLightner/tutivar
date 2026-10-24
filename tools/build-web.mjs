@@ -36,6 +36,8 @@ rewrite('app.js', [
   ["from './word-review.js'", `from './word-review.js?v=${revision}'`],
   ["from './practice-engine.js'", `from './practice-engine.js?v=${revision}'`],
   ["from './sentence-puzzle.js'", `from './sentence-puzzle.js?v=${revision}'`],
+  ["from './visual-learning.js'", `from './visual-learning.js?v=${revision}'`],
+  ["from './visual-learning.js'", `from './visual-learning.js?v=${revision}'`],
 ]);
 rewrite('lesson-modules.js', [
   ["from './word-review.js'", `from './word-review.js?v=${revision}'`],
@@ -58,9 +60,11 @@ rewrite('sw.js', [
   ["'./practice-engine.js'", `'./practice-engine.js?v=${revision}'`],
   ["'./sentence-composer.js'", `'./sentence-composer.js?v=${revision}'`],
   ["'./lesson-flow.js'", `'./lesson-flow.js?v=${revision}'`],
-  ["'./sentence-puzzle.js'", `'./sentence-puzzle.js?v=${revision}'`]
+  ["'./sentence-puzzle.js'", `'./sentence-puzzle.js?v=${revision}'`],
+  ["'./visual-learning.js'", `'./visual-learning.js?v=${revision}'`]
 ]);
 rewrite('lesson-flow.js', [
-  ["from './sentence-puzzle.js'", `from './sentence-puzzle.js?v=${revision}'`]
+  ["from './sentence-puzzle.js'", `from './sentence-puzzle.js?v=${revision}'`],
+  ["from './visual-learning.js'", `from './visual-learning.js?v=${revision}'`]
 ]);
 console.log(`Built dist/ — fa-en independent content; revision ${revision}`);
