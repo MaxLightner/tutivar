@@ -35,7 +35,10 @@ export function advanceDeck(saved, activity, decision = null) {
     if (decision === 'test') state.queue.push(id);
   }
   if (state.index + 1 < items.length) state.index++;
-  else state.phase = state.queue.length ? 'test' : 'done';
+  else if (state.queue.length) state.phase = 'test';
+  else if (decision === 'known' || decision === 'test') state.phase = 'done';
+  // Browsing is not a test: reaching the last card must not imply mastery.
+  else state.index = Math.max(0, items.length - 1);
   return state;
 }
 
@@ -43,6 +46,18 @@ export function jumpDeck(saved, activity, index) {
   const state = deckState(saved, activity);
   if (state.phase !== 'browse') return state;
   state.index = Math.min(Math.max(0, Math.round(Number(index) || 0)), Math.max(0, coreItems(activity).length - 1));
+  return state;
+}
+
+export function startDeckTest(saved, activity) {
+  const state = deckState(saved, activity);
+  const items = coreItems(activity);
+  if (!items.length) return { ...state, phase: 'done', queue: [] };
+  state.decisions = Object.fromEntries(items.map((item) => [wordId(item), 'test']));
+  state.queue = items.map(wordId);
+  state.failed = {};
+  state.lastWrong = null;
+  state.phase = 'test';
   return state;
 }
 

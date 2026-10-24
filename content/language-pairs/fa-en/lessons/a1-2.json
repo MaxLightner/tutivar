@@ -1,6 +1,6 @@
 {
   "id": "A1-2",
-  "revision": 9,
+  "revision": 10,
   "status": "draft",
   "title": "معرفی اعضای خانواده",
   "goal": "بتوانی درباره اعضای خانواده سؤال کنی، نقش خودت را در خانواده بگویی، دیگران را با نسبت معرفی کنی و حدس اشتباه را اصلاح کنی.",
@@ -58,11 +58,29 @@
       ],
       "activities": [
         {
+          "id": "a1-2-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "شنیدن و سایه‌خوانی",
+          "description": "فقط گوش بده و هم‌زمان یا با فاصله‌ای کوتاه تکرار کن؛ لازم نیست معنی جمله‌ها را بفهمی.",
+          "audioSrc": null,
+          "rate": 0.72,
+          "pauseMs": 500,
+          "lines": [
+            "This is my mother.",
+            "This is my father.",
+            "Who's this?",
+            "She is my sister.",
+            "He is my brother.",
+            "Her name is Anna."
+          ]
+        },
+        {
           "id": "family-words",
           "type": "vocabulary",
-          "title": "عبارت‌های اصلی خانواده",
+          "title": "واژگان اصلی خانواده",
           "batchSize": 4,
-          "deckRevision": 2,
+          "deckRevision": 3,
           "items": [
             {
               "en": "mother",
@@ -71,7 +89,7 @@
               "examples": [
                 "This is my mother.",
                 "I'm a mother.",
-                "Her name is Nora."
+                "This is my mother, Nora."
               ]
             },
             {
@@ -81,7 +99,7 @@
               "examples": [
                 "This is my father.",
                 "I'm a father.",
-                "His name is David."
+                "He's my father."
               ]
             },
             {
@@ -91,7 +109,7 @@
               "examples": [
                 "This is my sister, Anna.",
                 "I'm a sister.",
-                "Her name is Anna."
+                "This is my sister."
               ]
             },
             {
@@ -101,7 +119,7 @@
               "examples": [
                 "This is my brother, Sam.",
                 "I'm a brother.",
-                "His name is Sam."
+                "Is this your brother?"
               ]
             },
             {
@@ -125,49 +143,6 @@
               ]
             },
             {
-              "en": "Who's this?",
-              "fa": "این کیه؟",
-              "hint": "پرسیدن هویت فرد نزدیک",
-              "testAnswers": [
-                "Who is this?"
-              ],
-              "examples": [
-                "Who's this?",
-                "Hello! Who's this?",
-                "Who's this, Anna?"
-              ]
-            },
-            {
-              "en": "This is my sister.",
-              "fa": "این خواهر منه.",
-              "hint": "جملهٔ کامل برای معرفی",
-              "examples": [
-                "This is my sister.",
-                "Hello! This is my sister.",
-                "This is my sister, Anna."
-              ]
-            },
-            {
-              "en": "Is this your brother?",
-              "fa": "این برادر توئه؟",
-              "hint": "پرسش بله یا نه",
-              "examples": [
-                "Is this your brother?",
-                "Hello! Is this your brother?",
-                "Is this your brother, Sam?"
-              ]
-            },
-            {
-              "en": "Her name is Anna.",
-              "fa": "اسم او آناست. (برای دختر یا زن)",
-              "hint": "her دربارهٔ یک زن یا دختر",
-              "examples": [
-                "Her name is Anna.",
-                "This is my sister. Her name is Anna.",
-                "Her name is Anna. Nice to meet you!"
-              ]
-            },
-            {
               "en": "Please.",
               "fa": "لطفاً؛ برای مؤدبانه‌تر کردن درخواست",
               "hint": "در درس اول عبارت تکمیلی بود؛ اینجا آن را در یک موقعیت واقعی به کار می‌بری.",
@@ -175,6 +150,177 @@
                 "Please, come in.",
                 "Please, meet my sister.",
                 "Please, look at this photo."
+              ]
+            },
+            {
+              "en": "family",
+              "fa": "خانواده",
+              "examples": [
+                "This is my family.",
+                "My family is here.",
+                "I love my family."
+              ]
+            },
+            {
+              "en": "photo",
+              "fa": "عکس",
+              "examples": [
+                "Please, look at this photo.",
+                "Look at this photo.",
+                "This is a family photo."
+              ]
+            },
+            {
+              "en": "my",
+              "fa": "ـم / مال من، پیش از اسم",
+              "examples": [
+                "This is my mother.",
+                "This is my father.",
+                "This is my sister, Anna."
+              ]
+            },
+            {
+              "en": "your",
+              "fa": "ـت / مال تو یا شما",
+              "examples": [
+                "Is he your son?",
+                "Is she your daughter?",
+                "Is this your brother?"
+              ]
+            },
+            {
+              "en": "his",
+              "fa": "ـش / مال او، مذکر",
+              "examples": [
+                "His name is David.",
+                "His name is Sam.",
+                "I'm his daughter."
+              ]
+            },
+            {
+              "en": "her",
+              "fa": "ـش / مال او، مؤنث",
+              "examples": [
+                "Her name is Nora.",
+                "Her name is Anna.",
+                "I'm her son."
+              ]
+            },
+            {
+              "en": "he",
+              "fa": "او، مذکر",
+              "examples": [
+                "Is he your son?",
+                "He's my father.",
+                "Yes, he is. This is my brother, Sam."
+              ]
+            },
+            {
+              "en": "she",
+              "fa": "او، مؤنث",
+              "examples": [
+                "Is she your daughter?",
+                "She's my sister.",
+                "Yes, she is."
+              ]
+            },
+            {
+              "en": "this",
+              "fa": "این",
+              "examples": [
+                "This is my mother.",
+                "This is my father.",
+                "This is my sister, Anna."
+              ]
+            },
+            {
+              "en": "who",
+              "fa": "چه کسی / کی",
+              "examples": [
+                "Who's this?",
+                "Hello! Who's this?",
+                "Who's this, Anna?"
+              ]
+            },
+            {
+              "en": "is",
+              "fa": "است",
+              "examples": [
+                "This is my mother.",
+                "Her name is Nora.",
+                "This is my father."
+              ]
+            },
+            {
+              "en": "are",
+              "fa": "هستی / هستید / هستند",
+              "examples": [
+                "Are you a father?",
+                "How are you?",
+                "Are you my brother?"
+              ]
+            },
+            {
+              "en": "name",
+              "fa": "نام / اسم",
+              "examples": [
+                "Her name is Nora.",
+                "His name is David.",
+                "Her name is Anna."
+              ]
+            },
+            {
+              "en": "you",
+              "fa": "تو / شما",
+              "examples": [
+                "Her name is Anna. Nice to meet you!",
+                "Are you a father?",
+                "Thank you!"
+              ]
+            },
+            {
+              "en": "a",
+              "fa": "یک؛ حرف تعریف",
+              "examples": [
+                "I'm a mother.",
+                "I'm a father.",
+                "I'm a sister."
+              ]
+            },
+            {
+              "en": "look",
+              "fa": "نگاه کردن",
+              "examples": [
+                "Please, look at this photo.",
+                "Look at this photo.",
+                "Please look at my family photo."
+              ]
+            },
+            {
+              "en": "at",
+              "fa": "به",
+              "examples": [
+                "Please, look at this photo.",
+                "Look at this photo.",
+                "Please look at my family photo."
+              ]
+            },
+            {
+              "en": "come",
+              "fa": "آمدن",
+              "examples": [
+                "Please, come in.",
+                "Please come in.",
+                "Come in, please."
+              ]
+            },
+            {
+              "en": "in",
+              "fa": "داخل / به داخل",
+              "examples": [
+                "Please, come in.",
+                "Please come in.",
+                "The ball is in the box."
               ]
             },
             {
@@ -231,14 +377,58 @@
               "en": "grandparents",
               "fa": "پدربزرگ و مادربزرگ",
               "role": "supplementary"
-            },
-            {
-              "en": "family photo",
-              "fa": "عکس خانوادگی",
-              "role": "supplementary"
             }
           ],
           "phase": "words"
+        },
+        {
+          "id": "family-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "عبارت‌های کاربردی و ترکیب‌های خاص",
+          "description": "این واحدها عبارت یا ترکیب‌اند، نه واژهٔ منفرد؛ آن‌ها را در موقعیت و جمله یاد بگیر.",
+          "items": [
+            {
+              "en": "family photo",
+              "fa": "عکس خانوادگی",
+              "kind": "collocation",
+              "examples": [
+                "This is a family photo.",
+                "Look at this photo.",
+                "The photo is here."
+              ]
+            },
+            {
+              "en": "look at",
+              "fa": "نگاه کردن به",
+              "kind": "collocation",
+              "examples": [
+                "Look at this photo.",
+                "Please look at my family photo.",
+                "Look at her."
+              ]
+            },
+            {
+              "en": "come in",
+              "fa": "داخل آمدن / بفرمایید داخل",
+              "kind": "collocation",
+              "examples": [
+                "Please come in.",
+                "Come in, please.",
+                "Can I come in?"
+              ]
+            },
+            {
+              "en": "family tree",
+              "fa": "درخت خانواده",
+              "kind": "collocation",
+              "examples": [
+                "This is my family tree.",
+                "Look at the family tree.",
+                "The family tree is here."
+              ]
+            }
+          ]
         },
         {
           "id": "family-inline-phrases",
@@ -2140,6 +2330,14 @@
             "success": "از یک موقعیت واقعی یا شخصی برای ساخت جمله استفاده کردی؛ حالا می‌توانی اشیا، نام‌ها و رابطه‌ها را عوض کنی."
           },
           "phase": "independent"
+        },
+        {
+          "id": "a1-2-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "سایه‌خوانی دوباره",
+          "description": "همان محتوای شنیداری ابتدای درس را دوباره گوش بده و همراه صدا تکرار کن.",
+          "sourceActivityId": "a1-2-shadowing"
         }
       ]
     }

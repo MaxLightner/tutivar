@@ -1,7 +1,7 @@
 import { cycleComposerSlot } from './sentence-composer.js';
 import { addPuzzleWord, undoPuzzleWord, clearPuzzleSentence, submitPuzzleSentence } from './sentence-puzzle.js';
 import { renderActivity } from './lesson-modules.js';
-import { advanceDeck, answerDeck, deckState, jumpDeck, resumeDeck, wordId } from './word-review.js';
+import { advanceDeck, answerDeck, deckState, jumpDeck, resumeDeck, startDeckTest, wordId } from './word-review.js';
 import { evaluateResponse, practiceState, submitPractice } from './practice-engine.js';
 
 const $root = document.getElementById('app');
@@ -70,6 +70,8 @@ let lessonCache = new Map();
 let activePerson = 0;
 let ownerIdx = 0;
 let objectIdx = 0;
+let shadowingRunId = 0;
+let activeShadowing = null;
 let modal = null;
 let toastTimeout;
 
@@ -221,7 +223,7 @@ function showToast(message) { clearTimeout(toastTimeout); document.getElementByI
 function draw(keepScroll = false) { const scroll = window.scrollY; let content = route.page === 'home' ? homeView() : route.page === 'lessons' ? lessonsView() : route.page === 'leitner' ? leitnerView() : route.page === 'dashboard' ? dashboardView() : lessonView(lessonCache.get(route.lessonId)); $root.className = ''; $root.innerHTML = shell(content); for (const view of $root.querySelectorAll('[data-dialogue-window]')) { const step = Number(view.dataset.dialoguePosition) || 0; view.scrollTop = step * (view.querySelector('.dialogue-line')?.offsetHeight || 124); } if (keepScroll) window.scrollTo({ top: scroll, behavior: 'instant' }); }
 function parseHash() { const [page, id, part] = location.hash.replace(/^#\/?/, '').split('/'); if (page === 'lesson' && id) return { page: 'lesson', lessonId: decodeURIComponent(id), part: ['foundation', 'production'].includes(part) ? part : 'foundation' }; return { page: ['home', 'lessons', 'leitner', 'dashboard'].includes(page) ? page : 'home', lessonId: null, part: null }; }
 async function syncRoute() { route = parseHash(); if (route.page === 'lesson') { try { const lesson = await loadLesson(route.lessonId); if (!lesson) { route = { page: 'lessons', lessonId: null, part: null }; } } catch { showModal('بارگذاری درس', 'محتوای این درس بارگذاری نشد. اتصال اینترنت را بررسی کن یا صفحه را تازه‌سازی کن.'); route = { page: 'lessons', lessonId: null, part: null }; } } draw(); window.scrollTo(0, 0); }
-function navigate(page, id = null, part = null) { const target = page === 'lesson' ? `#/lesson/${id}${part ? '/' + part : ''}` : `#/${page}`; if (location.hash === target) { syncRoute(); return; } location.hash = target; }
+function navigate(page, id = null, part = null) { stopShadowing(); const target = page === 'lesson' ? `#/lesson/${id}${part ? '/' + part : ''}` : `#/${page}`; if (location.hash === target) { syncRoute(); return; } location.hash = target; }
 function updateInline() { draw(true); }
 const lessonVocabulary = (key) => lessonCache.get(route.lessonId)?.sections.flatMap((section) => section.activities || []).find((item) => item.type === 'vocabulary' && `${route.lessonId}:${item.id}` === key);
 const lessonActivity = (key) => lessonCache.get(route.lessonId)?.sections.flatMap((section) => section.activities || []).find((item) => `${route.lessonId}:${item.id}` === key);
@@ -248,8 +250,62 @@ function submitWordAnswer(key, input) {
   if (result.correct === true && result.state.phase === 'test') document.querySelector('[data-word-answer]')?.focus({ preventScroll: true });
   if (result.correct === true && result.state.phase === 'done') showToast('همهٔ کارت‌های آزمون را درست جواب دادی.');
 }
-async function speech(text) { if (!('speechSynthesis' in window)) { showToast('پخش صوت در این مرورگر پشتیبانی نمی‌شود.'); return; } window.speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance(text); utterance.lang = 'en-US'; utterance.rate = .84; window.speechSynthesis.speak(utterance); }
+function stopShadowing() {
+  shadowingRunId++;
+  if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+  for (const audio of document.querySelectorAll('audio[data-shadowing-audio]')) {
+    audio.pause();
+    audio.currentTime = 0;
+  }
+  if (activeShadowing) {
+    if (activeShadowing.button?.isConnected) activeShadowing.button.textContent = 'پخش برای سایه‌خوانی';
+    if (activeShadowing.status) activeShadowing.status.textContent = 'پخش متوقف شد.';
+  }
+  activeShadowing = null;
+}
+function startShadowing(key, sourceId, button) {
+  if (activeShadowing?.key === key) { stopShadowing(); return; }
+  stopShadowing();
+  if (!('speechSynthesis' in window)) { showToast('پخش صوت در این مرورگر پشتیبانی نمی‌شود.'); return; }
+  const source = lessonActivity(`${route.lessonId}:${sourceId}`);
+  if (source?.type !== 'shadowing' || !source.lines?.length) { showToast('مسیر سایه‌خوانی پیدا نشد.'); return; }
+  const runId = ++shadowingRunId;
+  const module = button.closest('.module-shadowing');
+  const status = module?.querySelector('[data-shadowing-status]');
+  const speed = module?.querySelector('[data-shadowing-speed]');
+  const rate = Math.max(0.55, Math.min(1, Number(speed?.value || source.rate || 0.72)));
+  const pauseMs = Math.max(250, Number(source.pauseMs || 500));
+  activeShadowing = { key, button, status };
+  button.textContent = 'توقف پخش';
+  if (status) status.textContent = 'گوش کن و با فاصله‌ای کوتاه تکرار کن؛ معنی جمله‌ها لازم نیست.';
+  let index = 0;
+  const nextLine = () => {
+    if (runId !== shadowingRunId) return;
+    if (index >= source.lines.length) {
+      if (activeShadowing?.key === key) {
+        button.textContent = 'پخش دوباره برای سایه‌خوانی';
+        if (status) status.textContent = 'تمام شد؛ می‌توانی دوباره گوش بدهی و تکرار کنی.';
+        activeShadowing = null;
+      }
+      return;
+    }
+    const utterance = new SpeechSynthesisUtterance(source.lines[index++]);
+    utterance.lang = 'en-US';
+    utterance.rate = rate;
+    utterance.onend = () => { if (runId === shadowingRunId) setTimeout(nextLine, pauseMs); };
+    utterance.onerror = () => {
+      if (runId !== shadowingRunId) return;
+      if (status) status.textContent = 'پخش متوقف شد؛ دوباره تلاش کن.';
+      button.textContent = 'پخش برای سایه‌خوانی';
+      activeShadowing = null;
+    };
+    window.speechSynthesis.speak(utterance);
+  };
+  nextLine();
+}
+async function speech(text) { stopShadowing(); if (!('speechSynthesis' in window)) { showToast('پخش صوت در این مرورگر پشتیبانی نمی‌شود.'); return; } window.speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance(text); utterance.lang = 'en-US'; utterance.rate = .84; window.speechSynthesis.speak(utterance); }
 function speakPair(lines) {
+  stopShadowing();
   if (!('speechSynthesis' in window)) { showToast('پخش صوت در این مرورگر پشتیبانی نمی‌شود.'); return; }
   window.speechSynthesis.cancel();
   for (const line of lines) {
@@ -397,7 +453,7 @@ function wordKeydown(event) {
   document.querySelector('[data-word-swipe]')?.focus({ preventScroll: true });
 }
 function onClick(event) {
-  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-meaning-key],button[data-spatial-key],button[data-family-key],button[data-agreement-key],button[data-finish-section],button[data-review],button[data-planned],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-build-submit],button[data-build-undo],button[data-build-clear],button[data-roleplay],button[data-word-key],button[data-composer-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
+  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-meaning-key],button[data-spatial-key],button[data-family-key],button[data-agreement-key],button[data-finish-section],button[data-review],button[data-planned],button[data-shadowing-key],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-build-submit],button[data-build-undo],button[data-build-clear],button[data-roleplay],button[data-word-key],button[data-composer-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
   if (!el) return;
   if (el.dataset.nav) { modal = null; navigate(el.dataset.nav); return; }
   if (el.dataset.openLesson) { modal = null; activePerson = 0; ownerIdx = 0; objectIdx = 0; navigate('lesson', el.dataset.openLesson, el.dataset.startSection || null); return; }
@@ -405,6 +461,7 @@ function onClick(event) {
   if (el.dataset.stage) { progress.activeStage = el.dataset.stage; persist(); updateInline(); document.querySelector('.stage-summary')?.scrollIntoView({behavior:'smooth',block:'start'}); return; }
   if (el.dataset.planned) { showModal('درس قفل است', 'با آماده‌شدن این درس، امکان شروع آن فعال می‌شود.'); return; }
   if (el.dataset.section) { navigate('lesson', route.lessonId, el.dataset.section); return; }
+  if (el.dataset.shadowingKey) { startShadowing(el.dataset.shadowingKey, el.dataset.shadowingSource, el); return; }
   if (el.dataset.speak) { speech(el.dataset.speak); return; }
   if (el.dataset.exampleReveal !== undefined) {
     const isRevealed = el.closest('.example-mini-card')?.classList.toggle('is-revealed') || false;
@@ -507,6 +564,7 @@ function onClick(event) {
     if (el.dataset.wordAction === 'restart') { delete progress.wordProgress[key]; persist(); updateInline(); return; }
     const state = deckState(progress.wordProgress[key], activity);
     const action = el.dataset.wordAction;
+    if (action === 'start-test') return saveDeckState(key, startDeckTest(state, activity));
     if (action === 'known' || action === 'test' || action === 'next') return saveDeckState(key, advanceDeck(state, activity, action));
     if (action === 'prev') return saveDeckState(key, jumpDeck(state, activity, state.index - 1));
     if (action === 'resume' || action === 'skip-failed') return saveDeckState(key, resumeDeck(state, activity, action === 'skip-failed'));
@@ -678,6 +736,11 @@ function onInput(event) {
   if (event.target.dataset.wordSlider) scrubWord(event.target.dataset.wordSlider, Number(event.target.value) - 1, { save: false });
 }
 function onChange(event) {
+  if (event.target.dataset.shadowingSpeed) {
+    const audio = event.target.closest('.module-shadowing')?.querySelector('audio[data-shadowing-audio]');
+    if (audio) audio.playbackRate = Math.max(0.55, Math.min(1, Number(event.target.value) || 1));
+    return;
+  }
   if (event.target.dataset.dialogueSlider) {
     const key = event.target.dataset.dialogueSlider;
     const view = [...document.querySelectorAll('[data-dialogue-window]')].find((item) => item.dataset.dialogueWindow === key);

@@ -1,6 +1,6 @@
 {
   "id": "A1-4",
-  "revision": 9,
+  "revision": 10,
   "status": "draft",
   "title": "اشیا و مکان اطراف من",
   "goal": "بتوانی موقعیت توپ و اشیا را نسبت به یک جعبهٔ درباز با in، inside، on، on top of، above، under، behind، in front of، next to و outside توضیح بدهی.",
@@ -52,12 +52,29 @@
       ],
       "activities": [
         {
+          "id": "a1-4-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "شنیدن و سایه‌خوانی",
+          "description": "فقط گوش بده و هم‌زمان یا با فاصله‌ای کوتاه تکرار کن؛ لازم نیست معنی جمله‌ها را بفهمی.",
+          "audioSrc": null,
+          "rate": 0.72,
+          "pauseMs": 500,
+          "lines": [
+            "Where is the ball?",
+            "The ball is in the box.",
+            "The ball is next to the box.",
+            "Is the ball under the box?",
+            "The ball is above the box."
+          ]
+        },
+        {
           "id": "places-words",
           "type": "vocabulary",
           "phase": "words",
-          "title": "واژه‌های اصلیِ مکان و اشیا",
+          "title": "واژگان اصلی مکان و اشیا",
           "batchSize": 4,
-          "deckRevision": 2,
+          "deckRevision": 3,
           "items": [
             {
               "en": "ball",
@@ -110,16 +127,6 @@
               ]
             },
             {
-              "en": "on top of",
-              "fa": "روی قسمت بالایی",
-              "hint": "روی بخش بالایی جسم",
-              "examples": [
-                "The ball is on top of the box.",
-                "The toy is on top of the box.",
-                "Is the ball on top of the box?"
-              ]
-            },
-            {
               "en": "above",
               "fa": "بالای / بالاتر از",
               "hint": "بدون تماس",
@@ -150,26 +157,6 @@
               ]
             },
             {
-              "en": "in front of",
-              "fa": "جلوی",
-              "hint": "در جلو جسم",
-              "examples": [
-                "The ball is in front of the box.",
-                "Is the ball in front of the box?",
-                "The toy is in front of the box."
-              ]
-            },
-            {
-              "en": "next to",
-              "fa": "کنار",
-              "hint": "در کنار جسم",
-              "examples": [
-                "The ball is next to the box.",
-                "Is the ball next to the box?",
-                "The toy is next to the box."
-              ]
-            },
-            {
               "en": "outside",
               "fa": "بیرون",
               "hint": "خارج از جعبه",
@@ -180,99 +167,130 @@
               ]
             },
             {
-              "en": "Where is the ball?",
-              "fa": "توپ کجاست؟",
-              "hint": "پرسیدن جای توپ",
-              "examples": [
-                "Where is the ball?",
-                "Where is your ball?",
-                "The ball is inside the box."
-              ]
-            },
-            {
-              "en": "The ball is in the box.",
-              "fa": "توپ داخل جعبه است.",
-              "hint": "یک پاسخ کامل",
-              "examples": [
-                "The ball is in the box.",
-                "The ball is inside the box.",
-                "The ball is under the box."
-              ]
-            },
-            {
-              "en": "Is the ball under the box?",
-              "fa": "آیا توپ زیر جعبه است؟",
-              "hint": "پرسش دربارهٔ مکان",
-              "examples": [
-                "Is the ball under the box?",
-                "Is the ball inside the box?",
-                "No, the ball is in the box."
-              ]
-            },
-            {
               "en": "book",
               "fa": "کتاب",
-              "role": "supplementary"
+              "examples": [
+                "Where is my book?",
+                "The book is on the table.",
+                "This is my book."
+              ]
             },
             {
               "en": "phone",
               "fa": "تلفن",
-              "role": "supplementary"
+              "examples": [
+                "Is the phone under the chair?",
+                "This is my phone.",
+                "Where is my phone?"
+              ]
             },
             {
               "en": "keys",
               "fa": "کلیدها",
-              "role": "supplementary"
+              "examples": [
+                "These are my keys.",
+                "Where are my keys?",
+                "I have my keys."
+              ]
             },
             {
               "en": "table",
               "fa": "میز",
-              "role": "supplementary"
+              "examples": [
+                "The toy is on the table.",
+                "The book is on the table.",
+                "It is on the table."
+              ]
             },
             {
               "en": "chair",
               "fa": "صندلی",
-              "role": "supplementary"
+              "examples": [
+                "Is the phone under the chair?",
+                "The ball is under the chair.",
+                "The phone is next to the chair."
+              ]
             },
             {
               "en": "desk",
               "fa": "میز تحریر",
-              "role": "supplementary"
-            },
-            {
-              "en": "near",
-              "fa": "نزدیک",
-              "role": "supplementary"
-            },
-            {
-              "en": "Where is my book?",
-              "fa": "کتاب من کجاست؟",
-              "role": "supplementary"
-            },
-            {
-              "en": "The book is on the table.",
-              "fa": "کتاب روی میز است.",
-              "role": "supplementary"
-            },
-            {
-              "en": "Is the phone under the chair?",
-              "fa": "آیا تلفن زیر صندلی است؟",
-              "role": "supplementary"
+              "examples": [
+                "The pen is on the desk.",
+                "The ball is under the desk.",
+                "My book is on the desk."
+              ]
             },
             {
               "en": "bag",
               "fa": "کیف",
-              "role": "supplementary"
+              "examples": [
+                "This is my bag.",
+                "Where is my bag?",
+                "I have a bag."
+              ]
             },
             {
               "en": "pen",
               "fa": "خودکار",
-              "role": "supplementary"
+              "examples": [
+                "This is my pen.",
+                "Where is my pen?",
+                "I have a pen."
+              ]
             },
             {
               "en": "notebook",
               "fa": "دفتر",
-              "role": "supplementary"
+              "examples": [
+                "This is my notebook.",
+                "Where is my notebook?",
+                "I have a notebook."
+              ]
+            },
+            {
+              "en": "shelf",
+              "fa": "قفسه",
+              "examples": [
+                "The book is on the shelf.",
+                "The keys are on the shelf.",
+                "The ball is under the shelf."
+              ]
+            },
+            {
+              "en": "near",
+              "fa": "نزدیک",
+              "examples": [
+                "The ball is near the box.",
+                "My bag is near the chair.",
+                "The phone is near the table."
+              ]
+            },
+            {
+              "en": "between",
+              "fa": "بین",
+              "examples": [
+                "The ball is between the boxes.",
+                "The chair is between the table and the desk.",
+                "My bag is between the chairs."
+              ]
+            },
+            {
+              "en": "here",
+              "fa": "اینجا",
+              "examples": [
+                "The ball is here.",
+                "My phone is here.",
+                "Come here, please."
+              ]
+            },
+            {
+              "en": "there",
+              "fa": "آنجا",
+              "examples": [
+                "The box is there.",
+                "My book is there.",
+                "Put the bag there."
+              ]
             },
             {
               "en": "bed",
@@ -282,11 +300,6 @@
             {
               "en": "sofa",
               "fa": "مبل",
-              "role": "supplementary"
-            },
-            {
-              "en": "shelf",
-              "fa": "قفسه",
               "role": "supplementary"
             },
             {
@@ -315,19 +328,81 @@
               "role": "supplementary"
             },
             {
-              "en": "between",
-              "fa": "بین",
+              "en": "lamp",
+              "fa": "چراغ",
               "role": "supplementary"
             },
             {
-              "en": "here",
-              "fa": "اینجا",
+              "en": "cup",
+              "fa": "فنجان",
               "role": "supplementary"
             },
             {
-              "en": "there",
-              "fa": "آنجا",
+              "en": "drawer",
+              "fa": "کشو",
               "role": "supplementary"
+            }
+          ]
+        },
+        {
+          "id": "places-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "عبارت‌های کاربردی و ترکیب‌های خاص",
+          "description": "این واحدها عبارت یا ترکیب‌اند، نه واژهٔ منفرد؛ آن‌ها را در موقعیت و جمله یاد بگیر.",
+          "items": [
+            {
+              "en": "on top of",
+              "fa": "روی قسمت بالایی",
+              "hint": "روی بخش بالایی جسم",
+              "examples": [
+                "The ball is on top of the box.",
+                "The toy is on top of the box.",
+                "Is the ball on top of the box?"
+              ],
+              "kind": "preposition"
+            },
+            {
+              "en": "in front of",
+              "fa": "جلوی",
+              "hint": "در جلو جسم",
+              "examples": [
+                "The ball is in front of the box.",
+                "Is the ball in front of the box?",
+                "The toy is in front of the box."
+              ],
+              "kind": "preposition"
+            },
+            {
+              "en": "next to",
+              "fa": "کنار",
+              "hint": "در کنار جسم",
+              "examples": [
+                "The ball is next to the box.",
+                "Is the ball next to the box?",
+                "The toy is next to the box."
+              ],
+              "kind": "preposition"
+            },
+            {
+              "en": "in the middle of",
+              "fa": "در وسطِ",
+              "kind": "preposition",
+              "examples": [
+                "The table is in the middle of the room.",
+                "The ball is in the middle of the box.",
+                "The chair is in the middle of the room."
+              ]
+            },
+            {
+              "en": "in the corner",
+              "fa": "در گوشهٔ",
+              "kind": "preposition",
+              "examples": [
+                "The box is in the corner.",
+                "The chair is in the corner of the room.",
+                "The ball is in the corner."
+              ]
             }
           ]
         },
@@ -2359,6 +2434,14 @@
             ],
             "success": "از یک موقعیت واقعی یا شخصی برای ساخت جمله استفاده کردی؛ حالا می‌توانی اشیا، نام‌ها و رابطه‌ها را عوض کنی."
           }
+        },
+        {
+          "id": "a1-4-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "سایه‌خوانی دوباره",
+          "description": "همان محتوای شنیداری ابتدای درس را دوباره گوش بده و همراه صدا تکرار کن.",
+          "sourceActivityId": "a1-4-shadowing"
         }
       ]
     }

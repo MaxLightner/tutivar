@@ -6,12 +6,13 @@ import { validateVisualActivity } from './visual-learning.js';
  */
 export const LESSON_TEMPLATE_ID = 'discovery-production-v1';
 export const LESSON_PHASES = Object.freeze({
-  foundation: ['words', 'phrases', 'sentence', 'variants', 'puzzle', 'construction'],
+  foundation: ['shadowing', 'words', 'phrases', 'sentence', 'variants', 'puzzle', 'construction'],
   production: ['correspondence', 'context', 'picture', 'guided', 'independent']
 });
 export const LESSON_PHASE_LABELS = Object.freeze({
+  shadowing: 'سایه‌خوانی آغاز درس',
   words: 'واژه‌ها',
-  phrases: 'عبارت‌های ترکیبی',
+  phrases: 'عبارت‌ها و ترکیب‌های کاربردی',
   sentence: 'جملهٔ زنده',
   variants: 'شکل‌های جمله',
   puzzle: 'جورچین',
@@ -23,8 +24,9 @@ export const LESSON_PHASE_LABELS = Object.freeze({
   independent: 'ساختن مستقل'
 });
 const TYPE_FOR_PHASE = {
+  shadowing: ['shadowing'],
   words: ['vocabulary'],
-  phrases: ['composer-view', 'family-tree', 'family-lab', 'spatial-lab'],
+  phrases: ['expression-study', 'composer-view', 'family-tree', 'family-lab', 'spatial-lab'],
   sentence: ['sentence-composer'],
   variants: ['composer-view', 'sentence-transform', 'meaning-cluster'],
   puzzle: ['sentence-builder'],
@@ -33,7 +35,7 @@ const TYPE_FOR_PHASE = {
   context: ['dialogue', 'response-practice'],
   picture: ['picture-description'],
   guided: ['guided-dialogue', 'dialogue-transfer'],
-  independent: ['free-write']
+  independent: ['free-write', 'shadowing-review']
 };
 
 export function validateLessonFlow(lesson) {
@@ -54,6 +56,28 @@ export function validateLessonFlow(lesson) {
       seen.add(activity.phase);
       if (!TYPE_FOR_PHASE[activity.phase].includes(activity.type))
         errors.push(activity.id + ': activity type ' + activity.type + ' does not belong to ' + activity.phase);
+      if (activity.type === 'vocabulary') {
+        for (const item of activity.items || []) {
+          if (/\s/.test(String(item.en || '').trim()))
+            errors.push(activity.id + ': vocabulary entry "' + item.en + '" is a phrase; move it to an expression activity');
+        }
+      }
+      if (activity.type === 'expression-study') {
+        if (!Array.isArray(activity.items) || !activity.items.length) errors.push(activity.id + ': expression-study needs items');
+        for (const item of activity.items || []) {
+          if (!item.en || !item.fa || !['fixed', 'collocation', 'preposition'].includes(item.kind))
+            errors.push(activity.id + ': expression item needs en, fa and a valid kind');
+        }
+      }
+      if (activity.type === 'shadowing') {
+        if (!Array.isArray(activity.lines) || activity.lines.length < 3) errors.push(activity.id + ': shadowing needs at least three short lines');
+        for (const line of activity.lines || []) if (String(line).trim().split(/\s+/).length > 10)
+          errors.push(activity.id + ': shadowing line is too long for A1 imitation');
+      }
+      if (activity.type === 'shadowing-review') {
+        const source = all[activity.sourceActivityId];
+        if (!source || source.type !== 'shadowing') errors.push(activity.id + ': review must reference the opening shadowing track');
+      }
       if (['meaning-cluster','family-lab','spatial-lab'].includes(activity.type)) errors.push(...validateVisualActivity(activity).map((error) => activity.id + ': ' + error));
       if (activity.type === 'composer-view') {
         const source = all[activity.sourceActivityId];
@@ -86,5 +110,13 @@ export function validateLessonFlow(lesson) {
     }
     for (const stage of stages) if (!seen.has(stage)) errors.push(sectionId + ': missing ' + stage);
   }
+  const activities = (lesson.sections || []).flatMap((section) => section.activities || []);
+  const openingTracks = activities.filter((activity) => activity.type === 'shadowing');
+  const closingTracks = activities.filter((activity) => activity.type === 'shadowing-review');
+  if (openingTracks.length !== 1) errors.push('lesson must have exactly one opening shadowing track');
+  if (closingTracks.length !== 1) errors.push('lesson must replay the opening shadowing track at the end');
+  if (openingTracks.length === 1 && closingTracks.length === 1 &&
+      closingTracks[0].sourceActivityId !== openingTracks[0].id)
+    errors.push('closing shadowing track must reference the same opening track');
   return errors;
 }
