@@ -267,6 +267,35 @@ test('second lesson teaches family relationships with a live tree, retrieval and
   assert.ok(production.activities.filter((activity) => activity.type === 'dialogue').every((activity) => activity.lines.length >= 8));
 });
 
+
+test('A1-3 teaches ownership through one-variable pattern discovery', () => {
+  const lesson = load('lessons/a1-3.json');
+  const foundation = lesson.sections[0];
+  const production = lesson.sections[1];
+  const labs = foundation.activities.filter((activity) => activity.type === 'pattern-lab');
+  assert.equal(labs.length, 3);
+  assert.ok(labs.every((activity) => activity.slots.length === 1), 'each discovery step changes only one dimension');
+  assert.deepEqual(labs[0].outcomes.map((item) => item.en), [
+    'This is my book.', 'This is your book.', 'This is his book.', 'This is her book.'
+  ]);
+  assert.deepEqual(labs[1].outcomes.map((item) => item.en), [
+    'This is my book.', 'This is my bag.', 'This is my phone.', 'This is my pen.'
+  ]);
+  const context = {
+    lessonId: lesson.id, index: 0, e: String,
+    en: (value) => `<span class="en">${String(value)}</span>`,
+    i: () => '',
+    progress: { phraseChoices: {} }
+  };
+  const rendered = renderActivity(labs[0], context);
+  assert.match(rendered, /data-phrase-key="A1-3:ownership-owner-lab"/);
+  assert.match(rendered, /<mark class="pattern-focus">my<\/mark>/);
+  assert.match(rendered, /<details class="pattern-observation">/);
+  assert.ok(production.activities.some((activity) => activity.type === 'guided-dialogue'));
+  assert.ok(production.activities.some((activity) => activity.type === 'free-write'));
+  assert.deepEqual(auditLesson(lesson).errors, [], 'focus phrases have guided and independent production');
+});
+
 test('lesson audit identifies missing downstream production and keeps supplementary phrases optional', () => {
   const lesson = load('lessons/a1-1.json');
   const result = auditLesson(lesson);
