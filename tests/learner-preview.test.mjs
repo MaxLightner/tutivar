@@ -338,6 +338,8 @@ test('meaning expressions and reusable visual learning modules are lesson-author
   assert.ok(family.people.some(person=>person.sentence==='This is my daughter, Ava.'));
   assert.ok(family.people.some(person=>person.sentence==='This is my son, Leo.'));
   assert.match(html,/6 عضو خانواده/);
+  const daughterScene=renderActivity(family,{...context,progress:{familyPeople:{'A1-2:family-tree':4}}});
+  assert.match(daughterScene,/family-point-arrow" transform="translate\(330 317\)"/);
 
   const fourth=load('lessons/a1-4.json');
   const core=coreItems(fourth.sections[0].activities.find(a=>a.type==='vocabulary'));
