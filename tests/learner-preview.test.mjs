@@ -325,7 +325,7 @@ test('A1-3 uses one JSON-driven sentence composer for owners, objects and gramma
     progress: { ...context.progress, sentenceComposers: { 'A1-3:ownership-sentence-composer': { activeSlot: 'object' } } }
   });
   assert.match(pickerRendered, /data-composer-search/);
-  assert.equal((pickerRendered.match(/class="composer-choice/g) || []).length, 20, 'the object picker is generated from the JSON word set');
+  assert.equal((pickerRendered.match(/class="composer-choice(?: active)?"/g) || []).length, 20, 'the object picker is generated from the JSON word set');
 
   const saved = { slots: { owner: 'she', object: 'keys' }, pattern: 'statement' };
   const statement = resolveSentenceComposer(composer, saved);
