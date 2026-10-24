@@ -1,6 +1,6 @@
 {
   "id": "A1-4",
-  "revision": 4,
+  "revision": 5,
   "status": "draft",
   "title": "اشیا و مکان اطراف من",
   "goal": "بتوانی موقعیت توپ و اشیا را نسبت به یک جعبهٔ درباز با in، inside، on، on top of، above، under، behind، in front of، next to و outside توضیح بدهی.",
@@ -1909,11 +1909,29 @@
           "id": "places-guided-talk",
           "type": "guided-dialogue",
           "phase": "guided",
-          "practiceRevision": 2,
+          "practiceRevision": 3,
           "title": "نوبت تو؛ مکالمه را جلو ببر",
           "description": "بشنو یا بخوان و به نوبت‌های مختلف پاسخ بده؛ راهنما فقط در صورت نیاز.",
           "completion": "دربارهٔ مکان اشیا در پنج موقعیت پاسخ دادی.",
           "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "I cannot find the ball.",
+              "task": "از دوستت بپرس توپ کجاست.",
+              "hint": "Where is the ball?",
+              "example": "Where is the ball?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "where is the ball"
+                    ],
+                    "feedback": "با Where is the ball? مکان توپ را بپرس."
+                  }
+                ],
+                "success": "مکان توپ را به انگلیسی پرسیدی."
+              }
+            },
             {
               "speaker": "دوستت",
               "incoming": "Where is the ball?",
