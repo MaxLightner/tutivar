@@ -319,7 +319,8 @@ function moveDialogue(key, newStep, { audible = true, save = true, behavior = 's
   if (save) { progress.dialogueSteps[key] = Math.round(step); persist(); }
   if (audible && Math.round(step) !== previous) {
     const newlyRevealed = step >= previous ? Math.min(Math.round(step) + 1, activity.lines.length - 1) : Math.round(step);
-    speech(activity.lines[newlyRevealed].en);
+    const visibleLine = [...document.querySelectorAll('[data-dialogue-line]')].find((item) => item.dataset.dialogueLine === String(newlyRevealed) && item.closest('[data-dialogue-window]')?.dataset.dialogueWindow === key);
+    speech(visibleLine?.querySelector('[data-speak]')?.dataset.speak || activity.lines[newlyRevealed].en || '');
   }
 }
 function scrubWord(key, requestedIndex, { save = true } = {}) {
