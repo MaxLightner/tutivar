@@ -34,18 +34,20 @@ rewrite('index.html', [
 rewrite('app.js', [
   ["from './lesson-modules.js'", `from './lesson-modules.js?v=${revision}'`],
   ["from './word-review.js'", `from './word-review.js?v=${revision}'`],
-  ["from './practice-engine.js'", `from './practice-engine.js?v=${revision}'`]
+  ["from './practice-engine.js'", `from './practice-engine.js?v=${revision}'`],
 ]);
 rewrite('lesson-modules.js', [
   ["from './word-review.js'", `from './word-review.js?v=${revision}'`],
-  ["from './practice-engine.js'", `from './practice-engine.js?v=${revision}'`]
+  ["from './practice-engine.js'", `from './practice-engine.js?v=${revision}'`],
+  ["from './sentence-composer.js'", `from './sentence-composer.js?v=${revision}'`]
 ]);
 rewrite('sw.js', [
-  ["const CACHE = 'tutivar-ui-v3-network-first';", `const CACHE = 'tutivar-${revision}';`],
+  ["const CACHE = 'tutivar-ui-v4-network-first';", `const CACHE = 'tutivar-${revision}';`],
   ["'./ui-v2.css'", `'./ui-v2.css?v=${revision}'`],
   ["'./app.js'", `'./app.js?v=${revision}'`],
   ["'./lesson-modules.js'", `'./lesson-modules.js?v=${revision}'`],
   ["'./word-review.js'", `'./word-review.js?v=${revision}'`],
-  ["'./practice-engine.js'", `'./practice-engine.js?v=${revision}'`]
+  ["'./practice-engine.js'", `'./practice-engine.js?v=${revision}'`],
+  ["'./sentence-composer.js'", `'./sentence-composer.js?v=${revision}'`]
 ]);
 console.log(`Built dist/ — fa-en independent content; revision ${revision}`);
