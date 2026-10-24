@@ -54,3 +54,33 @@ Add a word object to the appropriate `wordSets` array. The sentence picker reads
 ```
 
 Dialogues remain lesson data too: ordinary lines use `speaker`, `en`, and `fa`. A line may also use ordered segments where a future dialogue template needs variable words; it should reference a sentence-composer activity instead of duplicating the vocabulary.
+
+## Reusing composer variables in dialogue
+
+A dialogue line can bind to a sentence-composer activity with `sourceActivityId`. Use `segments` for the target-language line and `translationSegments` for its translation. Both accept the same `fixed`, `slot`, and `derived` segment forms, so the dialogue can reuse the selected object and grammatical dependencies without copying the word list.
+
+```json
+{
+  "speaker": "Staff",
+  "sourceActivityId": "ownership-sentence-composer",
+  "segments": [
+    { "derived": "questionAux" },
+    { "fixed": " " },
+    { "derived": "demonstrativeLower" },
+    { "fixed": " your " },
+    { "slot": "object", "form": "noun" },
+    { "fixed": "?" }
+  ],
+  "translationSegments": [
+    { "fixed": "آیا " },
+    { "derived": "faDemonstrative" },
+    { "fixed": " " },
+    { "slot": "object", "form": "translation" },
+    { "fixed": " متعلق به تو " },
+    { "derived": "faCopula" },
+    { "fixed": "؟" }
+  ]
+}
+```
+
+Keep fully authored dialogue lines as `en` and `fa` strings when they should not change with the composer.
