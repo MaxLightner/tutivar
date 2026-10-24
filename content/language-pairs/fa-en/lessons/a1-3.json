@@ -1,6 +1,6 @@
 {
   "id": "A1-3",
-  "revision": 4,
+  "revision": 5,
   "status": "draft",
   "title": "مالکیت و داشتن اشیا",
   "goal": "بتوانی با تغییر صاحب یا وسیله، جمله بسازی و بگویی یک وسیله مال چه کسی است.",
@@ -649,7 +649,8 @@
             "questionAux": "Is",
             "faDemonstrative": "این",
             "faCopula": "است",
-            "faNegativeCopula": "نیست"
+            "faNegativeCopula": "نیست",
+            "copulaContraction": "it's"
           },
           "dependencies": [
             {
@@ -666,7 +667,8 @@
                 "questionAux": "Are",
                 "faDemonstrative": "این‌ها",
                 "faCopula": "هستند",
-                "faNegativeCopula": "نیستند"
+                "faNegativeCopula": "نیستند",
+                "copulaContraction": "they're"
               }
             },
             {
@@ -683,7 +685,8 @@
                 "questionAux": "Is",
                 "faDemonstrative": "این",
                 "faCopula": "است",
-                "faNegativeCopula": "نیست"
+                "faNegativeCopula": "نیست",
+                "copulaContraction": "it's"
               }
             }
           ],
@@ -1509,49 +1512,355 @@
           "id": "ownership-dialogue-found",
           "type": "dialogue",
           "title": "مکالمهٔ دوم: میز اشیای پیدا‌شده",
-          "description": "موقعیت عوض شده است، اما الگوهای سؤال و جواب همان‌اند.",
+          "description": "این مکالمه از همان وسیله‌ای استفاده می‌کند که در جمله‌ساز انتخاب کردی؛ با تغییر وسیله، سؤال‌ها و پاسخ‌ها هم تغییر می‌کنند.",
           "lines": [
             {
               "speaker": "Staff",
-              "en": "Excuse me, is this your phone?",
-              "fa": "ببخشید، این تلفن توست؟"
+              "sourceActivityId": "ownership-sentence-composer",
+              "segments": [
+                {
+                  "fixed": "Excuse me, "
+                },
+                {
+                  "derived": "questionAux"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "demonstrativeLower"
+                },
+                {
+                  "fixed": " your "
+                },
+                {
+                  "slot": "object",
+                  "form": "noun"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "ببخشید، آیا "
+                },
+                {
+                  "derived": "faDemonstrative"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "translation"
+                },
+                {
+                  "fixed": " متعلق به تو "
+                },
+                {
+                  "derived": "faCopula"
+                },
+                {
+                  "fixed": "؟"
+                }
+              ]
             },
             {
               "speaker": "Mia",
-              "en": "No, it's her phone.",
-              "fa": "نه، تلفن اوست."
+              "sourceActivityId": "ownership-sentence-composer",
+              "segments": [
+                {
+                  "fixed": "No, "
+                },
+                {
+                  "derived": "copulaContraction"
+                },
+                {
+                  "fixed": " her "
+                },
+                {
+                  "slot": "object",
+                  "form": "noun"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "نه، "
+                },
+                {
+                  "slot": "object",
+                  "form": "translation"
+                },
+                {
+                  "fixed": " متعلق به او "
+                },
+                {
+                  "derived": "faCopula"
+                },
+                {
+                  "fixed": "."
+                }
+              ]
             },
             {
               "speaker": "Staff",
-              "en": "Is this your bottle?",
-              "fa": "این بطری توست؟"
+              "sourceActivityId": "ownership-sentence-composer",
+              "segments": [
+                {
+                  "derived": "questionAux"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "demonstrativeLower"
+                },
+                {
+                  "fixed": " his "
+                },
+                {
+                  "slot": "object",
+                  "form": "noun"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "آیا "
+                },
+                {
+                  "derived": "faDemonstrative"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "translation"
+                },
+                {
+                  "fixed": " متعلق به او "
+                },
+                {
+                  "derived": "faCopula"
+                },
+                {
+                  "fixed": "؟"
+                }
+              ]
             },
             {
               "speaker": "Noah",
-              "en": "Yes, it's mine.",
-              "fa": "بله، مال من است."
+              "sourceActivityId": "ownership-sentence-composer",
+              "segments": [
+                {
+                  "fixed": "Yes, "
+                },
+                {
+                  "derived": "copulaContraction"
+                },
+                {
+                  "fixed": " mine."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "بله، "
+                },
+                {
+                  "slot": "object",
+                  "form": "translation"
+                },
+                {
+                  "fixed": " مال من "
+                },
+                {
+                  "derived": "faCopula"
+                },
+                {
+                  "fixed": "."
+                }
+              ]
             },
             {
               "speaker": "Staff",
-              "en": "Is this your pencil?",
-              "fa": "این مداد توست؟"
+              "sourceActivityId": "ownership-sentence-composer",
+              "segments": [
+                {
+                  "derived": "questionAux"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "demonstrativeLower"
+                },
+                {
+                  "fixed": " your "
+                },
+                {
+                  "slot": "object",
+                  "form": "noun"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "آیا "
+                },
+                {
+                  "derived": "faDemonstrative"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "translation"
+                },
+                {
+                  "fixed": " متعلق به تو "
+                },
+                {
+                  "derived": "faCopula"
+                },
+                {
+                  "fixed": "؟"
+                }
+              ]
             },
             {
               "speaker": "Mia",
-              "en": "No, it's his pencil.",
-              "fa": "نه، مداد اوست."
+              "sourceActivityId": "ownership-sentence-composer",
+              "segments": [
+                {
+                  "fixed": "No, "
+                },
+                {
+                  "derived": "copulaContraction"
+                },
+                {
+                  "fixed": " her "
+                },
+                {
+                  "slot": "object",
+                  "form": "noun"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "نه، "
+                },
+                {
+                  "slot": "object",
+                  "form": "translation"
+                },
+                {
+                  "fixed": " متعلق به او "
+                },
+                {
+                  "derived": "faCopula"
+                },
+                {
+                  "fixed": "."
+                }
+              ]
             },
             {
               "speaker": "Staff",
-              "en": "Is this your wallet?",
-              "fa": "این کیف پول توست؟"
+              "sourceActivityId": "ownership-sentence-composer",
+              "segments": [
+                {
+                  "derived": "questionAux"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "demonstrativeLower"
+                },
+                {
+                  "fixed": " my "
+                },
+                {
+                  "slot": "object",
+                  "form": "noun"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "آیا "
+                },
+                {
+                  "derived": "faDemonstrative"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "translation"
+                },
+                {
+                  "fixed": " متعلق به من "
+                },
+                {
+                  "derived": "faCopula"
+                },
+                {
+                  "fixed": "؟"
+                }
+              ]
             },
             {
               "speaker": "Noah",
-              "en": "Yes, it's mine.",
-              "fa": "بله، مال من است."
+              "sourceActivityId": "ownership-sentence-composer",
+              "segments": [
+                {
+                  "fixed": "Yes, "
+                },
+                {
+                  "derived": "copulaContraction"
+                },
+                {
+                  "fixed": " yours."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "بله، "
+                },
+                {
+                  "slot": "object",
+                  "form": "translation"
+                },
+                {
+                  "fixed": " مال تو "
+                },
+                {
+                  "derived": "faCopula"
+                },
+                {
+                  "fixed": "."
+                }
+              ]
             }
-          ]
+          ],
+          "practiceRevision": 3
         },
         {
           "id": "ownership-dialogue-contrast-practice",
