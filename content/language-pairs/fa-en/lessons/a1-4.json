@@ -340,7 +340,7 @@
           "type": "composer-view",
           "phase": "phrases",
           "title": "عبارت‌های مکانی؛ لمس مستقیم",
-          "description": "روی on یا table داخل عبارت بزن تا ترکیب‌های جدید کشف کنی.",
+          "description": "روی in یا box در خود عبارت بزن تا ترکیب‌های مکانی تازه بسازی.",
           "sourceActivityId": "places-composer",
           "patternId": "phrase"
         },
@@ -1333,7 +1333,7 @@
     },
     {
       "id": "production",
-      "label": "از الگو تا مکالمه",
+      "label": "از سؤال و جواب تا مکالمه",
       "intro": "با سؤال‌وجواب دربارهٔ مکان شروع کن، دو مکالمهٔ متفاوت را مقایسه کن، سپس با کمک و بدون کمک در موقعیت‌های تازه صحبت کن.",
       "masteryActivityIds": [
         "places-guided-talk",

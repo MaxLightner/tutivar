@@ -820,3 +820,10 @@ test('A1-4 teaches ball-and-box positions before transferring to familiar object
   assert.ok(transfer.turns.some(turn => /book/.test(turn.incoming || '')));
   assert.deepEqual(auditLesson(lesson).errors, []);
 });
+
+test('all four A1 lessons expose identical two-section navigation labels', () => {
+  const labels=['از کلمه تا جمله','از سؤال و جواب تا مکالمه'];
+  for (const id of ['a1-1','a1-2','a1-3','a1-4']) {
+    assert.deepEqual(load('lessons/'+id+'.json').sections.map(section=>section.label),labels,id);
+  }
+});
