@@ -1835,6 +1835,24 @@
             },
             {
               "speaker": "دوستت",
+              "incoming": "There are three books on the table.",
+              "task": "حالا خودت تعداد کتاب‌ها را بپرس.",
+              "hint": "How many books are there?",
+              "example": "How many books are there?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "how many books are there"
+                    ],
+                    "feedback": "برای پرسیدن تعداد، از How many books are there? استفاده کن."
+                  }
+                ],
+                "success": "خودت پرسش تعداد را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
               "incoming": "How many pens are there?",
               "task": "دو خودکار وجود دارد.",
               "hint": "There are two pens.",
