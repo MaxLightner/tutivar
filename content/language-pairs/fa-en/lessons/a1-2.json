@@ -348,7 +348,11 @@
             }
           ],
           "phase": "phrases",
-          "typeLabel": "خانوادهٔ تصویری"
+          "typeLabel": "خانوادهٔ تصویری",
+          "scene": {
+            "width": 660,
+            "height": 500
+          }
         },
         {
           "id": "family-composer",
