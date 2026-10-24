@@ -15,7 +15,8 @@ const MODULE_LABELS = {
   'exchange-lab': 'سؤال و جواب',
   'sentence-transform': 'تبدیل جمله',
   'dialogue-transfer': 'مکالمه در موقعیت تازه',
-  'family-tree': 'درخت خانواده'
+  'family-tree': 'درخت خانواده',
+  'agreement-lab': 'جمله‌ساز وابسته'
 };
 function wrapper(body, activity, idx, e, extra = '') {
   return `<div class="lesson-block module-block ${extra}" data-module="${e(activity.type)}"><div class="block-top"><div><span class="block-label">${String(idx + 1).padStart(2, '0')} / ${e(activity.typeLabel || MODULE_LABELS[activity.type] || 'فعالیت')}</span><h3>${e(activity.title || '')}</h3></div></div>${body}</div>`;
@@ -91,6 +92,22 @@ function familyTree(a, c) {
   const selected = Math.min(Math.max(Number(c.progress.familyPeople?.[key]) || 0, 0), a.people.length - 1);
   const person = a.people[selected];
   return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="family-tree-picker" role="group" aria-label="انتخاب عضو خانواده">${a.people.map((entry, index) => `<button type="button" class="family-person ${index === selected ? 'active' : ''}" data-family-key="${c.e(key)}" data-family-index="${index}" aria-pressed="${index === selected}"><span>${c.e(entry.initial || entry.name[0])}</span><strong>${c.en(entry.name)}</strong><small>${c.e(entry.fa)}</small></button>`).join('')}</div><div class="family-tree-result"><div class="family-tree-primary">${c.en(person.sentence)}${soundButton(person.sentence, c.e, c.i)}</div><p>${c.e(person.explanation || person.fa)}</p>${person.followup ? `<div class="family-tree-followup">${c.en(person.followup)}${soundButton(person.followup, c.e, c.i)}</div>` : ''}</div>`, a, c.index, c.e, 'module-family-tree');
+}
+function agreementLab(a, c) {
+  const key = `${c.lessonId}:${a.id}`;
+  const saved = c.progress.agreementChoices?.[key] || {};
+  const index = Math.max(0, Math.min(a.members.length - 1, Number(saved.member) || 0));
+  const selected = a.members[index];
+  const direct = saved.perspective === 'you';
+  const subject = direct ? 'You' : selected.subject;
+  const verb = direct ? 'are' : 'is';
+  const possessive = direct ? 'Your' : selected.possessive;
+  const sentence = `${subject} ${verb} my ${selected.en}.`;
+  const negative = `${subject} ${verb} not my ${selected.en}.`;
+  const question = direct ? `Are you my ${selected.en}?` : `Is ${subject.toLowerCase()} your ${selected.en}?`;
+  const name = `${possessive} name is ${selected.name}.`;
+  const options = a.members.map((member, i) => `<button type="button" class="agreement-option ${i === index ? 'active' : ''}" data-agreement-key="${c.e(key)}" data-agreement-choice="member" data-agreement-index="${i}" aria-pressed="${i === index}">${c.en(member.en)}<small>${c.e(member.fa)}</small></button>`).join('');
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="agreement-stage" data-agreement-module="${c.e(key)}"><div class="agreement-caption">روی هر واژهٔ رنگی بزن و تغییر بقیهٔ جمله را ببین.</div><div class="agreement-live-line" lang="en" dir="ltr"><button type="button" class="agreement-token" data-agreement-key="${c.e(key)}" data-agreement-choice="perspective" aria-label="تغییر میان He یا She و You">${c.e(subject)}</button><button type="button" class="agreement-token" data-agreement-key="${c.e(key)}" data-agreement-choice="perspective" aria-label="تغییر is و are">${c.e(verb)}</button><span>my</span><button type="button" class="agreement-token agreement-role-switch" data-agreement-key="${c.e(key)}" data-agreement-choice="next-member" aria-label="تغییر عضو خانواده">${c.e(selected.en)}</button><span>.</span>${soundButton(sentence, c.e, c.i)}</div><div class="agreement-member-options" role="group" aria-label="انتخاب نسبت خانوادگی">${options}</div><div class="agreement-compare"><div><span>منفی</span>${c.en(negative)}${soundButton(negative, c.e, c.i)}</div><div><span>سؤالی</span>${c.en(question)}${soundButton(question, c.e, c.i)}</div><div><span>نام او / تو</span>${c.en(name)}${soundButton(name, c.e, c.i)}</div></div><p class="agreement-rule">${direct ? 'وقتی مستقیم به کسی می‌گویی «تو»، You با are می‌آید؛ فرقی نمی‌کند خواهر باشد یا برادر.' : `چون ${c.e(selected.fa)} ${selected.subject === 'He' ? 'مذکر' : 'مؤنث'} است، ضمیر ${c.en(selected.subject)} با is می‌آید و برای نامش ${c.en(selected.possessive)} می‌گوییم.`}</p></div>`, a, c.index, c.e, 'module-agreement-lab');
 }
 function practiceSequence(a, c) {
   const key = `${c.lessonId}:${a.id}`;
@@ -206,7 +223,7 @@ const renderers = {
   'guided-dialogue': guidedDialogue, 'response-practice': responsePractice,
   'exchange-lab': exchangeLab,
   'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer,
-  'family-tree': familyTree
+  'family-tree': familyTree, 'agreement-lab': agreementLab
 };
 export function renderActivity(activity, context) {
   const renderer = renderers[activity.type];

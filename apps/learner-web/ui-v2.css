@@ -545,6 +545,26 @@ button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3p
 .family-tree-result > p { font-size: 12px; color: #688474; margin: 6px 0; }
 .family-tree-followup { display: flex; align-items: center; justify-content: space-between; gap: 8px; background: #ffffffc9; border-radius: 9px; padding: 7px 10px; direction: ltr; }
 .family-tree-followup .en { font-size: 14px; }
+/* A linked template: changing the family member updates every pronoun and verb. */
+.agreement-stage { border: 1px solid #dbe8d8; border-radius: 16px; padding: 16px; background: #f8fbf7; }
+.agreement-caption { font-size: 12px; color: #5e7765; margin-bottom: 12px; }
+.agreement-live-line { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; font-size: clamp(20px, 3.5vw, 30px); font-weight: 800; color: #264936; }
+.agreement-token { padding: 5px 9px; border-radius: 10px; background: #dfefe3; color: #256548; border: 1px solid #a7d0b3; font: inherit; cursor: pointer; }
+.agreement-token.agreement-role-switch { background: #eeebfc; color: #5e4a98; border-color: #cbc2ee; }
+.agreement-token:focus-visible, .agreement-option:focus-visible { outline: 2px solid #347e54; outline-offset: 2px; }
+.agreement-live-line > * { animation: agreement-update .24s ease-out; }
+@keyframes agreement-update { from { opacity: .55; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+.agreement-live-line .sound-btn { margin-inline-start: 8px; }
+.agreement-member-options { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 15px; }
+.agreement-option { display: inline-flex; flex-direction: column; align-items: center; gap: 3px; padding: 7px 10px; border: 1px solid #dfe8df; border-radius: 9px; background: #fff; color: #54705c; cursor: pointer; }
+.agreement-option .en { font-size: 13px; font-weight: 750; }
+.agreement-option small { font-size: 10px; }
+.agreement-option.active { background: #e4f3df; border-color: #79b88a; color: #23543a; }
+.agreement-compare { display: grid; gap: 7px; margin-top: 13px; }
+.agreement-compare > div { display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 7px; background: #fff; border-radius: 10px; padding: 9px 12px; }
+.agreement-compare > div > span:first-child { color: #6e8773; font-size: 12px; }
+.agreement-compare .en { direction: ltr; text-align: left; font-size: 15px; font-weight: 750; flex: 1; }
+.agreement-rule { font-size: 13px; line-height: 1.9; color: #507459; margin-top: 12px; }
 /* Use real vertical scrolling, so dragging the scrubber moves messages continuously. */
 .module-dialogue-timeline .dialogue-window { display: block; height: 264px; min-height: 264px; box-sizing: border-box; overflow-y: auto; overflow-x: hidden; overscroll-behavior-y: contain; scrollbar-width: none; padding: 8px 12px; }
 .module-dialogue-timeline .dialogue-window::-webkit-scrollbar { display: none; }

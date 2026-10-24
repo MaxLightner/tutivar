@@ -47,7 +47,7 @@ const ICONS = {
 const icon = (name, size = '') => `<span class="icon ${size}"><svg aria-hidden="true" viewBox="0 0 24 24">${ICONS[name] || ICONS.star}</svg></span>`;
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const en = (text) => `<span class="en" lang="en" dir="ltr">${escapeHtml(text)}</span>`;
-const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, familyPeople: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
+const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, familyPeople: {}, agreementChoices: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
 function readProgress() { try { const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); return { ...defaultProgress(), ...saved, settings: { ...defaultProgress().settings, ...(saved.settings || {}) } }; } catch { return defaultProgress(); } }
 const progress = readProgress();
 // Historical completion records predate skill evidence. Preserve them in storage,
@@ -363,6 +363,17 @@ function wordSwipeEnd(event) {
   saveDeckState(key, moveX < 0 ? advanceDeck(current, activity) : jumpDeck(current, activity, current.index - 1));
 }
 function wordKeydown(event) {
+  if (event.target.matches?.('[data-dialogue-slider]') && ['ArrowLeft', 'ArrowRight', 'Home', 'End', 'PageUp', 'PageDown'].includes(event.key)) {
+    event.preventDefault();
+    const key = event.target.dataset.dialogueSlider;
+    const activity = lessonActivity(key);
+    if (!activity?.lines?.length) return;
+    const current = Math.round(Number(progress.dialogueSteps[key]) || 0);
+    const next = event.key === 'Home' ? 0 : event.key === 'End' ? activity.lines.length - 2
+      : current + (event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : event.key === 'PageUp' ? 2 : -2);
+    moveDialogue(key, next);
+    return;
+  }
   const card = event.target.closest('[data-word-swipe]');
   if (!card || !['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
   const key = card.dataset.wordSwipe;
@@ -374,7 +385,7 @@ function wordKeydown(event) {
   document.querySelector('[data-word-swipe]')?.focus({ preventScroll: true });
 }
 function onClick(event) {
-  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-family-key],button[data-finish-section],button[data-review],button[data-planned],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-roleplay],button[data-word-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
+  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-family-key],button[data-agreement-key],button[data-finish-section],button[data-review],button[data-planned],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-roleplay],button[data-word-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
   if (!el) return;
   if (el.dataset.nav) { modal = null; navigate(el.dataset.nav); return; }
   if (el.dataset.openLesson) { modal = null; activePerson = 0; ownerIdx = 0; objectIdx = 0; navigate('lesson', el.dataset.openLesson, el.dataset.startSection || null); return; }
@@ -391,6 +402,32 @@ function onClick(event) {
   if (el.dataset.familyKey) {
     progress.familyPeople[el.dataset.familyKey] = Number(el.dataset.familyIndex);
     persist(); updateInline(); return;
+  }
+  if (el.dataset.agreementKey) {
+    const key = el.dataset.agreementKey;
+    const activity = lessonActivity(key);
+    if (activity?.type !== 'agreement-lab') return;
+    const previous = progress.agreementChoices[key] || { member: 0, perspective: 'third' };
+    const next = { ...previous };
+    if (el.dataset.agreementChoice === 'perspective') next.perspective = previous.perspective === 'you' ? 'third' : 'you';
+    if (el.dataset.agreementChoice === 'next-member') next.member = ((Number(previous.member) || 0) + 1) % activity.members.length;
+    if (el.dataset.agreementChoice === 'member') next.member = Number(el.dataset.agreementIndex);
+    progress.agreementChoices[key] = next;
+    persist();
+    const stage = [...document.querySelectorAll('[data-agreement-module]')].find((node) => node.dataset.agreementModule === key);
+    const module = stage?.closest('.module-agreement-lab');
+    if (module) {
+      const section = lessonCache.get(route.lessonId)?.sections.find((item) => item.id === route.part);
+      const index = section?.activities.findIndex((item) => item.id === activity.id) ?? 0;
+      const fresh = document.createElement('template');
+      fresh.innerHTML = renderActivity(activity, { lessonId: route.lessonId, index, e: escapeHtml, en, i: icon, progress });
+      module.replaceWith(fresh.content.firstElementChild);
+      const focus = el.dataset.agreementChoice === 'member'
+        ? [...document.querySelectorAll('[data-agreement-key]')].find((button) => button.dataset.agreementKey === key && button.dataset.agreementChoice === 'member' && Number(button.dataset.agreementIndex) === next.member)
+        : [...document.querySelectorAll('[data-agreement-key]')].find((button) => button.dataset.agreementKey === key && button.dataset.agreementChoice === el.dataset.agreementChoice);
+      focus?.focus({ preventScroll: true });
+    }
+    return;
   }
   if (el.dataset.quickSkip) {
     const ordered = samples();
