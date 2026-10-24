@@ -62,8 +62,8 @@ test('every sample path node references a real content file with two teaching se
     assert.ok(!ids.has(lesson.id));
     ids.add(lesson.id);
   }
-  assert.equal(ids.size, 3);
-  assert.deepEqual([...new Set([...ids].map((id) => load(lessons.find((entry) => entry.id === id).file).archetype))].sort(), ['conversation', 'family', 'ownership']);
+  assert.equal(ids.size, 4);
+  assert.deepEqual([...new Set([...ids].map((id) => load(lessons.find((entry) => entry.id === id).file).archetype))].sort(), ['conversation', 'family', 'ownership', 'spatial-location']);
 });
 
 test('not-yet-produced nodes cannot be launched as content', () => {
@@ -271,7 +271,7 @@ test('A1-4 is a complete location lesson in the same six/four phase teaching tem
   }
   const next=cycleComposerSlot(composer,{slots:{object:'book'}},'object');
   assert.equal(next.slots.object,composer.wordSets.objects[1].id);
-  const context={lessonId:lesson.id,index:0,e:String,en:String,i:()=>'',progress:{sentenceComposers:{},sentenceAnswers:{},wordProgress:{},showDialogueTranslation:true},
+  const context={lessonId:lesson.id,index:0,e:String,en:String,i:()=>'',progress:{sentenceComposers:{},sentenceAnswers:{},wordProgress:{},written:{},assessments:{},showDialogueTranslation:true,practiceStates:{},dialogueSteps:{},exchangeChoices:{}},
      activitiesById:Object.fromEntries(lesson.sections.flatMap(section=>section.activities).map(activity=>[activity.id,activity]))};
   for(const section of lesson.sections)for(const activity of section.activities){
     const html=renderActivity(activity,context);
@@ -577,7 +577,7 @@ test('A1-3 uses one JSON-driven sentence composer for owners, objects and gramma
   assert.ok(vocabulary.items.filter((entry) => entry.role !== 'supplementary').every((entry) => entry.examples?.length === 3));
   assert.equal(lesson.visual.src, './a1-3-personal-belongings.svg');
   const serviceWorker = readFileSync(join(projectRoot, 'apps/learner-web/sw.js'), 'utf8');
-  assert.ok(serviceWorker.includes('tutivar-ui-v4-network-first'));
+  assert.ok(serviceWorker.includes('tutivar-ui-v5-network-first'));
   assert.ok(serviceWorker.includes("'./sentence-composer.js'"), 'the shared composer runtime is precached for offline use');
   assert.match(readFileSync(join(projectRoot, 'apps/learner-web/a1-3-personal-belongings.svg'), 'utf8'), /<svg/);
   const optionalHtml = renderActivity(vocabulary, { lessonId: lesson.id, index: 0, e: String, en: String, i: () => '', progress: { wordProgress: {} } });
