@@ -1,3 +1,4 @@
+import { validateLessonFlow } from '../apps/learner-web/lesson-flow.js';
 import { validateSentenceComposer } from '../apps/learner-web/sentence-composer.js';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
@@ -151,6 +152,7 @@ export function validateRepository(root = projectRoot) {
   const composerSchema = get('schemas/sentence-composer.schema.json');
   function inspectSentenceComposers(value, sourcePath) {
     if (!value || typeof value !== 'object') return;
+    if (!Array.isArray(value) && value.lessonTemplate) errors.push(...validateLessonFlow(value).map((error) => sourcePath + ': ' + error));
     if (!Array.isArray(value) && value.type === 'sentence-composer') {
       errors.push(...validateSchema(composerSchema, value, sourcePath + ':' + (value.id || 'sentence-composer')));
       errors.push(...validateSentenceComposer(value).map((error) => sourcePath + ': ' + error));
