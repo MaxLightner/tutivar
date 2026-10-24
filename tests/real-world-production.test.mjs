@@ -21,7 +21,7 @@ for (const n of [1, 2, 3, 4]) {
     assert.equal(closing.sourceActivityId, opening.id);
     assert.ok(opening.lines.length >= 5);
     assert.ok(opening.lines.every((line) => line.trim().split(/\s+/).length <= 10), 'shadowing lines stay short enough to imitate');
-    assert.ok(!production.some((activity) => /comprehension-quiz/.test(activity.type)), 'shadowing does not become a comprehension quiz');
+    assert.ok(!production.activities.some((activity) => /comprehension-quiz/.test(activity.type)), 'shadowing does not become a comprehension quiz');
   });
   test(`A1-${n} keeps words and phrase-level units in separate modules`, () => {
     const lesson = load(n);
