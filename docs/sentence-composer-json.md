@@ -88,3 +88,9 @@ Keep fully authored dialogue lines as `en` and `fa` strings when they should not
 ## Shared two-part lesson template
 
 Each A1 lesson declares `lessonTemplate: "discovery-production-v1"` and a `phase` on every activity. Foundation phases must appear in this order: `words`, `phrases`, `sentence`, `variants`, `puzzle`, `construction`. Production phases: `correspondence`, `context`, `guided`, `independent`. The shared `lesson-flow.js` validates ordering, required stages, compatible activity types, references and puzzle permutations. Content and vocabulary remain JSON-authored. `composer-view` reuses another `sentence-composer` via `sourceActivityId`, with a forced `patternId` or stage-specific `patternIds`; tapping an editable word cycles directly through its wordSet rather than opening a picker. A `derived` segment may define `cycleSlot` so dependent pronouns such as He/She/You can also be tapped.
+
+## Independent sentence stages
+The phrase view, live sentence, and variations view reference the same word sets and grammar from one JSON activity but persist independent selections by their own activity IDs. Changing `my` to `your` in one stage no longer modifies the other stage.
+
+## Multi-sentence word puzzles
+The `sentence-builder` activity accepts `sentences: [{ "id": "first", "words": ["This", "is", "my", "book."] }, ...]` instead of a single `tokens` and `correctOrder`. The reusable `sentence-puzzle.js` engine derives one shuffled word bank from **all** accepted sentences, with repeated word tokens preserved. Learners choose a word sequence and check it; a correct sentence removes the used tokens, and they continue constructing the remaining sentences in any order. Optional `extraWords` allows distractors. Set `revision` when editing these sentences to discard obsolete saved selections. All correct solutions are authored in JSON, not hardcoded in JavaScript.
