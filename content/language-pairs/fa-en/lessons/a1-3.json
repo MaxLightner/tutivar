@@ -743,7 +743,120 @@
             }
           ]
         },
-        null,
+        {
+          "id": "ownership-exchange-practice",
+          "type": "response-practice",
+          "practiceRevision": 1,
+          "title": "حالا خودت جواب بده",
+          "description": "هر سؤال را بخوان و بدون انتخاب گزینه، پاسخ مناسب را بنویس. در بعضی موقعیت‌ها باید حدس را رد کنی.",
+          "completion": "پاسخ مثبت، پاسخ منفی و نسبت‌دادن وسیله به شخص دیگر را تمرین کردی.",
+          "tasks": [
+            {
+              "task": "از کسی بپرس آیا این کتاب مال اوست.",
+              "hint": "Is this your book?",
+              "example": "Is this your book?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "is this your book"
+                    ],
+                    "feedback": "سؤال را با Is this your book? بساز."
+                  }
+                ],
+                "success": "سؤال مالکیت را ساختی."
+              }
+            },
+            {
+              "task": "دوستت می‌گوید Is this your notebook? دفتر مال خودت است؛ جواب مثبت بده.",
+              "hint": "Yes, it's mine.",
+              "example": "Yes, it's mine.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "yes"
+                    ],
+                    "feedback": "با Yes پاسخ مثبت بده."
+                  },
+                  {
+                    "any": [
+                      "it's mine"
+                    ],
+                    "feedback": "از mine استفاده کن."
+                  }
+                ],
+                "success": "پاسخ مثبت را درست ساختی."
+              }
+            },
+            {
+              "task": "از تو می‌پرسند Is this your wallet? کیف پول متعلق به یک زن است؛ جواب منفی بده.",
+              "hint": "No, it's her wallet.",
+              "example": "No, it's her wallet.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no"
+                    ],
+                    "feedback": "با No حدس را رد کن."
+                  },
+                  {
+                    "any": [
+                      "her wallet"
+                    ],
+                    "feedback": "صاحب را با her wallet مشخص کن."
+                  }
+                ],
+                "success": "پاسخ منفی و صاحب درست را گفتی."
+              }
+            },
+            {
+              "task": "دوستت می‌پرسد Is this my pencil? تأیید کن که مال اوست.",
+              "hint": "Yes, it's yours.",
+              "example": "Yes, it's yours.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "yes"
+                    ],
+                    "feedback": "پاسخ مثبت بده."
+                  },
+                  {
+                    "any": [
+                      "it's yours"
+                    ],
+                    "feedback": "از yours استفاده کن."
+                  }
+                ],
+                "success": "از دید مخاطب جواب دادی."
+              }
+            },
+            {
+              "task": "بطری مال تو نیست؛ متعلق به یک زن است. جواب بده.",
+              "hint": "No, it's her bottle.",
+              "example": "No, it's her bottle.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no"
+                    ],
+                    "feedback": "با No جواب بده."
+                  },
+                  {
+                    "any": [
+                      "her bottle"
+                    ],
+                    "feedback": "با her bottle صاحب را مشخص کن."
+                  }
+                ],
+                "success": "وسیله را به شخص دیگر نسبت دادی."
+              }
+            }
+          ]
+        },
         {
           "id": "ownership-dialogue",
           "type": "dialogue",
@@ -803,9 +916,198 @@
           ],
           "practiceRevision": 2
         },
-        null,
-        null,
-        null,
+        {
+          "id": "ownership-dialogue-recall",
+          "type": "response-practice",
+          "practiceRevision": 1,
+          "title": "مکالمه را از حافظه ادامه بده",
+          "description": "بعد از دیدن مکالمه، حالا پاسخ را بدون کپی‌کردن بساز.",
+          "tasks": [
+            {
+              "task": "از روی مکالمه جواب بده: دفتر متعلق به یک مرد است.",
+              "hint": "No, it's his notebook.",
+              "example": "No, it's his notebook.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no"
+                    ],
+                    "feedback": "حدس را رد کن."
+                  },
+                  {
+                    "any": [
+                      "his notebook"
+                    ],
+                    "feedback": "از his notebook استفاده کن."
+                  }
+                ],
+                "success": "مکالمه را به یاد آوردی."
+              }
+            },
+            {
+              "task": "کیف پول مال خودت است. پاسخ مثبت بده.",
+              "hint": "Yes, it's mine.",
+              "example": "Yes, it's mine.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "yes"
+                    ],
+                    "feedback": "پاسخ مثبت بده."
+                  },
+                  {
+                    "any": [
+                      "it's mine"
+                    ],
+                    "feedback": "از mine استفاده کن."
+                  }
+                ],
+                "success": "پاسخ را از دید خودت ساختی."
+              }
+            },
+            {
+              "task": "بطری متعلق به یک زن است؛ پاسخ منفی بده.",
+              "hint": "No, it's her bottle.",
+              "example": "No, it's her bottle.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no"
+                    ],
+                    "feedback": "پاسخ منفی بده."
+                  },
+                  {
+                    "any": [
+                      "her bottle"
+                    ],
+                    "feedback": "از her bottle استفاده کن."
+                  }
+                ],
+                "success": "پاسخ منفی را با مالک درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "ownership-dialogue-found",
+          "type": "dialogue",
+          "title": "مکالمهٔ دوم: میز اشیای پیدا‌شده",
+          "description": "موقعیت عوض شده است، اما الگوهای سؤال و جواب همان‌اند.",
+          "lines": [
+            {
+              "speaker": "Staff",
+              "en": "Excuse me, is this your phone?",
+              "fa": "ببخشید، این تلفن توست؟"
+            },
+            {
+              "speaker": "Mia",
+              "en": "No, it's her phone.",
+              "fa": "نه، تلفن اوست."
+            },
+            {
+              "speaker": "Staff",
+              "en": "Is this your bottle?",
+              "fa": "این بطری توست؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "Yes, it's mine.",
+              "fa": "بله، مال من است."
+            },
+            {
+              "speaker": "Staff",
+              "en": "Is this your pencil?",
+              "fa": "این مداد توست؟"
+            },
+            {
+              "speaker": "Mia",
+              "en": "No, it's his pencil.",
+              "fa": "نه، مداد اوست."
+            },
+            {
+              "speaker": "Staff",
+              "en": "Is this your wallet?",
+              "fa": "این کیف پول توست؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "Yes, it's mine.",
+              "fa": "بله، مال من است."
+            }
+          ]
+        },
+        {
+          "id": "ownership-dialogue-contrast-practice",
+          "type": "response-practice",
+          "practiceRevision": 1,
+          "title": "پاسخ مثبت و منفی را مقایسه کن",
+          "description": "در هر پاسخ مشخص کن وسیله مال توست یا شخص دیگری.",
+          "tasks": [
+            {
+              "task": "بپرس آیا تلفن مال مخاطب است.",
+              "hint": "Is this your phone?",
+              "example": "Is this your phone?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "is this your phone"
+                    ],
+                    "feedback": "سؤال را با Is this your phone? بساز."
+                  }
+                ],
+                "success": "سؤال را ساختی."
+              }
+            },
+            {
+              "task": "بطری مال خودت است؛ پاسخ مثبت بده.",
+              "hint": "Yes, it's mine.",
+              "example": "Yes, it's mine.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "yes"
+                    ],
+                    "feedback": "پاسخ مثبت بده."
+                  },
+                  {
+                    "any": [
+                      "it's mine"
+                    ],
+                    "feedback": "از mine استفاده کن."
+                  }
+                ],
+                "success": "پاسخ مثبت را ساختی."
+              }
+            },
+            {
+              "task": "مداد مال یک مرد است، نه تو؛ جواب منفی بده.",
+              "hint": "No, it's his pencil.",
+              "example": "No, it's his pencil.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no"
+                    ],
+                    "feedback": "با No پاسخ منفی بده."
+                  },
+                  {
+                    "any": [
+                      "his pencil"
+                    ],
+                    "feedback": "با his pencil صاحب را مشخص کن."
+                  }
+                ],
+                "success": "پاسخ منفی را ساختی."
+              }
+            }
+          ]
+        },
         {
           "id": "ownership-guided-talk",
           "type": "guided-dialogue",
