@@ -1,5 +1,5 @@
 const CACHE = 'tutivar-ui-v6-network-first';
-const ASSETS = ['./', './index.html', './styles.css', './ui-v2.css', './app.js', './lesson-modules.js', './sentence-composer.js', './lesson-flow.js', './sentence-puzzle.js', './visual-learning.js', './word-review.js', './practice-engine.js', './icon.svg', './manifest.webmanifest', './data/manifest.json', './data/curriculum.a1.json', './data/lessons/a1-1.json', './data/lessons/a1-2.json', './data/lessons/a1-3.json', './data/lessons/a1-4.json', './a1-4-locations.svg'];
+const ASSETS = ['./', './index.html', './styles.css', './ui-v2.css', './app.js', './lesson-modules.js', './sentence-composer.js', './lesson-flow.js', './sentence-puzzle.js', './visual-learning.js', './word-review.js', './practice-engine.js', './icon.svg', './manifest.webmanifest', './data/manifest.json', './data/curriculum.a1.json', './data/lessons/a1-1.json', './data/lessons/a1-2.json', './data/lessons/a1-3.json', './data/lessons/a1-4.json', './a1-4-locations.svg', './assets/scene-a1-1.svg', './assets/scene-a1-2.svg', './assets/scene-a1-3.svg', './assets/scene-a1-4.svg'];
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
 });
