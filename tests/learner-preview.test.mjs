@@ -332,8 +332,12 @@ test('meaning expressions and reusable visual learning modules are lesson-author
   const context={lessonId:'A1-2',index:0,e:String,en:String,i:()=>'',progress:{familyPeople:{}},activitiesById:{}};
   const html=renderActivity(family,context);
   assert.match(html,/class="family-point-arrow"/);
-  assert.equal((html.match(/data-family-key=/g)||[]).length,8,'family figures have SVG hotspots and button alternatives');
+  assert.equal((html.match(/data-family-key=/g)||[]).length,12,'six family figures have SVG hotspots and button alternatives');
   assert.match(html,/This is my mother, Nora./);
+  assert.equal(family.people.length,6);
+  assert.ok(family.people.some(person=>person.sentence==='This is my daughter, Ava.'));
+  assert.ok(family.people.some(person=>person.sentence==='This is my son, Leo.'));
+  assert.match(html,/6 عضو خانواده/);
 
   const fourth=load('lessons/a1-4.json');
   const core=coreItems(fourth.sections[0].activities.find(a=>a.type==='vocabulary'));
@@ -792,4 +796,25 @@ test('presentation is independent of course content and never hardcodes target p
   assert.ok(!app.includes('This is my mother.'));
   assert.ok(!app.includes('این مسیر بر اساس فهرست'));
   assert.ok(!app.includes('اینجا مسیر توست'));
+});
+
+test('A1-4 teaches ball-and-box positions before transferring to familiar objects', () => {
+  const lesson = load('lessons/a1-4.json');
+  const foundation = lesson.sections[0].activities;
+  const production = lesson.sections[1].activities;
+  const construction = foundation.find(activity => activity.id === 'places-construction');
+  assert.equal(construction.tasks.length, 5);
+  assert.ok(construction.tasks.every(task => /توپ|جعبه/.test(task.task)));
+  assert.ok(construction.tasks.some(task => task.example === 'The ball is above the box.'));
+  assert.ok(construction.tasks.some(task => task.example === 'The ball is not behind the box.'));
+  assert.equal(evaluateResponse(construction.tasks[2].assessment, 'The ball is above the box.').ok, true);
+  assert.equal(evaluateResponse(construction.tasks[2].assessment, 'The ball is on the box.').ok, false);
+  const exchanges = production.find(activity => activity.id === 'places-exchange-practice');
+  assert.ok(exchanges.tasks.every(task => /توپ|جعبه|بله|نه/.test(task.task)));
+  const dialogue = production.find(activity => activity.id === 'places-dialogue');
+  assert.ok(dialogue.lines.every(line => !/book|phone|keys/i.test(line.en)));
+  assert.ok(dialogue.lines.some(line => /not above it/.test(line.en)));
+  const transfer = production.find(activity => activity.id === 'places-transfer');
+  assert.ok(transfer.turns.some(turn => /book/.test(turn.incoming || '')));
+  assert.deepEqual(auditLesson(lesson).errors, []);
 });

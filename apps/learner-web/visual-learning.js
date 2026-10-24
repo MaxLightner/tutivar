@@ -40,6 +40,9 @@ export function validateVisualActivity(activity) {
     }
   }
   if (activity.type === 'family-lab') {
+    const sceneWidth = activity.scene?.width ?? 500;
+    const sceneHeight = activity.scene?.height ?? 335;
+    if (!Number.isFinite(sceneWidth) || !Number.isFinite(sceneHeight) || sceneWidth < 200 || sceneHeight < 200) errors.push('invalid family scene dimensions');
     if (!Array.isArray(activity.people) || activity.people.length < 2) errors.push('family needs at least two people');
     const names = new Set();
     for (const person of activity.people || []) {
@@ -47,7 +50,7 @@ export function validateVisualActivity(activity) {
       names.add(person.name);
       if (!person.sentence || !person.fa || !person.followup) errors.push('missing family descriptions');
       if (!Number.isFinite(person.scene?.x) || !Number.isFinite(person.scene?.y)) errors.push('missing family scene coordinates');
-      else if (person.scene.x < 0 || person.scene.x > 500 || person.scene.y < 30 || person.scene.y > 310) errors.push('family figure outside scene');
+      else if (person.scene.x < 0 || person.scene.x > sceneWidth || person.scene.y < 30 || person.scene.y > sceneHeight - 25) errors.push('family figure outside scene');
     }
   }
   return errors;

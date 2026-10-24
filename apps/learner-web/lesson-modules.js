@@ -158,6 +158,9 @@ function meaningCluster(a, c) {
 }
 
 function familyLab(a, c) {
+  const sceneWidth = a.scene?.width || 500;
+  const sceneHeight = a.scene?.height || 335;
+  const floorY = Math.round(sceneHeight * .51);
   const key = `${c.lessonId}:${a.id}`;
   const selected = Math.min(Math.max(Number(c.progress.familyPeople?.[key]) || 0, 0), a.people.length - 1);
   const person = a.people[selected];
@@ -177,8 +180,8 @@ function familyLab(a, c) {
   }).join('');
   const { x, y } = person.scene;
   const arrow = `<g class="family-point-arrow" transform="translate(${x} ${y - 96})" aria-hidden="true"><path d="M0 -30V-2" stroke="#e56b49" stroke-width="6" stroke-linecap="round"/><path d="M-11-13L0 2L11-13" fill="none" stroke="#e56b49" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g>`;
-  const hits = a.people.map((entry, index) => `<button class="family-hit" type="button" style="left:${entry.scene.x / 5}%;top:${entry.scene.y / 3.15}%" data-family-key="${c.e(key)}" data-family-index="${index}" aria-pressed="${index === selected}" aria-label="اشاره به ${c.e(entry.name)}؛ ${c.e(entry.fa)}"></button>`).join('');
-  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="family-scene" role="group" aria-label="تصویر خانواده؛ هر نفر را لمس کن"><svg viewBox="0 0 500 335" role="img" aria-label="چهار عضو خانواده و فلش اشاره به فرد انتخاب‌شده"><rect width="500" height="335" rx="22" fill="#edf6ec"/><path d="M0 230H500V335H0Z" fill="#dcebd8"/>${figures}${arrow}</svg>${hits}</div><div class="family-tree-picker" role="group" aria-label="انتخاب عضو خانواده">${a.people.map((entry, index) => `<button type="button" class="family-person ${index === selected ? 'active' : ''}" data-family-key="${c.e(key)}" data-family-index="${index}" aria-pressed="${index === selected}"><strong>${c.en(entry.name)}</strong><small>${c.e(entry.fa)}</small></button>`).join('')}</div><div class="family-tree-result"><div class="family-tree-primary">${c.en(person.sentence)}${soundButton(person.sentence,c.e,c.i)}</div><p>${c.e(person.explanation || person.fa)}</p>${person.followup ? `<div class="family-tree-followup">${c.en(person.followup)}${soundButton(person.followup,c.e,c.i)}</div>` : ''}</div>`, a, c.index, c.e, 'module-family-lab module-family-tree');
+  const hits = a.people.map((entry, index) => `<button class="family-hit" type="button" style="left:${entry.scene.x / sceneWidth * 100}%;top:${entry.scene.y / sceneHeight * 100}%" data-family-key="${c.e(key)}" data-family-index="${index}" aria-pressed="${index === selected}" aria-label="اشاره به ${c.e(entry.name)}؛ ${c.e(entry.fa)}"></button>`).join('');
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="family-scene" role="group" aria-label="تصویر خانواده؛ هر نفر را لمس کن"><svg viewBox="0 0 ${sceneWidth} ${sceneHeight}" role="img" aria-label="${a.people.length} عضو خانواده و فلش اشاره به فرد انتخاب‌شده"><rect width="${sceneWidth}" height="${sceneHeight}" rx="22" fill="#edf6ec"/><path d="M0 ${floorY}H${sceneWidth}V${sceneHeight}H0Z" fill="#dcebd8"/>${figures}${arrow}</svg>${hits}</div><div class="family-tree-picker" role="group" aria-label="انتخاب عضو خانواده">${a.people.map((entry, index) => `<button type="button" class="family-person ${index === selected ? 'active' : ''}" data-family-key="${c.e(key)}" data-family-index="${index}" aria-pressed="${index === selected}"><strong>${c.en(entry.name)}</strong><small>${c.e(entry.fa)}</small></button>`).join('')}</div><div class="family-tree-result"><div class="family-tree-primary">${c.en(person.sentence)}${soundButton(person.sentence,c.e,c.i)}</div><p>${c.e(person.explanation || person.fa)}</p>${person.followup ? `<div class="family-tree-followup">${c.en(person.followup)}${soundButton(person.followup,c.e,c.i)}</div>` : ''}</div>`, a, c.index, c.e, 'module-family-lab module-family-tree');
 }
 
 function spatialBallSVG(layer, position) {

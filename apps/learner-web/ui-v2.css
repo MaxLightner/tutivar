@@ -799,7 +799,7 @@ button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3p
 .family-scene svg { display:block; width:100%; height:auto; }
 .family-figure.is-selected { filter:drop-shadow(0 3px 4px #59856755); }
 .family-point-arrow { filter:drop-shadow(0 2px 2px #83432766); }
-.family-hit { position:absolute; width:19%; height:60%; transform:translate(-50%,-43%); background:transparent; border:0; border-radius:16px; cursor:pointer; }
+.family-hit { position:absolute; width:25%; height:40%; transform:translate(-50%,-42%); background:transparent; border:0; border-radius:16px; cursor:pointer; }
 .family-hit:focus-visible { outline:3px solid #347c56; outline-offset:-3px; background:#b9e6bf2b; }
 .module-family-lab .family-tree-picker { margin-top:10px; }
 

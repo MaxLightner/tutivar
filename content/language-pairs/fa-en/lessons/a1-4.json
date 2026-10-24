@@ -1,6 +1,6 @@
 {
   "id": "A1-4",
-  "revision": 6,
+  "revision": 7,
   "status": "draft",
   "title": "اشیا و مکان اطراف من",
   "goal": "بتوانی موقعیت توپ و اشیا را نسبت به یک جعبهٔ درباز با in، inside، on، on top of، above، under، behind، in front of، next to و outside توضیح بدهی.",
@@ -19,9 +19,9 @@
     "previously": "کتاب، تلفن و کلیدها در درس سوم معرفی شده‌اند؛ اینجا فقط برای مرور به کار می‌روند. واژگان اصلی جدید مکان و روابط فضایی هستند.",
     "quickCheck": {
       "title": "اگر از قبل بلدی",
-      "question": "می‌توانی بپرسی کتاب کجاست و بگویی روی میز است؟",
-      "example": "Where is my book? It's on the table.",
-      "explanation": "در این درس تغییر مکان، سؤال، نفی و جمع را در یک موقعیت واقعی تمرین می‌کنی.",
+      "question": "می‌توانی بپرسی توپ کجاست و بگویی داخل جعبه است؟",
+      "example": "Where is the ball? The ball is in the box.",
+      "explanation": "اگر این سؤال و پاسخ را می‌شناسی، در همین درس تفاوتِ روی جعبه و بالاتر از آن، پشت، جلو، زیر و بیرون را تمرین می‌کنی.",
       "allowSkip": true
     }
   },
@@ -472,7 +472,8 @@
                 "layer": "front"
               }
             }
-          ]
+          ],
+          "typeLabel": "بازی تصویری"
         },
         {
           "id": "places-composer",
@@ -1241,35 +1242,35 @@
           "type": "response-practice",
           "phase": "construction",
           "title": "بدون گزینه، جمله بساز",
-          "practiceRevision": 1,
-          "description": "پنج موقعیت کوتاه؛ پس از کشف الگوها جمله را خودت بنویس.",
-          "completion": "خبری، سؤالی، منفی، مکان و جمع را در جمله ساختی.",
+          "practiceRevision": 2,
+          "description": "پنج جمله دربارهٔ همان توپ و جعبهٔ تصویر بساز: خبر، سؤال، بالا بدون تماس، Where و نفی.",
+          "completion": "جای توپ را در جملهٔ خبری، پرسشی و منفی بیان کردی.",
           "tasks": [
             {
-              "task": "به انگلیسی بگو کتاب روی میز است.",
-              "hint": "The book is on the table.",
-              "example": "The book is on the table.",
+              "task": "بگو توپ داخل جعبه است.",
+              "hint": "The ball is in the box.",
+              "example": "The ball is in the box.",
               "assessment": {
                 "required": [
                   {
                     "any": [
-                      "the book is on the table"
+                      "the ball is in the box"
                     ],
-                    "feedback": "از The book is on the table استفاده کن."
+                    "feedback": "از The ball is in the box استفاده کن."
                   }
                 ],
                 "success": "مکان شیء را بیان کردی."
               }
             },
             {
-              "task": "بپرس تلفن زیر صندلی است؟",
-              "hint": "Is the phone under the chair?",
-              "example": "Is the phone under the chair?",
+              "task": "بپرس آیا توپ زیر جعبه است؟",
+              "hint": "Is the ball under the box?",
+              "example": "Is the ball under the box?",
               "assessment": {
                 "required": [
                   {
                     "any": [
-                      "is the phone under the chair"
+                      "is the ball under the box"
                     ],
                     "feedback": "سؤال را با Is شروع کن."
                   }
@@ -1278,48 +1279,49 @@
               }
             },
             {
-              "task": "بگو کلیدها نزدیک میز تحریر هستند.",
-              "hint": "The keys are near the desk.",
-              "example": "The keys are near the desk.",
+              "task": "بگو توپ بالاتر از جعبه و بدون تماس است.",
+              "hint": "The ball is above the box.",
+              "example": "The ball is above the box.",
               "assessment": {
                 "required": [
                   {
                     "any": [
-                      "the keys are near the desk"
+                      "the ball is above the box"
                     ],
-                    "feedback": "برای keys از are استفاده کن."
+                    "feedback": "برای بالاتر بودن بدون تماس از above استفاده کن."
                   }
                 ],
                 "success": "تفاوت مفرد و جمع را رعایت کردی."
               }
             },
             {
-              "task": "بپرس کلیدها کجا هستند.",
-              "hint": "Where are the keys?",
-              "example": "Where are the keys?",
+              "task": "بپرس توپ کجاست؟",
+              "hint": "Where is the ball?",
+              "example": "Where is the ball?",
               "assessment": {
                 "required": [
                   {
                     "any": [
-                      "where are the keys"
+                      "where is the ball"
                     ],
-                    "feedback": "برای keys از Where are استفاده کن."
+                    "feedback": "سؤال مکان را با Where is بساز."
                   }
                 ],
                 "success": "سؤال جمع را درست گفتی."
               }
             },
             {
-              "task": "بگو تلفن زیر صندلی نیست.",
-              "hint": "The phone is not under the chair.",
-              "example": "The phone is not under the chair.",
+              "task": "بگو توپ پشت جعبه نیست.",
+              "hint": "The ball is not behind the box.",
+              "example": "The ball is not behind the box.",
               "assessment": {
                 "required": [
                   {
                     "any": [
-                      "the phone is not under the chair"
+                      "the ball is not behind the box",
+                      "the ball isn't behind the box"
                     ],
-                    "feedback": "منفی‌کردن جمله با is not را تمرین کن."
+                    "feedback": "برای نفی از is not یا isn't استفاده کن."
                   }
                 ],
                 "success": "موقعیت نادرست را نفی کردی."
@@ -1343,7 +1345,7 @@
           "type": "exchange-lab",
           "phase": "correspondence",
           "title": "یک سؤال، چند پاسخِ مکانی",
-          "description": "مکان جواب را تغییر بده؛ یک بار جواب مثبت است و بار بعد منفی.",
+          "description": "اول با توپ و جعبه سؤال و پاسخ‌های مختلف بساز؛ دو کارت آخر، انتقال همین الگو به اشیای درس قبل است.",
           "pairs": [
             {
               "question": "Where is the ball?",
@@ -1353,13 +1355,13 @@
                   "label": "داخل جعبه",
                   "en": "The ball is in the box.",
                   "fa": "توپ داخل جعبه است.",
-                  "note": "این پاسخ همان وضعیت داخل جعبه را توصیف می‌کند."
+                  "note": "با تغییر رابطهٔ مکانی، جمله هم تغییر می‌کند."
                 },
                 {
                   "label": "بیرون جعبه",
                   "en": "The ball is outside the box.",
                   "fa": "توپ بیرون جعبه است.",
-                  "note": "موقعیت توپ عوض شد."
+                  "note": "با تغییر رابطهٔ مکانی، جمله هم تغییر می‌کند."
                 }
               ]
             },
@@ -1371,13 +1373,67 @@
                   "label": "بله",
                   "en": "Yes, it is.",
                   "fa": "بله.",
-                  "note": "پاسخ کوتاه مثبت."
+                  "note": "با تغییر رابطهٔ مکانی، جمله هم تغییر می‌کند."
                 },
                 {
                   "label": "نه؛ داخل است",
-                  "en": "No, the ball is in the box.",
+                  "en": "No, the ball is inside the box.",
                   "fa": "نه، توپ داخل جعبه است.",
-                  "note": "پاسخ منفی همراه با اصلاح مکان."
+                  "note": "با تغییر رابطهٔ مکانی، جمله هم تغییر می‌کند."
+                }
+              ]
+            },
+            {
+              "question": "Is the ball on the box?",
+              "questionFa": "توپ روی جعبه است؟",
+              "variants": [
+                {
+                  "label": "بله؛ تماس دارد",
+                  "en": "Yes, it is on the box.",
+                  "fa": "بله، روی جعبه است.",
+                  "note": "با تغییر رابطهٔ مکانی، جمله هم تغییر می‌کند."
+                },
+                {
+                  "label": "نه؛ بالاتر است",
+                  "en": "No, it is above the box.",
+                  "fa": "نه، بالای جعبه و بدون تماس است.",
+                  "note": "با تغییر رابطهٔ مکانی، جمله هم تغییر می‌کند."
+                }
+              ]
+            },
+            {
+              "question": "Where is the ball now?",
+              "questionFa": "الان توپ کجاست؟",
+              "variants": [
+                {
+                  "label": "کنار جعبه",
+                  "en": "It is next to the box.",
+                  "fa": "کنار جعبه است.",
+                  "note": "با تغییر رابطهٔ مکانی، جمله هم تغییر می‌کند."
+                },
+                {
+                  "label": "جلوی جعبه",
+                  "en": "It is in front of the box.",
+                  "fa": "جلوی جعبه است.",
+                  "note": "با تغییر رابطهٔ مکانی، جمله هم تغییر می‌کند."
+                }
+              ]
+            },
+            {
+              "question": "Is the ball behind the box?",
+              "questionFa": "توپ پشت جعبه است؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, it is.",
+                  "fa": "بله.",
+                  "note": "با تغییر رابطهٔ مکانی، جمله هم تغییر می‌کند."
+                },
+                {
+                  "label": "نه؛ جلوی جعبه",
+                  "en": "No, it is in front of the box.",
+                  "fa": "نه، جلوی جعبه است.",
+                  "note": "با تغییر رابطهٔ مکانی، جمله هم تغییر می‌کند."
                 }
               ]
             },
@@ -1387,33 +1443,15 @@
               "variants": [
                 {
                   "label": "روی میز",
-                  "en": "It's on the table.",
+                  "en": "It is on the table.",
                   "fa": "روی میز است.",
-                  "note": "برای یک شیء از It's استفاده کن."
+                  "note": "با تغییر رابطهٔ مکانی، جمله هم تغییر می‌کند."
                 },
                 {
-                  "label": "زیر صندلی",
-                  "en": "It's under the chair.",
-                  "fa": "زیر صندلی است.",
-                  "note": "تنها موقعیت تغییر کرد."
-                }
-              ]
-            },
-            {
-              "question": "Is the phone under the chair?",
-              "questionFa": "آیا تلفن زیر صندلی است؟",
-              "variants": [
-                {
-                  "label": "بله",
-                  "en": "Yes, it is.",
-                  "fa": "بله.",
-                  "note": "تأیید کن."
-                },
-                {
-                  "label": "نه، روی میز است",
-                  "en": "No, it's on the table.",
-                  "fa": "نه، روی میز است.",
-                  "note": "حدس را رد کن و مکان صحیح را بگو."
+                  "label": "زیر میز",
+                  "en": "It is under the table.",
+                  "fa": "زیر میز است.",
+                  "note": "با تغییر رابطهٔ مکانی، جمله هم تغییر می‌کند."
                 }
               ]
             },
@@ -1422,52 +1460,16 @@
               "questionFa": "کلیدها کجا هستند؟",
               "variants": [
                 {
-                  "label": "نزدیک میز",
-                  "en": "They are near the desk.",
-                  "fa": "نزدیک میز تحریر هستند.",
-                  "note": "برای keys از They are استفاده کن."
-                },
-                {
                   "label": "روی میز",
                   "en": "They are on the table.",
                   "fa": "روی میز هستند.",
-                  "note": "تفاوت is و are را کشف کن."
-                }
-              ]
-            },
-            {
-              "question": "Is the bag on the table?",
-              "questionFa": "آیا کیف روی میز است؟",
-              "variants": [
-                {
-                  "label": "بله",
-                  "en": "Yes, it is.",
-                  "fa": "بله.",
-                  "note": "پاسخ مثبت کوتاه."
+                  "note": "با تغییر رابطهٔ مکانی، جمله هم تغییر می‌کند."
                 },
                 {
-                  "label": "نه، نزدیک صندلی است",
-                  "en": "No, it's near the chair.",
-                  "fa": "نه، نزدیک صندلی است.",
-                  "note": "پاسخ منفی همراه با اصلاح."
-                }
-              ]
-            },
-            {
-              "question": "Where is the phone?",
-              "questionFa": "تلفن کجاست؟",
-              "variants": [
-                {
-                  "label": "کنار میز",
-                  "en": "It's near the desk.",
-                  "fa": "نزدیک میز تحریر است.",
-                  "note": "مکان عوض شد."
-                },
-                {
-                  "label": "روی میز",
-                  "en": "It's on the table.",
-                  "fa": "روی میز است.",
-                  "note": "از همان قالب استفاده کن."
+                  "label": "زیر میز",
+                  "en": "They are under the table.",
+                  "fa": "زیر میز هستند.",
+                  "note": "با تغییر رابطهٔ مکانی، جمله هم تغییر می‌کند."
                 }
               ]
             }
@@ -1477,7 +1479,7 @@
           "id": "places-exchange-practice",
           "type": "response-practice",
           "phase": "correspondence",
-          "practiceRevision": 1,
+          "practiceRevision": 2,
           "title": "جملات متناظر را بساز",
           "description": "برای هر سؤال یک پاسخ مناسب بنویس. معنی مکان و مفرد یا جمع بودن را در نظر بگیر.",
           "tasks": [
@@ -1493,7 +1495,7 @@
                     "any": [
                       "the ball is in the box"
                     ],
-                    "feedback": "با The ball is in the box. مکان را توصیف کن."
+                    "feedback": "جملهٔ کامل را با The ball is بساز."
                   }
                 ],
                 "success": "موقعیت مکانی را در جمله به کار بردی."
@@ -1501,7 +1503,7 @@
             },
             {
               "speaker": "دوستت",
-              "incoming": "A friend is looking at the box.",
+              "incoming": "Look at the open box.",
               "task": "بپرس آیا توپ زیر جعبه است.",
               "hint": "Is the ball under the box?",
               "example": "Is the ball under the box?",
@@ -1511,7 +1513,7 @@
                     "any": [
                       "is the ball under the box"
                     ],
-                    "feedback": "سؤال را با Is the ball under the box? بساز."
+                    "feedback": "سؤال را با Is شروع کن."
                   }
                 ],
                 "success": "موقعیت مکانی را در جمله به کار بردی."
@@ -1519,18 +1521,23 @@
             },
             {
               "speaker": "دوستت",
-              "incoming": "Where is my book?",
-              "task": "بگو کتاب روی میز است.",
-              "hint": "It's on the table.",
-              "example": "It's on the table.",
+              "incoming": "Is the ball on the box?",
+              "task": "نه؛ توپ بالاتر از جعبه است و با آن تماس ندارد.",
+              "hint": "No, it is above the box.",
+              "example": "No, it is above the box.",
               "assessment": {
                 "required": [
                   {
                     "any": [
-                      "it's on the table",
-                      "it is on the table"
+                      "no"
                     ],
-                    "feedback": "از It's on the table استفاده کن."
+                    "feedback": "پاسخ منفی بده."
+                  },
+                  {
+                    "any": [
+                      "above the box"
+                    ],
+                    "feedback": "از above برای بالاتر بودن بدون تماس استفاده کن."
                   }
                 ],
                 "success": "پاسخ مکان را ساختی."
@@ -1538,8 +1545,8 @@
             },
             {
               "speaker": "دوستت",
-              "incoming": "Is the phone under the chair?",
-              "task": "بله، تأیید کن.",
+              "incoming": "Is the ball on the box?",
+              "task": "بله؛ توپ روی جعبه است.",
               "hint": "Yes, it is.",
               "example": "Yes, it is.",
               "assessment": {
@@ -1554,7 +1561,7 @@
                     "any": [
                       "it is"
                     ],
-                    "feedback": "با it is کامل کن."
+                    "feedback": "پاسخ کوتاه را کامل کن."
                   }
                 ],
                 "success": "پاسخ مثبت دادی."
@@ -1562,17 +1569,17 @@
             },
             {
               "speaker": "دوستت",
-              "incoming": "Where are the keys?",
-              "task": "بگو کلیدها نزدیک میز تحریر هستند.",
-              "hint": "They are near the desk.",
-              "example": "They are near the desk.",
+              "incoming": "Where is the ball now?",
+              "task": "بگو توپ کنار جعبه است.",
+              "hint": "The ball is next to the box.",
+              "example": "The ball is next to the box.",
               "assessment": {
                 "required": [
                   {
                     "any": [
-                      "they are near the desk"
+                      "the ball is next to the box"
                     ],
-                    "feedback": "برای کلیدهای جمع از They are استفاده کن."
+                    "feedback": "رابطهٔ next to را در جمله بیاور."
                   }
                 ],
                 "success": "جمع را درست پاسخ دادی."
@@ -1580,23 +1587,23 @@
             },
             {
               "speaker": "دوستت",
-              "incoming": "Is the phone under the chair?",
-              "task": "نه؛ این بار سؤال را تکرار کن و بگو روی میز است.",
-              "hint": "No, it's on the table.",
-              "example": "No, it's on the table.",
+              "incoming": "Is the ball inside the box?",
+              "task": "نه؛ توپ بیرون جعبه است.",
+              "hint": "No, it is outside the box.",
+              "example": "No, it is outside the box.",
               "assessment": {
                 "required": [
                   {
                     "any": [
                       "no"
                     ],
-                    "feedback": "با No رد کن."
+                    "feedback": "با No شروع کن."
                   },
                   {
                     "any": [
-                      "it's on the table"
+                      "outside the box"
                     ],
-                    "feedback": "مکان درست را مشخص کن."
+                    "feedback": "بیرون جعبه را با outside بیان کن."
                   }
                 ],
                 "success": "پاسخ منفی و اصلاح مکان را ساختی."
@@ -1624,7 +1631,7 @@
             {
               "speaker": "Mia",
               "en": "Is the ball under the box?",
-              "fa": "آیا توپ زیر جعبه است؟"
+              "fa": "توپ زیر جعبه است؟"
             },
             {
               "speaker": "Noah",
@@ -1633,33 +1640,33 @@
             },
             {
               "speaker": "Mia",
-              "en": "Can you see the ball?",
-              "fa": "توپ را می‌بینی؟"
+              "en": "Now the ball is on top of the box.",
+              "fa": "حالا توپ روی قسمت بالایی جعبه است."
             },
             {
               "speaker": "Noah",
-              "en": "Yes. Now the ball is on top of the box.",
-              "fa": "بله. حالا توپ روی بالای جعبه است."
+              "en": "Is it above the box?",
+              "fa": "آیا بالاتر از جعبه و بدون تماس است؟"
             },
             {
               "speaker": "Mia",
-              "en": "Where is my book?",
-              "fa": "کتاب من کجاست؟"
+              "en": "No. It is on the box, not above it.",
+              "fa": "نه، روی جعبه است و با آن تماس دارد."
             },
             {
               "speaker": "Noah",
-              "en": "It's next to the box.",
+              "en": "Where is the ball now?",
+              "fa": "حالا توپ کجاست؟"
+            },
+            {
+              "speaker": "Mia",
+              "en": "It is next to the box.",
               "fa": "کنار جعبه است."
             },
             {
-              "speaker": "Mia",
-              "en": "Thank you!",
-              "fa": "ممنون!"
-            },
-            {
               "speaker": "Noah",
-              "en": "You're welcome!",
-              "fa": "خواهش می‌کنم!"
+              "en": "Great! Thank you.",
+              "fa": "عالی! ممنون."
             }
           ]
         },
@@ -1667,14 +1674,14 @@
           "id": "places-dialogue-recall",
           "type": "response-practice",
           "phase": "context",
-          "practiceRevision": 1,
+          "practiceRevision": 2,
           "title": "مکالمه را از حافظه ادامه بده",
           "description": "حالا پاسخ‌ها را بدون نگاه‌کردن به مکالمه بساز.",
           "tasks": [
             {
               "speaker": "دوستت",
               "incoming": "Where is the ball?",
-              "task": "بگو توپ داخل جعبه است.",
+              "task": "توپ داخل جعبه است.",
               "hint": "The ball is in the box.",
               "example": "The ball is in the box.",
               "assessment": {
@@ -1683,7 +1690,7 @@
                     "any": [
                       "the ball is in the box"
                     ],
-                    "feedback": "The ball is in the box را به یاد بیاور."
+                    "feedback": "جملهٔ اول مکالمه را به یاد بیاور."
                   }
                 ],
                 "success": "موقعیت مکانی را در جمله به کار بردی."
@@ -1691,18 +1698,23 @@
             },
             {
               "speaker": "دوستت",
-              "incoming": "Where is my book?",
-              "task": "بگو کتاب روی میز است.",
-              "hint": "It's on the table.",
-              "example": "It's on the table.",
+              "incoming": "Is the ball under the box?",
+              "task": "نه؛ توپ داخل جعبه است.",
+              "hint": "No, it's inside the box.",
+              "example": "No, it's inside the box.",
               "assessment": {
                 "required": [
                   {
                     "any": [
-                      "it's on the table",
-                      "it is on the table"
+                      "no"
                     ],
-                    "feedback": "از It's on the table استفاده کن."
+                    "feedback": "با No پاسخ بده."
+                  },
+                  {
+                    "any": [
+                      "inside the box"
+                    ],
+                    "feedback": "رابطهٔ inside را یادآوری کن."
                   }
                 ],
                 "success": "پاسخ مکان را ساختی."
@@ -1710,17 +1722,29 @@
             },
             {
               "speaker": "دوستت",
-              "incoming": "Where are the keys?",
-              "task": "بگو کلیدها نزدیک میز تحریر هستند.",
-              "hint": "They are near the desk.",
-              "example": "They are near the desk.",
+              "incoming": "Is it above the box?",
+              "task": "نه؛ روی جعبه است، نه بالاتر از آن.",
+              "hint": "No, it is on the box, not above it.",
+              "example": "No, it is on the box, not above it.",
               "assessment": {
                 "required": [
                   {
                     "any": [
-                      "they are near the desk"
+                      "no"
                     ],
-                    "feedback": "برای کلیدهای جمع از They are استفاده کن."
+                    "feedback": "حدس را رد کن."
+                  },
+                  {
+                    "any": [
+                      "on the box"
+                    ],
+                    "feedback": "تماس با سطح را با on بگو."
+                  },
+                  {
+                    "any": [
+                      "not above"
+                    ],
+                    "feedback": "تفاوت above را توضیح بده."
                   }
                 ],
                 "success": "جمع را درست پاسخ دادی."
@@ -1728,23 +1752,17 @@
             },
             {
               "speaker": "دوستت",
-              "incoming": "Is the phone under the chair?",
-              "task": "نه؛ این بار سؤال را تکرار کن و بگو روی میز است.",
-              "hint": "No, it's on the table.",
-              "example": "No, it's on the table.",
+              "incoming": "Where is the ball now?",
+              "task": "توپ کنار جعبه است.",
+              "hint": "It is next to the box.",
+              "example": "It is next to the box.",
               "assessment": {
                 "required": [
                   {
                     "any": [
-                      "no"
+                      "next to the box"
                     ],
-                    "feedback": "با No رد کن."
-                  },
-                  {
-                    "any": [
-                      "it's on the table"
-                    ],
-                    "feedback": "مکان درست را مشخص کن."
+                    "feedback": "رابطهٔ next to را به یاد بیاور."
                   }
                 ],
                 "success": "پاسخ منفی و اصلاح مکان را ساختی."
@@ -1815,23 +1833,29 @@
           "id": "places-contrast-practice",
           "type": "response-practice",
           "phase": "context",
-          "practiceRevision": 1,
+          "practiceRevision": 2,
           "title": "مکان درست را اصلاح کن",
           "description": "بر اساس موقعیت دوم، محل شیء را دقیق‌تر بگو.",
           "tasks": [
             {
               "speaker": "دوستت",
               "incoming": "Is the ball under the box?",
-              "task": "نه، توپ پشت جعبه است.",
+              "task": "نه؛ توپ پشت جعبه است.",
               "hint": "No, the ball is behind the box.",
               "example": "No, the ball is behind the box.",
               "assessment": {
                 "required": [
                   {
                     "any": [
-                      "the ball is behind the box"
+                      "no"
                     ],
-                    "feedback": "موقعیت پشت را درست توضیح بده."
+                    "feedback": "پاسخ را منفی شروع کن."
+                  },
+                  {
+                    "any": [
+                      "behind the box"
+                    ],
+                    "feedback": "مکان پشت جعبه را بگو."
                   }
                 ],
                 "success": "موقعیت مکانی را در جمله به کار بردی."
@@ -1839,23 +1863,23 @@
             },
             {
               "speaker": "دوستت",
-              "incoming": "Is the phone under the chair?",
-              "task": "نه؛ روی میز است.",
-              "hint": "No, it's on the table.",
-              "example": "No, it's on the table.",
+              "incoming": "Is the ball above the box?",
+              "task": "نه؛ توپ کنار جعبه است.",
+              "hint": "No, it is next to the box.",
+              "example": "No, it is next to the box.",
               "assessment": {
                 "required": [
                   {
                     "any": [
                       "no"
                     ],
-                    "feedback": "با No پاسخ بده."
+                    "feedback": "با No جواب بده."
                   },
                   {
                     "any": [
-                      "it's on the table"
+                      "next to the box"
                     ],
-                    "feedback": "مکان را مشخص کن."
+                    "feedback": "مکان درست را با next to بگو."
                   }
                 ],
                 "success": "جای واقعی تلفن را مشخص کردی."
@@ -1863,17 +1887,17 @@
             },
             {
               "speaker": "دوستت",
-              "incoming": "Where are the keys?",
-              "task": "کلیدها روی میز تحریر هستند.",
-              "hint": "They are on the desk.",
-              "example": "They are on the desk.",
+              "incoming": "Where is the ball?",
+              "task": "توپ جلوی جعبه است.",
+              "hint": "The ball is in front of the box.",
+              "example": "The ball is in front of the box.",
               "assessment": {
                 "required": [
                   {
                     "any": [
-                      "they are on the desk"
+                      "in front of the box"
                     ],
-                    "feedback": "از They are on the desk استفاده کن."
+                    "feedback": "از in front of استفاده کن."
                   }
                 ],
                 "success": "پاسخ با اسم جمع را ساختی."
@@ -1881,8 +1905,8 @@
             },
             {
               "speaker": "دوستت",
-              "incoming": "Is the bag near the chair?",
-              "task": "بله، تأیید کن.",
+              "incoming": "Is the ball inside the box?",
+              "task": "بله؛ توپ داخل جعبه است.",
               "hint": "Yes, it is.",
               "example": "Yes, it is.",
               "assessment": {
@@ -1891,13 +1915,13 @@
                     "any": [
                       "yes"
                     ],
-                    "feedback": "جواب مثبت بده."
+                    "feedback": "با Yes جواب بده."
                   },
                   {
                     "any": [
                       "it is"
                     ],
-                    "feedback": "it is را تکمیل کن."
+                    "feedback": "پاسخ کوتاه را کامل کن."
                   }
                 ],
                 "success": "جای کیف را تأیید کردی."
@@ -1909,10 +1933,10 @@
           "id": "places-guided-talk",
           "type": "guided-dialogue",
           "phase": "guided",
-          "practiceRevision": 3,
+          "practiceRevision": 4,
           "title": "نوبت تو؛ مکالمه را جلو ببر",
           "description": "بشنو یا بخوان و به نوبت‌های مختلف پاسخ بده؛ راهنما فقط در صورت نیاز.",
-          "completion": "دربارهٔ مکان اشیا در پنج موقعیت پاسخ دادی.",
+          "completion": "دربارهٔ توپ و جعبه در چند رابطهٔ مکانی سؤال و پاسخ ساختی.",
           "turns": [
             {
               "speaker": "دوستت",
@@ -1970,18 +1994,23 @@
             },
             {
               "speaker": "دوستت",
-              "incoming": "Where is my book?",
-              "task": "بگو کتاب روی میز است.",
-              "hint": "It's on the table.",
-              "example": "It's on the table.",
+              "incoming": "Is the ball on the box?",
+              "task": "بگو نه، توپ بالاتر از جعبه است و با آن تماس ندارد.",
+              "hint": "No, it is above the box.",
+              "example": "No, it is above the box.",
               "assessment": {
                 "required": [
                   {
                     "any": [
-                      "it's on the table",
-                      "it is on the table"
+                      "no"
                     ],
-                    "feedback": "از It's on the table استفاده کن."
+                    "feedback": "حدس را رد کن."
+                  },
+                  {
+                    "any": [
+                      "above the box"
+                    ],
+                    "feedback": "از above استفاده کن."
                   }
                 ],
                 "success": "پاسخ مکان را ساختی."
@@ -1989,7 +2018,7 @@
             },
             {
               "speaker": "دوستت",
-              "incoming": "Is the phone under the chair?",
+              "incoming": "Is the ball inside the box?",
               "task": "بله، تأیید کن.",
               "hint": "Yes, it is.",
               "example": "Yes, it is.",
@@ -2005,7 +2034,7 @@
                     "any": [
                       "it is"
                     ],
-                    "feedback": "با it is کامل کن."
+                    "feedback": "پاسخ مثبت را کامل کن."
                   }
                 ],
                 "success": "پاسخ مثبت دادی."
@@ -2013,17 +2042,17 @@
             },
             {
               "speaker": "دوستت",
-              "incoming": "Where are the keys?",
-              "task": "بگو کلیدها نزدیک میز تحریر هستند.",
-              "hint": "They are near the desk.",
-              "example": "They are near the desk.",
+              "incoming": "Where is the ball now?",
+              "task": "بگو توپ کنار جعبه است.",
+              "hint": "It is next to the box.",
+              "example": "It is next to the box.",
               "assessment": {
                 "required": [
                   {
                     "any": [
-                      "they are near the desk"
+                      "next to the box"
                     ],
-                    "feedback": "برای کلیدهای جمع از They are استفاده کن."
+                    "feedback": "از next to استفاده کن."
                   }
                 ],
                 "success": "جمع را درست پاسخ دادی."
@@ -2031,23 +2060,23 @@
             },
             {
               "speaker": "دوستت",
-              "incoming": "Is the phone under the chair?",
-              "task": "نه؛ این بار سؤال را تکرار کن و بگو روی میز است.",
-              "hint": "No, it's on the table.",
-              "example": "No, it's on the table.",
+              "incoming": "Is the ball under the box?",
+              "task": "نه؛ توپ پشت جعبه است.",
+              "hint": "No, it is behind the box.",
+              "example": "No, it is behind the box.",
               "assessment": {
                 "required": [
                   {
                     "any": [
                       "no"
                     ],
-                    "feedback": "با No رد کن."
+                    "feedback": "پاسخ را رد کن."
                   },
                   {
                     "any": [
-                      "it's on the table"
+                      "behind the box"
                     ],
-                    "feedback": "مکان درست را مشخص کن."
+                    "feedback": "از behind استفاده کن."
                   }
                 ],
                 "success": "پاسخ منفی و اصلاح مکان را ساختی."
@@ -2055,23 +2084,23 @@
             },
             {
               "speaker": "دوستت",
-              "incoming": "Where is my book?",
-              "task": "اول سؤال را با همین عبارت تکرار کن، بعد بگو کتاب روی میز است.",
-              "hint": "Where is my book? The book is on the table.",
-              "example": "Where is my book? The book is on the table.",
+              "incoming": "Where is the ball?",
+              "task": "اول سؤال را تکرار کن، بعد بگو توپ بیرون جعبه است.",
+              "hint": "Where is the ball? The ball is outside the box.",
+              "example": "Where is the ball? The ball is outside the box.",
               "assessment": {
                 "required": [
                   {
                     "any": [
-                      "where is my book"
+                      "where is the ball"
                     ],
-                    "feedback": "Where is my book? را بیاور."
+                    "feedback": "سؤال Where را تکرار کن."
                   },
                   {
                     "any": [
-                      "the book is on the table"
+                      "the ball is outside the box"
                     ],
-                    "feedback": "جملهٔ مکان را کامل کن."
+                    "feedback": "مکان بیرون را کامل بگو."
                   }
                 ],
                 "success": "پرسیدن و پاسخ‌دادن را ترکیب کردی."
@@ -2079,29 +2108,29 @@
             },
             {
               "speaker": "دوستت",
-              "incoming": "Is the phone under the chair?",
-              "task": "سؤال را تکرار کن و پاسخ بده: نه، زیر صندلی نیست.",
-              "hint": "Is the phone under the chair? No, it's on the table.",
-              "example": "Is the phone under the chair? No, it's on the table.",
+              "incoming": "Is the ball above the box?",
+              "task": "سؤال را تکرار کن و پاسخ بده: نه، روی قسمت بالایی جعبه است.",
+              "hint": "Is the ball above the box? No, it is on top of the box.",
+              "example": "Is the ball above the box? No, it is on top of the box.",
               "assessment": {
                 "required": [
                   {
                     "any": [
-                      "is the phone under the chair"
+                      "is the ball above the box"
                     ],
-                    "feedback": "سؤال را دقیق بنویس."
+                    "feedback": "سؤال را تکرار کن."
                   },
                   {
                     "any": [
                       "no"
                     ],
-                    "feedback": "پاسخ منفی بده."
+                    "feedback": "جواب منفی بده."
                   },
                   {
                     "any": [
-                      "on the table"
+                      "on top of the box"
                     ],
-                    "feedback": "مکان درست را بگو."
+                    "feedback": "از on top of استفاده کن."
                   }
                 ],
                 "success": "سؤال و پاسخ را در یک نوبت ساختی."
@@ -2116,7 +2145,7 @@
           "practiceRevision": 1,
           "title": "موقعیت تازه: کلاس دوستت",
           "sceneTitle": "کلاس دوستت",
-          "description": "همان الگو را در فضایی تازه و با محل متفاوت به کار ببر.",
+          "description": "حالا که جای توپ را یاد گرفته‌ای، همان ساختار را فقط در این مرحله به کتاب، کلید و تلفن آشنای درس سوم منتقل کن.",
           "completion": "مکان و جمله را به موقعیتی جدید منتقل کردی.",
           "turns": [
             {
