@@ -44,8 +44,13 @@ rewrite('lesson-modules.js', [
   ["from './lesson-flow.js'", `from './lesson-flow.js?v=${revision}'`],
   ["from './sentence-puzzle.js'", `from './sentence-puzzle.js?v=${revision}'`]
 ]);
+// The source service-worker cache name is an implementation detail; give each
+// deployed build its own cache without hardcoding the old source version.
+const swPath = join(target, 'sw.js');
+const swSource = readFileSync(swPath, 'utf8');
+if (!/^const CACHE = '[^']+';/m.test(swSource)) throw new Error('Missing service-worker cache declaration');
+writeFileSync(swPath, swSource.replace(/^const CACHE = '[^']+';/m, `const CACHE = 'tutivar-${revision}';`));
 rewrite('sw.js', [
-  ["const CACHE = 'tutivar-ui-v4-network-first';", `const CACHE = 'tutivar-${revision}';`],
   ["'./ui-v2.css'", `'./ui-v2.css?v=${revision}'`],
   ["'./app.js'", `'./app.js?v=${revision}'`],
   ["'./lesson-modules.js'", `'./lesson-modules.js?v=${revision}'`],
