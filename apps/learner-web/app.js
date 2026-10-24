@@ -442,6 +442,11 @@ function onClick(event) {
     for (const part of stage.querySelectorAll('[data-box-part]')) {
       part.style.transform = `translateY(-${position.boxLift || 0}px)`;
     }
+    for (const box of stage.querySelectorAll('[data-spatial-orientation]')) {
+      box.style.opacity = (box.dataset.spatialOrientation === (position.id === 'on' ? 'side' : 'open')) ? '1' : '0';
+    }
+    const panel = stage.querySelector('[data-spatial-cutaway]');
+    if (panel) panel.style.opacity = position.ball.layer === 'inside' ? '.38' : '1';
     const english = stage.querySelector('.spatial-English');
     const persian = stage.querySelector('.spatial-Persian');
     if (english) english.textContent = position.en;
