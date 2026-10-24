@@ -531,7 +531,7 @@ button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3p
 .orientation-optional .orientation-prerequisite strong, .orientation-optional .orientation-before strong { font-size: 12px; }
 .orientation-optional .orientation-prerequisite ul, .orientation-optional .orientation-before { font-size: 12px; }
 .lesson-overview-art img { width: 100%; max-height: 180px; object-fit: cover; border-radius: 12px; margin-top: 10px; }
-.family-tree-picker { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 7px; margin: 12px 0; }
+.family-tree-picker { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 7px; margin: 12px 0; }
 .family-person { display: flex; flex-direction: column; gap: 2px; align-items: center; justify-content: center; background: #f8faf6; border: 1px solid #e3ece0; border-radius: 12px; padding: 9px 6px; color: #50745e; cursor: pointer; }
 .family-person > span { background: #e6f0e0; border-radius: 50%; width: 30px; height: 30px; display: grid; place-items: center; font-weight: 850; }
 .family-person .en { font-size: 14px; font-weight: 850; }
