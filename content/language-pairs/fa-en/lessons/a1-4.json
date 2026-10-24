@@ -1,9 +1,9 @@
 {
   "id": "A1-4",
-  "revision": 2,
+  "revision": 6,
   "status": "draft",
   "title": "اشیا و مکان اطراف من",
-  "goal": "بتوانی بگویی یک شیء کجاست، مکان اشیا را با on / under / near توصیف کنی و دربارهٔ مفرد و جمع سؤال بپرسی.",
+  "goal": "بتوانی موقعیت توپ و اشیا را نسبت به یک جعبهٔ درباز با in، inside، on، on top of، above، under، behind، in front of، next to و outside توضیح بدهی.",
   "duration": "حدود ۲۰ تا ۲۵ دقیقه",
   "feature": "آزمایشگاه موقعیت",
   "archetype": "spatial-location",
@@ -12,11 +12,11 @@
     "support": "K2"
   },
   "orientation": {
-    "goal": "وسایل اطرافت را معرفی کن، جای آن‌ها را پیدا کن و با سؤال و جواب مکان درست را مشخص کن.",
+    "goal": "با یک توپ و جعبهٔ درباز جای اشیا را ببین، تغییر بده و با جمله‌های متفاوت توضیح بده.",
     "prerequisites": [
       "This is و مفرد/جمع ساده؛ آشنایی با وسایل شخصی"
     ],
-    "previously": "در درس قبل با مالکیت و وسایل شخصی آشنا شدی؛ حالا می‌گویی همان وسایل کجا هستند.",
+    "previously": "کتاب، تلفن و کلیدها در درس سوم معرفی شده‌اند؛ اینجا فقط برای مرور به کار می‌روند. واژگان اصلی جدید مکان و روابط فضایی هستند.",
     "quickCheck": {
       "title": "اگر از قبل بلدی",
       "question": "می‌توانی بپرسی کتاب کجاست و بگویی روی میز است؟",
@@ -26,20 +26,20 @@
     }
   },
   "visual": {
-    "src": "./a1-4-locations.svg",
-    "alt": "کتاب روی میز، تلفن زیر صندلی و کلیدها نزدیک میز تحریر",
-    "caption": "سه وسیله در سه جای متفاوت؛ در این درس محل هرکدام را عوض می‌کنی."
+    "src": null,
+    "alt": "جعبهٔ درباز و توپ در بازی تعاملی بخش اول",
+    "caption": "در بخش اول با لمس قید مکان توپ حرکت می‌کند."
   },
   "learningAudit": {
     "focusExpressions": [
-      "Where is my book?",
-      "The book is on the table.",
-      "Is the phone under the chair?"
+      "Where is the ball?",
+      "The ball is in the box.",
+      "Is the ball under the box?"
     ],
     "specificIndependentExpressions": [
-      "Where is my book?",
-      "The book is on the table.",
-      "Is the phone under the chair?"
+      "Where is the ball?",
+      "The ball is in the box.",
+      "Is the ball under the box?"
     ],
     "minDownstreamActivities": 2,
     "minGuidedActivities": 1,
@@ -50,7 +50,7 @@
     {
       "id": "foundation",
       "label": "از کلمه تا جمله",
-      "intro": "واژه‌ها را در گروه‌های کوچک ببین؛ سپس روی کلمات داخل عبارت و جمله بزن و موقعیت را عوض کن. سؤال و منفی بعد از کشف جمله می‌آیند. در پایان جورچین و ساخت مستقل داری.",
+      "intro": "پس از واژگان جدید مکان، توپ را نسبت به جعبهٔ درباز جابه‌جا کن، سپس یک مفهوم را با چند جمله بیان کن و جورچین بساز.",
       "masteryActivityIds": [
         "places-construction"
       ],
@@ -61,127 +61,207 @@
           "phase": "words",
           "title": "واژه‌های اصلیِ مکان و اشیا",
           "batchSize": 4,
-          "deckRevision": 1,
+          "deckRevision": 2,
           "items": [
             {
-              "en": "book",
-              "fa": "کتاب",
-              "hint": "شیء آشنا از درس سوم",
+              "en": "ball",
+              "fa": "توپ",
+              "hint": "اسم شیء اصلی بازی",
               "examples": [
-                "The book is on the table.",
-                "Where is my book?",
-                "Is the book under the chair?"
+                "The ball is in the box.",
+                "The ball is under the box.",
+                "Where is the ball?"
               ]
             },
             {
-              "en": "phone",
-              "fa": "تلفن",
-              "hint": "وسیله‌ای که می‌توانی جای آن را توصیف کنی",
+              "en": "box",
+              "fa": "جعبه",
+              "hint": "جعبهٔ کارتنی درباز",
               "examples": [
-                "The phone is near the desk.",
-                "Where is the phone?",
-                "Is the phone under the chair?"
+                "The ball is in the box.",
+                "The ball is outside the box.",
+                "Is the ball on the box?"
               ]
             },
             {
-              "en": "keys",
-              "fa": "کلیدها",
-              "hint": "اسم جمع؛ به تغییر is و are دقت کن",
+              "en": "in",
+              "fa": "در / داخل",
+              "hint": "موقعیت درون یک فضا",
               "examples": [
-                "My keys are on the table.",
-                "Where are my keys?",
-                "The keys are near the desk."
+                "The ball is in the box.",
+                "Is the ball in the box?",
+                "The toy is in the box."
               ]
             },
             {
-              "en": "table",
-              "fa": "میز",
-              "hint": "سطحی که چیزی روی آن قرار می‌گیرد",
+              "en": "inside",
+              "fa": "داخل",
+              "hint": "تأکید بر داخل‌بودن",
               "examples": [
-                "The book is on the table.",
-                "Is the bag under the table?",
-                "The phone is near the table."
-              ]
-            },
-            {
-              "en": "chair",
-              "fa": "صندلی",
-              "hint": "محل اشیا",
-              "examples": [
-                "The phone is under the chair.",
-                "Is the bag near the chair?",
-                "The book is on the chair."
-              ]
-            },
-            {
-              "en": "desk",
-              "fa": "میز تحریر",
-              "hint": "محل وسایل در اتاق یا کلاس",
-              "examples": [
-                "The phone is near the desk.",
-                "The keys are on the desk.",
-                "Is the book under the desk?"
+                "The ball is inside the box.",
+                "The toy is inside the box.",
+                "Is the ball inside the box?"
               ]
             },
             {
               "en": "on",
               "fa": "روی",
-              "hint": "برای قرارداشتن چیزی روی سطح",
+              "hint": "تماس با سطح",
               "examples": [
-                "The book is on the table.",
-                "The phone is on the desk.",
-                "My keys are on the chair."
+                "The ball is on the box.",
+                "The toy is on the table.",
+                "Is the ball on the box?"
+              ]
+            },
+            {
+              "en": "on top of",
+              "fa": "روی قسمت بالایی",
+              "hint": "روی بخش بالایی جسم",
+              "examples": [
+                "The ball is on top of the box.",
+                "The toy is on top of the box.",
+                "Is the ball on top of the box?"
+              ]
+            },
+            {
+              "en": "above",
+              "fa": "بالای / بالاتر از",
+              "hint": "بدون تماس",
+              "examples": [
+                "The ball is above the box.",
+                "The toy is above the box.",
+                "Is the ball above the box?"
               ]
             },
             {
               "en": "under",
               "fa": "زیر",
-              "hint": "برای موقعیت زیر یک وسیله",
+              "hint": "زیر جسم",
               "examples": [
-                "The phone is under the chair.",
-                "The book is under the desk.",
-                "Is the bag under the table?"
+                "The ball is under the box.",
+                "Is the ball under the box?",
+                "The toy is under the box."
               ]
+            },
+            {
+              "en": "behind",
+              "fa": "پشت",
+              "hint": "از دید بیننده پشت جسم",
+              "examples": [
+                "The ball is behind the box.",
+                "Is the ball behind the box?",
+                "The toy is behind the box."
+              ]
+            },
+            {
+              "en": "in front of",
+              "fa": "جلوی",
+              "hint": "در جلو جسم",
+              "examples": [
+                "The ball is in front of the box.",
+                "Is the ball in front of the box?",
+                "The toy is in front of the box."
+              ]
+            },
+            {
+              "en": "next to",
+              "fa": "کنار",
+              "hint": "در کنار جسم",
+              "examples": [
+                "The ball is next to the box.",
+                "Is the ball next to the box?",
+                "The toy is next to the box."
+              ]
+            },
+            {
+              "en": "outside",
+              "fa": "بیرون",
+              "hint": "خارج از جعبه",
+              "examples": [
+                "The ball is outside the box.",
+                "Is the ball outside the box?",
+                "The toy is outside the box."
+              ]
+            },
+            {
+              "en": "Where is the ball?",
+              "fa": "توپ کجاست؟",
+              "hint": "پرسیدن جای توپ",
+              "examples": [
+                "Where is the ball?",
+                "Where is your ball?",
+                "The ball is inside the box."
+              ]
+            },
+            {
+              "en": "The ball is in the box.",
+              "fa": "توپ داخل جعبه است.",
+              "hint": "یک پاسخ کامل",
+              "examples": [
+                "The ball is in the box.",
+                "The ball is inside the box.",
+                "The ball is under the box."
+              ]
+            },
+            {
+              "en": "Is the ball under the box?",
+              "fa": "آیا توپ زیر جعبه است؟",
+              "hint": "پرسش دربارهٔ مکان",
+              "examples": [
+                "Is the ball under the box?",
+                "Is the ball inside the box?",
+                "No, the ball is in the box."
+              ]
+            },
+            {
+              "en": "book",
+              "fa": "کتاب",
+              "role": "supplementary"
+            },
+            {
+              "en": "phone",
+              "fa": "تلفن",
+              "role": "supplementary"
+            },
+            {
+              "en": "keys",
+              "fa": "کلیدها",
+              "role": "supplementary"
+            },
+            {
+              "en": "table",
+              "fa": "میز",
+              "role": "supplementary"
+            },
+            {
+              "en": "chair",
+              "fa": "صندلی",
+              "role": "supplementary"
+            },
+            {
+              "en": "desk",
+              "fa": "میز تحریر",
+              "role": "supplementary"
             },
             {
               "en": "near",
               "fa": "نزدیک",
-              "hint": "برای فاصلهٔ کم",
-              "examples": [
-                "The keys are near the desk.",
-                "The bag is near the chair.",
-                "Is the phone near the table?"
-              ]
+              "role": "supplementary"
             },
             {
               "en": "Where is my book?",
               "fa": "کتاب من کجاست؟",
-              "hint": "پرسیدن مکان یک شیء",
-              "examples": [
-                "Where is my book?",
-                "Where is your book?",
-                "My book is on the table."
-              ]
+              "role": "supplementary"
             },
             {
               "en": "The book is on the table.",
               "fa": "کتاب روی میز است.",
-              "hint": "جواب با توصیف مکان",
-              "examples": [
-                "The book is on the table.",
-                "The phone is on the desk.",
-                "The keys are on the chair."
-              ]
+              "role": "supplementary"
             },
             {
               "en": "Is the phone under the chair?",
               "fa": "آیا تلفن زیر صندلی است؟",
-              "hint": "سؤال بله / خیر دربارهٔ مکان",
-              "examples": [
-                "Is the phone under the chair?",
-                "Is the book under the table?",
-                "The phone is not under the chair."
-              ]
+              "role": "supplementary"
             },
             {
               "en": "bag",
@@ -206,11 +286,6 @@
             {
               "en": "sofa",
               "fa": "مبل",
-              "role": "supplementary"
-            },
-            {
-              "en": "box",
-              "fa": "جعبه",
               "role": "supplementary"
             },
             {
@@ -244,26 +319,6 @@
               "role": "supplementary"
             },
             {
-              "en": "behind",
-              "fa": "پشت",
-              "role": "supplementary"
-            },
-            {
-              "en": "next to",
-              "fa": "کنار",
-              "role": "supplementary"
-            },
-            {
-              "en": "in",
-              "fa": "داخل",
-              "role": "supplementary"
-            },
-            {
-              "en": "in front of",
-              "fa": "جلوی",
-              "role": "supplementary"
-            },
-            {
               "en": "between",
               "fa": "بین",
               "role": "supplementary"
@@ -290,19 +345,162 @@
           "patternId": "phrase"
         },
         {
+          "id": "places-spatial-lab",
+          "type": "spatial-lab",
+          "phase": "phrases",
+          "title": "بازی توپ و جعبهٔ درباز",
+          "description": "به قید مکان ضربه بزن؛ توپ در همان تصویر جابه‌جا می‌شود. «on» تماس با جعبه دارد ولی «above» بالای آن و بدون تماس است. برای «under» جعبه کمی بالا می‌رود.",
+          "positions": [
+            {
+              "id": "in",
+              "label": "in",
+              "fa": "در",
+              "en": "The ball is in the box.",
+              "faSentence": "توپ در جعبه است.",
+              "ball": {
+                "x": 258,
+                "y": 150,
+                "layer": "rear"
+              }
+            },
+            {
+              "id": "inside",
+              "label": "inside",
+              "fa": "داخل",
+              "en": "The ball is inside the box.",
+              "faSentence": "توپ داخل جعبه است.",
+              "ball": {
+                "x": 258,
+                "y": 150,
+                "layer": "rear"
+              }
+            },
+            {
+              "id": "on",
+              "label": "on",
+              "fa": "روی",
+              "en": "The ball is on the box.",
+              "faSentence": "توپ روی جعبه است.",
+              "ball": {
+                "x": 185,
+                "y": 173,
+                "layer": "front"
+              }
+            },
+            {
+              "id": "on-top-of",
+              "label": "on top of",
+              "fa": "روی قسمت بالایی",
+              "en": "The ball is on top of the box.",
+              "faSentence": "توپ روی قسمت بالایی جعبه است.",
+              "ball": {
+                "x": 338,
+                "y": 106,
+                "layer": "front"
+              }
+            },
+            {
+              "id": "above",
+              "label": "above",
+              "fa": "بالاتر از",
+              "en": "The ball is above the box.",
+              "faSentence": "توپ بالای جعبه و بدون تماس با آن است.",
+              "ball": {
+                "x": 250,
+                "y": 55,
+                "layer": "front"
+              }
+            },
+            {
+              "id": "under",
+              "label": "under",
+              "fa": "زیر",
+              "en": "The ball is under the box.",
+              "faSentence": "توپ زیر جعبه است.",
+              "ball": {
+                "x": 245,
+                "y": 343,
+                "layer": "front"
+              },
+              "boxLift": 28
+            },
+            {
+              "id": "behind",
+              "label": "behind",
+              "fa": "پشت",
+              "en": "The ball is behind the box.",
+              "faSentence": "توپ پشت جعبه است.",
+              "ball": {
+                "x": 270,
+                "y": 121,
+                "layer": "rear"
+              }
+            },
+            {
+              "id": "in-front-of",
+              "label": "in front of",
+              "fa": "جلوی",
+              "en": "The ball is in front of the box.",
+              "faSentence": "توپ جلوی جعبه است.",
+              "ball": {
+                "x": 249,
+                "y": 345,
+                "layer": "front"
+              }
+            },
+            {
+              "id": "next-to",
+              "label": "next to",
+              "fa": "کنار",
+              "en": "The ball is next to the box.",
+              "faSentence": "توپ کنار جعبه است.",
+              "ball": {
+                "x": 407,
+                "y": 302,
+                "layer": "front"
+              }
+            },
+            {
+              "id": "outside",
+              "label": "outside",
+              "fa": "بیرون",
+              "en": "The ball is outside the box.",
+              "faSentence": "توپ بیرون جعبه است.",
+              "ball": {
+                "x": 455,
+                "y": 329,
+                "layer": "front"
+              }
+            }
+          ]
+        },
+        {
           "id": "places-composer",
           "type": "sentence-composer",
           "phase": "sentence",
           "title": "جملهٔ زنده؛ اشیا کجا هستند؟",
-          "description": "روی هر کلمهٔ سبز داخل جمله بزن. شیء، موقعیت یا محل همان‌جا عوض می‌شود و اگر اسم جمع باشد is و are نیز خودکار هماهنگ می‌شوند. هیچ فهرستی باز نمی‌شود.",
+          "description": "روی ball، in یا box در خود جمله بزن و رابطهٔ فضایی را تغییر بده. اسم‌های درس سوم برای مرور در مجموعهٔ واژه‌ها مانده‌اند.",
           "targetLanguage": "en",
           "wordSets": {
             "objects": [
               {
+                "id": "ball",
+                "label": "ball",
+                "translation": "توپ",
+                "role": "core",
+                "features": {
+                  "number": "singular"
+                },
+                "forms": {
+                  "noun": "ball",
+                  "faNoun": "توپ"
+                }
+              },
+              {
                 "id": "book",
                 "label": "book",
                 "translation": "کتاب",
-                "role": "core",
+                "role": "supplementary",
                 "features": {
                   "number": "singular"
                 },
@@ -315,7 +513,7 @@
                 "id": "phone",
                 "label": "phone",
                 "translation": "تلفن",
-                "role": "core",
+                "role": "supplementary",
                 "features": {
                   "number": "singular"
                 },
@@ -328,7 +526,7 @@
                 "id": "keys",
                 "label": "keys",
                 "translation": "کلیدها",
-                "role": "core",
+                "role": "supplementary",
                 "features": {
                   "number": "plural"
                 },
@@ -375,6 +573,19 @@
                   "noun": "notebook",
                   "faNoun": "دفتر"
                 }
+              },
+              {
+                "id": "toy",
+                "label": "toy",
+                "translation": "اسباب‌بازی",
+                "role": "supplementary",
+                "features": {
+                  "number": "singular"
+                },
+                "forms": {
+                  "noun": "toy",
+                  "faNoun": "اسباب‌بازی"
+                }
               }
             ],
             "positions": [
@@ -402,7 +613,7 @@
                 "id": "near",
                 "label": "near",
                 "translation": "نزدیک",
-                "role": "core",
+                "role": "supplementary",
                 "forms": {
                   "preposition": "near",
                   "faPreposition": "نزدیک"
@@ -412,7 +623,7 @@
                 "id": "behind",
                 "label": "behind",
                 "translation": "پشت",
-                "role": "supplementary",
+                "role": "core",
                 "forms": {
                   "preposition": "behind",
                   "faPreposition": "پشت"
@@ -422,10 +633,70 @@
                 "id": "next-to",
                 "label": "next to",
                 "translation": "کنار",
-                "role": "supplementary",
+                "role": "core",
                 "forms": {
                   "preposition": "next to",
                   "faPreposition": "کنار"
+                }
+              },
+              {
+                "id": "in",
+                "label": "in",
+                "translation": "در",
+                "role": "core",
+                "forms": {
+                  "preposition": "in",
+                  "faPreposition": "در"
+                }
+              },
+              {
+                "id": "inside",
+                "label": "inside",
+                "translation": "داخل",
+                "role": "core",
+                "forms": {
+                  "preposition": "inside",
+                  "faPreposition": "داخل"
+                }
+              },
+              {
+                "id": "on-top-of",
+                "label": "on top of",
+                "translation": "روی قسمت بالایی",
+                "role": "core",
+                "forms": {
+                  "preposition": "on top of",
+                  "faPreposition": "روی قسمت بالایی"
+                }
+              },
+              {
+                "id": "above",
+                "label": "above",
+                "translation": "بالای",
+                "role": "core",
+                "forms": {
+                  "preposition": "above",
+                  "faPreposition": "بالای"
+                }
+              },
+              {
+                "id": "in-front-of",
+                "label": "in front of",
+                "translation": "جلوی",
+                "role": "core",
+                "forms": {
+                  "preposition": "in front of",
+                  "faPreposition": "جلوی"
+                }
+              },
+              {
+                "id": "outside",
+                "label": "outside",
+                "translation": "بیرون",
+                "role": "core",
+                "forms": {
+                  "preposition": "outside",
+                  "faPreposition": "بیرون"
                 }
               }
             ],
@@ -434,7 +705,7 @@
                 "id": "table",
                 "label": "table",
                 "translation": "میز",
-                "role": "core",
+                "role": "supplementary",
                 "forms": {
                   "noun": "table",
                   "faNoun": "میز"
@@ -444,7 +715,7 @@
                 "id": "chair",
                 "label": "chair",
                 "translation": "صندلی",
-                "role": "core",
+                "role": "supplementary",
                 "forms": {
                   "noun": "chair",
                   "faNoun": "صندلی"
@@ -454,7 +725,7 @@
                 "id": "desk",
                 "label": "desk",
                 "translation": "میز تحریر",
-                "role": "core",
+                "role": "supplementary",
                 "forms": {
                   "noun": "desk",
                   "faNoun": "میز تحریر"
@@ -484,7 +755,7 @@
                 "id": "box",
                 "label": "box",
                 "translation": "جعبه",
-                "role": "supplementary",
+                "role": "core",
                 "forms": {
                   "noun": "box",
                   "faNoun": "جعبه"
@@ -497,7 +768,7 @@
               "id": "object",
               "label": "شیء",
               "wordSet": "objects",
-              "default": "book",
+              "default": "ball",
               "includeRoles": [
                 "core",
                 "supplementary"
@@ -507,7 +778,7 @@
               "id": "position",
               "label": "موقعیت",
               "wordSet": "positions",
-              "default": "on",
+              "default": "in",
               "includeRoles": [
                 "core",
                 "supplementary"
@@ -517,7 +788,7 @@
               "id": "location",
               "label": "محل",
               "wordSet": "locations",
-              "default": "table",
+              "default": "box",
               "includeRoles": [
                 "core",
                 "supplementary"
@@ -827,6 +1098,57 @@
           ]
         },
         {
+          "id": "a1-4-meaning-variations",
+          "type": "meaning-cluster",
+          "phase": "variants",
+          "title": "یک موقعیت، چند توصیف",
+          "description": "یک معنا را با بیان‌های مختلف مقایسه کن؛ بیان بعدی را بزن. اگر معنا کمی تغییر کند، تفاوتش مشخص است.",
+          "concepts": [
+            {
+              "id": "inside-box",
+              "fa": "توپ داخل جعبه است.",
+              "forms": [
+                {
+                  "en": "The ball is in the box.",
+                  "fa": "توپ در جعبه است.",
+                  "relation": "equivalent",
+                  "note": "in معمول و کوتاه است."
+                },
+                {
+                  "en": "The ball is inside the box.",
+                  "fa": "توپ داخل جعبه است.",
+                  "relation": "equivalent",
+                  "note": "inside بر فضای داخلی تأکید دارد."
+                }
+              ]
+            },
+            {
+              "id": "box-top",
+              "fa": "توپ روی قسمت بالایی جعبه قرار دارد.",
+              "forms": [
+                {
+                  "en": "The ball is on the box.",
+                  "fa": "توپ روی جعبه است.",
+                  "relation": "equivalent",
+                  "note": "در این صحنه، توپ با سطح بالایی جعبه تماس دارد."
+                },
+                {
+                  "en": "The ball is on top of the box.",
+                  "fa": "توپ روی بالاترین قسمت جعبه است.",
+                  "relation": "equivalent",
+                  "note": "دقیق‌تر می‌گوید روی قسمت بالایی قرار دارد."
+                },
+                {
+                  "en": "The ball is above the box.",
+                  "fa": "توپ بالای جعبه است.",
+                  "relation": "related",
+                  "note": "بالا بودن لزوماً به معنی تماس با جعبه نیست."
+                }
+              ]
+            }
+          ]
+        },
+        {
           "id": "places-models",
           "type": "composer-view",
           "phase": "variants",
@@ -844,9 +1166,9 @@
           "id": "places-puzzle",
           "type": "sentence-builder",
           "phase": "puzzle",
-          "title": "از یک بانک مخلوط، چند جملهٔ مکانی بساز",
-          "description": "کلمات چند جمله با هم مخلوط‌اند. هر جملهٔ درست را پیدا کن، ثبتش کن و سپس ترکیب دیگری بساز. نقطه و بزرگی حروف معیار غلط‌بودن نیستند.",
-          "revision": 1,
+          "title": "از بانک درهم‌ریخته، چند جای متفاوت برای توپ بساز",
+          "description": "کلمات چند جملهٔ مکانی را از یک بانک انتخاب کن؛ هر ترکیب صحیح را ثبت کن، سپس با همان واژه‌ها جملهٔ تازه‌ای بساز. نقطه و حروف بزرگ در نمره اثر ندارند.",
+          "revision": 2,
           "reuseBank": true,
           "goalCount": 4,
           "sourceActivityId": "places-composer",
@@ -858,45 +1180,58 @@
           ],
           "sentences": [
             {
-              "id": "book-table",
+              "id": "ball-inside",
               "words": [
                 "The",
-                "book",
+                "ball",
                 "is",
-                "on",
+                "in",
                 "the",
-                "table."
+                "box."
               ]
             },
             {
-              "id": "phone-chair",
+              "id": "ball-above",
+              "words": [
+                "The",
+                "ball",
+                "is",
+                "above",
+                "the",
+                "box."
+              ]
+            },
+            {
+              "id": "ball-under",
               "words": [
                 "Is",
                 "the",
-                "phone",
+                "ball",
                 "under",
                 "the",
-                "chair?"
+                "box?"
               ]
             },
             {
-              "id": "keys-desk",
-              "words": [
-                "The",
-                "keys",
-                "are",
-                "near",
-                "the",
-                "desk."
-              ]
-            },
-            {
-              "id": "where-book",
+              "id": "where-ball",
               "words": [
                 "Where",
                 "is",
                 "the",
-                "book?"
+                "ball?"
+              ]
+            },
+            {
+              "id": "ball-front",
+              "words": [
+                "The",
+                "ball",
+                "is",
+                "in",
+                "front",
+                "of",
+                "the",
+                "box."
               ]
             }
           ]
@@ -1011,6 +1346,42 @@
           "description": "مکان جواب را تغییر بده؛ یک بار جواب مثبت است و بار بعد منفی.",
           "pairs": [
             {
+              "question": "Where is the ball?",
+              "questionFa": "توپ کجاست؟",
+              "variants": [
+                {
+                  "label": "داخل جعبه",
+                  "en": "The ball is in the box.",
+                  "fa": "توپ داخل جعبه است.",
+                  "note": "این پاسخ همان وضعیت داخل جعبه را توصیف می‌کند."
+                },
+                {
+                  "label": "بیرون جعبه",
+                  "en": "The ball is outside the box.",
+                  "fa": "توپ بیرون جعبه است.",
+                  "note": "موقعیت توپ عوض شد."
+                }
+              ]
+            },
+            {
+              "question": "Is the ball under the box?",
+              "questionFa": "آیا توپ زیر جعبه است؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, it is.",
+                  "fa": "بله.",
+                  "note": "پاسخ کوتاه مثبت."
+                },
+                {
+                  "label": "نه؛ داخل است",
+                  "en": "No, the ball is in the box.",
+                  "fa": "نه، توپ داخل جعبه است.",
+                  "note": "پاسخ منفی همراه با اصلاح مکان."
+                }
+              ]
+            },
+            {
               "question": "Where is my book?",
               "questionFa": "کتاب من کجاست؟",
               "variants": [
@@ -1112,6 +1483,42 @@
           "tasks": [
             {
               "speaker": "دوستت",
+              "incoming": "Where is the ball?",
+              "task": "بگو توپ داخل جعبه است.",
+              "hint": "The ball is in the box.",
+              "example": "The ball is in the box.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the ball is in the box"
+                    ],
+                    "feedback": "با The ball is in the box. مکان را توصیف کن."
+                  }
+                ],
+                "success": "موقعیت مکانی را در جمله به کار بردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "A friend is looking at the box.",
+              "task": "بپرس آیا توپ زیر جعبه است.",
+              "hint": "Is the ball under the box?",
+              "example": "Is the ball under the box?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "is the ball under the box"
+                    ],
+                    "feedback": "سؤال را با Is the ball under the box? بساز."
+                  }
+                ],
+                "success": "موقعیت مکانی را در جمله به کار بردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
               "incoming": "Where is my book?",
               "task": "بگو کتاب روی میز است.",
               "hint": "It's on the table.",
@@ -1201,9 +1608,39 @@
           "id": "places-dialogue",
           "type": "dialogue",
           "phase": "context",
-          "title": "مکالمهٔ اول: وسایل گم‌شده",
-          "description": "میا کتاب، تلفن و کلیدهایش را پیدا می‌کند. مکالمه را پیوسته اسکرول کن.",
+          "title": "مکالمهٔ اول: توپ کجاست؟",
+          "description": "میا و نوآ جای توپ را نسبت به جعبهٔ درباز پیدا می‌کنند، سپس وسایل قبلی را مرور می‌کنند.",
           "lines": [
+            {
+              "speaker": "Mia",
+              "en": "Where is the ball?",
+              "fa": "توپ کجاست؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "The ball is in the box.",
+              "fa": "توپ داخل جعبه است."
+            },
+            {
+              "speaker": "Mia",
+              "en": "Is the ball under the box?",
+              "fa": "آیا توپ زیر جعبه است؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "No, it's inside the box.",
+              "fa": "نه، داخل جعبه است."
+            },
+            {
+              "speaker": "Mia",
+              "en": "Can you see the ball?",
+              "fa": "توپ را می‌بینی؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "Yes. Now the ball is on top of the box.",
+              "fa": "بله. حالا توپ روی بالای جعبه است."
+            },
             {
               "speaker": "Mia",
               "en": "Where is my book?",
@@ -1211,38 +1648,8 @@
             },
             {
               "speaker": "Noah",
-              "en": "It's on the table.",
-              "fa": "روی میز است."
-            },
-            {
-              "speaker": "Mia",
-              "en": "Is the phone under the chair?",
-              "fa": "آیا تلفن زیر صندلی است؟"
-            },
-            {
-              "speaker": "Noah",
-              "en": "Yes, it is.",
-              "fa": "بله."
-            },
-            {
-              "speaker": "Mia",
-              "en": "Where are my keys?",
-              "fa": "کلیدهای من کجا هستند؟"
-            },
-            {
-              "speaker": "Noah",
-              "en": "They are near the desk.",
-              "fa": "نزدیک میز تحریر هستند."
-            },
-            {
-              "speaker": "Mia",
-              "en": "Is my bag on the table?",
-              "fa": "کیف من روی میز است؟"
-            },
-            {
-              "speaker": "Noah",
-              "en": "No, it's under the chair.",
-              "fa": "نه، زیر صندلی است."
+              "en": "It's next to the box.",
+              "fa": "کنار جعبه است."
             },
             {
               "speaker": "Mia",
@@ -1264,6 +1671,24 @@
           "title": "مکالمه را از حافظه ادامه بده",
           "description": "حالا پاسخ‌ها را بدون نگاه‌کردن به مکالمه بساز.",
           "tasks": [
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is the ball?",
+              "task": "بگو توپ داخل جعبه است.",
+              "hint": "The ball is in the box.",
+              "example": "The ball is in the box.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the ball is in the box"
+                    ],
+                    "feedback": "The ball is in the box را به یاد بیاور."
+                  }
+                ],
+                "success": "موقعیت مکانی را در جمله به کار بردی."
+              }
+            },
             {
               "speaker": "دوستت",
               "incoming": "Where is my book?",
@@ -1331,58 +1756,58 @@
           "id": "places-dialogue-contrast",
           "type": "dialogue",
           "phase": "context",
-          "title": "مکالمهٔ دوم: در کلاس",
+          "title": "مکالمهٔ دوم: توپ پشت جعبه",
           "description": "موقعیت عوض شده است؛ ببین سؤال‌های آشنا در اینجا چه جوابی می‌گیرند.",
           "lines": [
             {
               "speaker": "Teacher",
-              "en": "Where is the book?",
-              "fa": "کتاب کجاست؟"
+              "en": "Where is the ball?",
+              "fa": "توپ کجاست؟"
             },
             {
               "speaker": "Student",
-              "en": "It's near the desk.",
-              "fa": "نزدیک میز تحریر است."
+              "en": "The ball is behind the box.",
+              "fa": "توپ پشت جعبه است."
             },
             {
               "speaker": "Teacher",
-              "en": "Is the phone under the chair?",
-              "fa": "تلفن زیر صندلی است؟"
+              "en": "Is the ball under the box?",
+              "fa": "آیا توپ زیر جعبه است؟"
             },
             {
               "speaker": "Student",
-              "en": "No, it's on the table.",
-              "fa": "نه، روی میز است."
+              "en": "No, it is behind the box.",
+              "fa": "نه، پشت جعبه است."
             },
             {
               "speaker": "Teacher",
-              "en": "Where are the keys?",
-              "fa": "کلیدها کجا هستند؟"
+              "en": "Put it in front of the box, please.",
+              "fa": "لطفاً آن را جلوی جعبه بگذار."
             },
             {
               "speaker": "Student",
-              "en": "They are on the desk.",
-              "fa": "روی میز تحریر هستند."
+              "en": "Now the ball is in front of the box.",
+              "fa": "حالا توپ جلوی جعبه است."
             },
             {
               "speaker": "Teacher",
-              "en": "Is the bag near the chair?",
-              "fa": "کیف نزدیک صندلی است؟"
+              "en": "Is the ball above the box?",
+              "fa": "آیا توپ بالای جعبه است؟"
             },
             {
               "speaker": "Student",
-              "en": "Yes, it is.",
-              "fa": "بله."
+              "en": "No, it is next to the box.",
+              "fa": "نه، کنار جعبه است."
             },
             {
               "speaker": "Teacher",
-              "en": "Thank you.",
-              "fa": "متشکرم."
+              "en": "Very good!",
+              "fa": "خیلی خوب!"
             },
             {
               "speaker": "Student",
-              "en": "You're welcome.",
-              "fa": "خواهش می‌کنم."
+              "en": "Thank you!",
+              "fa": "ممنون!"
             }
           ]
         },
@@ -1394,6 +1819,24 @@
           "title": "مکان درست را اصلاح کن",
           "description": "بر اساس موقعیت دوم، محل شیء را دقیق‌تر بگو.",
           "tasks": [
+            {
+              "speaker": "دوستت",
+              "incoming": "Is the ball under the box?",
+              "task": "نه، توپ پشت جعبه است.",
+              "hint": "No, the ball is behind the box.",
+              "example": "No, the ball is behind the box.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the ball is behind the box"
+                    ],
+                    "feedback": "موقعیت پشت را درست توضیح بده."
+                  }
+                ],
+                "success": "موقعیت مکانی را در جمله به کار بردی."
+              }
+            },
             {
               "speaker": "دوستت",
               "incoming": "Is the phone under the chair?",
@@ -1466,11 +1909,65 @@
           "id": "places-guided-talk",
           "type": "guided-dialogue",
           "phase": "guided",
-          "practiceRevision": 1,
+          "practiceRevision": 3,
           "title": "نوبت تو؛ مکالمه را جلو ببر",
           "description": "بشنو یا بخوان و به نوبت‌های مختلف پاسخ بده؛ راهنما فقط در صورت نیاز.",
           "completion": "دربارهٔ مکان اشیا در پنج موقعیت پاسخ دادی.",
           "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "I cannot find the ball.",
+              "task": "از دوستت بپرس توپ کجاست.",
+              "hint": "Where is the ball?",
+              "example": "Where is the ball?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "where is the ball"
+                    ],
+                    "feedback": "با Where is the ball? مکان توپ را بپرس."
+                  }
+                ],
+                "success": "مکان توپ را به انگلیسی پرسیدی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is the ball?",
+              "task": "توپ داخل جعبه است؛ کامل جواب بده.",
+              "hint": "The ball is in the box.",
+              "example": "The ball is in the box.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the ball is in the box"
+                    ],
+                    "feedback": "جمله را با The ball is in the box بساز."
+                  }
+                ],
+                "success": "موقعیت مکانی را در جمله به کار بردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Imagine a ball and an open box.",
+              "task": "بپرس آیا توپ زیر جعبه است.",
+              "hint": "Is the ball under the box?",
+              "example": "Is the ball under the box?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "is the ball under the box"
+                    ],
+                    "feedback": "پرسش را با Is the ball under the box بساز."
+                  }
+                ],
+                "success": "موقعیت مکانی را در جمله به کار بردی."
+              }
+            },
             {
               "speaker": "دوستت",
               "incoming": "Where is my book?",
@@ -1624,6 +2121,24 @@
           "turns": [
             {
               "speaker": "دوستت",
+              "incoming": "Where is the ball?",
+              "task": "در بازی جدید توپ بیرون جعبه است.",
+              "hint": "The ball is outside the box.",
+              "example": "The ball is outside the box.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the ball is outside the box"
+                    ],
+                    "feedback": "بگو توپ بیرون جعبه است."
+                  }
+                ],
+                "success": "موقعیت مکانی را در جمله به کار بردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
               "incoming": "Where is my book?",
               "task": "این بار کتاب زیر میز تحریر است.",
               "hint": "It's under the desk.",
@@ -1688,48 +2203,45 @@
           "id": "places-independent",
           "type": "free-write",
           "phase": "independent",
-          "title": "مکالمهٔ مستقل: سه وسیله را پیدا کن",
-          "prompt": "یک مکالمهٔ حداقل ۶ خطی بین دو نفر بنویس که دربارهٔ کتاب، تلفن و کلیدها سؤال می‌پرسند. حتماً عبارت‌های Where is my book? و The book is on the table. و Is the phone under the chair? را در جای درست مکالمه به کار ببر. یک بار هم دربارهٔ کلیدهای جمع با Where are بپرس و پاسخ بده.",
-          "placeholder": "Mia: Where is my book?\nNoah: The book is on the table.\nMia: ...",
-          "hint": "برای کلیدها از Where are the keys? و They are ... استفاده کن؛ راهنما اختیاری است.",
+          "title": "مکالمهٔ مستقل: توپ و جعبهٔ درباز",
+          "prompt": "مکالمهٔ ۶ تا ۸ خطی دربارهٔ یک توپ و جعبهٔ درباز بنویس. یک نفر می‌پرسد Where is the ball? و نفر دوم جواب می‌دهد The ball is in the box. سپس سؤال Is the ball under the box? را هم بیاور و یک بار موقعیت را به above یا behind یا outside تغییر بده. می‌توانی در پایان کتاب و تلفن درس سوم را هم برای مرور اضافه کنی.",
+          "placeholder": "Mia: Where is the ball?\nNoah: The ball is in the box.\nMia: Is the ball under the box?\nNoah: ...",
+          "hint": "در جواب منفی، هم No را بگو و هم جای درست توپ را توضیح بده. عبارت‌های in و inside را نیز می‌توانی مقایسه کنی.",
           "kind": "free-text",
-          "minWords": 25,
+          "minWords": 24,
           "assessment": {
-            "revision": 1,
+            "revision": 2,
             "required": [
               {
                 "any": [
-                  "where is my book"
+                  "where is the ball"
                 ],
-                "feedback": "حتماً بپرس Where is my book?"
+                "feedback": "سؤال Where is the ball? را در مکالمه بیاور."
               },
               {
                 "any": [
-                  "the book is on the table"
+                  "the ball is in the box"
                 ],
-                "feedback": "جملهٔ The book is on the table. را به کار ببر."
+                "feedback": "حداقل یک پاسخ The ball is in the box. بنویس."
               },
               {
                 "any": [
-                  "is the phone under the chair"
+                  "is the ball under the box"
                 ],
-                "feedback": "سؤال Is the phone under the chair? را اضافه کن."
+                "feedback": "پرسش Is the ball under the box? را اضافه کن."
               },
               {
                 "any": [
-                  "where are my keys",
-                  "where are the keys"
+                  "above the box",
+                  "behind the box",
+                  "outside the box",
+                  "in front of the box",
+                  "next to the box"
                 ],
-                "feedback": "دربارهٔ کلیدهای جمع با Where are سؤال بپرس."
-              },
-              {
-                "any": [
-                  "they are"
-                ],
-                "feedback": "به سؤال کلیدها با They are پاسخ بده."
+                "feedback": "یک موقعیت متفاوت را نیز توصیف کن."
               }
             ],
-            "success": "توانستی دربارهٔ سه وسیله مکالمه‌ای مستقل بسازی و مفرد و جمع را درست استفاده کنی."
+            "success": "توانستی دربارهٔ توپ و جعبه، چند موقعیت واقعی را با سؤال و پاسخ مستقل توضیح بدهی."
           }
         }
       ]

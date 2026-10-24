@@ -3,6 +3,7 @@ import { practiceState } from './practice-engine.js';
 import { LESSON_PHASE_LABELS } from './lesson-flow.js';
 import { normalizePuzzleState, puzzleTokenBank, puzzleDisplayWord } from './sentence-puzzle.js';
 import { composeSegments, composerSegmentValue, composerSlotForm, resolveSentenceComposer } from './sentence-composer.js';
+import { resolveMeaningForm, selectedSpatialPosition } from './visual-learning.js';
 
 /*
  * Tutivar's teaching components. Lesson text, exercise items, answers and their
@@ -18,7 +19,7 @@ const MODULE_LABELS = {
   'exchange-lab': 'سؤال و جواب',
   'sentence-transform': 'تبدیل جمله',
   'dialogue-transfer': 'مکالمه در موقعیت تازه',
-  'family-tree': 'درخت خانواده',
+  'family-tree': 'درخت خانواده', 'family-lab': 'خانوادهٔ تصویری', 'spatial-lab': 'بازی موقعیت توپ', 'meaning-cluster': 'یک مفهوم، چند بیان',
   'agreement-lab': 'جمله‌ساز وابسته', 'sentence-composer': 'جمله‌ساز تعاملی', 'composer-view': 'کشف و تغییر جمله'
 };
 function wrapper(body, activity, idx, e, extra = '') {
@@ -145,6 +146,70 @@ function familyTree(a, c) {
   const person = a.people[selected];
   return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="family-tree-picker" role="group" aria-label="انتخاب عضو خانواده">${a.people.map((entry, index) => `<button type="button" class="family-person ${index === selected ? 'active' : ''}" data-family-key="${c.e(key)}" data-family-index="${index}" aria-pressed="${index === selected}"><span>${c.e(entry.initial || entry.name[0])}</span><strong>${c.en(entry.name)}</strong><small>${c.e(entry.fa)}</small></button>`).join('')}</div><div class="family-tree-result"><div class="family-tree-primary">${c.en(person.sentence)}${soundButton(person.sentence, c.e, c.i)}</div><p>${c.e(person.explanation || person.fa)}</p>${person.followup ? `<div class="family-tree-followup">${c.en(person.followup)}${soundButton(person.followup, c.e, c.i)}</div>` : ''}</div>`, a, c.index, c.e, 'module-family-tree');
 }
+function meaningCluster(a, c) {
+  const key = `${c.lessonId}:${a.id}`;
+  const choices = c.progress.meaningChoices?.[key] || {};
+  const cards = a.concepts.map((concept) => {
+    const form = resolveMeaningForm(a, concept, choices);
+    const currentIndex = (Number(choices[concept.id]) || 0) % concept.forms.length;
+    return `<div class="meaning-card" data-meaning-concept-card="${c.e(concept.id)}"><p class="meaning-idea">${c.e(concept.fa)}</p><div class="meaning-expression" lang="en" dir="ltr">${c.en(form.en)}${soundButton(form.en, c.e, c.i)}</div><p class="meaning-translation">${c.e(form.fa)}</p><p class="meaning-nuance">${form.relation === 'related' ? '<strong>مفهوم مرتبط، نه کاملاً هم‌معنا:</strong> ' : ''}${c.e(form.note || '')}</p><div class="meaning-bottom"><span>${currentIndex + 1} / ${concept.forms.length}</span><button type="button" class="meaning-next" data-meaning-key="${c.e(key)}" data-meaning-concept="${c.e(concept.id)}" aria-label="شیوهٔ بیان بعدی">بیان بعدی <span aria-hidden="true">←</span></button></div></div>`;
+  }).join('');
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="meaning-grid">${cards}</div>`, a, c.index, c.e, 'module-meaning-cluster');
+}
+
+function familyLab(a, c) {
+  const key = `${c.lessonId}:${a.id}`;
+  const selected = Math.min(Math.max(Number(c.progress.familyPeople?.[key]) || 0, 0), a.people.length - 1);
+  const person = a.people[selected];
+  const figures = a.people.map((member, index) => {
+    const { x, y, shirt, skin, hair } = member.scene;
+    const active = index === selected;
+    return `<g transform="translate(${x} ${y})" class="family-figure ${active ? 'is-selected' : ''}" aria-hidden="true">
+      <ellipse cy="80" rx="43" ry="8" fill="#b9c8be" opacity=".5"/>
+      <path d="M -36 73 Q -40 4 -14 5 L 17 5 Q 40 11 35 73 Z" fill="${c.e(shirt)}" stroke="#4c665a" stroke-width="2.5"/>
+      <path d="M -30 75 H -9 L -12 104 H -31 Z M 9 75 H 30 L 31 104 H 11 Z" fill="#425b68"/>
+      <circle cy="-30" r="24" fill="${c.e(skin)}" stroke="#8f7964" stroke-width="2"/>
+      <path d="M-25-32 Q-26-60 0-59 Q23-59 26-32 Q 8-51 -10-39 Z" fill="${c.e(hair)}"/>
+      <circle cx="-9" cy="-30" r="2.5" fill="#443b38"/><circle cx="9" cy="-30" r="2.5" fill="#443b38"/>
+      <path d="M-7-18 Q0-12 7-18" fill="none" stroke="#8f5c51" stroke-width="2" stroke-linecap="round"/>
+      <text y="123" text-anchor="middle" font-size="15" font-weight="700" fill="#365246">${c.e(member.name)}</text>
+    </g>`;
+  }).join('');
+  const { x, y } = person.scene;
+  const arrow = `<g class="family-point-arrow" transform="translate(${x} ${y - 96})" aria-hidden="true"><path d="M0 -30V-2" stroke="#e56b49" stroke-width="6" stroke-linecap="round"/><path d="M-11-13L0 2L11-13" fill="none" stroke="#e56b49" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g>`;
+  const hits = a.people.map((entry, index) => `<button class="family-hit" type="button" style="left:${entry.scene.x / 5}%;top:${entry.scene.y / 3.15}%" data-family-key="${c.e(key)}" data-family-index="${index}" aria-pressed="${index === selected}" aria-label="اشاره به ${c.e(entry.name)}؛ ${c.e(entry.fa)}"></button>`).join('');
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="family-scene" role="group" aria-label="تصویر خانواده؛ هر نفر را لمس کن"><svg viewBox="0 0 500 335" role="img" aria-label="چهار عضو خانواده و فلش اشاره به فرد انتخاب‌شده"><rect width="500" height="335" rx="22" fill="#edf6ec"/><path d="M0 230H500V335H0Z" fill="#dcebd8"/>${figures}${arrow}</svg>${hits}</div><div class="family-tree-picker" role="group" aria-label="انتخاب عضو خانواده">${a.people.map((entry, index) => `<button type="button" class="family-person ${index === selected ? 'active' : ''}" data-family-key="${c.e(key)}" data-family-index="${index}" aria-pressed="${index === selected}"><strong>${c.en(entry.name)}</strong><small>${c.e(entry.fa)}</small></button>`).join('')}</div><div class="family-tree-result"><div class="family-tree-primary">${c.en(person.sentence)}${soundButton(person.sentence,c.e,c.i)}</div><p>${c.e(person.explanation || person.fa)}</p>${person.followup ? `<div class="family-tree-followup">${c.en(person.followup)}${soundButton(person.followup,c.e,c.i)}</div>` : ''}</div>`, a, c.index, c.e, 'module-family-lab module-family-tree');
+}
+
+function spatialBallSVG(layer, position) {
+  return `<g class="spatial-ball spatial-ball-${layer}" data-spatial-ball-layer="${layer}" style="transform:translate(${position.ball.x}px,${position.ball.y}px);opacity:${position.ball.layer === layer ? 1 : 0}"><ellipse cy="23" rx="23" ry="7" fill="#344b43" opacity=".15"/><circle r="25" fill="#f4773c" stroke="#bb4525" stroke-width="3"/><ellipse cx="-8" cy="-11" rx="8" ry="5" fill="#ffc09c" opacity=".75"/></g>`;
+}
+function spatialLab(a, c) {
+  const key = `${c.lessonId}:${a.id}`;
+  const position = selectedSpatialPosition(a, c.progress.spatialChoices?.[key]);
+  if (!position) throw new Error('Spatial activity needs positions');
+  const lift = position.boxLift || 0;
+  const options = a.positions.map((entry) => `<button type="button" class="spatial-option ${entry.id === position.id ? 'active' : ''}" data-spatial-key="${c.e(key)}" data-spatial-position="${c.e(entry.id)}" aria-pressed="${entry.id === position.id}"><span lang="en">${c.e(entry.label)}</span><small>${c.e(entry.fa)}</small></button>`).join('');
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="spatial-lab-stage" data-spatial-stage="${c.e(key)}" data-spatial-current="${c.e(position.id)}"><svg class="spatial-svg" viewBox="0 0 520 400" role="img" aria-label="یک توپ نارنجی و جعبه کارتنی درباز؛ موقعیت توپ با دکمه‌ها تغییر می‌کند">
+    <defs><linearGradient id="cardboard-back" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e8be85"/><stop offset="1" stop-color="#bd8456"/></linearGradient><linearGradient id="cardboard-front" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d6a36d"/><stop offset="1" stop-color="#a87951"/></linearGradient></defs>
+    <rect width="520" height="400" rx="23" fill="#f4f8f1"/><path d="M0 345Q260 331 520 346V400H0Z" fill="#dce8d6"/><ellipse cx="245" cy="358" rx="133" ry="15" fill="#b6c3b4" opacity=".45"/>
+    <g class="spatial-box-part" data-box-part="back" style="transform:translateY(-${lift}px)">
+      <path d="M152 162L238 112L369 144L294 190Z" fill="#8f5c38" stroke="#9e734e" stroke-width="3"/>
+      <path d="M238 112L369 144L387 130L255 97Z" fill="#dfb281" stroke="#a27043" stroke-width="3"/>
+      <path d="M152 162L238 112L217 96L130 148Z" fill="#e9c28f" stroke="#a27043" stroke-width="3"/>
+      <path d="M152 162L294 190L369 144L357 246L294 288L152 257Z" fill="#92613c" stroke="#93643d" stroke-width="3"/>
+    </g>
+    ${spatialBallSVG('rear', position)}
+    <g class="spatial-box-part" data-box-part="front" style="transform:translateY(-${lift}px)">
+      <path d="M152 162L294 190L294 311L152 273Z" fill="url(#cardboard-front)" stroke="#9a6c44" stroke-width="3"/>
+      <path d="M294 190L369 144L369 269L294 311Z" fill="#be8d5f" stroke="#91643d" stroke-width="3"/>
+      <path d="M152 162L294 190L266 229L109 195Z" fill="#eac18a" stroke="#a47247" stroke-width="3"/>
+      <path d="M294 190L369 144L412 177L335 230Z" fill="#dcb082" stroke="#a47247" stroke-width="3"/>
+    </g>
+    ${spatialBallSVG('front', position)}
+  </svg><div class="spatial-caption" aria-live="polite"><strong class="spatial-English" lang="en" dir="ltr">${c.e(position.en)}</strong><p class="spatial-Persian" dir="rtl">${c.e(position.faSentence)}</p>${soundButton(position.en,c.e,c.i)}</div><div class="spatial-controls" role="group" aria-label="موقعیت توپ نسبت به جعبه">${options}</div></div>`, a, c.index, c.e, 'module-spatial-lab');
+}
+
 function agreementLab(a, c) {
   const key = `${c.lessonId}:${a.id}`;
   const saved = c.progress.agreementChoices?.[key] || {};
@@ -328,7 +393,7 @@ const renderers = {
   'guided-dialogue': guidedDialogue, 'response-practice': responsePractice,
   'exchange-lab': exchangeLab,
   'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer,
-  'family-tree': familyTree, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer
+  'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer
 };
 export function renderActivity(activity, context) {
   const renderer = renderers[activity.type];

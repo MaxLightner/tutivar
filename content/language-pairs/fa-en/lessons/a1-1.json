@@ -1,6 +1,6 @@
 {
   "id": "A1-1",
-  "revision": 9,
+  "revision": 10,
   "status": "draft",
   "title": "معرفی خود و شروع گفت‌وگو",
   "goal": "در یک برخورد کوتاه متناسب با ساعت سلام کنی، احوال بپرسی، خودت را معرفی کنی و گفت‌وگو را تمام کنی.",
@@ -470,6 +470,57 @@
             }
           ],
           "phase": "sentence"
+        },
+        {
+          "id": "a1-1-meaning-variations",
+          "type": "meaning-cluster",
+          "phase": "variants",
+          "title": "یک معرفی، چند جملهٔ طبیعی",
+          "description": "یک معنا را با بیان‌های مختلف مقایسه کن؛ بیان بعدی را بزن. اگر معنا کمی تغییر کند، تفاوتش مشخص است.",
+          "concepts": [
+            {
+              "id": "my-name",
+              "fa": "اسم من علی است.",
+              "forms": [
+                {
+                  "en": "I'm Ali.",
+                  "fa": "من علی هستم.",
+                  "relation": "equivalent",
+                  "note": "معرفی کوتاه و رایج"
+                },
+                {
+                  "en": "My name is Ali.",
+                  "fa": "اسم من علی است.",
+                  "relation": "equivalent",
+                  "note": "همان معرفی با تأکید بر نام"
+                },
+                {
+                  "en": "You can call me Ali.",
+                  "fa": "می‌توانی من را علی صدا کنی.",
+                  "relation": "related",
+                  "note": "این یکی اجازهٔ خطاب‌کردن است، نه صرفاً معرفی نام."
+                }
+              ]
+            },
+            {
+              "id": "meet",
+              "fa": "خوشحالم از آشنایی با تو.",
+              "forms": [
+                {
+                  "en": "Nice to meet you.",
+                  "fa": "از آشنایی با تو خوشحالم.",
+                  "relation": "equivalent",
+                  "note": "عبارت معمول در ملاقات"
+                },
+                {
+                  "en": "It's nice to meet you.",
+                  "fa": "آشنایی با تو خوشایند است.",
+                  "relation": "equivalent",
+                  "note": "بیان کامل همان مفهوم"
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "hello-models",

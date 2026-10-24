@@ -1,6 +1,6 @@
 {
   "id": "A1-2",
-  "revision": 6,
+  "revision": 7,
   "status": "draft",
   "title": "معرفی اعضای خانواده",
   "goal": "بتوانی درباره اعضای خانواده سؤال کنی، نقش خودت را در خانواده بگویی، دیگران را با نسبت معرفی کنی و حدس اشتباه را اصلاح کنی.",
@@ -27,8 +27,8 @@
   },
   "visual": {
     "src": null,
-    "alt": "چهار عضو خانواده روی عکس",
-    "caption": "معرفی اعضای خانواده"
+    "alt": "نمای چهار عضو خانواده با فلش اشارهٔ تعاملی",
+    "caption": "در بخش عبارت‌ها، روی افراد تصویر بزن تا فلش و جملهٔ معرفی تغییر کنند."
   },
   "learningAudit": {
     "focusExpressions": [
@@ -252,9 +252,9 @@
         },
         {
           "id": "family-tree",
-          "type": "family-tree",
-          "title": "روی اعضای خانواده بزن",
-          "description": "چهار نفر از یک خانوادهٔ فرضی را انتخاب کن. برای هر نفر هم جملهٔ نسبت و هم جملهٔ نام را بشنو.",
+          "type": "family-lab",
+          "title": "خانوادهٔ تصویری؛ اشاره کن و معرفی کن",
+          "description": "روی هر فرد در تصویر بزن؛ فلش به همان عضو خانواده اشاره می‌کند و جملهٔ معرفی و ضمیر مرتبط تغییر می‌کند.",
           "people": [
             {
               "name": "Nora",
@@ -262,7 +262,14 @@
               "initial": "N",
               "sentence": "This is my mother, Nora.",
               "followup": "Her name is Nora.",
-              "explanation": "mother زن است؛ برای نامش her می‌گوییم."
+              "explanation": "mother زن است؛ برای نامش her می‌گوییم.",
+              "scene": {
+                "x": 88,
+                "y": 190,
+                "shirt": "#c778a4",
+                "skin": "#eac1a0",
+                "hair": "#6c453a"
+              }
             },
             {
               "name": "David",
@@ -270,7 +277,14 @@
               "initial": "D",
               "sentence": "This is my father, David.",
               "followup": "His name is David.",
-              "explanation": "father مرد است؛ برای نامش his می‌گوییم."
+              "explanation": "father مرد است؛ برای نامش his می‌گوییم.",
+              "scene": {
+                "x": 204,
+                "y": 190,
+                "shirt": "#567fba",
+                "skin": "#d4a17f",
+                "hair": "#543d31"
+              }
             },
             {
               "name": "Anna",
@@ -278,7 +292,14 @@
               "initial": "A",
               "sentence": "This is my sister, Anna.",
               "followup": "Her name is Anna.",
-              "explanation": "sister دختر یا زن است؛ her به کار می‌بریم."
+              "explanation": "sister دختر یا زن است؛ her به کار می‌بریم.",
+              "scene": {
+                "x": 321,
+                "y": 190,
+                "shirt": "#7eb0a2",
+                "skin": "#e7b590",
+                "hair": "#5c453e"
+              }
             },
             {
               "name": "Sam",
@@ -286,7 +307,14 @@
               "initial": "S",
               "sentence": "This is my brother, Sam.",
               "followup": "His name is Sam.",
-              "explanation": "brother پسر یا مرد است؛ his به کار می‌بریم."
+              "explanation": "brother پسر یا مرد است؛ his به کار می‌بریم.",
+              "scene": {
+                "x": 434,
+                "y": 190,
+                "shirt": "#d6a35b",
+                "skin": "#d5a786",
+                "hair": "#5a4635"
+              }
             }
           ],
           "phase": "phrases"
@@ -708,6 +736,51 @@
             }
           ],
           "phase": "sentence"
+        },
+        {
+          "id": "a1-2-meaning-variations",
+          "type": "meaning-cluster",
+          "phase": "variants",
+          "title": "یک نسبت خانوادگی، چند شیوهٔ معرفی",
+          "description": "یک معنا را با بیان‌های مختلف مقایسه کن؛ بیان بعدی را بزن. اگر معنا کمی تغییر کند، تفاوتش مشخص است.",
+          "concepts": [
+            {
+              "id": "sister",
+              "fa": "این خواهر من است.",
+              "forms": [
+                {
+                  "en": "This is my sister.",
+                  "fa": "این خواهر من است.",
+                  "relation": "equivalent",
+                  "note": "وقتی به شخص موردنظر اشاره می‌کنی."
+                },
+                {
+                  "en": "She's my sister.",
+                  "fa": "او خواهر من است.",
+                  "relation": "equivalent",
+                  "note": "وقتی مشخص است دربارهٔ چه کسی حرف می‌زنی."
+                }
+              ]
+            },
+            {
+              "id": "father",
+              "fa": "این پدر من است.",
+              "forms": [
+                {
+                  "en": "This is my father.",
+                  "fa": "این پدر من است.",
+                  "relation": "equivalent",
+                  "note": "برای معرفی و اشاره به شخص."
+                },
+                {
+                  "en": "He's my father.",
+                  "fa": "او پدر من است.",
+                  "relation": "equivalent",
+                  "note": "وقتی مرجع «او» در گفتگو مشخص است."
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "family-models",
