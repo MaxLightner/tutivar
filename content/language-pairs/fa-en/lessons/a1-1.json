@@ -373,7 +373,9 @@
               "hint": "جواب کوتاه و مودبانه به احوالپرسی",
               "auditAliases": [
                 "I'm fine",
-                "I am fine"
+                "I am fine",
+                "fine thanks",
+                "good thanks"
               ],
               "testAnswers": [
                 "I am fine, thanks.",
