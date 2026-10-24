@@ -38,7 +38,7 @@ rewrite('app.js', [
 ]);
 rewrite('lesson-modules.js', [
   ["from './word-review.js'", `from './word-review.js?v=${revision}'`],
-  ["from './practice-engine.js'", `from './practice-engine.js?v=${revision}'`]
+  ["from './practice-engine.js'", `from './practice-engine.js?v=${revision}'`],
   ["from './sentence-composer.js'", `from './sentence-composer.js?v=${revision}'`]
 ]);
 rewrite('sw.js', [
