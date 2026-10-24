@@ -118,7 +118,7 @@ test('first lesson activities render with separate content, including interactio
   }
   const vocabulary = lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary');
   assert.equal(coreItems(vocabulary).length, 8, 'the first lesson starts with only essential expressions');
-  assert.deepEqual(supplementaryItems(vocabulary).map((entry) => entry.en), ['Good afternoon!', 'Good evening!', 'Good night!']);
+  assert.deepEqual(supplementaryItems(vocabulary).map((entry) => entry.en), ['Good afternoon!', 'Good evening!', 'Good night!', 'Please.', 'Thank you!', "You're welcome!", 'Excuse me.', 'Sorry!', 'See you!', 'Hi!']);
   assert.deepEqual(coreItems(vocabulary).map((entry) => entry.en).filter((word) => ['I', 'my', 'name', 'your'].includes(word)), [], 'grammar fragments belong in the phrase and sentence builders');
   const html = renderActivity(vocabulary, { lessonId: 'A1-1', index: 0, e: String, en: String, i: () => '', progress: { wordProgress: {} } });
   assert.match(html, /کارت 1 از 8/);
