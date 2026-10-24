@@ -307,7 +307,7 @@ test('A1-4 is a complete location lesson in the shared discovery and production 
 });
 
 test('meaning expressions and reusable visual learning modules are lesson-authored', () => {
-  for(const id of ['a1-1','a1-2','a1-3','a1-4']){
+  for(const id of ['a1-1','a1-2','a1-3','a1-4','a1-5']){
     const lesson=load('lessons/'+id+'.json');
     assert.deepEqual(validateLessonFlow(lesson),[],lesson.id);
     const concept=lesson.sections[0].activities.find(a=>a.type==='meaning-cluster');
@@ -845,7 +845,38 @@ test('A1-4 teaches ball-and-box positions before transferring to familiar object
   assert.deepEqual(auditLesson(lesson).errors, []);
 });
 
-test('all four A1 lessons expose identical two-section navigation labels', () => {
+test('A1-5 teaches counting with singular/plural agreement and real-world production', () => {
+  const lesson = load('lessons/a1-5.json');
+  const [foundation, production] = lesson.sections;
+  assert.deepEqual(validateLessonFlow(lesson), []);
+  assert.deepEqual(foundation.activities.map(a => a.phase), ['shadowing','words','phrases','phrases','sentence','variants','variants','puzzle','construction']);
+  assert.equal(foundation.activities[0].type, 'shadowing');
+  const vocabulary = foundation.activities.find(a => a.type === 'vocabulary');
+  assert.ok(coreItems(vocabulary).length >= 28);
+  assert.ok(vocabulary.items.every(item => !/\\s/.test(item.en.trim())));
+  assert.ok(coreItems(vocabulary).every(item => item.examples?.length === 3));
+  assert.ok(supplementaryItems(vocabulary).every(item => !item.examples && !item.hint));
+  const expressions = foundation.activities.find(a => a.type === 'expression-study');
+  assert.ok(expressions.items.some(item => item.en === 'one more'));
+  assert.ok(expressions.items.every(item => !/[?.!]$/.test(item.en)));
+  const composer = foundation.activities.find(a => a.type === 'sentence-composer');
+  assert.deepEqual(validateSentenceComposer(composer), []);
+  const singular = resolveSentenceComposer(composer, { pattern: 'there-is-one', slots: { object: 'bag', count: 'three' } });
+  assert.equal(composeSegments(singular.pattern.segments, composer, singular), 'There is one bag.');
+  const plural = resolveSentenceComposer(composer, { pattern: 'there-are', slots: { object: 'book', count: 'three' } });
+  assert.equal(composeSegments(plural.pattern.segments, composer, plural), 'There are three books.');
+  const question = resolveSentenceComposer(composer, { pattern: 'how-many', slots: { object: 'book', count: 'three' } });
+  assert.equal(composeSegments(question.pattern.segments, composer, question), 'How many books are there?');
+  const puzzle = foundation.activities.find(a => a.type === 'sentence-builder');
+  assert.equal(puzzle.sentences.length, 5);
+  const picture = production.find(a => a.type === 'picture-description');
+  assert.equal(picture.tasks.length, 5);
+  assert.ok(production.find(a => a.type === 'dialogue-transfer').turns.some(turn => /my bag/.test(turn.example || '')));
+  assert.ok(production.find(a => a.type === 'free-write').prompt.includes('وسایل واقعی'));
+  assert.deepEqual(auditLesson(lesson).errors, []);
+});
+
+test('all five A1 lessons expose identical two-section navigation labels', () => {
   const labels=['از کلمه تا جمله','از سؤال و جواب تا مکالمه'];
   for (const id of ['a1-1','a1-2','a1-3','a1-4']) {
     assert.deepEqual(load('lessons/'+id+'.json').sections.map(section=>section.label),labels,id);
