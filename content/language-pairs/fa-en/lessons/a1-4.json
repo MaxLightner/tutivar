@@ -1,6 +1,6 @@
 {
   "id": "A1-4",
-  "revision": 7,
+  "revision": 8,
   "status": "draft",
   "title": "اشیا و مکان اطراف من",
   "goal": "بتوانی موقعیت توپ و اشیا را نسبت به یک جعبهٔ درباز با in، inside، on، on top of، above، under، behind، in front of، next to و outside توضیح بدهی.",
@@ -36,14 +36,10 @@
       "The ball is in the box.",
       "Is the ball under the box?"
     ],
-    "specificIndependentExpressions": [
-      "Where is the ball?",
-      "The ball is in the box.",
-      "Is the ball under the box?"
-    ],
+    "specificIndependentExpressions": [],
     "minDownstreamActivities": 2,
     "minGuidedActivities": 1,
-    "requireIndependentProduction": true
+    "requireIndependentProduction": false
   },
   "lessonTemplate": "discovery-production-v1",
   "sections": [
@@ -349,7 +345,7 @@
           "type": "spatial-lab",
           "phase": "phrases",
           "title": "بازی توپ و جعبهٔ درباز",
-          "description": "به قید مکان ضربه بزن؛ توپ در همان تصویر جابه‌جا می‌شود. «on» تماس با جعبه دارد ولی «above» بالای آن و بدون تماس است. برای «under» جعبه کمی بالا می‌رود.",
+          "description": "روی واژهٔ مکان بزن تا توپ بزرگ دقیقاً جابه‌جا شود: داخل جعبه از میان دیوارهٔ نیمه‌شفاف دیده می‌شود، پشت جعبه بخشی از توپ پنهان است، کنار به جعبه نزدیک است و بیرون از آن فاصله دارد. برای «on» جعبه به پهلو می‌خوابد؛ «above» هیچ تماسی ندارد.",
           "positions": [
             {
               "id": "in",
@@ -358,9 +354,9 @@
               "en": "The ball is in the box.",
               "faSentence": "توپ در جعبه است.",
               "ball": {
-                "x": 258,
-                "y": 150,
-                "layer": "rear"
+                "x": 254,
+                "y": 237,
+                "layer": "inside"
               }
             },
             {
@@ -370,9 +366,9 @@
               "en": "The ball is inside the box.",
               "faSentence": "توپ داخل جعبه است.",
               "ball": {
-                "x": 258,
-                "y": 150,
-                "layer": "rear"
+                "x": 254,
+                "y": 237,
+                "layer": "inside"
               }
             },
             {
@@ -380,22 +376,10 @@
               "label": "on",
               "fa": "روی",
               "en": "The ball is on the box.",
-              "faSentence": "توپ روی جعبه است.",
+              "faSentence": "توپ روی سطح جعبهٔ خوابیده است و با آن تماس دارد.",
               "ball": {
-                "x": 185,
-                "y": 173,
-                "layer": "front"
-              }
-            },
-            {
-              "id": "on-top-of",
-              "label": "on top of",
-              "fa": "روی قسمت بالایی",
-              "en": "The ball is on top of the box.",
-              "faSentence": "توپ روی قسمت بالایی جعبه است.",
-              "ball": {
-                "x": 338,
-                "y": 106,
+                "x": 271,
+                "y": 125,
                 "layer": "front"
               }
             },
@@ -404,10 +388,10 @@
               "label": "above",
               "fa": "بالاتر از",
               "en": "The ball is above the box.",
-              "faSentence": "توپ بالای جعبه و بدون تماس با آن است.",
+              "faSentence": "توپ بالاتر از جعبه است و هیچ تماسی با آن ندارد.",
               "ball": {
-                "x": 250,
-                "y": 55,
+                "x": 248,
+                "y": 42,
                 "layer": "front"
               }
             },
@@ -418,8 +402,8 @@
               "en": "The ball is under the box.",
               "faSentence": "توپ زیر جعبه است.",
               "ball": {
-                "x": 245,
-                "y": 343,
+                "x": 246,
+                "y": 341,
                 "layer": "front"
               },
               "boxLift": 28
@@ -429,11 +413,11 @@
               "label": "behind",
               "fa": "پشت",
               "en": "The ball is behind the box.",
-              "faSentence": "توپ پشت جعبه است.",
+              "faSentence": "توپ پشت جعبه است؛ بخشی از آن پشت بدنه پنهان شده است.",
               "ball": {
-                "x": 270,
-                "y": 121,
-                "layer": "rear"
+                "x": 386,
+                "y": 269,
+                "layer": "behind"
               }
             },
             {
@@ -444,7 +428,7 @@
               "faSentence": "توپ جلوی جعبه است.",
               "ball": {
                 "x": 249,
-                "y": 345,
+                "y": 358,
                 "layer": "front"
               }
             },
@@ -453,10 +437,10 @@
               "label": "next to",
               "fa": "کنار",
               "en": "The ball is next to the box.",
-              "faSentence": "توپ کنار جعبه است.",
+              "faSentence": "توپ درست کنار جعبه است.",
               "ball": {
-                "x": 407,
-                "y": 302,
+                "x": 432,
+                "y": 307,
                 "layer": "front"
               }
             },
@@ -465,10 +449,10 @@
               "label": "outside",
               "fa": "بیرون",
               "en": "The ball is outside the box.",
-              "faSentence": "توپ بیرون جعبه است.",
+              "faSentence": "توپ بیرون جعبه و با فاصله از آن است.",
               "ball": {
-                "x": 455,
-                "y": 329,
+                "x": 67,
+                "y": 330,
                 "layer": "front"
               }
             }
@@ -1930,6 +1914,84 @@
           ]
         },
         {
+          "id": "places-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "practiceRevision": 1,
+          "title": "از روی تصویر: هر وسیله کجاست؟",
+          "description": "به اشیای صحنه نگاه کن. موقعیت واقعی آن‌ها را پیدا کن و با واژه‌های این درس توصیف کن. کتاب، کلید و تلفن را از درس قبل هم می‌شناسی.",
+          "image": "./assets/scene-a1-4.svg",
+          "imageAlt": "توپ درون جعبه است، تلفن کنار جعبه، کتاب زیر قفسه و کلیدها روی قفسه.",
+          "caption": "تصویر ۴ · جعبه، توپ، قفسه و وسایل آشنای درس سوم",
+          "tasks": [
+            {
+              "task": "توپ داخل جعبه است. جای آن را در یک جملهٔ انگلیسی بگو.",
+              "hint": "The ball is inside the box.",
+              "example": "The ball is inside the box.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the ball is inside the box",
+                      "the ball is in the box"
+                    ],
+                    "feedback": "از in یا inside برای توصیف توپ استفاده کن."
+                  }
+                ],
+                "success": "با کمک تصویر، جمله را خودت درست ساختی."
+              }
+            },
+            {
+              "task": "تلفن سمت راست نسبت به جعبه کجاست؟",
+              "hint": "The phone is next to the box.",
+              "example": "The phone is next to the box.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "phone is next to the box"
+                    ],
+                    "feedback": "برای تلفن از next to استفاده کن."
+                  }
+                ],
+                "success": "با کمک تصویر، جمله را خودت درست ساختی."
+              }
+            },
+            {
+              "task": "جای کتاب را نسبت به قفسه توصیف کن.",
+              "hint": "The book is under the shelf.",
+              "example": "The book is under the shelf.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "book is under the shelf"
+                    ],
+                    "feedback": "کتاب زیر قفسه است، از under استفاده کن."
+                  }
+                ],
+                "success": "با کمک تصویر، جمله را خودت درست ساختی."
+              }
+            },
+            {
+              "task": "کلیدها نسبت به قفسه کجا هستند؟",
+              "hint": "The keys are on the shelf.",
+              "example": "The keys are on the shelf.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "keys are on the shelf"
+                    ],
+                    "feedback": "کلیدها روی قفسه هستند. از on و are استفاده کن."
+                  }
+                ],
+                "success": "با کمک تصویر، جمله را خودت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
           "id": "places-guided-talk",
           "type": "guided-dialogue",
           "phase": "guided",
@@ -2232,45 +2294,70 @@
           "id": "places-independent",
           "type": "free-write",
           "phase": "independent",
-          "title": "مکالمهٔ مستقل: توپ و جعبهٔ درباز",
-          "prompt": "مکالمهٔ ۶ تا ۸ خطی دربارهٔ یک توپ و جعبهٔ درباز بنویس. یک نفر می‌پرسد Where is the ball? و نفر دوم جواب می‌دهد The ball is in the box. سپس سؤال Is the ball under the box? را هم بیاور و یک بار موقعیت را به above یا behind یا outside تغییر بده. می‌توانی در پایان کتاب و تلفن درس سوم را هم برای مرور اضافه کنی.",
-          "placeholder": "Mia: Where is the ball?\nNoah: The ball is in the box.\nMia: Is the ball under the box?\nNoah: ...",
-          "hint": "در جواب منفی، هم No را بگو و هم جای درست توپ را توضیح بده. عبارت‌های in و inside را نیز می‌توانی مقایسه کنی.",
+          "title": "آزمایش واقعی: وسایل را جابه‌جا کن و مکانشان را بنویس",
+          "prompt": "یک جعبه، کیف یا ظرف کوچک کنارت بگذار. یک شیء کوچیک مثل توپ، پاک‌کن یا خودکار را واقعاً یک بار داخل آن، یک بار روی آن و یک بار کنارش یا پشتش قرار بده. هر دفعه جای شیء را با یک جملهٔ انگلیسی توصیف کن. سپس یکی از وسایل آشنای درس سوم (book، phone، keys، bag یا pen) را هم در صحنه استفاده کن و با Where is ...? دربارهٔ جای آن سؤال بساز. در پایان ۴ تا ۶ جملهٔ خودت را اینجا بنویس؛ لازم نیست عکس بفرستی.",
+          "placeholder": "My pen is in my bag.\nMy pen is on the bag.\nThe book is next to the bag.\nWhere is my phone?\n...",
+          "hint": "به جمله‌های حفظی توپ و جعبه محدود نیستی؛ نام اشیای واقعی اطرافت را به کار ببر. موقعیت on باید تماس داشته باشد و above بدون تماس است.",
           "kind": "free-text",
-          "minWords": 24,
+          "minWords": 18,
           "assessment": {
-            "revision": 2,
+            "revision": 3,
             "required": [
               {
                 "any": [
-                  "where is the ball"
+                  "in the",
+                  "inside the",
+                  "in my",
+                  "inside my"
                 ],
-                "feedback": "سؤال Where is the ball? را در مکالمه بیاور."
+                "feedback": "یک شیء را داخل جعبه یا کیف قرار بده و با in یا inside توصیف کن."
               },
               {
                 "any": [
-                  "the ball is in the box"
+                  "on the",
+                  "on my",
+                  "above the",
+                  "above my"
                 ],
-                "feedback": "حداقل یک پاسخ The ball is in the box. بنویس."
+                "feedback": "یک موقعیت روی یا بالاتر از شیء دیگر را توصیف کن."
               },
               {
                 "any": [
-                  "is the ball under the box"
+                  "next to the",
+                  "next to my",
+                  "behind the",
+                  "behind my",
+                  "under the",
+                  "under my",
+                  "in front of the",
+                  "in front of my",
+                  "outside the",
+                  "outside my"
                 ],
-                "feedback": "پرسش Is the ball under the box? را اضافه کن."
+                "feedback": "یک رابطهٔ سوم مثل next to، behind یا under را بساز."
               },
               {
                 "any": [
-                  "above the box",
-                  "behind the box",
-                  "outside the box",
-                  "in front of the box",
-                  "next to the box"
+                  "where is",
+                  "where are"
                 ],
-                "feedback": "یک موقعیت متفاوت را نیز توصیف کن."
+                "feedback": "حداقل یک سؤال Where is ...? دربارهٔ مکان بساز."
+              },
+              {
+                "any": [
+                  "book",
+                  "phone",
+                  "keys",
+                  "bag",
+                  "pen",
+                  "notebook",
+                  "pencil",
+                  "wallet"
+                ],
+                "feedback": "یکی از وسایل شخصی درس سوم را هم به کار ببر."
               }
             ],
-            "success": "توانستی دربارهٔ توپ و جعبه، چند موقعیت واقعی را با سؤال و پاسخ مستقل توضیح بدهی."
+            "success": "از یک موقعیت واقعی یا شخصی برای ساخت جمله استفاده کردی؛ حالا می‌توانی اشیا، نام‌ها و رابطه‌ها را عوض کنی."
           }
         }
       ]
