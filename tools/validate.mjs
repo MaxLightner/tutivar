@@ -1,3 +1,4 @@
+import { validateSentenceComposer } from '../apps/learner-web/sentence-composer.js';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -147,9 +148,19 @@ export function validateRepository(root = projectRoot) {
     errors.push(...validateCourseSemantics(fixtures.course));
     errors.push(...validateExampleReferences({ pair, ...fixtures }));
   }
+  const composerSchema = get('schemas/sentence-composer.schema.json');
+  function inspectSentenceComposers(value, sourcePath) {
+    if (!value || typeof value !== 'object') return;
+    if (!Array.isArray(value) && value.type === 'sentence-composer') {
+      errors.push(...validateSchema(composerSchema, value, sourcePath + ':' + (value.id || 'sentence-composer')));
+      errors.push(...validateSentenceComposer(value).map((error) => sourcePath + ': ' + error));
+    }
+    if (Array.isArray(value)) value.forEach((item, index) => inspectSentenceComposers(item, sourcePath + '[' + index + ']'));
+    else for (const [key, item] of Object.entries(value)) inspectSentenceComposers(item, sourcePath + '.' + key);
+  }
   for (const dirname of ['architecture', 'registry', 'schemas', 'content', 'examples']) {
     for (const file of collectJson(join(root, dirname))) {
-      try { readJson(file); } catch (error) { errors.push(file + ': ' + error.message); }
+      try { const value = readJson(file); if (dirname === 'content') inspectSentenceComposers(value, file.replace(root + '/', '')); } catch (error) { errors.push(file + ': ' + error.message); }
     }
   }
   return errors;
