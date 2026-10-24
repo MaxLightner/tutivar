@@ -301,7 +301,8 @@ test('A1-3 uses one JSON-driven sentence composer for owners, objects and gramma
   assert.match(rendered, /data-composer-slot="owner"/);
   assert.match(rendered, /data-composer-slot="object"/);
   assert.match(rendered, /data-composer-action="pattern"/);
-  assert.match(rendered, /This is my book\./);
+  const defaultResolved = resolveSentenceComposer(composer, {});
+  assert.equal(composeSegments(defaultResolved.pattern.segments, composer, defaultResolved), 'This is my book.');
   assert.doesNotMatch(rendered, /class="phrase-slot"/, 'there are no separate owner/object selectors outside the sentence');
 
   const saved = { slots: { owner: 'she', object: 'keys' }, pattern: 'statement' };
