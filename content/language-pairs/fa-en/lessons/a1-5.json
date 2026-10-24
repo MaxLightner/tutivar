@@ -2072,6 +2072,7 @@
             "required": [
               {
                 "any": [
+                  "There is one bag.",
                   "one book",
                   "one bag",
                   "one phone",
