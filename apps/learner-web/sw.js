@@ -1,5 +1,5 @@
-const CACHE = 'tutivar-ui-v4-network-first';
-const ASSETS = ['./', './index.html', './styles.css', './ui-v2.css', './app.js', './lesson-modules.js', './sentence-composer.js', './lesson-flow.js', './sentence-puzzle.js', './word-review.js', './practice-engine.js', './icon.svg', './manifest.webmanifest', './data/manifest.json', './data/curriculum.a1.json', './data/lessons/a1-1.json', './data/lessons/a1-2.json', './data/lessons/a1-3.json'];
+const CACHE = 'tutivar-ui-v5-network-first';
+const ASSETS = ['./', './index.html', './styles.css', './ui-v2.css', './app.js', './lesson-modules.js', './sentence-composer.js', './lesson-flow.js', './sentence-puzzle.js', './word-review.js', './practice-engine.js', './icon.svg', './manifest.webmanifest', './data/manifest.json', './data/curriculum.a1.json', './data/lessons/a1-1.json', './data/lessons/a1-2.json', './data/lessons/a1-3.json', './data/lessons/a1-4.json', './a1-4-locations.svg'];
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
 });
