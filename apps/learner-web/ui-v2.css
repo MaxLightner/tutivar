@@ -818,3 +818,12 @@ button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3p
 @media (min-width:680px) { .spatial-controls { grid-template-columns:repeat(5,minmax(0,1fr)); } }
 @media (max-width:420px) { .spatial-lab-stage { padding:8px; } .spatial-option { font-size:12px; } .spatial-option small { font-size:11px; } .meaning-card { padding:13px; } }
 @media (prefers-reduced-motion:reduce) { .spatial-ball, .spatial-box-part { transition:none !important; } }
+
+/* Guided image description follows dialogues and precedes unsupported free writing. */
+.picture-description-scene { margin:14px 0 10px; border:1px solid #d4e4d4; border-radius:18px; overflow:hidden; background:#f2f7ef; }
+.picture-description-scene img { display:block; width:100%; height:auto; aspect-ratio:12/7; object-fit:contain; }
+.picture-description-scene figcaption { border-top:1px solid #e0e8dc; padding:10px 13px; font-size:13px; font-weight:600; color:#526f5a; }
+.picture-description-note { background:#eff5e9; color:#45634b; padding:9px 13px; border-radius:10px; font-size:13px; line-height:1.9; }
+.spatial-box-mode { transition:opacity .18s ease; }
+.spatial-ball { transition:transform .34s cubic-bezier(.2,.7,.2,1),opacity .16s ease; }
+@media (prefers-reduced-motion:reduce) {.spatial-box-mode { transition:none!important; }}
