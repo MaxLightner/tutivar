@@ -22,6 +22,20 @@ function wrapper(body, activity, idx, e, extra = '') {
 function soundButton(text, e, i) {
   return `<button class="sound-btn" data-speak="${e(text)}" aria-label="شنیدن تلفظ ${e(text)}">${i('sound')}</button>`;
 }
+function exampleFocus(line, entry, c) {
+  const phrase = entry.en.replace(/[?!.,]/g, '').trim();
+  const firstWords = phrase.split(/\s+/).slice(0, 2).join(' ');
+  const start = line.toLowerCase().indexOf(phrase.toLowerCase());
+  const fallback = start < 0 ? line.toLowerCase().indexOf(firstWords.toLowerCase()) : start;
+  const matched = start >= 0 ? phrase : firstWords;
+  if (fallback < 0) return c.en(line);
+  return `<span class="en" lang="en" dir="ltr">${c.e(line.slice(0, fallback))}<mark class="example-target">${c.e(line.slice(fallback, fallback + matched.length))}</mark>${c.e(line.slice(fallback + matched.length))}</span>`;
+}
+function exampleGallery(entry, c) {
+  const examples = entry.examples?.length ? entry.examples : entry.example ? [entry.example] : [];
+  if (!examples.length) return '';
+  return `<div class="example-gallery-heading">${examples.length} مثال · افقی ورق بزن و جمله را لمس کن</div><div class="example-gallery" aria-label="مثال‌های قابل لمس ${c.e(entry.en)}">${examples.map((line, index) => `<div class="example-mini-card"><div class="example-mini-top"><span>مثال ${index + 1}</span>${soundButton(line, c.e, c.i)}</div><button type="button" class="example-reveal" data-example-reveal aria-expanded="false" aria-label="پیداکردن عبارت ${c.e(entry.en)} در مثال">${exampleFocus(line, entry, c)}</button><p class="example-mini-meaning">${c.e(entry.fa)} · عبارت اصلی: ${c.en(entry.en)}</p></div>`).join('')}</div>`;
+}
 function intro(a, c) {
   return wrapper(`<p class="module-intro-text">${c.e(a.text)}</p><div class="module-intro-focus">${c.en(a.focus)}${soundButton(a.focus, c.e, c.i)}</div>`, a, c.index, c.e, 'module-intro');
 }
@@ -31,7 +45,7 @@ function vocabulary(a, c) {
   const items = coreItems(a);
   const optionalItems = supplementaryItems(a);
   const total = items.length;
-  const optional = optionalItems.length ? `<details class="vocab-supplementary"><summary><span><strong>عبارت‌های تکمیلی</strong><small>${optionalItems.length} عبارت برای یادگیری بیشتر · اختیاری</small></span><span class="supplementary-toggle">نمایش / بستن</span></summary><div class="supplementary-list">${optionalItems.map((item) => `<div class="supplementary-card"><div class="supplementary-main"><div><strong>${c.en(item.en)}</strong><p>${c.e(item.fa)}</p>${item.hint ? `<span class="word-hint">${c.e(item.hint)}</span>` : ''}</div>${soundButton(item.en, c.e, c.i)}</div>${item.examples?.length ? `<details class="supplementary-examples"><summary>سه مثال کاربردی</summary><div class="word-examples">${item.examples.map((line, index) => `<div class="word-example-line"><span class="example-number">${index + 1}</span>${c.en(line)}${soundButton(line, c.e, c.i)}</div>`).join('')}</div></details>` : ''}</div>`).join('')}</div></details>` : '';
+  const optional = optionalItems.length ? `<details class="vocab-supplementary"><summary><span><strong>عبارت‌های تکمیلی</strong><small>${optionalItems.length} عبارت برای یادگیری بیشتر · اختیاری</small></span><span class="supplementary-toggle">نمایش / بستن</span></summary><div class="supplementary-list">${optionalItems.map((item) => `<div class="supplementary-card"><div class="supplementary-main"><div><strong>${c.en(item.en)}</strong><p>${c.e(item.fa)}</p>${item.hint ? `<span class="word-hint">${c.e(item.hint)}</span>` : ''}</div>${soundButton(item.en, c.e, c.i)}</div>${item.examples?.length ? `<details class="supplementary-examples"><summary>سه مثال کاربردی</summary>${exampleGallery(item, c)}</details>` : ''}</div>`).join('')}</div></details>` : '';
   const render = (body) => wrapper(`${body}${optional}`, a, c.index, c.e, 'module-vocabulary');
   const learned = Object.values(state.decisions).filter((value) => value === 'known').length;
   const tested = Object.values(state.decisions).filter((value) => value === 'test').length;
@@ -48,13 +62,13 @@ function vocabulary(a, c) {
   const batchSize = Math.max(1, a.batchSize || 5);
   const batch = Math.floor(index / batchSize) + 1;
   const batches = Math.ceil(total / batchSize);
-  const examples = (entry.examples?.length ? entry.examples : entry.example ? [entry.example] : []).map((line, i) => `<div class="word-example-line"><span class="example-number">${i + 1}</span>${c.en(line)}${soundButton(line, c.e, c.i)}</div>`).join('');
+  const examples = exampleGallery(entry, c);
   if (state.phase === 'retry') {
-    return render(`<div class="word-test-alert">این یکی هنوز نیاز به مرور دارد. پاسخ درست: ${c.en(entry.en)}</div><div class="vocab-focus-card"><div class="word-focus-title">${c.en(entry.en)}${soundButton(entry.en, c.e, c.i)}</div><div class="word-focus-meaning">${c.e(entry.fa)}</div><div class="word-examples">${examples}</div></div><div class="vocab-deck-actions"><button class="outline-btn" data-word-key="${c.e(key)}" data-word-action="skip-failed">فعلاً در لایتنر اصلی بماند</button><button class="secondary-btn" data-word-key="${c.e(key)}" data-word-action="resume">دوباره امتحانم کن</button></div>`);
+    return render(`<div class="word-test-alert">این یکی هنوز نیاز به مرور دارد. پاسخ درست: ${c.en(entry.en)}</div><div class="vocab-focus-card"><div class="word-focus-title">${c.en(entry.en)}${soundButton(entry.en, c.e, c.i)}</div><div class="word-focus-meaning">${c.e(entry.fa)}</div>${examples}</div><div class="vocab-deck-actions"><button class="outline-btn" data-word-key="${c.e(key)}" data-word-action="skip-failed">فعلاً در لایتنر اصلی بماند</button><button class="secondary-btn" data-word-key="${c.e(key)}" data-word-action="resume">دوباره امتحانم کن</button></div>`);
   }
   const decisions = items.slice(0, index + 1).filter((item) => state.decisions[wordId(item)]).length;
   const slider = `<div class="vocab-navigation"><div class="vocab-range-label"><strong>مرور آزاد کلمات</strong><span>${index + 1} / ${total} · دسته ${batch} از ${batches}</span></div><div class="vocab-scrubber"><button type="button" class="word-nav-btn" data-word-key="${c.e(key)}" data-word-action="prev" ${index === 0 ? 'disabled' : ''} aria-label="کلمه قبلی">‹</button><input type="range" data-word-slider="${c.e(key)}" min="1" max="${total}" step="1" value="${index + 1}" aria-label="جابه‌جایی بین ${total} کلمه"><button type="button" class="word-nav-btn" data-word-key="${c.e(key)}" data-word-action="next" aria-label="کلمه بعدی یا پایان مرور">›</button></div><p>دستگیره را بکش یا کارت را ورق بزن؛ لازم نیست همهٔ کلمات را جداگانه تأیید کنی.</p></div>`;
-  return render(`<div class="vocab-deck-top"><span>کارت ${index + 1} از ${total}</span><strong>${learned} بلدم · ${tested} امتحانم کن</strong></div><div class="vocab-deck-bar"><span style="width:${total ? (decisions / total) * 100 : 0}%"></span></div><div class="vocab-focus-card" data-word-swipe="${c.e(key)}" tabindex="0" aria-label="کارت واژه؛ برای جابه‌جایی از کلیدهای جهت‌نما استفاده کن"><div class="word-focus-title">${c.en(entry.en)}${soundButton(entry.en, c.e, c.i)}</div><div class="word-focus-meaning">${c.e(entry.fa)}</div>${entry.hint ? `<p class="word-hint">${c.e(entry.hint)}</p>` : ''}<div class="word-examples">${examples}</div></div><div class="vocab-deck-actions"><button class="outline-btn" data-word-key="${c.e(key)}" data-word-action="test">امتحانم کن</button><button class="secondary-btn" data-word-key="${c.e(key)}" data-word-action="known">اینو بلدم ${c.i('check')}</button></div>${slider}`);
+  return render(`<div class="vocab-deck-top"><span>کارت ${index + 1} از ${total}</span><strong>${learned} بلدم · ${tested} امتحانم کن</strong></div><div class="vocab-deck-bar"><span style="width:${total ? (decisions / total) * 100 : 0}%"></span></div><div class="vocab-focus-card" data-word-swipe="${c.e(key)}" tabindex="0" aria-label="کارت واژه؛ برای جابه‌جایی از کلیدهای جهت‌نما استفاده کن"><div class="word-focus-title">${c.en(entry.en)}${soundButton(entry.en, c.e, c.i)}</div><div class="word-focus-meaning">${c.e(entry.fa)}</div>${entry.hint ? `<p class="word-hint">${c.e(entry.hint)}</p>` : ''}${examples}</div><div class="vocab-deck-actions"><button class="outline-btn" data-word-key="${c.e(key)}" data-word-action="test">امتحانم کن</button><button class="secondary-btn" data-word-key="${c.e(key)}" data-word-action="known">اینو بلدم ${c.i('check')}</button></div>${slider}`);
 }
 function phraseComposer(a, c) {
   const key = `${c.lessonId}:${a.id}`;
@@ -145,15 +159,22 @@ function quizSet(a, c) {
     return `<div class="quiz-question"><span class="question-number">سؤال ${qIdx + 1}</span><div class="question">${c.e(question.question)}</div><div class="choices">${question.choices.map((answer, choiceIndex) => `<button class="choice ${chosen === choiceIndex ? 'selected ' + (choiceIndex === question.answer ? 'correct' : 'wrong') : ''}" data-quiz="${c.e(key)}" data-choice="${choiceIndex}">${c.en(answer)}</button>`).join('')}</div>${chosen !== undefined ? `<div class="feedback ${chosen === question.answer ? '' : 'error'}">${chosen === question.answer ? c.e(question.feedback) : 'دوباره امتحان کن.'}</div>` : ''}</div>`;
   }).join(''), a, c.index, c.e, 'module-quizzes');
 }
+export function renderDialogueLines(a, c, step, enteringIndex = -1) {
+  const speakers = [...new Set(a.lines.map((line) => line.speaker))];
+  return a.lines.slice(step, step + 2).map((line, localIndex) => {
+    const lineIndex = step + localIndex;
+    const side = speakers.indexOf(line.speaker) % 2 === 0 ? 'speaker-first' : 'speaker-second';
+    const entering = enteringIndex === -1 || lineIndex === enteringIndex ? 'dialogue-entering' : '';
+    return `<div class="dialogue-line ${side} ${entering}" data-dialogue-line="${lineIndex}"><span class="speaker-avatar" aria-hidden="true">${c.e(line.speaker.slice(0, 1))}</span><div class="bubble"><strong class="speaker-name">${c.e(line.speaker)}</strong><div class="spoken-line"><button type="button" class="dialogue-sentence" data-speak="${c.e(line.en)}" aria-label="شنیدن جملهٔ ${c.e(line.speaker)}">${c.en(line.en)}</button></div>${c.progress.showDialogueTranslation ? `<p>${c.e(line.fa)}</p>` : ''}</div></div>`;
+  }).join('');
+}
 function dialogue(a, c) {
   const key = `${c.lessonId}:${a.id}`;
   const maxStep = Math.max(0, a.lines.length - 2);
   const stored = Number(c.progress.dialogueSteps?.[key]);
   const step = Number.isFinite(stored) ? Math.max(0, Math.min(maxStep, stored)) : 0;
-  const visible = a.lines.slice(step, step + 2);
-  const transcript = visible.map((line) => `<div class="dialogue-line" data-dialogue-line="true"><span class="speaker-avatar">${c.e(line.speaker.slice(0, 1))}</span><div class="bubble"><strong class="speaker-name">${c.e(line.speaker)}</strong><div class="spoken-line">${c.en(line.en)}${soundButton(line.en, c.e, c.i)}</div>${c.progress.showDialogueTranslation ? `<p>${c.e(line.fa)}</p>` : ''}</div></div>`).join('');
-  const scrubber = `<div class="dialogue-timeline"><div class="dialogue-timeline-top"><strong>جمله‌های ${step + 1} و ${Math.min(step + 2, a.lines.length)} از ${a.lines.length}</strong><span>نوار را بکش تا دو نوبت بعدی دیده و خوانده شوند</span></div><div class="dialogue-timeline-controls"><button type="button" class="dialogue-nav" data-dialogue-key="${c.e(key)}" data-dialogue-nav="-1" ${step === 0 ? 'disabled' : ''} aria-label="نوبت قبلی">‹</button><input type="range" data-dialogue-slider="${c.e(key)}" min="0" max="${maxStep}" step="1" value="${step}" aria-label="نوار زمان مکالمه؛ جابه‌جایی بین ${maxStep + 1} نوبت"><button type="button" class="dialogue-nav" data-dialogue-key="${c.e(key)}" data-dialogue-nav="1" ${step === maxStep ? 'disabled' : ''} aria-label="نوبت بعدی">›</button></div><button type="button" class="dialogue-play outline-btn" data-dialogue-play="${c.e(key)}">${c.i('sound')} پخش دو جملهٔ روی صفحه</button></div>`;
-  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="module-tools"><button class="outline-btn" data-action="toggle-translations">${c.progress.showDialogueTranslation ? 'پنهان‌کردن ترجمه' : 'نمایش ترجمه'}</button></div><div class="dialogue dialogue-window" aria-live="polite">${transcript}</div>${scrubber}`, a, c.index, c.e, 'module-dialogue-timeline');
+  const scrubber = `<div class="dialogue-timeline"><div class="dialogue-timeline-top"><strong data-dialogue-count="${c.e(key)}">${step + 1}–${Math.min(step + 2, a.lines.length)} / ${a.lines.length}</strong><span>نوار را بکش؛ جملهٔ تازه پخش می‌شود</span></div><div class="dialogue-timeline-controls"><button type="button" class="dialogue-nav" data-dialogue-key="${c.e(key)}" data-dialogue-nav="-1" ${step === 0 ? 'disabled' : ''} aria-label="نوبت قبلی">‹</button><input type="range" data-dialogue-slider="${c.e(key)}" min="0" max="${maxStep}" step="1" value="${step}" aria-label="نوار زمان مکالمه؛ جابه‌جایی بین ${maxStep + 1} نوبت"><button type="button" class="dialogue-nav" data-dialogue-key="${c.e(key)}" data-dialogue-nav="1" ${step === maxStep ? 'disabled' : ''} aria-label="نوبت بعدی">›</button></div><button type="button" class="dialogue-play outline-btn" data-dialogue-play="${c.e(key)}">${c.i('sound')} شنیدن دو جمله</button></div>`;
+  return wrapper(`<div class="dialogue-headline"><span>${c.e(a.description || '')}</span><button class="outline-btn" data-action="toggle-translations">${c.progress.showDialogueTranslation ? 'پنهان‌کردن معنی' : 'نمایش معنی'}</button></div><div class="dialogue dialogue-window" data-dialogue-window="${c.e(key)}" aria-live="polite">${renderDialogueLines(a, c, step)}</div>${scrubber}`, a, c.index, c.e, 'module-dialogue-timeline');
 }
 function roleplay(a, c) {
   const key = `${c.lessonId}:${a.id}`;

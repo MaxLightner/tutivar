@@ -1,4 +1,4 @@
-import { renderActivity } from './lesson-modules.js';
+import { renderActivity, renderDialogueLines } from './lesson-modules.js';
 import { advanceDeck, answerDeck, deckState, jumpDeck, resumeDeck, wordId } from './word-review.js';
 import { evaluateResponse, practiceState, submitPractice } from './practice-engine.js';
 
@@ -264,14 +264,52 @@ function currentDialoguePair(key) {
   const step = Math.max(0, Math.min(maximum, Number(progress.dialogueSteps?.[key]) || 0));
   return activity.lines.slice(step, step + 2);
 }
-function moveDialogue(key, newStep) {
+function moveDialogue(key, newStep, { audible = true, save = true } = {}) {
   const activity = lessonActivity(key);
   if (activity?.type !== 'dialogue' || !activity.lines?.length) return;
   const maximum = Math.max(0, activity.lines.length - 2);
-  progress.dialogueSteps[key] = Math.max(0, Math.min(maximum, Number(newStep) || 0));
-  persist();
-  updateInline();
-  speakPair(currentDialoguePair(key));
+  const previous = Math.max(0, Math.min(maximum, Number(progress.dialogueSteps[key]) || 0));
+  const step = Math.max(0, Math.min(maximum, Number(newStep) || 0));
+  progress.dialogueSteps[key] = step;
+  if (save) persist();
+  const view = [...document.querySelectorAll('[data-dialogue-window]')].find((item) => item.dataset.dialogueWindow === key);
+  const timeline = view?.parentElement;
+  const newLine = step >= previous ? Math.min(step + 1, activity.lines.length - 1) : step;
+  if (view && step !== previous) {
+    view.innerHTML = renderDialogueLines(activity, { lessonId: route.lessonId, e: escapeHtml, en, i: icon, progress }, step, newLine);
+  } else if (!view) updateInline();
+  const count = timeline?.querySelector('[data-dialogue-count]');
+  if (count) count.textContent = `${step + 1}–${Math.min(step + 2, activity.lines.length)} / ${activity.lines.length}`;
+  const slider = timeline?.querySelector('[data-dialogue-slider]');
+  if (slider) slider.value = String(step);
+  for (const button of timeline?.querySelectorAll('[data-dialogue-key]') || []) {
+    button.disabled = Number(button.dataset.dialogueNav) < 0 ? step === 0 : step === maximum;
+  }
+  if (audible && step !== previous) speech(activity.lines[newLine].en);
+}
+function scrubWord(key, requestedIndex, { save = true } = {}) {
+  const activity = lessonVocabulary(key);
+  if (!activity) return;
+  const state = jumpDeck(progress.wordProgress[key], activity, requestedIndex);
+  if (state.phase !== 'browse') return;
+  progress.wordProgress[key] = state;
+  if (save) persist();
+  const slider = [...document.querySelectorAll('[data-word-slider]')].find((item) => item.dataset.wordSlider === key);
+  const module = slider?.closest('.module-vocabulary');
+  if (!module) { if (save) updateInline(); return; }
+  const fresh = document.createElement('template');
+  fresh.innerHTML = renderActivity(activity, { lessonId: route.lessonId, index: 0, e: escapeHtml, en, i: icon, progress });
+  for (const selector of ['.vocab-deck-top', '.vocab-deck-bar', '.vocab-focus-card', '.vocab-range-label']) {
+    const oldElement = module.querySelector(selector);
+    const newElement = fresh.content.querySelector(selector);
+    if (oldElement && newElement) {
+      if (selector === '.vocab-focus-card') newElement.classList.add('word-entering');
+      oldElement.replaceWith(newElement);
+    }
+  }
+  slider.value = String(state.index + 1);
+  const previousButton = module.querySelector('[data-word-action="prev"]');
+  if (previousButton) previousButton.disabled = state.index === 0;
 }
 let swipeStart = null;
 function wordSwipeStart(event) {
@@ -302,7 +340,7 @@ function wordKeydown(event) {
   document.querySelector('[data-word-swipe]')?.focus({ preventScroll: true });
 }
 function onClick(event) {
-  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-finish-section],button[data-review],button[data-planned],button[data-speak],button[data-match],button[data-build-token],button[data-build-reset],button[data-roleplay],button[data-word-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
+  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-finish-section],button[data-review],button[data-planned],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-roleplay],button[data-word-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
   if (!el) return;
   if (el.dataset.nav) { modal = null; navigate(el.dataset.nav); return; }
   if (el.dataset.openLesson) { modal = null; activePerson = 0; ownerIdx = 0; objectIdx = 0; navigate('lesson', el.dataset.openLesson, el.dataset.startSection || null); return; }
@@ -311,6 +349,11 @@ function onClick(event) {
   if (el.dataset.planned) { showModal('درس قفل است', 'با آماده‌شدن این درس، امکان شروع آن فعال می‌شود.'); return; }
   if (el.dataset.section) { navigate('lesson', route.lessonId, el.dataset.section); return; }
   if (el.dataset.speak) { speech(el.dataset.speak); return; }
+  if (el.dataset.exampleReveal !== undefined) {
+    const isRevealed = el.closest('.example-mini-card')?.classList.toggle('is-revealed') || false;
+    el.setAttribute('aria-expanded', String(isRevealed));
+    return;
+  }
   if (el.dataset.quickSkip) {
     const ordered = samples();
     const index = ordered.findIndex((item) => item.id === el.dataset.quickSkip);
@@ -447,15 +490,31 @@ function onClick(event) {
     case 'close-modal': modal = null; draw(true); break;
   }
 }
+function onInput(event) {
+  if (event.target.dataset.dialogueSlider) {
+    moveDialogue(event.target.dataset.dialogueSlider, Number(event.target.value), { audible: false, save: false });
+    return;
+  }
+  if (event.target.dataset.wordSlider) scrubWord(event.target.dataset.wordSlider, Number(event.target.value) - 1, { save: false });
+}
 function onChange(event) {
   if (event.target.dataset.dialogueSlider) {
-    moveDialogue(event.target.dataset.dialogueSlider, Number(event.target.value));
+    const key = event.target.dataset.dialogueSlider;
+    moveDialogue(key, Number(event.target.value), { audible: false });
+    const activity = lessonActivity(key);
+    const step = Number(progress.dialogueSteps[key]) || 0;
+    if (activity?.lines?.length) speech(activity.lines[Math.min(step + 1, activity.lines.length - 1)].en);
     return;
   }
   if (event.target.dataset.wordSlider) {
     const key = event.target.dataset.wordSlider;
+    scrubWord(key, Number(event.target.value) - 1);
     const activity = lessonVocabulary(key);
-    if (activity) saveDeckState(key, jumpDeck(progress.wordProgress[key], activity, Number(event.target.value) - 1));
+    const index = progress.wordProgress[key]?.index || 0;
+    if (activity?.items?.length) {
+      const entry = activity.items.filter((item) => item.role !== 'supplementary')[index];
+      if (entry) speech(entry.en);
+    }
     return;
   }
   if (!event.target.dataset.picker) return;
@@ -484,5 +543,5 @@ async function hydrateCurricula() {
     }));
   }
 }
-async function main() { try { const response = await fetch(contentUrl('manifest.json')); if (!response.ok) throw new Error(`HTTP ${response.status}`); manifest = await response.json(); if (manifest.pairId !== 'fa-en' || manifest.status !== 'draft') throw new Error('wrong course manifest'); await hydrateCurricula(); $root.addEventListener('click', onClick); $root.addEventListener('change', onChange); $root.addEventListener('submit', (event) => { const form = event.target.closest('form[data-word-form],form[data-practice-form]'); if (!form) return; event.preventDefault(); if (form.dataset.wordForm) submitWordAnswer(form.dataset.wordForm, form.querySelector('[data-word-answer]')?.value || ''); else submitPracticeAnswer(form.dataset.practiceForm, form.elements.response?.value || ''); }); $root.addEventListener('touchstart', wordSwipeStart, { passive: true }); $root.addEventListener('touchend', wordSwipeEnd, { passive: true }); $root.addEventListener('keydown', wordKeydown); addEventListener('hashchange', syncRoute); await syncRoute(); if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('./sw.js').catch(() => {}); } catch (error) { console.error(error); $root.innerHTML = `<div class="boot"><span class="boot-logo">t.</span><strong>صفحه بارگذاری نشد</strong><p class="muted">اتصال را بررسی کن و دوباره تلاش کن.</p></div>`; } }
+async function main() { try { const response = await fetch(contentUrl('manifest.json')); if (!response.ok) throw new Error(`HTTP ${response.status}`); manifest = await response.json(); if (manifest.pairId !== 'fa-en' || manifest.status !== 'draft') throw new Error('wrong course manifest'); await hydrateCurricula(); $root.addEventListener('click', onClick); $root.addEventListener('input', onInput); $root.addEventListener('change', onChange); $root.addEventListener('submit', (event) => { const form = event.target.closest('form[data-word-form],form[data-practice-form]'); if (!form) return; event.preventDefault(); if (form.dataset.wordForm) submitWordAnswer(form.dataset.wordForm, form.querySelector('[data-word-answer]')?.value || ''); else submitPracticeAnswer(form.dataset.practiceForm, form.elements.response?.value || ''); }); $root.addEventListener('touchstart', wordSwipeStart, { passive: true }); $root.addEventListener('touchend', wordSwipeEnd, { passive: true }); $root.addEventListener('keydown', wordKeydown); addEventListener('hashchange', syncRoute); await syncRoute(); if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('./sw.js').catch(() => {}); } catch (error) { console.error(error); $root.innerHTML = `<div class="boot"><span class="boot-logo">t.</span><strong>صفحه بارگذاری نشد</strong><p class="muted">اتصال را بررسی کن و دوباره تلاش کن.</p></div>`; } }
 main();

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { readJson, projectRoot, validateSchema } from '../tools/validate.mjs';
-import { renderActivity, supportedActivities } from '../apps/learner-web/lesson-modules.js';
+import { renderActivity, renderDialogueLines, supportedActivities } from '../apps/learner-web/lesson-modules.js';
 import { advanceDeck, answerDeck, checkWordAnswer, coreItems, deckState, jumpDeck, resumeDeck, supplementaryItems } from '../apps/learner-web/word-review.js';
 import { evaluateResponse, practiceState, submitPractice } from '../apps/learner-web/practice-engine.js';
 import { auditLesson } from '../tools/audit-lessons.mjs';
@@ -123,6 +123,10 @@ test('first lesson activities render with separate content, including interactio
   assert.match(html, /کارت 1 از 8/);
   assert.match(html, /عبارت‌های تکمیلی/);
   assert.match(html, /سه مثال کاربردی/);
+  assert.match(html, /class="example-gallery"/);
+  assert.equal((html.match(/class="example-mini-card"/g) || []).length, 12, 'the core word and three supplementary phrases all have three swipeable examples');
+  assert.equal((html.match(/data-example-reveal aria-expanded="false"/g) || []).length, 12, 'each example reveals its taught expression on demand');
+  assert.match(html, /class="example-target"/, 'the taught phrase is highlighted when an example is revealed');
 });
 
 test('sentence transformations have a single active sentence and a working free response', () => {
@@ -191,6 +195,15 @@ test('each dialogue timeline renders only two consecutive spoken lines and can s
     assert.ok(last.includes(dialogue.lines.at(-1).en));
     assert.ok(!last.includes(dialogue.lines[0].en));
     assert.match(last, /disabled aria-label="نوبت بعدی"/);
+    assert.equal((first.match(/dialogue-entering/g) || []).length, 2, 'the initial two lines enter with animation');
+    const nextWindow = renderDialogueLines(dialogue, context, 1, 2);
+    assert.match(nextWindow, /data-dialogue-line="2"/);
+    assert.equal((nextWindow.match(/dialogue-entering/g) || []).length, 1, 'only one newly revealed sentence animates');
+    assert.match(nextWindow, /data-speak=/, 'each visible sentence has a direct replay action');
+    const firstSpeaker = dialogue.lines[0].speaker;
+    const speakerSide = first.includes(`dialogue-line speaker-first dialogue-entering" data-dialogue-line="0"`) ? 'speaker-first' : 'speaker-second';
+    const nextFirstSpeaker = nextWindow.match(new RegExp(`class="dialogue-line ([^\"]+)" data-dialogue-line="1"`))?.[1];
+    if (dialogue.lines[1].speaker === firstSpeaker) assert.match(nextFirstSpeaker, new RegExp(speakerSide));
   }
 });
 

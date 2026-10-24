@@ -422,3 +422,94 @@ button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3p
   .stage-tab span:last-child { font-size: 14px; }
   .path-stop, .path-stop:nth-child(odd), .path-stop:nth-child(even) { width: 90%; }
 }
+
+/* A lesson is a compact practice surface, not a stack of decorative cards. */
+.lesson-flow { gap: 11px; }
+.lesson-block.module-block { padding: 18px 20px; margin-bottom: 11px; border-radius: 19px; border-color: #e4ebe0; box-shadow: 0 4px 18px rgba(26, 65, 37, .025); }
+.module-block .block-top { margin-bottom: 11px; }
+.module-block .block-label { font-size: 11px; letter-spacing: .025em; color: #608772; }
+.module-block .block-top h3 { font-size: 18px; font-weight: 850; margin-top: 4px; line-height: 1.45; }
+.module-block .module-description { font-size: 14px; line-height: 1.7; margin: 0 0 11px; color: #6e8274; }
+.module-block .sound-btn { width: 34px; height: 34px; min-width: 34px; border-radius: 10px; }
+.module-block .practice-sequence { padding: 13px; border-radius: 14px; border-color: #e5eee3; background: #fbfcf9; }
+.module-block .practice-source { padding: 10px 13px; margin-bottom: 11px; border-radius: 12px; }
+.module-block .practice-source .en { font-size: 17px; }
+.module-block .practice-instruction { font-size: 15px; margin-bottom: 8px; }
+.module-block .practice-form input { min-height: 44px; font-size: 16px; border-width: 1px; }
+.module-block .practice-form button { min-height: 44px; font-size: 14px; }
+.module-block .practice-progress { margin-bottom: 11px; }
+.module-block .practice-progress span { height: 5px; }
+.module-exchange-lab .exchange-bubble { padding: 10px 14px; border-radius: 15px; }
+.module-exchange-lab .exchange-spoken .en { font-size: 19px; }
+.module-exchange-lab .exchange-note { padding: 9px 12px; font-size: 13px; margin-top: 10px; }
+.module-exchange-lab .exchange-variants { margin-top: 10px; }
+
+/* Swipeable, tappable examples keep the word-review surface short. */
+.example-gallery-heading { color: #73877a; font-size: 12px; margin: 10px 0 7px; }
+.example-gallery { display: flex; gap: 10px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #bed8be transparent; direction: ltr; padding: 3px 3px 9px; }
+.example-mini-card { flex: 0 0 min(78%, 290px); scroll-snap-align: start; min-width: 0; background: #fff; border: 1px solid #e6eee3; border-radius: 13px; padding: 11px 12px; text-align: left; }
+.example-mini-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.example-mini-top > span { font-size: 12px; color: #8a9c8d; }
+.example-reveal { display: block; background: none; border: 0; width: 100%; text-align: left; padding: 8px 0 4px; font-weight: 750; line-height: 1.55; cursor: pointer; }
+.example-reveal .en { font-size: 16px; color: #325941; }
+.example-target { background: transparent; color: inherit; border-radius: 5px; padding: 1px 2px; transition: background .18s ease; }
+.example-mini-card.is-revealed { border-color: #a9d4a8; background: #f9fcf8; }
+.example-mini-card.is-revealed .example-target { background: #cdebbc; color: #214f37; }
+.example-mini-meaning { opacity: 0; max-height: 0; overflow: hidden; font-size: 12px; color: #537a5e; line-height: 1.8; transition: opacity .2s, max-height .2s; margin: 0; direction: rtl; text-align: right; }
+.example-mini-card.is-revealed .example-mini-meaning { opacity: 1; max-height: 75px; margin-top: 5px; }
+.example-mini-meaning .en { font-size: 12px; }
+.module-vocabulary .vocab-focus-card { padding: 13px 15px; border-radius: 14px; }
+.module-vocabulary .word-focus-title .en { font-size: clamp(23px, 4vw, 29px); }
+.module-vocabulary .word-focus-meaning { font-size: 16px; }
+.module-vocabulary .vocab-navigation { padding: 9px 12px; margin-top: 11px; border: 0; background: #f5f8f3; }
+.module-vocabulary .vocab-navigation > p { font-size: 12px; }
+.module-vocabulary .vocab-range-label { font-size: 13px; }
+.module-vocabulary .vocab-scrubber { padding: 3px 0; }
+.module-vocabulary .word-nav-btn { min-height: 32px; min-width: 32px; border-radius: 9px; font-size: 23px; }
+.module-vocabulary .vocab-deck-bar { height: 5px; margin: 8px 0 11px; }
+.module-vocabulary .vocab-deck-actions { margin-top: 10px; }
+.module-vocabulary .vocab-deck-actions button { min-height: 42px; font-size: 14px; }
+.module-vocabulary .vocab-focus-card.word-entering { animation: word-enter .2s ease-out; }
+@keyframes word-enter { from { opacity: .55; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+/* The dialogue is one small, persistent conversational scene. */
+.module-dialogue-timeline .dialogue-headline { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 11px; }
+.module-dialogue-timeline .dialogue-headline > span { flex: 1; min-width: 175px; font-size: 13px; color: #7b8d7e; line-height: 1.6; }
+.module-dialogue-timeline .dialogue-headline .outline-btn { border: 0; background: #f1f6ed; font-size: 12px; min-height: 33px; }
+.module-dialogue-timeline .dialogue-window { min-height: 150px; gap: 9px; padding: 14px; border-radius: 17px; background: #fafcf8; border-color: #e9f0e5; }
+.dialogue-window .dialogue-line { align-items: flex-end; gap: 7px; animation: none; }
+.dialogue-window .dialogue-line.speaker-first { flex-direction: row; }
+.dialogue-window .dialogue-line.speaker-second { flex-direction: row-reverse; }
+.dialogue-window .dialogue-line.speaker-first .bubble { background: #eaf2e9; border-radius: 16px 16px 16px 5px; }
+.dialogue-window .dialogue-line.speaker-second .bubble { background: #f0eef7; border-radius: 16px 16px 5px 16px; }
+.dialogue-window .speaker-avatar { height: 29px; min-width: 29px; width: 29px; border-radius: 50%; font-size: 12px; }
+.dialogue-window .dialogue-line.speaker-first .speaker-avatar { background: #dcebdd; color: #3d7351; }
+.dialogue-window .dialogue-line.speaker-second .speaker-avatar { background: #e2dcf2; color: #74689a; }
+.dialogue-window .bubble { flex: 0 1 auto; max-width: min(83%, 510px); padding: 9px 13px; min-width: 0; }
+.dialogue-window .speaker-name { color: #61746a; font-size: 12px; }
+.dialogue-window .dialogue-sentence { border: 0; background: transparent; padding: 4px 0 1px; margin: 0; font: inherit; width: 100%; text-align: left; cursor: pointer; }
+.dialogue-window .dialogue-sentence .en { font-size: clamp(15px, 2.5vw, 17px); font-weight: 800; line-height: 1.45; color: #253f33; }
+.dialogue-window .dialogue-sentence:focus-visible { outline: 2px solid #83b876; border-radius: 4px; }
+.dialogue-window .bubble p { font-size: 12px; margin-top: 3px; color: #7c8e81; }
+.dialogue-window .dialogue-line.dialogue-entering { animation: dialogue-enter .29s cubic-bezier(.18,.8,.27,1); }
+.dialogue-window .dialogue-line.dialogue-entering:nth-child(2) { animation-delay: .07s; }
+@keyframes dialogue-enter { from { opacity: .15; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.module-dialogue-timeline .dialogue-timeline { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 16px; border: 0; background: transparent; padding: 5px 3px 0; margin-top: 6px; border-radius: 0; }
+.module-dialogue-timeline .dialogue-timeline-top { flex: 0 0 auto; display: flex; align-items: center; gap: 6px; }
+.module-dialogue-timeline .dialogue-timeline-top strong { font-size: 13px; color: #4c755d; direction: ltr; }
+.module-dialogue-timeline .dialogue-timeline-top span { display: none; }
+.module-dialogue-timeline .dialogue-timeline-controls { flex: 1; min-width: 160px; margin: 0; gap: 9px; }
+.module-dialogue-timeline .dialogue-timeline-controls input[type="range"] { height: 36px; accent-color: #42845e; }
+.module-dialogue-timeline .dialogue-nav { width: 31px; height: 31px; flex-basis: 31px; font-size: 21px; border-radius: 9px; }
+.module-dialogue-timeline .dialogue-play { min-height: 32px; border: 0; background: #eff6eb; font-size: 12px; padding: 5px 10px; gap: 5px; }
+.module-dialogue-timeline .dialogue-play .icon { width: 15px; }
+@media (prefers-reduced-motion: reduce) { .dialogue-window .dialogue-line.dialogue-entering, .module-vocabulary .vocab-focus-card.word-entering { animation: none; } }
+@media (max-width: 680px) {
+  .lesson-block.module-block { padding: 14px; margin-bottom: 9px; border-radius: 15px; }
+  .module-block .block-top h3 { font-size: 16px; }
+  .module-dialogue-timeline .dialogue-window { padding: 10px; }
+  .dialogue-window .bubble { max-width: 86%; padding: 8px 10px; }
+  .module-dialogue-timeline .dialogue-timeline { gap: 7px; }
+  .module-dialogue-timeline .dialogue-play { margin-right: auto; }
+  .example-mini-card { flex-basis: min(85%, 260px); }
+}
