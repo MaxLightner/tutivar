@@ -84,3 +84,7 @@ A dialogue line can bind to a sentence-composer activity with `sourceActivityId`
 ```
 
 Keep fully authored dialogue lines as `en` and `fa` strings when they should not change with the composer.
+
+## Shared two-part lesson template
+
+Each A1 lesson declares `lessonTemplate: "discovery-production-v1"` and a `phase` on every activity. Foundation phases must appear in this order: `words`, `phrases`, `sentence`, `variants`, `puzzle`, `construction`. Production phases: `correspondence`, `context`, `guided`, `independent`. The shared `lesson-flow.js` validates ordering, required stages, compatible activity types, references and puzzle permutations. Content and vocabulary remain JSON-authored. `composer-view` reuses another `sentence-composer` via `sourceActivityId`, with a forced `patternId` or stage-specific `patternIds`; tapping an editable word cycles directly through its wordSet rather than opening a picker. A `derived` segment may define `cycleSlot` so dependent pronouns such as He/She/You can also be tapped.

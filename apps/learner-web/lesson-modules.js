@@ -1,5 +1,6 @@
 import { coreItems, deckState, supplementaryItems, wordId } from './word-review.js';
 import { practiceState } from './practice-engine.js';
+import { LESSON_PHASE_LABELS } from './lesson-flow.js';
 import { composeSegments, composerSegmentValue, composerSlotForm, resolveSentenceComposer } from './sentence-composer.js';
 
 /*
@@ -17,10 +18,10 @@ const MODULE_LABELS = {
   'sentence-transform': 'تبدیل جمله',
   'dialogue-transfer': 'مکالمه در موقعیت تازه',
   'family-tree': 'درخت خانواده',
-  'agreement-lab': 'جمله‌ساز وابسته', 'sentence-composer': 'جمله‌ساز تعاملی'
+  'agreement-lab': 'جمله‌ساز وابسته', 'sentence-composer': 'جمله‌ساز تعاملی', 'composer-view': 'کشف و تغییر جمله'
 };
 function wrapper(body, activity, idx, e, extra = '') {
-  return `<div class="lesson-block module-block ${extra}" data-module="${e(activity.type)}"><div class="block-top"><div><span class="block-label">${String(idx + 1).padStart(2, '0')} / ${e(activity.typeLabel || MODULE_LABELS[activity.type] || 'فعالیت')}</span><h3>${e(activity.title || '')}</h3></div></div>${body}</div>`;
+  return `<div class="lesson-block module-block ${extra}" data-module="${e(activity.type)}"><div class="block-top"><div><span class="block-label">${String(idx + 1).padStart(2, '0')} / ${e(activity.typeLabel || LESSON_PHASE_LABELS[activity.phase] || MODULE_LABELS[activity.type] || 'فعالیت')}</span><h3>${e(activity.title || '')}</h3></div></div>${body}</div>`;
 }
 function soundButton(text, e, i) {
   return `<button class="sound-btn" data-speak="${e(text)}" aria-label="شنیدن تلفظ ${e(text)}">${i('sound')}</button>`;
@@ -101,44 +102,31 @@ function patternLab(a, c) {
 }
 
 function sentenceComposer(a, c) {
-  const key = `${c.lessonId}:${a.id}`;
-  const resolved = resolveSentenceComposer(a, c.progress.sentenceComposers?.[key]);
+  const source = a.type === 'composer-view' ? c.activitiesById?.[a.sourceActivityId] : a;
+  if (!source || source.type !== 'sentence-composer') throw new Error('Missing sentence composer source: ' + a.sourceActivityId);
+  const key = `${c.lessonId}:${source.id}`;
+  const saved = c.progress.sentenceComposers?.[key] || {};
+  const allowed = a.type === 'composer-view' ? (a.patternIds || [a.patternId || source.defaultPattern]) : [source.defaultPattern];
+  const selectedPattern = allowed.includes(saved.pattern) && !a.patternId ? saved.pattern : allowed[0];
+  const resolved = resolveSentenceComposer(source, { ...saved, pattern: selectedPattern });
   const pattern = resolved.pattern;
   const renderSegments = (segments, interactive = false) => (segments || []).map((segment) => {
-    if (segment.slot && interactive) {
-      const value = composerSegmentValue(segment, a, resolved);
-      const active = resolved.state.activeSlot === segment.slot;
-      return `<button type="button" class="composer-token ${active ? 'active' : ''}" data-composer-key="${c.e(key)}" data-composer-action="open" data-composer-slot="${c.e(segment.slot)}" aria-expanded="${active}" aria-label="تغییر ${c.e(a.slots.find((slot) => slot.id === segment.slot)?.label || segment.slot)}">${c.e(value)}</button>`;
+    const cycleSlot = segment.slot || segment.cycleSlot;
+    if (interactive && cycleSlot) {
+      return `<button type="button" class="composer-token" data-composer-key="${c.e(key)}" data-composer-action="cycle" data-composer-slot="${c.e(cycleSlot)}" aria-label="تغییر ${c.e(source.slots.find((slot) => slot.id === cycleSlot)?.label || cycleSlot)}">${c.e(composerSegmentValue(segment, source, resolved))}</button>`;
     }
-    return `<span class="composer-segment">${c.e(composerSegmentValue(segment, a, resolved))}</span>`;
+    return `<span class="composer-segment">${c.e(composerSegmentValue(segment, source, resolved))}</span>`;
   }).join('');
-  const patternButtons = a.patterns.map((entry) => `<button type="button" class="composer-pattern ${entry.id === pattern.id ? 'active' : ''}" data-composer-key="${c.e(key)}" data-composer-action="pattern" data-composer-pattern="${c.e(entry.id)}" aria-pressed="${entry.id === pattern.id}">${c.e(entry.label)}</button>`).join('');
-  let picker = '';
-  const activeSlot = a.slots.find((slot) => slot.id === resolved.state.activeSlot);
-  if (activeSlot) {
-    const form = composerSlotForm(a, pattern, activeSlot.id);
-    const allItems = a.wordSets[activeSlot.wordSet] || [];
-    const items = activeSlot.includeRoles?.length
-      ? allItems.filter((entry) => activeSlot.includeRoles.includes(entry.role || 'core'))
-      : allItems;
-    const selected = resolved.state.slots[activeSlot.id];
-    const threshold = Number(a.optionSearchThreshold) || 9;
-    const search = items.length > threshold
-      ? `<input class="composer-search" type="search" data-composer-search data-composer-search-slot="${c.e(activeSlot.id)}" placeholder="جست‌وجوی واژه یا معنی..." aria-label="جست‌وجو در ${c.e(activeSlot.label)}">`
-      : '';
-    const options = items.map((entry) => {
-      const label = String(entry.forms?.[form] ?? entry[form] ?? entry.label ?? entry.id);
-      const translation = String(entry.translation ?? entry.fa ?? '');
-      const searchText = `${label} ${translation} ${entry.id}`.toLocaleLowerCase();
-      return `<button type="button" class="composer-choice ${entry.id === selected ? 'active' : ''}" data-composer-key="${c.e(key)}" data-composer-action="select" data-composer-slot="${c.e(activeSlot.id)}" data-composer-value="${c.e(entry.id)}" data-composer-search-text="${c.e(searchText)}" aria-pressed="${entry.id === selected}"><span class="composer-choice-word" lang="${c.e(a.targetLanguage || 'en')}" dir="ltr">${c.e(label)}</span><span class="composer-choice-translation" dir="rtl">${c.e(translation)}</span>${entry.role === 'supplementary' ? '<small>تکمیلی</small>' : ''}</button>`;
-    }).join('');
-    picker = `<div class="composer-picker" aria-label="گزینه‌های ${c.e(activeSlot.label)}"><div class="composer-picker-head"><strong>${c.e(activeSlot.label)} را تغییر بده</strong><button type="button" class="composer-close" data-composer-key="${c.e(key)}" data-composer-action="close">بستن</button></div>${search}<div class="composer-choices" role="group" aria-label="انتخاب ${c.e(activeSlot.label)}">${options}</div></div>`;
-  }
+  const patterns = a.type === 'composer-view' && a.patternIds?.length > 1
+    ? `<div class="composer-patterns" role="group" aria-label="شکل جمله">${allowed.map((id) => {
+        const entry = source.patterns.find((item) => item.id === id);
+        return entry ? `<button type="button" class="composer-pattern ${entry.id === pattern.id ? 'active' : ''}" data-composer-key="${c.e(key)}" data-composer-action="pattern" data-composer-pattern="${c.e(entry.id)}" aria-pressed="${entry.id === pattern.id}">${c.e(entry.label)}</button>` : '';
+      }).join('')}</div>` : '';
   const translation = pattern.translationSegments?.length
-    ? `<p class="composer-translation" dir="rtl">${renderSegments(pattern.translationSegments)}</p>`
-    : '';
-  const note = pattern.note ? `<p class="composer-note">${c.e(pattern.note)}</p>` : '';
-  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="composer-patterns" role="group" aria-label="نوع جمله">${patternButtons}</div><div class="composer-stage"><div class="composer-sentence" lang="${c.e(a.targetLanguage || 'en')}" dir="ltr">${renderSegments(pattern.segments, true)}${soundButton(pattern.segments.map((segment) => composerSegmentValue(segment, a, resolved)).join(''), c.e, c.i)}</div>${translation}</div>${picker}${note}`, a, c.index, c.e, 'module-sentence-composer');
+    ? `<p class="composer-translation" dir="rtl">${renderSegments(pattern.translationSegments)}</p>` : '';
+  const note = a.showNote && pattern.note ? `<p class="composer-note">${c.e(pattern.note)}</p>` : '';
+  const english = composeSegments(pattern.segments, source, resolved);
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p>${patterns}<div class="composer-stage"><div class="composer-sentence" lang="${c.e(source.targetLanguage || 'en')}" dir="ltr">${renderSegments(pattern.segments, true)}${soundButton(english, c.e, c.i)}</div>${translation}</div>${note}`, a, c.index, c.e, 'module-sentence-composer');
 }
 
 function sentenceLab(a, c) {
@@ -299,7 +287,7 @@ const renderers = {
   'guided-dialogue': guidedDialogue, 'response-practice': responsePractice,
   'exchange-lab': exchangeLab,
   'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer,
-  'family-tree': familyTree, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer
+  'family-tree': familyTree, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer
 };
 export function renderActivity(activity, context) {
   const renderer = renderers[activity.type];

@@ -1,6 +1,6 @@
 {
   "id": "A1-3",
-  "revision": 5,
+  "revision": 6,
   "status": "draft",
   "title": "مالکیت و داشتن اشیا",
   "goal": "بتوانی با تغییر صاحب یا وسیله، جمله بسازی و بگویی یک وسیله مال چه کسی است.",
@@ -51,7 +51,7 @@
     {
       "id": "foundation",
       "label": "از کلمه تا الگو",
-      "intro": "از چند وسیلهٔ روزمره شروع کن. اول صاحب را تغییر بده و وسیله را ثابت نگه دار؛ بعد وسیله را عوض کن و صاحب را ثابت نگه دار. هر بار فقط یک چیز تغییر می‌کند.",
+      "intro": "واژه‌های وسایل شخصی را مرور کن؛ روی کلمات داخل عبارت و جمله بزن و بدون انتخاب از فهرست، ترکیب‌های تازه بساز. سپس شکل‌های مختلف جمله، جورچین و تولید جمله را انجام بده.",
       "masteryActivityIds": [
         "ownership-owner-check"
       ],
@@ -283,13 +283,23 @@
               "fa": "چمدان",
               "role": "supplementary"
             }
-          ]
+          ],
+          "phase": "words"
+        },
+        {
+          "id": "ownership-inline-phrases",
+          "type": "composer-view",
+          "title": "ترکیب صاحب و وسیله",
+          "description": "فقط روی هر کلمه بزن؛ my book می‌تواند your phone یا her keys شود.",
+          "sourceActivityId": "ownership-sentence-composer",
+          "patternId": "phrase",
+          "phase": "phrases"
         },
         {
           "id": "ownership-sentence-composer",
           "type": "sentence-composer",
           "title": "یک جمله؛ صاحب و وسیله را با هم تغییر بده",
-          "description": "روی هر کلمهٔ سبز داخل جمله بزن و همان‌جا آن را عوض کن. صاحب و وسیله در یک جمله با هم ترکیب می‌شوند؛ اگر واژه‌ای جمع باشد، شکل جمله هم متناسب با آن تغییر می‌کند.",
+          "description": "روی my یا book داخل خود جمله بزن؛ هر لمس مستقیماً کلمه را عوض می‌کند و شکل وابستهٔ جمله خودکار تغییر می‌کند. هیچ فهرستی باز نمی‌شود.",
           "targetLanguage": "en",
           "wordSets": {
             "owners": [
@@ -692,6 +702,36 @@
           ],
           "patterns": [
             {
+              "id": "phrase",
+              "label": "عبارت",
+              "segments": [
+                {
+                  "slot": "owner",
+                  "form": "determiner"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "noun"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "object",
+                  "form": "translation"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "owner",
+                  "form": "faPossessive"
+                }
+              ]
+            },
+            {
               "id": "statement",
               "label": "خبری",
               "note": "صاحب با my / your / his / her می‌آید و پیش از نام وسیله قرار می‌گیرد.",
@@ -940,8 +980,42 @@
             }
           ],
           "defaultPattern": "statement",
-          "optionSearchThreshold": 8,
-          "completion": "توانستی صاحب و وسیله را در یک جمله تغییر بدهی و تفاوت خبری، سؤالی، منفی و مالکیت مستقل را مقایسه کنی."
+          "completion": "توانستی صاحب و وسیله را در یک جمله تغییر بدهی و تفاوت خبری، سؤالی، منفی و مالکیت مستقل را مقایسه کنی.",
+          "phase": "sentence"
+        },
+        {
+          "id": "ownership-models",
+          "type": "composer-view",
+          "title": "مدل‌های خبری، منفی و پرسشی",
+          "description": "پس از ساخت جمله، همین واژه‌ها را در شکل‌های دیگر مقایسه کن.",
+          "sourceActivityId": "ownership-sentence-composer",
+          "patternIds": [
+            "statement",
+            "negative",
+            "question",
+            "pronoun"
+          ],
+          "phase": "variants"
+        },
+        {
+          "id": "ownership-puzzle",
+          "type": "sentence-builder",
+          "title": "جورچین وسایل شخصی",
+          "description": "جای کلمات را مشخص کن و جمله را کامل بساز.",
+          "tokens": [
+            "book.",
+            "my",
+            "This",
+            "is"
+          ],
+          "correctOrder": [
+            2,
+            3,
+            1,
+            0
+          ],
+          "translation": "این کتاب من است.",
+          "phase": "puzzle"
         },
         {
           "id": "ownership-owner-check",
@@ -1111,7 +1185,8 @@
                 "success": "جملهٔ منفی را با اسم جمع ساختی."
               }
             }
-          ]
+          ],
+          "phase": "construction"
         }
       ]
     },
@@ -1258,7 +1333,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "phase": "correspondence"
         },
         {
           "id": "ownership-exchange-practice",
@@ -1372,7 +1448,8 @@
                 "success": "وسیله را به شخص دیگر نسبت دادی."
               }
             }
-          ]
+          ],
+          "phase": "correspondence"
         },
         {
           "id": "ownership-dialogue",
@@ -1431,7 +1508,8 @@
               "fa": "بله، مال من است."
             }
           ],
-          "practiceRevision": 2
+          "practiceRevision": 2,
+          "phase": "context"
         },
         {
           "id": "ownership-dialogue-recall",
@@ -1506,7 +1584,8 @@
                 "success": "پاسخ منفی را با مالک درست ساختی."
               }
             }
-          ]
+          ],
+          "phase": "context"
         },
         {
           "id": "ownership-dialogue-found",
@@ -1860,7 +1939,8 @@
               ]
             }
           ],
-          "practiceRevision": 3
+          "practiceRevision": 3,
+          "phase": "context"
         },
         {
           "id": "ownership-dialogue-contrast-practice",
@@ -1929,7 +2009,8 @@
                 "success": "پاسخ منفی را ساختی."
               }
             }
-          ]
+          ],
+          "phase": "context"
         },
         {
           "id": "ownership-guided-talk",
@@ -2059,7 +2140,8 @@
                 "success": "پاسخ مثبت را با mine ساختی."
               }
             }
-          ]
+          ],
+          "phase": "guided"
         },
         {
           "id": "ownership-transfer",
@@ -2172,7 +2254,8 @@
                 "success": "از دید مخاطب پاسخ دادی."
               }
             }
-          ]
+          ],
+          "phase": "guided"
         },
         {
           "id": "ownership-independent",
@@ -2226,9 +2309,11 @@
               }
             ],
             "success": "در یک گفت‌وگو، معرفی وسیله، پرسش دربارهٔ صاحب و دو شکل پاسخ مالکیت را به کار بردی."
-          }
+          },
+          "phase": "independent"
         }
       ]
     }
-  ]
+  ],
+  "lessonTemplate": "discovery-production-v1"
 }

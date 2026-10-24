@@ -72,6 +72,22 @@ export function composeSegments(segments, activity, resolved) {
   return (segments || []).map((segment) => composerSegmentValue(segment, activity, resolved)).join('');
 }
 
+/**
+ * Cycle directly through the selected slot's JSON word set. No picker/UI state.
+ * Saved word ids stay stable even if authors reorder or add vocabulary.
+ */
+export function cycleComposerSlot(activity, saved, slotId) {
+  const state = normalizeSentenceComposerState(activity, saved);
+  const slot = (activity.slots || []).find((item) => item.id === slotId);
+  if (!slot) return state;
+  const options = (activity.wordSets?.[slot.wordSet] || []).filter((item) =>
+    !slot.includeRoles?.length || slot.includeRoles.includes(item.role || 'core'));
+  if (!options.length) return state;
+  const index = options.findIndex((item) => item.id === state.slots[slotId]);
+  state.slots[slotId] = options[(index + 1) % options.length].id;
+  return { ...state, activeSlot: null };
+}
+
 export function composerSlotForm(activity, pattern, slotId) {
   return (pattern?.segments || []).find((segment) => segment.slot === slotId)?.form || 'label';
 }
@@ -118,6 +134,7 @@ export function validateSentenceComposer(activity) {
     if (!pattern.id || patternIds.has(pattern.id)) errors.push('missing or duplicate pattern id ' + pattern.id);
     patternIds.add(pattern.id);
     for (const segment of [...(pattern.segments || []), ...(pattern.translationSegments || [])]) {
+      if (segment.cycleSlot && !slotIds.has(segment.cycleSlot)) errors.push('pattern ' + pattern.id + ': unknown cycleSlot ' + segment.cycleSlot);
       if (Object.hasOwn(segment, 'fixed')) {
         if (typeof segment.fixed !== 'string') errors.push('pattern ' + pattern.id + ': fixed segment must be text');
       } else if (segment.slot) {

@@ -1,3 +1,4 @@
+import { cycleComposerSlot } from './sentence-composer.js';
 import { renderActivity } from './lesson-modules.js';
 import { advanceDeck, answerDeck, deckState, jumpDeck, resumeDeck, wordId } from './word-review.js';
 import { evaluateResponse, practiceState, submitPractice } from './practice-engine.js';
@@ -463,27 +464,13 @@ function onClick(event) {
     const activity = lessonActivity(key);
     if (activity?.type !== 'sentence-composer') return;
     const saved = progress.sentenceComposers[key] || {};
-    const state = { slots: { ...(saved.slots || {}) }, pattern: saved.pattern || activity.defaultPattern, activeSlot: saved.activeSlot || null };
     const action = el.dataset.composerAction;
-    if (action === 'open') {
-      const slot = activity.slots.find((entry) => entry.id === el.dataset.composerSlot);
-      if (!slot) return;
-      state.activeSlot = state.activeSlot === slot.id ? null : slot.id;
-    } else if (action === 'select') {
-      const slot = activity.slots.find((entry) => entry.id === el.dataset.composerSlot);
-      const item = slot && (activity.wordSets[slot.wordSet] || []).find((entry) => entry.id === el.dataset.composerValue);
-      if (!slot || !item) return;
-      if (slot.includeRoles?.length && !slot.includeRoles.includes(item.role || 'core')) return;
-      state.slots[slot.id] = item.id;
-      state.activeSlot = null;
+    if (action === 'cycle') {
+      progress.sentenceComposers[key] = cycleComposerSlot(activity, saved, el.dataset.composerSlot);
     } else if (action === 'pattern') {
       if (!activity.patterns.some((entry) => entry.id === el.dataset.composerPattern)) return;
-      state.pattern = el.dataset.composerPattern;
-      state.activeSlot = null;
-    } else if (action === 'close') {
-      state.activeSlot = null;
+      progress.sentenceComposers[key] = { ...saved, pattern: el.dataset.composerPattern };
     } else return;
-    progress.sentenceComposers[key] = state;
     persist(); updateInline(); return;
   }
   if (el.dataset.phraseKey) {
@@ -604,14 +591,6 @@ function onClick(event) {
   }
 }
 function onInput(event) {
-  if (event.target.dataset.composerSearch !== undefined) {
-    const picker = event.target.closest('.composer-picker');
-    const query = event.target.value.trim().toLocaleLowerCase();
-    for (const option of picker?.querySelectorAll('.composer-choice') || []) {
-      option.hidden = !String(option.dataset.composerSearchText || '').includes(query);
-    }
-    return;
-  }
   if (event.target.dataset.dialogueSlider) {
     const key = event.target.dataset.dialogueSlider;
     const view = [...document.querySelectorAll('[data-dialogue-window]')].find((item) => item.dataset.dialogueWindow === key);
