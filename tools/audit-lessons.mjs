@@ -9,6 +9,16 @@ const lessonDirectory = join(root, 'content/language-pairs/fa-en/lessons');
 // substrings is not proof that the learner has actually produced the phrase.
 const normalize = (value) => String(value || '')
   .normalize('NFKC').toLowerCase().replace(/[’‘`]/g, "'")
+  .replace(/\b(i'm|im)\b/g, 'i am')
+  .replace(/\b(you're|youre)\b/g, 'you are')
+  .replace(/\b(he's|hes)\b/g, 'he is')
+  .replace(/\b(she's|shes)\b/g, 'she is')
+  .replace(/\b(it's|its)\b/g, 'it is')
+  .replace(/\b(they're|theyre)\b/g, 'they are')
+  .replace(/\b(we're|were)\b/g, 'we are')
+  .replace(/\b(what's|whats)\b/g, 'what is')
+  .replace(/\b(who's|whos)\b/g, 'who is')
+  .replace(/\b(where's|wheres)\b/g, 'where is')
   .replace(/[^a-z0-9'\s]/g, ' ').replace(/\s+/g, ' ').trim();
 
 function containsPhrase(text, aliases) {
