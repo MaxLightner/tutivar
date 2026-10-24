@@ -244,7 +244,7 @@ function sentenceBuilder(a, c) {
       : state.feedback === 'duplicate'
         ? '<p class="builder-feedback" role="status">این جمله قبلاً ساخته شده؛ ترکیب متفاوتی امتحان کن.</p>'
       : state.feedback === 'correct'
-        ? `<p class="builder-feedback correct" role="status">${allDone ? 'همهٔ جمله‌ها را پیدا کردی.' : 'این جمله درست بود؛ حالا یک جملهٔ متفاوت از کلمات باقی‌مانده بساز.'}</p>`
+        ? `<p class="builder-feedback correct" role="status">${allDone ? 'همهٔ جمله‌ها را پیدا کردی.' : 'این جمله درست بود؛ حالا با همین بانک کلمات، جملهٔ متفاوتی بساز.'}</p>`
         : '';
     return wrapper(`<p class="module-description">${c.e(a.description || '')}</p>
       <div class="builder-multi-progress"><strong>${done} از ${total} جملهٔ درست</strong><span>جمله‌ها را به هر ترتیبی که پیدا می‌کنی بساز.</span></div>
