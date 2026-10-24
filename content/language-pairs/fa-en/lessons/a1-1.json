@@ -1,6 +1,6 @@
 {
   "id": "A1-1",
-  "revision": 10,
+  "revision": 11,
   "status": "draft",
   "title": "معرفی خود و شروع گفت‌وگو",
   "goal": "در یک برخورد کوتاه متناسب با ساعت سلام کنی، احوال بپرسی، خودت را معرفی کنی و گفت‌وگو را تمام کنی.",
@@ -31,7 +31,6 @@
       "Bye!"
     ],
     "specificIndependentExpressions": [
-      "Good morning!",
       "How are you?",
       "And you?"
     ],
@@ -1352,6 +1351,76 @@
           "phase": "context"
         },
         {
+          "id": "hello-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "practiceRevision": 1,
+          "title": "از روی تصویر: آشنایی صبحگاهی",
+          "description": "دو دانش‌آموز کنار مدرسه‌اند. به زمان روز، اسم‌ها و موقعیتشان نگاه کن؛ سپس مکالمه را با جمله‌های خودت بساز.",
+          "image": "./assets/scene-a1-1.svg",
+          "imageAlt": "سارا و علی صبح روبه‌روی مدرسه با هم سلام می‌کنند؛ خورشید صبح دیده می‌شود.",
+          "caption": "تصویر ۱ · سارا و علی در یک صبح مدرسه",
+          "tasks": [
+            {
+              "task": "خورشید صبح را می‌بینی. به دوستت صبح‌بخیر بگو.",
+              "hint": "از Good morning استفاده کن.",
+              "example": "Good morning, Sara!",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "good morning"
+                    ],
+                    "feedback": "سلام متناسب با صبح را بگو."
+                  }
+                ],
+                "success": "با کمک تصویر، جمله را خودت درست ساختی."
+              }
+            },
+            {
+              "task": "حالا از حال سارا بپرس.",
+              "hint": "پرسیدن حال: How are you?",
+              "example": "How are you, Sara?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "how are you"
+                    ],
+                    "feedback": "حال دوستت را بپرس."
+                  }
+                ],
+                "success": "با کمک تصویر، جمله را خودت درست ساختی."
+              }
+            },
+            {
+              "task": "فرض کن تو علی هستی؛ جواب بده حالت خوب است و سؤال را به سارا برگردان.",
+              "hint": "I'm fine, thanks. And you?",
+              "example": "I'm fine, thanks. And you?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i'm fine",
+                      "i am fine",
+                      "i'm good",
+                      "i am good"
+                    ],
+                    "feedback": "حالت را بگو."
+                  },
+                  {
+                    "any": [
+                      "and you"
+                    ],
+                    "feedback": "سؤال را با And you? برگردان."
+                  }
+                ],
+                "success": "با کمک تصویر، جمله را خودت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
           "id": "hello-guided-talk",
           "type": "guided-dialogue",
           "practiceRevision": 3,
@@ -1561,26 +1630,30 @@
         {
           "id": "hello-write",
           "type": "free-write",
-          "title": "بدون الگو یک مکالمهٔ واقعی بساز",
-          "prompt": "صبح با یک همکلاسی تازه آشنا می‌شوی. یک مکالمهٔ کوتاه و نوبتی بین هر دوی شما بنویس: با Good morning شروع کن، احوال بپرس و جواب بده، سؤال را برگردان، اسم‌ها را بپرس و بگو، از آشنایی ابراز خوشوقتی کن و خداحافظی کن.",
-          "placeholder": "You: …\nClassmate: …\nYou: …",
-          "hint": "با اسم خودت بنویس. لازم نیست دیالوگ قبلی را حفظ کنی؛ چند نوبت کوتاه و طبیعی کافی است.",
+          "title": "از یک گفت‌وگوی واقعی گزارش کوتاه بساز",
+          "prompt": "به یکی از اعضای خانواده یا دوستی که کنارت است سلام کن و یک مکالمهٔ کوتاه انجام بده؛ اگر تنها هستی، دو نقش را بلند تمرین کن. سلام را متناسب با زمان روز انتخاب کن، حالش را بپرس، اسم خودت را بگو و بپرس، سؤال را با And you? برگردان و خداحافظی کن. حالا چند نوبت همان گفت‌وگویی را که انجام دادی به انگلیسی اینجا بنویس.",
+          "placeholder": "You: Good evening! How are you?\nFriend: ...\nYou: I'm fine, thanks. And you?\n...",
+          "hint": "زمان واقعی را در نظر بگیر: Good morning / Good afternoon / Good evening. نام واقعی یا نام ساختگی خودتان را به کار ببر.",
           "kind": "free-text",
-          "minWords": 18,
+          "minWords": 19,
           "assessment": {
-            "revision": 2,
+            "revision": 3,
             "required": [
               {
                 "any": [
-                  "good morning"
+                  "good morning",
+                  "good afternoon",
+                  "good evening",
+                  "hello",
+                  "hi"
                 ],
-                "feedback": "این برخورد در صبح اتفاق می‌افتد؛ مکالمه را با Good morning! شروع کن."
+                "feedback": "با یک سلام متناسب با موقعیت شروع کن."
               },
               {
                 "any": [
                   "how are you"
                 ],
-                "feedback": "یک سؤال احوالپرسی اضافه کن: How are you?"
+                "feedback": "از حال مخاطب بپرس: How are you?"
               },
               {
                 "any": [
@@ -1593,32 +1666,32 @@
                   "fine thanks",
                   "good thanks"
                 ],
-                "feedback": "بعد از پرسیدن حال، یکی از دو نفر باید جواب بدهد؛ مثلاً I'm fine, thanks."
+                "feedback": "پاسخ احوالپرسی را هم بنویس."
               },
               {
                 "any": [
                   "and you"
                 ],
-                "feedback": "سؤال احوالپرسی را با And you? به نفر مقابل برگردان."
+                "feedback": "با And you? سؤال را برگردان."
               },
               {
                 "patterns": [
                   "\\b(?:i'm|i am|my name is)\\s+(?!fine\\b|good\\b|okay\\b|not\\b|thanks\\b)[a-z]+\\b"
                 ],
-                "feedback": "اسم خودت را با I'm ... یا My name is ... معرفی کن."
+                "feedback": "اسم خودت را معرفی کن."
               },
               {
                 "any": [
                   "what's your name",
                   "what is your name"
                 ],
-                "feedback": "از طرف مقابل هم نامش را بپرس."
+                "feedback": "از اسم مخاطب هم بپرس."
               },
               {
                 "any": [
                   "nice to meet you"
                 ],
-                "feedback": "وقتی نام هم را فهمیدید، با Nice to meet you! به آشنایی واکنش نشان بده."
+                "feedback": "واکنش مودبانه به آشنایی را اضافه کن."
               },
               {
                 "any": [
@@ -1626,10 +1699,10 @@
                   "goodbye",
                   "see you"
                 ],
-                "feedback": "در پایان گفت‌وگو خداحافظی کن."
+                "feedback": "مکالمه را با خداحافظی تمام کن."
               }
             ],
-            "success": "همهٔ بخش‌های لازم برای یک آشنایی صبحگاهی را در مکالمه آوردی؛ حالا همان را با نام‌ها و ترتیب متفاوت هم می‌توانی تمرین کنی."
+            "success": "از یک موقعیت واقعی یا شخصی برای ساخت جمله استفاده کردی؛ حالا می‌توانی اشیا، نام‌ها و رابطه‌ها را عوض کنی."
           },
           "phase": "independent"
         }
