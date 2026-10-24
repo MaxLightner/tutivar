@@ -280,7 +280,7 @@ test('A1-4 is a complete location lesson in the same six/four phase teaching tem
   }
   const phrase=foundation.activities.find(a=>a.phase==='phrases');
   assert.match(renderActivity(phrase,context),/data-composer-action="cycle"/);
-  const models=foundation.activities.find(a=>a.phase==='variants');
+  const models=foundation.activities.find(a=>a.phase==='variants' && a.type==='composer-view');
   assert.match(renderActivity(models,context),/data-composer-action="pattern"/);
   const puzzle=foundation.activities.find(a=>a.phase==='puzzle');
   const bank=puzzleTokenBank(puzzle);
