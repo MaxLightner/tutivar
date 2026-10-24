@@ -1,6 +1,6 @@
 {
   "id": "A1-3",
-  "revision": 9,
+  "revision": 10,
   "status": "draft",
   "title": "مالکیت و داشتن اشیا",
   "goal": "بتوانی با تغییر صاحب یا وسیله، جمله بسازی و بگویی یک وسیله مال چه کسی است.",
@@ -52,11 +52,28 @@
       ],
       "activities": [
         {
+          "id": "a1-3-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "شنیدن و سایه‌خوانی",
+          "description": "فقط گوش بده و هم‌زمان یا با فاصله‌ای کوتاه تکرار کن؛ لازم نیست معنی جمله‌ها را بفهمی.",
+          "audioSrc": null,
+          "rate": 0.72,
+          "pauseMs": 500,
+          "lines": [
+            "This is my book.",
+            "Is this your phone?",
+            "No, it's mine.",
+            "It's yours.",
+            "These are my keys."
+          ]
+        },
+        {
           "id": "ownership-words",
           "type": "vocabulary",
-          "title": "واژه‌ها و عبارت‌های لازم",
+          "title": "واژگان اصلی وسایل و مالکیت",
           "batchSize": 4,
-          "deckRevision": 2,
+          "deckRevision": 3,
           "items": [
             {
               "en": "book",
@@ -65,7 +82,7 @@
               "examples": [
                 "This is my book.",
                 "Is this your book?",
-                "It's mine."
+                "It's his book."
               ]
             },
             {
@@ -95,7 +112,7 @@
               "examples": [
                 "This is my pen.",
                 "Is this your pen?",
-                "It's yours."
+                "Is this your pen? No, it's mine."
               ]
             },
             {
@@ -115,7 +132,7 @@
               "examples": [
                 "This is my pencil.",
                 "Is this your pencil?",
-                "It's yours."
+                "Where is my pencil?"
               ]
             },
             {
@@ -125,7 +142,7 @@
               "examples": [
                 "This is my wallet.",
                 "Is this your wallet?",
-                "It's mine."
+                "No, it's her wallet."
               ]
             },
             {
@@ -179,49 +196,76 @@
               ]
             },
             {
-              "en": "This is my book.",
-              "fa": "این کتاب من است.",
-              "hint": "معرفی وسیله‌ای که مال توست",
+              "en": "mine",
+              "fa": "مال من",
               "examples": [
-                "This is my book.",
-                "This is my bag.",
-                "This is my phone."
-              ]
-            },
-            {
-              "en": "Is this your book?",
-              "fa": "این کتاب توست؟",
-              "hint": "پرسیدن دربارهٔ صاحب وسیله",
-              "examples": [
-                "Is this your book?",
-                "Is this your bag?",
-                "Is this your pen?"
-              ]
-            },
-            {
-              "en": "It's mine.",
-              "fa": "مال من است.",
-              "hint": "وقتی خود وسیله یا مالکیت از قبل مشخص است",
-              "examples": [
+                "It's mine.",
                 "This is my book. It's mine.",
-                "Is this your pen? No, it's mine.",
-                "It's mine, thank you."
+                "Is this your pen? No, it's mine."
               ]
             },
             {
-              "en": "It's yours.",
-              "fa": "مال توست.",
-              "hint": "وقتی مستقیم به صاحب وسیله اشاره می‌کنی",
+              "en": "yours",
+              "fa": "مال تو / شما",
               "examples": [
+                "It's yours.",
                 "This is your book. It's yours.",
-                "Is this my bag? Yes, it's yours.",
-                "The pen is yours."
+                "Is this my bag? Yes, it's yours."
               ]
             },
             {
               "en": "keys",
               "fa": "کلیدها",
-              "role": "supplementary"
+              "examples": [
+                "These are my keys.",
+                "Where are my keys?",
+                "I have my keys."
+              ]
+            },
+            {
+              "en": "charger",
+              "fa": "شارژر",
+              "examples": [
+                "This is my charger.",
+                "Where is my charger?",
+                "I have a charger."
+              ]
+            },
+            {
+              "en": "laptop",
+              "fa": "لپ‌تاپ",
+              "examples": [
+                "This is my laptop.",
+                "Where is my laptop?",
+                "I have a laptop."
+              ]
+            },
+            {
+              "en": "tablet",
+              "fa": "تبلت",
+              "examples": [
+                "This is my tablet.",
+                "Where is my tablet?",
+                "I have a tablet."
+              ]
+            },
+            {
+              "en": "watch",
+              "fa": "ساعت مچی",
+              "examples": [
+                "This is my watch.",
+                "Where is my watch?",
+                "I have a watch."
+              ]
+            },
+            {
+              "en": "glasses",
+              "fa": "عینک",
+              "examples": [
+                "These are my glasses.",
+                "Where are my glasses?",
+                "I have my glasses."
+              ]
             },
             {
               "en": "backpack",
@@ -239,36 +283,6 @@
               "role": "supplementary"
             },
             {
-              "en": "watch",
-              "fa": "ساعت مچی",
-              "role": "supplementary"
-            },
-            {
-              "en": "glasses",
-              "fa": "عینک",
-              "role": "supplementary"
-            },
-            {
-              "en": "charger",
-              "fa": "شارژر",
-              "role": "supplementary"
-            },
-            {
-              "en": "laptop",
-              "fa": "لپ‌تاپ",
-              "role": "supplementary"
-            },
-            {
-              "en": "tablet",
-              "fa": "تبلت",
-              "role": "supplementary"
-            },
-            {
-              "en": "ID card",
-              "fa": "کارت شناسایی",
-              "role": "supplementary"
-            },
-            {
               "en": "camera",
               "fa": "دوربین",
               "role": "supplementary"
@@ -280,6 +294,55 @@
             }
           ],
           "phase": "words"
+        },
+        {
+          "id": "ownership-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "عبارت‌های کاربردی و ترکیب‌های خاص",
+          "description": "این واحدها عبارت یا ترکیب‌اند، نه واژهٔ منفرد؛ آن‌ها را در موقعیت و جمله یاد بگیر.",
+          "items": [
+            {
+              "en": "ID card",
+              "fa": "کارت شناسایی",
+              "kind": "collocation",
+              "examples": [
+                "This is my ID card.",
+                "Where is my ID card?",
+                "I have an ID card."
+              ]
+            },
+            {
+              "en": "belong to",
+              "fa": "متعلق بودن به",
+              "kind": "collocation",
+              "examples": [
+                "This bag belongs to me.",
+                "Does this phone belong to you?",
+                "These keys belong to her."
+              ]
+            },
+            {
+              "en": "personal belongings",
+              "fa": "وسایل شخصی",
+              "kind": "collocation",
+              "examples": [
+                "These are my personal belongings.",
+                "Keep your personal belongings here.",
+                "Are these your personal belongings?"
+              ]
+            },
+            {
+              "en": "my own",
+              "fa": "مال خودم / متعلق به خودم",
+              "kind": "collocation",
+              "examples": [
+                "This is my own bag.",
+                "I have my own phone.",
+                "My own keys are here."
+              ]
+            }
+          ]
         },
         {
           "id": "ownership-inline-phrases",
@@ -2478,6 +2541,14 @@
             "success": "از یک موقعیت واقعی یا شخصی برای ساخت جمله استفاده کردی؛ حالا می‌توانی اشیا، نام‌ها و رابطه‌ها را عوض کنی."
           },
           "phase": "independent"
+        },
+        {
+          "id": "a1-3-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "سایه‌خوانی دوباره",
+          "description": "همان محتوای شنیداری ابتدای درس را دوباره گوش بده و همراه صدا تکرار کن.",
+          "sourceActivityId": "a1-3-shadowing"
         }
       ]
     }
