@@ -79,8 +79,15 @@ export function auditLesson(lesson) {
     if (!focus.has(phrase)) errors.push(`${phrase}: specific independent expression is not a focus expression`);
   }
 
+  const expressionItems = contentActivities
+    .filter((activity) => activity.type === 'expression-study')
+    .flatMap((activity) => activity.items || []);
   const targets = new Map(core.map((item) => [item.en, item]));
-  for (const phrase of focus) if (!targets.has(phrase)) targets.set(phrase, { en: phrase, fa: '' });
+  for (const phrase of focus) {
+    if (targets.has(phrase)) continue;
+    const authoredExpression = expressionItems.find((item) => normalize(item.en) === normalize(phrase));
+    targets.set(phrase, authoredExpression || { en: phrase, fa: '' });
+  }
   const rows = [...targets.values()].map((item) => {
     const aliases = [item.en, ...(item.auditAliases || [])].map(normalize).filter(Boolean);
     const visible = [];
