@@ -757,3 +757,27 @@ button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3p
   .module-sentence-composer .composer-choice { padding: 7px; }
   .module-sentence-composer .composer-choice-word { font-size: 14px; }
 }
+
+/* Mixed-word puzzle: each activity is a bank of multiple valid sentences. */
+.module-builder-multi .builder-multi-progress { display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap; margin:12px 0; color:#315d40; font-size:14px; }
+.module-builder-multi .builder-multi-progress span { color:#718575; font-size:12px; }
+.module-builder-multi .builder-output { display:block; direction:ltr; text-align:left; min-height:64px; line-height:1.9; font-size:19px; font-weight:800; overflow-wrap:anywhere; }
+.module-builder-multi .builder-tokens { justify-content:center; gap:8px; direction:ltr; margin:12px 0; }
+.module-builder-multi .builder-tokens button { min-width:45px; min-height:45px; padding:8px 12px; font-size:16px; }
+.module-builder-multi .builder-actions { display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
+.module-builder-multi .builder-actions button { font-size:13px; min-height:40px; padding:8px 12px; }
+.module-builder-multi .builder-actions button:disabled { opacity:.4; }
+.module-builder-multi .builder-feedback { margin:8px 0; padding:9px 12px; border-radius:10px; font-size:13px; line-height:1.6; }
+.module-builder-multi .builder-feedback.correct { background:#e9f5e8; color:#286744; }
+.module-builder-multi .builder-feedback.wrong { background:#fff2e8; color:#8a5135; }
+.module-builder-multi .builder-found { padding:8px 11px; border:1px solid #deeadf; border-radius:11px; margin:9px 0; }
+.module-builder-multi .builder-found summary { cursor:pointer; font-size:13px; color:#3b7654; font-weight:750; }
+.module-builder-multi .builder-found ol { padding:4px 0 0 21px; margin:4px 0; }
+.module-builder-multi .builder-found li { padding:4px; color:#39694e; font-size:14px; }
+@media (max-width:550px) {
+ .module-builder-multi .builder-tokens { gap:6px; }
+ .module-builder-multi .builder-tokens button { min-width:40px; padding:8px 10px; font-size:15px; }
+ .module-builder-multi .builder-bottom { gap:10px; }
+ .module-builder-multi .builder-actions { gap:5px; }
+ .module-builder-multi .builder-actions button { font-size:12px; }
+}
