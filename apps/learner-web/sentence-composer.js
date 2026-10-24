@@ -134,6 +134,7 @@ export function validateSentenceComposer(activity) {
     if (!pattern.id || patternIds.has(pattern.id)) errors.push('missing or duplicate pattern id ' + pattern.id);
     patternIds.add(pattern.id);
     for (const segment of [...(pattern.segments || []), ...(pattern.translationSegments || [])]) {
+      if (segment.cycleSlot && !slotIds.has(segment.cycleSlot)) errors.push('pattern ' + pattern.id + ': unknown cycleSlot ' + segment.cycleSlot);
       if (Object.hasOwn(segment, 'fixed')) {
         if (typeof segment.fixed !== 'string') errors.push('pattern ' + pattern.id + ': fixed segment must be text');
       } else if (segment.slot) {
