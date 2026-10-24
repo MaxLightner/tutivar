@@ -63,8 +63,8 @@ test('every sample path node references a real content file with two teaching se
     assert.ok(!ids.has(lesson.id));
     ids.add(lesson.id);
   }
-  assert.equal(ids.size, 4);
-  assert.deepEqual([...new Set([...ids].map((id) => load(lessons.find((entry) => entry.id === id).file).archetype))].sort(), ['conversation', 'family', 'ownership', 'spatial-location']);
+  assert.equal(ids.size, 5);
+  assert.deepEqual([...new Set([...ids].map((id) => load(lessons.find((entry) => entry.id === id).file).archetype))].sort(), ['conversation', 'counting-objects', 'family', 'ownership', 'spatial-location']);
 });
 
 test('not-yet-produced nodes cannot be launched as content', () => {
@@ -869,16 +869,16 @@ test('A1-5 teaches counting with singular/plural agreement and real-world produc
   assert.equal(composeSegments(question.pattern.segments, composer, question), 'How many books are there?');
   const puzzle = foundation.activities.find(a => a.type === 'sentence-builder');
   assert.equal(puzzle.sentences.length, 5);
-  const picture = production.find(a => a.type === 'picture-description');
+  const picture = production.activities.find(a => a.type === 'picture-description');
   assert.equal(picture.tasks.length, 5);
-  assert.ok(production.find(a => a.type === 'dialogue-transfer').turns.some(turn => /my bag/.test(turn.example || '')));
-  assert.ok(production.find(a => a.type === 'free-write').prompt.includes('وسایل واقعی'));
+  assert.ok(production.activities.find(a => a.type === 'dialogue-transfer').turns.some(turn => /my bag/.test(turn.example || '')));
+  assert.ok(production.activities.find(a => a.type === 'free-write').prompt.includes('وسایل واقعی'));
   assert.deepEqual(auditLesson(lesson).errors, []);
 });
 
 test('all five A1 lessons expose identical two-section navigation labels', () => {
   const labels=['از کلمه تا جمله','از سؤال و جواب تا مکالمه'];
-  for (const id of ['a1-1','a1-2','a1-3','a1-4']) {
+  for (const id of ['a1-1','a1-2','a1-3','a1-4','a1-5']) {
     assert.deepEqual(load('lessons/'+id+'.json').sections.map(section=>section.label),labels,id);
   }
 });
