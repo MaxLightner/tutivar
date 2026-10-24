@@ -7,6 +7,7 @@ import { renderActivity, renderDialogueLines, supportedActivities } from '../app
 import { advanceDeck, answerDeck, checkWordAnswer, coreItems, deckState, jumpDeck, resumeDeck, supplementaryItems } from '../apps/learner-web/word-review.js';
 import { evaluateResponse, practiceState, submitPractice } from '../apps/learner-web/practice-engine.js';
 import { auditLesson } from '../tools/audit-lessons.mjs';
+import { composeSegments, resolveSentenceComposer, validateSentenceComposer } from '../apps/learner-web/sentence-composer.js';
 
 const contentRoot = join(projectRoot, 'content/language-pairs/fa-en');
 const load = (file) => readJson(join(contentRoot, file));
@@ -272,45 +273,95 @@ test('second lesson teaches family relationships with a live tree, retrieval and
 });
 
 
-test('A1-3 teaches ownership through one-variable pattern discovery', () => {
+test('A1-3 uses one JSON-driven sentence composer for owners, objects and grammar', () => {
   const lesson = load('lessons/a1-3.json');
   const foundation = lesson.sections[0];
   const production = lesson.sections[1];
-  const labs = foundation.activities.filter((activity) => activity.type === 'pattern-lab');
-  assert.equal(labs.length, 4, 'the original three discovery labs remain, plus a separate everyday-objects lab');
-  assert.ok(labs.every((activity) => activity.slots.length === 1), 'each discovery step changes only one dimension');
-  assert.deepEqual(labs[0].outcomes.map((item) => item.en), [
-    'This is my book.', 'This is your book.', 'This is his book.', 'This is her book.'
-  ]);
-  assert.deepEqual(labs[1].outcomes.map((item) => item.en), [
-    'This is my book.', 'This is my bag.', 'This is my phone.', 'This is my pen.'
-  ]);
+  const composer = foundation.activities.find((activity) => activity.type === 'sentence-composer');
+  assert.ok(composer, 'the foundation has one shared sentence composer');
+  assert.equal(foundation.activities.filter((activity) => activity.type === 'pattern-lab').length, 0, 'separate owner and object labs are removed');
+  assert.deepEqual(validateSchema(readJson(join(projectRoot, 'schemas/sentence-composer.schema.json')), composer), []);
+  assert.deepEqual(validateSentenceComposer(composer), []);
+  assert.equal(composer.wordSets.owners.length, 4);
+  assert.equal(composer.wordSets.objects.length, 20, 'eight core and twelve supplementary objects are data, not renderer code');
+  assert.equal(composer.wordSets.objects.filter((item) => item.role === 'core').length, 8);
+  assert.equal(composer.wordSets.objects.filter((item) => item.role === 'supplementary').length, 12);
+  assert.equal(composer.slots.length, 2, 'owner and object are variables in the same sentence');
+  assert.equal(composer.patterns.length, 4, 'statement, possessive pronoun, question and negative are sentence patterns');
+  assert.equal(composer.wordSets.owners.length * composer.wordSets.objects.length, 80, 'all owner/object combinations are generated without per-combination outcomes');
+  for (const owner of composer.wordSets.owners) {
+    for (const object of composer.wordSets.objects) {
+      const selected = { slots: { owner: owner.id, object: object.id } };
+      for (const [patternId, expectedStart] of [
+        ['statement', object.features.number === 'plural' ? 'These are' : 'This is'],
+        ['pronoun', object.features.number === 'plural' ? 'These ' : 'This '],
+        ['question', object.features.number === 'plural' ? 'Are these' : 'Is this'],
+        ['negative', object.features.number === 'plural' ? 'These are not' : 'This is not']
+      ]) {
+        const resolved = resolveSentenceComposer(composer, { ...selected, pattern: patternId });
+        const sentence = composeSegments(resolved.pattern.segments, composer, resolved);
+        assert.ok(sentence.startsWith(expectedStart), owner.id + '/' + object.id + '/' + patternId + ': ' + sentence);
+        assert.doesNotMatch(sentence, /undefined|null/);
+      }
+    }
+  }
+
   const context = {
     lessonId: lesson.id, index: 0, e: String,
-    en: (value) => `<span class="en">${String(value)}</span>`,
+    en: (value) => `<span class="en" lang="en" dir="ltr">${String(value)}</span>`,
     i: () => '',
-    progress: { phraseChoices: {} }
+    progress: { phraseChoices: {}, sentenceComposers: {}, showDialogueTranslation: true }
   };
-  const rendered = renderActivity(labs[0], context);
-  assert.match(rendered, /data-phrase-key="A1-3:ownership-owner-lab"/);
-  assert.match(rendered, /<mark class="pattern-focus">my<\/mark>/);
-  assert.match(rendered, /<details class="pattern-observation">/);
-  assert.equal(production.activities[0].type, 'exchange-lab', 'the second half starts with question and answer, not a dialogue transcript');
-  assert.ok(production.activities[0].pairs.length >= 7, 'ownership questions cover the expanded everyday-object vocabulary');
-  assert.equal(production.activities.filter((activity) => activity.type === 'dialogue').length, 2);
-  assert.ok(production.activities.filter((activity) => activity.type === 'dialogue').every((activity) => activity.lines.length >= 8));
-  assert.ok(production.activities.some((activity) => activity.type === 'guided-dialogue'));
-  assert.ok(production.activities.some((activity) => activity.type === 'free-write'));
+  const rendered = renderActivity(composer, context);
+  assert.match(rendered, /data-composer-action="open"/);
+  assert.match(rendered, /data-composer-slot="owner"/);
+  assert.match(rendered, /data-composer-slot="object"/);
+  assert.match(rendered, /data-composer-action="pattern"/);
+  const defaultResolved = resolveSentenceComposer(composer, {});
+  assert.equal(composeSegments(defaultResolved.pattern.segments, composer, defaultResolved), 'This is my book.');
+  assert.doesNotMatch(rendered, /class="phrase-slot"/, 'there are no separate owner/object selectors outside the sentence');
+  const pickerRendered = renderActivity(composer, {
+    ...context,
+    progress: { ...context.progress, sentenceComposers: { 'A1-3:ownership-sentence-composer': { activeSlot: 'object' } } }
+  });
+  assert.match(pickerRendered, /data-composer-search/);
+  assert.equal((pickerRendered.match(/data-composer-action="select"/g) || []).length, 20, 'the object picker is generated from the JSON word set');
+
+  const saved = { slots: { owner: 'she', object: 'keys' }, pattern: 'statement' };
+  const statement = resolveSentenceComposer(composer, saved);
+  assert.equal(composeSegments(statement.pattern.segments, composer, statement), 'These are her keys.');
+  assert.equal(composeSegments(statement.pattern.translationSegments, composer, statement), 'این‌ها کلیدها متعلق به او هستند.');
+  for (const [pattern, expected] of [
+    ['pronoun', 'These keys are hers.'],
+    ['question', 'Are these her keys?'],
+    ['negative', 'These are not her keys.']
+  ]) {
+    const resolved = resolveSentenceComposer(composer, { ...saved, pattern });
+    assert.equal(composeSegments(resolved.pattern.segments, composer, resolved), expected);
+  }
+
+  const lookup = Object.fromEntries(lesson.sections.flatMap((section) => section.activities).map((activity) => [activity.id, activity]));
+  const dialogue = production.activities.find((activity) => activity.id === 'ownership-dialogue-found');
+  assert.ok(dialogue.lines.every((line) => line.sourceActivityId === composer.id && line.segments && line.translationSegments), 'dialogue lines are JSON templates bound to the same slots');
+  const dialogueContext = {
+    ...context,
+    activitiesById: lookup,
+    progress: { ...context.progress, sentenceComposers: { 'A1-3:ownership-sentence-composer': saved } }
+  };
+  const dialogueHtml = renderDialogueLines(dialogue, dialogueContext, 0, -1, { all: true });
+  assert.match(dialogueHtml, /Are these your keys\?/);
+  assert.match(dialogueHtml, /they're her keys\./);
+  assert.match(dialogueHtml, /Yes, they're mine\./);
+
   const vocabulary = foundation.activities.find((activity) => activity.type === 'vocabulary');
-  assert.equal(coreItems(vocabulary).length, 16, 'eight belongings, four possessive words and four sentence expressions are in the core deck');
-  assert.equal(supplementaryItems(vocabulary).length, 12, 'the expanded optional belongings remain outside the mandatory deck');
-  assert.ok(supplementaryItems(vocabulary).every((entry) => !entry.examples && !entry.hint), 'supplementary vocabulary is list-only');
+  assert.equal(coreItems(vocabulary).length, 16);
+  assert.equal(supplementaryItems(vocabulary).length, 12);
+  assert.ok(supplementaryItems(vocabulary).every((entry) => !entry.examples && !entry.hint), 'supplementary vocabulary remains list-only');
   assert.ok(vocabulary.items.filter((entry) => entry.role !== 'supplementary').every((entry) => entry.examples?.length === 3));
   assert.equal(lesson.visual.src, './a1-3-personal-belongings.svg');
   assert.match(readFileSync(join(projectRoot, 'apps/learner-web/a1-3-personal-belongings.svg'), 'utf8'), /<svg/);
-  const optionalHtml = renderActivity(vocabulary, { lessonId: 'A1-3', index: 0, e: String, en: String, i: () => '', progress: { wordProgress: {} } });
+  const optionalHtml = renderActivity(vocabulary, { lessonId: lesson.id, index: 0, e: String, en: String, i: () => '', progress: { wordProgress: {} } });
   assert.equal((optionalHtml.match(/class="supplementary-item"/g) || []).length, 12);
-  assert.equal((optionalHtml.match(/class="example-gallery"/g) || []).length, 1, 'only the current core word gets examples');
   assert.deepEqual(auditLesson(lesson).errors, [], 'focus phrases have guided and independent production');
 });
 

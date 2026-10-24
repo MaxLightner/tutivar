@@ -1,5 +1,6 @@
 import { coreItems, deckState, supplementaryItems, wordId } from './word-review.js';
 import { practiceState } from './practice-engine.js';
+import { composeSegments, composerSegmentValue, composerSlotForm, resolveSentenceComposer } from './sentence-composer.js';
 
 /*
  * Tutivar's teaching components. Lesson text, exercise items, answers and their
@@ -16,7 +17,7 @@ const MODULE_LABELS = {
   'sentence-transform': 'تبدیل جمله',
   'dialogue-transfer': 'مکالمه در موقعیت تازه',
   'family-tree': 'درخت خانواده',
-  'agreement-lab': 'جمله‌ساز وابسته'
+  'agreement-lab': 'جمله‌ساز وابسته', 'sentence-composer': 'جمله‌ساز تعاملی'
 };
 function wrapper(body, activity, idx, e, extra = '') {
   return `<div class="lesson-block module-block ${extra}" data-module="${e(activity.type)}"><div class="block-top"><div><span class="block-label">${String(idx + 1).padStart(2, '0')} / ${e(activity.typeLabel || MODULE_LABELS[activity.type] || 'فعالیت')}</span><h3>${e(activity.title || '')}</h3></div></div>${body}</div>`;
@@ -97,6 +98,47 @@ function patternLab(a, c) {
   }
   const result = outcome ? `<div class="phrase-outcome pattern-lab-result">${sentence}${soundButton(outcome.en, c.e, c.i)}<span dir="rtl">${c.e(outcome.fa || '')}</span></div>${outcome.observation ? `<details class="pattern-observation"><summary>چه چیزی تغییر کرد؟</summary><p>${c.e(outcome.observation)}</p></details>` : ''}` : '';
   return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="phrase-composer pattern-lab-controls">${controls}</div>${result}`, a, c.index, c.e, 'module-pattern-lab');
+}
+
+function sentenceComposer(a, c) {
+  const key = `${c.lessonId}:${a.id}`;
+  const resolved = resolveSentenceComposer(a, c.progress.sentenceComposers?.[key]);
+  const pattern = resolved.pattern;
+  const renderSegments = (segments, interactive = false) => (segments || []).map((segment) => {
+    if (segment.slot && interactive) {
+      const value = composerSegmentValue(segment, a, resolved);
+      const active = resolved.state.activeSlot === segment.slot;
+      return `<button type="button" class="composer-token ${active ? 'active' : ''}" data-composer-key="${c.e(key)}" data-composer-action="open" data-composer-slot="${c.e(segment.slot)}" aria-expanded="${active}" aria-label="تغییر ${c.e(a.slots.find((slot) => slot.id === segment.slot)?.label || segment.slot)}">${c.e(value)}</button>`;
+    }
+    return `<span class="composer-segment">${c.e(composerSegmentValue(segment, a, resolved))}</span>`;
+  }).join('');
+  const patternButtons = a.patterns.map((entry) => `<button type="button" class="composer-pattern ${entry.id === pattern.id ? 'active' : ''}" data-composer-key="${c.e(key)}" data-composer-action="pattern" data-composer-pattern="${c.e(entry.id)}" aria-pressed="${entry.id === pattern.id}">${c.e(entry.label)}</button>`).join('');
+  let picker = '';
+  const activeSlot = a.slots.find((slot) => slot.id === resolved.state.activeSlot);
+  if (activeSlot) {
+    const form = composerSlotForm(a, pattern, activeSlot.id);
+    const allItems = a.wordSets[activeSlot.wordSet] || [];
+    const items = activeSlot.includeRoles?.length
+      ? allItems.filter((entry) => activeSlot.includeRoles.includes(entry.role || 'core'))
+      : allItems;
+    const selected = resolved.state.slots[activeSlot.id];
+    const threshold = Number(a.optionSearchThreshold) || 9;
+    const search = items.length > threshold
+      ? `<input class="composer-search" type="search" data-composer-search data-composer-search-slot="${c.e(activeSlot.id)}" placeholder="جست‌وجوی واژه یا معنی..." aria-label="جست‌وجو در ${c.e(activeSlot.label)}">`
+      : '';
+    const options = items.map((entry) => {
+      const label = String(entry.forms?.[form] ?? entry[form] ?? entry.label ?? entry.id);
+      const translation = String(entry.translation ?? entry.fa ?? '');
+      const searchText = `${label} ${translation} ${entry.id}`.toLocaleLowerCase();
+      return `<button type="button" class="composer-choice ${entry.id === selected ? 'active' : ''}" data-composer-key="${c.e(key)}" data-composer-action="select" data-composer-slot="${c.e(activeSlot.id)}" data-composer-value="${c.e(entry.id)}" data-composer-search-text="${c.e(searchText)}" aria-pressed="${entry.id === selected}"><span class="composer-choice-word" lang="${c.e(a.targetLanguage || 'en')}" dir="ltr">${c.e(label)}</span><span class="composer-choice-translation" dir="rtl">${c.e(translation)}</span>${entry.role === 'supplementary' ? '<small>تکمیلی</small>' : ''}</button>`;
+    }).join('');
+    picker = `<div class="composer-picker" aria-label="گزینه‌های ${c.e(activeSlot.label)}"><div class="composer-picker-head"><strong>${c.e(activeSlot.label)} را تغییر بده</strong><button type="button" class="composer-close" data-composer-key="${c.e(key)}" data-composer-action="close">بستن</button></div>${search}<div class="composer-choices" role="group" aria-label="انتخاب ${c.e(activeSlot.label)}">${options}</div></div>`;
+  }
+  const translation = pattern.translationSegments?.length
+    ? `<p class="composer-translation" dir="rtl">${renderSegments(pattern.translationSegments)}</p>`
+    : '';
+  const note = pattern.note ? `<p class="composer-note">${c.e(pattern.note)}</p>` : '';
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="composer-patterns" role="group" aria-label="نوع جمله">${patternButtons}</div><div class="composer-stage"><div class="composer-sentence" lang="${c.e(a.targetLanguage || 'en')}" dir="ltr">${renderSegments(pattern.segments, true)}${soundButton(pattern.segments.map((segment) => composerSegmentValue(segment, a, resolved)).join(''), c.e, c.i)}</div>${translation}</div>${picker}${note}`, a, c.index, c.e, 'module-sentence-composer');
 }
 
 function sentenceLab(a, c) {
@@ -203,6 +245,18 @@ function quizSet(a, c) {
     return `<div class="quiz-question"><span class="question-number">سؤال ${qIdx + 1}</span><div class="question">${c.e(question.question)}</div><div class="choices">${question.choices.map((answer, choiceIndex) => `<button class="choice ${chosen === choiceIndex ? 'selected ' + (choiceIndex === question.answer ? 'correct' : 'wrong') : ''}" data-quiz="${c.e(key)}" data-choice="${choiceIndex}">${c.en(answer)}</button>`).join('')}</div>${chosen !== undefined ? `<div class="feedback ${chosen === question.answer ? '' : 'error'}">${chosen === question.answer ? c.e(question.feedback) : 'دوباره امتحان کن.'}</div>` : ''}</div>`;
   }).join(''), a, c.index, c.e, 'module-quizzes');
 }
+function dialogueLineValue(line, c, language = 'en') {
+  const segments = language === 'en' ? line.segments : line.translationSegments;
+  if (!segments) return String(line[language] || '');
+  const source = line.sourceActivityId ? c.activitiesById?.[line.sourceActivityId] : null;
+  if (!source || source.type !== 'sentence-composer') {
+    return segments.map((segment) => Object.hasOwn(segment, 'fixed') ? segment.fixed : segment.text || '').join('');
+  }
+  const key = `${c.lessonId}:${source.id}`;
+  const resolved = resolveSentenceComposer(source, c.progress.sentenceComposers?.[key]);
+  return composeSegments(segments, source, resolved);
+}
+
 export function renderDialogueLines(a, c, step, enteringIndex = -1, { all = false } = {}) {
   const speakers = [...new Set(a.lines.map((line) => line.speaker))];
   const entries = all ? a.lines.map((line, index) => ({ line, lineIndex: index })) : a.lines.slice(step, step + 2).map((line, index) => ({ line, lineIndex: step + index }));
@@ -210,7 +264,9 @@ export function renderDialogueLines(a, c, step, enteringIndex = -1, { all = fals
     const side = speakers.indexOf(line.speaker) % 2 === 0 ? 'speaker-first' : 'speaker-second';
     const shown = lineIndex >= step && lineIndex < step + 2;
     const entering = !all && (enteringIndex === -1 || lineIndex === enteringIndex) ? 'dialogue-entering' : '';
-    return `<div class="dialogue-line ${side} ${entering}" data-dialogue-line="${lineIndex}" data-dialogue-visible="${shown}" ${all && !shown ? 'aria-hidden="true" inert' : ''}><span class="speaker-avatar" aria-hidden="true">${c.e(line.speaker.slice(0, 1))}</span><div class="bubble"><strong class="speaker-name">${c.e(line.speaker)}</strong><div class="spoken-line"><button type="button" class="dialogue-sentence" data-speak="${c.e(line.en)}" aria-label="شنیدن جملهٔ ${c.e(line.speaker)}">${c.en(line.en)}</button></div>${c.progress.showDialogueTranslation ? `<p>${c.e(line.fa)}</p>` : ''}</div></div>`;
+    const english = dialogueLineValue(line, c, 'en');
+    const persian = dialogueLineValue(line, c, 'fa');
+    return `<div class="dialogue-line ${side} ${entering}" data-dialogue-line="${lineIndex}" data-dialogue-visible="${shown}" ${all && !shown ? 'aria-hidden="true" inert' : ''}><span class="speaker-avatar" aria-hidden="true">${c.e(line.speaker.slice(0, 1))}</span><div class="bubble"><strong class="speaker-name">${c.e(line.speaker)}</strong><div class="spoken-line"><button type="button" class="dialogue-sentence" data-speak="${c.e(english)}" aria-label="شنیدن جملهٔ ${c.e(line.speaker)}">${c.en(english)}</button></div>${c.progress.showDialogueTranslation ? `<p>${c.e(persian)}</p>` : ''}</div></div>`;
   }).join('');
 }
 function dialogue(a, c) {
@@ -243,7 +299,7 @@ const renderers = {
   'guided-dialogue': guidedDialogue, 'response-practice': responsePractice,
   'exchange-lab': exchangeLab,
   'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer,
-  'family-tree': familyTree, 'agreement-lab': agreementLab
+  'family-tree': familyTree, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer
 };
 export function renderActivity(activity, context) {
   const renderer = renderers[activity.type];
