@@ -108,7 +108,8 @@ test('first lesson activities render with separate content, including interactio
   assert.equal(lesson.sections.reduce((sum, section) => sum + section.activities.length, 0), 14, 'expanded examples and retrieval activities, without more core words');
   assert.equal(lesson.sections[0].activities.at(-1).type, 'sentence-transform', 'single-sentence transformations conclude the first half');
   assert.deepEqual(lesson.sections[1].activities.map((item) => item.type), ['exchange-lab', 'response-practice', 'dialogue', 'response-practice', 'dialogue', 'response-practice', 'guided-dialogue', 'dialogue-transfer', 'free-write'], 'question/answer exchange starts the conversation half');
-  assert.ok(lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary').items.every((entry) => entry.examples.length === 3));
+  assert.ok(lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary').items.filter((entry) => entry.role !== 'supplementary').every((entry) => entry.examples.length === 3));
+  assert.ok(lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary').items.filter((entry) => entry.role === 'supplementary').every((entry) => !entry.examples && !entry.hint));
   assert.ok(Array.isArray(lesson.orientation.prerequisites));
   assert.equal(lesson.visual.src, null);
   const words = lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary').items;
@@ -122,10 +123,12 @@ test('first lesson activities render with separate content, including interactio
   const html = renderActivity(vocabulary, { lessonId: 'A1-1', index: 0, e: String, en: String, i: () => '', progress: { wordProgress: {} } });
   assert.match(html, /کارت 1 از 8/);
   assert.match(html, /عبارت‌های تکمیلی/);
-  assert.match(html, /سه مثال کاربردی/);
-  assert.match(html, /class="example-gallery"/);
-  assert.equal((html.match(/class="example-mini-card"/g) || []).length, 12, 'the core word and three supplementary phrases all have three swipeable examples');
-  assert.equal((html.match(/data-example-reveal aria-expanded="false"/g) || []).length, 12, 'each example reveals its taught expression on demand');
+  assert.match(html, /class="supplementary-list"/);
+  assert.equal((html.match(/class="supplementary-item"/g) || []).length, 10, 'supplementary phrases render as a simple list');
+  assert.equal((html.match(/class="example-gallery"/g) || []).length, 1, 'only the active core card gets an example gallery');
+  assert.equal((html.match(/class="example-mini-card"/g) || []).length, 3, 'the active core word keeps its three examples');
+  assert.equal((html.match(/data-example-reveal aria-expanded="false"/g) || []).length, 3, 'core examples reveal their taught expression on demand');
+  assert.doesNotMatch(html, /supplementary-examples|سه مثال کاربردی/);
   assert.match(html, /class="example-target"/, 'the taught phrase is highlighted when an example is revealed');
 });
 
@@ -273,7 +276,7 @@ test('A1-3 teaches ownership through one-variable pattern discovery', () => {
   const foundation = lesson.sections[0];
   const production = lesson.sections[1];
   const labs = foundation.activities.filter((activity) => activity.type === 'pattern-lab');
-  assert.equal(labs.length, 3);
+  assert.equal(labs.length, 4, 'the original three discovery labs remain, plus a separate everyday-objects lab');
   assert.ok(labs.every((activity) => activity.slots.length === 1), 'each discovery step changes only one dimension');
   assert.deepEqual(labs[0].outcomes.map((item) => item.en), [
     'This is my book.', 'This is your book.', 'This is his book.', 'This is her book.'
@@ -291,8 +294,22 @@ test('A1-3 teaches ownership through one-variable pattern discovery', () => {
   assert.match(rendered, /data-phrase-key="A1-3:ownership-owner-lab"/);
   assert.match(rendered, /<mark class="pattern-focus">my<\/mark>/);
   assert.match(rendered, /<details class="pattern-observation">/);
+  assert.equal(production.activities[0].type, 'exchange-lab', 'the second half starts with question and answer, not a dialogue transcript');
+  assert.ok(production.activities[0].pairs.length >= 7, 'ownership questions cover the expanded everyday-object vocabulary');
+  assert.equal(production.activities.filter((activity) => activity.type === 'dialogue').length, 2);
+  assert.ok(production.activities.filter((activity) => activity.type === 'dialogue').every((activity) => activity.lines.length >= 8));
   assert.ok(production.activities.some((activity) => activity.type === 'guided-dialogue'));
   assert.ok(production.activities.some((activity) => activity.type === 'free-write'));
+  const vocabulary = foundation.activities.find((activity) => activity.type === 'vocabulary');
+  assert.equal(coreItems(vocabulary).length, 16, 'eight belongings, four possessive words and four sentence expressions are in the core deck');
+  assert.equal(supplementaryItems(vocabulary).length, 12, 'the expanded optional belongings remain outside the mandatory deck');
+  assert.ok(supplementaryItems(vocabulary).every((entry) => !entry.examples && !entry.hint), 'supplementary vocabulary is list-only');
+  assert.ok(vocabulary.items.filter((entry) => entry.role !== 'supplementary').every((entry) => entry.examples?.length === 3));
+  assert.equal(lesson.visual.src, './a1-3-personal-belongings.svg');
+  assert.match(readFileSync(join(projectRoot, 'apps/learner-web/a1-3-personal-belongings.svg'), 'utf8'), /<svg/);
+  const optionalHtml = renderActivity(vocabulary, { lessonId: 'A1-3', index: 0, e: String, en: String, i: () => '', progress: { wordProgress: {} } });
+  assert.equal((optionalHtml.match(/class="supplementary-item"/g) || []).length, 12);
+  assert.equal((optionalHtml.match(/class="example-gallery"/g) || []).length, 1, 'only the current core word gets examples');
   assert.deepEqual(auditLesson(lesson).errors, [], 'focus phrases have guided and independent production');
 });
 
@@ -301,7 +318,7 @@ test('lesson audit identifies missing downstream production and keeps supplement
   const result = auditLesson(lesson);
   assert.deepEqual(result.errors, []);
   assert.equal(result.coreCount, 8);
-  assert.equal(result.supplementaryCount, 3);
+  assert.equal(result.supplementaryCount, 10);
   const morning = result.rows.find((row) => row.phrase === 'Good morning!');
   assert.ok(morning.guided.includes('hello-intro-check'));
   assert.ok(morning.guided.includes('hello-guided-talk'));
@@ -369,6 +386,20 @@ test('supplementary phrases are excluded from all mandatory vocabulary stages', 
   assert.equal(done.state.phase, 'done');
   assert.equal(done.state.queue.length, 0);
   assert.equal(deckState({ ...done.state, decisions: { ...done.state.decisions, 'Good evening!': 'test' }, queue: ['Good evening!'] }, activity).queue.length, 0);
+});
+
+
+test('supplementary phrases are list-only and can graduate into core vocabulary in later lessons', () => {
+  const first = load('lessons/a1-1.json');
+  const second = load('lessons/a1-2.json');
+  const firstVocabulary = first.sections[0].activities.find((activity) => activity.type === 'vocabulary');
+  const secondVocabulary = second.sections[0].activities.find((activity) => activity.type === 'vocabulary');
+  assert.ok(supplementaryItems(firstVocabulary).some((item) => item.en === 'Please.'));
+  assert.ok(coreItems(secondVocabulary).some((item) => item.en === 'Please.'));
+  assert.equal(secondVocabulary.items.find((item) => item.en === 'Please.').examples.length, 3);
+  assert.ok(second.learningAudit.focusExpressions.includes('Please.'));
+  assert.ok(second.sections[1].activities.find((activity) => activity.id === 'family-dialogue').lines.some((line) => line.en === 'Please, come in.'));
+  assert.deepEqual(auditLesson(second).errors, [], 'the phrase is seen, guided and required in independent production');
 });
 
 test('mini-Leitner accepts flexible answers and removes successful cards', () => {
