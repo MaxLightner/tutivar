@@ -621,8 +621,8 @@ button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3p
   border-radius: 15px;
   padding: 15px;
 }
-.module-sentence-composer .composer-sentence {
-  display: flex;
+ .module-sentence-composer .composer-sentence {
+  display: block;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: flex-start;
@@ -653,8 +653,8 @@ button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3p
   outline: 2px solid #34845a;
   outline-offset: 2px;
 }
-.module-sentence-composer .composer-sentence .sound-btn {
-  align-self: center;
+ .module-sentence-composer .composer-sentence .sound-btn {
+  vertical-align: middle;
   margin-inline-start: 9px;
 }
 .module-sentence-composer .composer-translation {
