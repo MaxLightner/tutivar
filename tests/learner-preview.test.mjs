@@ -289,6 +289,22 @@ test('A1-3 uses one JSON-driven sentence composer for owners, objects and gramma
   assert.equal(composer.slots.length, 2, 'owner and object are variables in the same sentence');
   assert.equal(composer.patterns.length, 4, 'statement, possessive pronoun, question and negative are sentence patterns');
   assert.equal(composer.wordSets.owners.length * composer.wordSets.objects.length, 80, 'all owner/object combinations are generated without per-combination outcomes');
+  for (const owner of composer.wordSets.owners) {
+    for (const object of composer.wordSets.objects) {
+      const selected = { slots: { owner: owner.id, object: object.id } };
+      for (const [patternId, expectedStart] of [
+        ['statement', object.features.number === 'plural' ? 'These are' : 'This is'],
+        ['pronoun', object.features.number === 'plural' ? 'These ' : 'This '],
+        ['question', object.features.number === 'plural' ? 'Are these' : 'Is this'],
+        ['negative', object.features.number === 'plural' ? 'These are not' : 'This is not']
+      ]) {
+        const resolved = resolveSentenceComposer(composer, { ...selected, pattern: patternId });
+        const sentence = composeSegments(resolved.pattern.segments, composer, resolved);
+        assert.ok(sentence.startsWith(expectedStart), owner.id + '/' + object.id + '/' + patternId + ': ' + sentence);
+        assert.doesNotMatch(sentence, /undefined|null/);
+      }
+    }
+  }
 
   const context = {
     lessonId: lesson.id, index: 0, e: String,
@@ -304,6 +320,12 @@ test('A1-3 uses one JSON-driven sentence composer for owners, objects and gramma
   const defaultResolved = resolveSentenceComposer(composer, {});
   assert.equal(composeSegments(defaultResolved.pattern.segments, composer, defaultResolved), 'This is my book.');
   assert.doesNotMatch(rendered, /class="phrase-slot"/, 'there are no separate owner/object selectors outside the sentence');
+  const pickerRendered = renderActivity(composer, {
+    ...context,
+    progress: { ...context.progress, sentenceComposers: { 'A1-3:ownership-sentence-composer': { activeSlot: 'object' } } }
+  });
+  assert.match(pickerRendered, /data-composer-search/);
+  assert.equal((pickerRendered.match(/class="composer-choice/g) || []).length, 20, 'the object picker is generated from the JSON word set');
 
   const saved = { slots: { owner: 'she', object: 'keys' }, pattern: 'statement' };
   const statement = resolveSentenceComposer(composer, saved);
