@@ -1,6 +1,6 @@
 {
   "id": "A1-2",
-  "revision": 8,
+  "revision": 9,
   "status": "draft",
   "title": "معرفی اعضای خانواده",
   "goal": "بتوانی درباره اعضای خانواده سؤال کنی، نقش خودت را در خانواده بگویی، دیگران را با نسبت معرفی کنی و حدس اشتباه را اصلاح کنی.",
@@ -41,7 +41,6 @@
       "Please."
     ],
     "specificIndependentExpressions": [
-      "Is this your brother?",
       "Please."
     ],
     "minDownstreamActivities": 2,
@@ -1789,6 +1788,79 @@
           "phase": "context"
         },
         {
+          "id": "family-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "practiceRevision": 1,
+          "title": "از روی تصویر: این‌ها چه کسانی‌اند؟",
+          "description": "این عکس چهار نفر از یک خانواده است؛ اسم‌ها در پایین تصویر دیده می‌شوند. به شخص اشاره‌شده در سؤال دقت کن و نسبت، ضمیر و نام را بساز.",
+          "image": "./assets/scene-a1-2.svg",
+          "imageAlt": "چهار عضو خانواده به‌ترتیب نورا، دیوید، آنا و سام با اسم‌های واضح.",
+          "caption": "تصویر ۲ · نورا، دیوید، آنا و سام",
+          "tasks": [
+            {
+              "task": "به نورا نگاه کن؛ فرض کن مادر توست. او را به یک دوست معرفی کن.",
+              "hint": "This is my mother. Her name is Nora.",
+              "example": "This is my mother. Her name is Nora.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my mother"
+                    ],
+                    "feedback": "نورا را با mother معرفی کن."
+                  },
+                  {
+                    "any": [
+                      "her name is nora"
+                    ],
+                    "feedback": "اسم زن را با Her name is بیان کن."
+                  }
+                ],
+                "success": "با کمک تصویر، جمله را خودت درست ساختی."
+              }
+            },
+            {
+              "task": "دیوید در این تصویر پدر توست. او را همراه با اسمش معرفی کن.",
+              "hint": "This is my father. His name is David.",
+              "example": "This is my father. His name is David.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my father"
+                    ],
+                    "feedback": "از father استفاده کن."
+                  },
+                  {
+                    "any": [
+                      "his name is david"
+                    ],
+                    "feedback": "اسم پدر را با his بگو."
+                  }
+                ],
+                "success": "با کمک تصویر، جمله را خودت درست ساختی."
+              }
+            },
+            {
+              "task": "دوستت به سام اشاره می‌کند. بپرس آیا او برادر توست.",
+              "hint": "Is this your brother?",
+              "example": "Is this your brother?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "is this your brother"
+                    ],
+                    "feedback": "پرسش دربارهٔ برادر را بساز."
+                  }
+                ],
+                "success": "با کمک تصویر، جمله را خودت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
           "id": "family-guided-talk",
           "type": "guided-dialogue",
           "practiceRevision": 2,
@@ -1987,94 +2059,85 @@
         {
           "id": "family-write",
           "type": "free-write",
-          "title": "یک عکس خانوادگی را گفت‌وگویی معرفی کن",
-          "prompt": "دو نفر یک عکس خانوادگی را نگاه می‌کنند. گفت‌وگوی چندنوبتی بنویس: با Hello شروع کن؛ یک نفر بپرسد Who's this? و طرف مقابل خواهرش را معرفی کند. سپس بپرس Is this your brother?؛ پاسخ مثبت یا منفی با یک توضیح بده. نام یک مرد را با his و نام یک زن را با her بگو. بعد یک نفر نقش خودش را بگوید؛ مثلاً I'm a father یا I'm her daughter. در پایان خداحافظی کن. در یکی از نوبت‌ها با Please یک درخواست مؤدبانه هم اضافه کن.",
-          "placeholder": "Emma: Hello! Who's this?\nYou: This is my sister, Anna.\nEmma: ...",
-          "hint": "از نام‌های Anna، Sam، Nora یا David استفاده کن؛ گفت‌وگو باید رفت‌وبرگشت داشته باشد، نه فقط یک فهرست از نسبت‌ها.",
+          "title": "عکس واقعی خانواده‌ات را باز کن و معرفی کن",
+          "prompt": "یک عکس خانوادگی از گوشی یا آلبوم باز کن و جلوی خودت بگذار؛ لازم نیست عکست را اینجا آپلود کنی. اگر عکس نداری، سه نفر از خانواده‌ات را در ذهن بیاور. با Hello شروع کن؛ دربارهٔ حداقل سه نفر بگو چه نسبتی با تو دارند، اسم یکی از مردها را با his و یکی از زن‌ها را با her بگو، یک سؤال Who's this? و یک سؤال Is this your ...? بساز، با Yes یا No جواب بده و یک درخواست مودبانه با Please اضافه کن. در پایان Bye بگو. نام‌ها و نسبت‌ها را از خانوادهٔ خودت انتخاب کن.",
+          "placeholder": "You: Hello! Please, look at this photo.\nFriend: Who's this?\nYou: This is my mother. Her name is ...\n...",
+          "hint": "عکس روی گوشی خودت می‌ماند؛ فقط جمله‌هایی را که از روی آن ساخته‌ای اینجا بنویس. اگر کسی در عکس نیست، یک نفر دیگر از خانواده‌ات را توصیف کن.",
           "kind": "free-text",
-          "minWords": 24,
+          "minWords": 20,
           "assessment": {
-            "revision": 2,
+            "revision": 3,
             "required": [
               {
                 "any": [
                   "hello",
                   "hi"
                 ],
-                "feedback": "گفت‌وگو را با یک سلام شروع کن."
+                "feedback": "گفت‌وگو را با Hello یا Hi شروع کن."
+              },
+              {
+                "any": [
+                  "please"
+                ],
+                "feedback": "یک درخواست مؤدبانه با Please بگو."
               },
               {
                 "any": [
                   "who's this",
                   "who is this"
                 ],
-                "feedback": "سؤال Who's this? را در مکالمه بیاور."
+                "feedback": "سؤال Who's this? را اضافه کن."
               },
               {
                 "any": [
-                  "this is my sister"
+                  "this is my mother",
+                  "this is my father",
+                  "this is my brother",
+                  "this is my sister",
+                  "this is my son",
+                  "this is my daughter"
                 ],
-                "feedback": "حداقل یک معرفی خواهر با This is my sister. بنویس."
+                "feedback": "حداقل یک نفر را با نسبت واقعی معرفی کن."
               },
               {
                 "any": [
-                  "is this your brother"
+                  "is this your brother",
+                  "is this your sister",
+                  "is this your mother",
+                  "is this your father",
+                  "is this your son",
+                  "is this your daughter"
                 ],
-                "feedback": "باید سؤال Is this your brother? هم در مکالمه باشد."
+                "feedback": "سؤالی با Is this your ...? دربارهٔ یکی از اعضای خانواده بساز."
               },
               {
                 "any": [
                   "yes",
                   "no"
                 ],
-                "feedback": "به سؤال دربارهٔ برادر با Yes یا No پاسخ بده."
-              },
-              {
-                "any": [
-                  "brother"
-                ],
-                "feedback": "به نسبت brother هم واکنش نشان بده."
+                "feedback": "به سؤال با Yes یا No جواب بده."
               },
               {
                 "any": [
                   "his name is"
                 ],
-                "feedback": "نام یکی از مردها را با His name is ... بگو."
+                "feedback": "برای نام یک مرد از His name is استفاده کن."
               },
               {
                 "any": [
                   "her name is"
                 ],
-                "feedback": "نام یکی از زن‌ها را با Her name is ... بگو."
-              },
-              {
-                "any": [
-                  "i'm a father",
-                  "i am a father",
-                  "i'm a mother",
-                  "i am a mother",
-                  "i'm his son",
-                  "i am his son",
-                  "i'm her daughter",
-                  "i am her daughter"
-                ],
-                "feedback": "یکی از شخصیت‌ها نقش خودش را بیان کند؛ مثلاً I'm a mother یا I'm her son."
+                "feedback": "برای نام یک زن از Her name is استفاده کن."
               },
               {
                 "any": [
                   "bye",
                   "goodbye"
                 ],
-                "feedback": "با خداحافظی، مکالمه را تمام کن."
-              },
-              {
-                "any": [
-                  "please"
-                ],
-                "feedback": "در یک نوبت، درخواست مؤدبانه‌ای با Please اضافه کن."
+                "feedback": "با خداحافظی تمام کن."
               }
             ],
-            "success": "گفت‌وگویی ساختی که شامل سؤال هویت، معرفی نسبت، تأیید یا رد حدس و نام‌گفتن با his و her است."
+            "success": "از یک موقعیت واقعی یا شخصی برای ساخت جمله استفاده کردی؛ حالا می‌توانی اشیا، نام‌ها و رابطه‌ها را عوض کنی."
           },
           "phase": "independent"
         }

@@ -19,7 +19,7 @@ const MODULE_LABELS = {
   'exchange-lab': 'سؤال و جواب',
   'sentence-transform': 'تبدیل جمله',
   'dialogue-transfer': 'مکالمه در موقعیت تازه',
-  'family-tree': 'درخت خانواده', 'family-lab': 'خانوادهٔ تصویری', 'spatial-lab': 'بازی موقعیت توپ', 'meaning-cluster': 'یک مفهوم، چند بیان',
+  'family-tree': 'درخت خانواده', 'family-lab': 'خانوادهٔ تصویری', 'spatial-lab': 'بازی موقعیت توپ', 'picture-description': 'توصیف تصویر', 'meaning-cluster': 'یک مفهوم، چند بیان',
   'agreement-lab': 'جمله‌ساز وابسته', 'sentence-composer': 'جمله‌ساز تعاملی', 'composer-view': 'کشف و تغییر جمله'
 };
 function wrapper(body, activity, idx, e, extra = '') {
@@ -186,34 +186,47 @@ function familyLab(a, c) {
 }
 
 function spatialBallSVG(layer, position) {
-  return `<g class="spatial-ball spatial-ball-${layer}" data-spatial-ball-layer="${layer}" style="transform:translate(${position.ball.x}px,${position.ball.y}px);opacity:${position.ball.layer === layer ? 1 : 0}"><ellipse cy="23" rx="23" ry="7" fill="#344b43" opacity=".15"/><circle r="25" fill="#f4773c" stroke="#bb4525" stroke-width="3"/><ellipse cx="-8" cy="-11" rx="8" ry="5" fill="#ffc09c" opacity=".75"/></g>`;
+  return `<g class="spatial-ball spatial-ball-${layer}" data-spatial-ball-layer="${layer}" style="transform:translate(${position.ball.x}px,${position.ball.y}px);opacity:${position.ball.layer === layer ? 1 : 0}"><ellipse cy="37" rx="30" ry="8" fill="#344b43" opacity=".18"/><circle r="36" fill="#f4773c" stroke="#a83f22" stroke-width="4"/><ellipse cx="-11" cy="-13" rx="12" ry="8" fill="#ffd0aa" opacity=".85"/><path d="M12 19Q24 10 22-4" stroke="#e45a2e" stroke-width="4" opacity=".55" fill="none"/></g>`;
 }
 function spatialLab(a, c) {
   const key = `${c.lessonId}:${a.id}`;
   const position = selectedSpatialPosition(a, c.progress.spatialChoices?.[key]);
   if (!position) throw new Error('Spatial activity needs positions');
   const lift = position.boxLift || 0;
+  const sideways = position.id === 'on';
+  const inside = position.ball.layer === 'inside';
   const options = a.positions.map((entry) => `<button type="button" class="spatial-option ${entry.id === position.id ? 'active' : ''}" data-spatial-key="${c.e(key)}" data-spatial-position="${c.e(entry.id)}" aria-pressed="${entry.id === position.id}"><span lang="en">${c.e(entry.label)}</span><small>${c.e(entry.fa)}</small></button>`).join('');
-  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="spatial-lab-stage" data-spatial-stage="${c.e(key)}" data-spatial-current="${c.e(position.id)}"><svg class="spatial-svg" viewBox="0 0 520 400" role="img" aria-label="یک توپ نارنجی و جعبه کارتنی درباز؛ موقعیت توپ با دکمه‌ها تغییر می‌کند">
-    <defs><linearGradient id="cardboard-back" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e8be85"/><stop offset="1" stop-color="#bd8456"/></linearGradient><linearGradient id="cardboard-front" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d6a36d"/><stop offset="1" stop-color="#a87951"/></linearGradient></defs>
-    <rect width="520" height="400" rx="23" fill="#f4f8f1"/><path d="M0 345Q260 331 520 346V400H0Z" fill="#dce8d6"/><ellipse cx="245" cy="358" rx="133" ry="15" fill="#b6c3b4" opacity=".45"/>
-    <g class="spatial-box-part" data-box-part="back" style="transform:translateY(-${lift}px)">
-      <path d="M152 162L238 112L369 144L294 190Z" fill="#8f5c38" stroke="#9e734e" stroke-width="3"/>
-      <path d="M238 112L369 144L387 130L255 97Z" fill="#dfb281" stroke="#a27043" stroke-width="3"/>
-      <path d="M152 162L238 112L217 96L130 148Z" fill="#e9c28f" stroke="#a27043" stroke-width="3"/>
-      <path d="M152 162L294 190L369 144L357 246L294 288L152 257Z" fill="#92613c" stroke="#93643d" stroke-width="3"/>
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="spatial-lab-stage" data-spatial-stage="${c.e(key)}" data-spatial-current="${c.e(position.id)}"><svg class="spatial-svg" viewBox="0 0 520 410" role="img" aria-label="جعبهٔ سه‌بعدی و توپ بزرگ؛ برای روی جعبه، جعبه به پهلو خوابانده می‌شود؛ برای داخل، دیوارهٔ جلو نیمه‌شفاف می‌شود">
+    <defs><linearGradient id="spatial-board" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f6eddc"/><stop offset="1" stop-color="#ebd3af"/></linearGradient><linearGradient id="spatial-front" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#deb17b"/><stop offset="1" stop-color="#bf8956"/></linearGradient></defs>
+    <rect width="520" height="410" rx="23" fill="#f4f8f1"/><path d="M0 349Q260 337 520 348V410H0Z" fill="#e0ebdb"/><ellipse cx="258" cy="362" rx="146" ry="15" fill="#b6c3b4" opacity=".38"/>
+    ${spatialBallSVG('behind', position)}
+    <g class="spatial-box-mode" data-spatial-orientation="open" style="opacity:${sideways ? 0 : 1}">
+      <g class="spatial-box-part" data-box-part="back" style="transform:translateY(-${lift}px)">
+        <path d="M152 164L236 110L369 144L294 195Z" fill="#96603d" stroke="#986d49" stroke-width="3"/>
+        <path d="M236 110L369 144L390 127L250 94Z" fill="#e4b782" stroke="#986d49" stroke-width="3"/>
+        <path d="M152 164L236 110L216 94L129 145Z" fill="#edc695" stroke="#986d49" stroke-width="3"/>
+        <path d="M152 164L294 195L369 144L369 271L294 314L152 275Z" fill="#94613d" stroke="#93643d" stroke-width="3"/>
+        <path d="M176 187L292 214L343 180L343 260L292 285L176 254Z" fill="#b78251" opacity=".9"/>
+      </g>
+      ${spatialBallSVG('inside', position)}
+      <g class="spatial-box-part" data-box-part="front" style="transform:translateY(-${lift}px)">
+        <g data-spatial-cutaway style="opacity:${inside ? .38 : 1}">
+          <path d="M152 164L294 195L294 314L152 275Z" fill="url(#spatial-front)" stroke="#956a44" stroke-width="3"/>
+          <path d="M294 195L369 144L369 271L294 314Z" fill="#c08c59" stroke="#91643d" stroke-width="3"/>
+        </g>
+        <path d="M152 164L294 195L267 235L108 195Z" fill="#efc58e" stroke="#a47247" stroke-width="3"/>
+        <path d="M294 195L369 144L417 174L336 236Z" fill="#dfb17c" stroke="#a47247" stroke-width="3"/>
+      </g>
     </g>
-    ${spatialBallSVG('rear', position)}
-    <g class="spatial-box-part" data-box-part="front" style="transform:translateY(-${lift}px)">
-      <path d="M152 162L294 190L294 311L152 273Z" fill="url(#cardboard-front)" stroke="#9a6c44" stroke-width="3"/>
-      <path d="M294 190L369 144L369 269L294 311Z" fill="#be8d5f" stroke="#91643d" stroke-width="3"/>
-      <path d="M152 162L294 190L266 229L109 195Z" fill="#eac18a" stroke="#a47247" stroke-width="3"/>
-      <path d="M294 190L369 144L412 177L335 230Z" fill="#dcb082" stroke="#a47247" stroke-width="3"/>
+    <g class="spatial-box-mode" data-spatial-orientation="side" style="opacity:${sideways ? 1 : 0}">
+      <path d="M132 208L224 151L412 183L322 239Z" fill="#edc48d" stroke="#9a6a43" stroke-width="4"/>
+      <path d="M132 208L322 239L322 320L132 286Z" fill="url(#spatial-front)" stroke="#9a6a43" stroke-width="4"/>
+      <path d="M322 239L412 183L412 268L322 320Z" fill="#bd8752" stroke="#95623c" stroke-width="4"/>
+      <path d="M170 216L283 235" stroke="#fff0d1" stroke-width="5" opacity=".65"/>
     </g>
     ${spatialBallSVG('front', position)}
   </svg><div class="spatial-caption" aria-live="polite"><strong class="spatial-English" lang="en" dir="ltr">${c.e(position.en)}</strong><p class="spatial-Persian" dir="rtl">${c.e(position.faSentence)}</p>${soundButton(position.en,c.e,c.i)}</div><div class="spatial-controls" role="group" aria-label="موقعیت توپ نسبت به جعبه">${options}</div></div>`, a, c.index, c.e, 'module-spatial-lab');
 }
-
 function agreementLab(a, c) {
   const key = `${c.lessonId}:${a.id}`;
   const saved = c.progress.agreementChoices?.[key] || {};
@@ -383,6 +396,10 @@ function roleplay(a, c) {
   const history = answers.map((answer, i) => `<div class="role-turn"><div class="role-speaker">${c.e(a.turns[i].speaker)}: ${c.en(a.turns[i].prompt)}</div><div class="role-user">${c.en(a.turns[i].choices[answer])}</div></div>`).join('');
   return wrapper(`<p class="module-description">${c.e(a.description)}</p><div class="roleplay-progress">${a.turns.map((_, i) => `<span class="${i < index ? 'filled' : ''}"></span>`).join('')}</div><div class="roleplay-history">${history}</div>${turn ? `<div class="role-speaker"><strong>${c.e(turn.speaker)}</strong><div>${c.en(turn.prompt)} ${soundButton(turn.prompt, c.e, c.i)}</div></div><div class="choices">${turn.choices.map((choice, i) => `<button class="choice" data-roleplay="${c.e(key)}" data-role-choice="${i}">${c.en(choice)}</button>`).join('')}</div>` : `<div class="module-result success">✓ گفت‌وگو را تا آخر پیش بردی!<p>${c.en(a.turns.at(-1).reply)}</p></div>`}`, a, c.index, c.e, 'module-roleplay');
 }
+function pictureDescription(a, c) {
+  const image = `<figure class="picture-description-scene"><img src="${c.e(a.image)}" alt="${c.e(a.imageAlt)}" loading="lazy"/><figcaption>${c.e(a.caption || '')}</figcaption></figure>`;
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p>${image}<p class="picture-description-note">اول تصویر را نگاه کن؛ بعد هر جمله را خودت بساز. جواب آماده روی تصویر نوشته نشده است.</p>${practiceSequence(a, c)}`, a, c.index, c.e, 'module-picture-description');
+}
 function freeWrite(a, c) {
   const stored = c.progress.written[c.lessonId] || '';
   const key = `${c.lessonId}:${a.id}`;
@@ -395,7 +412,7 @@ const renderers = {
   'quiz-set': quizSet, dialogue, roleplay, 'free-write': freeWrite,
   'phrase-composer': phraseComposer, 'pattern-lab': patternLab, 'sentence-lab': sentenceLab,
   'guided-dialogue': guidedDialogue, 'response-practice': responsePractice,
-  'exchange-lab': exchangeLab,
+  'exchange-lab': exchangeLab, 'picture-description': pictureDescription,
   'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer,
   'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer
 };

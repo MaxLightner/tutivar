@@ -35,8 +35,8 @@ export function validateVisualActivity(activity) {
       seen.add(position.id);
       if (!position.label || !position.fa || !position.en || !position.ball) errors.push('missing spatial position details');
       if (!Number.isFinite(position.ball?.x) || !Number.isFinite(position.ball?.y)) errors.push('invalid spatial coordinates');
-      if (!['front','rear'].includes(position.ball?.layer)) errors.push('unknown spatial depth');
-      if (![undefined,0,28].includes(position.boxLift)) errors.push('invalid box lift');
+      if (!['front','inside','behind'].includes(position.ball?.layer)) errors.push('unknown spatial depth');
+      if (position.boxLift !== undefined && (!Number.isFinite(position.boxLift) || position.boxLift < 0 || position.boxLift > 60)) errors.push('invalid box lift');
     }
   }
   if (activity.type === 'family-lab') {

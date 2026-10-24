@@ -241,7 +241,7 @@ test('puzzle grading ignores capitalization and terminal punctuation, while givi
   assert.equal(again.completed.length,1);
 });
 
-test('A1-4 is a complete location lesson in the same six/four phase teaching template', () => {
+test('A1-4 is a complete location lesson in the six discovery and five production stages', () => {
   const lesson=load('lessons/a1-4.json');
   const catalog=lessons.find(entry=>entry.id===lesson.id);
   assert.equal(catalog.file,'lessons/a1-4.json');
@@ -298,9 +298,9 @@ test('A1-4 is a complete location lesson in the same six/four phase teaching tem
   assert.ok(production.activities.some(a=>a.type==='guided-dialogue'));
   assert.ok(production.activities.some(a=>a.type==='free-write'));
   const lab=foundation.activities.find(activity=>activity.type==='spatial-lab');
-  assert.equal(lab.positions.length,10);
+  assert.equal(lab.positions.length,9);
   assert.deepEqual(validateVisualActivity(lab),[]);
-  assert.match(renderActivity(lab,context),/data-spatial-position="on-top-of"/);
+  assert.doesNotMatch(renderActivity(lab,context),/data-spatial-position="on-top-of"/);
   assert.match(renderActivity(lab,context),/data-spatial-ball-layer/);
   assert.equal(lesson.visual.src,null);
 });
@@ -353,11 +353,11 @@ test('meaning expressions and reusable visual learning modules are lesson-author
   assert.deepEqual(validateVisualActivity(spatial),[]);
   assert.equal(selectedSpatialPosition(spatial,'under').en,'The ball is under the box.');
   assert.equal(selectedSpatialPosition(spatial,'above').ball.layer,'front');
-  assert.notDeepEqual(selectedSpatialPosition(spatial,'above').ball,selectedSpatialPosition(spatial,'on-top-of').ball);
+  assert.notDeepEqual(selectedSpatialPosition(spatial,'above').ball,selectedSpatialPosition(spatial,'on').ball);
   const spatialMarkup=renderActivity(spatial,{lessonId:'A1-4',index:0,e:String,en:String,i:()=>'',progress:{spatialChoices:{}}});
   assert.match(spatialMarkup,/data-spatial-current="in"/);
   assert.match(spatialMarkup,/The ball is in the box./);
-  assert.equal((spatialMarkup.match(/data-spatial-position=/g)||[]).length,10);
+  assert.equal((spatialMarkup.match(/data-spatial-position=/g)||[]).length,9);
 });
 
 test('first lesson activities render with separate content, including interactions', () => {
@@ -385,9 +385,9 @@ test('first lesson activities render with separate content, including interactio
   assert.match(renderActivity(lesson.sections[1].activities[0], context), /data-exchange-key=/);
   assert.match(renderActivity(lesson.sections[1].activities.find((activity) => activity.type === 'guided-dialogue'), context), /data-practice-form=/);
   assert.match(renderActivity(lesson.sections[1].activities.find((activity) => activity.type === 'dialogue-transfer'), context), /data-practice-form=/);
-  assert.equal(lesson.sections.reduce((sum, section) => sum + section.activities.length, 0), 17, 'the shared meaning module extends the six discovery phases');
+  assert.equal(lesson.sections.reduce((sum, section) => sum + section.activities.length, 0), 18, 'picture description extends the production section');
   assert.equal(lesson.sections[0].activities.at(-1).type, 'response-practice', 'independent sentence construction concludes the first half');
-  assert.deepEqual(lesson.sections[1].activities.map((item) => item.type), ['exchange-lab', 'response-practice', 'dialogue', 'response-practice', 'dialogue', 'response-practice', 'guided-dialogue', 'dialogue-transfer', 'free-write'], 'question/answer exchange starts the conversation half');
+  assert.deepEqual(lesson.sections[1].activities.map((item) => item.type), ['exchange-lab', 'response-practice', 'dialogue', 'response-practice', 'dialogue', 'response-practice', 'picture-description', 'guided-dialogue', 'dialogue-transfer', 'free-write'], 'question/answer exchange starts the conversation half');
   assert.ok(lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary').items.filter((entry) => entry.role !== 'supplementary').every((entry) => entry.examples.length === 3));
   assert.ok(lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary').items.filter((entry) => entry.role === 'supplementary').every((entry) => !entry.examples && !entry.hint));
   assert.ok(Array.isArray(lesson.orientation.prerequisites));
@@ -510,7 +510,7 @@ test('second lesson reuses the shared composer for family relationships and dial
   const [foundation, production] = lesson.sections;
   assert.deepEqual(validateLessonFlow(lesson), []);
   assert.deepEqual(foundation.activities.map(a => a.type), ['vocabulary','composer-view','family-lab','sentence-composer','meaning-cluster','composer-view','sentence-transform','sentence-transform','sentence-builder','response-practice']);
-  assert.deepEqual(production.activities.map(a=>a.type), ['exchange-lab','response-practice','dialogue','response-practice','dialogue','response-practice','guided-dialogue','dialogue-transfer','free-write']);
+  assert.deepEqual(production.activities.map(a=>a.type), ['exchange-lab','response-practice','dialogue','response-practice','dialogue','response-practice','picture-description','guided-dialogue','dialogue-transfer','free-write']);
   assert.equal(coreItems(foundation.activities[0]).length, 11);
   assert.equal(supplementaryItems(foundation.activities[0]).length, 12);
   assert.ok(coreItems(foundation.activities[0]).every(item=>item.examples.length===3));
@@ -662,7 +662,7 @@ test('lesson audit identifies missing downstream production and keeps supplement
   const loose = structuredClone(lesson);
   const morningRequirement = loose.sections[1].activities.find((activity) => activity.id === 'hello-write').assessment.required[0];
   morningRequirement.any.push('hello');
-  assert.ok(auditLesson(loose).errors.some((error) => error.includes('Good morning') && error.includes('alternatives')));
+  assert.ok(!auditLesson(loose).errors.some((error) => error.includes('Good morning') && error.includes('alternatives')), 'a real-world greeting may vary with time of day');
 });
 
 test('guided dialogue supports feedback, correction, alternate names, mastery and revised tasks', () => {

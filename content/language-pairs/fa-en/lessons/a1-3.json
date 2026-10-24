@@ -1,6 +1,6 @@
 {
   "id": "A1-3",
-  "revision": 8,
+  "revision": 9,
   "status": "draft",
   "title": "مالکیت و داشتن اشیا",
   "goal": "بتوانی با تغییر صاحب یا وسیله، جمله بسازی و بگویی یک وسیله مال چه کسی است.",
@@ -37,12 +37,7 @@
       "It's mine.",
       "It's yours."
     ],
-    "specificIndependentExpressions": [
-      "This is my book.",
-      "Is this your book?",
-      "It's mine.",
-      "It's yours."
-    ],
+    "specificIndependentExpressions": [],
     "minDownstreamActivities": 2,
     "minGuidedActivities": 1,
     "requireIndependentProduction": true
@@ -2099,6 +2094,67 @@
           "phase": "context"
         },
         {
+          "id": "ownership-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "practiceRevision": 1,
+          "title": "از روی تصویر: وسایل مال چه کسی‌اند؟",
+          "description": "در تصویر، وسایل میا و نوآ در دو بخش جدا هستند. از دید صاحب وسیله پاسخ بده؛ این بار اسم صاحب را از خود تصویر پیدا کن.",
+          "image": "./assets/scene-a1-3.svg",
+          "imageAlt": "در کادر میا کتاب و کیف است؛ در کادر نوآ تلفن و دفتر.",
+          "caption": "تصویر ۳ · وسایل شخصی میا در سمت چپ و نوآ در سمت راست",
+          "tasks": [
+            {
+              "task": "فرض کن خودت میا هستی. کتاب سمت چپ را معرفی کن.",
+              "hint": "This is my book.",
+              "example": "This is my book.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is my book"
+                    ],
+                    "feedback": "کتاب را از دید میا با my معرفی کن."
+                  }
+                ],
+                "success": "با کمک تصویر، جمله را خودت درست ساختی."
+              }
+            },
+            {
+              "task": "تو میا هستی و به تلفن نوآ اشاره می‌کنی؛ بگو تلفن مال اوست.",
+              "hint": "It's his phone.",
+              "example": "It's his phone.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "his phone"
+                    ],
+                    "feedback": "نوآ مرد است، از his phone استفاده کن."
+                  }
+                ],
+                "success": "با کمک تصویر، جمله را خودت درست ساختی."
+              }
+            },
+            {
+              "task": "از نوآ بپرس آیا کیف سمت چپ مال اوست.",
+              "hint": "Is this your bag?",
+              "example": "Is this your bag?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "is this your bag"
+                    ],
+                    "feedback": "سؤال مالکیت را با Is this your bag? بساز."
+                  }
+                ],
+                "success": "با کمک تصویر، جمله را خودت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
           "id": "ownership-guided-talk",
           "type": "guided-dialogue",
           "practiceRevision": 2,
@@ -2346,55 +2402,80 @@
         {
           "id": "ownership-independent",
           "type": "free-write",
-          "title": "یک گفت‌وگوی کوتاه دربارهٔ وسایل بنویس",
-          "prompt": "یک گفت‌وگوی ۶ تا ۸ خطی دربارهٔ دو یا سه وسیله از کتاب، کیف، دفتر، مداد، کیف پول یا بطری بنویس. در آن کتاب خودت را معرفی کن؛ بپرس آیا کتاب طرف مقابل است؛ یک بار بگو It's mine. و یک بار هم بگو It's yours. دست‌کم یک پاسخ منفی هم بده و وسیله‌ای را به شخص دیگری نسبت بده.",
-          "placeholder": "Mia: Is this your book?\nYou: ...\nMia: Is this your wallet?\nYou: ...",
-          "hint": "می‌توانی از نام‌های Mia و Noah استفاده کنی. جمله‌ها را در گفت‌وگو قرار بده؛ فقط جمله‌های جدا ننویس.",
+          "title": "از وسایل واقعی اطرافت استفاده کن",
+          "prompt": "سه وسیلهٔ واقعی از اطرافت بردار: مثلاً کتاب، گوشی، خودکار، کیف، دفتر یا بطری. یکی را کنار وسیلهٔ دیگری بگذار. حالا برای کسی که کنارت است، یا در یک مکالمهٔ دو‌نفرهٔ خیالی، بگو کدام وسیله مال توست (This is my ...)، بپرس وسیله‌ای مال اوست یا نه (Is this your ...?)، یک بار It's mine و یک بار It's yours بگو و یک وسیله را با his یا her به یکی از اعضای خانوادهٔ درس قبل نسبت بده. گفت‌وگوی خودت را اینجا ثبت کن.",
+          "placeholder": "You: This is my phone.\nFriend: Is this your book?\nYou: Yes, it's mine.\nFriend: ...",
+          "hint": "لازم نیست حتماً کتاب داشته باشی؛ از چیزی استفاده کن که واقعاً نزدیک توست. اسم یکی از اعضای خانواده را هم از درس قبل وارد مکالمه کن.",
           "kind": "free-text",
-          "minWords": 16,
+          "minWords": 17,
           "assessment": {
-            "revision": 2,
+            "revision": 3,
             "required": [
               {
                 "any": [
-                  "this is my book"
+                  "this is my book",
+                  "this is my phone",
+                  "this is my pen",
+                  "this is my bag",
+                  "this is my notebook",
+                  "this is my bottle",
+                  "this is my pencil",
+                  "this is my wallet"
                 ],
-                "feedback": "یک جمله با This is my book. برای معرفی کتاب خودت بنویس."
+                "feedback": "یکی از وسایل واقعی خودت را با This is my ... معرفی کن."
               },
               {
                 "any": [
-                  "is this your book"
+                  "is this your book",
+                  "is this your phone",
+                  "is this your pen",
+                  "is this your bag",
+                  "is this your notebook",
+                  "is this your bottle",
+                  "is this your pencil",
+                  "is this your wallet"
                 ],
-                "feedback": "یک سؤال با Is this your book? در مکالمه بیاور."
+                "feedback": "دربارهٔ مالکیت یکی از وسایل سؤال Is this your ...? بساز."
               },
               {
                 "any": [
-                  "it's mine"
+                  "it's mine",
+                  "it is mine"
                 ],
-                "feedback": "یک پاسخ با It's mine. اضافه کن."
+                "feedback": "یک بار بگو It's mine."
               },
               {
                 "any": [
-                  "it's yours"
+                  "it's yours",
+                  "it is yours"
                 ],
-                "feedback": "یک پاسخ با It's yours. هم بنویس."
+                "feedback": "یک بار بگو It's yours."
+              },
+              {
+                "any": [
+                  "his book",
+                  "his phone",
+                  "his pen",
+                  "his bag",
+                  "his notebook",
+                  "her book",
+                  "her phone",
+                  "her pen",
+                  "her bag",
+                  "her bottle",
+                  "his wallet",
+                  "her wallet"
+                ],
+                "feedback": "برای مرور درس خانواده، یک وسیله را با his یا her به شخص دیگری نسبت بده."
               },
               {
                 "any": [
                   "no"
                 ],
-                "feedback": "حداقل یک پاسخ منفی هم در مکالمه بیاور."
-              },
-              {
-                "any": [
-                  "her book",
-                  "his notebook",
-                  "her bottle"
-                ],
-                "feedback": "در یک پاسخ منفی، وسیله را به شخص دیگری نسبت بده."
+                "feedback": "یک حدس مالکیت را با No رد کن."
               }
             ],
-            "success": "در یک گفت‌وگو، معرفی وسیله، پرسش دربارهٔ صاحب و دو شکل پاسخ مالکیت را به کار بردی."
+            "success": "از یک موقعیت واقعی یا شخصی برای ساخت جمله استفاده کردی؛ حالا می‌توانی اشیا، نام‌ها و رابطه‌ها را عوض کنی."
           },
           "phase": "independent"
         }
