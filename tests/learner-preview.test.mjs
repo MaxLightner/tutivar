@@ -359,6 +359,9 @@ test('A1-3 uses one JSON-driven sentence composer for owners, objects and gramma
   assert.ok(supplementaryItems(vocabulary).every((entry) => !entry.examples && !entry.hint), 'supplementary vocabulary remains list-only');
   assert.ok(vocabulary.items.filter((entry) => entry.role !== 'supplementary').every((entry) => entry.examples?.length === 3));
   assert.equal(lesson.visual.src, './a1-3-personal-belongings.svg');
+  const serviceWorker = readFileSync(join(projectRoot, 'apps/learner-web/sw.js'), 'utf8');
+  assert.ok(serviceWorker.includes('tutivar-ui-v4-network-first'));
+  assert.ok(serviceWorker.includes("'./sentence-composer.js'"), 'the shared composer runtime is precached for offline use');
   assert.match(readFileSync(join(projectRoot, 'apps/learner-web/a1-3-personal-belongings.svg'), 'utf8'), /<svg/);
   const optionalHtml = renderActivity(vocabulary, { lessonId: lesson.id, index: 0, e: String, en: String, i: () => '', progress: { wordProgress: {} } });
   assert.equal((optionalHtml.match(/class="supplementary-item"/g) || []).length, 12);
