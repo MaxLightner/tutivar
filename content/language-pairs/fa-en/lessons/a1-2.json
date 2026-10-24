@@ -1014,9 +1014,9 @@
           "id": "family-puzzle",
           "type": "sentence-builder",
           "title": "از یک بانک کلمه، چند جملهٔ خانوادگی بساز",
-          "description": "کلمه‌های چهار جمله دربارهٔ خانواده مخلوط‌اند. از میان آن‌ها جمله‌های خبری و پرسشی درست را پیدا کن؛ بعد با واژه‌های باقی‌مانده جملهٔ تازه بساز.",
+          "description": "کلمات چند جمله در یک بانک قاطی هستند. هر ترکیب دستوری درست را بساز و ثبت کن؛ سپس جملهٔ متفاوتی بساز. بزرگی حروف و نقطه باعث غلط‌شدن پاسخ نمی‌شوند.",
           "phase": "puzzle",
-          "revision": 2,
+          "revision": 3,
           "sentences": [
             {
               "id": "sister",
@@ -1054,6 +1054,15 @@
                 "father?"
               ]
             }
+          ],
+          "reuseBank": true,
+          "goalCount": 4,
+          "sourceActivityId": "family-composer",
+          "patternIds": [
+            "statement",
+            "negative",
+            "question",
+            "role"
           ]
         },
         {
