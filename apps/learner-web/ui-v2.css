@@ -581,3 +581,16 @@ button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3p
   .module-dialogue-timeline .dialogue-window { padding: 8px; }
   .family-tree-picker { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }
+
+/* Pattern discovery: one variable at a time, with the observation kept collapsed. */
+.module-pattern-lab .pattern-lab-controls { gap: 10px; }
+.module-pattern-lab .pattern-lab-result { width: 100%; }
+.pattern-focus { background: #ffe3a0; color: inherit; border-radius: 5px; padding: 0 2px; }
+.pattern-observation { margin-top: 9px; color: #55715d; font-size: 13px; }
+.pattern-observation summary { cursor: pointer; width: fit-content; font-weight: 800; color: #477258; padding: 4px 0; }
+.pattern-observation p { margin: 5px 0 0; font-size: 14px; line-height: 1.8; }
+@media (max-width: 680px) {
+  .module-pattern-lab .phrase-slot { min-width: 0; width: 100%; }
+  .module-pattern-lab .phrase-outcome { padding: 12px; gap: 8px; font-size: 19px; }
+  .module-pattern-lab .phrase-outcome .en { font-size: 19px; }
+}

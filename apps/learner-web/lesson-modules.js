@@ -9,7 +9,7 @@ const MODULE_LABELS = {
   intro: 'موقعیت', vocabulary: 'واژه‌ها', pattern: 'ساختار', match: 'تطبیق',
   'sentence-builder': 'جمله‌سازی', 'quiz-set': 'آزمون', dialogue: 'گفت‌وگو',
   roleplay: 'مکالمه', 'free-write': 'تولید مستقل',
-  'phrase-composer': 'ترکیب واژه‌ها', 'sentence-lab': 'جمله‌ساز پویا',
+  'phrase-composer': 'ترکیب واژه‌ها', 'pattern-lab': 'کشف الگو', 'sentence-lab': 'جمله‌ساز پویا',
   'guided-dialogue': 'تمرین مکالمه',
   'response-practice': 'ساختن پاسخ',
   'exchange-lab': 'سؤال و جواب',
@@ -79,6 +79,26 @@ function phraseComposer(a, c) {
   const outcome = a.outcomes.find((entry) => entry.selection.every((choice, index) => choice === (selected[index] || 0)));
   return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="phrase-composer">${slots}</div>${outcome ? `<div class="phrase-outcome">${c.en(outcome.en)}${soundButton(outcome.en, c.e, c.i)}<span dir="rtl">${c.e(outcome.fa)}</span></div>` : ''}`, a, c.index, c.e, 'module-phrase');
 }
+
+function patternLab(a, c) {
+  const key = `${c.lessonId}:${a.id}`;
+  const saved = c.progress.phraseChoices?.[key] || [];
+  const selected = a.slots.map((slot, index) => Math.max(0, Math.min(slot.options.length - 1, Number(saved[index]) || 0)));
+  const controls = a.slots.map((slot, slotIndex) => `<div class="phrase-slot"><span>${c.e(slot.label)}</span><div class="phrase-options">${slot.options.map((option, optionIndex) => `<button type="button" class="phrase-option ${selected[slotIndex] === optionIndex ? 'active' : ''}" data-phrase-key="${c.e(key)}" data-phrase-slot="${slotIndex}" data-phrase-option="${optionIndex}" aria-pressed="${selected[slotIndex] === optionIndex}">${c.en(option)}</button>`).join('')}</div></div>`).join('');
+  const outcome = a.outcomes.find((entry) => entry.selection.every((choice, index) => choice === selected[index]));
+  let sentence = '';
+  if (outcome) {
+    const text = String(outcome.en || '');
+    const focus = String(outcome.focus || '');
+    const at = focus ? text.toLowerCase().indexOf(focus.toLowerCase()) : -1;
+    sentence = at < 0
+      ? c.en(text)
+      : `<span class="en" lang="${c.e(a.targetLanguage || 'en')}" dir="ltr">${c.e(text.slice(0, at))}<mark class="pattern-focus">${c.e(text.slice(at, at + focus.length))}</mark>${c.e(text.slice(at + focus.length))}</span>`;
+  }
+  const result = outcome ? `<div class="phrase-outcome pattern-lab-result">${sentence}${soundButton(outcome.en, c.e, c.i)}<span dir="rtl">${c.e(outcome.fa || '')}</span></div>${outcome.observation ? `<details class="pattern-observation"><summary>چه چیزی تغییر کرد؟</summary><p>${c.e(outcome.observation)}</p></details>` : ''}` : '';
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="phrase-composer pattern-lab-controls">${controls}</div>${result}`, a, c.index, c.e, 'module-pattern-lab');
+}
+
 function sentenceLab(a, c) {
   const key = `${c.lessonId}:${a.id}`;
   const state = c.progress.sentenceLabs?.[key] || { structure: 0, variable: 0 };
@@ -219,7 +239,7 @@ function freeWrite(a, c) {
 const renderers = {
   intro, vocabulary, pattern, match, 'sentence-builder': sentenceBuilder,
   'quiz-set': quizSet, dialogue, roleplay, 'free-write': freeWrite,
-  'phrase-composer': phraseComposer, 'sentence-lab': sentenceLab,
+  'phrase-composer': phraseComposer, 'pattern-lab': patternLab, 'sentence-lab': sentenceLab,
   'guided-dialogue': guidedDialogue, 'response-practice': responsePractice,
   'exchange-lab': exchangeLab,
   'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer,
