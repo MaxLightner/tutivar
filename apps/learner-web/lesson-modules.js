@@ -1,6 +1,6 @@
 import { coreItems, deckState, supplementaryItems, wordId } from './word-review.js';
 import { practiceState } from './practice-engine.js';
-import { composerSegmentValue, composerSlotForm, resolveSentenceComposer } from './sentence-composer.js';
+import { composeSegments, composerSegmentValue, composerSlotForm, resolveSentenceComposer } from './sentence-composer.js';
 
 /*
  * Tutivar's teaching components. Lesson text, exercise items, answers and their
@@ -245,6 +245,18 @@ function quizSet(a, c) {
     return `<div class="quiz-question"><span class="question-number">سؤال ${qIdx + 1}</span><div class="question">${c.e(question.question)}</div><div class="choices">${question.choices.map((answer, choiceIndex) => `<button class="choice ${chosen === choiceIndex ? 'selected ' + (choiceIndex === question.answer ? 'correct' : 'wrong') : ''}" data-quiz="${c.e(key)}" data-choice="${choiceIndex}">${c.en(answer)}</button>`).join('')}</div>${chosen !== undefined ? `<div class="feedback ${chosen === question.answer ? '' : 'error'}">${chosen === question.answer ? c.e(question.feedback) : 'دوباره امتحان کن.'}</div>` : ''}</div>`;
   }).join(''), a, c.index, c.e, 'module-quizzes');
 }
+function dialogueLineValue(line, c, language = 'en') {
+  const segments = language === 'en' ? line.segments : line.translationSegments;
+  if (!segments) return String(line[language] || '');
+  const source = line.sourceActivityId ? c.activitiesById?.[line.sourceActivityId] : null;
+  if (!source || source.type !== 'sentence-composer') {
+    return segments.map((segment) => Object.hasOwn(segment, 'fixed') ? segment.fixed : segment.text || '').join('');
+  }
+  const key = `${c.lessonId}:${source.id}`;
+  const resolved = resolveSentenceComposer(source, c.progress.sentenceComposers?.[key]);
+  return composeSegments(segments, source, resolved);
+}
+
 export function renderDialogueLines(a, c, step, enteringIndex = -1, { all = false } = {}) {
   const speakers = [...new Set(a.lines.map((line) => line.speaker))];
   const entries = all ? a.lines.map((line, index) => ({ line, lineIndex: index })) : a.lines.slice(step, step + 2).map((line, index) => ({ line, lineIndex: step + index }));
@@ -252,7 +264,9 @@ export function renderDialogueLines(a, c, step, enteringIndex = -1, { all = fals
     const side = speakers.indexOf(line.speaker) % 2 === 0 ? 'speaker-first' : 'speaker-second';
     const shown = lineIndex >= step && lineIndex < step + 2;
     const entering = !all && (enteringIndex === -1 || lineIndex === enteringIndex) ? 'dialogue-entering' : '';
-    return `<div class="dialogue-line ${side} ${entering}" data-dialogue-line="${lineIndex}" data-dialogue-visible="${shown}" ${all && !shown ? 'aria-hidden="true" inert' : ''}><span class="speaker-avatar" aria-hidden="true">${c.e(line.speaker.slice(0, 1))}</span><div class="bubble"><strong class="speaker-name">${c.e(line.speaker)}</strong><div class="spoken-line"><button type="button" class="dialogue-sentence" data-speak="${c.e(line.en)}" aria-label="شنیدن جملهٔ ${c.e(line.speaker)}">${c.en(line.en)}</button></div>${c.progress.showDialogueTranslation ? `<p>${c.e(line.fa)}</p>` : ''}</div></div>`;
+    const english = dialogueLineValue(line, c, 'en');
+    const persian = dialogueLineValue(line, c, 'fa');
+    return `<div class="dialogue-line ${side} ${entering}" data-dialogue-line="${lineIndex}" data-dialogue-visible="${shown}" ${all && !shown ? 'aria-hidden="true" inert' : ''}><span class="speaker-avatar" aria-hidden="true">${c.e(line.speaker.slice(0, 1))}</span><div class="bubble"><strong class="speaker-name">${c.e(line.speaker)}</strong><div class="spoken-line"><button type="button" class="dialogue-sentence" data-speak="${c.e(english)}" aria-label="شنیدن جملهٔ ${c.e(line.speaker)}">${c.en(english)}</button></div>${c.progress.showDialogueTranslation ? `<p>${c.e(persian)}</p>` : ''}</div></div>`;
   }).join('');
 }
 function dialogue(a, c) {
