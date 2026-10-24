@@ -1,4 +1,5 @@
 import { validateMultiSentencePuzzle } from './sentence-puzzle.js';
+import { validateVisualActivity } from './visual-learning.js';
 /**
  * Tutivar two-section lesson contract.
  * JSON controls the content and the order; this file validates the shared rhythm.
@@ -22,9 +23,9 @@ export const LESSON_PHASE_LABELS = Object.freeze({
 });
 const TYPE_FOR_PHASE = {
   words: ['vocabulary'],
-  phrases: ['composer-view', 'family-tree'],
+  phrases: ['composer-view', 'family-tree', 'family-lab', 'spatial-lab'],
   sentence: ['sentence-composer'],
-  variants: ['composer-view', 'sentence-transform'],
+  variants: ['composer-view', 'sentence-transform', 'meaning-cluster'],
   puzzle: ['sentence-builder'],
   construction: ['response-practice'],
   correspondence: ['exchange-lab', 'response-practice'],
@@ -51,6 +52,7 @@ export function validateLessonFlow(lesson) {
       seen.add(activity.phase);
       if (!TYPE_FOR_PHASE[activity.phase].includes(activity.type))
         errors.push(activity.id + ': activity type ' + activity.type + ' does not belong to ' + activity.phase);
+      if (['meaning-cluster','family-lab','spatial-lab'].includes(activity.type)) errors.push(...validateVisualActivity(activity).map((error) => activity.id + ': ' + error));
       if (activity.type === 'composer-view') {
         const source = all[activity.sourceActivityId];
         if (!source || source.type !== 'sentence-composer')
