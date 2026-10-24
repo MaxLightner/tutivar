@@ -49,7 +49,7 @@ const ICONS = {
 const icon = (name, size = '') => `<span class="icon ${size}"><svg aria-hidden="true" viewBox="0 0 24 24">${ICONS[name] || ICONS.star}</svg></span>`;
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const en = (text) => `<span class="en" lang="en" dir="ltr">${escapeHtml(text)}</span>`;
-const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, sentenceComposers: {}, familyPeople: {}, agreementChoices: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
+const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, sentenceComposers: {}, meaningChoices: {}, spatialChoices: {}, familyPeople: {}, agreementChoices: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
 function readProgress() { try { const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); return { ...defaultProgress(), ...saved, settings: { ...defaultProgress().settings, ...(saved.settings || {}) } }; } catch { return defaultProgress(); } }
 const progress = readProgress();
 // Historical completion records predate skill evidence. Preserve them in storage,
@@ -397,7 +397,7 @@ function wordKeydown(event) {
   document.querySelector('[data-word-swipe]')?.focus({ preventScroll: true });
 }
 function onClick(event) {
-  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-family-key],button[data-agreement-key],button[data-finish-section],button[data-review],button[data-planned],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-build-submit],button[data-build-undo],button[data-build-clear],button[data-roleplay],button[data-word-key],button[data-composer-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
+  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-meaning-key],button[data-spatial-key],button[data-family-key],button[data-agreement-key],button[data-finish-section],button[data-review],button[data-planned],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-build-submit],button[data-build-undo],button[data-build-clear],button[data-roleplay],button[data-word-key],button[data-composer-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
   if (!el) return;
   if (el.dataset.nav) { modal = null; navigate(el.dataset.nav); return; }
   if (el.dataset.openLesson) { modal = null; activePerson = 0; ownerIdx = 0; objectIdx = 0; navigate('lesson', el.dataset.openLesson, el.dataset.startSection || null); return; }
@@ -409,6 +409,53 @@ function onClick(event) {
   if (el.dataset.exampleReveal !== undefined) {
     const isRevealed = el.closest('.example-mini-card')?.classList.toggle('is-revealed') || false;
     el.setAttribute('aria-expanded', String(isRevealed));
+    return;
+  }
+  if (el.dataset.meaningKey) {
+    const key = el.dataset.meaningKey;
+    const activity = lessonActivity(key);
+    if (activity?.type !== 'meaning-cluster') return;
+    const concept = activity.concepts.find((item) => item.id === el.dataset.meaningConcept);
+    if (!concept?.forms?.length) return;
+    progress.meaningChoices ||= {};
+    const previous = progress.meaningChoices[key] || {};
+    const index = ((Number(previous[concept.id]) || 0) + 1) % concept.forms.length;
+    progress.meaningChoices[key] = { ...previous, [concept.id]: index };
+    persist(); updateInline(); return;
+  }
+  if (el.dataset.spatialKey) {
+    const key = el.dataset.spatialKey;
+    const activity = lessonActivity(key);
+    if (activity?.type !== 'spatial-lab') return;
+    const position = activity.positions.find((item) => item.id === el.dataset.spatialPosition);
+    if (!position) return;
+    progress.spatialChoices ||= {};
+    progress.spatialChoices[key] = position.id;
+    persist();
+    const stage = [...document.querySelectorAll('[data-spatial-stage]')].find((item) => item.dataset.spatialStage === key);
+    if (!stage) { updateInline(); return; }
+    stage.dataset.spatialCurrent = position.id;
+    for (const ball of stage.querySelectorAll('[data-spatial-ball-layer]')) {
+      ball.style.transform = `translate(${position.ball.x}px, ${position.ball.y}px)`;
+      ball.style.opacity = ball.dataset.spatialBallLayer === position.ball.layer ? '1' : '0';
+    }
+    for (const part of stage.querySelectorAll('[data-box-part]')) {
+      part.style.transform = `translateY(-${position.boxLift || 0}px)`;
+    }
+    const english = stage.querySelector('.spatial-English');
+    const persian = stage.querySelector('.spatial-Persian');
+    if (english) english.textContent = position.en;
+    if (persian) persian.textContent = position.faSentence;
+    const speechButton = stage.querySelector('.spatial-caption [data-speak]');
+    if (speechButton) {
+      speechButton.dataset.speak = position.en;
+      speechButton.setAttribute('aria-label', 'شنیدن تلفظ ' + position.en);
+    }
+    for (const button of stage.querySelectorAll('[data-spatial-position]')) {
+      const active = button.dataset.spatialPosition === position.id;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    }
     return;
   }
   if (el.dataset.familyKey) {
