@@ -9,6 +9,7 @@ import { evaluateResponse, practiceState, submitPractice } from '../apps/learner
 import { auditLesson } from '../tools/audit-lessons.mjs';
 import { composeSegments, cycleComposerSlot, resolveSentenceComposer, validateSentenceComposer } from '../apps/learner-web/sentence-composer.js';
 import { LESSON_PHASES, validateLessonFlow } from '../apps/learner-web/lesson-flow.js';
+import { puzzleTokenBank, normalizePuzzleState, addPuzzleWord, undoPuzzleWord, clearPuzzleSentence, submitPuzzleSentence, validateMultiSentencePuzzle } from '../apps/learner-web/sentence-puzzle.js';
 
 const contentRoot = join(projectRoot, 'content/language-pairs/fa-en');
 const load = (file) => readJson(join(contentRoot, file));
@@ -96,6 +97,114 @@ test('all three lessons follow one JSON-declared learning template', () => {
       assert.equal(section.activities.find(activity=>activity.phase==='puzzle')?.type, section.id==='foundation'?'sentence-builder':undefined);
     }
   }
+});
+
+test('sentence stages retain independent selections and still reuse one JSON grammar', () => {
+  for (const id of ['a1-1', 'a1-2', 'a1-3']) {
+    const lesson = load('lessons/' + id + '.json');
+    const activities = Object.fromEntries(lesson.sections.flatMap(section => section.activities).map(activity => [activity.id, activity]));
+    const source = lesson.sections[0].activities.find(activity => activity.type === 'sentence-composer');
+    const phrases = lesson.sections[0].activities.find(activity => activity.type === 'composer-view' && activity.phase === 'phrases');
+    const models = lesson.sections[0].activities.find(activity => activity.type === 'composer-view' && activity.phase === 'variants');
+    const firstSlot = source.slots[0];
+    const variants = source.wordSets[firstSlot.wordSet];
+    assert.ok(variants.length > 1);
+    assert.equal(phrases.sourceActivityId, source.id);
+    assert.equal(models.sourceActivityId, source.id);
+    const context = {
+      lessonId: lesson.id,
+      index: 0, activitiesById: activities, e: String, en: String, i: () => '',
+      progress: {
+        sentenceComposers: {
+          [lesson.id + ':' + phrases.id]: { slots: { [firstSlot.id]: variants[1].id } },
+          [lesson.id + ':' + source.id]: { slots: { [firstSlot.id]: variants[0].id } },
+          [lesson.id + ':' + models.id]: { slots: { [firstSlot.id]: variants[1].id }, pattern: models.patternIds[1] }
+        }
+      }
+    };
+    const phraseHtml = renderActivity(phrases, context);
+    const sentenceHtml = renderActivity(source, context);
+    const modelsHtml = renderActivity(models, context);
+    assert.match(phraseHtml, new RegExp('data-composer-key="' + lesson.id + ':' + phrases.id + '"'));
+    assert.match(sentenceHtml, new RegExp('data-composer-key="' + lesson.id + ':' + source.id + '"'));
+    assert.match(modelsHtml, new RegExp('data-composer-key="' + lesson.id + ':' + models.id + '"'));
+    assert.ok(phraseHtml.includes(String(variants[1].forms?.determiner || variants[1].label)));
+    assert.ok(sentenceHtml.includes(String(variants[0].forms?.determiner || variants[0].label)));
+    assert.match(modelsHtml, /data-composer-action="pattern"/);
+    assert.doesNotMatch([phraseHtml, sentenceHtml, modelsHtml].join(''), /composer-picker|composer-choice|composer-search/);
+    assert.deepEqual(validateLessonFlow(lesson), []);
+  }
+});
+
+test('each A1 puzzle mixes words from several valid sentences, not one', () => {
+  for (const id of ['a1-1', 'a1-2', 'a1-3']) {
+    const lesson = load('lessons/' + id + '.json');
+    const puzzle = lesson.sections[0].activities.find(activity => activity.phase === 'puzzle');
+    assert.ok(puzzle.sentences.length >= 4, id + ' must have multiple correct sentences');
+    assert.deepEqual(validateMultiSentencePuzzle(puzzle), []);
+    const bank = puzzleTokenBank(puzzle);
+    const originals = puzzle.sentences.flatMap(sentence => sentence.words);
+    assert.deepEqual(bank.map(token => token.word).sort(), originals.slice().sort(), id + ' bank preserves all words and repeats');
+    assert.equal(bank.length, originals.length);
+    assert.ok(bank.length > Math.max(...puzzle.sentences.map(sentence => sentence.words.length)));
+    assert.deepEqual(puzzleTokenBank(puzzle), bank, 'mixing is stable when resuming progress');
+    const context = { lessonId: lesson.id, index: 0, e: String, en: String, i: () => '', progress: { sentenceAnswers: {} } };
+    const html = renderActivity(puzzle, context);
+    assert.match(html, /data-build-submit=/);
+    assert.match(html, /data-build-undo=/);
+    assert.match(html, /بانک کلمات چند جمله/);
+    assert.equal((html.match(/data-build-token=/g) || []).length, originals.length, 'every word, including repeated words, is shown');
+    assert.doesNotMatch(html, /class="builder-found-item"/, 'answers are not revealed before the learner solves them');
+  }
+});
+
+test('multi-sentence puzzle accepts solutions in any order and consumes only their words', () => {
+  const lesson = load('lessons/a1-3.json');
+  const puzzle = lesson.sections[0].activities.find(activity => activity.phase === 'puzzle');
+  const bank = puzzleTokenBank(puzzle);
+  let state = normalizePuzzleState(puzzle, []);
+  assert.deepEqual(state.completed, [], 'old single-sentence stored answers migrate safely');
+  state = addPuzzleWord(puzzle, state, bank.findIndex(item => item.word === 'This'));
+  state = submitPuzzleSentence(puzzle, state);
+  assert.equal(state.feedback, 'wrong', 'one word alone is not a correct sentence');
+  assert.equal(state.current.length, 1, 'incorrect attempts can be repaired');
+  state = undoPuzzleWord(puzzle, state);
+  assert.deepEqual(state.current, []);
+  state = addPuzzleWord(puzzle, state, 0);
+  state = clearPuzzleSentence(puzzle, state);
+  assert.deepEqual(state.current, []);
+
+  // Find the fourth, then first, third, and second valid sentence; the learner controls the order.
+  for (const target of [...puzzle.sentences].reverse()) {
+    for (const word of target.words) {
+      const used = new Set(state.completed.flatMap(entry => entry.indices));
+      const index = bank.findIndex((item, index) => item.word === word && !used.has(index) && !state.current.includes(index));
+      assert.ok(index >= 0, 'a word remains available for ' + target.id);
+      state = addPuzzleWord(puzzle, state, index);
+    }
+    state = submitPuzzleSentence(puzzle, state);
+    assert.equal(state.feedback, 'correct', target.id);
+    assert.equal(state.completed.at(-1).id, target.id);
+    assert.deepEqual(state.current, []);
+  }
+  assert.equal(state.completed.length, 4);
+  const rendered = renderActivity(puzzle, {
+    lessonId: lesson.id, index: 0, e: String, en: String, i: () => '',
+    progress: { sentenceAnswers: { [lesson.id + ':' + puzzle.id]: state } }
+  });
+  assert.match(rendered, /همهٔ جمله‌ها را پیدا کردی/);
+  assert.equal((rendered.match(/class="builder-found-item"/g) || []).length, 4);
+  assert.equal((rendered.match(/data-token-index="\d+" disabled/g) || []).length, bank.length);
+});
+
+test('puzzle validation rejects a one-sentence task and duplicate valid solutions', () => {
+  const one = { id: 'bad', type: 'sentence-builder', sentences: [{ id: 'only', words: ['This', 'works.'] }] };
+  assert.ok(validateMultiSentencePuzzle(one).some(error => error.includes('at least two')));
+  const dup = { id: 'bad', type: 'sentence-builder', sentences: [
+    { id: 'one', words: ['This', 'works.'] },
+    { id: 'two', words: ['This', 'works.'] }
+  ]};
+  assert.ok(validateMultiSentencePuzzle(dup).some(error => error.includes('duplicate target')));
 });
 
 test('first lesson activities render with separate content, including interactions', () => {
