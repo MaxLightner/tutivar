@@ -379,7 +379,7 @@ test('first lesson activities render with separate content, including interactio
   assert.match(renderActivity(lesson.sections[1].activities[0], context), /data-exchange-key=/);
   assert.match(renderActivity(lesson.sections[1].activities.find((activity) => activity.type === 'guided-dialogue'), context), /data-practice-form=/);
   assert.match(renderActivity(lesson.sections[1].activities.find((activity) => activity.type === 'dialogue-transfer'), context), /data-practice-form=/);
-  assert.equal(lesson.sections.reduce((sum, section) => sum + section.activities.length, 0), 16, 'the six discovery phases preserve the nine-step conversation sequence');
+  assert.equal(lesson.sections.reduce((sum, section) => sum + section.activities.length, 0), 17, 'the shared meaning module extends the six discovery phases');
   assert.equal(lesson.sections[0].activities.at(-1).type, 'response-practice', 'independent sentence construction concludes the first half');
   assert.deepEqual(lesson.sections[1].activities.map((item) => item.type), ['exchange-lab', 'response-practice', 'dialogue', 'response-practice', 'dialogue', 'response-practice', 'guided-dialogue', 'dialogue-transfer', 'free-write'], 'question/answer exchange starts the conversation half');
   assert.ok(lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary').items.filter((entry) => entry.role !== 'supplementary').every((entry) => entry.examples.length === 3));
