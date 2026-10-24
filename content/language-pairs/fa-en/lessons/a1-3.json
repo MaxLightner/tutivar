@@ -1,10 +1,10 @@
 {
   "id": "A1-3",
-  "revision": 2,
+  "revision": 3,
   "status": "draft",
   "title": "مالکیت و داشتن اشیا",
   "goal": "بتوانی با تغییر صاحب یا وسیله، جمله بسازی و بگویی یک وسیله مال چه کسی است.",
-  "duration": "حدود ۱۵ تا ۲۰ دقیقه",
+  "duration": "حدود ۲۰ تا ۲۵ دقیقه با تمرین‌های رفت‌وبرگشتی",
   "feature": "آزمایشگاه مالکیت",
   "archetype": "ownership",
   "teachingModel": {
@@ -26,9 +26,9 @@
     }
   },
   "visual": {
-    "src": null,
+    "src": "./a1-3-personal-belongings.svg",
     "alt": "کتاب، کیف و تلفن با صاحبان متفاوت",
-    "caption": "جای تصویر اشیا و صاحبان آن‌ها"
+    "caption": "وسایل شخصی روی میز؛ تغییر صاحب، تغییر جمله را نشان می‌دهد."
   },
   "learningAudit": {
     "focusExpressions": [
@@ -51,7 +51,7 @@
     {
       "id": "foundation",
       "label": "از کلمه تا الگو",
-      "intro": "اول صاحب را تغییر بده و وسیله را ثابت نگه دار. بعد وسیله را تغییر بده و صاحب را ثابت نگه دار. هر بار فقط یک چیز را عوض کن و جمله را مقایسه کن.",
+      "intro": "از چند وسیلهٔ روزمره شروع کن. اول صاحب را تغییر بده و وسیله را ثابت نگه دار؛ بعد وسیله را عوض کن و صاحب را ثابت نگه دار. هر بار فقط یک چیز تغییر می‌کند.",
       "masteryActivityIds": [
         "ownership-owner-check"
       ],
@@ -61,7 +61,7 @@
           "type": "vocabulary",
           "title": "واژه‌ها و عبارت‌های لازم",
           "batchSize": 4,
-          "deckRevision": 1,
+          "deckRevision": 2,
           "items": [
             {
               "en": "book",
@@ -101,6 +101,46 @@
                 "This is my pen.",
                 "Is this your pen?",
                 "It's yours."
+              ]
+            },
+            {
+              "en": "notebook",
+              "fa": "دفتر",
+              "hint": "وسیله‌ای برای نوشتن",
+              "examples": [
+                "This is my notebook.",
+                "Is this your notebook?",
+                "It's his notebook."
+              ]
+            },
+            {
+              "en": "pencil",
+              "fa": "مداد",
+              "hint": "وسیله‌ای برای نوشتن",
+              "examples": [
+                "This is my pencil.",
+                "Is this your pencil?",
+                "It's yours."
+              ]
+            },
+            {
+              "en": "wallet",
+              "fa": "کیف پول",
+              "hint": "وسیله‌ای برای نگه‌داشتن پول و کارت‌ها",
+              "examples": [
+                "This is my wallet.",
+                "Is this your wallet?",
+                "It's mine."
+              ]
+            },
+            {
+              "en": "bottle",
+              "fa": "بطری",
+              "hint": "مثلاً بطری آب",
+              "examples": [
+                "This is my bottle.",
+                "Is this your bottle?",
+                "It's her bottle."
               ]
             },
             {
@@ -186,24 +226,67 @@
             {
               "en": "wallet",
               "fa": "کیف پول",
-              "role": "supplementary",
-              "hint": "واژهٔ تکمیلی و اختیاری",
-              "examples": [
-                "This is my wallet.",
-                "Is this your wallet?",
-                "It's mine."
-              ]
+              "role": "supplementary"
             },
             {
               "en": "keys",
               "fa": "کلیدها",
-              "role": "supplementary",
-              "hint": "واژهٔ تکمیلی و اختیاری؛ جمع",
-              "examples": [
-                "These are my keys.",
-                "Are these your keys?",
-                "The keys are yours."
-              ]
+              "role": "supplementary"
+            },
+            {
+              "en": "backpack",
+              "fa": "کوله‌پشتی",
+              "role": "supplementary"
+            },
+            {
+              "en": "umbrella",
+              "fa": "چتر",
+              "role": "supplementary"
+            },
+            {
+              "en": "headphones",
+              "fa": "هدفون",
+              "role": "supplementary"
+            },
+            {
+              "en": "watch",
+              "fa": "ساعت مچی",
+              "role": "supplementary"
+            },
+            {
+              "en": "glasses",
+              "fa": "عینک",
+              "role": "supplementary"
+            },
+            {
+              "en": "charger",
+              "fa": "شارژر",
+              "role": "supplementary"
+            },
+            {
+              "en": "laptop",
+              "fa": "لپ‌تاپ",
+              "role": "supplementary"
+            },
+            {
+              "en": "tablet",
+              "fa": "تبلت",
+              "role": "supplementary"
+            },
+            {
+              "en": "ID card",
+              "fa": "کارت شناسایی",
+              "role": "supplementary"
+            },
+            {
+              "en": "camera",
+              "fa": "دوربین",
+              "role": "supplementary"
+            },
+            {
+              "en": "suitcase",
+              "fa": "چمدان",
+              "role": "supplementary"
             }
           ]
         },
@@ -318,6 +401,61 @@
           ]
         },
         {
+          "id": "ownership-everyday-objects-lab",
+          "type": "pattern-lab",
+          "title": "چهار وسیلهٔ روزمرهٔ دیگر",
+          "description": "صاحب را روی my نگه دار. فقط نام وسیله را عوض کن و تفاوت جمله را ببین.",
+          "slots": [
+            {
+              "label": "وسیله",
+              "options": [
+                "notebook",
+                "pencil",
+                "wallet",
+                "bottle"
+              ]
+            }
+          ],
+          "outcomes": [
+            {
+              "selection": [
+                0
+              ],
+              "en": "This is my notebook.",
+              "fa": "این دفتر من است.",
+              "focus": "notebook",
+              "observation": "صاحب ثابت است؛ فقط نام وسیله عوض شده."
+            },
+            {
+              "selection": [
+                1
+              ],
+              "en": "This is my pencil.",
+              "fa": "این مداد من است.",
+              "focus": "pencil",
+              "observation": "باز هم my تغییر نکرد؛ فقط وسیله عوض شد."
+            },
+            {
+              "selection": [
+                2
+              ],
+              "en": "This is my wallet.",
+              "fa": "این کیف پول من است.",
+              "focus": "wallet",
+              "observation": "به جایگاه نام وسیله بعد از my نگاه کن."
+            },
+            {
+              "selection": [
+                3
+              ],
+              "en": "This is my bottle.",
+              "fa": "این بطری من است.",
+              "focus": "bottle",
+              "observation": "یک الگوی ثابت با وسیله‌ای تازه ساختی."
+            }
+          ]
+        },
+        {
           "id": "ownership-my-mine-lab",
           "type": "pattern-lab",
           "title": "my و mine را مقایسه کن",
@@ -355,9 +493,9 @@
         {
           "id": "ownership-owner-check",
           "type": "response-practice",
-          "practiceRevision": 1,
-          "title": "چهار آزمایش کوتاه",
-          "description": "هر بار یک جمله بساز. راهنمایی فقط وقتی لازم شد باز کن.",
+          "practiceRevision": 2,
+          "title": "حالا خودت جمله بساز",
+          "description": "در این بخش جمله‌های خبری می‌سازیم؛ سؤال و جواب را در بخش دوم تمرین می‌کنی.",
           "completion": "صاحب، وسیله و شکل مالکیت را در چهار موقعیت تغییر دادی.",
           "tasks": [
             {
@@ -370,74 +508,90 @@
                     "any": [
                       "this is my book"
                     ],
-                    "feedback": "جمله را با This is my book بساز."
+                    "feedback": "از This is my book. استفاده کن."
                   }
                 ],
                 "success": "وسیله را به خودت نسبت دادی."
               }
             },
             {
-              "task": "از یک نفر بپرس آیا این کتاب مال اوست.",
-              "hint": "Is this your book?",
-              "example": "Is this your book?",
+              "task": "بگو دفتر متعلق به یک مرد یا پسر است.",
+              "hint": "This is his notebook.",
+              "example": "This is his notebook.",
               "assessment": {
                 "required": [
                   {
                     "any": [
-                      "is this your book"
+                      "this is his notebook"
                     ],
-                    "feedback": "برای پرسیدن از مخاطب بگو Is this your book?"
+                    "feedback": "برای صاحب مذکر از his استفاده کن."
                   }
                 ],
-                "success": "سؤال دربارهٔ صاحب کتاب را ساختی."
+                "success": "صاحب را در جمله مشخص کردی."
               }
             },
             {
-              "incoming": "Is this your book?",
-              "speaker": "دوستت",
-              "task": "بله، کتاب مال خودت است. از mine استفاده کن.",
-              "hint": "Yes, it's mine.",
-              "example": "Yes, it's mine.",
+              "task": "بگو کیف متعلق به یک زن یا دختر است.",
+              "hint": "This is her bag.",
+              "example": "This is her bag.",
               "assessment": {
                 "required": [
                   {
                     "any": [
-                      "yes"
+                      "this is her bag"
                     ],
-                    "feedback": "پاسخ مثبت بده."
-                  },
-                  {
-                    "any": [
-                      "it's mine"
-                    ],
-                    "feedback": "برای «مال من است» از It's mine استفاده کن."
+                    "feedback": "برای صاحب مؤنث از her استفاده کن."
                   }
                 ],
-                "success": "با mine به مالکیت اشاره کردی."
+                "success": "جمله را با her ساختی."
               }
             },
             {
-              "incoming": "Is this my book?",
-              "speaker": "دوستت",
-              "task": "بله، کتاب مال مخاطب است. از yours استفاده کن.",
-              "hint": "Yes, it's yours.",
-              "example": "Yes, it's yours.",
+              "task": "کتاب را به مخاطب نسبت بده: «این کتاب توست».",
+              "hint": "This is your book.",
+              "example": "This is your book.",
               "assessment": {
                 "required": [
                   {
                     "any": [
-                      "yes"
+                      "this is your book"
                     ],
-                    "feedback": "پاسخ مثبت بده."
-                  },
-                  {
-                    "any": [
-                      "it's yours"
-                    ],
-                    "feedback": "برای «مال توست» از It's yours استفاده کن."
+                    "feedback": "برای مخاطب از your استفاده کن."
                   }
                 ],
-                "success": "با yours به مالکیت مخاطب اشاره کردی."
+                "success": "صاحب را از دید مخاطب مشخص کردی."
+              }
+            },
+            {
+              "task": "با یک وسیلهٔ تازه جمله بساز: «این کیف پول من است».",
+              "hint": "This is my wallet.",
+              "example": "This is my wallet.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is my wallet"
+                    ],
+                    "feedback": "my را کنار نام وسیله بیاور."
+                  }
+                ],
+                "success": "الگو را با واژه‌ای تازه به کار بردی."
+              }
+            },
+            {
+              "task": "بطری را معرفی کن و بگو متعلق به خودت است.",
+              "hint": "This is my bottle.",
+              "example": "This is my bottle.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is my bottle"
+                    ],
+                    "feedback": "از This is my bottle. استفاده کن."
+                  }
+                ],
+                "success": "جمله را با وسیلهٔ تازه ساختی."
               }
             }
           ]
@@ -447,50 +601,14 @@
     {
       "id": "production",
       "label": "از الگو تا گفت‌وگو",
-      "intro": "حالا همین تفاوت‌ها را در یک موقعیت واقعی‌تر به کار ببر. اول مکالمه را ببین، بعد پاسخ‌ها را عوض کن و در پایان خودت گفت‌وگو بساز.",
+      "intro": "از سؤال و جواب شروع کن: حدس بزن، پاسخ مثبت یا منفی بده و اگر لازم است صاحب وسیله را اصلاح کن. بعد همان الگو را در دو مکالمه و یک موقعیت تازه به کار ببر.",
       "masteryActivityIds": [
+        "ownership-exchange-practice",
         "ownership-guided-talk",
+        "ownership-transfer",
         "ownership-independent"
       ],
       "activities": [
-        {
-          "id": "ownership-dialogue",
-          "type": "dialogue",
-          "title": "مکالمه: وسایل روی میز",
-          "description": "دو نفر دربارهٔ کتاب، کیف و خودکار می‌پرسند. نوار را حرکت بده و ببین هر پاسخ به کدام سؤال مربوط است.",
-          "lines": [
-            {
-              "speaker": "Mia",
-              "en": "Is this your book?",
-              "fa": "این کتاب توست؟"
-            },
-            {
-              "speaker": "Noah",
-              "en": "No, it's her book.",
-              "fa": "نه، کتاب اوست (مال یک دختر یا زن)."
-            },
-            {
-              "speaker": "Mia",
-              "en": "Is this your bag?",
-              "fa": "این کیف توست؟"
-            },
-            {
-              "speaker": "Noah",
-              "en": "Yes, it's mine.",
-              "fa": "بله، مال من است."
-            },
-            {
-              "speaker": "Mia",
-              "en": "Is this my pen?",
-              "fa": "این خودکار من است؟"
-            },
-            {
-              "speaker": "Noah",
-              "en": "Yes, it's yours.",
-              "fa": "بله، مال توست."
-            }
-          ]
-        },
         {
           "id": "ownership-exchanges",
           "type": "exchange-lab",
@@ -505,13 +623,31 @@
                   "label": "بله؛ مال من است",
                   "en": "Yes, it's mine.",
                   "fa": "بله، مال من است.",
-                  "note": "mine نشان می‌دهد وسیله متعلق به گوینده است."
+                  "note": "mine یعنی این وسیله مال گوینده است."
                 },
                 {
                   "label": "نه؛ کتاب اوست",
                   "en": "No, it's her book.",
                   "fa": "نه، کتاب اوست.",
-                  "note": "با تغییر صاحب، her جای your را گرفته است."
+                  "note": "با her صاحب را به یک دختر یا زن تغییر دادی."
+                }
+              ]
+            },
+            {
+              "question": "Is this your notebook?",
+              "questionFa": "این دفتر توست؟",
+              "variants": [
+                {
+                  "label": "بله؛ مال من است",
+                  "en": "Yes, it's mine.",
+                  "fa": "بله، مال من است.",
+                  "note": "وسیله تغییر کرد؛ پاسخ مالکیت می‌تواند همان باشد."
+                },
+                {
+                  "label": "نه؛ دفتر اوست",
+                  "en": "No, it's his notebook.",
+                  "fa": "نه، دفتر اوست.",
+                  "note": "his صاحب مذکر را نشان می‌دهد."
                 }
               ]
             },
@@ -541,25 +677,142 @@
                   "label": "بله؛ مال من است",
                   "en": "Yes, it's mine.",
                   "fa": "بله، مال من است.",
-                  "note": "وسیله عوض شده، اما پاسخ مالکیت می‌تواند همان باشد."
+                  "note": "نام وسیله عوض شده، اما پاسخ همچنان mine است."
                 },
                 {
-                  "label": "نه؛ مال اوست",
+                  "label": "نه؛ تلفن اوست",
                   "en": "No, it's his phone.",
-                  "fa": "نه، تلفن اوست (مذکر).",
-                  "note": "his مشخص می‌کند صاحب یک پسر یا مرد است."
+                  "fa": "نه، تلفن اوست.",
+                  "note": "his صاحب مذکر را مشخص می‌کند."
+                }
+              ]
+            },
+            {
+              "question": "Is this your wallet?",
+              "questionFa": "این کیف پول توست؟",
+              "variants": [
+                {
+                  "label": "بله؛ مال من است",
+                  "en": "Yes, it's mine.",
+                  "fa": "بله، مال من است.",
+                  "note": "برای وسیلهٔ خودت از mine استفاده کن."
+                },
+                {
+                  "label": "نه؛ کیف پول اوست",
+                  "en": "No, it's her wallet.",
+                  "fa": "نه، کیف پول اوست.",
+                  "note": "her صاحب مؤنث را مشخص می‌کند."
+                }
+              ]
+            },
+            {
+              "question": "Is this my pencil?",
+              "questionFa": "این مداد من است؟",
+              "variants": [
+                {
+                  "label": "بله؛ مال توست",
+                  "en": "Yes, it's yours.",
+                  "fa": "بله، مال توست.",
+                  "note": "از دید گوینده، وسیله متعلق به مخاطب است."
+                },
+                {
+                  "label": "نه؛ مال من است",
+                  "en": "No, it's mine.",
+                  "fa": "نه، مال من است.",
+                  "note": "mine مالکیت گوینده را نشان می‌دهد."
+                }
+              ]
+            },
+            {
+              "question": "Is this your bottle?",
+              "questionFa": "این بطری توست؟",
+              "variants": [
+                {
+                  "label": "بله؛ مال من است",
+                  "en": "Yes, it's mine.",
+                  "fa": "بله، مال من است.",
+                  "note": "با پاسخ مثبت، مالک را خودت معرفی می‌کنی."
+                },
+                {
+                  "label": "نه؛ بطری اوست",
+                  "en": "No, it's her bottle.",
+                  "fa": "نه، بطری اوست.",
+                  "note": "her صاحب مؤنث را مشخص می‌کند."
                 }
               ]
             }
           ]
         },
+        null,
+        {
+          "id": "ownership-dialogue",
+          "type": "dialogue",
+          "title": "مکالمهٔ اول: وسایل روی میز",
+          "description": "در هر مرحله فقط دو جمله را ببین؛ نوار را حرکت بده تا سؤال و پاسخ بعدی ظاهر شود.",
+          "lines": [
+            {
+              "speaker": "Mia",
+              "en": "Is this your book?",
+              "fa": "این کتاب توست؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "No, it's her book.",
+              "fa": "نه، کتاب اوست."
+            },
+            {
+              "speaker": "Mia",
+              "en": "Is this your bag?",
+              "fa": "این کیف توست؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "Yes, it's mine.",
+              "fa": "بله، مال من است."
+            },
+            {
+              "speaker": "Mia",
+              "en": "Is this my pen?",
+              "fa": "این خودکار من است؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "Yes, it's yours.",
+              "fa": "بله، مال توست."
+            },
+            {
+              "speaker": "Mia",
+              "en": "Is this your notebook?",
+              "fa": "این دفتر توست؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "No, it's his notebook.",
+              "fa": "نه، دفتر اوست."
+            },
+            {
+              "speaker": "Mia",
+              "en": "Is this your wallet?",
+              "fa": "این کیف پول توست؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "Yes, it's mine.",
+              "fa": "بله، مال من است."
+            }
+          ],
+          "practiceRevision": 2
+        },
+        null,
+        null,
+        null,
         {
           "id": "ownership-guided-talk",
           "type": "guided-dialogue",
-          "practiceRevision": 1,
+          "practiceRevision": 2,
           "title": "نوبت تو؛ پاسخ را بساز",
           "description": "به سؤال گوش کن یا آن را بخوان؛ بعد بدون کپی‌کردن کل مکالمه پاسخ مناسب بساز.",
-          "completion": "توانستی مالکیت را در پاسخ‌های کوتاه به کار ببری.",
+          "completion": "توانستی برای وسایل مختلف سؤال را بفهمی و پاسخ مثبت یا منفی بسازی.",
           "turns": [
             {
               "speaker": "دوستت",
@@ -632,17 +885,65 @@
                 ],
                 "success": "صاحب دیگری را مشخص کردی."
               }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Is this your notebook?",
+              "task": "نه، دفتر متعلق به یک مرد است.",
+              "hint": "No, it's his notebook.",
+              "example": "No, it's his notebook.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no"
+                    ],
+                    "feedback": "با No حدس را رد کن."
+                  },
+                  {
+                    "any": [
+                      "his notebook"
+                    ],
+                    "feedback": "برای صاحب مذکر از his notebook استفاده کن."
+                  }
+                ],
+                "success": "پاسخ منفی و صاحب درست را کنار هم گذاشتی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Is this your wallet?",
+              "task": "بله، کیف پول مال خودت است.",
+              "hint": "Yes, it's mine.",
+              "example": "Yes, it's mine.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "yes"
+                    ],
+                    "feedback": "با Yes پاسخ مثبت بده."
+                  },
+                  {
+                    "any": [
+                      "it's mine"
+                    ],
+                    "feedback": "برای مال خودت بودن از mine استفاده کن."
+                  }
+                ],
+                "success": "پاسخ مثبت را با mine ساختی."
+              }
             }
           ]
         },
         {
           "id": "ownership-transfer",
           "type": "dialogue-transfer",
-          "practiceRevision": 1,
+          "practiceRevision": 2,
           "title": "موقعیت تازه: میز اشیای پیدا‌شده",
           "sceneTitle": "میز اشیای پیدا‌شده",
           "description": "موقعیت عوض شده است؛ با همان الگوها، اما برای وسیله و صاحب تازه جواب بده.",
-          "completion": "الگو را در موقعیتی تازه به کار بردی.",
+          "completion": "الگو را با وسایل تازه و در موقعیتی متفاوت به کار بردی.",
           "turns": [
             {
               "speaker": "مسئول میز",
@@ -697,6 +998,54 @@
                 ],
                 "success": "در موقعیت تازه مالک را درست مشخص کردی."
               }
+            },
+            {
+              "speaker": "مسئول میز",
+              "incoming": "Is this your bottle?",
+              "task": "نه، بطری متعلق به یک زن است.",
+              "hint": "No, it's her bottle.",
+              "example": "No, it's her bottle.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no"
+                    ],
+                    "feedback": "حدس را رد کن."
+                  },
+                  {
+                    "any": [
+                      "her bottle"
+                    ],
+                    "feedback": "برای صاحب مؤنث از her bottle استفاده کن."
+                  }
+                ],
+                "success": "در موقعیت تازه پاسخ منفی ساختی."
+              }
+            },
+            {
+              "speaker": "مسئول میز",
+              "incoming": "Is this my pencil?",
+              "task": "بله، مداد مال مخاطب است.",
+              "hint": "Yes, it's yours.",
+              "example": "Yes, it's yours.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "yes"
+                    ],
+                    "feedback": "با Yes پاسخ مثبت بده."
+                  },
+                  {
+                    "any": [
+                      "it's yours"
+                    ],
+                    "feedback": "برای مال مخاطب بودن از yours استفاده کن."
+                  }
+                ],
+                "success": "از دید مخاطب پاسخ دادی."
+              }
             }
           ]
         },
@@ -704,13 +1053,13 @@
           "id": "ownership-independent",
           "type": "free-write",
           "title": "یک گفت‌وگوی کوتاه دربارهٔ وسایل بنویس",
-          "prompt": "یک گفت‌وگوی ۴ تا ۶ خطی دربارهٔ کتاب، کیف یا تلفن بنویس. در آن دقیقاً این چهار کار را انجام بده: کتاب خودت را معرفی کن؛ بپرس آیا کتاب طرف مقابل است؛ یک بار بگو It's mine. و یک بار هم بگو It's yours.",
-          "placeholder": "Mia: Is this your book?\nYou: ...",
-          "hint": "می‌توانی از نام‌های Mia و Noah استفاده کنی. جمله‌ها را در گفت‌وگو قرار بده؛ فقط چهار جملهٔ جدا ننویس.",
+          "prompt": "یک گفت‌وگوی ۶ تا ۸ خطی دربارهٔ دو یا سه وسیله از کتاب، کیف، دفتر، مداد، کیف پول یا بطری بنویس. در آن کتاب خودت را معرفی کن؛ بپرس آیا کتاب طرف مقابل است؛ یک بار بگو It's mine. و یک بار هم بگو It's yours. دست‌کم یک پاسخ منفی هم بده و وسیله‌ای را به شخص دیگری نسبت بده.",
+          "placeholder": "Mia: Is this your book?\nYou: ...\nMia: Is this your wallet?\nYou: ...",
+          "hint": "می‌توانی از نام‌های Mia و Noah استفاده کنی. جمله‌ها را در گفت‌وگو قرار بده؛ فقط جمله‌های جدا ننویس.",
           "kind": "free-text",
-          "minWords": 12,
+          "minWords": 16,
           "assessment": {
-            "revision": 1,
+            "revision": 2,
             "required": [
               {
                 "any": [
@@ -735,6 +1084,20 @@
                   "it's yours"
                 ],
                 "feedback": "یک پاسخ با It's yours. هم بنویس."
+              },
+              {
+                "any": [
+                  "no"
+                ],
+                "feedback": "حداقل یک پاسخ منفی هم در مکالمه بیاور."
+              },
+              {
+                "any": [
+                  "her book",
+                  "his notebook",
+                  "her bottle"
+                ],
+                "feedback": "در یک پاسخ منفی، وسیله را به شخص دیگری نسبت بده."
               }
             ],
             "success": "در یک گفت‌وگو، معرفی وسیله، پرسش دربارهٔ صاحب و دو شکل پاسخ مالکیت را به کار بردی."
