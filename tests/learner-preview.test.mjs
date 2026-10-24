@@ -337,7 +337,7 @@ test('meaning expressions and reusable visual learning modules are lesson-author
   assert.equal(family.people.length,6);
   assert.ok(family.people.some(person=>person.sentence==='This is my daughter, Ava.'));
   assert.ok(family.people.some(person=>person.sentence==='This is my son, Leo.'));
-  assert.match(html,/شش عضو خانواده/);
+  assert.match(html,/6 عضو خانواده/);
 
   const fourth=load('lessons/a1-4.json');
   const core=coreItems(fourth.sections[0].activities.find(a=>a.type==='vocabulary'));
