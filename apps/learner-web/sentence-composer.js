@@ -72,10 +72,6 @@ export function composeSegments(segments, activity, resolved) {
   return (segments || []).map((segment) => composerSegmentValue(segment, activity, resolved)).join('');
 }
 
-export function composeSegments(segments, activity, resolved) {
-  return (segments || []).map((segment) => composerSegmentValue(segment, activity, resolved)).join('');
-}
-
 export function composerSlotForm(activity, pattern, slotId) {
   return (pattern?.segments || []).find((segment) => segment.slot === slotId)?.form || 'label';
 }
