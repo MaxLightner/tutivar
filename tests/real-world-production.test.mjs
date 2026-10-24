@@ -10,6 +10,27 @@ const root = resolve(fileURLToPath(import.meta.url), '../..');
 const load = (id) => JSON.parse(readFileSync(join(root, `content/language-pairs/fa-en/lessons/a1-${id}.json`), 'utf8'));
 
 for (const n of [1, 2, 3, 4]) {
+  test(`A1-${n} has an opening shadowing track and reuses it at the end`, () => {
+    const lesson = load(n);
+    assert.deepEqual(validateLessonFlow(lesson), []);
+    const foundation = lesson.sections.find((section) => section.id === 'foundation');
+    const production = lesson.sections.find((section) => section.id === 'production');
+    const opening = foundation.activities.find((activity) => activity.type === 'shadowing');
+    const closing = production.activities.find((activity) => activity.type === 'shadowing-review');
+    assert.equal(foundation.activities[0].type, 'shadowing');
+    assert.equal(closing.sourceActivityId, opening.id);
+    assert.ok(opening.lines.length >= 5);
+    assert.ok(opening.lines.every((line) => line.trim().split(/\\s+/).length <= 10), 'shadowing lines stay short enough to imitate');
+    assert.ok(!production.some((activity) => /comprehension-quiz/.test(activity.type)), 'shadowing does not become a comprehension quiz');
+  });
+  test(`A1-${n} keeps words and phrase-level units in separate modules`, () => {
+    const lesson = load(n);
+    const foundation = lesson.sections.find((section) => section.id === 'foundation');
+    const vocabulary = foundation.activities.find((activity) => activity.type === 'vocabulary');
+    const expressions = foundation.activities.find((activity) => activity.type === 'expression-study');
+    assert.ok(expressions && expressions.items.length > 0);
+    assert.ok(vocabulary.items.every((item) => !/\\s/.test(item.en.trim())), 'no multiword phrase or full sentence is stored as a vocabulary entry');
+  });
   test(`A1-${n} places image description between dialogue and free production`, () => {
     const lesson = load(n);
     assert.deepEqual(validateLessonFlow(lesson), []);
