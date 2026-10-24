@@ -446,7 +446,7 @@ function onClick(event) {
       box.style.opacity = (box.dataset.spatialOrientation === (position.id === 'on' ? 'side' : 'open')) ? '1' : '0';
     }
     const panel = stage.querySelector('[data-spatial-cutaway]');
-    if (panel) panel.style.opacity = position.ball.layer === 'inside' ? '.38' : '1';
+    if (panel) panel.style.opacity = position.ball.layer === 'inside' ? '.14' : '1';
     const english = stage.querySelector('.spatial-English');
     const persian = stage.querySelector('.spatial-Persian');
     if (english) english.textContent = position.en;

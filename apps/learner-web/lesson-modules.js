@@ -210,7 +210,7 @@ function spatialLab(a, c) {
       </g>
       ${spatialBallSVG('inside', position)}
       <g class="spatial-box-part" data-box-part="front" style="transform:translateY(-${lift}px)">
-        <g data-spatial-cutaway style="opacity:${inside ? .38 : 1}">
+        <g data-spatial-cutaway style="opacity:${inside ? .14 : 1}">
           <path d="M152 164L294 195L294 314L152 275Z" fill="url(#spatial-front)" stroke="#956a44" stroke-width="3"/>
           <path d="M294 195L369 144L369 271L294 314Z" fill="#c08c59" stroke="#91643d" stroke-width="3"/>
         </g>
