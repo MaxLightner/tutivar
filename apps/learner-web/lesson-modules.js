@@ -19,7 +19,9 @@ const MODULE_LABELS = {
   'exchange-lab': 'سؤال و جواب',
   'sentence-transform': 'تبدیل جمله',
   'dialogue-transfer': 'مکالمه در موقعیت تازه',
-  'family-tree': 'درخت خانواده', 'family-lab': 'خانوادهٔ تصویری', 'spatial-lab': 'بازی موقعیت توپ', 'picture-description': 'توصیف تصویر', 'meaning-cluster': 'یک مفهوم، چند بیان',
+  'family-tree': 'درخت خانواده', 'family-lab': 'خانوادهٔ تصویری', 'spatial-lab': 'بازی موقعیت توپ',
+  'expression-study': 'عبارت‌های کاربردی', shadowing: 'سایه‌خوانی', 'shadowing-review': 'سایه‌خوانی دوباره',
+  'picture-description': 'توصیف تصویر', 'meaning-cluster': 'یک مفهوم، چند بیان',
   'agreement-lab': 'جمله‌ساز وابسته', 'sentence-composer': 'جمله‌ساز تعاملی', 'composer-view': 'کشف و تغییر جمله'
 };
 function wrapper(body, activity, idx, e, extra = '') {
@@ -30,12 +32,21 @@ function soundButton(text, e, i) {
 }
 function exampleFocus(line, entry, c) {
   const phrase = entry.en.replace(/[?!.,]/g, '').trim();
-  const firstWords = phrase.split(/\s+/).slice(0, 2).join(' ');
-  const start = line.toLowerCase().indexOf(phrase.toLowerCase());
-  const fallback = start < 0 ? line.toLowerCase().indexOf(firstWords.toLowerCase()) : start;
-  const matched = start >= 0 ? phrase : firstWords;
-  if (fallback < 0) return c.en(line);
-  return `<span class="en" lang="en" dir="ltr">${c.e(line.slice(0, fallback))}<mark class="example-target">${c.e(line.slice(fallback, fallback + matched.length))}</mark>${c.e(line.slice(fallback + matched.length))}</span>`;
+  if (!phrase) return c.en(line);
+  const lowerLine = line.toLowerCase();
+  const lowerPhrase = phrase.toLowerCase();
+  let start = lowerLine.indexOf(lowerPhrase);
+  while (start >= 0) {
+    const before = start === 0 || !/[a-z]/i.test(line[start - 1]);
+    const afterIndex = start + phrase.length;
+    const after = afterIndex >= line.length || !/[a-z]/i.test(line[afterIndex]);
+    if (before && after) break;
+    start = lowerLine.indexOf(lowerPhrase, start + 1);
+  }
+  if (start < 0) return c.en(line);
+  return '<span class="en" lang="en" dir="ltr">' + c.e(line.slice(0, start)) +
+    '<mark class="example-target">' + c.e(line.slice(start, start + phrase.length)) + '</mark>' +
+    c.e(line.slice(start + phrase.length)) + '</span>';
 }
 function exampleGallery(entry, c) {
   const examples = entry.examples?.length ? entry.examples : entry.example ? [entry.example] : [];
@@ -51,17 +62,15 @@ function vocabulary(a, c) {
   const items = coreItems(a);
   const optionalItems = supplementaryItems(a);
   const total = items.length;
-  const optional = optionalItems.length ? `<details class="vocab-supplementary"><summary><span><strong>عبارت‌های تکمیلی</strong><small>${optionalItems.length} عبارت برای آشنایی بیشتر · اختیاری</small></span><span class="supplementary-toggle">نمایش / بستن</span></summary><ul class="supplementary-list" aria-label="فهرست عبارت‌های تکمیلی">${optionalItems.map((item) => `<li class="supplementary-item"><span class="supplementary-en" lang="en" dir="ltr">${c.en(item.en)}</span><span class="supplementary-fa" dir="rtl">${c.e(item.fa)}</span></li>`).join('')}</ul></details>` : '';
+  const optional = optionalItems.length ? `<details class="vocab-supplementary"><summary><span><strong>واژگان تکمیلی</strong><small>${optionalItems.length} واژهٔ اختیاری برای گسترش دامنهٔ بیان</small></span><span class="supplementary-toggle">نمایش / بستن</span></summary><ul class="supplementary-list" aria-label="واژگان تکمیلی">${optionalItems.map((item) => `<li class="supplementary-item"><span class="supplementary-en" lang="en" dir="ltr">${c.en(item.en)}</span><span class="supplementary-fa" dir="rtl">${c.e(item.fa)}</span></li>`).join('')}</ul></details>` : '';
   const render = (body) => wrapper(`${body}${optional}`, a, c.index, c.e, 'module-vocabulary');
-  const learned = Object.values(state.decisions).filter((value) => value === 'known').length;
-  const tested = Object.values(state.decisions).filter((value) => value === 'test').length;
   if (!total || state.phase === 'done') {
     const difficult = Object.keys(state.failed).length;
-    return render(`<div class="vocab-finished">${c.i('check')} مرور واژه‌های اصلی تمام شد. ${difficult ? `${difficult} مورد دشوار به لایتنر اصلی اضافه شد.` : ''}<button class="outline-btn" data-word-key="${c.e(key)}" data-word-action="restart">مرور دوباره</button></div>`);
+    return render(`<div class="vocab-finished">${c.i('check')} آزمون واژگان تمام شد. ${difficult ? `${difficult} واژه برای مرور بیشتر به لایتنر اضافه شد. ` : 'می‌توانی هر زمان خواستی دوباره مرور کنی.'}<button class="outline-btn" data-word-key="${c.e(key)}" data-word-action="restart">مرور واژه‌ها</button></div>`);
   }
   if (state.phase === 'test') {
     const entry = items.find((item) => wordId(item) === state.queue[0]);
-    return render(`<div class="vocab-deck-top"><span>مینی‌لایتنر · ${state.queue.length} کارت در صف آزمون</span><strong>${tested} انتخاب‌شده برای آزمون</strong></div><div class="word-test-card"><span class="word-test-label">معادل انگلیسی را بنویس</span><div class="word-test-question">${c.e(entry.testPrompt || entry.fa)}</div>${entry.testHint ? `<p class="word-hint">${c.e(entry.testHint)}</p>` : ''}<form class="word-test-form" data-word-form="${c.e(key)}"><input data-word-answer="${c.e(key)}" type="text" lang="en" dir="ltr" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="معادل انگلیسی ${c.e(entry.fa)}" placeholder="به انگلیسی بنویس…" required><button class="secondary-btn" type="submit">بررسی پاسخ</button></form><p class="word-test-help">پاسخ درست این کارت را از صف حذف می‌کند؛ پاسخ اشتباه آن را برای مرور برمی‌گرداند.</p></div>`);
+    return render(`<div class="vocab-deck-top"><span>آزمون واژگان · ${state.queue.length} کارت باقی‌مانده</span><button class="outline-btn" data-word-key="${c.e(key)}" data-word-action="restart">بازگشت به واژه‌ها</button></div><div class="word-test-card"><span class="word-test-label">معادل انگلیسی را بنویس</span><div class="word-test-question">${c.e(entry.testPrompt || entry.fa)}</div>${entry.testHint ? `<p class="word-hint">${c.e(entry.testHint)}</p>` : ''}<form class="word-test-form" data-word-form="${c.e(key)}"><input data-word-answer="${c.e(key)}" type="text" lang="en" dir="ltr" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="معادل انگلیسی ${c.e(entry.fa)}" placeholder="به انگلیسی بنویس…" required><button class="secondary-btn" type="submit">بررسی پاسخ</button></form><p class="word-test-help">پاسخ درست این کارت را از صف حذف می‌کند؛ پاسخ اشتباه آن را برای مرور برمی‌گرداند.</p></div>`);
   }
   const entry = state.phase === 'retry' ? items.find((item) => wordId(item) === state.lastWrong?.id) : items[state.index];
   const index = state.index;
@@ -70,11 +79,10 @@ function vocabulary(a, c) {
   const batches = Math.ceil(total / batchSize);
   const examples = exampleGallery(entry, c);
   if (state.phase === 'retry') {
-    return render(`<div class="word-test-alert">این یکی هنوز نیاز به مرور دارد. پاسخ درست: ${c.en(entry.en)}</div><div class="vocab-focus-card"><div class="word-focus-title">${c.en(entry.en)}${soundButton(entry.en, c.e, c.i)}</div><div class="word-focus-meaning">${c.e(entry.fa)}</div>${examples}</div><div class="vocab-deck-actions"><button class="outline-btn" data-word-key="${c.e(key)}" data-word-action="skip-failed">فعلاً در لایتنر اصلی بماند</button><button class="secondary-btn" data-word-key="${c.e(key)}" data-word-action="resume">دوباره امتحانم کن</button></div>`);
+    return render(`<div class="word-test-alert">این واژه هنوز نیاز به مرور دارد. پاسخ درست: ${c.en(entry.en)}</div><div class="vocab-focus-card"><div class="word-focus-title">${c.en(entry.en)}${soundButton(entry.en, c.e, c.i)}</div><div class="word-focus-meaning">${c.e(entry.fa)}</div>${examples}</div><div class="vocab-deck-actions"><button class="outline-btn" data-word-key="${c.e(key)}" data-word-action="skip-failed">فعلاً در لایتنر بماند</button><button class="secondary-btn" data-word-key="${c.e(key)}" data-word-action="resume">ادامهٔ آزمون</button></div>`);
   }
-  const decisions = items.slice(0, index + 1).filter((item) => state.decisions[wordId(item)]).length;
-  const slider = `<div class="vocab-navigation"><div class="vocab-range-label"><strong>مرور آزاد کلمات</strong><span>${index + 1} / ${total} · دسته ${batch} از ${batches}</span></div><div class="vocab-scrubber"><button type="button" class="word-nav-btn" data-word-key="${c.e(key)}" data-word-action="prev" ${index === 0 ? 'disabled' : ''} aria-label="کلمه قبلی">‹</button><input type="range" data-word-slider="${c.e(key)}" min="1" max="${total}" step="1" value="${index + 1}" aria-label="جابه‌جایی بین ${total} کلمه"><button type="button" class="word-nav-btn" data-word-key="${c.e(key)}" data-word-action="next" aria-label="کلمه بعدی یا پایان مرور">›</button></div><p>دستگیره را بکش یا کارت را ورق بزن؛ لازم نیست همهٔ کلمات را جداگانه تأیید کنی.</p></div>`;
-  return render(`<div class="vocab-deck-top"><span>کارت ${index + 1} از ${total}</span><strong>${learned} بلدم · ${tested} امتحانم کن</strong></div><div class="vocab-deck-bar"><span style="width:${total ? (decisions / total) * 100 : 0}%"></span></div><div class="vocab-focus-card" data-word-swipe="${c.e(key)}" tabindex="0" aria-label="کارت واژه؛ برای جابه‌جایی از کلیدهای جهت‌نما استفاده کن"><div class="word-focus-title">${c.en(entry.en)}${soundButton(entry.en, c.e, c.i)}</div><div class="word-focus-meaning">${c.e(entry.fa)}</div>${entry.hint ? `<p class="word-hint">${c.e(entry.hint)}</p>` : ''}${examples}</div><div class="vocab-deck-actions"><button class="outline-btn" data-word-key="${c.e(key)}" data-word-action="test">امتحانم کن</button><button class="secondary-btn" data-word-key="${c.e(key)}" data-word-action="known">اینو بلدم ${c.i('check')}</button></div>${slider}`);
+  const slider = `<div class="vocab-navigation"><div class="vocab-range-label"><strong>مرور آزاد واژه‌ها</strong><span>${index + 1} / ${total} · دسته ${batch} از ${batches}</span></div><div class="vocab-scrubber"><button type="button" class="word-nav-btn" data-word-key="${c.e(key)}" data-word-action="prev" ${index === 0 ? 'disabled' : ''} aria-label="واژهٔ قبلی">‹</button><input type="range" data-word-slider="${c.e(key)}" min="1" max="${total}" step="1" value="${index + 1}" aria-label="جابه‌جایی بین ${total} واژه"><button type="button" class="word-nav-btn" data-word-key="${c.e(key)}" data-word-action="next" ${index === total - 1 ? 'disabled' : ''} aria-label="واژهٔ بعدی">›</button></div><p>با فلش‌ها، دستگیره یا کشیدن کارت بین واژه‌ها جابه‌جا شو.</p></div>`;
+  return render(`<div class="vocab-deck-top"><span>واژه ${index + 1} از ${total}</span><button class="outline-btn vocab-test-start" data-word-key="${c.e(key)}" data-word-action="start-test">آزمون واژگان</button></div><div class="vocab-deck-bar"><span style="width:${total ? ((index + 1) / total) * 100 : 0}%"></span></div><div class="vocab-focus-card" data-word-swipe="${c.e(key)}" tabindex="0" aria-label="کارت واژه؛ برای جابه‌جایی از کلیدهای جهت‌نما استفاده کن"><div class="word-focus-title">${c.en(entry.en)}${soundButton(entry.en, c.e, c.i)}</div><div class="word-focus-meaning">${c.e(entry.fa)}</div>${entry.hint ? `<p class="word-hint">${c.e(entry.hint)}</p>` : ''}${examples}</div>${slider}`);
 }
 function phraseComposer(a, c) {
   const key = `${c.lessonId}:${a.id}`;
@@ -396,6 +404,31 @@ function roleplay(a, c) {
   const history = answers.map((answer, i) => `<div class="role-turn"><div class="role-speaker">${c.e(a.turns[i].speaker)}: ${c.en(a.turns[i].prompt)}</div><div class="role-user">${c.en(a.turns[i].choices[answer])}</div></div>`).join('');
   return wrapper(`<p class="module-description">${c.e(a.description)}</p><div class="roleplay-progress">${a.turns.map((_, i) => `<span class="${i < index ? 'filled' : ''}"></span>`).join('')}</div><div class="roleplay-history">${history}</div>${turn ? `<div class="role-speaker"><strong>${c.e(turn.speaker)}</strong><div>${c.en(turn.prompt)} ${soundButton(turn.prompt, c.e, c.i)}</div></div><div class="choices">${turn.choices.map((choice, i) => `<button class="choice" data-roleplay="${c.e(key)}" data-role-choice="${i}">${c.en(choice)}</button>`).join('')}</div>` : `<div class="module-result success">✓ گفت‌وگو را تا آخر پیش بردی!<p>${c.en(a.turns.at(-1).reply)}</p></div>`}`, a, c.index, c.e, 'module-roleplay');
 }
+function expressionStudy(a, c) {
+  const labels = { fixed: 'عبارت کاربردی', collocation: 'ترکیب رایج', preposition: 'عبارت مکانی' };
+  const cards = (a.items || []).map((item) => {
+    const examples = item.examples?.length
+      ? `<details class="expression-examples"><summary>نمونه‌ها</summary><ul>${item.examples.map((line) => `<li>${c.en(line)}</li>`).join('')}</ul></details>`
+      : '';
+    return `<article class="expression-card"><span class="expression-kind">${c.e(labels[item.kind] || 'عبارت')}</span><div class="expression-main">${c.en(item.en)}${soundButton(item.en, c.e, c.i)}</div><p>${c.e(item.fa)}</p>${examples}</article>`;
+  }).join('');
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="expression-grid">${cards}</div>`, a, c.index, c.e, 'module-expression-study');
+}
+function shadowing(a, c) {
+  const isReview = a.type === 'shadowing-review';
+  const source = isReview ? c.activitiesById?.[a.sourceActivityId] : a;
+  if (!source || source.type !== 'shadowing') throw new Error('Missing opening shadowing track: ' + a.sourceActivityId);
+  const key = `${c.lessonId}:${a.id}`;
+  const playback = source.audioSrc
+    ? `<audio class="shadowing-audio" data-shadowing-audio="${c.e(key)}" controls preload="none" src="${c.e(source.audioSrc)}"></audio><label class="shadowing-speed-label">سرعت پخش <select data-shadowing-speed="${c.e(key)}"><option value="0.65">خیلی آهسته</option><option value="0.75" selected>آهسته</option><option value="0.85">طبیعی‌تر</option></select></label>`
+    : `<div class="shadowing-playback"><button type="button" class="secondary-btn shadowing-play" data-shadowing-key="${c.e(key)}" data-shadowing-source="${c.e(source.id)}">${c.i('sound')} پخش برای سایه‌خوانی</button><label class="shadowing-speed-label">سرعت <select data-shadowing-speed="${c.e(key)}"><option value="0.62">خیلی آهسته</option><option value="0.72" selected>آهسته</option><option value="0.82">کمی سریع‌تر</option></select></label></div>`;
+  const transcript = `<details class="shadowing-transcript"><summary>دیدن متن انگلیسی (اختیاری)</summary><ol>${source.lines.map((line) => `<li><span>${c.en(line)}</span>${soundButton(line, c.e, c.i)}</li>`).join('')}</ol></details>`;
+  const instruction = isReview
+    ? 'این همان محتوای شنیداری ابتدای درس است. دوباره گوش بده و همراه صدا تکرار کن؛ این بار باید تقلید گفتار برایت روان‌تر باشد.'
+    : 'فقط گوش بده و هم‌زمان یا با فاصله‌ای کوتاه تکرار کن. لازم نیست معنی جمله‌ها را بفهمی؛ اگر جا ماندی سرعت را کمتر کن.';
+  const fallbackNote = source.audioSrc ? '' : '<p class="shadowing-fallback-note">نسخهٔ فعلی از صدای انگلیسی مرورگر استفاده می‌کند؛ فایل ضبط‌شده می‌تواند بدون تغییر ساختار درس جایگزین شود.</p>';
+  return wrapper(`<p class="module-description">${c.e(a.description || instruction)}</p><div class="shadowing-player">${playback}</div>${fallbackNote}<p class="shadowing-status" data-shadowing-status="${c.e(key)}" role="status">${isReview ? 'همان مسیر صوتی را دوباره تمرین کن.' : 'آمادهٔ شنیدن و تکرار.'}</p>${transcript}`, a, c.index, c.e, 'module-shadowing');
+}
 function pictureDescription(a, c) {
   const image = `<figure class="picture-description-scene"><img src="${c.e(a.image)}" alt="${c.e(a.imageAlt)}" loading="lazy"/><figcaption>${c.e(a.caption || '')}</figcaption></figure>`;
   return wrapper(`<p class="module-description">${c.e(a.description || '')}</p>${image}<p class="picture-description-note">اول تصویر را نگاه کن؛ بعد هر جمله را خودت بساز. جواب آماده روی تصویر نوشته نشده است.</p>${practiceSequence(a, c)}`, a, c.index, c.e, 'module-picture-description');
@@ -412,7 +445,8 @@ const renderers = {
   'quiz-set': quizSet, dialogue, roleplay, 'free-write': freeWrite,
   'phrase-composer': phraseComposer, 'pattern-lab': patternLab, 'sentence-lab': sentenceLab,
   'guided-dialogue': guidedDialogue, 'response-practice': responsePractice,
-  'exchange-lab': exchangeLab, 'picture-description': pictureDescription,
+  'exchange-lab': exchangeLab, 'expression-study': expressionStudy,
+  shadowing, 'shadowing-review': shadowing, 'picture-description': pictureDescription,
   'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer,
   'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer
 };
