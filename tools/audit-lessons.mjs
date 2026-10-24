@@ -18,18 +18,16 @@ function containsPhrase(text, aliases) {
 
 function visibleInputs(activity) {
   const inputs = [];
-  for (const form of activity.forms || []) if (form.en) inputs.push(form.en);
-  for (const line of activity.lines || []) if (line.en) inputs.push(line.en);
-  for (const pair of activity.pairs || []) {
-    if (pair.question) inputs.push(pair.question);
-    for (const variant of pair.variants || []) if (variant.en) inputs.push(variant.en);
+  const excluded = new Set(['id','type','phase','status','title','typeLabel','description','image','imageAlt','caption','sourceActivityId','patternId','targetLanguage','kind','role','speaker','revision','deckRevision']);
+  function collect(value, key = '') {
+    if (typeof value === 'string') {
+      if (!excluded.has(key) && /[A-Za-z]/.test(value)) inputs.push(value);
+      return;
+    }
+    if (Array.isArray(value)) { value.forEach((item) => collect(item, key)); return; }
+    if (value && typeof value === 'object') for (const [childKey, child] of Object.entries(value)) collect(child, childKey);
   }
-  for (const outcome of activity.outcomes || []) if (outcome.en) inputs.push(outcome.en);
-  for (const example of activity.examples || []) if (typeof example === 'string') inputs.push(example);
-  for (const turn of [...(activity.tasks || []), ...(activity.turns || [])]) {
-    if (turn.incoming) inputs.push(turn.incoming);
-    if (turn.source) inputs.push(turn.source);
-  }
+  collect(activity);
   return inputs;
 }
 
@@ -60,19 +58,26 @@ export function auditLesson(lesson) {
   const focus = new Set(lesson.learningAudit.focusExpressions || []);
   const specificIndependent = new Set(lesson.learningAudit.specificIndependentExpressions || []);
   const errors = [];
+  const contentActivities = activities.filter((activity) => activity.id !== vocabulary.id);
+  const availableContent = contentActivities.flatMap(visibleInputs);
   for (const phrase of focus) {
-    if (!core.some((item) => item.en === phrase)) errors.push(`${phrase}: focus expression missing from core vocabulary`);
+    const inWords = core.some((item) => item.en === phrase);
+    const inContent = availableContent.some((input) => containsPhrase(input, [normalize(phrase)]));
+    if (!inWords && !inContent) errors.push(`${phrase}: focus target missing from vocabulary and lesson activities`);
   }
   for (const phrase of specificIndependent) {
     if (!focus.has(phrase)) errors.push(`${phrase}: specific independent expression is not a focus expression`);
   }
-  const rows = core.map((item) => {
+
+  const targets = new Map(core.map((item) => [item.en, item]));
+  for (const phrase of focus) if (!targets.has(phrase)) targets.set(phrase, { en: phrase, fa: '' });
+  const rows = [...targets.values()].map((item) => {
     const aliases = [item.en, ...(item.auditAliases || [])].map(normalize).filter(Boolean);
     const visible = [];
     const guided = [];
     const independent = [];
     const independentRequired = [];
-    for (const activity of activities.filter((entry) => entry.id !== vocabulary.id)) {
+    for (const activity of contentActivities) {
       if (visibleInputs(activity).some((input) => containsPhrase(input, aliases))) visible.push(activity.id);
       const hasRequirement = assessmentGroups(activity).some((required) => requirementOffersPhrase(required, aliases));
       if (hasRequirement) {
