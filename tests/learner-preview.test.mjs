@@ -9,6 +9,7 @@ import { evaluateResponse, practiceState, submitPractice } from '../apps/learner
 import { auditLesson } from '../tools/audit-lessons.mjs';
 import { composeSegments, cycleComposerSlot, resolveSentenceComposer, validateSentenceComposer } from '../apps/learner-web/sentence-composer.js';
 import { LESSON_PHASES, validateLessonFlow } from '../apps/learner-web/lesson-flow.js';
+import { resolveMeaningForm, advanceMeaningForm, selectedSpatialPosition, validateVisualActivity } from '../apps/learner-web/visual-learning.js';
 import { puzzleTokenBank, normalizePuzzleState, normalizePuzzleSentence, puzzleDisplayWord, addPuzzleWord, undoPuzzleWord, clearPuzzleSentence, submitPuzzleSentence, validateMultiSentencePuzzle } from '../apps/learner-web/sentence-puzzle.js';
 
 const contentRoot = join(projectRoot, 'content/language-pairs/fa-en');
@@ -251,14 +252,14 @@ test('A1-4 is a complete location lesson in the same six/four phase teaching tem
   assert.deepEqual([...new Set(lesson.sections[1].activities.map(x=>x.phase))],LESSON_PHASES.production);
   const foundation=lesson.sections[0],production=lesson.sections[1];
   const vocabulary=foundation.activities.find(a=>a.type==='vocabulary');
-  assert.equal(coreItems(vocabulary).length,12);
+  assert.equal(coreItems(vocabulary).length,15);
   assert.ok(supplementaryItems(vocabulary).length>=16);
   assert.ok(coreItems(vocabulary).every(item=>item.examples?.length===3));
   assert.ok(supplementaryItems(vocabulary).every(item=>!item.examples&&!item.hint),'supplementary words are list-only');
   assert.deepEqual(auditLesson(lesson).errors,[],'every focus expression appears in guided and independent production');
   const composer=foundation.activities.find(a=>a.type==='sentence-composer');
   assert.deepEqual(validateSentenceComposer(composer),[]);
-  assert.equal(composeSegments(resolveSentenceComposer(composer,{}).pattern.segments,composer,resolveSentenceComposer(composer,{})),'The book is on the table.');
+  assert.equal(composeSegments(resolveSentenceComposer(composer,{}).pattern.segments,composer,resolveSentenceComposer(composer,{})),'The ball is in the box.');
   const selected={slots:{object:'keys',position:'under',location:'chair'}};
   for(const [pattern,expected] of [
     ['statement','The keys are under the chair.'],
@@ -269,7 +270,7 @@ test('A1-4 is a complete location lesson in the same six/four phase teaching tem
     const resolved=resolveSentenceComposer(composer,{...selected,pattern});
     assert.equal(composeSegments(resolved.pattern.segments,composer,resolved),expected);
   }
-  const next=cycleComposerSlot(composer,{slots:{object:'book'}},'object');
+  const next=cycleComposerSlot(composer,{slots:{object:'ball'}},'object');
   assert.equal(next.slots.object,composer.wordSets.objects[1].id);
   const context={lessonId:lesson.id,index:0,e:String,en:String,i:()=>'',progress:{sentenceComposers:{},sentenceAnswers:{},wordProgress:{},written:{},assessments:{},showDialogueTranslation:true,practiceStates:{},dialogueSteps:{},exchangeChoices:{}},
      activitiesById:Object.fromEntries(lesson.sections.flatMap(section=>section.activities).map(activity=>[activity.id,activity]))};
@@ -285,7 +286,7 @@ test('A1-4 is a complete location lesson in the same six/four phase teaching tem
   const bank=puzzleTokenBank(puzzle);
   assert.ok(bank.length>20);
   let state=normalizePuzzleState(puzzle,[]);
-  for(const word of ['The','phone','is','near','the','table']){
+  for(const word of ['The','ball','is','under','the','box']){
     const index=bank.findIndex((item,index)=>normalizePuzzleSentence(item.word)===word.toLowerCase()&&!state.current.includes(index));
     assert.ok(index>=0,'bank contains '+word);
     state=addPuzzleWord(puzzle,state,index);
@@ -296,9 +297,61 @@ test('A1-4 is a complete location lesson in the same six/four phase teaching tem
   assert.ok(production.activities.filter(a=>a.type==='dialogue').every(a=>a.lines.length>=8));
   assert.ok(production.activities.some(a=>a.type==='guided-dialogue'));
   assert.ok(production.activities.some(a=>a.type==='free-write'));
-  const svg=readFileSync(join(projectRoot,'apps/learner-web/a1-4-locations.svg'),'utf8');
-  assert.match(svg,/<svg/);
-  assert.equal(lesson.visual.src,'./a1-4-locations.svg');
+  const lab=foundation.activities.find(activity=>activity.type==='spatial-lab');
+  assert.equal(lab.positions.length,10);
+  assert.deepEqual(validateVisualActivity(lab),[]);
+  assert.match(renderActivity(lab,context),/data-spatial-position="on-top-of"/);
+  assert.match(renderActivity(lab,context),/data-spatial-ball-layer/);
+  assert.equal(lesson.visual.src,null);
+});
+
+test('meaning expressions and reusable visual learning modules are lesson-authored', () => {
+  for(const id of ['a1-1','a1-2','a1-3','a1-4']){
+    const lesson=load('lessons/'+id+'.json');
+    assert.deepEqual(validateLessonFlow(lesson),[],lesson.id);
+    const concept=lesson.sections[0].activities.find(a=>a.type==='meaning-cluster');
+    assert.ok(concept,lesson.id);
+    assert.deepEqual(validateVisualActivity(concept),[]);
+    const first=concept.concepts[0];
+    assert.ok(first.forms.length>=2);
+    assert.equal(resolveMeaningForm(concept,first,{}).en,first.forms[0].en);
+    const shifted=advanceMeaningForm(concept,first,{});
+    assert.equal(resolveMeaningForm(concept,first,shifted).en,first.forms[1].en);
+    const key=lesson.id+':'+concept.id;
+    const context={lessonId:lesson.id,index:0,e:String,en:String,i:()=>'',progress:{meaningChoices:{},familyPeople:{},spatialChoices:{},sentenceComposers:{},wordProgress:{}},activitiesById:Object.fromEntries(lesson.sections[0].activities.map(a=>[a.id,a]))};
+    assert.match(renderActivity(concept,context),/data-meaning-key=/);
+    assert.match(renderActivity(concept,context),/data-meaning-concept=/);
+    assert.match(key, new RegExp(lesson.id));
+  }
+  const third=load('lessons/a1-3.json').sections[0].activities.find(a=>a.type==='meaning-cluster');
+  assert.ok(third.concepts[0].forms.some(f=>f.relation==='related' && f.en==='I have this book.'));
+  assert.ok(third.concepts[0].forms.some(f=>f.relation==='equivalent' && f.en==='This book is mine.'));
+
+  const family=load('lessons/a1-2.json').sections[0].activities.find(a=>a.type==='family-lab');
+  assert.deepEqual(validateVisualActivity(family),[]);
+  const context={lessonId:'A1-2',index:0,e:String,en:String,i:()=>'',progress:{familyPeople:{}},activitiesById:{}};
+  const html=renderActivity(family,context);
+  assert.match(html,/class="family-point-arrow"/);
+  assert.equal((html.match(/data-family-key=/g)||[]).length,8,'family figures have SVG hotspots and button alternatives');
+  assert.match(html,/This is my mother, Nora./);
+
+  const fourth=load('lessons/a1-4.json');
+  const core=coreItems(fourth.sections[0].activities.find(a=>a.type==='vocabulary'));
+  assert.ok(core.some(item=>item.en==='ball'));
+  assert.ok(core.some(item=>item.en==='box'));
+  assert.ok(core.some(item=>item.en==='above'));
+  assert.ok(core.some(item=>item.en==='on top of'));
+  assert.ok(!core.some(item=>item.en==='phone'));
+  assert.ok(!core.some(item=>item.en==='book'));
+  const spatial=fourth.sections[0].activities.find(a=>a.type==='spatial-lab');
+  assert.deepEqual(validateVisualActivity(spatial),[]);
+  assert.equal(selectedSpatialPosition(spatial,'under').en,'The ball is under the box.');
+  assert.equal(selectedSpatialPosition(spatial,'above').ball.layer,'front');
+  assert.notDeepEqual(selectedSpatialPosition(spatial,'above').ball,selectedSpatialPosition(spatial,'on-top-of').ball);
+  const spatialMarkup=renderActivity(spatial,{lessonId:'A1-4',index:0,e:String,en:String,i:()=>'',progress:{spatialChoices:{}}});
+  assert.match(spatialMarkup,/data-spatial-current="in"/);
+  assert.match(spatialMarkup,/The ball is in the box./);
+  assert.equal((spatialMarkup.match(/data-spatial-position=/g)||[]).length,10);
 });
 
 test('first lesson activities render with separate content, including interactions', () => {
@@ -450,7 +503,7 @@ test('second lesson reuses the shared composer for family relationships and dial
   const lesson = load('lessons/a1-2.json');
   const [foundation, production] = lesson.sections;
   assert.deepEqual(validateLessonFlow(lesson), []);
-  assert.deepEqual(foundation.activities.map(a => a.type), ['vocabulary','composer-view','family-tree','sentence-composer','composer-view','sentence-transform','sentence-transform','sentence-builder','response-practice']);
+  assert.deepEqual(foundation.activities.map(a => a.type), ['vocabulary','composer-view','family-lab','sentence-composer','meaning-cluster','composer-view','sentence-transform','sentence-transform','sentence-builder','response-practice']);
   assert.deepEqual(production.activities.map(a=>a.type), ['exchange-lab','response-practice','dialogue','response-practice','dialogue','response-practice','guided-dialogue','dialogue-transfer','free-write']);
   assert.equal(coreItems(foundation.activities[0]).length, 11);
   assert.equal(supplementaryItems(foundation.activities[0]).length, 12);
@@ -468,7 +521,7 @@ test('second lesson reuses the shared composer for family relationships and dial
   const cycled=cycleComposerSlot(source,{slots:{member:'mother'}},'member');
   assert.equal(cycled.slots.member,'father');
   const context={lessonId:lesson.id,index:2,e:String,en:String,i:()=>'',activitiesById:Object.fromEntries(foundation.activities.map(a=>[a.id,a])),progress:{familyPeople:{},sentenceComposers:{},exchangeChoices:{},practiceStates:{},dialogueSteps:{},showDialogueTranslation:true}};
-  const tree=foundation.activities.find(a=>a.type==='family-tree');
+  const tree=foundation.activities.find(a=>a.type==='family-lab');
   assert.match(renderActivity(tree,context), /Her name is Nora/);
   context.progress.familyPeople['A1-2:family-tree']=1;
   assert.match(renderActivity(tree,context), /His name is David/);
@@ -577,7 +630,8 @@ test('A1-3 uses one JSON-driven sentence composer for owners, objects and gramma
   assert.ok(vocabulary.items.filter((entry) => entry.role !== 'supplementary').every((entry) => entry.examples?.length === 3));
   assert.equal(lesson.visual.src, './a1-3-personal-belongings.svg');
   const serviceWorker = readFileSync(join(projectRoot, 'apps/learner-web/sw.js'), 'utf8');
-  assert.ok(serviceWorker.includes('tutivar-ui-v5-network-first'));
+  assert.ok(serviceWorker.includes('tutivar-ui-v6-network-first'));
+  assert.ok(serviceWorker.includes("'./visual-learning.js'"), 'visual learning module is cached');
   assert.ok(serviceWorker.includes("'./sentence-composer.js'"), 'the shared composer runtime is precached for offline use');
   assert.match(readFileSync(join(projectRoot, 'apps/learner-web/a1-3-personal-belongings.svg'), 'utf8'), /<svg/);
   const optionalHtml = renderActivity(vocabulary, { lessonId: lesson.id, index: 0, e: String, en: String, i: () => '', progress: { wordProgress: {} } });
