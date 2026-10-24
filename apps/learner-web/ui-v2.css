@@ -181,14 +181,12 @@ p, .tiny, .small, .body-sm, .caps, .eyebrow, .brand-caption, .stat-label,
 .vocab-supplementary > summary strong { display: block; color: #305e43; font-size: 18px; }
 .vocab-supplementary > summary small { display: block; color: #607b67; margin-top: 4px; font-size: 14px; }
 .supplementary-toggle { white-space: nowrap; color: #317c50; font-size: 14px; font-weight: 750; }
-.supplementary-list { display: grid; gap: 11px; border-top: 1px solid #dce9d8; padding: 13px; }
-.supplementary-card { background: white; border: 1px solid #e4ece2; padding: 15px; border-radius: 13px; }
-.supplementary-main { display: flex; justify-content: space-between; align-items: center; gap: 13px; }
-.supplementary-main strong .en { color: #235439; font-size: 20px; }
-.supplementary-main p { color: #53735d; font-size: 16px; margin: 4px 0; }
-.supplementary-examples { border-top: 1px solid #edf1e9; margin-top: 12px; padding-top: 10px; }
-.supplementary-examples > summary { cursor: pointer; font-weight: 750; font-size: 15px; color: #41835b; }
-.supplementary-examples .word-examples { margin-top: 12px; }
+.supplementary-list { display: grid; gap: 0; list-style: none; margin: 0; border-top: 1px solid #dce9d8; padding: 4px 14px; }
+.supplementary-item { display: flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 43px; padding: 8px 4px; border-bottom: 1px solid #e7eee4; }
+.supplementary-item:last-child { border-bottom: 0; }
+.supplementary-en { direction: ltr; text-align: left; color: #235439; font-size: 17px; font-weight: 750; }
+.supplementary-fa { direction: rtl; text-align: right; color: #53735d; font-size: 15px; }
+@media (max-width: 550px) { .supplementary-list { padding: 4px 10px; } .supplementary-item { gap: 9px; } .supplementary-en { font-size: 16px; } .supplementary-fa { font-size: 14px; } }
 @media (max-width: 550px) { .vocab-supplementary > summary { padding: 14px; } .supplementary-toggle { white-space: normal; text-align: left; } .supplementary-list { padding: 9px; } }
 .phrase-composer { display: flex; flex-wrap: wrap; gap: 16px; direction: ltr; justify-content: flex-start; }
 .phrase-slot { display: grid; gap: 7px; min-width: 150px; }
