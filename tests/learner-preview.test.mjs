@@ -9,7 +9,7 @@ import { evaluateResponse, practiceState, submitPractice } from '../apps/learner
 import { auditLesson } from '../tools/audit-lessons.mjs';
 import { composeSegments, cycleComposerSlot, resolveSentenceComposer, validateSentenceComposer } from '../apps/learner-web/sentence-composer.js';
 import { LESSON_PHASES, validateLessonFlow } from '../apps/learner-web/lesson-flow.js';
-import { puzzleTokenBank, normalizePuzzleState, addPuzzleWord, undoPuzzleWord, clearPuzzleSentence, submitPuzzleSentence, validateMultiSentencePuzzle } from '../apps/learner-web/sentence-puzzle.js';
+import { puzzleTokenBank, normalizePuzzleState, normalizePuzzleSentence, puzzleDisplayWord, addPuzzleWord, undoPuzzleWord, clearPuzzleSentence, submitPuzzleSentence, validateMultiSentencePuzzle } from '../apps/learner-web/sentence-puzzle.js';
 
 const contentRoot = join(projectRoot, 'content/language-pairs/fa-en');
 const load = (file) => readJson(join(contentRoot, file));
@@ -205,6 +205,100 @@ test('puzzle validation rejects a one-sentence task and duplicate valid solution
     { id: 'two', words: ['This', 'works.'] }
   ]};
   assert.ok(validateMultiSentencePuzzle(dup).some(error => error.includes('duplicate target')));
+});
+
+test('puzzle grading ignores capitalization and terminal punctuation, while giving gentle writing tips', () => {
+  const lesson = load('lessons/a1-3.json');
+  const puzzle = lesson.sections[0].activities.find(activity => activity.phase === 'puzzle');
+  const composer = lesson.sections[0].activities.find(activity => activity.id === puzzle.sourceActivityId);
+  const bank = puzzleTokenBank(puzzle);
+  assert.equal(normalizePuzzleSentence('This Is MY phone'), normalizePuzzleSentence('this is my phone.'));
+  assert.equal(puzzleDisplayWord('bag?'), 'bag');
+  let state = normalizePuzzleState(puzzle, []);
+  for (const word of ['This', 'Is', 'my', 'phone']) {
+    const index = bank.findIndex((item,index) => normalizePuzzleSentence(item.word) === word.toLowerCase() && !state.current.includes(index));
+    assert.ok(index >= 0, 'word available for ' + word);
+    state = addPuzzleWord(puzzle, state, index);
+  }
+  const solved = submitPuzzleSentence(puzzle, state, composer);
+  assert.equal(solved.feedback, 'correct', 'This Is my phone without a period is grammatically correct');
+  assert.match(solved.warning, /حرف کوچک/, 'writing style produces a tip, not a failed grade');
+  assert.equal(solved.completed.length, 1);
+  const view = renderActivity(puzzle, {lessonId:lesson.id,index:0,e:String,en:String,i:()=>'',progress:{sentenceAnswers:{[lesson.id+':'+puzzle.id]:solved}}});
+  assert.match(view, /درست بود/);
+  assert.match(view, /حرف کوچک/);
+  assert.doesNotMatch(view, /builder-feedback wrong/);
+  assert.equal((view.match(/data-build-token=/g) || []).length, bank.length, 'all words remain available for new combinations');
+
+  let again = solved;
+  for (const word of ['This','Is','my','phone']) {
+    const index=bank.findIndex((item,index)=>normalizePuzzleSentence(item.word)===word.toLowerCase()&&!again.current.includes(index));
+    again=addPuzzleWord(puzzle,again,index);
+  }
+  again=submitPuzzleSentence(puzzle,again,composer);
+  assert.equal(again.feedback,'duplicate', 'same normalized sentence does not count twice');
+  assert.equal(again.completed.length,1);
+});
+
+test('A1-4 is a complete location lesson in the same six/four phase teaching template', () => {
+  const lesson=load('lessons/a1-4.json');
+  const catalog=lessons.find(entry=>entry.id===lesson.id);
+  assert.equal(catalog.file,'lessons/a1-4.json');
+  assert.equal(catalog.status,'sample');
+  assert.deepEqual(validateLessonFlow(lesson),[]);
+  assert.equal(lesson.sections.length,2);
+  assert.deepEqual([...new Set(lesson.sections[0].activities.map(x=>x.phase))],LESSON_PHASES.foundation);
+  assert.deepEqual([...new Set(lesson.sections[1].activities.map(x=>x.phase))],LESSON_PHASES.production);
+  const foundation=lesson.sections[0],production=lesson.sections[1];
+  const vocabulary=foundation.activities.find(a=>a.type==='vocabulary');
+  assert.equal(coreItems(vocabulary).length,12);
+  assert.ok(supplementaryItems(vocabulary).length>=16);
+  assert.ok(coreItems(vocabulary).every(item=>item.examples?.length===3));
+  assert.ok(supplementaryItems(vocabulary).every(item=>!item.examples&&!item.hint),'supplementary words are list-only');
+  assert.deepEqual(auditLesson(lesson).errors,[],'every focus expression appears in guided and independent production');
+  const composer=foundation.activities.find(a=>a.type==='sentence-composer');
+  assert.deepEqual(validateSentenceComposer(composer),[]);
+  assert.equal(composeSegments(resolveSentenceComposer(composer,{}).pattern.segments,composer,resolveSentenceComposer(composer,{})),'The book is on the table.');
+  const selected={slots:{object:'keys',position:'under',location:'chair'}};
+  for(const [pattern,expected] of [
+    ['statement','The keys are under the chair.'],
+    ['question','Are the keys under the chair?'],
+    ['negative','The keys are not under the chair.'],
+    ['where','Where are the keys?']
+  ]){
+    const resolved=resolveSentenceComposer(composer,{...selected,pattern});
+    assert.equal(composeSegments(resolved.pattern.segments,composer,resolved),expected);
+  }
+  const next=cycleComposerSlot(composer,{slots:{object:'book'}},'object');
+  assert.equal(next.slots.object,composer.wordSets.objects[1].id);
+  const context={lessonId:lesson.id,index:0,e:String,en:String,i:()=>'',progress:{sentenceComposers:{},sentenceAnswers:{},wordProgress:{},showDialogueTranslation:true},
+     activitiesById:Object.fromEntries(lesson.sections.flatMap(section=>section.activities).map(activity=>[activity.id,activity]))};
+  for(const section of lesson.sections)for(const activity of section.activities){
+    const html=renderActivity(activity,context);
+    assert.match(html,/module-block/,activity.id);
+  }
+  const phrase=foundation.activities.find(a=>a.phase==='phrases');
+  assert.match(renderActivity(phrase,context),/data-composer-action="cycle"/);
+  const models=foundation.activities.find(a=>a.phase==='variants');
+  assert.match(renderActivity(models,context),/data-composer-action="pattern"/);
+  const puzzle=foundation.activities.find(a=>a.phase==='puzzle');
+  const bank=puzzleTokenBank(puzzle);
+  assert.ok(bank.length>20);
+  let state=normalizePuzzleState(puzzle,[]);
+  for(const word of ['The','phone','is','near','the','table']){
+    const index=bank.findIndex((item,index)=>normalizePuzzleSentence(item.word)===word.toLowerCase()&&!state.current.includes(index));
+    assert.ok(index>=0,'bank contains '+word);
+    state=addPuzzleWord(puzzle,state,index);
+  }
+  state=submitPuzzleSentence(puzzle,state,composer);
+  assert.equal(state.feedback,'correct','a novel grammatical combination is accepted by the shared JSON composer');
+  assert.equal(production.activities.filter(a=>a.type==='dialogue').length,2);
+  assert.ok(production.activities.filter(a=>a.type==='dialogue').every(a=>a.lines.length>=8));
+  assert.ok(production.activities.some(a=>a.type==='guided-dialogue'));
+  assert.ok(production.activities.some(a=>a.type==='free-write'));
+  const svg=readFileSync(join(projectRoot,'apps/learner-web/a1-4-locations.svg'),'utf8');
+  assert.match(svg,/<svg/);
+  assert.equal(lesson.visual.src,'./a1-4-locations.svg');
 });
 
 test('first lesson activities render with separate content, including interactions', () => {
