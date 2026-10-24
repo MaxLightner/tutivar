@@ -1,6 +1,6 @@
 {
   "id": "A1-1",
-  "revision": 11,
+  "revision": 12,
   "status": "draft",
   "title": "معرفی خود و شروع گفت‌وگو",
   "goal": "در یک برخورد کوتاه متناسب با ساعت سلام کنی، احوال بپرسی، خودت را معرفی کنی و گفت‌وگو را تمام کنی.",
@@ -49,11 +49,30 @@
       ],
       "activities": [
         {
+          "id": "a1-1-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "شنیدن و سایه‌خوانی",
+          "description": "فقط گوش بده و هم‌زمان یا با فاصله‌ای کوتاه تکرار کن؛ لازم نیست معنی جمله‌ها را بفهمی.",
+          "audioSrc": null,
+          "rate": 0.72,
+          "pauseMs": 500,
+          "lines": [
+            "Good morning!",
+            "How are you?",
+            "I'm fine, thanks.",
+            "And you?",
+            "My name is Nima.",
+            "Nice to meet you!",
+            "Bye!"
+          ]
+        },
+        {
           "id": "hello-words",
           "type": "vocabulary",
-          "title": "کارت‌های واژه و عبارت",
+          "title": "واژگان اصلی معرفی و گفت‌وگو",
           "batchSize": 5,
-          "deckRevision": 3,
+          "deckRevision": 4,
           "items": [
             {
               "en": "Hello!",
@@ -66,6 +85,266 @@
               ]
             },
             {
+              "en": "Bye!",
+              "fa": "خداحافظ!",
+              "hint": "پایان گفت‌وگو",
+              "examples": [
+                "Bye, Ali!",
+                "Bye, Emma!",
+                "Bye, Sara!"
+              ]
+            },
+            {
+              "en": "good",
+              "fa": "خوب",
+              "examples": [
+                "Good morning!",
+                "Good morning, Ali!",
+                "Good morning! How are you?"
+              ]
+            },
+            {
+              "en": "morning",
+              "fa": "صبح",
+              "examples": [
+                "Good morning!",
+                "Good morning, Ali!",
+                "Good morning! How are you?"
+              ]
+            },
+            {
+              "en": "afternoon",
+              "fa": "بعدازظهر",
+              "examples": [
+                "Good afternoon!",
+                "See you this afternoon.",
+                "I am free this afternoon."
+              ]
+            },
+            {
+              "en": "evening",
+              "fa": "عصر",
+              "examples": [
+                "Good evening!",
+                "I am free this evening.",
+                "See you this evening."
+              ]
+            },
+            {
+              "en": "night",
+              "fa": "شب",
+              "examples": [
+                "Good night!",
+                "Have a good night.",
+                "I sleep at night."
+              ]
+            },
+            {
+              "en": "how",
+              "fa": "چطور",
+              "examples": [
+                "Good morning! How are you?",
+                "How are you?",
+                "Hello! How are you?"
+              ]
+            },
+            {
+              "en": "are",
+              "fa": "هستی / هستید",
+              "examples": [
+                "Good morning! How are you?",
+                "How are you?",
+                "Hello! How are you?"
+              ]
+            },
+            {
+              "en": "you",
+              "fa": "تو / شما",
+              "examples": [
+                "Good morning! How are you?",
+                "How are you?",
+                "Hello! How are you?"
+              ]
+            },
+            {
+              "en": "I",
+              "fa": "من",
+              "examples": [
+                "Hello! I'm Sara.",
+                "I'm fine, thanks.",
+                "I'm fine, thanks. And you?"
+              ]
+            },
+            {
+              "en": "am",
+              "fa": "هستم",
+              "examples": [
+                "Yes, I am.",
+                "Yes, I am. Thanks.",
+                "I am fine."
+              ]
+            },
+            {
+              "en": "fine",
+              "fa": "خوب",
+              "examples": [
+                "I'm fine, thanks.",
+                "I'm fine, thanks. And you?",
+                "Hello! I'm fine, thanks."
+              ]
+            },
+            {
+              "en": "thanks",
+              "fa": "ممنون",
+              "examples": [
+                "I'm fine, thanks.",
+                "I'm fine, thanks. And you?",
+                "Hello! I'm fine, thanks."
+              ]
+            },
+            {
+              "en": "and",
+              "fa": "و",
+              "examples": [
+                "I'm fine, thanks. And you?",
+                "And you?",
+                "I'm fine. And you?"
+              ]
+            },
+            {
+              "en": "what",
+              "fa": "چه / چی",
+              "examples": [
+                "What's your name?",
+                "Hello! What's your name?",
+                "What's your name, Emma?"
+              ]
+            },
+            {
+              "en": "is",
+              "fa": "است",
+              "examples": [
+                "My name is Ali.",
+                "My name is Ali. And you?",
+                "My name is Emma. Nice to meet you!"
+              ]
+            },
+            {
+              "en": "your",
+              "fa": "ـت / مال تو یا شما",
+              "examples": [
+                "What's your name?",
+                "Hello! What's your name?",
+                "What's your name, Emma?"
+              ]
+            },
+            {
+              "en": "name",
+              "fa": "نام / اسم",
+              "examples": [
+                "What's your name?",
+                "Hello! What's your name?",
+                "What's your name, Emma?"
+              ]
+            },
+            {
+              "en": "nice",
+              "fa": "خوشایند",
+              "examples": [
+                "Nice to meet you!",
+                "Nice to meet you, Ali!",
+                "Nice to meet you, Sara!"
+              ]
+            },
+            {
+              "en": "to",
+              "fa": "به / برای",
+              "examples": [
+                "Nice to meet you!",
+                "Nice to meet you, Ali!",
+                "Nice to meet you, Sara!"
+              ]
+            },
+            {
+              "en": "meet",
+              "fa": "آشنا شدن / ملاقات کردن",
+              "examples": [
+                "Nice to meet you!",
+                "Nice to meet you, Ali!",
+                "Nice to meet you, Sara!"
+              ]
+            },
+            {
+              "en": "my",
+              "fa": "ـم / مال من، پیش از اسم",
+              "examples": [
+                "My name is Ali.",
+                "My name is Ali. And you?",
+                "My name is Emma. Nice to meet you!"
+              ]
+            },
+            {
+              "en": "thank",
+              "fa": "تشکر کردن",
+              "examples": [
+                "Thank you!",
+                "Thank you.",
+                "Thank you for your help."
+              ]
+            },
+            {
+              "en": "me",
+              "fa": "من را / به من",
+              "examples": [
+                "Excuse me, what's your name?",
+                "Excuse me.",
+                "You can call me Ali."
+              ]
+            },
+            {
+              "en": "see",
+              "fa": "دیدن",
+              "examples": [
+                "See you!",
+                "I see you.",
+                "See you tomorrow!"
+              ]
+            },
+            {
+              "en": "welcome",
+              "fa": "خوش‌آمد / خوش آمدید",
+              "examples": [
+                "You're welcome!",
+                "You're welcome.",
+                "Welcome to our class."
+              ]
+            },
+            {
+              "en": "Please.",
+              "fa": "لطفاً.",
+              "role": "supplementary"
+            },
+            {
+              "en": "Sorry!",
+              "fa": "ببخشید!",
+              "role": "supplementary"
+            },
+            {
+              "en": "Hi!",
+              "fa": "سلام! (خودمانی)",
+              "role": "supplementary"
+            }
+          ],
+          "phase": "words"
+        },
+        {
+          "id": "hello-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "عبارت‌های کاربردی و ترکیب‌های خاص",
+          "description": "این واحدها عبارت یا ترکیب‌اند، نه واژهٔ منفرد؛ آن‌ها را در موقعیت و جمله یاد بگیر.",
+          "items": [
+            {
               "en": "Good morning!",
               "fa": "صبح بخیر!",
               "hint": "سلام در آغاز روز",
@@ -73,7 +352,8 @@
                 "Good morning, Ali!",
                 "Good morning! How are you?",
                 "Good morning, Emma!"
-              ]
+              ],
+              "kind": "fixed"
             },
             {
               "en": "How are you?",
@@ -84,7 +364,8 @@
                 "Hello! How are you?",
                 "How are you, Ali?",
                 "Good morning! How are you?"
-              ]
+              ],
+              "kind": "fixed"
             },
             {
               "en": "I'm fine, thanks.",
@@ -103,7 +384,8 @@
                 "I'm fine, thanks.",
                 "I'm fine, thanks. And you?",
                 "Hello! I'm fine, thanks."
-              ]
+              ],
+              "kind": "fixed"
             },
             {
               "en": "And you?",
@@ -114,20 +396,8 @@
                 "I'm fine. And you?",
                 "Good, thanks. And you?",
                 "I'm Ali. And you?"
-              ]
-            },
-            {
-              "en": "What's your name?",
-              "fa": "اسمت چیه؟",
-              "hint": "پرسیدن نام طرف مقابل",
-              "testAnswers": [
-                "What is your name?"
               ],
-              "examples": [
-                "Hello! What's your name?",
-                "What's your name, Emma?",
-                "Excuse me, what's your name?"
-              ]
+              "kind": "fixed"
             },
             {
               "en": "Nice to meet you!",
@@ -137,70 +407,72 @@
                 "Nice to meet you, Ali!",
                 "Nice to meet you, Sara!",
                 "Nice to meet you, too!"
-              ]
-            },
-            {
-              "en": "Bye!",
-              "fa": "خداحافظ!",
-              "hint": "پایان گفت‌وگو",
-              "examples": [
-                "Bye, Ali!",
-                "Bye, Emma!",
-                "Bye!"
-              ]
+              ],
+              "kind": "fixed"
             },
             {
               "en": "Good afternoon!",
               "fa": "روز بخیر! / بعدازظهر بخیر!",
-              "role": "supplementary"
+              "kind": "fixed",
+              "examples": []
             },
             {
               "en": "Good evening!",
               "fa": "عصر بخیر!",
-              "role": "supplementary"
+              "kind": "fixed",
+              "examples": []
             },
             {
               "en": "Good night!",
               "fa": "شب بخیر!",
-              "role": "supplementary"
-            },
-            {
-              "en": "Please.",
-              "fa": "لطفاً.",
-              "role": "supplementary"
+              "kind": "fixed",
+              "examples": []
             },
             {
               "en": "Thank you!",
               "fa": "متشکرم!",
-              "role": "supplementary"
+              "kind": "fixed",
+              "examples": []
             },
             {
               "en": "You're welcome!",
               "fa": "خواهش می‌کنم!",
-              "role": "supplementary"
+              "kind": "fixed",
+              "examples": []
             },
             {
               "en": "Excuse me.",
               "fa": "ببخشید؛ برای جلب توجه",
-              "role": "supplementary"
-            },
-            {
-              "en": "Sorry!",
-              "fa": "ببخشید!",
-              "role": "supplementary"
+              "kind": "fixed",
+              "examples": []
             },
             {
               "en": "See you!",
               "fa": "فعلاً خداحافظ؛ می‌بینمت!",
-              "role": "supplementary"
+              "kind": "fixed",
+              "examples": []
             },
             {
-              "en": "Hi!",
-              "fa": "سلام! (خودمانی)",
-              "role": "supplementary"
+              "en": "say hello",
+              "fa": "سلام کردن",
+              "kind": "collocation",
+              "examples": [
+                "Say hello to Ali.",
+                "I say hello every morning.",
+                "Please say hello to your friend."
+              ]
+            },
+            {
+              "en": "introduce yourself",
+              "fa": "خودت را معرفی کردن",
+              "kind": "collocation",
+              "examples": [
+                "Please introduce yourself.",
+                "Introduce yourself to the class.",
+                "I can introduce myself."
+              ]
             }
-          ],
-          "phase": "words"
+          ]
         },
         {
           "id": "hello-inline-phrases",
@@ -1705,6 +1977,14 @@
             "success": "از یک موقعیت واقعی یا شخصی برای ساخت جمله استفاده کردی؛ حالا می‌توانی اشیا، نام‌ها و رابطه‌ها را عوض کنی."
           },
           "phase": "independent"
+        },
+        {
+          "id": "a1-1-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "سایه‌خوانی دوباره",
+          "description": "همان محتوای شنیداری ابتدای درس را دوباره گوش بده و همراه صدا تکرار کن.",
+          "sourceActivityId": "a1-1-shadowing"
         }
       ]
     }
