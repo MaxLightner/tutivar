@@ -14,7 +14,8 @@ const MODULE_LABELS = {
   'response-practice': 'ساختن پاسخ',
   'exchange-lab': 'سؤال و جواب',
   'sentence-transform': 'تبدیل جمله',
-  'dialogue-transfer': 'مکالمه در موقعیت تازه'
+  'dialogue-transfer': 'مکالمه در موقعیت تازه',
+  'family-tree': 'درخت خانواده'
 };
 function wrapper(body, activity, idx, e, extra = '') {
   return `<div class="lesson-block module-block ${extra}" data-module="${e(activity.type)}"><div class="block-top"><div><span class="block-label">${String(idx + 1).padStart(2, '0')} / ${e(activity.typeLabel || MODULE_LABELS[activity.type] || 'فعالیت')}</span><h3>${e(activity.title || '')}</h3></div></div>${body}</div>`;
@@ -84,6 +85,12 @@ function sentenceLab(a, c) {
   const variable = a.variables[state.variable] || a.variables[0];
   const result = `${structure.before || ''}${variable}${structure.after || ''}`;
   return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="lab-switches"><div class="lab-selector"><strong>${c.e(a.structureLabel || 'چطور بگویی؟')}</strong><div>${a.structures.map((item, index) => `<button class="lab-option ${index === state.structure ? 'active' : ''}" data-lab-key="${c.e(key)}" data-lab-kind="structure" data-lab-index="${index}">${c.en(item.label)}</button>`).join('')}</div></div><div class="lab-selector"><strong>${c.e(a.variableLabel || 'چه کسی؟')}</strong><div>${a.variables.map((item, index) => `<button class="lab-option ${index === state.variable ? 'active' : ''}" data-lab-key="${c.e(key)}" data-lab-kind="variable" data-lab-index="${index}">${c.en(item)}</button>`).join('')}</div></div></div><div class="lab-sentence">${c.en(result)}${soundButton(result, c.e, c.i)}</div>${structure.note ? `<p class="lab-note">${c.e(structure.note)}</p>` : ''}`, a, c.index, c.e, 'module-sentence-lab');
+}
+function familyTree(a, c) {
+  const key = `${c.lessonId}:${a.id}`;
+  const selected = Math.min(Math.max(Number(c.progress.familyPeople?.[key]) || 0, 0), a.people.length - 1);
+  const person = a.people[selected];
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="family-tree-picker" role="group" aria-label="انتخاب عضو خانواده">${a.people.map((entry, index) => `<button type="button" class="family-person ${index === selected ? 'active' : ''}" data-family-key="${c.e(key)}" data-family-index="${index}" aria-pressed="${index === selected}"><span>${c.e(entry.initial || entry.name[0])}</span><strong>${c.en(entry.name)}</strong><small>${c.e(entry.fa)}</small></button>`).join('')}</div><div class="family-tree-result"><div class="family-tree-primary">${c.en(person.sentence)}${soundButton(person.sentence, c.e, c.i)}</div><p>${c.e(person.explanation || person.fa)}</p>${person.followup ? `<div class="family-tree-followup">${c.en(person.followup)}${soundButton(person.followup, c.e, c.i)}</div>` : ''}</div>`, a, c.index, c.e, 'module-family-tree');
 }
 function practiceSequence(a, c) {
   const key = `${c.lessonId}:${a.id}`;
@@ -159,13 +166,14 @@ function quizSet(a, c) {
     return `<div class="quiz-question"><span class="question-number">سؤال ${qIdx + 1}</span><div class="question">${c.e(question.question)}</div><div class="choices">${question.choices.map((answer, choiceIndex) => `<button class="choice ${chosen === choiceIndex ? 'selected ' + (choiceIndex === question.answer ? 'correct' : 'wrong') : ''}" data-quiz="${c.e(key)}" data-choice="${choiceIndex}">${c.en(answer)}</button>`).join('')}</div>${chosen !== undefined ? `<div class="feedback ${chosen === question.answer ? '' : 'error'}">${chosen === question.answer ? c.e(question.feedback) : 'دوباره امتحان کن.'}</div>` : ''}</div>`;
   }).join(''), a, c.index, c.e, 'module-quizzes');
 }
-export function renderDialogueLines(a, c, step, enteringIndex = -1) {
+export function renderDialogueLines(a, c, step, enteringIndex = -1, { all = false } = {}) {
   const speakers = [...new Set(a.lines.map((line) => line.speaker))];
-  return a.lines.slice(step, step + 2).map((line, localIndex) => {
-    const lineIndex = step + localIndex;
+  const entries = all ? a.lines.map((line, index) => ({ line, lineIndex: index })) : a.lines.slice(step, step + 2).map((line, index) => ({ line, lineIndex: step + index }));
+  return entries.map(({ line, lineIndex }) => {
     const side = speakers.indexOf(line.speaker) % 2 === 0 ? 'speaker-first' : 'speaker-second';
-    const entering = enteringIndex === -1 || lineIndex === enteringIndex ? 'dialogue-entering' : '';
-    return `<div class="dialogue-line ${side} ${entering}" data-dialogue-line="${lineIndex}"><span class="speaker-avatar" aria-hidden="true">${c.e(line.speaker.slice(0, 1))}</span><div class="bubble"><strong class="speaker-name">${c.e(line.speaker)}</strong><div class="spoken-line"><button type="button" class="dialogue-sentence" data-speak="${c.e(line.en)}" aria-label="شنیدن جملهٔ ${c.e(line.speaker)}">${c.en(line.en)}</button></div>${c.progress.showDialogueTranslation ? `<p>${c.e(line.fa)}</p>` : ''}</div></div>`;
+    const shown = lineIndex >= step && lineIndex < step + 2;
+    const entering = !all && (enteringIndex === -1 || lineIndex === enteringIndex) ? 'dialogue-entering' : '';
+    return `<div class="dialogue-line ${side} ${entering}" data-dialogue-line="${lineIndex}" data-dialogue-visible="${shown}" ${all && !shown ? 'aria-hidden="true" inert' : ''}><span class="speaker-avatar" aria-hidden="true">${c.e(line.speaker.slice(0, 1))}</span><div class="bubble"><strong class="speaker-name">${c.e(line.speaker)}</strong><div class="spoken-line"><button type="button" class="dialogue-sentence" data-speak="${c.e(line.en)}" aria-label="شنیدن جملهٔ ${c.e(line.speaker)}">${c.en(line.en)}</button></div>${c.progress.showDialogueTranslation ? `<p>${c.e(line.fa)}</p>` : ''}</div></div>`;
   }).join('');
 }
 function dialogue(a, c) {
@@ -174,7 +182,7 @@ function dialogue(a, c) {
   const stored = Number(c.progress.dialogueSteps?.[key]);
   const step = Number.isFinite(stored) ? Math.max(0, Math.min(maxStep, stored)) : 0;
   const scrubber = `<div class="dialogue-timeline"><div class="dialogue-timeline-top"><strong data-dialogue-count="${c.e(key)}">${step + 1}–${Math.min(step + 2, a.lines.length)} / ${a.lines.length}</strong><span>نوار را بکش؛ جملهٔ تازه پخش می‌شود</span></div><div class="dialogue-timeline-controls"><button type="button" class="dialogue-nav" data-dialogue-key="${c.e(key)}" data-dialogue-nav="-1" ${step === 0 ? 'disabled' : ''} aria-label="نوبت قبلی">‹</button><input type="range" data-dialogue-slider="${c.e(key)}" min="0" max="${maxStep}" step="1" value="${step}" aria-label="نوار زمان مکالمه؛ جابه‌جایی بین ${maxStep + 1} نوبت"><button type="button" class="dialogue-nav" data-dialogue-key="${c.e(key)}" data-dialogue-nav="1" ${step === maxStep ? 'disabled' : ''} aria-label="نوبت بعدی">›</button></div><button type="button" class="dialogue-play outline-btn" data-dialogue-play="${c.e(key)}">${c.i('sound')} شنیدن دو جمله</button></div>`;
-  return wrapper(`<div class="dialogue-headline"><span>${c.e(a.description || '')}</span><button class="outline-btn" data-action="toggle-translations">${c.progress.showDialogueTranslation ? 'پنهان‌کردن معنی' : 'نمایش معنی'}</button></div><div class="dialogue dialogue-window" data-dialogue-window="${c.e(key)}" aria-live="polite">${renderDialogueLines(a, c, step)}</div>${scrubber}`, a, c.index, c.e, 'module-dialogue-timeline');
+  return wrapper(`<div class="dialogue-headline"><span>${c.e(a.description || '')}</span><button class="outline-btn" data-action="toggle-translations">${c.progress.showDialogueTranslation ? 'پنهان‌کردن معنی' : 'نمایش معنی'}</button></div><div class="dialogue dialogue-window" data-dialogue-window="${c.e(key)}" aria-live="off"><div class="dialogue-track" style="--dialogue-step:${step}">${renderDialogueLines(a, c, step, -1, { all: true })}</div></div>${scrubber}`, a, c.index, c.e, 'module-dialogue-timeline');
 }
 function roleplay(a, c) {
   const key = `${c.lessonId}:${a.id}`;
@@ -197,7 +205,8 @@ const renderers = {
   'phrase-composer': phraseComposer, 'sentence-lab': sentenceLab,
   'guided-dialogue': guidedDialogue, 'response-practice': responsePractice,
   'exchange-lab': exchangeLab,
-  'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer
+  'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer,
+  'family-tree': familyTree
 };
 export function renderActivity(activity, context) {
   const renderer = renderers[activity.type];

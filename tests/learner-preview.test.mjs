@@ -186,22 +186,22 @@ test('each dialogue timeline renders only two consecutive spoken lines and can s
     const first = renderActivity(dialogue, context);
     assert.match(first, /data-dialogue-slider=/);
     assert.match(first, /data-dialogue-play=/);
-    assert.equal((first.match(/data-dialogue-line=/g) || []).length, 2, 'only two lines are present in DOM');
+    assert.equal((first.match(/data-dialogue-visible="true"/g) || []).length, 2, 'only two lines are exposed in the fixed-height viewport');
     assert.match(first, new RegExp(dialogue.lines[0].speaker));
-    assert.ok(!first.includes(dialogue.lines[2].en), 'later lines cannot leak into the active two-line window');
+    assert.match(first, /data-dialogue-line="2" data-dialogue-visible="false" aria-hidden="true" inert/, 'later lines stay inert and hidden from accessibility');
     context.progress.dialogueSteps[key] = dialogue.lines.length - 2;
     const last = renderActivity(dialogue, context);
-    assert.equal((last.match(/data-dialogue-line=/g) || []).length, 2);
+    assert.equal((last.match(/data-dialogue-visible="true"/g) || []).length, 2);
     assert.ok(last.includes(dialogue.lines.at(-1).en));
-    assert.ok(!last.includes(dialogue.lines[0].en));
+    assert.match(last, /data-dialogue-line="0" data-dialogue-visible="false" aria-hidden="true" inert/);
     assert.match(last, /disabled aria-label="نوبت بعدی"/);
-    assert.equal((first.match(/dialogue-entering/g) || []).length, 2, 'the initial two lines enter with animation');
+    assert.match(last, new RegExp(`--dialogue-step:${dialogue.lines.length - 2}`), 'scroll position matches the saved slider value');
     const nextWindow = renderDialogueLines(dialogue, context, 1, 2);
     assert.match(nextWindow, /data-dialogue-line="2"/);
     assert.equal((nextWindow.match(/dialogue-entering/g) || []).length, 1, 'only one newly revealed sentence animates');
     assert.match(nextWindow, /data-speak=/, 'each visible sentence has a direct replay action');
     const firstSpeaker = dialogue.lines[0].speaker;
-    const speakerSide = first.includes(`dialogue-line speaker-first dialogue-entering" data-dialogue-line="0"`) ? 'speaker-first' : 'speaker-second';
+    const speakerSide = first.includes(`dialogue-line speaker-first " data-dialogue-line="0"`) ? 'speaker-first' : 'speaker-second';
     const nextFirstSpeaker = nextWindow.match(new RegExp(`class="dialogue-line ([^\"]+)" data-dialogue-line="1"`))?.[1];
     if (dialogue.lines[1].speaker === firstSpeaker) assert.match(nextFirstSpeaker, new RegExp(speakerSide));
   }
@@ -218,6 +218,28 @@ test('first lesson retrieves morning greetings before the dialogue half', () => 
   const context = { lessonId: 'A1-1', index: 3, e: String, en: String, i: () => '', progress: { practiceStates: {} } };
   const html = renderActivity(activity, context);
   assert.doesNotMatch(html, /class="practice-source"/, 'a new task no longer supplies the complete answer as its source');
+});
+
+test('second lesson teaches family relationships with a live tree, retrieval and two conversations', () => {
+  const lesson = load('lessons/a1-2.json');
+  const [foundation, production] = lesson.sections;
+  assert.deepEqual(foundation.activities.map((item) => item.type), ['vocabulary', 'phrase-composer', 'sentence-lab', 'family-tree', 'response-practice', 'sentence-transform']);
+  assert.deepEqual(production.activities.map((item) => item.type), ['exchange-lab', 'response-practice', 'dialogue', 'response-practice', 'dialogue', 'response-practice', 'guided-dialogue', 'dialogue-transfer', 'free-write']);
+  assert.equal(coreItems(foundation.activities[0]).length, 8);
+  assert.equal(supplementaryItems(foundation.activities[0]).length, 3);
+  assert.ok(foundation.activities[0].items.every((item) => item.examples.length === 3));
+  assert.deepEqual(auditLesson(lesson).errors, [], 'core family phrases are retrieved later in the lesson');
+  const context = { lessonId: lesson.id, index: 3, e: String, en: String, i: () => '', progress: { familyPeople: {}, exchangeChoices: {}, practiceStates: {}, dialogueSteps: {}, showDialogueTranslation: true } };
+  const tree = renderActivity(foundation.activities[3], context);
+  assert.equal((tree.match(/data-family-key=/g) || []).length, 4);
+  assert.match(tree, /Her name is Nora/);
+  context.progress.familyPeople['A1-2:family-tree'] = 1;
+  assert.match(renderActivity(foundation.activities[3], context), /His name is David/);
+  assert.equal(evaluateResponse(foundation.activities[4].tasks[3].assessment, "Who's this?").ok, true);
+  assert.equal(evaluateResponse(foundation.activities[5].tasks[1].assessment, 'This is your brother.').ok, false);
+  assert.equal(evaluateResponse(foundation.activities[5].tasks[1].assessment, 'Is this your brother?').ok, true);
+  assert.equal(production.activities.filter((activity) => activity.type === 'dialogue').length, 2);
+  assert.ok(production.activities.filter((activity) => activity.type === 'dialogue').every((activity) => activity.lines.length >= 8));
 });
 
 test('lesson audit identifies missing downstream production and keeps supplementary phrases optional', () => {
@@ -350,7 +372,7 @@ test('presentation is independent of course content and never hardcodes target p
   assert.ok(app.includes('new URL(import.meta.url).searchParams'));
   assert.ok(app.includes('renderActivity'));
   assert.ok(app.includes('lessonOrientation'));
-  assert.ok(app.includes('lesson-visual-frame'));
+  assert.ok(app.includes('lesson-overview'));
   assert.ok(app.includes('sectionCompleted'), 'each lesson half tracks its own completion');
   assert.ok(app.includes('data-finish-section'), 'each half gets an independent completion action');
   assert.ok(app.includes('activeSection'), 'the route chooses only the current half');
