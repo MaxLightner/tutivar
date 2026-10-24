@@ -72,6 +72,10 @@ export function composeSegments(segments, activity, resolved) {
   return (segments || []).map((segment) => composerSegmentValue(segment, activity, resolved)).join('');
 }
 
+export function composeSegments(segments, activity, resolved) {
+  return (segments || []).map((segment) => composerSegmentValue(segment, activity, resolved)).join('');
+}
+
 export function composerSlotForm(activity, pattern, slotId) {
   return (pattern?.segments || []).find((segment) => segment.slot === slotId)?.form || 'label';
 }
@@ -127,7 +131,7 @@ export function validateSentenceComposer(activity) {
           continue;
         }
         for (const item of sets[slot.wordSet] || []) {
-          if (segment.form && item.forms?.[segment.form] === undefined && item[segment.form] === undefined && item.label === undefined) {
+          if (segment.form && item.forms?.[segment.form] === undefined && item[segment.form] === undefined) {
             errors.push('pattern ' + pattern.id + ': word ' + item.id + ' has no form ' + segment.form);
           }
         }
