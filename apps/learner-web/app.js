@@ -542,7 +542,7 @@ function onClick(event) {
     const activity = lessonActivity(key);
     if (!activity?.sentences?.length) return;
     progress.sentenceAnswers[key] = el.dataset.buildSubmit
-      ? submitPuzzleSentence(activity, progress.sentenceAnswers[key])
+      ? submitPuzzleSentence(activity, progress.sentenceAnswers[key], lessonActivitiesById(route.lessonId)[activity.sourceActivityId])
       : el.dataset.buildUndo
         ? undoPuzzleWord(activity, progress.sentenceAnswers[key])
         : clearPuzzleSentence(activity, progress.sentenceAnswers[key]);

@@ -63,6 +63,14 @@ export function validateLessonFlow(lesson) {
         }
       }
       if (activity.type === 'sentence-builder') {
+        if (activity.sourceActivityId) {
+          const source = all[activity.sourceActivityId];
+          if (!source || source.type !== 'sentence-composer') errors.push(activity.id + ': unknown sentence composer source for puzzle');
+          else for (const id of activity.patternIds || []) if (!source.patterns.some((pattern) => pattern.id === id))
+            errors.push(activity.id + ': puzzle references unknown pattern ' + id);
+        }
+        if (activity.goalCount !== undefined && (!Number.isInteger(activity.goalCount) || activity.goalCount < 2))
+          errors.push(activity.id + ': goalCount must be an integer of at least two');
         if (activity.sentences) {
           errors.push(...validateMultiSentencePuzzle(activity).map((error) => activity.id + ': ' + error));
         } else if (activity.tokens?.length !== activity.correctOrder?.length ||

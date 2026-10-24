@@ -1,7 +1,7 @@
 import { coreItems, deckState, supplementaryItems, wordId } from './word-review.js';
 import { practiceState } from './practice-engine.js';
 import { LESSON_PHASE_LABELS } from './lesson-flow.js';
-import { normalizePuzzleState, puzzleTokenBank } from './sentence-puzzle.js';
+import { normalizePuzzleState, puzzleTokenBank, puzzleDisplayWord } from './sentence-puzzle.js';
 import { composeSegments, composerSegmentValue, composerSlotForm, resolveSentenceComposer } from './sentence-composer.js';
 
 /*
@@ -226,28 +226,30 @@ function sentenceBuilder(a, c) {
   if (a.sentences?.length) {
     const state = normalizePuzzleState(a, c.progress.sentenceAnswers[key]);
     const bank = puzzleTokenBank(a);
-    const used = new Set(state.completed.flatMap((entry) => entry.indices));
-    const chosen = state.current.map((idx) => bank[idx]?.word || '').join(' ');
-    const total = a.sentences.length;
+    const used = new Set(a.reuseBank ? [] : state.completed.flatMap((entry) => entry.indices));
+    const chosen = state.current.map((idx) => puzzleDisplayWord(bank[idx]?.word || '')).join(' ');
+    const total = a.goalCount || a.sentences.length;
     const done = state.completed.length;
     const allDone = done === total;
     const solved = state.completed.map((entry) => {
       const original = a.sentences.find((sentence) => sentence.id === entry.id);
-      return `<li class="builder-found-item" dir="ltr" lang="en">${c.e(original.words.join(' '))}</li>`;
+      return `<li class="builder-found-item" dir="ltr" lang="en">${c.e(entry.text || original?.words.join(' ') || '')}</li>`;
     }).join('');
     const tokens = bank.map(({ word }, idx) => {
       const disabled = used.has(idx) || state.current.includes(idx) || allDone;
-      return `<button type="button" data-build-token="${c.e(key)}" data-token-index="${idx}" ${disabled ? 'disabled' : ''}>${c.e(word)}</button>`;
+      return `<button type="button" data-build-token="${c.e(key)}" data-token-index="${idx}" ${disabled ? 'disabled' : ''}>${c.e(puzzleDisplayWord(word))}</button>`;
     }).join('');
     const feedback = state.feedback === 'wrong'
       ? '<p class="builder-feedback wrong" role="status">این چینش جزو جمله‌های درست این تمرین نیست؛ جابه‌جایش کن یا آخرین واژه را بردار.</p>'
+      : state.feedback === 'duplicate'
+        ? '<p class="builder-feedback" role="status">این جمله قبلاً ساخته شده؛ ترکیب متفاوتی امتحان کن.</p>'
       : state.feedback === 'correct'
-        ? `<p class="builder-feedback correct" role="status">${allDone ? 'همهٔ جمله‌ها را پیدا کردی.' : 'این جمله درست بود؛ حالا یک جملهٔ متفاوت از کلمات باقی‌مانده بساز.'}</p>`
+        ? `<p class="builder-feedback correct" role="status">${allDone ? 'همهٔ جمله‌ها را پیدا کردی.' : 'این جمله درست بود؛ حالا با همین بانک کلمات، جملهٔ متفاوتی بساز.'}</p>`
         : '';
     return wrapper(`<p class="module-description">${c.e(a.description || '')}</p>
       <div class="builder-multi-progress"><strong>${done} از ${total} جملهٔ درست</strong><span>جمله‌ها را به هر ترتیبی که پیدا می‌کنی بساز.</span></div>
       <div class="builder-output" lang="en" dir="ltr">${chosen ? c.e(chosen) : '<span class="builder-placeholder">کلمات جملهٔ جدید را لمس کن…</span>'}</div>
-      ${feedback}
+      ${feedback}${state.warning ? `<p class="builder-feedback" role="status">${c.e(state.warning)}</p>` : ''}
       ${done ? `<details class="builder-found" ${allDone ? 'open' : ''}><summary>جمله‌های ساخته‌شده (${done})</summary><ol>${solved}</ol></details>` : ''}
       <div class="builder-tokens" dir="ltr" aria-label="بانک کلمات چند جمله">${tokens}</div>
       <div class="builder-bottom">

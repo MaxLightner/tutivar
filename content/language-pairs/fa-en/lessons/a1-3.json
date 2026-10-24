@@ -1001,9 +1001,9 @@
           "id": "ownership-puzzle",
           "type": "sentence-builder",
           "title": "چهار جملهٔ متفاوت را از واژه‌های قاطی بساز",
-          "description": "واژه‌های چهار جملهٔ مالکیت، سؤال و جواب با هم مخلوط شده‌اند. جملهٔ درست را از بانک پیدا کن، بررسی کن، و بعد با کلمات باقی‌مانده جمله‌ای دیگر بساز.",
+          "description": "کلمات چند جمله در یک بانک قاطی هستند. هر ترکیب دستوری درست را بساز و ثبت کن؛ سپس جملهٔ متفاوتی بساز. بزرگی حروف و نقطه باعث غلط‌شدن پاسخ نمی‌شوند.",
           "phase": "puzzle",
-          "revision": 2,
+          "revision": 3,
           "sentences": [
             {
               "id": "my-book",
@@ -1041,6 +1041,15 @@
                 "hers."
               ]
             }
+          ],
+          "reuseBank": true,
+          "goalCount": 4,
+          "sourceActivityId": "ownership-sentence-composer",
+          "patternIds": [
+            "statement",
+            "pronoun",
+            "question",
+            "negative"
           ]
         },
         {

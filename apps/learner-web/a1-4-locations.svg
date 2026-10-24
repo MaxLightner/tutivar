@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="540" viewBox="0 0 1200 540" role="img" aria-labelledby="title desc">
+<title id="title">Where are the objects?</title><desc id="desc">A book on a table, a phone under a chair, and keys near a desk.</desc>
+<defs>
+  <linearGradient id="wall" x2="0.12" y2="1"><stop stop-color="#f4f7f0"/><stop offset="1" stop-color="#e7efe7"/></linearGradient>
+  <linearGradient id="wood" x2="1" y2="1"><stop stop-color="#d6a980"/><stop offset="1" stop-color="#b98259"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#254132" flood-opacity=".16"/></filter>
+</defs>
+<rect width="1200" height="540" rx="28" fill="url(#wall)"/>
+<path d="M0 388H1200V540H0Z" fill="#d5e0d2"/>
+<path d="M0 389H1200" stroke="#bccbb8" stroke-width="5"/>
+<g transform="translate(80 0)" filter="url(#shadow)">
+ <path d="M60 262 H408" stroke="#976a45" stroke-width="8" stroke-linecap="round"/>
+ <rect x="45" y="249" width="390" height="25" rx="9" fill="url(#wood)"/>
+ <rect x="67" y="266" width="20" height="169" rx="8" fill="#b27c55"/><rect x="389" y="266" width="20" height="169" rx="8" fill="#b27c55"/>
+ <g transform="translate(152 204) rotate(-6)">
+  <rect width="186" height="43" rx="6" fill="#28664f"/>
+  <rect x="8" y="-8" width="184" height="40" rx="5" fill="#f8f1df" stroke="#cdbfa9" stroke-width="3"/>
+  <path d="M30 7H161 M30 18H144" stroke="#bdd3c4" stroke-width="4" stroke-linecap="round"/>
+  <rect y="-8" width="12" height="40" rx="4" fill="#418966"/>
+ </g>
+</g>
+<g transform="translate(546 120)" filter="url(#shadow)">
+ <rect x="45" y="34" width="223" height="127" rx="27" fill="#668faf"/>
+ <rect x="53" y="137" width="204" height="31" rx="12" fill="#537b9e"/>
+ <path d="M69 153V327 M237 153V327" stroke="#477398" stroke-width="23" stroke-linecap="round"/>
+ <path d="M57 300H252" stroke="#477398" stroke-width="16" stroke-linecap="round" opacity=".8"/>
+ <g transform="translate(118 261) rotate(-9 46 40)">
+  <rect width="102" height="160" rx="18" fill="#293841"/>
+  <rect x="8" y="12" width="86" height="132" rx="11" fill="#a6cabb"/>
+  <path d="M27 46H76 M27 65H62" stroke="#e4f4ec" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="52" cy="151" r="4" fill="#d8e1dd"/>
+ </g>
+</g>
+<g transform="translate(920 64)" filter="url(#shadow)">
+ <rect x="0" y="169" width="250" height="24" rx="7" fill="url(#wood)"/>
+ <rect x="12" y="187" width="18" height="227" rx="6" fill="#b07b55"/><rect x="219" y="187" width="18" height="227" rx="6" fill="#b07b55"/>
+ <g transform="translate(69 323)">
+  <circle cx="38" cy="32" r="22" fill="none" stroke="#cc9f49" stroke-width="11"/>
+  <circle cx="91" cy="45" r="22" fill="none" stroke="#cc9f49" stroke-width="11"/>
+  <path d="M54 42L67 43 M38 55v45 M91 68v40" stroke="#ba8634" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="38" cy="102" r="11" fill="none" stroke="#ba8634" stroke-width="7"/>
+  <circle cx="91" cy="109" r="11" fill="none" stroke="#ba8634" stroke-width="7"/>
+ </g>
+</g>
+<g font-family="Arial,sans-serif" font-size="28" fill="#1d5b3c" font-weight="700" text-anchor="middle">
+ <rect x="159" y="90" width="230" height="59" rx="28" fill="white" stroke="#b8d3bd" stroke-width="2"/>
+ <text x="274" y="129">ON the table</text>
+ <rect x="590" y="47" width="229" height="59" rx="28" fill="white" stroke="#b8d3bd" stroke-width="2"/>
+ <text x="704" y="86">UNDER the chair</text>
+ <rect x="929" y="20" width="234" height="59" rx="28" fill="white" stroke="#b8d3bd" stroke-width="2"/>
+ <text x="1046" y="59">NEAR the desk</text>
+</g>
+<path d="M277 151v40" stroke="#407f56" stroke-width="4" stroke-dasharray="5 7" stroke-linecap="round"/>
+<path d="M699 110v35" stroke="#407f56" stroke-width="4" stroke-dasharray="5 7" stroke-linecap="round"/>
+<path d="M1047 83v33" stroke="#407f56" stroke-width="4" stroke-dasharray="5 7" stroke-linecap="round"/>
+</svg>

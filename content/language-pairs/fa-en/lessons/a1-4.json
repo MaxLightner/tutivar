@@ -1,0 +1,1738 @@
+{
+  "id": "A1-4",
+  "revision": 2,
+  "status": "draft",
+  "title": "اشیا و مکان اطراف من",
+  "goal": "بتوانی بگویی یک شیء کجاست، مکان اشیا را با on / under / near توصیف کنی و دربارهٔ مفرد و جمع سؤال بپرسی.",
+  "duration": "حدود ۲۰ تا ۲۵ دقیقه",
+  "feature": "آزمایشگاه موقعیت",
+  "archetype": "spatial-location",
+  "teachingModel": {
+    "primary": "K1",
+    "support": "K2"
+  },
+  "orientation": {
+    "goal": "وسایل اطرافت را معرفی کن، جای آن‌ها را پیدا کن و با سؤال و جواب مکان درست را مشخص کن.",
+    "prerequisites": [
+      "This is و مفرد/جمع ساده؛ آشنایی با وسایل شخصی"
+    ],
+    "previously": "در درس قبل با مالکیت و وسایل شخصی آشنا شدی؛ حالا می‌گویی همان وسایل کجا هستند.",
+    "quickCheck": {
+      "title": "اگر از قبل بلدی",
+      "question": "می‌توانی بپرسی کتاب کجاست و بگویی روی میز است؟",
+      "example": "Where is my book? It's on the table.",
+      "explanation": "در این درس تغییر مکان، سؤال، نفی و جمع را در یک موقعیت واقعی تمرین می‌کنی.",
+      "allowSkip": true
+    }
+  },
+  "visual": {
+    "src": "./a1-4-locations.svg",
+    "alt": "کتاب روی میز، تلفن زیر صندلی و کلیدها نزدیک میز تحریر",
+    "caption": "سه وسیله در سه جای متفاوت؛ در این درس محل هرکدام را عوض می‌کنی."
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "Where is my book?",
+      "The book is on the table.",
+      "Is the phone under the chair?"
+    ],
+    "specificIndependentExpressions": [
+      "Where is my book?",
+      "The book is on the table.",
+      "Is the phone under the chair?"
+    ],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": true
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "از کلمه تا جمله",
+      "intro": "واژه‌ها را در گروه‌های کوچک ببین؛ سپس روی کلمات داخل عبارت و جمله بزن و موقعیت را عوض کن. سؤال و منفی بعد از کشف جمله می‌آیند. در پایان جورچین و ساخت مستقل داری.",
+      "masteryActivityIds": [
+        "places-construction"
+      ],
+      "activities": [
+        {
+          "id": "places-words",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "واژه‌های اصلیِ مکان و اشیا",
+          "batchSize": 4,
+          "deckRevision": 1,
+          "items": [
+            {
+              "en": "book",
+              "fa": "کتاب",
+              "hint": "شیء آشنا از درس سوم",
+              "examples": [
+                "The book is on the table.",
+                "Where is my book?",
+                "Is the book under the chair?"
+              ]
+            },
+            {
+              "en": "phone",
+              "fa": "تلفن",
+              "hint": "وسیله‌ای که می‌توانی جای آن را توصیف کنی",
+              "examples": [
+                "The phone is near the desk.",
+                "Where is the phone?",
+                "Is the phone under the chair?"
+              ]
+            },
+            {
+              "en": "keys",
+              "fa": "کلیدها",
+              "hint": "اسم جمع؛ به تغییر is و are دقت کن",
+              "examples": [
+                "My keys are on the table.",
+                "Where are my keys?",
+                "The keys are near the desk."
+              ]
+            },
+            {
+              "en": "table",
+              "fa": "میز",
+              "hint": "سطحی که چیزی روی آن قرار می‌گیرد",
+              "examples": [
+                "The book is on the table.",
+                "Is the bag under the table?",
+                "The phone is near the table."
+              ]
+            },
+            {
+              "en": "chair",
+              "fa": "صندلی",
+              "hint": "محل اشیا",
+              "examples": [
+                "The phone is under the chair.",
+                "Is the bag near the chair?",
+                "The book is on the chair."
+              ]
+            },
+            {
+              "en": "desk",
+              "fa": "میز تحریر",
+              "hint": "محل وسایل در اتاق یا کلاس",
+              "examples": [
+                "The phone is near the desk.",
+                "The keys are on the desk.",
+                "Is the book under the desk?"
+              ]
+            },
+            {
+              "en": "on",
+              "fa": "روی",
+              "hint": "برای قرارداشتن چیزی روی سطح",
+              "examples": [
+                "The book is on the table.",
+                "The phone is on the desk.",
+                "My keys are on the chair."
+              ]
+            },
+            {
+              "en": "under",
+              "fa": "زیر",
+              "hint": "برای موقعیت زیر یک وسیله",
+              "examples": [
+                "The phone is under the chair.",
+                "The book is under the desk.",
+                "Is the bag under the table?"
+              ]
+            },
+            {
+              "en": "near",
+              "fa": "نزدیک",
+              "hint": "برای فاصلهٔ کم",
+              "examples": [
+                "The keys are near the desk.",
+                "The bag is near the chair.",
+                "Is the phone near the table?"
+              ]
+            },
+            {
+              "en": "Where is my book?",
+              "fa": "کتاب من کجاست؟",
+              "hint": "پرسیدن مکان یک شیء",
+              "examples": [
+                "Where is my book?",
+                "Where is your book?",
+                "My book is on the table."
+              ]
+            },
+            {
+              "en": "The book is on the table.",
+              "fa": "کتاب روی میز است.",
+              "hint": "جواب با توصیف مکان",
+              "examples": [
+                "The book is on the table.",
+                "The phone is on the desk.",
+                "The keys are on the chair."
+              ]
+            },
+            {
+              "en": "Is the phone under the chair?",
+              "fa": "آیا تلفن زیر صندلی است؟",
+              "hint": "سؤال بله / خیر دربارهٔ مکان",
+              "examples": [
+                "Is the phone under the chair?",
+                "Is the book under the table?",
+                "The phone is not under the chair."
+              ]
+            },
+            {
+              "en": "bag",
+              "fa": "کیف",
+              "role": "supplementary"
+            },
+            {
+              "en": "pen",
+              "fa": "خودکار",
+              "role": "supplementary"
+            },
+            {
+              "en": "notebook",
+              "fa": "دفتر",
+              "role": "supplementary"
+            },
+            {
+              "en": "bed",
+              "fa": "تخت",
+              "role": "supplementary"
+            },
+            {
+              "en": "sofa",
+              "fa": "مبل",
+              "role": "supplementary"
+            },
+            {
+              "en": "box",
+              "fa": "جعبه",
+              "role": "supplementary"
+            },
+            {
+              "en": "shelf",
+              "fa": "قفسه",
+              "role": "supplementary"
+            },
+            {
+              "en": "window",
+              "fa": "پنجره",
+              "role": "supplementary"
+            },
+            {
+              "en": "door",
+              "fa": "در",
+              "role": "supplementary"
+            },
+            {
+              "en": "room",
+              "fa": "اتاق",
+              "role": "supplementary"
+            },
+            {
+              "en": "floor",
+              "fa": "کف اتاق",
+              "role": "supplementary"
+            },
+            {
+              "en": "wall",
+              "fa": "دیوار",
+              "role": "supplementary"
+            },
+            {
+              "en": "behind",
+              "fa": "پشت",
+              "role": "supplementary"
+            },
+            {
+              "en": "next to",
+              "fa": "کنار",
+              "role": "supplementary"
+            },
+            {
+              "en": "in",
+              "fa": "داخل",
+              "role": "supplementary"
+            },
+            {
+              "en": "in front of",
+              "fa": "جلوی",
+              "role": "supplementary"
+            },
+            {
+              "en": "between",
+              "fa": "بین",
+              "role": "supplementary"
+            },
+            {
+              "en": "here",
+              "fa": "اینجا",
+              "role": "supplementary"
+            },
+            {
+              "en": "there",
+              "fa": "آنجا",
+              "role": "supplementary"
+            }
+          ]
+        },
+        {
+          "id": "places-phrases",
+          "type": "composer-view",
+          "phase": "phrases",
+          "title": "عبارت‌های مکانی؛ لمس مستقیم",
+          "description": "روی on یا table داخل عبارت بزن تا ترکیب‌های جدید کشف کنی.",
+          "sourceActivityId": "places-composer",
+          "patternId": "phrase"
+        },
+        {
+          "id": "places-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "جملهٔ زنده؛ اشیا کجا هستند؟",
+          "description": "روی هر کلمهٔ سبز داخل جمله بزن. شیء، موقعیت یا محل همان‌جا عوض می‌شود و اگر اسم جمع باشد is و are نیز خودکار هماهنگ می‌شوند. هیچ فهرستی باز نمی‌شود.",
+          "targetLanguage": "en",
+          "wordSets": {
+            "objects": [
+              {
+                "id": "book",
+                "label": "book",
+                "translation": "کتاب",
+                "role": "core",
+                "features": {
+                  "number": "singular"
+                },
+                "forms": {
+                  "noun": "book",
+                  "faNoun": "کتاب"
+                }
+              },
+              {
+                "id": "phone",
+                "label": "phone",
+                "translation": "تلفن",
+                "role": "core",
+                "features": {
+                  "number": "singular"
+                },
+                "forms": {
+                  "noun": "phone",
+                  "faNoun": "تلفن"
+                }
+              },
+              {
+                "id": "keys",
+                "label": "keys",
+                "translation": "کلیدها",
+                "role": "core",
+                "features": {
+                  "number": "plural"
+                },
+                "forms": {
+                  "noun": "keys",
+                  "faNoun": "کلیدها"
+                }
+              },
+              {
+                "id": "bag",
+                "label": "bag",
+                "translation": "کیف",
+                "role": "supplementary",
+                "features": {
+                  "number": "singular"
+                },
+                "forms": {
+                  "noun": "bag",
+                  "faNoun": "کیف"
+                }
+              },
+              {
+                "id": "pen",
+                "label": "pen",
+                "translation": "خودکار",
+                "role": "supplementary",
+                "features": {
+                  "number": "singular"
+                },
+                "forms": {
+                  "noun": "pen",
+                  "faNoun": "خودکار"
+                }
+              },
+              {
+                "id": "notebook",
+                "label": "notebook",
+                "translation": "دفتر",
+                "role": "supplementary",
+                "features": {
+                  "number": "singular"
+                },
+                "forms": {
+                  "noun": "notebook",
+                  "faNoun": "دفتر"
+                }
+              }
+            ],
+            "positions": [
+              {
+                "id": "on",
+                "label": "on",
+                "translation": "روی",
+                "role": "core",
+                "forms": {
+                  "preposition": "on",
+                  "faPreposition": "روی"
+                }
+              },
+              {
+                "id": "under",
+                "label": "under",
+                "translation": "زیر",
+                "role": "core",
+                "forms": {
+                  "preposition": "under",
+                  "faPreposition": "زیر"
+                }
+              },
+              {
+                "id": "near",
+                "label": "near",
+                "translation": "نزدیک",
+                "role": "core",
+                "forms": {
+                  "preposition": "near",
+                  "faPreposition": "نزدیک"
+                }
+              },
+              {
+                "id": "behind",
+                "label": "behind",
+                "translation": "پشت",
+                "role": "supplementary",
+                "forms": {
+                  "preposition": "behind",
+                  "faPreposition": "پشت"
+                }
+              },
+              {
+                "id": "next-to",
+                "label": "next to",
+                "translation": "کنار",
+                "role": "supplementary",
+                "forms": {
+                  "preposition": "next to",
+                  "faPreposition": "کنار"
+                }
+              }
+            ],
+            "locations": [
+              {
+                "id": "table",
+                "label": "table",
+                "translation": "میز",
+                "role": "core",
+                "forms": {
+                  "noun": "table",
+                  "faNoun": "میز"
+                }
+              },
+              {
+                "id": "chair",
+                "label": "chair",
+                "translation": "صندلی",
+                "role": "core",
+                "forms": {
+                  "noun": "chair",
+                  "faNoun": "صندلی"
+                }
+              },
+              {
+                "id": "desk",
+                "label": "desk",
+                "translation": "میز تحریر",
+                "role": "core",
+                "forms": {
+                  "noun": "desk",
+                  "faNoun": "میز تحریر"
+                }
+              },
+              {
+                "id": "bed",
+                "label": "bed",
+                "translation": "تخت",
+                "role": "supplementary",
+                "forms": {
+                  "noun": "bed",
+                  "faNoun": "تخت"
+                }
+              },
+              {
+                "id": "sofa",
+                "label": "sofa",
+                "translation": "مبل",
+                "role": "supplementary",
+                "forms": {
+                  "noun": "sofa",
+                  "faNoun": "مبل"
+                }
+              },
+              {
+                "id": "box",
+                "label": "box",
+                "translation": "جعبه",
+                "role": "supplementary",
+                "forms": {
+                  "noun": "box",
+                  "faNoun": "جعبه"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "object",
+              "label": "شیء",
+              "wordSet": "objects",
+              "default": "book",
+              "includeRoles": [
+                "core",
+                "supplementary"
+              ]
+            },
+            {
+              "id": "position",
+              "label": "موقعیت",
+              "wordSet": "positions",
+              "default": "on",
+              "includeRoles": [
+                "core",
+                "supplementary"
+              ]
+            },
+            {
+              "id": "location",
+              "label": "محل",
+              "wordSet": "locations",
+              "default": "table",
+              "includeRoles": [
+                "core",
+                "supplementary"
+              ]
+            }
+          ],
+          "defaultPattern": "statement",
+          "derivedDefaults": {
+            "be": "is",
+            "questionAux": "Is",
+            "faCopula": "است",
+            "faNegativeCopula": "نیست"
+          },
+          "dependencies": [
+            {
+              "id": "one-object",
+              "when": {
+                "slot": "object",
+                "feature": "number",
+                "equals": "singular"
+              },
+              "set": {
+                "be": "is",
+                "questionAux": "Is",
+                "faCopula": "است",
+                "faNegativeCopula": "نیست"
+              }
+            },
+            {
+              "id": "plural-object",
+              "when": {
+                "slot": "object",
+                "feature": "number",
+                "equals": "plural"
+              },
+              "set": {
+                "be": "are",
+                "questionAux": "Are",
+                "faCopula": "هستند",
+                "faNegativeCopula": "نیستند"
+              }
+            }
+          ],
+          "patterns": [
+            {
+              "id": "phrase",
+              "label": "عبارت",
+              "segments": [
+                {
+                  "slot": "position",
+                  "form": "preposition"
+                },
+                {
+                  "fixed": " the "
+                },
+                {
+                  "slot": "location",
+                  "form": "noun"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "position",
+                  "form": "faPreposition"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "location",
+                  "form": "faNoun"
+                }
+              ]
+            },
+            {
+              "id": "statement",
+              "label": "خبری",
+              "segments": [
+                {
+                  "fixed": "The "
+                },
+                {
+                  "slot": "object",
+                  "form": "noun"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "be"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "position",
+                  "form": "preposition"
+                },
+                {
+                  "fixed": " the "
+                },
+                {
+                  "slot": "location",
+                  "form": "noun"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "object",
+                  "form": "faNoun"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "position",
+                  "form": "faPreposition"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "location",
+                  "form": "faNoun"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "faCopula"
+                },
+                {
+                  "fixed": "."
+                }
+              ]
+            },
+            {
+              "id": "negative",
+              "label": "منفی",
+              "segments": [
+                {
+                  "fixed": "The "
+                },
+                {
+                  "slot": "object",
+                  "form": "noun"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "be"
+                },
+                {
+                  "fixed": " not "
+                },
+                {
+                  "slot": "position",
+                  "form": "preposition"
+                },
+                {
+                  "fixed": " the "
+                },
+                {
+                  "slot": "location",
+                  "form": "noun"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "object",
+                  "form": "faNoun"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "position",
+                  "form": "faPreposition"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "location",
+                  "form": "faNoun"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "faNegativeCopula"
+                },
+                {
+                  "fixed": "."
+                }
+              ]
+            },
+            {
+              "id": "question",
+              "label": "پرسشی",
+              "segments": [
+                {
+                  "derived": "questionAux"
+                },
+                {
+                  "fixed": " the "
+                },
+                {
+                  "slot": "object",
+                  "form": "noun"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "position",
+                  "form": "preposition"
+                },
+                {
+                  "fixed": " the "
+                },
+                {
+                  "slot": "location",
+                  "form": "noun"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "آیا "
+                },
+                {
+                  "slot": "object",
+                  "form": "faNoun"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "position",
+                  "form": "faPreposition"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "location",
+                  "form": "faNoun"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "faCopula"
+                },
+                {
+                  "fixed": "؟"
+                }
+              ]
+            },
+            {
+              "id": "where",
+              "label": "کجاست؟",
+              "segments": [
+                {
+                  "fixed": "Where "
+                },
+                {
+                  "derived": "be"
+                },
+                {
+                  "fixed": " the "
+                },
+                {
+                  "slot": "object",
+                  "form": "noun"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "object",
+                  "form": "faNoun"
+                },
+                {
+                  "fixed": " کجا "
+                },
+                {
+                  "derived": "faCopula"
+                },
+                {
+                  "fixed": "؟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "places-models",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "یک جمله؛ چهار شکل کاربردی",
+          "description": "ابتدا جمله را تغییر داده‌ای؛ حالا منفی، پرسشی و Where را با همان واژه‌ها مقایسه کن.",
+          "sourceActivityId": "places-composer",
+          "patternIds": [
+            "statement",
+            "negative",
+            "question",
+            "where"
+          ]
+        },
+        {
+          "id": "places-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "از یک بانک مخلوط، چند جملهٔ مکانی بساز",
+          "description": "کلمات چند جمله با هم مخلوط‌اند. هر جملهٔ درست را پیدا کن، ثبتش کن و سپس ترکیب دیگری بساز. نقطه و بزرگی حروف معیار غلط‌بودن نیستند.",
+          "revision": 1,
+          "reuseBank": true,
+          "goalCount": 4,
+          "sourceActivityId": "places-composer",
+          "patternIds": [
+            "statement",
+            "negative",
+            "question",
+            "where"
+          ],
+          "sentences": [
+            {
+              "id": "book-table",
+              "words": [
+                "The",
+                "book",
+                "is",
+                "on",
+                "the",
+                "table."
+              ]
+            },
+            {
+              "id": "phone-chair",
+              "words": [
+                "Is",
+                "the",
+                "phone",
+                "under",
+                "the",
+                "chair?"
+              ]
+            },
+            {
+              "id": "keys-desk",
+              "words": [
+                "The",
+                "keys",
+                "are",
+                "near",
+                "the",
+                "desk."
+              ]
+            },
+            {
+              "id": "where-book",
+              "words": [
+                "Where",
+                "is",
+                "the",
+                "book?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "places-construction",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "بدون گزینه، جمله بساز",
+          "practiceRevision": 1,
+          "description": "پنج موقعیت کوتاه؛ پس از کشف الگوها جمله را خودت بنویس.",
+          "completion": "خبری، سؤالی، منفی، مکان و جمع را در جمله ساختی.",
+          "tasks": [
+            {
+              "task": "به انگلیسی بگو کتاب روی میز است.",
+              "hint": "The book is on the table.",
+              "example": "The book is on the table.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the book is on the table"
+                    ],
+                    "feedback": "از The book is on the table استفاده کن."
+                  }
+                ],
+                "success": "مکان شیء را بیان کردی."
+              }
+            },
+            {
+              "task": "بپرس تلفن زیر صندلی است؟",
+              "hint": "Is the phone under the chair?",
+              "example": "Is the phone under the chair?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "is the phone under the chair"
+                    ],
+                    "feedback": "سؤال را با Is شروع کن."
+                  }
+                ],
+                "success": "سؤال مکان را ساختی."
+              }
+            },
+            {
+              "task": "بگو کلیدها نزدیک میز تحریر هستند.",
+              "hint": "The keys are near the desk.",
+              "example": "The keys are near the desk.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the keys are near the desk"
+                    ],
+                    "feedback": "برای keys از are استفاده کن."
+                  }
+                ],
+                "success": "تفاوت مفرد و جمع را رعایت کردی."
+              }
+            },
+            {
+              "task": "بپرس کلیدها کجا هستند.",
+              "hint": "Where are the keys?",
+              "example": "Where are the keys?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "where are the keys"
+                    ],
+                    "feedback": "برای keys از Where are استفاده کن."
+                  }
+                ],
+                "success": "سؤال جمع را درست گفتی."
+              }
+            },
+            {
+              "task": "بگو تلفن زیر صندلی نیست.",
+              "hint": "The phone is not under the chair.",
+              "example": "The phone is not under the chair.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the phone is not under the chair"
+                    ],
+                    "feedback": "منفی‌کردن جمله با is not را تمرین کن."
+                  }
+                ],
+                "success": "موقعیت نادرست را نفی کردی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "از الگو تا مکالمه",
+      "intro": "با سؤال‌وجواب دربارهٔ مکان شروع کن، دو مکالمهٔ متفاوت را مقایسه کن، سپس با کمک و بدون کمک در موقعیت‌های تازه صحبت کن.",
+      "masteryActivityIds": [
+        "places-guided-talk",
+        "places-independent"
+      ],
+      "activities": [
+        {
+          "id": "places-exchanges",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "یک سؤال، چند پاسخِ مکانی",
+          "description": "مکان جواب را تغییر بده؛ یک بار جواب مثبت است و بار بعد منفی.",
+          "pairs": [
+            {
+              "question": "Where is my book?",
+              "questionFa": "کتاب من کجاست؟",
+              "variants": [
+                {
+                  "label": "روی میز",
+                  "en": "It's on the table.",
+                  "fa": "روی میز است.",
+                  "note": "برای یک شیء از It's استفاده کن."
+                },
+                {
+                  "label": "زیر صندلی",
+                  "en": "It's under the chair.",
+                  "fa": "زیر صندلی است.",
+                  "note": "تنها موقعیت تغییر کرد."
+                }
+              ]
+            },
+            {
+              "question": "Is the phone under the chair?",
+              "questionFa": "آیا تلفن زیر صندلی است؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, it is.",
+                  "fa": "بله.",
+                  "note": "تأیید کن."
+                },
+                {
+                  "label": "نه، روی میز است",
+                  "en": "No, it's on the table.",
+                  "fa": "نه، روی میز است.",
+                  "note": "حدس را رد کن و مکان صحیح را بگو."
+                }
+              ]
+            },
+            {
+              "question": "Where are the keys?",
+              "questionFa": "کلیدها کجا هستند؟",
+              "variants": [
+                {
+                  "label": "نزدیک میز",
+                  "en": "They are near the desk.",
+                  "fa": "نزدیک میز تحریر هستند.",
+                  "note": "برای keys از They are استفاده کن."
+                },
+                {
+                  "label": "روی میز",
+                  "en": "They are on the table.",
+                  "fa": "روی میز هستند.",
+                  "note": "تفاوت is و are را کشف کن."
+                }
+              ]
+            },
+            {
+              "question": "Is the bag on the table?",
+              "questionFa": "آیا کیف روی میز است؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, it is.",
+                  "fa": "بله.",
+                  "note": "پاسخ مثبت کوتاه."
+                },
+                {
+                  "label": "نه، نزدیک صندلی است",
+                  "en": "No, it's near the chair.",
+                  "fa": "نه، نزدیک صندلی است.",
+                  "note": "پاسخ منفی همراه با اصلاح."
+                }
+              ]
+            },
+            {
+              "question": "Where is the phone?",
+              "questionFa": "تلفن کجاست؟",
+              "variants": [
+                {
+                  "label": "کنار میز",
+                  "en": "It's near the desk.",
+                  "fa": "نزدیک میز تحریر است.",
+                  "note": "مکان عوض شد."
+                },
+                {
+                  "label": "روی میز",
+                  "en": "It's on the table.",
+                  "fa": "روی میز است.",
+                  "note": "از همان قالب استفاده کن."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "places-exchange-practice",
+          "type": "response-practice",
+          "phase": "correspondence",
+          "practiceRevision": 1,
+          "title": "جملات متناظر را بساز",
+          "description": "برای هر سؤال یک پاسخ مناسب بنویس. معنی مکان و مفرد یا جمع بودن را در نظر بگیر.",
+          "tasks": [
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is my book?",
+              "task": "بگو کتاب روی میز است.",
+              "hint": "It's on the table.",
+              "example": "It's on the table.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "it's on the table",
+                      "it is on the table"
+                    ],
+                    "feedback": "از It's on the table استفاده کن."
+                  }
+                ],
+                "success": "پاسخ مکان را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Is the phone under the chair?",
+              "task": "بله، تأیید کن.",
+              "hint": "Yes, it is.",
+              "example": "Yes, it is.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "yes"
+                    ],
+                    "feedback": "با Yes شروع کن."
+                  },
+                  {
+                    "any": [
+                      "it is"
+                    ],
+                    "feedback": "با it is کامل کن."
+                  }
+                ],
+                "success": "پاسخ مثبت دادی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where are the keys?",
+              "task": "بگو کلیدها نزدیک میز تحریر هستند.",
+              "hint": "They are near the desk.",
+              "example": "They are near the desk.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "they are near the desk"
+                    ],
+                    "feedback": "برای کلیدهای جمع از They are استفاده کن."
+                  }
+                ],
+                "success": "جمع را درست پاسخ دادی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Is the phone under the chair?",
+              "task": "نه؛ این بار سؤال را تکرار کن و بگو روی میز است.",
+              "hint": "No, it's on the table.",
+              "example": "No, it's on the table.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no"
+                    ],
+                    "feedback": "با No رد کن."
+                  },
+                  {
+                    "any": [
+                      "it's on the table"
+                    ],
+                    "feedback": "مکان درست را مشخص کن."
+                  }
+                ],
+                "success": "پاسخ منفی و اصلاح مکان را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "places-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "مکالمهٔ اول: وسایل گم‌شده",
+          "description": "میا کتاب، تلفن و کلیدهایش را پیدا می‌کند. مکالمه را پیوسته اسکرول کن.",
+          "lines": [
+            {
+              "speaker": "Mia",
+              "en": "Where is my book?",
+              "fa": "کتاب من کجاست؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "It's on the table.",
+              "fa": "روی میز است."
+            },
+            {
+              "speaker": "Mia",
+              "en": "Is the phone under the chair?",
+              "fa": "آیا تلفن زیر صندلی است؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "Yes, it is.",
+              "fa": "بله."
+            },
+            {
+              "speaker": "Mia",
+              "en": "Where are my keys?",
+              "fa": "کلیدهای من کجا هستند؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "They are near the desk.",
+              "fa": "نزدیک میز تحریر هستند."
+            },
+            {
+              "speaker": "Mia",
+              "en": "Is my bag on the table?",
+              "fa": "کیف من روی میز است؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "No, it's under the chair.",
+              "fa": "نه، زیر صندلی است."
+            },
+            {
+              "speaker": "Mia",
+              "en": "Thank you!",
+              "fa": "ممنون!"
+            },
+            {
+              "speaker": "Noah",
+              "en": "You're welcome!",
+              "fa": "خواهش می‌کنم!"
+            }
+          ]
+        },
+        {
+          "id": "places-dialogue-recall",
+          "type": "response-practice",
+          "phase": "context",
+          "practiceRevision": 1,
+          "title": "مکالمه را از حافظه ادامه بده",
+          "description": "حالا پاسخ‌ها را بدون نگاه‌کردن به مکالمه بساز.",
+          "tasks": [
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is my book?",
+              "task": "بگو کتاب روی میز است.",
+              "hint": "It's on the table.",
+              "example": "It's on the table.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "it's on the table",
+                      "it is on the table"
+                    ],
+                    "feedback": "از It's on the table استفاده کن."
+                  }
+                ],
+                "success": "پاسخ مکان را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where are the keys?",
+              "task": "بگو کلیدها نزدیک میز تحریر هستند.",
+              "hint": "They are near the desk.",
+              "example": "They are near the desk.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "they are near the desk"
+                    ],
+                    "feedback": "برای کلیدهای جمع از They are استفاده کن."
+                  }
+                ],
+                "success": "جمع را درست پاسخ دادی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Is the phone under the chair?",
+              "task": "نه؛ این بار سؤال را تکرار کن و بگو روی میز است.",
+              "hint": "No, it's on the table.",
+              "example": "No, it's on the table.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no"
+                    ],
+                    "feedback": "با No رد کن."
+                  },
+                  {
+                    "any": [
+                      "it's on the table"
+                    ],
+                    "feedback": "مکان درست را مشخص کن."
+                  }
+                ],
+                "success": "پاسخ منفی و اصلاح مکان را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "places-dialogue-contrast",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "مکالمهٔ دوم: در کلاس",
+          "description": "موقعیت عوض شده است؛ ببین سؤال‌های آشنا در اینجا چه جوابی می‌گیرند.",
+          "lines": [
+            {
+              "speaker": "Teacher",
+              "en": "Where is the book?",
+              "fa": "کتاب کجاست؟"
+            },
+            {
+              "speaker": "Student",
+              "en": "It's near the desk.",
+              "fa": "نزدیک میز تحریر است."
+            },
+            {
+              "speaker": "Teacher",
+              "en": "Is the phone under the chair?",
+              "fa": "تلفن زیر صندلی است؟"
+            },
+            {
+              "speaker": "Student",
+              "en": "No, it's on the table.",
+              "fa": "نه، روی میز است."
+            },
+            {
+              "speaker": "Teacher",
+              "en": "Where are the keys?",
+              "fa": "کلیدها کجا هستند؟"
+            },
+            {
+              "speaker": "Student",
+              "en": "They are on the desk.",
+              "fa": "روی میز تحریر هستند."
+            },
+            {
+              "speaker": "Teacher",
+              "en": "Is the bag near the chair?",
+              "fa": "کیف نزدیک صندلی است؟"
+            },
+            {
+              "speaker": "Student",
+              "en": "Yes, it is.",
+              "fa": "بله."
+            },
+            {
+              "speaker": "Teacher",
+              "en": "Thank you.",
+              "fa": "متشکرم."
+            },
+            {
+              "speaker": "Student",
+              "en": "You're welcome.",
+              "fa": "خواهش می‌کنم."
+            }
+          ]
+        },
+        {
+          "id": "places-contrast-practice",
+          "type": "response-practice",
+          "phase": "context",
+          "practiceRevision": 1,
+          "title": "مکان درست را اصلاح کن",
+          "description": "بر اساس موقعیت دوم، محل شیء را دقیق‌تر بگو.",
+          "tasks": [
+            {
+              "speaker": "دوستت",
+              "incoming": "Is the phone under the chair?",
+              "task": "نه؛ روی میز است.",
+              "hint": "No, it's on the table.",
+              "example": "No, it's on the table.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no"
+                    ],
+                    "feedback": "با No پاسخ بده."
+                  },
+                  {
+                    "any": [
+                      "it's on the table"
+                    ],
+                    "feedback": "مکان را مشخص کن."
+                  }
+                ],
+                "success": "جای واقعی تلفن را مشخص کردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where are the keys?",
+              "task": "کلیدها روی میز تحریر هستند.",
+              "hint": "They are on the desk.",
+              "example": "They are on the desk.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "they are on the desk"
+                    ],
+                    "feedback": "از They are on the desk استفاده کن."
+                  }
+                ],
+                "success": "پاسخ با اسم جمع را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Is the bag near the chair?",
+              "task": "بله، تأیید کن.",
+              "hint": "Yes, it is.",
+              "example": "Yes, it is.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "yes"
+                    ],
+                    "feedback": "جواب مثبت بده."
+                  },
+                  {
+                    "any": [
+                      "it is"
+                    ],
+                    "feedback": "it is را تکمیل کن."
+                  }
+                ],
+                "success": "جای کیف را تأیید کردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "places-guided-talk",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "practiceRevision": 1,
+          "title": "نوبت تو؛ مکالمه را جلو ببر",
+          "description": "بشنو یا بخوان و به نوبت‌های مختلف پاسخ بده؛ راهنما فقط در صورت نیاز.",
+          "completion": "دربارهٔ مکان اشیا در پنج موقعیت پاسخ دادی.",
+          "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is my book?",
+              "task": "بگو کتاب روی میز است.",
+              "hint": "It's on the table.",
+              "example": "It's on the table.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "it's on the table",
+                      "it is on the table"
+                    ],
+                    "feedback": "از It's on the table استفاده کن."
+                  }
+                ],
+                "success": "پاسخ مکان را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Is the phone under the chair?",
+              "task": "بله، تأیید کن.",
+              "hint": "Yes, it is.",
+              "example": "Yes, it is.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "yes"
+                    ],
+                    "feedback": "با Yes شروع کن."
+                  },
+                  {
+                    "any": [
+                      "it is"
+                    ],
+                    "feedback": "با it is کامل کن."
+                  }
+                ],
+                "success": "پاسخ مثبت دادی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where are the keys?",
+              "task": "بگو کلیدها نزدیک میز تحریر هستند.",
+              "hint": "They are near the desk.",
+              "example": "They are near the desk.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "they are near the desk"
+                    ],
+                    "feedback": "برای کلیدهای جمع از They are استفاده کن."
+                  }
+                ],
+                "success": "جمع را درست پاسخ دادی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Is the phone under the chair?",
+              "task": "نه؛ این بار سؤال را تکرار کن و بگو روی میز است.",
+              "hint": "No, it's on the table.",
+              "example": "No, it's on the table.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no"
+                    ],
+                    "feedback": "با No رد کن."
+                  },
+                  {
+                    "any": [
+                      "it's on the table"
+                    ],
+                    "feedback": "مکان درست را مشخص کن."
+                  }
+                ],
+                "success": "پاسخ منفی و اصلاح مکان را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is my book?",
+              "task": "اول سؤال را با همین عبارت تکرار کن، بعد بگو کتاب روی میز است.",
+              "hint": "Where is my book? The book is on the table.",
+              "example": "Where is my book? The book is on the table.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "where is my book"
+                    ],
+                    "feedback": "Where is my book? را بیاور."
+                  },
+                  {
+                    "any": [
+                      "the book is on the table"
+                    ],
+                    "feedback": "جملهٔ مکان را کامل کن."
+                  }
+                ],
+                "success": "پرسیدن و پاسخ‌دادن را ترکیب کردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Is the phone under the chair?",
+              "task": "سؤال را تکرار کن و پاسخ بده: نه، زیر صندلی نیست.",
+              "hint": "Is the phone under the chair? No, it's on the table.",
+              "example": "Is the phone under the chair? No, it's on the table.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "is the phone under the chair"
+                    ],
+                    "feedback": "سؤال را دقیق بنویس."
+                  },
+                  {
+                    "any": [
+                      "no"
+                    ],
+                    "feedback": "پاسخ منفی بده."
+                  },
+                  {
+                    "any": [
+                      "on the table"
+                    ],
+                    "feedback": "مکان درست را بگو."
+                  }
+                ],
+                "success": "سؤال و پاسخ را در یک نوبت ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "places-transfer",
+          "type": "dialogue-transfer",
+          "phase": "guided",
+          "practiceRevision": 1,
+          "title": "موقعیت تازه: کلاس دوستت",
+          "sceneTitle": "کلاس دوستت",
+          "description": "همان الگو را در فضایی تازه و با محل متفاوت به کار ببر.",
+          "completion": "مکان و جمله را به موقعیتی جدید منتقل کردی.",
+          "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is my book?",
+              "task": "این بار کتاب زیر میز تحریر است.",
+              "hint": "It's under the desk.",
+              "example": "It's under the desk.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "it's under the desk"
+                    ],
+                    "feedback": "بگو زیر میز تحریر است."
+                  }
+                ],
+                "success": "مکان تازه را بیان کردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where are my keys?",
+              "task": "کلیدها روی میز هستند.",
+              "hint": "They are on the table.",
+              "example": "They are on the table.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "they are on the table"
+                    ],
+                    "feedback": "برای keys از They are استفاده کن."
+                  }
+                ],
+                "success": "مکان جمع را درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Is the phone under the chair?",
+              "task": "نه؛ تلفن نزدیک صندلی است.",
+              "hint": "No, it's near the chair.",
+              "example": "No, it's near the chair.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no"
+                    ],
+                    "feedback": "با No شروع کن."
+                  },
+                  {
+                    "any": [
+                      "it's near the chair"
+                    ],
+                    "feedback": "محل جدید را مشخص کن."
+                  }
+                ],
+                "success": "حدس را اصلاح کردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "places-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "مکالمهٔ مستقل: سه وسیله را پیدا کن",
+          "prompt": "یک مکالمهٔ حداقل ۶ خطی بین دو نفر بنویس که دربارهٔ کتاب، تلفن و کلیدها سؤال می‌پرسند. حتماً عبارت‌های Where is my book? و The book is on the table. و Is the phone under the chair? را در جای درست مکالمه به کار ببر. یک بار هم دربارهٔ کلیدهای جمع با Where are بپرس و پاسخ بده.",
+          "placeholder": "Mia: Where is my book?\nNoah: The book is on the table.\nMia: ...",
+          "hint": "برای کلیدها از Where are the keys? و They are ... استفاده کن؛ راهنما اختیاری است.",
+          "kind": "free-text",
+          "minWords": 25,
+          "assessment": {
+            "revision": 1,
+            "required": [
+              {
+                "any": [
+                  "where is my book"
+                ],
+                "feedback": "حتماً بپرس Where is my book?"
+              },
+              {
+                "any": [
+                  "the book is on the table"
+                ],
+                "feedback": "جملهٔ The book is on the table. را به کار ببر."
+              },
+              {
+                "any": [
+                  "is the phone under the chair"
+                ],
+                "feedback": "سؤال Is the phone under the chair? را اضافه کن."
+              },
+              {
+                "any": [
+                  "where are my keys",
+                  "where are the keys"
+                ],
+                "feedback": "دربارهٔ کلیدهای جمع با Where are سؤال بپرس."
+              },
+              {
+                "any": [
+                  "they are"
+                ],
+                "feedback": "به سؤال کلیدها با They are پاسخ بده."
+              }
+            ],
+            "success": "توانستی دربارهٔ سه وسیله مکالمه‌ای مستقل بسازی و مفرد و جمع را درست استفاده کنی."
+          }
+        }
+      ]
+    }
+  ]
+}
