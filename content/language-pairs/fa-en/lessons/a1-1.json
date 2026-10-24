@@ -656,9 +656,9 @@
           "id": "hello-puzzle",
           "type": "sentence-builder",
           "title": "چند جمله را از میان کلمات قاطی پیدا کن",
-          "description": "کلمات چهار جملهٔ درست با هم قاطی شده‌اند. بدون راهنمای ترتیب، هر جمله را بساز و بررسی کن؛ کلمات جملهٔ درست کنار می‌روند و با بقیه جملهٔ بعدی را بساز.",
+          "description": "کلمات چند جمله در یک بانک قاطی هستند. هر ترکیب دستوری درست را بساز و ثبت کن؛ سپس جملهٔ متفاوتی بساز. بزرگی حروف و نقطه باعث غلط‌شدن پاسخ نمی‌شوند.",
           "phase": "puzzle",
-          "revision": 2,
+          "revision": 3,
           "sentences": [
             {
               "id": "intro",
@@ -692,6 +692,15 @@
                 "morning!"
               ]
             }
+          ],
+          "reuseBank": true,
+          "goalCount": 4,
+          "sourceActivityId": "hello-composer",
+          "patternIds": [
+            "statement",
+            "introduction",
+            "negative",
+            "question"
           ]
         },
         {
