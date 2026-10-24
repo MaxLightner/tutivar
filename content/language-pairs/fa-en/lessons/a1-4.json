@@ -1,6 +1,6 @@
 {
   "id": "A1-4",
-  "revision": 5,
+  "revision": 6,
   "status": "draft",
   "title": "اشیا و مکان اطراف من",
   "goal": "بتوانی موقعیت توپ و اشیا را نسبت به یک جعبهٔ درباز با in، inside، on، on top of، above، under، behind، in front of، next to و outside توضیح بدهی.",
@@ -358,8 +358,8 @@
               "en": "The ball is in the box.",
               "faSentence": "توپ در جعبه است.",
               "ball": {
-                "x": 245,
-                "y": 203,
+                "x": 258,
+                "y": 150,
                 "layer": "rear"
               }
             },
@@ -370,8 +370,8 @@
               "en": "The ball is inside the box.",
               "faSentence": "توپ داخل جعبه است.",
               "ball": {
-                "x": 245,
-                "y": 203,
+                "x": 258,
+                "y": 150,
                 "layer": "rear"
               }
             },
@@ -394,8 +394,8 @@
               "en": "The ball is on top of the box.",
               "faSentence": "توپ روی قسمت بالایی جعبه است.",
               "ball": {
-                "x": 250,
-                "y": 142,
+                "x": 338,
+                "y": 106,
                 "layer": "front"
               }
             },
