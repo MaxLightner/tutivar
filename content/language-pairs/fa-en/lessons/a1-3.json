@@ -1,6 +1,6 @@
 {
   "id": "A1-3",
-  "revision": 7,
+  "revision": 8,
   "status": "draft",
   "title": "مالکیت و داشتن اشیا",
   "goal": "بتوانی با تغییر صاحب یا وسیله، جمله بسازی و بگویی یک وسیله مال چه کسی است.",
@@ -982,6 +982,57 @@
           "defaultPattern": "statement",
           "completion": "توانستی صاحب و وسیله را در یک جمله تغییر بدهی و تفاوت خبری، سؤالی، منفی و مالکیت مستقل را مقایسه کنی.",
           "phase": "sentence"
+        },
+        {
+          "id": "a1-3-meaning-variations",
+          "type": "meaning-cluster",
+          "phase": "variants",
+          "title": "مالکیت، فراتر از یک جملهٔ حفظی",
+          "description": "یک معنا را با بیان‌های مختلف مقایسه کن؛ بیان بعدی را بزن. اگر معنا کمی تغییر کند، تفاوتش مشخص است.",
+          "concepts": [
+            {
+              "id": "my-book",
+              "fa": "این کتاب مال من است.",
+              "forms": [
+                {
+                  "en": "This is my book.",
+                  "fa": "این کتاب من است.",
+                  "relation": "equivalent",
+                  "note": "my قبل از اسم می‌آید."
+                },
+                {
+                  "en": "This book is mine.",
+                  "fa": "این کتاب مال من است.",
+                  "relation": "equivalent",
+                  "note": "mine بدون اسم بعد از خودش می‌آید."
+                },
+                {
+                  "en": "I have this book.",
+                  "fa": "من این کتاب را دارم.",
+                  "relation": "related",
+                  "note": "داشتن الزاماً به‌معنی مالک قانونی بودن نیست؛ اینجا تفاوت معنا مهم است."
+                }
+              ]
+            },
+            {
+              "id": "your-bag",
+              "fa": "این کیف مال تو است.",
+              "forms": [
+                {
+                  "en": "This is your bag.",
+                  "fa": "این کیف تو است.",
+                  "relation": "equivalent",
+                  "note": "your همراه اسم می‌آید."
+                },
+                {
+                  "en": "This bag is yours.",
+                  "fa": "این کیف مال تو است.",
+                  "relation": "equivalent",
+                  "note": "yours مستقل استفاده می‌شود."
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "ownership-models",
