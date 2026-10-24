@@ -151,7 +151,7 @@ test('first lesson activities render with separate content, including interactio
 });
 
 test('sentence transformations have a single active sentence and a working free response', () => {
-  const activity = load('lessons/a1-1.json').sections[0].activities.at(-1);
+  const activity = load('lessons/a1-1.json').sections[0].activities.find(a => a.id === 'hello-transform');
   const context = { lessonId: 'A1-1', index: 0, e: String, en: String, i: () => '', progress: { transformChoices: {}, transformStages: {}, practiceStates: {} } };
   const first = renderActivity(activity, context);
   assert.match(first, /Good morning!/);
