@@ -9,7 +9,7 @@ import { evaluateResponse } from '../apps/learner-web/practice-engine.js';
 const root = resolve(fileURLToPath(import.meta.url), '../..');
 const load = (id) => JSON.parse(readFileSync(join(root, `content/language-pairs/fa-en/lessons/a1-${id}.json`), 'utf8'));
 
-for (const n of [1, 2, 3, 4]) {
+for (const n of [1, 2, 3, 4, 5]) {
   test(`A1-${n} has an opening shadowing track and reuses it at the end`, () => {
     const lesson = load(n);
     assert.deepEqual(validateLessonFlow(lesson), []);

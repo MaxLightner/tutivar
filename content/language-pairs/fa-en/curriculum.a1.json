@@ -53,7 +53,11 @@
             {
               "id": "A1-5",
               "title": "تعداد و شمارش اشیا",
-              "icon": "numbers"
+              "subtitle": "عددها، مفرد و جمع، پرسیدن تعداد",
+              "icon": "numbers",
+              "feature": "شمارش و جمله‌سازی",
+              "file": "lessons/a1-5.json",
+              "status": "sample"
             },
             [
               "پرسیدن نام و سن",
