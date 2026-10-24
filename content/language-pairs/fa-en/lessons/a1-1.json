@@ -1,6 +1,6 @@
 {
   "id": "A1-1",
-  "revision": 8,
+  "revision": 9,
   "status": "draft",
   "title": "معرفی خود و شروع گفت‌وگو",
   "goal": "در یک برخورد کوتاه متناسب با ساعت سلام کنی، احوال بپرسی، خودت را معرفی کنی و گفت‌وگو را تمام کنی.",
@@ -655,22 +655,44 @@
         {
           "id": "hello-puzzle",
           "type": "sentence-builder",
-          "title": "جورچین کلمات",
-          "description": "واژه‌ها را به ترتیب لمس کن تا یک جملهٔ معرفی بسازی.",
-          "tokens": [
-            "Ali.",
-            "name",
-            "My",
-            "is"
-          ],
-          "correctOrder": [
-            2,
-            1,
-            3,
-            0
-          ],
-          "translation": "نام من علی است.",
-          "phase": "puzzle"
+          "title": "چند جمله را از میان کلمات قاطی پیدا کن",
+          "description": "کلمات چهار جملهٔ درست با هم قاطی شده‌اند. بدون راهنمای ترتیب، هر جمله را بساز و بررسی کن؛ کلمات جملهٔ درست کنار می‌روند و با بقیه جملهٔ بعدی را بساز.",
+          "phase": "puzzle",
+          "revision": 2,
+          "sentences": [
+            {
+              "id": "intro",
+              "words": [
+                "My",
+                "name",
+                "is",
+                "Ali."
+              ]
+            },
+            {
+              "id": "greeting-question",
+              "words": [
+                "How",
+                "are",
+                "you?"
+              ]
+            },
+            {
+              "id": "answer",
+              "words": [
+                "I'm",
+                "fine,",
+                "thanks."
+              ]
+            },
+            {
+              "id": "morning",
+              "words": [
+                "Good",
+                "morning!"
+              ]
+            }
+          ]
         },
         {
           "id": "hello-intro-check",
