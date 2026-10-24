@@ -1,3 +1,4 @@
+import { validateMultiSentencePuzzle } from './sentence-puzzle.js';
 /**
  * Tutivar two-section lesson contract.
  * JSON controls the content and the order; this file validates the shared rhythm.
@@ -62,10 +63,13 @@ export function validateLessonFlow(lesson) {
         }
       }
       if (activity.type === 'sentence-builder') {
-        if (activity.tokens?.length !== activity.correctOrder?.length ||
+        if (activity.sentences) {
+          errors.push(...validateMultiSentencePuzzle(activity).map((error) => activity.id + ': ' + error));
+        } else if (activity.tokens?.length !== activity.correctOrder?.length ||
           activity.correctOrder?.some((n) => !Number.isInteger(n) || n < 0 || n >= activity.tokens.length) ||
-          new Set(activity.correctOrder || []).size !== activity.tokens?.length)
+          new Set(activity.correctOrder || []).size !== activity.tokens?.length) {
           errors.push(activity.id + ': invalid puzzle permutation');
+        }
       }
     }
     for (const stage of stages) if (!seen.has(stage)) errors.push(sectionId + ': missing ' + stage);
