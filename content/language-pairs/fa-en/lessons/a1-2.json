@@ -1,6 +1,6 @@
 {
   "id": "A1-2",
-  "revision": 7,
+  "revision": 8,
   "status": "draft",
   "title": "معرفی اعضای خانواده",
   "goal": "بتوانی درباره اعضای خانواده سؤال کنی، نقش خودت را در خانواده بگویی، دیگران را با نسبت معرفی کنی و حدس اشتباه را اصلاح کنی.",
@@ -27,7 +27,7 @@
   },
   "visual": {
     "src": null,
-    "alt": "نمای چهار عضو خانواده با فلش اشارهٔ تعاملی",
+    "alt": "شش عضو خانواده با فلش اشارهٔ تعاملی",
     "caption": "در بخش عبارت‌ها، روی افراد تصویر بزن تا فلش و جملهٔ معرفی تغییر کنند."
   },
   "learningAudit": {
@@ -264,8 +264,8 @@
               "followup": "Her name is Nora.",
               "explanation": "mother زن است؛ برای نامش her می‌گوییم.",
               "scene": {
-                "x": 88,
-                "y": 190,
+                "x": 110,
+                "y": 140,
                 "shirt": "#c778a4",
                 "skin": "#eac1a0",
                 "hair": "#6c453a"
@@ -279,8 +279,8 @@
               "followup": "His name is David.",
               "explanation": "father مرد است؛ برای نامش his می‌گوییم.",
               "scene": {
-                "x": 204,
-                "y": 190,
+                "x": 330,
+                "y": 140,
                 "shirt": "#567fba",
                 "skin": "#d4a17f",
                 "hair": "#543d31"
@@ -292,10 +292,10 @@
               "initial": "A",
               "sentence": "This is my sister, Anna.",
               "followup": "Her name is Anna.",
-              "explanation": "sister دختر یا زن است؛ her به کار می‌بریم.",
+              "explanation": "sister دختر یا زن است؛ برای نامش her می‌گوییم.",
               "scene": {
-                "x": 321,
-                "y": 190,
+                "x": 550,
+                "y": 140,
                 "shirt": "#7eb0a2",
                 "skin": "#e7b590",
                 "hair": "#5c453e"
@@ -307,17 +307,48 @@
               "initial": "S",
               "sentence": "This is my brother, Sam.",
               "followup": "His name is Sam.",
-              "explanation": "brother پسر یا مرد است؛ his به کار می‌بریم.",
+              "explanation": "brother پسر یا مرد است؛ برای نامش his می‌گوییم.",
               "scene": {
-                "x": 434,
-                "y": 190,
+                "x": 110,
+                "y": 355,
                 "shirt": "#d6a35b",
                 "skin": "#d5a786",
                 "hair": "#5a4635"
               }
+            },
+            {
+              "name": "Ava",
+              "fa": "دختر",
+              "initial": "A",
+              "sentence": "This is my daughter, Ava.",
+              "followup": "Her name is Ava.",
+              "explanation": "daughter دخترِ من است؛ برای اشاره به او her می‌گوییم.",
+              "scene": {
+                "x": 330,
+                "y": 355,
+                "shirt": "#b79ac8",
+                "skin": "#e2b394",
+                "hair": "#5c453e"
+              }
+            },
+            {
+              "name": "Leo",
+              "fa": "پسر",
+              "initial": "L",
+              "sentence": "This is my son, Leo.",
+              "followup": "His name is Leo.",
+              "explanation": "son پسرِ من است؛ برای اشاره به او his می‌گوییم.",
+              "scene": {
+                "x": 550,
+                "y": 355,
+                "shirt": "#79a6cd",
+                "skin": "#d7ab8b",
+                "hair": "#5e4538"
+              }
             }
           ],
-          "phase": "phrases"
+          "phase": "phrases",
+          "typeLabel": "خانوادهٔ تصویری"
         },
         {
           "id": "family-composer",
