@@ -262,7 +262,15 @@ function currentDialoguePair(key) {
   if (activity?.type !== 'dialogue' || !activity.lines?.length) return [];
   const maximum = Math.max(0, activity.lines.length - 2);
   const step = Math.max(0, Math.min(maximum, Math.round(Number(progress.dialogueSteps?.[key]) || 0)));
-  return activity.lines.slice(step, step + 2);
+  const view = [...document.querySelectorAll('[data-dialogue-window]')].find((item) => item.dataset.dialogueWindow === key);
+  if (view) {
+    const rendered = [step, Math.min(step + 1, activity.lines.length - 1)].map((index) => {
+      const line = [...view.querySelectorAll('[data-dialogue-line]')].find((item) => item.dataset.dialogueLine === String(index));
+      return line?.querySelector('[data-speak]')?.dataset.speak || activity.lines[index].en || '';
+    });
+    return rendered;
+  }
+  return activity.lines.slice(step, step + 2).map((line) => line.en || '');
 }
 const dialogueSettleTimers = new WeakMap();
 function dialogueRowHeight(view) { return view.querySelector('.dialogue-line')?.offsetHeight || 124; }
