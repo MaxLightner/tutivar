@@ -230,9 +230,10 @@ test('second lesson teaches family relationships with a live tree, retrieval and
   const [foundation, production] = lesson.sections;
   assert.deepEqual(foundation.activities.map((item) => item.type), ['vocabulary', 'phrase-composer', 'sentence-lab', 'family-tree', 'agreement-lab', 'sentence-transform', 'response-practice', 'sentence-transform']);
   assert.deepEqual(production.activities.map((item) => item.type), ['exchange-lab', 'response-practice', 'dialogue', 'response-practice', 'dialogue', 'response-practice', 'guided-dialogue', 'dialogue-transfer', 'free-write']);
-  assert.equal(coreItems(foundation.activities[0]).length, 10);
-  assert.equal(supplementaryItems(foundation.activities[0]).length, 3);
-  assert.ok(foundation.activities[0].items.every((item) => item.examples.length === 3));
+  assert.equal(coreItems(foundation.activities[0]).length, 11);
+  assert.equal(supplementaryItems(foundation.activities[0]).length, 12);
+  assert.ok(coreItems(foundation.activities[0]).every((item) => item.examples.length === 3));
+  assert.ok(supplementaryItems(foundation.activities[0]).every((item) => !item.examples && !item.hint));
   assert.deepEqual(auditLesson(lesson).errors, [], 'core family phrases are retrieved later in the lesson');
   const context = { lessonId: lesson.id, index: 3, e: String, en: String, i: () => '', progress: { familyPeople: {}, exchangeChoices: {}, practiceStates: {}, dialogueSteps: {}, showDialogueTranslation: true } };
   const tree = renderActivity(foundation.activities[3], context);
