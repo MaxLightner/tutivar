@@ -7,7 +7,8 @@ import { renderActivity, renderDialogueLines, supportedActivities } from '../app
 import { advanceDeck, answerDeck, checkWordAnswer, coreItems, deckState, jumpDeck, resumeDeck, supplementaryItems } from '../apps/learner-web/word-review.js';
 import { evaluateResponse, practiceState, submitPractice } from '../apps/learner-web/practice-engine.js';
 import { auditLesson } from '../tools/audit-lessons.mjs';
-import { composeSegments, resolveSentenceComposer, validateSentenceComposer } from '../apps/learner-web/sentence-composer.js';
+import { composeSegments, cycleComposerSlot, resolveSentenceComposer, validateSentenceComposer } from '../apps/learner-web/sentence-composer.js';
+import { LESSON_PHASES, validateLessonFlow } from '../apps/learner-web/lesson-flow.js';
 
 const contentRoot = join(projectRoot, 'content/language-pairs/fa-en');
 const load = (file) => readJson(join(contentRoot, file));
@@ -82,12 +83,27 @@ test('A1 shows three structured stages with twelve chapters', () => {
   assert.equal(manifest.levels.A1.curriculumFile, 'curriculum.a1.json');
 });
 
+
+test('all three lessons follow one JSON-declared learning template', () => {
+  for (const id of ['a1-1','a1-2','a1-3']) {
+    const lesson=load('lessons/'+id+'.json');
+    assert.equal(lesson.lessonTemplate,'discovery-production-v1');
+    assert.deepEqual(validateLessonFlow(lesson), [], lesson.id);
+    for (const section of lesson.sections) {
+      const expected=LESSON_PHASES[section.id];
+      const actual=[...new Set(section.activities.map(activity=>activity.phase))];
+      assert.deepEqual(actual,expected,lesson.id+': '+section.id);
+      assert.equal(section.activities.find(activity=>activity.phase==='puzzle')?.type, section.id==='foundation'?'sentence-builder':undefined);
+    }
+  }
+});
+
 test('first lesson activities render with separate content, including interactions', () => {
   const lesson = load('lessons/a1-1.json');
   const context = {
-    lessonId: lesson.id, index: 0,
+    lessonId: lesson.id, index: 0, activitiesById: Object.fromEntries(lesson.sections.flatMap(section => section.activities).map(activity => [activity.id, activity])),
     e: (value) => String(value), en: (value) => `<span>${value}</span>`, i: () => '<svg></svg>',
-    progress: { matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, quizAnswers: {}, written: {}, showDialogueTranslation: true, wordProgress: {}, phraseChoices: {}, sentenceLabs: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {} }
+    progress: { matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, quizAnswers: {}, written: {}, showDialogueTranslation: true, wordProgress: {}, sentenceComposers: {}, phraseChoices: {}, sentenceLabs: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {} }
   };
   for (const section of lesson.sections) {
     for (const activity of section.activities) {
@@ -99,15 +115,16 @@ test('first lesson activities render with separate content, including interactio
   assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary'), context), /data-word-key=/);
   assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary'), context), /data-word-slider=/);
   assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary'), context), /امتحانم کن/);
-  assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'phrase-composer'), context), /data-phrase-key=/);
-  assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'sentence-lab'), context), /data-lab-key=/);
+  assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.phase === 'phrases'), context), /data-composer-action="cycle"/);
+  assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'sentence-composer'), context), /data-composer-action="cycle"/);
+  assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.phase === 'puzzle'), context), /data-build-token=/);
   assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'response-practice'), context), /data-practice-form=/);
   assert.match(renderActivity(lesson.sections[0].activities.find((activity) => activity.type === 'sentence-transform'), context), /data-transform-key=/);
   assert.match(renderActivity(lesson.sections[1].activities[0], context), /data-exchange-key=/);
   assert.match(renderActivity(lesson.sections[1].activities.find((activity) => activity.type === 'guided-dialogue'), context), /data-practice-form=/);
   assert.match(renderActivity(lesson.sections[1].activities.find((activity) => activity.type === 'dialogue-transfer'), context), /data-practice-form=/);
-  assert.equal(lesson.sections.reduce((sum, section) => sum + section.activities.length, 0), 14, 'expanded examples and retrieval activities, without more core words');
-  assert.equal(lesson.sections[0].activities.at(-1).type, 'sentence-transform', 'single-sentence transformations conclude the first half');
+  assert.equal(lesson.sections.reduce((sum, section) => sum + section.activities.length, 0), 16, 'the six discovery phases preserve the nine-step conversation sequence');
+  assert.equal(lesson.sections[0].activities.at(-1).type, 'response-practice', 'independent sentence construction concludes the first half');
   assert.deepEqual(lesson.sections[1].activities.map((item) => item.type), ['exchange-lab', 'response-practice', 'dialogue', 'response-practice', 'dialogue', 'response-practice', 'guided-dialogue', 'dialogue-transfer', 'free-write'], 'question/answer exchange starts the conversation half');
   assert.ok(lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary').items.filter((entry) => entry.role !== 'supplementary').every((entry) => entry.examples.length === 3));
   assert.ok(lesson.sections[0].activities.find((activity) => activity.type === 'vocabulary').items.filter((entry) => entry.role === 'supplementary').every((entry) => !entry.examples && !entry.hint));
@@ -226,52 +243,45 @@ test('first lesson retrieves morning greetings before the dialogue half', () => 
   assert.doesNotMatch(html, /class="practice-source"/, 'a new task no longer supplies the complete answer as its source');
 });
 
-test('second lesson teaches family relationships with a live tree, retrieval and two conversations', () => {
+test('second lesson reuses the shared composer for family relationships and dialogues', () => {
   const lesson = load('lessons/a1-2.json');
   const [foundation, production] = lesson.sections;
-  assert.deepEqual(foundation.activities.map((item) => item.type), ['vocabulary', 'phrase-composer', 'sentence-lab', 'family-tree', 'agreement-lab', 'sentence-transform', 'response-practice', 'sentence-transform']);
-  assert.deepEqual(production.activities.map((item) => item.type), ['exchange-lab', 'response-practice', 'dialogue', 'response-practice', 'dialogue', 'response-practice', 'guided-dialogue', 'dialogue-transfer', 'free-write']);
+  assert.deepEqual(validateLessonFlow(lesson), []);
+  assert.deepEqual(foundation.activities.map(a => a.type), ['vocabulary','composer-view','family-tree','sentence-composer','composer-view','sentence-transform','sentence-transform','sentence-builder','response-practice']);
+  assert.deepEqual(production.activities.map(a=>a.type), ['exchange-lab','response-practice','dialogue','response-practice','dialogue','response-practice','guided-dialogue','dialogue-transfer','free-write']);
   assert.equal(coreItems(foundation.activities[0]).length, 11);
   assert.equal(supplementaryItems(foundation.activities[0]).length, 12);
-  assert.ok(coreItems(foundation.activities[0]).every((item) => item.examples.length === 3));
-  assert.ok(supplementaryItems(foundation.activities[0]).every((item) => !item.examples && !item.hint));
-  assert.deepEqual(auditLesson(lesson).errors, [], 'core family phrases are retrieved later in the lesson');
-  const context = { lessonId: lesson.id, index: 3, e: String, en: String, i: () => '', progress: { familyPeople: {}, exchangeChoices: {}, practiceStates: {}, dialogueSteps: {}, showDialogueTranslation: true } };
-  const tree = renderActivity(foundation.activities[3], context);
-  assert.equal((tree.match(/data-family-key=/g) || []).length, 4);
-  assert.match(tree, /Her name is Nora/);
-  context.progress.familyPeople['A1-2:family-tree'] = 1;
-  assert.match(renderActivity(foundation.activities[3], context), /His name is David/);
-  const grammar = foundation.activities[4];
-  const grammarContext = { ...context, index: 4, progress: { ...context.progress, agreementChoices: {} } };
-  const brother = renderActivity(grammar, grammarContext);
-  assert.match(brother, /He<\/button>/);
-  assert.match(brother, /is<\/button>/);
-  assert.match(brother, /His name is Sam/);
-  assert.match(brother, /data-agreement-choice="next-member"/);
-  grammarContext.progress.agreementChoices['A1-2:family-agreement'] = { member: 1, perspective: 'third' };
-  const sister = renderActivity(grammar, grammarContext);
-  assert.match(sister, /She<\/button>/);
-  assert.match(sister, /Her name is Anna/);
-  grammarContext.progress.agreementChoices['A1-2:family-agreement'].perspective = 'you';
-  const addressed = renderActivity(grammar, grammarContext);
-  assert.match(addressed, /You<\/button>/);
-  assert.match(addressed, /are<\/button>/);
-  assert.match(addressed, /Are you my sister/);
-  const selfRole = foundation.activities[5];
-  assert.ok(selfRole.forms.some((form) => form.en === "I'm a father."));
-  assert.ok(selfRole.forms.some((form) => form.en === "I'm his daughter."));
-  assert.equal(evaluateResponse(selfRole.tasks[0].assessment, "I'm a father.").ok, true);
-  assert.equal(evaluateResponse(selfRole.tasks[0].assessment, "I'm father.").ok, false, 'role noun requires an article');
-  assert.equal(evaluateResponse(selfRole.tasks[3].assessment, "I'm his daughter.").ok, true);
-  assert.equal(evaluateResponse(foundation.activities[6].tasks[3].assessment, "Who's this?").ok, true);
-  assert.equal(evaluateResponse(foundation.activities[7].tasks[1].assessment, 'This is your brother.').ok, false);
-  assert.equal(evaluateResponse(foundation.activities[7].tasks[1].assessment, 'Is this your brother?').ok, true);
-  assert.ok(production.activities[0].pairs.some((pair) => pair.variants.some((variant) => variant.en === 'This is my daughter.')));
-  assert.equal(production.activities.filter((activity) => activity.type === 'dialogue').length, 2);
-  assert.ok(production.activities.filter((activity) => activity.type === 'dialogue').every((activity) => activity.lines.length >= 8));
+  assert.ok(coreItems(foundation.activities[0]).every(item=>item.examples.length===3));
+  assert.ok(supplementaryItems(foundation.activities[0]).every(item=>!item.examples&&!item.hint));
+  assert.deepEqual(auditLesson(lesson).errors, []);
+  const source=foundation.activities.find(a=>a.type==='sentence-composer');
+  assert.deepEqual(validateSentenceComposer(source), []);
+  const base=resolveSentenceComposer(source,{slots:{member:'mother',perspective:'third'},pattern:'role'});
+  assert.equal(composeSegments(base.pattern.segments,source,base), 'She is my mother.');
+  const brother=resolveSentenceComposer(source,{slots:{member:'brother',perspective:'third'},pattern:'role'});
+  assert.equal(composeSegments(brother.pattern.segments,source,brother), 'He is my brother.');
+  const direct=resolveSentenceComposer(source,{slots:{member:'sister',perspective:'you'},pattern:'role'});
+  assert.equal(composeSegments(direct.pattern.segments,source,direct), 'You are my sister.');
+  const cycled=cycleComposerSlot(source,{slots:{member:'mother'}},'member');
+  assert.equal(cycled.slots.member,'father');
+  const context={lessonId:lesson.id,index:2,e:String,en:String,i:()=>'',activitiesById:Object.fromEntries(foundation.activities.map(a=>[a.id,a])),progress:{familyPeople:{},sentenceComposers:{},exchangeChoices:{},practiceStates:{},dialogueSteps:{},showDialogueTranslation:true}};
+  const tree=foundation.activities.find(a=>a.type==='family-tree');
+  assert.match(renderActivity(tree,context), /Her name is Nora/);
+  context.progress.familyPeople['A1-2:family-tree']=1;
+  assert.match(renderActivity(tree,context), /His name is David/);
+  assert.match(renderActivity(foundation.activities.find(a=>a.id==='family-models'),context), /data-composer-action="pattern"/);
+  const selfRole=foundation.activities.find(a=>a.id==='family-self-role');
+  assert.ok(selfRole.forms.some(form=>form.en==="I'm a father."));
+  assert.ok(selfRole.forms.some(form=>form.en==="I'm his daughter."));
+  assert.equal(evaluateResponse(selfRole.tasks[0].assessment,"I'm a father.").ok,true);
+  assert.equal(evaluateResponse(selfRole.tasks[0].assessment,"I'm father.").ok,false);
+  const constructed=foundation.activities.find(a=>a.id==='family-intro-check');
+  assert.equal(evaluateResponse(constructed.tasks[3].assessment,"Who's this?").ok,true);
+  const grammar=foundation.activities.find(a=>a.id==='family-transform');
+  assert.equal(evaluateResponse(grammar.tasks[1].assessment,'Is this your brother?').ok,true);
+  assert.ok(production.activities[0].pairs.some(pair=>pair.variants.some(v=>v.en==='This is my daughter.')));
+  assert.equal(production.activities.filter(a=>a.type==='dialogue').length,2);
 });
-
 
 test('A1-3 uses one JSON-driven sentence composer for owners, objects and grammar', () => {
   const lesson = load('lessons/a1-3.json');
@@ -287,7 +297,7 @@ test('A1-3 uses one JSON-driven sentence composer for owners, objects and gramma
   assert.equal(composer.wordSets.objects.filter((item) => item.role === 'core').length, 8);
   assert.equal(composer.wordSets.objects.filter((item) => item.role === 'supplementary').length, 12);
   assert.equal(composer.slots.length, 2, 'owner and object are variables in the same sentence');
-  assert.equal(composer.patterns.length, 4, 'statement, possessive pronoun, question and negative are sentence patterns');
+  assert.equal(composer.patterns.length, 5, 'phrase, statement, possessive pronoun, question and negative are sentence patterns');
   assert.equal(composer.wordSets.owners.length * composer.wordSets.objects.length, 80, 'all owner/object combinations are generated without per-combination outcomes');
   for (const owner of composer.wordSets.owners) {
     for (const object of composer.wordSets.objects) {
@@ -307,25 +317,29 @@ test('A1-3 uses one JSON-driven sentence composer for owners, objects and gramma
   }
 
   const context = {
-    lessonId: lesson.id, index: 0, e: String,
+    lessonId: lesson.id, index: 0,
+    activitiesById: Object.fromEntries(lesson.sections.flatMap(section=>section.activities).map(activity=>[activity.id,activity])),
+    e: String,
     en: (value) => `<span class="en" lang="en" dir="ltr">${String(value)}</span>`,
     i: () => '',
     progress: { phraseChoices: {}, sentenceComposers: {}, showDialogueTranslation: true }
   };
   const rendered = renderActivity(composer, context);
-  assert.match(rendered, /data-composer-action="open"/);
+  assert.match(rendered, /data-composer-action="cycle"/);
   assert.match(rendered, /data-composer-slot="owner"/);
   assert.match(rendered, /data-composer-slot="object"/);
-  assert.match(rendered, /data-composer-action="pattern"/);
+  assert.doesNotMatch(rendered, /data-composer-action="pattern"/, "pattern changes are taught later, not in the initial sentence");
   const defaultResolved = resolveSentenceComposer(composer, {});
   assert.equal(composeSegments(defaultResolved.pattern.segments, composer, defaultResolved), 'This is my book.');
   assert.doesNotMatch(rendered, /class="phrase-slot"/, 'there are no separate owner/object selectors outside the sentence');
-  const pickerRendered = renderActivity(composer, {
-    ...context,
-    progress: { ...context.progress, sentenceComposers: { 'A1-3:ownership-sentence-composer': { activeSlot: 'object' } } }
-  });
-  assert.match(pickerRendered, /data-composer-search/);
-  assert.equal((pickerRendered.match(/data-composer-action="select"/g) || []).length, 20, 'the object picker is generated from the JSON word set');
+  assert.doesNotMatch(rendered, /composer-picker|composer-choice|composer-search/, 'no manual word picker or search is rendered');
+  const next = cycleComposerSlot(composer, { slots: { owner: 'me', object: 'book' } }, 'object');
+  assert.equal(next.slots.object, composer.wordSets.objects[1].id, 'a tap advances to the next JSON word');
+  const last = composer.wordSets.objects.at(-1).id;
+  assert.equal(cycleComposerSlot(composer, { slots: { object: last } }, 'object').slots.object, composer.wordSets.objects[0].id, 'cycling wraps around');
+  const phrases = foundation.activities.find(activity => activity.id === 'ownership-inline-phrases');
+  assert.match(renderActivity(phrases, context), /data-composer-action="cycle"/);
+  assert.match(renderActivity(foundation.activities.find(activity => activity.id === 'ownership-models'), context), /data-composer-action="pattern"/);
 
   const saved = { slots: { owner: 'she', object: 'keys' }, pattern: 'statement' };
   const statement = resolveSentenceComposer(composer, saved);
