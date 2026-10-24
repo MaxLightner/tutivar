@@ -47,7 +47,7 @@ function vocabulary(a, c) {
   const items = coreItems(a);
   const optionalItems = supplementaryItems(a);
   const total = items.length;
-  const optional = optionalItems.length ? `<details class="vocab-supplementary"><summary><span><strong>عبارت‌های تکمیلی</strong><small>${optionalItems.length} عبارت برای یادگیری بیشتر · اختیاری</small></span><span class="supplementary-toggle">نمایش / بستن</span></summary><div class="supplementary-list">${optionalItems.map((item) => `<div class="supplementary-card"><div class="supplementary-main"><div><strong>${c.en(item.en)}</strong><p>${c.e(item.fa)}</p>${item.hint ? `<span class="word-hint">${c.e(item.hint)}</span>` : ''}</div>${soundButton(item.en, c.e, c.i)}</div>${item.examples?.length ? `<details class="supplementary-examples"><summary>سه مثال کاربردی</summary>${exampleGallery(item, c)}</details>` : ''}</div>`).join('')}</div></details>` : '';
+  const optional = optionalItems.length ? `<details class="vocab-supplementary"><summary><span><strong>عبارت‌های تکمیلی</strong><small>${optionalItems.length} عبارت برای آشنایی بیشتر · اختیاری</small></span><span class="supplementary-toggle">نمایش / بستن</span></summary><ul class="supplementary-list" aria-label="فهرست عبارت‌های تکمیلی">${optionalItems.map((item) => `<li class="supplementary-item"><span class="supplementary-en" lang="en" dir="ltr">${c.en(item.en)}</span><span class="supplementary-fa" dir="rtl">${c.e(item.fa)}</span></li>`).join('')}</ul></details>` : '';
   const render = (body) => wrapper(`${body}${optional}`, a, c.index, c.e, 'module-vocabulary');
   const learned = Object.values(state.decisions).filter((value) => value === 'known').length;
   const tested = Object.values(state.decisions).filter((value) => value === 'test').length;
