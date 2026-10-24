@@ -592,3 +592,168 @@ button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3p
   .module-pattern-lab .phrase-outcome { padding: 12px; gap: 8px; font-size: 19px; }
   .module-pattern-lab .phrase-outcome .en { font-size: 19px; }
 }
+
+
+/* Data-driven sentence composer: tap a word in the sentence, then replace it in place. */
+.module-sentence-composer .composer-patterns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 12px 0;
+}
+.module-sentence-composer .composer-pattern {
+  border: 1px solid #d5e2d4;
+  border-radius: 999px;
+  background: #fff;
+  color: #49644f;
+  padding: 7px 12px;
+  font-size: 13px;
+  font-weight: 750;
+}
+.module-sentence-composer .composer-pattern.active {
+  background: #286b4a;
+  border-color: #286b4a;
+  color: #fff;
+}
+.module-sentence-composer .composer-stage {
+  background: #edf6e9;
+  border: 1px solid #dcebd8;
+  border-radius: 15px;
+  padding: 15px;
+}
+.module-sentence-composer .composer-sentence {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 0;
+  direction: ltr;
+  text-align: left;
+  font-size: clamp(20px, 4vw, 25px);
+  line-height: 1.9;
+  font-weight: 800;
+}
+.module-sentence-composer .composer-segment { white-space: pre-wrap; }
+.module-sentence-composer .composer-token {
+  display: inline;
+  vertical-align: baseline;
+  border: 0;
+  border-bottom: 2px dashed #34845a;
+  border-radius: 5px;
+  background: #d7efde;
+  color: #175c3a;
+  padding: 0 3px;
+  margin: 0 1px;
+  font: inherit;
+  cursor: pointer;
+}
+.module-sentence-composer .composer-token.active,
+.module-sentence-composer .composer-token:focus-visible {
+  background: #b9e5c8;
+  outline: 2px solid #34845a;
+  outline-offset: 2px;
+}
+.module-sentence-composer .composer-sentence .sound-btn {
+  align-self: center;
+  margin-inline-start: 9px;
+}
+.module-sentence-composer .composer-translation {
+  margin: 9px 0 0;
+  color: #53735d;
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 650;
+}
+.module-sentence-composer .composer-note {
+  margin: 9px 0 0;
+  color: #5b7461;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.module-sentence-composer .composer-picker {
+  margin-top: 11px;
+  padding: 12px;
+  border: 1px solid #dce9d8;
+  border-radius: 14px;
+  background: #fbfdf9;
+}
+.module-sentence-composer .composer-picker-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+  color: #315e40;
+  font-size: 14px;
+}
+.module-sentence-composer .composer-close {
+  border: 0;
+  background: transparent;
+  color: #56735d;
+  font-size: 13px;
+  font-weight: 750;
+  padding: 5px 7px;
+}
+.module-sentence-composer .composer-search {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid #d4e2d3;
+  border-radius: 10px;
+  padding: 9px 12px;
+  margin-bottom: 8px;
+  background: #fff;
+  color: #24382a;
+  font: inherit;
+}
+.module-sentence-composer .composer-choices {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 6px;
+  max-height: 245px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 2px;
+}
+.module-sentence-composer .composer-choice {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2px 8px;
+  min-width: 0;
+  border: 1px solid #e0e9dc;
+  border-radius: 9px;
+  background: #fff;
+  padding: 8px 9px;
+  text-align: left;
+}
+.module-sentence-composer .composer-choice[hidden] { display: none; }
+.module-sentence-composer .composer-choice.active {
+  border-color: #4b9566;
+  background: #e5f4e8;
+}
+.module-sentence-composer .composer-choice-word {
+  min-width: 0;
+  color: #245b3b;
+  font-size: 15px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+.module-sentence-composer .composer-choice-translation {
+  min-width: 0;
+  color: #6b7e6e;
+  font-size: 12px;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+.module-sentence-composer .composer-choice small {
+  grid-column: 1 / -1;
+  color: #738675;
+  font-size: 10px;
+}
+@media (max-width: 550px) {
+  .module-sentence-composer .composer-stage { padding: 12px; }
+  .module-sentence-composer .composer-picker { padding: 9px; }
+  .module-sentence-composer .composer-choices { grid-template-columns: repeat(2, minmax(0, 1fr)); max-height: 225px; }
+  .module-sentence-composer .composer-choice { padding: 7px; }
+  .module-sentence-composer .composer-choice-word { font-size: 14px; }
+}
