@@ -827,3 +827,27 @@ button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3p
 .spatial-box-mode { transition:opacity .18s ease; }
 .spatial-ball { transition:transform .34s cubic-bezier(.2,.7,.2,1),opacity .16s ease; }
 @media (prefers-reduced-motion:reduce) {.spatial-box-mode { transition:none!important; }}
+
+/* Focused phrase-study and shadowing modules. */
+.module-expression-study .expression-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+.expression-card{min-width:0;border:1px solid #e3e9df;border-radius:16px;background:#fff;padding:13px;display:grid;gap:7px}
+.expression-kind{font-size:12px;color:#607568;font-weight:800}
+.expression-main{display:flex;align-items:center;justify-content:space-between;gap:8px;font-weight:850}
+.expression-card>p{font-size:14px;color:#52685b}
+.expression-examples summary,.shadowing-transcript summary{cursor:pointer;color:#52685b;font-size:13px;font-weight:750}
+.expression-examples ul{margin:8px 0 0;padding-inline-start:20px;display:grid;gap:6px}
+.expression-examples li{font-family:'Plus Jakarta Sans',Arial,sans-serif;direction:ltr;text-align:left;font-size:14px}
+.module-shadowing .shadowing-player{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px}
+.shadowing-playback{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.shadowing-play{min-height:44px}
+.shadowing-speed-label{display:flex;align-items:center;gap:8px;font-size:13px;color:#52685b;font-weight:750}
+.shadowing-speed-label select{border:1px solid #dce5da;background:#fff;border-radius:10px;padding:8px 10px;min-width:110px}
+.shadowing-audio{width:100%;max-width:560px}
+.shadowing-fallback-note{font-size:12px;color:#687a6e;margin-top:8px}
+.shadowing-status{font-size:13px;color:#52685b;margin-top:10px}
+.shadowing-transcript{margin-top:12px;border-top:1px solid #e5eae1;padding-top:12px}
+.shadowing-transcript ol{margin:10px 0 0;padding-inline-start:22px;display:grid;gap:8px}
+.shadowing-transcript li{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.shadowing-transcript li .en{font-size:14px}
+.vocab-test-start{font-size:13px;padding:8px 12px;white-space:nowrap}
+@media(max-width:600px){.module-expression-study .expression-grid{grid-template-columns:1fr}.expression-card{padding:12px}.shadowing-playback{align-items:stretch;width:100%}.shadowing-playback .shadowing-play{flex:1}.shadowing-speed-label{width:100%;justify-content:space-between}.shadowing-speed-label select{flex:1}.vocab-test-start{padding:7px 9px}}
