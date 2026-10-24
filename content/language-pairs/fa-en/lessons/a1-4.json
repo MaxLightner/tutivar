@@ -1,6 +1,6 @@
 {
   "id": "A1-4",
-  "revision": 1,
+  "revision": 2,
   "status": "draft",
   "title": "اشیا و مکان اطراف من",
   "goal": "بتوانی بگویی یک شیء کجاست، مکان اشیا را با on / under / near توصیف کنی و دربارهٔ مفرد و جمع سؤال بپرسی.",
@@ -528,7 +528,8 @@
           "derivedDefaults": {
             "be": "is",
             "questionAux": "Is",
-            "faCopula": "است"
+            "faCopula": "است",
+            "faNegativeCopula": "نیست"
           },
           "dependencies": [
             {
@@ -541,7 +542,8 @@
               "set": {
                 "be": "is",
                 "questionAux": "Is",
-                "faCopula": "است"
+                "faCopula": "است",
+                "faNegativeCopula": "نیست"
               }
             },
             {
@@ -554,7 +556,8 @@
               "set": {
                 "be": "are",
                 "questionAux": "Are",
-                "faCopula": "هستند"
+                "faCopula": "هستند",
+                "faNegativeCopula": "نیستند"
               }
             }
           ],
@@ -709,7 +712,13 @@
                   "form": "faNoun"
                 },
                 {
-                  "fixed": " نیست."
+                  "fixed": " "
+                },
+                {
+                  "derived": "faNegativeCopula"
+                },
+                {
+                  "fixed": "."
                 }
               ]
             },
