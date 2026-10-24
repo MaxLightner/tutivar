@@ -1,6 +1,6 @@
 {
   "id": "A1-3",
-  "revision": 6,
+  "revision": 7,
   "status": "draft",
   "title": "مالکیت و داشتن اشیا",
   "goal": "بتوانی با تغییر صاحب یا وسیله، جمله بسازی و بگویی یک وسیله مال چه کسی است.",
@@ -1000,22 +1000,48 @@
         {
           "id": "ownership-puzzle",
           "type": "sentence-builder",
-          "title": "جورچین وسایل شخصی",
-          "description": "جای کلمات را مشخص کن و جمله را کامل بساز.",
-          "tokens": [
-            "book.",
-            "my",
-            "This",
-            "is"
-          ],
-          "correctOrder": [
-            2,
-            3,
-            1,
-            0
-          ],
-          "translation": "این کتاب من است.",
-          "phase": "puzzle"
+          "title": "چهار جملهٔ متفاوت را از واژه‌های قاطی بساز",
+          "description": "واژه‌های چهار جملهٔ مالکیت، سؤال و جواب با هم مخلوط شده‌اند. جملهٔ درست را از بانک پیدا کن، بررسی کن، و بعد با کلمات باقی‌مانده جمله‌ای دیگر بساز.",
+          "phase": "puzzle",
+          "revision": 2,
+          "sentences": [
+            {
+              "id": "my-book",
+              "words": [
+                "This",
+                "is",
+                "my",
+                "book."
+              ]
+            },
+            {
+              "id": "question-bag",
+              "words": [
+                "Is",
+                "this",
+                "your",
+                "bag?"
+              ]
+            },
+            {
+              "id": "his-keys",
+              "words": [
+                "These",
+                "are",
+                "his",
+                "keys."
+              ]
+            },
+            {
+              "id": "hers-phone",
+              "words": [
+                "This",
+                "phone",
+                "is",
+                "hers."
+              ]
+            }
+          ]
         },
         {
           "id": "ownership-owner-check",

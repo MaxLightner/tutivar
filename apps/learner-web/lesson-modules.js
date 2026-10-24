@@ -1,6 +1,7 @@
 import { coreItems, deckState, supplementaryItems, wordId } from './word-review.js';
 import { practiceState } from './practice-engine.js';
 import { LESSON_PHASE_LABELS } from './lesson-flow.js';
+import { normalizePuzzleState, puzzleTokenBank } from './sentence-puzzle.js';
 import { composeSegments, composerSegmentValue, composerSlotForm, resolveSentenceComposer } from './sentence-composer.js';
 
 /*
@@ -104,7 +105,8 @@ function patternLab(a, c) {
 function sentenceComposer(a, c) {
   const source = a.type === 'composer-view' ? c.activitiesById?.[a.sourceActivityId] : a;
   if (!source || source.type !== 'sentence-composer') throw new Error('Missing sentence composer source: ' + a.sourceActivityId);
-  const key = `${c.lessonId}:${source.id}`;
+  // Each stage has its own selections, although all stages share the same JSON grammar and word sets.
+  const key = `${c.lessonId}:${a.id}`;
   const saved = c.progress.sentenceComposers?.[key] || {};
   const allowed = a.type === 'composer-view' ? (a.patternIds || [a.patternId || source.defaultPattern]) : [source.defaultPattern];
   const selectedPattern = allowed.includes(saved.pattern) && !a.patternId ? saved.pattern : allowed[0];
@@ -221,6 +223,43 @@ function match(a, c) {
 }
 function sentenceBuilder(a, c) {
   const key = `${c.lessonId}:${a.id}`;
+  if (a.sentences?.length) {
+    const state = normalizePuzzleState(a, c.progress.sentenceAnswers[key]);
+    const bank = puzzleTokenBank(a);
+    const used = new Set(state.completed.flatMap((entry) => entry.indices));
+    const chosen = state.current.map((idx) => bank[idx]?.word || '').join(' ');
+    const total = a.sentences.length;
+    const done = state.completed.length;
+    const allDone = done === total;
+    const solved = state.completed.map((entry) => {
+      const original = a.sentences.find((sentence) => sentence.id === entry.id);
+      return `<li class="builder-found-item" dir="ltr" lang="en">${c.e(original.words.join(' '))}</li>`;
+    }).join('');
+    const tokens = bank.map(({ word }, idx) => {
+      const disabled = used.has(idx) || state.current.includes(idx) || allDone;
+      return `<button type="button" data-build-token="${c.e(key)}" data-token-index="${idx}" ${disabled ? 'disabled' : ''}>${c.e(word)}</button>`;
+    }).join('');
+    const feedback = state.feedback === 'wrong'
+      ? '<p class="builder-feedback wrong" role="status">این چینش جزو جمله‌های درست این تمرین نیست؛ جابه‌جایش کن یا آخرین واژه را بردار.</p>'
+      : state.feedback === 'correct'
+        ? `<p class="builder-feedback correct" role="status">${allDone ? 'همهٔ جمله‌ها را پیدا کردی.' : 'این جمله درست بود؛ حالا یک جملهٔ متفاوت از کلمات باقی‌مانده بساز.'}</p>`
+        : '';
+    return wrapper(`<p class="module-description">${c.e(a.description || '')}</p>
+      <div class="builder-multi-progress"><strong>${done} از ${total} جملهٔ درست</strong><span>جمله‌ها را به هر ترتیبی که پیدا می‌کنی بساز.</span></div>
+      <div class="builder-output" lang="en" dir="ltr">${chosen ? c.e(chosen) : '<span class="builder-placeholder">کلمات جملهٔ جدید را لمس کن…</span>'}</div>
+      ${feedback}
+      ${done ? `<details class="builder-found" ${allDone ? 'open' : ''}><summary>جمله‌های ساخته‌شده (${done})</summary><ol>${solved}</ol></details>` : ''}
+      <div class="builder-tokens" dir="ltr" aria-label="بانک کلمات چند جمله">${tokens}</div>
+      <div class="builder-bottom">
+        <div class="builder-actions">
+          <button class="outline-btn" type="button" data-build-undo="${c.e(key)}" ${!state.current.length ? 'disabled' : ''}>حذف آخرین کلمه</button>
+          <button class="outline-btn" type="button" data-build-clear="${c.e(key)}" ${!state.current.length ? 'disabled' : ''}>پاک‌کردن جمله</button>
+          <button class="secondary-btn" type="button" data-build-submit="${c.e(key)}" ${!state.current.length || allDone ? 'disabled' : ''}>بررسی جمله</button>
+        </div>
+        <button class="outline-btn" type="button" data-build-reset="${c.e(key)}">شروع دوبارهٔ جورچین</button>
+      </div>`, a, c.index, c.e, 'module-builder module-builder-multi');
+  }
+  // Legacy single-sentence puzzles remain compatible with the existing renderer.
   const chosen = c.progress.sentenceAnswers[key] || [];
   const finished = chosen.length === a.tokens.length;
   const correct = finished && chosen.every((entry, idx) => entry === a.correctOrder[idx]);

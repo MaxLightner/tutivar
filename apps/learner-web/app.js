@@ -1,4 +1,5 @@
 import { cycleComposerSlot } from './sentence-composer.js';
+import { addPuzzleWord, undoPuzzleWord, clearPuzzleSentence, submitPuzzleSentence } from './sentence-puzzle.js';
 import { renderActivity } from './lesson-modules.js';
 import { advanceDeck, answerDeck, deckState, jumpDeck, resumeDeck, wordId } from './word-review.js';
 import { evaluateResponse, practiceState, submitPractice } from './practice-engine.js';
@@ -396,7 +397,7 @@ function wordKeydown(event) {
   document.querySelector('[data-word-swipe]')?.focus({ preventScroll: true });
 }
 function onClick(event) {
-  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-family-key],button[data-agreement-key],button[data-finish-section],button[data-review],button[data-planned],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-roleplay],button[data-word-key],button[data-composer-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
+  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-family-key],button[data-agreement-key],button[data-finish-section],button[data-review],button[data-planned],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-build-submit],button[data-build-undo],button[data-build-clear],button[data-roleplay],button[data-word-key],button[data-composer-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
   if (!el) return;
   if (el.dataset.nav) { modal = null; navigate(el.dataset.nav); return; }
   if (el.dataset.openLesson) { modal = null; activePerson = 0; ownerIdx = 0; objectIdx = 0; navigate('lesson', el.dataset.openLesson, el.dataset.startSection || null); return; }
@@ -461,14 +462,17 @@ function onClick(event) {
   }
   if (el.dataset.composerKey) {
     const key = el.dataset.composerKey;
-    const activity = lessonActivity(key);
-    if (activity?.type !== 'sentence-composer') return;
+    const view = lessonActivity(key);
+    if (!view || !['sentence-composer', 'composer-view'].includes(view.type)) return;
+    const source = view.type === 'composer-view' ? lessonActivity(`${route.lessonId}:${view.sourceActivityId}`) : view;
+    if (source?.type !== 'sentence-composer') return;
     const saved = progress.sentenceComposers[key] || {};
     const action = el.dataset.composerAction;
     if (action === 'cycle') {
-      progress.sentenceComposers[key] = cycleComposerSlot(activity, saved, el.dataset.composerSlot);
+      progress.sentenceComposers[key] = cycleComposerSlot(source, saved, el.dataset.composerSlot);
     } else if (action === 'pattern') {
-      if (!activity.patterns.some((entry) => entry.id === el.dataset.composerPattern)) return;
+      if (view.type !== 'composer-view' || !view.patternIds?.includes(el.dataset.composerPattern) ||
+        !source.patterns.some((entry) => entry.id === el.dataset.composerPattern)) return;
       progress.sentenceComposers[key] = { ...saved, pattern: el.dataset.composerPattern };
     } else return;
     persist(); updateInline(); return;
@@ -521,12 +525,33 @@ function onClick(event) {
   }
   if (el.dataset.buildToken) {
     const key = el.dataset.buildToken;
-    const current = progress.sentenceAnswers[key] || [];
-    const tokenIndex = Number(el.dataset.tokenIndex);
-    if (!current.includes(tokenIndex)) current.push(tokenIndex);
-    progress.sentenceAnswers[key] = current; persist(); updateInline(); return;
+    const activity = lessonActivity(key);
+    if (!activity) return;
+    if (activity.sentences?.length) {
+      progress.sentenceAnswers[key] = addPuzzleWord(activity, progress.sentenceAnswers[key], Number(el.dataset.tokenIndex));
+    } else {
+      const current = progress.sentenceAnswers[key] || [];
+      const tokenIndex = Number(el.dataset.tokenIndex);
+      if (!current.includes(tokenIndex)) current.push(tokenIndex);
+      progress.sentenceAnswers[key] = current;
+    }
+    persist(); updateInline(); return;
   }
-  if (el.dataset.buildReset) { delete progress.sentenceAnswers[el.dataset.buildReset]; persist(); updateInline(); return; }
+  if (el.dataset.buildSubmit || el.dataset.buildUndo || el.dataset.buildClear) {
+    const key = el.dataset.buildSubmit || el.dataset.buildUndo || el.dataset.buildClear;
+    const activity = lessonActivity(key);
+    if (!activity?.sentences?.length) return;
+    progress.sentenceAnswers[key] = el.dataset.buildSubmit
+      ? submitPuzzleSentence(activity, progress.sentenceAnswers[key])
+      : el.dataset.buildUndo
+        ? undoPuzzleWord(activity, progress.sentenceAnswers[key])
+        : clearPuzzleSentence(activity, progress.sentenceAnswers[key]);
+    persist(); updateInline(); return;
+  }
+  if (el.dataset.buildReset) {
+    delete progress.sentenceAnswers[el.dataset.buildReset];
+    persist(); updateInline(); return;
+  }
   if (el.dataset.roleplay) {
     const key = el.dataset.roleplay;
     const activity = lessonCache.get(route.lessonId)?.sections.flatMap((section) => section.activities || []).find((item) => `${route.lessonId}:${item.id}` === key);
