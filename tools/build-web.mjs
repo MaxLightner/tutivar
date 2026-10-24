@@ -36,15 +36,14 @@ rewrite('app.js', [
   ["from './word-review.js'", `from './word-review.js?v=${revision}'`],
   ["from './practice-engine.js'", `from './practice-engine.js?v=${revision}'`],
   ["from './sentence-puzzle.js'", `from './sentence-puzzle.js?v=${revision}'`],
-  ["from './visual-learning.js'", `from './visual-learning.js?v=${revision}'`],
-  ["from './visual-learning.js'", `from './visual-learning.js?v=${revision}'`],
 ]);
 rewrite('lesson-modules.js', [
   ["from './word-review.js'", `from './word-review.js?v=${revision}'`],
   ["from './practice-engine.js'", `from './practice-engine.js?v=${revision}'`],
   ["from './sentence-composer.js'", `from './sentence-composer.js?v=${revision}'`],
   ["from './lesson-flow.js'", `from './lesson-flow.js?v=${revision}'`],
-  ["from './sentence-puzzle.js'", `from './sentence-puzzle.js?v=${revision}'`]
+  ["from './sentence-puzzle.js'", `from './sentence-puzzle.js?v=${revision}'`],
+  ["from './visual-learning.js'", `from './visual-learning.js?v=${revision}'`]
 ]);
 // The source service-worker cache name is an implementation detail; give each
 // deployed build its own cache without hardcoding the old source version.
