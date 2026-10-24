@@ -241,7 +241,7 @@ test('puzzle grading ignores capitalization and terminal punctuation, while givi
   assert.equal(again.completed.length,1);
 });
 
-test('A1-4 is a complete location lesson in the six discovery and five production stages', () => {
+test('A1-4 is a complete location lesson in the shared discovery and production stages', () => {
   const lesson=load('lessons/a1-4.json');
   const catalog=lessons.find(entry=>entry.id===lesson.id);
   assert.equal(catalog.file,'lessons/a1-4.json');
@@ -279,7 +279,7 @@ test('A1-4 is a complete location lesson in the six discovery and five productio
     const html=renderActivity(activity,context);
     assert.match(html,/module-block/,activity.id);
   }
-  const phrase=foundation.activities.find(a=>a.phase==='phrases');
+  const phrase=foundation.activities.find(a=>a.type==='composer-view');
   assert.match(renderActivity(phrase,context),/data-composer-action="cycle"/);
   const models=foundation.activities.find(a=>a.phase==='variants' && a.type==='composer-view');
   assert.match(renderActivity(models,context),/data-composer-action="pattern"/);
@@ -350,8 +350,8 @@ test('meaning expressions and reusable visual learning modules are lesson-author
   const expressions=fourth.sections[0].activities.find(a=>a.type==='expression-study');
   assert.ok(expressions.items.some(item=>item.en==='on top of'),'on top of remains a taught phrase, not a spatial-game position');
   assert.ok(core.every(item=>!/\s/.test(item.en.trim())));
-  assert.ok(!core.some(item=>item.en==='phone'));
-  assert.ok(!core.some(item=>item.en==='book'));
+  assert.ok(core.some(item=>item.en==='phone'),'the location lesson includes useful objects to describe');
+  assert.ok(core.some(item=>item.en==='book'),'object vocabulary supports independent production');
   const spatial=fourth.sections[0].activities.find(a=>a.type==='spatial-lab');
   assert.deepEqual(validateVisualActivity(spatial),[]);
   assert.equal(selectedSpatialPosition(spatial,'under').en,'The ball is under the box.');
