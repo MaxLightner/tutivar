@@ -31,7 +31,7 @@ const TYPE_FOR_PHASE = {
   variants: ['quiz-set', 'composer-view', 'sentence-transform', 'meaning-cluster', 'plural-pair-lab', 'sentence-composer', 'tap-attributes-lab', 'tap-ownership-lab', 'count-scene-lab', 'feature-hunt', 'cumulative-scene-lab', 'cumulative-visual-quest'],
   puzzle: ['sentence-builder'],
   construction: ['response-practice'],
-  correspondence: ['exchange-lab', 'response-practice'],
+  correspondence: ['exchange-lab', 'daily-choice-lab', 'response-practice'],
   context: ['dialogue', 'response-practice'],
   picture: ['picture-description'],
   guided: ['guided-dialogue', 'dialogue-transfer', 'response-practice'],
