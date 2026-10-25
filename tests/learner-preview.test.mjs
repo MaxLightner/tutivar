@@ -991,7 +991,7 @@ test('A1-7 keeps prior dialogue vocabulary out and synchronizes this/that with d
   const earlier=[1,2,3,4,5,6].map(i=>JSON.stringify(load('lessons/a1-'+i+'.json')).toLowerCase());
   for(const item of vocabulary.items)for(const old of earlier)
     assert.ok(!new RegExp('\\b'+item.en+'\\b','i').test(old),'previously used word unexpectedly reintroduced: '+item.en);
-  const source=foundation.find(a=>a.id==='identification-composer');
+  const source=foundation.activities.find(a=>a.id==='identification-composer');
   assert.deepEqual(validateSentenceComposer(source),[]);
   const near=resolveSentenceComposer(source,{pattern:'point-object',slots:{distance:'this',object:'cat',person:'teacher'}});
   assert.equal(composeSegments(near.pattern.segments,source,near),'This is a cat.');
@@ -1011,12 +1011,12 @@ test('A1-7 keeps prior dialogue vocabulary out and synchronizes this/that with d
   assert.equal(next.slots.distance,'that');
   const noun=cycleComposerSlot(source,{slots:{distance:'that',object:'cat',person:'teacher'}},'object');
   assert.equal(noun.slots.object,'dog');
-  const personView=foundation.find(a=>a.id==='identify-models');
+  const personView=foundation.activities.find(a=>a.id==='identify-models');
   assert.equal(personView.patternId,'point-person');
   const viewHtml=renderActivity(personView,{lessonId:'A1-7',index:0,e:String,en:String,i:()=>'',progress:{sentenceComposers:{}},activitiesById:Object.fromEntries(foundation.map(a=>[a.id,a]))});
   assert.match(viewHtml,/data-perspective-object="teacher"/);
   assert.match(viewHtml,/data-composer-slot="distance"/);
-  assert.ok(production.find(a=>a.type==='guided-dialogue').turns.some(turn=>turn.example==='Who is that?'));
+  assert.ok(production.activities.find(a=>a.type==='guided-dialogue').turns.some(turn=>turn.example==='Who is that?'));
   assert.match(readFileSync(join(projectRoot,'apps/learner-web/assets/scene-a1-7.svg'),'utf8'),/Near: this/);
   assert.deepEqual(auditLesson(lesson).errors,[]);
 });
@@ -1026,13 +1026,13 @@ test('A1-8 names rooms and aligns a tap-to-change sentence with the highlighted 
   assert.deepEqual(validateLessonFlow(lesson),[]);
   assert.deepEqual([...new Set(foundation.activities.map(a=>a.phase))],LESSON_PHASES.foundation);
   assert.deepEqual([...new Set(production.activities.map(a=>a.phase))],LESSON_PHASES.production);
-  const vocabulary=foundation.find(a=>a.type==='vocabulary');
+  const vocabulary=foundation.activities.find(a=>a.type==='vocabulary');
   assert.ok(coreItems(vocabulary).length>=16);
   assert.ok(supplementaryItems(vocabulary).length>=5);
   for(const old of ['room','mother','father','sister','brother','book','in','where','this','table'])
     assert.ok(!vocabulary.items.some(item=>item.en===old),'previous teaching should be used but not relisted: '+old);
   assert.ok(vocabulary.items.every(item=>!/\\s/.test(item.en.trim())));
-  const comp=foundation.find(a=>a.id==='rooms-composer');
+  const comp=foundation.activities.find(a=>a.id==='rooms-composer');
   assert.deepEqual(validateSentenceComposer(comp),[]);
   const kitchen=resolveSentenceComposer(comp,{pattern:'location',slots:{person:'mother',room:'kitchen'}});
   assert.equal(composeSegments(kitchen.pattern.segments,comp,kitchen),'My mother is in the kitchen.');
@@ -1042,10 +1042,10 @@ test('A1-8 names rooms and aligns a tap-to-change sentence with the highlighted 
   assert.match(scene,/data-room-selected="garden"/);
   assert.match(scene,/GARDEN/);
   assert.match(scene,/data-composer-slot="room"/);
-  const roomView=foundation.find(a=>a.id==='rooms-names');
+  const roomView=foundation.activities.find(a=>a.id==='rooms-names');
   assert.match(renderActivity(roomView,{lessonId:'A1-8',index:0,e:String,en:String,i:()=>'',progress:{sentenceComposers:{}},activitiesById:Object.fromEntries(foundation.map(a=>[a.id,a]))}),/data-room-selected="kitchen"/);
-  assert.ok(foundation.find(a=>a.type==='expression-study').items.some(item=>item.en==='living room'));
-  assert.ok(production.find(a=>a.type==='free-write').prompt.includes('واقعی یا خیالی'));
+  assert.ok(foundation.activities.find(a=>a.type==='expression-study').items.some(item=>item.en==='living room'));
+  assert.ok(production.activities.find(a=>a.type==='free-write').prompt.includes('واقعی یا خیالی'));
   assert.match(readFileSync(join(projectRoot,'apps/learner-web/assets/scene-a1-8.svg'),'utf8'),/KITCHEN/);
   assert.deepEqual(auditLesson(lesson).errors,[]);
 });
