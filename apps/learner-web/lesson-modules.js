@@ -744,6 +744,111 @@ function featureHunt(a,c){
   return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><p class="count-round-progress">پیدا کردن شیء ${index+1} از ${a.rounds.length}</p><div class="tap-scene"><p class="tap-live-sentence" dir="ltr" lang="en">${c.e(round.prompt)}${soundButton(round.prompt,c.e,c.i)}</p><div class="feature-hunt-grid" role="group" aria-label="کدام تصویر با توصیف هماهنگ است؟">${drawings}</div>${answered?`<p class="count-scene-feedback" role="status">${correct?'درست پیدا کردی.':'این یکی با همهٔ کلمات دستور هماهنگ نیست؛ اندازه، رنگ و تعداد را دوباره نگاه کن.'}</p>`:''}${correct?`<button class="count-scene-next" type="button" data-feature-hunt-key="${c.e(key)}" data-feature-hunt-action="next">${index===a.rounds.length-1?'پایان مأموریت':'مأموریت بعدی'}</button>`:''}</div>`,a,c.index,c.e,'module-feature-hunt');
 }
 
+// JSON-authored cumulative scenes: new lesson goals reuse old vocabulary and
+// allow the learner to change one meaningful word while the illustration tracks it.
+function cumulativePersonArt(item,c){
+  const count=Math.min(3,Math.max(1,item.count||1));
+  const colors={black:'#303444',brown:'#7b4b35',blond:'#d3a348'};
+  const hair=colors[item.color]||colors.black,small=item.height==='short';
+  const portraits=Array.from({length:count},(_,i)=>{
+    const x=180+(i-(count-1)/2)*99;
+    const hairBack=item.style==='long'?`<path d="M-26 -37Q-38 2 -30 15H30Q37 -18 26 -37Z" fill="${hair}"/>`:'';
+    const locks=item.style==='curly'?Array.from({length:7},(_,j)=>`<circle cx="${-24+j*8}" cy="-39" r="9" fill="${hair}"/>`).join(''):
+      `<path d="M-24 -35Q-14 -65 12 -54Q27 -48 26 -33L10 -43L-7 -35Z" fill="${hair}"/>`;
+    return `<g transform="translate(${x} 143) scale(${count>1?.83:1})"><ellipse cx="0" cy="9" rx="33" ry="7" fill="#c5d5d4"/>${small?'<g transform="translate(0 15) scale(1 .79)">':'<g>'}<path d="M-25 10V-43H25V10Z" fill="${i%2?'#7b9fbd':'#cc8490'}" rx="12"/><path d="M-13 9V28M13 9V28" stroke="#374e62" stroke-width="8" stroke-linecap="round"/>${hairBack}<circle cx="0" cy="-42" r="25" fill="#e8b99b" stroke="#b78363" stroke-width="2"/>${locks}<circle cx="-8" cy="-38" r="2" fill="#36485a"/><circle cx="8" cy="-38" r="2" fill="#36485a"/><path d="M-6 -26Q0 -22 6 -26" fill="none" stroke="#a46769" stroke-width="2" stroke-linecap="round"/></g></g>`;
+  }).join('');
+  return `<svg class="cumulative-illustration" viewBox="0 0 360 200" role="img" aria-label="${c.e(count+' نفر، موی '+(item.style||'short')+' '+(item.color||'black')+', قد '+(item.height||'tall'))}"><rect x="8" y="8" width="344" height="184" rx="17" fill="#f1f7f8"/>${portraits}</svg>`;
+}
+function cumulativeFeelingArt(item,c){
+  const state=item.state||'happy';
+  const sad=['sad','tired','sick'].includes(state);
+  const mouth=sad?'M-17 21Q0 5 17 21':'M-17 15Q0 31 17 15';
+  const eyes=state==='tired'?'<path d="M-26 -5H-13M13 -5H26" stroke="#425365" stroke-width="4" stroke-linecap="round"/>':'<circle cx="-19" cy="-5" r="4" fill="#435263"/><circle cx="19" cy="-5" r="4" fill="#435263"/>';
+  const symbol={hungry:'🍎',thirsty:'💧',cold:'❄',hot:'☀',tired:'☾',happy:'♡',sad:'♡',sick:'✚',okay:'✓'}[state]||'♡';
+  return `<svg class="cumulative-illustration" viewBox="0 0 360 200" role="img" aria-label="${c.e(item.label||state)}"><rect x="8" y="8" width="344" height="184" rx="17" fill="#f0f7fa"/><circle cx="180" cy="98" r="62" fill="${state==='cold'?'#b9dfee':state==='hot'?'#ffdb9e':'#f4d0a5'}" stroke="#b7ad9a" stroke-width="3"/><g transform="translate(180 98)">${eyes}<path d="${mouth}" stroke="#795857" stroke-width="5" stroke-linecap="round" fill="none"/></g><text x="280" y="68" font-size="42" text-anchor="middle" fill="#6694aa">${symbol}</text></svg>`;
+}
+function cumulativeHomeArt(item,c){
+  const count=Math.max(0,Math.min(5,item.count??2)),color=item.color||'#5b9fd4';
+  const itemType=item.item||'chair',rooms={kitchen:'#e8f3e3',bedroom:'#eeeafb',bathroom:'#def2f6','living room':'#faf0e1'};
+  const glyph={chair:'<rect x="10" y="10" width="26" height="24" rx="4"/><path d="M9 36V49M36 36V49"/>',bed:'<rect x="5" y="17" width="40" height="20" rx="4"/><rect x="5" y="10" width="15" height="10" rx="3"/><path d="M6 37V47M44 37V47"/>',fridge:'<rect x="13" y="3" width="27" height="45" rx="4"/><path d="M13 24H40M18 17V21M18 30V36"/>',table:'<rect x="4" y="19" width="43" height="9" rx="2"/><path d="M11 28V49M40 28V49"/>',sofa:'<rect x="5" y="18" width="42" height="25" rx="7"/><path d="M5 29H47M12 43V49M40 43V49"/>',mirror:'<rect x="12" y="5" width="29" height="38" rx="13"/><path d="M16 16L30 8"/>',shower:'<path d="M10 42H42M17 42V16Q17 7 29 7H36M36 7V14M30 18L28 25M36 18V25M42 18L44 25"/>',lamp:'<path d="M16 21L25 6L34 21Z M25 21V44M15 44H35"/>'}[itemType]||'<rect x="10" y="10" width="30" height="30" rx="5"/>';
+  const tokens=Array.from({length:count},(_,i)=>`<g transform="translate(${76+(i%3)*105} ${72+Math.floor(i/3)*60})" fill="${c.e(color)}" stroke="#385b71" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${glyph}</g>`).join('');
+  return `<svg class="cumulative-illustration" viewBox="0 0 400 215" role="img" aria-label="${c.e(count+' '+itemType+' در '+(item.room||'room'))}"><rect x="10" y="10" width="380" height="196" rx="15" fill="${rooms[item.room]||'#e8f3ee'}"/><path d="M35 26H365V186H35V26M340 186V138M340 117V26" stroke="#7e9f9c" stroke-width="8" fill="none"/><path d="M340 138Q302 137 302 176" stroke="#9a9fa5" stroke-width="3" fill="none"/><text x="190" y="50" font-family="Arial,sans-serif" font-size="17" font-weight="bold" text-anchor="middle" fill="#426a6a">${c.e(item.room||'room')}</text>${tokens}</svg>`;
+}
+function cumulativeProfileArt(item,c){
+  const rows=[['Age',item.age],['Country',item.country],['Language',item.language],['Study / Work',item.role],['Phone',item.phone],['Address',item.address]];
+  return `<div class="cumulative-profile-art" role="img" aria-label="${c.e('پروفایل تمرینی '+item.name)}"><div class="profile-avatar" aria-hidden="true">${c.e(item.name?.[0]||'S')}</div><strong lang="en">${c.e(item.name)}</strong><div class="profile-example-note">شخصیت و اطلاعات نمونه، نه اطلاعات واقعی شما</div><div class="profile-facts">${rows.map(([label,value])=>`<div class="${item.topic===label?'selected':''}"><span lang="en">${c.e(label)}</span><strong lang="en" dir="ltr">${c.e(String(value||''))}</strong></div>`).join('')}</div></div>`;
+}
+function cumulativeArtwork(mode,item,c){
+  if(mode==='people')return cumulativePersonArt(item,c);
+  if(mode==='profile')return cumulativeProfileArt(item,c);
+  if(mode==='feelings')return cumulativeFeelingArt(item,c);
+  return cumulativeHomeArt(item,c);
+}
+function cumulativeSceneLab(a,c){
+  const key=`${c.lessonId}:${a.id}`,state=c.progress.cumulativeLabStates?.[key]||{};
+  const pick=field=>a.options?.[field]?.[(Number(state[field])||0)%a.options[field].length]||a.options?.[field]?.[0];
+  const token=(field,value)=>`<button type="button" class="tap-word" data-cumulative-lab-key="${c.e(key)}" data-cumulative-lab-field="${field}" aria-label="تغییر ${c.e(field)}">${c.e(String(value))}</button>`;
+  let art='',sentence='',markup='',translation='',detail='';
+  if(a.mode==='people'){
+    const who=pick('subject'),style=pick('style'),color=pick('color'),height=pick('height');
+    const plural=who.count>1,verb=plural?'have':'has',heightVerb=plural?'are':'is';
+    sentence=`${who.en} ${verb} ${style.en} ${color.en} hair. ${who.pronoun} ${heightVerb} ${height.en}.`;
+    markup=`${token('subject',who.en)} ${verb} ${token('style',style.en)} ${token('color',color.en)} hair. ${who.pronoun} ${heightVerb} ${token('height',height.en)}.`;
+    translation=`${who.fa}: موی ${style.fa} ${color.fa}، قد ${height.fa}`;
+    art=cumulativeArtwork('people',{count:who.count,style:style.id,color:color.id,height:height.id},c);
+    detail='با تغییر شخص، فعل has/have و ضمیر She/He/They هم درست می‌شود.';
+  }else if(a.mode==='profile'){
+    const name=pick('name'),age=pick('age'),country=pick('country'),language=pick('language'),role=pick('role'),phone=pick('phone'),address=pick('address'),topic=pick('topic');
+    const values={Age:String(age.number),Country:country.en,Language:language.en,'Study / Work':role.en,Phone:phone.en,Address:address.en};
+    const topicLabel={'age':'Age','country':'Country','language':'Language','role':'Study / Work','phone':'Phone','address':'Address'}[topic.id]||'Age';
+    const response={age:`I am ${age.number} years old.`,country:`I am from ${country.en}.`,language:`I speak ${language.en}.`,role:`I am ${role.article} ${role.en}.`,phone:`My phone number is ${phone.en}.`,address:`My address is ${address.en}.`}[topic.id];
+    sentence=`${topic.question} ${response}`;
+    markup=`${token('topic',topic.question)} ${token(topic.id,response)}`;
+    translation=topic.fa;
+    art=cumulativeArtwork('profile',{name:name.en,age:values.Age,country:values.Country,language:values.Language,role:role.en,phone:values.Phone,address:values.Address,topic:topicLabel},c);
+    detail='روی سؤال یا جواب بزن؛ اطلاعات نمونه و کارت تصویری هم‌زمان عوض می‌شوند.';
+  }else if(a.mode==='feelings'){
+    const who=pick('subject'),feeling=pick('feeling'),be=who.verb;
+    sentence=`${who.en} ${be} ${feeling.en}. ${feeling.reply}`;
+    markup=`${token('subject',who.en)} ${be} ${token('feeling',feeling.en)}. ${c.e(feeling.reply)}`;
+    translation=`${who.fa} ${feeling.fa}. ${feeling.replyFa}`;
+    art=cumulativeArtwork('feelings',{state:feeling.id,label:feeling.fa},c);
+    detail='فاعل را عوض کن تا am/is/are درست شود؛ حالت صورت و پاسخ همدلانه نیز با احساس تغییر می‌کند.';
+  }else if(a.mode==='home'){
+    const room=pick('room'),items=a.options.item||[];
+    const candidates=items.filter(item=>room.itemIds.includes(item.id));
+    const selected=items[Number(state.item)||0],item=room.itemIds.includes(selected?.id)?selected:candidates[0];
+    const count=pick('count'),color=pick('color'),roomsCount=pick('roomsCount');
+    if(!item)return wrapper('',a,c.index,c.e);
+    const numberWords=['zero','one','two','three','four','five','six'];
+    const n=count.number,words=n===0?'no':numberWords[n];
+    const noun=n===1?item.en:item.plural;
+    const intro=n===1?'There is':'There are';
+    sentence=`${intro} ${words} ${color.en} ${noun} in the ${room.en}. My house has ${roomsCount.en} rooms.`;
+    markup=`${intro} ${token('count',words)} ${token('color',color.en)} ${token('item',noun)} in the ${token('room',room.en)}. My house has ${token('roomsCount',roomsCount.en)} rooms.`;
+    translation=`${n===0?'هیچ':n} ${item.fa} ${color.fa} در ${room.fa}؛ خانهٔ من ${roomsCount.fa} اتاق دارد.`;
+    art=cumulativeArtwork('home',{count:n,color:color.hex,item:item.id,room:room.id},c);
+    detail='روی تعداد، وسیله، رنگ یا نام اتاق بزن؛ آن اتاق و وسایلش تغییر می‌کنند. عدد صفر، نبودن را نشان می‌دهد.';
+  }else return wrapper('',a,c.index,c.e);
+  return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><div class="cumulative-live-stage">${art}<p class="tap-live-sentence" lang="en" dir="ltr">${markup}${soundButton(sentence,c.e,c.i)}</p><p class="tap-live-translation">${c.e(translation)}</p></div><p class="live-hint">${c.e(detail)}</p>`,a,c.index,c.e,'module-cumulative-live');
+}
+function cumulativeVisualQuest(a,c){
+  const key=`${c.lessonId}:${a.id}`,state=c.progress.cumulativeQuestStates?.[key]||{},index=Math.max(0,Number(state.round)||0);
+  if(index>=a.rounds.length)return wrapper(`<p class="count-scene-finish" role="status">${c.e(a.completion||'تمام موقعیت‌ها را درست تشخیص دادی.')}</p>`,a,c.index,c.e,'module-cumulative-quest');
+  const round=a.rounds[index],answered=Number.isInteger(state.answer),correct=answered&&state.answer===round.correct;
+  const choices=round.choices.map((choice,i)=>`<button type="button" class="cumulative-quest-choice ${answered&&state.answer===i?(correct?'correct':'incorrect'):''}" data-cumulative-quest-key="${c.e(key)}" data-cumulative-quest-action="answer" data-cumulative-quest-choice="${i}" aria-label="گزینهٔ ${i+1}: ${c.e(choice.description)}">${cumulativeArtwork(a.mode,choice,c)}<span class="cumulative-choice-label">${i+1}</span></button>`).join('');
+  return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><p class="count-round-progress">مأموریت ${index+1} از ${a.rounds.length}</p><div class="tap-scene"><p class="tap-live-sentence" lang="en" dir="ltr">${c.e(round.prompt)}${soundButton(round.prompt,c.e,c.i)}</p><div class="cumulative-quest-grid" role="group" aria-label="تصویر یا کارت درست را انتخاب کن">${choices}</div>${answered?`<p class="count-scene-feedback" role="status">${correct?'دقیق تشخیص دادی.':'دوباره به همهٔ بخش‌های جمله و تصویر دقت کن.'}</p>`:''}${correct?`<button type="button" class="count-scene-next" data-cumulative-quest-key="${c.e(key)}" data-cumulative-quest-action="next">${index===a.rounds.length-1?'پایان مأموریت':'مأموریت بعدی'}</button>`:''}</div>`,a,c.index,c.e,'module-cumulative-quest');
+}
+
+function cumulativeNumberLab(a,c){
+  const key=`${c.lessonId}:${a.id}`,state=c.progress.cumulativeLabStates?.[key]||{};
+  const current=Math.max(0,Math.min(a.numbers.length-1,Number(state.index)||0));
+  const number=a.numbers[current],subject=a.subjects[(Number(state.subject)||0)%a.subjects.length];
+  const sentence=`${subject.en} ${subject.be} ${number.en} years old.`;
+  const cards=a.numbers.map((entry,i)=>`<button type="button" class="cumulative-number-chip ${i===current?'active':''}" aria-pressed="${i===current}" data-cumulative-number-key="${c.e(key)}" data-cumulative-number-index="${i}">${entry.number}</button>`).join('');
+  return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><div class="cumulative-number-board"><p>عدد را لمس کن؛ هم تلفظ و هم سنِ جمله عوض می‌شود.</p><div class="cumulative-number-display"><span aria-label="عدد ${number.number}">${number.number}</span><strong lang="en" dir="ltr">${c.e(number.en)} ${soundButton(number.en,c.e,c.i)}</strong></div><p class="tap-live-sentence" dir="ltr" lang="en"><button type="button" class="tap-word" data-cumulative-number-key="${c.e(key)}" data-cumulative-number-subject="cycle">${c.e(subject.en)}</button> ${c.e(subject.be+' '+number.en+' years old.')}${soundButton(sentence,c.e,c.i)}</p><div class="cumulative-number-chip-grid" aria-label="اعداد و سن‌های قابل انتخاب">${cards}</div><p class="live-hint">روی نام شخص بزن تا I am به My sister is یا My brother is تبدیل شود؛ از ۱۳ تا ۱۰۰ را امتحان کن.</p></div>`,a,c.index,c.e,'module-cumulative-numbers');
+}
+
 function tapAttributesLab(a,c) {
   const key=`${c.lessonId}:${a.id}`;
   const selected=c.progress.attributeChoices?.[key] || {};
@@ -834,7 +939,7 @@ const renderers = {
   'exchange-lab': exchangeLab, 'expression-study': expressionStudy, 'count-visual': countVisual, 'plural-pair-lab': pluralPairLab, 'count-math-lab': countMathLab,
   shadowing, 'shadowing-review': shadowing, 'picture-description': pictureDescription,
   'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer,
-  'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer, 'tap-attributes-lab': tapAttributesLab, 'tap-ownership-lab': tapOwnershipLab, 'count-scene-lab':countSceneLab, 'feature-hunt':featureHunt
+  'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer, 'tap-attributes-lab': tapAttributesLab, 'tap-ownership-lab': tapOwnershipLab, 'count-scene-lab':countSceneLab, 'feature-hunt':featureHunt, 'cumulative-scene-lab':cumulativeSceneLab, 'cumulative-visual-quest':cumulativeVisualQuest, 'cumulative-number-lab':cumulativeNumberLab
 };
 export function renderActivity(activity, context) {
   const renderer = renderers[activity.type];

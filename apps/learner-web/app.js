@@ -50,7 +50,7 @@ const ICONS = {
 const icon = (name, size = '') => `<span class="icon ${size}"><svg aria-hidden="true" viewBox="0 0 24 24">${ICONS[name] || ICONS.star}</svg></span>`;
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const en = (text) => `<span class="en" lang="en" dir="ltr">${escapeHtml(text)}</span>`;
-const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, sentenceComposers: {}, meaningChoices: {}, spatialChoices: {}, familyPeople: {}, agreementChoices: {}, pluralChoices: {}, mathChoices: {}, mathOps: {}, attributeChoices: {}, countSceneStates: {}, featureHuntStates: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
+const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, sentenceComposers: {}, meaningChoices: {}, spatialChoices: {}, familyPeople: {}, agreementChoices: {}, pluralChoices: {}, mathChoices: {}, mathOps: {}, attributeChoices: {}, countSceneStates: {}, featureHuntStates: {}, cumulativeLabStates: {}, cumulativeQuestStates: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
 function readProgress() { try { const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); const migrated = migrateLegacyProgress(saved); if(migrated!==saved)localStorage.setItem(STORAGE_KEY,JSON.stringify(migrated)); return { ...defaultProgress(), ...migrated, settings: { ...defaultProgress().settings, ...(migrated.settings || {}) } }; } catch { return defaultProgress(); } }
 const progress = readProgress();
 // Historical completion records predate skill evidence. Preserve them in storage,
@@ -454,7 +454,7 @@ function wordKeydown(event) {
   document.querySelector('[data-word-swipe]')?.focus({ preventScroll: true });
 }
 function onClick(event) {
-  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-meaning-key],button[data-plural-lab-key],button[data-count-math-key],button[data-count-scene-key],button[data-feature-hunt-key],button[data-attribute-key],button[data-spatial-key],button[data-family-key],button[data-agreement-key],button[data-finish-section],button[data-review],button[data-planned],button[data-shadowing-key],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-build-submit],button[data-build-undo],button[data-build-clear],button[data-roleplay],button[data-word-key],button[data-composer-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
+  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-meaning-key],button[data-plural-lab-key],button[data-count-math-key],button[data-count-scene-key],button[data-feature-hunt-key],button[data-cumulative-lab-key],button[data-cumulative-quest-key],button[data-cumulative-number-key],button[data-attribute-key],button[data-spatial-key],button[data-family-key],button[data-agreement-key],button[data-finish-section],button[data-review],button[data-planned],button[data-shadowing-key],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-build-submit],button[data-build-undo],button[data-build-clear],button[data-roleplay],button[data-word-key],button[data-composer-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
   if (!el) return;
   if (el.dataset.nav) { modal = null; navigate(el.dataset.nav); return; }
   if (el.dataset.openLesson) { modal = null; activePerson = 0; ownerIdx = 0; objectIdx = 0; navigate('lesson', el.dataset.openLesson, el.dataset.startSection || null); return; }
@@ -543,6 +543,57 @@ function onClick(event) {
       next.round=Math.min(activity.rounds.length,(Number(previous.round)||0)+1);delete next.answer;
     }else return;
     progress.featureHuntStates[key]=next;
+    persist();updateInline();return;
+  }
+  if (el.dataset.cumulativeLabKey) {
+    const key=el.dataset.cumulativeLabKey,field=el.dataset.cumulativeLabField;
+    const activity=lessonActivity(key),choices=activity?.options?.[field];
+    if(activity?.type!=='cumulative-scene-lab'||!Array.isArray(choices)||!choices.length)return;
+    progress.cumulativeLabStates ||= {};
+    const state=progress.cumulativeLabStates[key]||{};
+    const next={...state,[field]:((Number(state[field])||0)+1)%choices.length};
+    if(activity.mode==='home'){
+      const room=activity.options.room[next.room||0];
+      const allowed=activity.options.item.map((item,index)=>room.itemIds?.includes(item.id)?index:-1).filter(index=>index>=0);
+      if(field==='room')next.item=allowed[0]??0;
+      if(field==='item'&&allowed.length){
+        const before=allowed.indexOf(Number(state.item)||0);
+        next.item=allowed[(before+1)%allowed.length];
+      }
+    }
+    progress.cumulativeLabStates[key]=next;
+    persist();updateInline();return;
+  }
+  if (el.dataset.cumulativeQuestKey) {
+    const key=el.dataset.cumulativeQuestKey,activity=lessonActivity(key),action=el.dataset.cumulativeQuestAction;
+    if(activity?.type!=='cumulative-visual-quest')return;
+    progress.cumulativeQuestStates ||= {};
+    const state=progress.cumulativeQuestStates[key]||{},round=activity.rounds?.[Number(state.round)||0];
+    if(!round)return;
+    const next={...state};
+    if(action==='answer'){
+      const value=Number(el.dataset.cumulativeQuestChoice);
+      if(!Number.isInteger(value)||value<0||value>=round.choices.length)return;
+      next.answer=value;
+    }else if(action==='next'&&state.answer===round.correct){
+      next.round=Math.min(activity.rounds.length,(Number(state.round)||0)+1);
+      delete next.answer;
+    }else return;
+    progress.cumulativeQuestStates[key]=next;
+    persist();updateInline();return;
+  }
+  if(el.dataset.cumulativeNumberKey){
+    const key=el.dataset.cumulativeNumberKey,activity=lessonActivity(key);
+    if(activity?.type!=='cumulative-number-lab'||!Array.isArray(activity.numbers))return;
+    progress.cumulativeLabStates ||= {};
+    const before=progress.cumulativeLabStates[key]||{},next={...before};
+    if(el.dataset.cumulativeNumberSubject==='cycle')next.subject=((Number(before.subject)||0)+1)%activity.subjects.length;
+    else if(el.dataset.cumulativeNumberIndex!==undefined){
+      const index=Number(el.dataset.cumulativeNumberIndex);
+      if(!Number.isInteger(index)||index<0||index>=activity.numbers.length)return;
+      next.index=index;
+    }else return;
+    progress.cumulativeLabStates[key]=next;
     persist();updateInline();return;
   }
   if (el.dataset.countMathKey) {
