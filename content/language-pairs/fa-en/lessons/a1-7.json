@@ -1,0 +1,1643 @@
+{
+  "id": "A1-7",
+  "revision": 1,
+  "status": "draft",
+  "title": "این چیست؟ آن کیست؟",
+  "goal": "بتوانی دربارهٔ چیزها و آدم‌های نزدیک و دور سؤال‌های مناسب What is this/that? و Who is this/that? بسازی، شخص و شیء را درست تشخیص بدهی و با جواب کوتاه یا کامل پاسخ دهی.",
+  "duration": "۲۰ تا ۲۵ دقیقه",
+  "feature": "شناسایی تصویری افراد و اشیا",
+  "archetype": "identification",
+  "teachingModel": {
+    "primary": "K1",
+    "support": "K2"
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "در یک عکس، اتاق یا محیط واقعی روی یک چیز اشاره کنی و بپرسی «این چیست؟»، یا دربارهٔ یک نفر بپرسی «آن کیست؟».",
+    "prerequisites": [
+      "این (this) و پرسش Who از معرفی خانواده",
+      "مکان نزدیک و دور از درس چهارم",
+      "اسامی اشیا و افراد از درس‌های قبلی"
+    ],
+    "previously": "در درس‌های قبلی اشیا و خانواده را معرفی کردی و جای آن‌ها را گفتی. حالا نوع سؤال را بر اساس شخص یا شیء انتخاب می‌کنی و به فاصله هم توجه می‌کنی.",
+    "quickCheck": {
+      "title": "اگر از قبل بلدی",
+      "question": "وقتی به کتاب نزدیک و به معلم دورتر اشاره می‌کنی، دو سؤال متفاوت می‌سازی؟",
+      "example": "What is this? / Who is that?",
+      "explanation": "در این درس قرار نیست همهٔ اسم‌ها را از نو یاد بگیری؛ انتخاب Who/What و this/that مهم است.",
+      "allowSkip": true
+    }
+  },
+  "visual": {
+    "src": null,
+    "alt": "صحنه‌ای با یک گربه و کتاب نزدیک، معلم و دانش‌آموز دورتر",
+    "caption": "اشیا و افراد نزدیک و دور را تشخیص بده."
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "What is this?",
+      "Who is that?"
+    ],
+    "specificIndependentExpressions": [
+      "What is this?",
+      "Who is that?"
+    ],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": true
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "از کلمه تا جمله",
+      "intro": "اول چند سؤال کوتاه را سایه‌خوانی کن. بعد تفاوت Who برای انسان و What برای شیء را با اسم‌های تازه کشف کن.",
+      "masteryActivityIds": [
+        "identify-construction"
+      ],
+      "activities": [
+        {
+          "id": "a1-7-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "سایه‌خوانی آسان",
+          "description": "فقط صدای کوتاه جمله‌ها را تقلید کن؛ در آغاز مجبور نیستی معنای آن‌ها را تشخیص بدهی.",
+          "audioSrc": null,
+          "rate": 0.7,
+          "pauseMs": 550,
+          "lines": [
+            "What is this?",
+            "This is a cat.",
+            "What is that?",
+            "That is a dog.",
+            "Who is this?",
+            "This is my friend.",
+            "Who is that?",
+            "That is my teacher."
+          ]
+        },
+        {
+          "id": "identify-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "واژگان جدیدِ شناسایی اشیا و آدم‌ها",
+          "deckRevision": 1,
+          "batchSize": 5,
+          "items": [
+            {
+              "en": "that",
+              "fa": "آن / آن‌جا",
+              "hint": "برای اشاره به چیزی یا کسی دورتر.",
+              "examples": [
+                "That is a cat.",
+                "Who is that?",
+                "Is that your friend?"
+              ]
+            },
+            {
+              "en": "it",
+              "fa": "آن / این (برای چیز یا حیوان)",
+              "hint": "در پاسخ کوتاه دربارهٔ یک شیء به‌کار می‌رود.",
+              "examples": [
+                "It is a bag.",
+                "Is it a phone?",
+                "Yes, it is."
+              ]
+            },
+            {
+              "en": "man",
+              "fa": "مرد",
+              "hint": "برای شناسایی یک فرد بزرگسال.",
+              "examples": [
+                "That man is my teacher.",
+                "Who is that man?",
+                "He is a man."
+              ]
+            },
+            {
+              "en": "woman",
+              "fa": "زن",
+              "hint": "برای شناسایی فردی بزرگسال.",
+              "examples": [
+                "That woman is a doctor.",
+                "Who is that woman?",
+                "She is a woman."
+              ]
+            },
+            {
+              "en": "boy",
+              "fa": "پسر (بچه)",
+              "hint": "برای معرفی یک پسر.",
+              "examples": [
+                "This boy is my friend.",
+                "Who is that boy?",
+                "He is a boy."
+              ]
+            },
+            {
+              "en": "girl",
+              "fa": "دختر (بچه)",
+              "hint": "برای معرفی یک دختر.",
+              "examples": [
+                "That girl is my sister.",
+                "Who is that girl?",
+                "She is a girl."
+              ]
+            },
+            {
+              "en": "teacher",
+              "fa": "معلم",
+              "hint": "شغل فردی که درس می‌دهد.",
+              "examples": [
+                "That is my teacher.",
+                "Who is that teacher?",
+                "She is a teacher."
+              ]
+            },
+            {
+              "en": "student",
+              "fa": "دانش‌آموز / دانشجو",
+              "hint": "کسی که درس می‌خواند.",
+              "examples": [
+                "This is a student.",
+                "That student is my friend.",
+                "He is a student."
+              ]
+            },
+            {
+              "en": "friend",
+              "fa": "دوست",
+              "hint": "برای معرفی آشنای نزدیک.",
+              "examples": [
+                "That is my friend.",
+                "This is my friend, Ali.",
+                "Who is your friend?"
+              ]
+            },
+            {
+              "en": "doctor",
+              "fa": "پزشک",
+              "hint": "شغل پزشک.",
+              "examples": [
+                "That woman is a doctor.",
+                "Who is that doctor?",
+                "She is a doctor."
+              ]
+            },
+            {
+              "en": "cat",
+              "fa": "گربه",
+              "hint": "برای شناسایی حیوان در تصویر.",
+              "examples": [
+                "This is a cat.",
+                "Is that a cat?",
+                "The cat is on the table."
+              ]
+            },
+            {
+              "en": "dog",
+              "fa": "سگ",
+              "hint": "یک حیوان قابل‌شناسایی.",
+              "examples": [
+                "That is a dog.",
+                "What is this? It is a dog.",
+                "The dog is near the door."
+              ]
+            },
+            {
+              "en": "bird",
+              "fa": "پرنده",
+              "hint": "حیوانی که پرواز می‌کند.",
+              "examples": [
+                "This is a bird.",
+                "That bird is near the window.",
+                "Is it a bird?"
+              ]
+            },
+            {
+              "en": "car",
+              "fa": "خودرو",
+              "hint": "وسیلهٔ نقلیه.",
+              "examples": [
+                "That is a car.",
+                "Is this your car?",
+                "The car is near the house."
+              ]
+            },
+            {
+              "en": "computer",
+              "fa": "رایانه",
+              "hint": "وسیلهٔ دیجیتال روی میز.",
+              "examples": [
+                "This is a computer.",
+                "That computer is on the desk.",
+                "Is it a computer?"
+              ]
+            },
+            {
+              "en": "flower",
+              "fa": "گل",
+              "hint": "برای اشاره به گیاه در تصویر.",
+              "examples": [
+                "This is a flower.",
+                "The flower is on the table.",
+                "Is that a flower?"
+              ]
+            },
+            {
+              "en": "picture",
+              "fa": "تصویر",
+              "hint": "برای معرفی شیء روی دیوار یا میز.",
+              "examples": [
+                "This is a picture.",
+                "That picture is on the wall.",
+                "Is it a picture?"
+              ]
+            },
+            {
+              "en": "yes",
+              "fa": "بله",
+              "hint": "پاسخ مثبت به سؤال بله/خیر.",
+              "examples": [
+                "Yes, it is.",
+                "Yes, he is.",
+                "Yes, that is a cat."
+              ]
+            },
+            {
+              "en": "no",
+              "fa": "نه",
+              "hint": "پاسخ منفی به سؤال بله/خیر.",
+              "examples": [
+                "No, it is not.",
+                "No, she is not.",
+                "No, that is a dog."
+              ]
+            },
+            {
+              "en": "visitor",
+              "fa": "مهمان / بازدیدکننده",
+              "role": "supplementary"
+            },
+            {
+              "en": "driver",
+              "fa": "راننده",
+              "role": "supplementary"
+            },
+            {
+              "en": "neighbor",
+              "fa": "همسایه",
+              "role": "supplementary"
+            },
+            {
+              "en": "artist",
+              "fa": "هنرمند",
+              "role": "supplementary"
+            },
+            {
+              "en": "animal",
+              "fa": "حیوان",
+              "role": "supplementary"
+            },
+            {
+              "en": "tree",
+              "fa": "درخت",
+              "role": "supplementary"
+            },
+            {
+              "en": "egg",
+              "fa": "تخم‌مرغ",
+              "role": "supplementary"
+            }
+          ]
+        },
+        {
+          "id": "identify-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "دو پرسش کاربردی",
+          "description": "فقط دو پرسش کلیدی را به‌عنوان عبارت ثابت تمرین کن؛ در سؤال‌وجواب‌ها و مکالمه‌های بعدی هر دو را خودت به کار می‌بری.",
+          "items": [
+            {
+              "en": "What is this?",
+              "fa": "این چیست؟",
+              "kind": "fixed",
+              "hint": "برای پرسیدن نام یک شیء نزدیک.",
+              "examples": [
+                "What is this?",
+                "What is this on the table?",
+                "What is this in your bag?"
+              ]
+            },
+            {
+              "en": "Who is that?",
+              "fa": "آن کیست؟",
+              "kind": "fixed",
+              "hint": "برای پرسیدن هویت شخصی دورتر.",
+              "examples": [
+                "Who is that?",
+                "Who is that man?",
+                "Who is that teacher?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "identify-phrases",
+          "type": "composer-view",
+          "phase": "phrases",
+          "title": "اسم را عوض کن؛ «این» و شیء باقی می‌مانند",
+          "description": "در یک جمله، فقط اسم شیء تغییر می‌کند. روی خود کلمه بزن.",
+          "sourceActivityId": "identification-composer",
+          "patternId": "this-object"
+        },
+        {
+          "id": "identification-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "این چیست؟ آن کیست؟ کلمه را لمس کن",
+          "description": "اسم شیء یا فرد را در خود جمله لمس کن تا تغییر کند. برای شیء What و برای شخص Who می‌پرسیم؛ this نزدیک و that دورتر است.",
+          "targetLanguage": "en",
+          "wordSets": {
+            "objects": [
+              {
+                "id": "cat",
+                "label": "cat",
+                "translation": "گربه",
+                "forms": {
+                  "word": "cat",
+                  "faWord": "گربه"
+                }
+              },
+              {
+                "id": "dog",
+                "label": "dog",
+                "translation": "سگ",
+                "forms": {
+                  "word": "dog",
+                  "faWord": "سگ"
+                }
+              },
+              {
+                "id": "book",
+                "label": "book",
+                "translation": "کتاب",
+                "forms": {
+                  "word": "book",
+                  "faWord": "کتاب"
+                }
+              },
+              {
+                "id": "bag",
+                "label": "bag",
+                "translation": "کیف",
+                "forms": {
+                  "word": "bag",
+                  "faWord": "کیف"
+                }
+              },
+              {
+                "id": "phone",
+                "label": "phone",
+                "translation": "تلفن",
+                "forms": {
+                  "word": "phone",
+                  "faWord": "تلفن"
+                }
+              },
+              {
+                "id": "computer",
+                "label": "computer",
+                "translation": "کامپیوتر",
+                "forms": {
+                  "word": "computer",
+                  "faWord": "کامپیوتر"
+                }
+              },
+              {
+                "id": "flower",
+                "label": "flower",
+                "translation": "گل",
+                "forms": {
+                  "word": "flower",
+                  "faWord": "گل"
+                }
+              },
+              {
+                "id": "car",
+                "label": "car",
+                "translation": "خودرو",
+                "forms": {
+                  "word": "car",
+                  "faWord": "خودرو"
+                }
+              },
+              {
+                "id": "picture",
+                "label": "picture",
+                "translation": "تصویر",
+                "forms": {
+                  "word": "picture",
+                  "faWord": "تصویر"
+                }
+              },
+              {
+                "id": "bird",
+                "label": "bird",
+                "translation": "پرنده",
+                "forms": {
+                  "word": "bird",
+                  "faWord": "پرنده"
+                }
+              },
+              {
+                "id": "apple",
+                "label": "apple",
+                "translation": "سیب",
+                "forms": {
+                  "word": "apple",
+                  "faWord": "سیب"
+                }
+              }
+            ],
+            "people": [
+              {
+                "id": "teacher",
+                "label": "teacher",
+                "translation": "معلم",
+                "forms": {
+                  "word": "teacher",
+                  "faWord": "معلم"
+                }
+              },
+              {
+                "id": "student",
+                "label": "student",
+                "translation": "دانش‌آموز",
+                "forms": {
+                  "word": "student",
+                  "faWord": "دانش‌آموز"
+                }
+              },
+              {
+                "id": "friend",
+                "label": "friend",
+                "translation": "دوست",
+                "forms": {
+                  "word": "friend",
+                  "faWord": "دوست"
+                }
+              },
+              {
+                "id": "doctor",
+                "label": "doctor",
+                "translation": "پزشک",
+                "forms": {
+                  "word": "doctor",
+                  "faWord": "پزشک"
+                }
+              },
+              {
+                "id": "boy",
+                "label": "boy",
+                "translation": "پسر",
+                "forms": {
+                  "word": "boy",
+                  "faWord": "پسر"
+                }
+              },
+              {
+                "id": "girl",
+                "label": "girl",
+                "translation": "دختر",
+                "forms": {
+                  "word": "girl",
+                  "faWord": "دختر"
+                }
+              },
+              {
+                "id": "man",
+                "label": "man",
+                "translation": "مرد",
+                "forms": {
+                  "word": "man",
+                  "faWord": "مرد"
+                }
+              },
+              {
+                "id": "woman",
+                "label": "woman",
+                "translation": "زن",
+                "forms": {
+                  "word": "woman",
+                  "faWord": "زن"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "object",
+              "label": "شیء",
+              "wordSet": "objects",
+              "default": "cat"
+            },
+            {
+              "id": "person",
+              "label": "شخص",
+              "wordSet": "people",
+              "default": "teacher"
+            }
+          ],
+          "derivedDefaults": {},
+          "dependencies": [],
+          "defaultPattern": "this-object",
+          "patterns": [
+            {
+              "id": "this-object",
+              "label": "این شیء",
+              "segments": [
+                {
+                  "fixed": "This is a "
+                },
+                {
+                  "slot": "object",
+                  "form": "word"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "این یک "
+                },
+                {
+                  "slot": "object",
+                  "form": "faWord"
+                },
+                {
+                  "fixed": " است."
+                }
+              ]
+            },
+            {
+              "id": "that-object",
+              "label": "آن شیء",
+              "segments": [
+                {
+                  "fixed": "That is a "
+                },
+                {
+                  "slot": "object",
+                  "form": "word"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "آن یک "
+                },
+                {
+                  "slot": "object",
+                  "form": "faWord"
+                },
+                {
+                  "fixed": " است."
+                }
+              ]
+            },
+            {
+              "id": "what-this",
+              "label": "این چیست؟",
+              "segments": [
+                {
+                  "fixed": "What is this?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "این چیست؟"
+                }
+              ]
+            },
+            {
+              "id": "what-that",
+              "label": "آن چیست؟",
+              "segments": [
+                {
+                  "fixed": "What is that?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "آن چیست؟"
+                }
+              ]
+            },
+            {
+              "id": "who-that",
+              "label": "آن کیست؟",
+              "segments": [
+                {
+                  "fixed": "Who is that?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "آن کیست؟"
+                }
+              ]
+            },
+            {
+              "id": "who-this",
+              "label": "این کیست؟",
+              "segments": [
+                {
+                  "fixed": "Who is this?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "این کیست؟"
+                }
+              ]
+            },
+            {
+              "id": "that-person",
+              "label": "آن شخص",
+              "segments": [
+                {
+                  "fixed": "That is my "
+                },
+                {
+                  "slot": "person",
+                  "form": "word"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "آن "
+                },
+                {
+                  "slot": "person",
+                  "form": "faWord"
+                },
+                {
+                  "fixed": " من است."
+                }
+              ]
+            },
+            {
+              "id": "this-person",
+              "label": "این شخص",
+              "segments": [
+                {
+                  "fixed": "This is my "
+                },
+                {
+                  "slot": "person",
+                  "form": "word"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "این "
+                },
+                {
+                  "slot": "person",
+                  "form": "faWord"
+                },
+                {
+                  "fixed": " من است."
+                }
+              ]
+            },
+            {
+              "id": "is-that",
+              "label": "سؤال بله/خیر",
+              "segments": [
+                {
+                  "fixed": "Is that a "
+                },
+                {
+                  "slot": "object",
+                  "form": "word"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "آیا آن یک "
+                },
+                {
+                  "slot": "object",
+                  "form": "faWord"
+                },
+                {
+                  "fixed": " است؟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "identify-meaning",
+          "type": "meaning-cluster",
+          "phase": "variants",
+          "title": "یک اشاره، دو سؤال متفاوت",
+          "description": "دو سؤال را براساس انسان یا شیء مقایسه کن؛ هر دو قبلاً در جمله شنیده شده‌اند.",
+          "concepts": [
+            {
+              "id": "object-vs-person",
+              "fa": "برای چیز و برای شخص",
+              "forms": [
+                {
+                  "en": "What is this?",
+                  "fa": "این چیست؟",
+                  "relation": "related",
+                  "note": "برای یک شیء نزدیک، مثل کتاب یا گربه."
+                },
+                {
+                  "en": "Who is this?",
+                  "fa": "این کیست؟",
+                  "relation": "related",
+                  "note": "برای یک شخص نزدیک."
+                }
+              ]
+            },
+            {
+              "id": "far-object-person",
+              "fa": "برای کسی یا چیزی که دورتر است",
+              "forms": [
+                {
+                  "en": "What is that?",
+                  "fa": "آن چیست؟",
+                  "relation": "related",
+                  "note": "برای یک شیء دورتر."
+                },
+                {
+                  "en": "Who is that?",
+                  "fa": "آن کیست؟",
+                  "relation": "related",
+                  "note": "برای شخص دورتر."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "identify-models",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "حالا فرد دورتر را معرفی کن",
+          "description": "روی اسم شخص در جمله بزن تا هویت تغییر کند؛ می‌توانی همان فرد را در عکس یا محیط پیدا کنی.",
+          "sourceActivityId": "identification-composer",
+          "patternIds": [
+            "that-person",
+            "this-person",
+            "that-object",
+            "what-that",
+            "who-that"
+          ]
+        },
+        {
+          "id": "identify-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "جورچین: انسان یا شیء؟",
+          "description": "کلمات درهم‌اند؛ What و Who را در جای مناسب بچین. واژهٔ نامعتبر کوتاه می‌لرزد و به بانک برمی‌گردد.",
+          "revision": 1,
+          "reuseBank": true,
+          "goalCount": 5,
+          "sourceActivityId": "identification-composer",
+          "patternIds": [
+            "this-object",
+            "that-object",
+            "who-that",
+            "who-this",
+            "what-this",
+            "what-that",
+            "that-person"
+          ],
+          "sentences": [
+            {
+              "id": "what-this",
+              "words": [
+                "What",
+                "is",
+                "this?"
+              ]
+            },
+            {
+              "id": "who-that",
+              "words": [
+                "Who",
+                "is",
+                "that?"
+              ]
+            },
+            {
+              "id": "this-cat",
+              "words": [
+                "This",
+                "is",
+                "a",
+                "cat."
+              ]
+            },
+            {
+              "id": "that-teacher",
+              "words": [
+                "That",
+                "is",
+                "my",
+                "teacher."
+              ]
+            },
+            {
+              "id": "what-that",
+              "words": [
+                "What",
+                "is",
+                "that?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "identify-construction",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "از شیء تا شخص، بدون گزینه جمله بساز",
+          "practiceRevision": 1,
+          "description": "بسته به نوع موجود و فاصلهٔ آن، جملهٔ درست بساز.",
+          "completion": "What، Who، this و that را در موقعیت مناسب به کار بردی.",
+          "tasks": [
+            {
+              "task": "یک گربه کنار توست؛ بپرس «این چیست؟».",
+              "hint": "What is this?",
+              "example": "What is this?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "what is this"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            },
+            {
+              "task": "معلمت دورتر ایستاده؛ بپرس «آن کیست؟».",
+              "hint": "Who is that?",
+              "example": "Who is that?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "who is that"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            },
+            {
+              "task": "پاسخ بده «این یک گربه است».",
+              "hint": "This is a cat.",
+              "example": "This is a cat.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is a cat"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            },
+            {
+              "task": "پاسخ بده «آن معلم من است».",
+              "hint": "That is my teacher.",
+              "example": "That is my teacher.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "that is my teacher"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            },
+            {
+              "task": "آن طرف یک سگ می‌بینی؛ بپرس «آن چیست؟».",
+              "hint": "What is that?",
+              "example": "What is that?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "what is that"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            },
+            {
+              "task": "دوستت کنار توست؛ بپرس «این کیست؟».",
+              "hint": "Who is this?",
+              "example": "Who is this?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "who is this"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "از سؤال و جواب تا مکالمه",
+      "intro": "پرسش درست را با توجه به فاصله و انسان یا شیء انتخاب کن؛ بعد همان الگو را در یک تصویر و در محیط واقعی استفاده کن.",
+      "masteryActivityIds": [
+        "identify-guided",
+        "identify-independent"
+      ],
+      "activities": [
+        {
+          "id": "identify-exchanges",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "یک پرسش، چند پاسخ واقعی",
+          "description": "با توجه به چیزی که دیده می‌شود، پاسخ می‌تواند عوض شود.",
+          "pairs": [
+            {
+              "question": "What is this?",
+              "questionFa": "این چیست؟",
+              "variants": [
+                {
+                  "label": "گربه",
+                  "en": "This is a cat.",
+                  "fa": "این گربه است."
+                },
+                {
+                  "label": "کتاب",
+                  "en": "This is a book.",
+                  "fa": "این کتاب است."
+                }
+              ]
+            },
+            {
+              "question": "Who is that?",
+              "questionFa": "آن کیست؟",
+              "variants": [
+                {
+                  "label": "معلم",
+                  "en": "That is my teacher.",
+                  "fa": "آن معلم من است."
+                },
+                {
+                  "label": "دوست",
+                  "en": "That is my friend.",
+                  "fa": "آن دوست من است."
+                }
+              ]
+            },
+            {
+              "question": "What is that?",
+              "questionFa": "آن چیست؟",
+              "variants": [
+                {
+                  "label": "سگ",
+                  "en": "That is a dog.",
+                  "fa": "آن سگ است."
+                },
+                {
+                  "label": "خودرو",
+                  "en": "That is a car.",
+                  "fa": "آن خودرو است."
+                }
+              ]
+            },
+            {
+              "question": "Who is this?",
+              "questionFa": "این کیست؟",
+              "variants": [
+                {
+                  "label": "دوست",
+                  "en": "This is my friend.",
+                  "fa": "این دوست من است."
+                },
+                {
+                  "label": "معلم",
+                  "en": "This is my teacher.",
+                  "fa": "این معلم من است."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "identify-exchanges-practice",
+          "type": "response-practice",
+          "phase": "correspondence",
+          "title": "پاسخ را خودت بساز",
+          "practiceRevision": 1,
+          "description": "از دو پرسش شروع کن؛ بعد یک سؤال جدید بساز.",
+          "completion": "در پاسخ‌ها شخص و شیء را تشخیص دادی.",
+          "tasks": [
+            {
+              "task": "بگو این یک گربه است.",
+              "incoming": "What is this?",
+              "hint": "This is a cat.",
+              "example": "This is a cat.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is a cat"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            },
+            {
+              "task": "بگو آن معلم من است.",
+              "incoming": "Who is that?",
+              "hint": "That is my teacher.",
+              "example": "That is my teacher.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "that is my teacher"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            },
+            {
+              "task": "بگو آن یک سگ است.",
+              "incoming": "What is that?",
+              "hint": "That is a dog.",
+              "example": "That is a dog.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "that is a dog"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "identify-dialogue-one",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "مکالمهٔ اول: در کلاس",
+          "description": "یک دانش‌آموز دربارهٔ چیزهای نزدیک و آدم‌های دورتر می‌پرسد.",
+          "lines": [
+            {
+              "speaker": "Emma",
+              "en": "What is this?",
+              "fa": "این چیست؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "This is a book.",
+              "fa": "این یک کتاب است."
+            },
+            {
+              "speaker": "Emma",
+              "en": "And what is that?",
+              "fa": "و آن چیست؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "That is a computer.",
+              "fa": "آن یک رایانه است."
+            },
+            {
+              "speaker": "Emma",
+              "en": "Who is that?",
+              "fa": "آن کیست؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "That is my teacher.",
+              "fa": "آن معلم من است."
+            },
+            {
+              "speaker": "Emma",
+              "en": "Is that your teacher?",
+              "fa": "آیا آن معلم توست؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "Yes, she is.",
+              "fa": "بله، او معلم من است."
+            }
+          ]
+        },
+        {
+          "id": "identify-recall-one",
+          "type": "response-practice",
+          "phase": "context",
+          "title": "بعد از مکالمه، پرسش مناسب را خودت انتخاب کن",
+          "practiceRevision": 1,
+          "description": "به جای حفظ جواب، تشخیص بده برای شخص یا شیء چه باید پرسید.",
+          "completion": "سؤال مناسب را بدون دیدن گزینه تولید کردی.",
+          "tasks": [
+            {
+              "task": "به یک کتاب نزدیک اشاره کرده‌ای؛ سؤال مناسب را بپرس.",
+              "hint": "What is this?",
+              "example": "What is this?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "what is this"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            },
+            {
+              "task": "معلم آن طرف کلاس است؛ سؤال مناسب را بپرس.",
+              "hint": "Who is that?",
+              "example": "Who is that?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "who is that"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            },
+            {
+              "task": "بگو آن یک رایانه است.",
+              "hint": "That is a computer.",
+              "example": "That is a computer.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "that is a computer"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "identify-dialogue-two",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "مکالمهٔ دوم: در حیاط",
+          "description": "افراد، حیوان و مکان را با ترکیب درس‌های پیشین شناسایی کن.",
+          "lines": [
+            {
+              "speaker": "Sara",
+              "en": "Look! What is this?",
+              "fa": "نگاه کن! این چیست؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "This is a cat.",
+              "fa": "این گربه است."
+            },
+            {
+              "speaker": "Sara",
+              "en": "What is that near the door?",
+              "fa": "آن نزدیک در چیست؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "That is a dog.",
+              "fa": "آن سگ است."
+            },
+            {
+              "speaker": "Sara",
+              "en": "And who is that?",
+              "fa": "و آن کیست؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "That is my friend, Emma.",
+              "fa": "آن دوستم اِماست."
+            },
+            {
+              "speaker": "Sara",
+              "en": "Is she your sister?",
+              "fa": "او خواهرت است؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "No, she is my friend.",
+              "fa": "نه، او دوست من است."
+            }
+          ]
+        },
+        {
+          "id": "identify-recall-two",
+          "type": "response-practice",
+          "phase": "context",
+          "title": "افراد و اشیا را در گفت‌وگو جدا کن",
+          "practiceRevision": 1,
+          "description": "این بار فاصله و نسبت خانوادگی را نیز در جواب ترکیب کن.",
+          "completion": "اشیا و اشخاص را درست تفکیک کردی.",
+          "tasks": [
+            {
+              "task": "آن حیوان نزدیک در، سگ است؛ بگو.",
+              "incoming": "What is that near the door?",
+              "hint": "That is a dog near the door.",
+              "example": "That is a dog near the door.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "that is a dog"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            },
+            {
+              "task": "او خواهرت نیست؛ دوستت است.",
+              "incoming": "Is she your sister?",
+              "hint": "No, she is my friend.",
+              "example": "No, she is my friend.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "she is my friend"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "identify-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "practiceRevision": 1,
+          "title": "از روی تصویر: کدام شخص است، کدام شیء؟",
+          "description": "در تصویر یک گربه و کتاب در جلو، یک معلم و دانش‌آموز دورتر دیده می‌شوند. پرسش مناسب را براساس فاصله و انسان/شیء انتخاب کن.",
+          "image": "./assets/scene-a1-7.svg",
+          "imageAlt": "گربه و کتاب در نزدیک بیننده، یک معلم و دانش‌آموز در پس‌زمینهٔ کلاس",
+          "caption": "این نزدیک است؛ آن دورتر است",
+          "tasks": [
+            {
+              "task": "برای گربهٔ جلوی تصویر سؤال بساز.",
+              "hint": "What is this?",
+              "example": "What is this?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "what is this"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            },
+            {
+              "task": "آن فرد دورتر معلم است؛ بپرس آن کیست.",
+              "hint": "Who is that?",
+              "example": "Who is that?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "who is that"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            },
+            {
+              "task": "به پرسش نزدیک‌ترین شیء پاسخ بده: این یک کتاب است.",
+              "hint": "This is a book.",
+              "example": "This is a book.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is a book"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            },
+            {
+              "task": "آن فرد دورتر را معرفی کن: آن معلم من است.",
+              "hint": "That is my teacher.",
+              "example": "That is my teacher.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "that is my teacher"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "identify-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "practiceRevision": 1,
+          "title": "یک مکالمهٔ واقعی: سؤال‌ها را خودت بپرس",
+          "description": "بسته به شیء یا فردی که نشان داده شده، یک سؤال یا پاسخ مناسب بساز.",
+          "completion": "هم پرسیدن و هم پاسخ‌دادن دربارهٔ افراد و اشیا را تمرین کردی.",
+          "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "Look at this cat.",
+              "task": "دربارهٔ آن شیء نزدیک سؤال بساز.",
+              "hint": "What is this?",
+              "example": "What is this?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "what is this"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "This is a cat. And look at that person.",
+              "task": "دربارهٔ شخص دورتر سؤال بساز.",
+              "hint": "Who is that?",
+              "example": "Who is that?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "who is that"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "That is our teacher.",
+              "task": "با یک جمله جواب بده آن معلم من است.",
+              "hint": "That is my teacher.",
+              "example": "That is my teacher.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "that is my teacher"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "What is that near the door?",
+              "task": "بگو آن یک سگ است.",
+              "hint": "That is a dog.",
+              "example": "That is a dog.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "that is a dog"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Who is this?",
+              "task": "بگو این دوست من است.",
+              "hint": "This is my friend.",
+              "example": "This is my friend.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is my friend"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "identify-transfer",
+          "type": "dialogue-transfer",
+          "phase": "guided",
+          "practiceRevision": 1,
+          "title": "یک تغییر کوچک: محیط اطرافت",
+          "sceneTitle": "اتاق یا حیاط",
+          "description": "برای یک شیء واقعی و یک فرد واقعی یا خیالی، همان سؤال‌ها را بساز. برای حریم خصوصی از اسم یا هویت ساختگی هم می‌توانی استفاده کنی.",
+          "completion": "توانستی پرسش درست را در موقعیت جدید استفاده کنی.",
+          "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "Look at this book.",
+              "task": "بپرس این چیست.",
+              "hint": "What is this?",
+              "example": "What is this?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "what is this"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "This is a book. Look at that person.",
+              "task": "بپرس آن کیست.",
+              "hint": "Who is that?",
+              "example": "Who is that?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "who is that"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "That person is my teacher.",
+              "task": "یک شخص دیگر را معرفی کن؛ آن دوست من است.",
+              "hint": "That is my friend.",
+              "example": "That is my friend.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "that is my friend"
+                    ],
+                    "feedback": "پاسخ را با الگوی مناسبِ شخص یا شیء بساز."
+                  }
+                ],
+                "success": "جملهٔ مناسب را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "identify-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "تمرین مستقل: اشاره کن، بپرس، معرفی کن",
+          "kind": "free-text",
+          "minWords": 17,
+          "prompt": "در اتاق، مدرسه یا یک عکس دو مورد انتخاب کن: یک شیء نزدیک و یک شخص کمی دورتر (واقعی یا خیالی). دربارهٔ شیء دقیقاً What is this? را بپرس و با This is a ... پاسخ بده. دربارهٔ شخص دقیقاً Who is that? را بپرس و با That is my ... یا That is a ... پاسخ بده. یکی از مکان‌های قبلی مثل on the table یا near the door را هم اضافه کن. هیچ تصویر یا اطلاعات هویتی واقعی لازم نیست آپلود کنی.",
+          "placeholder": "What is this?\nThis is a book on the table.\nWho is that?\nThat is my teacher near the door.",
+          "hint": "What برای شیء و Who برای انسان است؛ this نزدیک و that برای دورتر به کار می‌رود.",
+          "assessment": {
+            "revision": 1,
+            "required": [
+              {
+                "any": [
+                  "what is this"
+                ],
+                "feedback": "دربارهٔ شیء نزدیک سؤال What is this? را بنویس."
+              },
+              {
+                "any": [
+                  "this is a",
+                  "this is my"
+                ],
+                "feedback": "شیء نزدیک را با This is a ... معرفی کن."
+              },
+              {
+                "any": [
+                  "who is that"
+                ],
+                "feedback": "دربارهٔ شخص دورتر سؤال Who is that? را بنویس."
+              },
+              {
+                "any": [
+                  "that is my",
+                  "that is a",
+                  "that's my",
+                  "that's a"
+                ],
+                "feedback": "شخص دورتر را معرفی کن."
+              },
+              {
+                "any": [
+                  "on the table",
+                  "near the door",
+                  "in the room",
+                  "under the table",
+                  "next to the door",
+                  "on my desk"
+                ],
+                "feedback": "از یک مکان آشنا از درس چهارم در معرفی استفاده کن."
+              }
+            ],
+            "success": "چهار جملهٔ واقعی برای سؤال و پاسخ دربارهٔ یک شیء و یک شخص تولید کردی."
+          }
+        },
+        {
+          "id": "a1-7-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "دوباره همان سایه‌خوانی",
+          "description": "جمله‌های ابتدای درس را دوباره بدون آزمون معنی تکرار کن.",
+          "sourceActivityId": "a1-7-shadowing"
+        }
+      ]
+    }
+  ]
+}
