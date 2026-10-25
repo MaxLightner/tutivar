@@ -1,6 +1,6 @@
 {
   "id": "A1-8",
-  "revision": 1,
+  "revision": 2,
   "status": "draft",
   "title": "اتاق‌های خانه",
   "archetype": "home-rooms",
@@ -47,7 +47,7 @@
     {
       "id": "foundation",
       "label": "از کلمه تا جمله",
-      "intro": "واژه‌های اتاق‌ها، سپس نقشهٔ خانه؛ اول با لمس نام اتاق، تصویر را تغییر بده، سپس در مورد محل افراد سؤال بساز.",
+      "intro": "فقط اتاق‌ها و مکان‌های لازم برای معرفی یک خانه را یاد بگیر؛ نام فضاهای کم‌کاربردتر اختیاری‌اند. با لمس خود نام اتاق، نقشهٔ خانه هم تغییر می‌کند.",
       "masteryActivityIds": [
         "rooms-construction"
       ],
@@ -76,9 +76,9 @@
           "id": "rooms-vocabulary",
           "type": "vocabulary",
           "phase": "words",
-          "title": "فقط واژگان تازهٔ فضاهای خانه",
+          "title": "اتاق‌های اصلی خانه و واژه‌های لازم برای گفتن مکان",
           "batchSize": 5,
-          "deckRevision": 1,
+          "deckRevision": 2,
           "items": [
             {
               "en": "home",
@@ -193,42 +193,17 @@
             {
               "en": "basement",
               "fa": "زیرزمین",
-              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
-              "examples": [
-                "The basement is downstairs.",
-                "The box is in the basement.",
-                "Is the basement under the house?"
-              ]
+              "role": "supplementary"
             },
             {
               "en": "attic",
               "fa": "اتاق زیرشیروانی",
-              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
-              "examples": [
-                "The attic is upstairs.",
-                "The box is in the attic.",
-                "Where is the attic?"
-              ]
+              "role": "supplementary"
             },
             {
               "en": "entrance",
               "fa": "ورودی",
-              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
-              "examples": [
-                "The entrance is near the hallway.",
-                "He is at the entrance.",
-                "Where is the entrance?"
-              ]
-            },
-            {
-              "en": "roof",
-              "fa": "بام / سقف بیرونی",
-              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
-              "examples": [
-                "The roof is above the rooms.",
-                "Look at the roof.",
-                "The house has a roof."
-              ]
+              "role": "supplementary"
             },
             {
               "en": "apartment",
@@ -243,22 +218,12 @@
             {
               "en": "yard",
               "fa": "حیاط",
-              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
-              "examples": [
-                "The cat is in the yard.",
-                "The yard is next to the house.",
-                "My brother is in the yard."
-              ]
+              "role": "supplementary"
             },
             {
               "en": "laundry",
               "fa": "رختشویی / لباس‌شویی",
-              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
-              "examples": [
-                "The laundry is downstairs.",
-                "Where is the laundry?",
-                "The laundry is in the basement."
-              ]
+              "role": "supplementary"
             },
             {
               "en": "porch",
@@ -268,21 +233,6 @@
             {
               "en": "patio",
               "fa": "حیاط خلوت",
-              "role": "supplementary"
-            },
-            {
-              "en": "pantry",
-              "fa": "انباری مواد غذایی",
-              "role": "supplementary"
-            },
-            {
-              "en": "corridor",
-              "fa": "راهروی بلند",
-              "role": "supplementary"
-            },
-            {
-              "en": "closet",
-              "fa": "کمد دیواری",
               "role": "supplementary"
             }
           ]
@@ -715,7 +665,10 @@
           "title": "محل یکی از اعضای خانه را بپرس",
           "description": "نام شخص را در سؤال لمس کن؛ بعد در جملهٔ مرحلهٔ قبل محلش را تغییر بده.",
           "sourceActivityId": "rooms-composer",
-          "patternId": "where-person"
+          "patternId": "where-person",
+          "scene": {
+            "type": "none"
+          }
         },
         {
           "id": "rooms-puzzle",
@@ -1336,7 +1289,7 @@
           "id": "rooms-guided",
           "type": "guided-dialogue",
           "phase": "guided",
-          "practiceRevision": 1,
+          "practiceRevision": 2,
           "title": "مکالمهٔ چندنوبتی در خانه",
           "description": "نام نفر را عوض کن، اتاق مناسب انتخاب کن و جمله را خودت تولید کن.",
           "completion": "محل افراد مختلف را پرسیدی و پاسخ دادی.",
@@ -1423,6 +1376,30 @@
                   }
                 ],
                 "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Are you at home?",
+              "task": "بگو بله، من در خانه هستم.",
+              "hint": "Yes, I am at home.",
+              "example": "Yes, I am at home.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "at home"
+                    ],
+                    "feedback": "در خانه را با at home بگو."
+                  },
+                  {
+                    "any": [
+                      "yes"
+                    ],
+                    "feedback": "به سؤال بله/خیر جواب مثبت بده."
+                  }
+                ],
+                "success": "عبارت at home را در گفت‌وگوی طبیعی استفاده کردی."
               }
             }
           ]
