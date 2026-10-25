@@ -527,7 +527,7 @@ test('each dialogue timeline renders only two consecutive spoken lines and can s
 test('first lesson retrieves morning greetings before the dialogue half', () => {
   const lesson = load('lessons/a1-1.json');
   const activity = lesson.sections[0].activities.find((entry) => entry.id === 'hello-intro-check');
-  assert.equal(activity.tasks.length, 2);
+  assert.equal(activity.tasks.length, 3);
   assert.equal(evaluateResponse(activity.tasks[0].assessment, 'Good morning! How are you?').ok, true);
   assert.equal(evaluateResponse(activity.tasks[0].assessment, 'Hello! How are you?').ok, false);
   assert.equal(evaluateResponse(activity.tasks[0].assessment, 'Good morning!').ok, false);
@@ -961,7 +961,7 @@ test('A1-6 completes two-digit numbers before teaching age, without retesting na
   assert.ok(free.prompt.includes('ساختگی'));
   assert.ok(free.prompt.includes('عدد دورقمی'));
   const arbitraryAge='twenty-seven, forty-three, sixty-eight\nHow old are you?\nI am twenty-seven years old.\nThis is my brother. He is thirty-five years old.';
-  assert.equal(evaluateResponse(arbitraryAge,free.assessment).passed,true,'personalized age is accepted');
+  assert.equal(evaluateResponse(free.assessment,arbitraryAge).ok,true,'personalized age is accepted');
   assert.deepEqual(auditLesson(lesson).errors,[]);
   assert.match(readFileSync(join(projectRoot,'apps/learner-web/assets/scene-a1-6.svg'),'utf8'),/Sara Rahimi/);
 });
