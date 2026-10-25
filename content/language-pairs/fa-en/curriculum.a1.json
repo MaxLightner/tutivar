@@ -11,8 +11,8 @@
       "chapters": [
         {
           "id": "a1-1-1",
-          "title": "آشنایی و معرفی",
-          "description": "از سلام تا اولین گفت‌وگوی واقعی",
+          "title": "شناخت خود و اطراف",
+          "description": "از معرفی و خانواده تا شمارش، مالکیت، مکان، توصیف ظاهر و اطلاعات شخصی",
           "lessons": [
             {
               "id": "A1-1",
@@ -38,7 +38,7 @@
               "subtitle": "شمارش تا ۱۲، جمع و تعداد اعضای خانواده",
               "icon": "numbers",
               "feature": "عدد و خانواده",
-              "file": "lessons/a1-3-v2.json",
+              "file": "lessons/a1-3-v3.json",
               "status": "sample"
             },
             {
@@ -47,7 +47,7 @@
               "icon": "objects",
               "subtitle": "داشتن و نداشتن؛ مال من و مال تو",
               "feature": "مالکیت و داشتن",
-              "file": "lessons/a1-4-v2.json",
+              "file": "lessons/a1-4-v3.json",
               "status": "sample"
             },
             {
@@ -56,7 +56,7 @@
               "subtitle": "روی، زیر، داخل و کنار",
               "icon": "pin",
               "feature": "مکان در جمله",
-              "file": "lessons/a1-5-v2.json",
+              "file": "lessons/a1-5-v3.json",
               "status": "sample"
             },
             {
@@ -65,12 +65,24 @@
               "subtitle": "رنگ، اندازه، شکل و جنس",
               "icon": "sparkles",
               "feature": "ساخت توصیف زنده",
-              "file": "lessons/a1-6-v3.json",
+              "file": "lessons/a1-6-v4.json",
               "status": "sample"
             },
+            [
+              "توصیف ظاهر افراد",
+              "person"
+            ],
+            [
+              "تبادل اطلاعات شخصی",
+              "message"
+            ],
+            [
+              "بیان وضعیت و احساسات روزمره",
+              "heart"
+            ],
             {
               "id": "A1-W1",
-              "title": "کارگاه آشنایی",
+              "title": "کارگاه شناخت خود و اطراف",
               "icon": "trophy",
               "kind": "workshop"
             }
@@ -79,20 +91,8 @@
         {
           "id": "a1-1-2",
           "title": "خانه و زندگی روزمره",
-          "description": "خانه، اتاق و چیزهایی که هر روز به کار می‌بری",
+          "description": "آغاز خانه و زندگی روزمره پس از کارگاه نخست؛ سرفصل‌های تکراریِ رنگ، مکان و مالکیت از فهرست پیشنهادی کنار گذاشته شدند.",
           "lessons": [
-            [
-              "رنگ‌ها و شکل‌ها",
-              "sparkles"
-            ],
-            [
-              "این‌جا و آن‌جا",
-              "pin"
-            ],
-            [
-              "روی میز، زیر صندلی",
-              "layers"
-            ],
             [
               "وسایل من و خانواده‌ام",
               "family"

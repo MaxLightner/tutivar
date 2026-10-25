@@ -649,7 +649,10 @@ function countObjectSvg(shape, e) {
     child: '<circle cx="34" cy="17" r="10" fill="#e7b78c"/><path d="M18 58L23 31H45L50 58Z" fill="#7fa78e" stroke="#416f5b" stroke-width="3"/><path d="M27 58V64M41 58V64" stroke="#537c69" stroke-width="5"/>',
     person: '<circle cx="34" cy="15" r="10" fill="#e7b78c"/><path d="M16 59L22 29H46L52 59Z" fill="#7fa2bd" stroke="#426480" stroke-width="3"/><path d="M27 59V64M41 59V64" stroke="#426480" stroke-width="5"/>',
     sheep: '<ellipse cx="32" cy="38" rx="25" ry="19" fill="#f2eee4" stroke="#acb4ae" stroke-width="3"/><circle cx="52" cy="30" r="12" fill="#a4adb0"/><circle cx="55" cy="26" r="2.5" fill="#2b4147"/><path d="M17 53V63M39 53V63" stroke="#87918f" stroke-width="5"/>',
-    orange: '<circle cx="34" cy="35" r="23" fill="#eda45a" stroke="#b56e31" stroke-width="3"/><path d="M34 12Q43 2 51 12Q43 17 34 12Z" fill="#659268"/>'
+    orange: '<circle cx="34" cy="35" r="23" fill="#eda45a" stroke="#b56e31" stroke-width="3"/><path d="M34 12Q43 2 51 12Q43 17 34 12Z" fill="#659268"/>',
+    brother: '<circle cx="34" cy="16" r="11" fill="#dbaf87"/><path d="M18 59L21 31H47L50 59Z" fill="#6c92c2" stroke="#355c90" stroke-width="3"/><path d="M26 59V65M42 59V65" stroke="#355c90" stroke-width="5"/>',
+    sister: '<circle cx="34" cy="16" r="11" fill="#dbaf87"/><path d="M18 59L22 31H46L50 59Z" fill="#cc7798" stroke="#98516e" stroke-width="3"/><path d="M28 59V65M40 59V65" stroke="#98516e" stroke-width="5"/>',
+    phone: '<rect x="19" y="3" width="31" height="60" rx="6" fill="#283a50" stroke="#172334" stroke-width="3"/><rect x="23" y="10" width="23" height="42" fill="#96c7e5"/><circle cx="34" cy="58" r="3" fill="#b4c2cd"/>'
   };
   return '<svg viewBox="0 0 68 68" class="count-object-picture" aria-hidden="true">'+(symbols[shape]||symbols.book)+'</svg>';
 }
@@ -694,6 +697,51 @@ function countMathLab(a,c) {
     '<div>'+emoji(minus?1:2)+'<span>'+(minus?'one ':'two ')+resultNoun+'</span></div></div>'+
     '<div class="count-math-caption" dir="ltr" lang="en">'+c.e(sentence)+soundButton(sentence,c.e,c.i)+'</div>'+
     '<p class="live-hint">با لمس اسم، شیء تغییر می‌کند؛ با لمس + یا −، جمع و تفریق جابه‌جا می‌شوند.</p>',a,c.index,c.e,'module-count-math-lab');
+}
+
+// One cumulative visual contract: A1-3 counts tangible objects, A1-5 combines
+// those counts with locations. Every selectable token changes the scene too.
+function countSceneLab(a,c){
+  const key=`${c.lessonId}:${a.id}`;
+  const state=c.progress.countSceneStates?.[key]||{};
+  const token=(action,label,value)=>`<button type="button" class="tap-word" data-count-scene-key="${c.e(key)}" data-count-scene-action="${action}"${value!==undefined?` data-count-scene-value="${c.e(String(value))}"`:''}>${c.e(label)}</button>`;
+  const glyphs=(shape,count)=>Array.from({length:Math.min(12,count)},()=>countObjectSvg(shape,c.e)).join('');
+  if(a.mode==='challenge'){
+    const roundIndex=Math.max(0,Number(state.round)||0);
+    if(roundIndex>=a.rounds.length)return wrapper(`<div class="count-scene-finish" role="status">۱۲، ۹ یا ۴ فرقی ندارد؛ اکنون می‌توانی با نگاه‌کردن به شکل‌ها آن‌ها را بشماری. همهٔ ${a.rounds.length} مأموریت را انجام دادی.</div>`,a,c.index,c.e,'module-count-scene');
+    const round=a.rounds[roundIndex],answer=Number(state.answer);
+    const answered=Number.isInteger(state.answer),correct=answered&&answer===round.count;
+    const choices=[...new Set([round.count,Math.max(1,round.count-2),Math.min(12,round.count+1),Math.min(12,round.count+3)])].sort((x,y)=>x-y);
+    const question=`How many ${round.plural} are there?`;
+    return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><p class="count-round-progress">شمارش ${roundIndex+1} از ${a.rounds.length}</p><div class="tap-scene"><div class="count-scene-items" role="img" aria-label="${c.e(String(round.count)+' '+round.fa)}">${glyphs(round.shape,round.count)}</div><p class="tap-live-sentence" lang="en" dir="ltr">${c.e(question)}${soundButton(question,c.e,c.i)}</p><div class="count-answer-row" role="group" aria-label="تعداد شکل‌ها">${choices.map(value=>`<button type="button" class="count-answer ${answered&&answer===value?(correct?'correct':'incorrect'):''}" data-count-scene-key="${c.e(key)}" data-count-scene-action="answer" data-count-scene-value="${value}">${value}</button>`).join('')}</div>${answered?`<p class="count-scene-feedback" role="status">${correct?'درست شمردی! '+round.count+' '+round.plural+'.':'دوباره شکل‌ها را یک‌به‌یک بشمار.'}</p>`:''}${correct?`<button type="button" class="count-scene-next" data-count-scene-key="${c.e(key)}" data-count-scene-action="next">${roundIndex===a.rounds.length-1?'پایان تمرین':'شمارش بعدی'}</button>`:''}</div>`,a,c.index,c.e,'module-count-scene');
+  }
+  const objects=a.objects||[],objectIndex=(Number(state.object)||0)%objects.length,object=objects[objectIndex];
+  if(!object)return wrapper('',a,c.index,c.e);
+  const count=Number.isInteger(state.count)?Math.max(1,Math.min(12,state.count)):3;
+  const numberWords=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve'];
+  const plural=count>1,noun=plural?object.plural:object.en;
+  const countRail=`<div class="count-number-rail" role="group" aria-label="تعداد را انتخاب کن">${Array.from({length:12},(_,i)=>i+1).map(value=>`<button type="button" class="${value===count?'active':''}" aria-pressed="${value===count}" data-count-scene-key="${c.e(key)}" data-count-scene-action="count" data-count-scene-value="${value}">${value}</button>`).join('')}</div>`;
+  const relation=a.mode==='location'?object.relations?.[(Number(state.relation)||0)%object.relations.length]:null;
+  const place=relation?`${relation.preposition} the ${relation.place}`:'';
+  const spoken=relation?`There ${plural?'are':'is'} ${numberWords[count]} ${noun} ${place}.`:`There ${plural?'are':'is'} ${numberWords[count]} ${noun}.`;
+  const locationMarkup=relation?`${token('relation',relation.preposition+' the '+relation.place)}`:'';
+  const live=`There ${plural?'are':'is'} ${token('count',numberWords[count],count===12?1:count+1)} ${token('object',noun)}${locationMarkup?' '+locationMarkup:''}.`;
+  const surface=a.mode==='location'?relation?.scene||'room':'';
+  const backdrop={table:'<svg viewBox="0 0 360 190" aria-hidden="true"><path d="M30 105H330M57 105V182M302 105V182" stroke="#a3754d" stroke-width="14" stroke-linecap="round"/><path d="M23 97H337" stroke="#bd956e" stroke-width="12" stroke-linecap="round"/></svg>',room:'<svg viewBox="0 0 360 190" aria-hidden="true"><path d="M30 15H330V170H30Z" fill="#e9f1f5" stroke="#7d9ca7" stroke-width="4"/><path d="M30 145L120 120H330M120 120V15" stroke="#b2c7cc" stroke-width="3"/></svg>',box:'<svg viewBox="0 0 360 190" aria-hidden="true"><path d="M60 55H300V175H60Z" fill="#ebd1ad" stroke="#a47f56" stroke-width="7"/><path d="M60 55L105 18H345L300 55" fill="#dbb98b" stroke="#a47f56" stroke-width="6"/></svg>',door:'<svg viewBox="0 0 360 190" aria-hidden="true"><rect x="40" y="13" width="115" height="173" rx="3" fill="#d7b184" stroke="#8c704f" stroke-width="8"/><circle cx="134" cy="106" r="7" fill="#785236"/></svg>'}[surface==='under-table'?'table':surface]||'';
+  const picture=`<div class="count-scene-illustration ${c.e('count-location-'+surface)}" role="img" aria-label="${c.e(String(count)+' '+object.fa+(relation?' '+relation.fa:''))}">${backdrop}<div class="count-scene-items">${glyphs(object.shape||object.en,count)}</div></div>`;
+  return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><div class="tap-scene">${picture}<p class="tap-live-sentence" lang="en" dir="ltr">${live}${soundButton(spoken,c.e,c.i)}</p><p class="tap-live-translation">${c.e(count+' '+object.fa+(relation?' '+relation.fa:''))}</p>${countRail}</div><p class="live-hint">تعداد را از ۱ تا ۱۲ انتخاب کن. برای عوض‌کردن ${a.mode==='location'?'اسم یا محل':'اسم'}، روی کلمهٔ سبز در جمله بزن؛ تصویر هم‌زمان تغییر می‌کند.</p>`,a,c.index,c.e,'module-count-scene');
+}
+
+function featureHunt(a,c){
+  const key=`${c.lessonId}:${a.id}`,state=c.progress.featureHuntStates?.[key]||{};
+  const index=Math.max(0,Number(state.round)||0);
+  if(index>=a.rounds.length)return wrapper(`<p class="count-scene-finish" role="status">هر ${a.rounds.length} شیء را از روی توصیف پیدا کردی؛ حالا خودت می‌توانی یک شیء را با رنگ، اندازه و اسم توصیف کنی.</p>`,a,c.index,c.e,'module-feature-hunt');
+  const round=a.rounds[index],answer=Number(state.answer),answered=Number.isInteger(state.answer),correct=answered&&answer===round.correct;
+  const drawings=round.choices.map((choice,i)=>{
+    const object=`<span class="feature-hunt-object feature-hunt-${c.e(choice.object)} ${choice.size==='small'?'is-small':''}" style="--hunt-color:${c.e(choice.hex)}" aria-hidden="true"></span>`;
+    return `<button type="button" class="feature-hunt-choice ${answered&&answer===i?(correct?'correct':'incorrect'):''}" data-feature-hunt-key="${c.e(key)}" data-feature-hunt-action="choose" data-feature-hunt-choice="${i}" aria-label="گزینهٔ ${i+1}: ${c.e(choice.description)}">${Array.from({length:choice.count||1},()=>object).join('')}<span class="feature-hunt-choice-number">${i+1}</span></button>`;
+  }).join('');
+  return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><p class="count-round-progress">پیدا کردن شیء ${index+1} از ${a.rounds.length}</p><div class="tap-scene"><p class="tap-live-sentence" dir="ltr" lang="en">${c.e(round.prompt)}${soundButton(round.prompt,c.e,c.i)}</p><div class="feature-hunt-grid" role="group" aria-label="کدام تصویر با توصیف هماهنگ است؟">${drawings}</div>${answered?`<p class="count-scene-feedback" role="status">${correct?'درست پیدا کردی.':'این یکی با همهٔ کلمات دستور هماهنگ نیست؛ اندازه، رنگ و تعداد را دوباره نگاه کن.'}</p>`:''}${correct?`<button class="count-scene-next" type="button" data-feature-hunt-key="${c.e(key)}" data-feature-hunt-action="next">${index===a.rounds.length-1?'پایان مأموریت':'مأموریت بعدی'}</button>`:''}</div>`,a,c.index,c.e,'module-feature-hunt');
 }
 
 function tapAttributesLab(a,c) {
@@ -763,14 +811,19 @@ function tapOwnershipLab(a,c){
   const plural=amount.number>1,word=plural?noun.plural:noun.en;
   const number=plural?amount.en:'a';
   const possessive=plural?`These are my ${word}.`:`This is my ${word}.`;
-  const verb=who.id==='she'?'has':'have',negation=who.id==='she'?"doesn't have":"don't have";
-  const query=who.id==='she'?'Does she have':who.id==='you'?'Do you have':'Do I have';
+  const thirdPerson=who.id==='she'||who.id==='he';
+  const verb=thirdPerson?'has':'have',negation=thirdPerson?"doesn't have":"don't have";
+  const query=who.id==='she'?'Does she have':who.id==='he'?'Does he have':who.id==='you'?'Do you have':'Do I have';
   const action=form.id==='have'?`${who.en} ${verb}`:form.id==='not-have'?`${who.en} ${negation}`:query;
   const sentence=form.id==='belongs'?possessive:`${action} ${number} ${word}${form.id==='question'?'?':'.'}`;
   const tok=(field,value)=>`<button type="button" class="tap-word" data-attribute-key="${c.e(key)}" data-attribute-field="${field}">${c.e(value)}</button>`;
   const sentenceMarkup=form.id==='belongs'?`${tok('form',plural?'These are my':'This is my')} ${tok('noun',word)}.`:form.id==='question'?`${tok('form',query)} ${tok('count',number)} ${tok('noun',word)}?`:`${tok('subject',who.en)} ${tok('form',action.replace(who.en+' ',''))} ${tok('count',number)} ${tok('noun',word)}.`;
-  const translation=form.id==='belongs'?`${noun.fa} ${plural?'ها':' '} مال من ${plural?'هستند':'است'}.`:`${who.fa} ${amount.fa} ${noun.fa} ${form.id==='not-have'?'ندارد':form.id==='question'?'دارد؟':'دارد'}`;
-  return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><div class="tap-scene"><p class="tap-live-sentence" lang="en" dir="ltr">${sentenceMarkup}${soundButton(sentence,c.e,c.i)}</p><p class="tap-live-translation">${c.e(translation)}</p></div><p class="live-hint">روی کلمات جمله بزن. مقایسه کن «This is my bag» با «I have a bag»؛ و سپس عدد و نام را به خواهر و برادر تغییر بده.</p>`,a,c.index,c.e,'module-tap-attributes');
+  const positive=who.id==='i'?'دارم':who.id==='you'?'داری':'دارد';
+  const negative=who.id==='i'?'ندارم':who.id==='you'?'نداری':'ندارد';
+  const translation=form.id==='belongs'?`${noun.fa} ${plural?'ها':' '} مال من ${plural?'هستند':'است'}.`:`${who.fa} ${amount.fa} ${noun.fa} ${form.id==='not-have'?negative:form.id==='question'?positive+'؟':positive}`;
+  const pictures=Array.from({length:amount.number},()=>countObjectSvg(noun.shape||noun.id,c.e)).join('');
+  const numberRail=`<div class="count-number-rail" role="group" aria-label="تعداد وسایل یا اعضای خانواده">${a.options.count.map((option,index)=>`<button type="button" aria-pressed="${option.number===amount.number}" class="${option.number===amount.number?'active':''}" data-attribute-key="${c.e(key)}" data-attribute-field="count" data-attribute-select-value="${index}">${option.number}</button>`).join('')}</div>`;
+  return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><div class="tap-scene"><div class="count-scene-items" role="img" aria-label="${c.e(amount.fa+' '+noun.fa)}">${pictures}</div><p class="tap-live-sentence" lang="en" dir="ltr">${sentenceMarkup}${soundButton(sentence,c.e,c.i)}</p><p class="tap-live-translation">${c.e(translation)}</p>${numberRail}</div><p class="live-hint">تعداد را از ۱ تا ۱۲ انتخاب کن. روی فاعل، فعل یا اسم در جمله بزن تا هم گفتار و هم تصویر تغییر کند؛ «This is my bag» را با «I have a bag» مقایسه کن.</p>`,a,c.index,c.e,'module-tap-attributes');
 }
 
 const renderers = {
@@ -781,7 +834,7 @@ const renderers = {
   'exchange-lab': exchangeLab, 'expression-study': expressionStudy, 'count-visual': countVisual, 'plural-pair-lab': pluralPairLab, 'count-math-lab': countMathLab,
   shadowing, 'shadowing-review': shadowing, 'picture-description': pictureDescription,
   'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer,
-  'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer, 'tap-attributes-lab': tapAttributesLab, 'tap-ownership-lab': tapOwnershipLab
+  'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer, 'tap-attributes-lab': tapAttributesLab, 'tap-ownership-lab': tapOwnershipLab, 'count-scene-lab':countSceneLab, 'feature-hunt':featureHunt
 };
 export function renderActivity(activity, context) {
   const renderer = renderers[activity.type];

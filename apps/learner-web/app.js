@@ -50,7 +50,7 @@ const ICONS = {
 const icon = (name, size = '') => `<span class="icon ${size}"><svg aria-hidden="true" viewBox="0 0 24 24">${ICONS[name] || ICONS.star}</svg></span>`;
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const en = (text) => `<span class="en" lang="en" dir="ltr">${escapeHtml(text)}</span>`;
-const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, sentenceComposers: {}, meaningChoices: {}, spatialChoices: {}, familyPeople: {}, agreementChoices: {}, pluralChoices: {}, mathChoices: {}, mathOps: {}, attributeChoices: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
+const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, sentenceComposers: {}, meaningChoices: {}, spatialChoices: {}, familyPeople: {}, agreementChoices: {}, pluralChoices: {}, mathChoices: {}, mathOps: {}, attributeChoices: {}, countSceneStates: {}, featureHuntStates: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
 function readProgress() { try { const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); const migrated = migrateLegacyProgress(saved); if(migrated!==saved)localStorage.setItem(STORAGE_KEY,JSON.stringify(migrated)); return { ...defaultProgress(), ...migrated, settings: { ...defaultProgress().settings, ...(migrated.settings || {}) } }; } catch { return defaultProgress(); } }
 const progress = readProgress();
 // Historical completion records predate skill evidence. Preserve them in storage,
@@ -487,7 +487,8 @@ function onClick(event) {
     if(!['tap-attributes-lab','tap-ownership-lab'].includes(activity?.type)||!activity.options?.[field]?.length)return;
     progress.attributeChoices ||= {};
     const values=progress.attributeChoices[key]||{};
-    let next=((Number(values[field])||0)+1)%activity.options[field].length;
+    let next=el.dataset.attributeSelectValue===undefined?((Number(values[field])||0)+1)%activity.options[field].length:Number(el.dataset.attributeSelectValue);
+    if(!Number.isInteger(next)||next<0||next>=activity.options[field].length)return;
     if(activity.mode==='progressive-features'&&['shape','material'].includes(field)){
       const object=activity.options.object?.[Number(values.object)||0];
       const allowed=new Set(object?.[field==='shape'?'shapes':'materials']||[]);
@@ -496,6 +497,53 @@ function onClick(event) {
     }
     progress.attributeChoices[key]={...values,[field]:next};
     persist(); updateInline(); return;
+  }
+  if (el.dataset.countSceneKey) {
+    const key=el.dataset.countSceneKey,activity=lessonActivity(key),action=el.dataset.countSceneAction;
+    if(activity?.type!=='count-scene-lab')return;
+    progress.countSceneStates ||= {};
+    const previous=progress.countSceneStates[key]||{};
+    const next={...previous};
+    if(activity.mode==='challenge') {
+      const round=activity.rounds?.[Number(previous.round)||0];
+      if(!round)return;
+      if(action==='answer'){
+        const answer=Number(el.dataset.countSceneValue);
+        if(!Number.isInteger(answer))return;
+        next.answer=answer;
+      } else if(action==='next'&&next.answer===round.count){
+        next.round=Math.min(activity.rounds.length,(Number(previous.round)||0)+1);delete next.answer;
+      } else return;
+    } else if(action==='count'){
+      const count=Number(el.dataset.countSceneValue);
+      if(!Number.isInteger(count)||count<1||count>12)return;
+      next.count=count;
+    } else if(action==='object'){
+      next.object=((Number(previous.object)||0)+1)%activity.objects.length;next.relation=0;
+    } else if(action==='relation'&&activity.mode==='location'){
+      const object=activity.objects[Number(previous.object)||0];
+      next.relation=((Number(previous.relation)||0)+1)%(object?.relations?.length||1);
+    } else return;
+    progress.countSceneStates[key]=next;
+    persist(); updateInline(); return;
+  }
+  if (el.dataset.featureHuntKey) {
+    const key=el.dataset.featureHuntKey,activity=lessonActivity(key),action=el.dataset.featureHuntAction;
+    if(activity?.type!=='feature-hunt')return;
+    progress.featureHuntStates ||= {};
+    const previous=progress.featureHuntStates[key]||{};
+    const round=activity.rounds?.[Number(previous.round)||0];
+    if(!round)return;
+    let next={...previous};
+    if(action==='choose'){
+      const answer=Number(el.dataset.featureHuntChoice);
+      if(!Number.isInteger(answer)||answer<0||answer>=round.choices.length)return;
+      next.answer=answer;
+    }else if(action==='next'&&Number(previous.answer)===round.correct){
+      next.round=Math.min(activity.rounds.length,(Number(previous.round)||0)+1);delete next.answer;
+    }else return;
+    progress.featureHuntStates[key]=next;
+    persist();updateInline();return;
   }
   if (el.dataset.countMathKey) {
     const key=el.dataset.countMathKey;

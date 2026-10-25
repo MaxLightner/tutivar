@@ -105,10 +105,42 @@
       }
     ],
     "replacements": {
-      "A1-3": "lessons/a1-3-v2.json",
-      "A1-4": "lessons/a1-4-v2.json",
-      "A1-5": "lessons/a1-5-v2.json",
-      "A1-6": "lessons/a1-6-v3.json"
+      "A1-3": "lessons/a1-3-v3.json",
+      "A1-4": "lessons/a1-4-v3.json",
+      "A1-5": "lessons/a1-5-v3.json",
+      "A1-6": "lessons/a1-6-v4.json"
+    }
+  },
+  "additiveEnhancement": {
+    "revision": "2026-10-25-a1-more-practice",
+    "reason": "Add independent 1–12 counting, full-number possession, counted location and visual attribute selection without removing any existing lesson activity or affecting saved completion.",
+    "priorActive": [
+      {
+        "id": "A1-3",
+        "file": "lessons/a1-3-v2.json",
+        "gitBlobSha": "c24e23bfdeec98910359b43b4fb25907421e02a0"
+      },
+      {
+        "id": "A1-4",
+        "file": "lessons/a1-4-v2.json",
+        "gitBlobSha": "cb49188fe3f2ad130c8d6bfd16b8fbd54fcc931a"
+      },
+      {
+        "id": "A1-5",
+        "file": "lessons/a1-5-v2.json",
+        "gitBlobSha": "01c2f311445e7e101b907b6011567107fefa6f0d"
+      },
+      {
+        "id": "A1-6",
+        "file": "lessons/a1-6-v3.json",
+        "gitBlobSha": "c4545f6d8f23580b211a8646cb1ff64a73c24447"
+      }
+    ],
+    "replacement": {
+      "A1-3": "lessons/a1-3-v3.json",
+      "A1-4": "lessons/a1-4-v3.json",
+      "A1-5": "lessons/a1-5-v3.json",
+      "A1-6": "lessons/a1-6-v4.json"
     }
   }
 }

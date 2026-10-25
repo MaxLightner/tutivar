@@ -267,7 +267,7 @@ test('puzzle grading ignores capitalization and terminal punctuation, while givi
 test('archived location lesson has intact two-stage activities after reordering', () => {
   const lesson=load('lessons/a1-4.json');
   const catalog=lessons.find(entry=>entry.id===lesson.id);
-  assert.equal(catalog.file,'lessons/a1-4-v2.json');
+  assert.equal(catalog.file,'lessons/a1-4-v3.json');
   assert.equal(catalog.status,'sample');
   assert.deepEqual(validateLessonFlow(lesson),[]);
   assert.equal(lesson.sections.length,2);
