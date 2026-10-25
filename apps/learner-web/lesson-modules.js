@@ -476,11 +476,31 @@ function pluralPairLab(a,c) {
   const item=a.items[selected];
   if(!item)return wrapper('',a,c.index,c.e);
   const pictures=(count)=>Array.from({length:count},()=>countObjectSvg(item.shape,c.e)).join('');
+  const noun=(form)=>'<button type="button" class="composer-token" data-plural-lab-key="'+c.e(key)+'" aria-label="اسم را عوض کن">'+c.e(item[form])+'</button>';
   return wrapper('<p class="module-description">'+c.e(a.description||'')+'</p>'+
-    '<div class="plural-contrast"><div class="plural-contrast-cell"><div class="count-picture-row">'+pictures(1)+'</div><strong lang="en" dir="ltr">one '+c.e(item.singular)+'</strong></div>'+
-    '<div class="plural-contrast-cell"><div class="count-picture-row">'+pictures(2)+'</div><strong lang="en" dir="ltr">two '+c.e(item.plural)+'</strong></div></div>'+
-    '<p class="plural-contrast-note">'+c.e(item.note||'')+'</p><div class="plural-contrast-control">'+
-    '<span>'+c.e(selected+1)+' / '+c.e(a.items.length)+'</span><button class="outline-btn" type="button" data-plural-lab-key="'+c.e(key)+'">اسم بعدی؛ عدد ثابت <span aria-hidden="true">←</span></button></div>',a,c.index,c.e,'module-plural-pair-lab');
+    '<div class="plural-contrast"><div class="plural-contrast-cell"><div class="count-picture-row">'+pictures(1)+'</div><div class="live-count-phrase" lang="en" dir="ltr">one '+noun('singular')+'</div></div>'+
+    '<div class="plural-contrast-cell"><div class="count-picture-row">'+pictures(2)+'</div><div class="live-count-phrase" lang="en" dir="ltr">two '+noun('plural')+'</div></div></div>'+
+    '<p class="plural-contrast-note">'+c.e(item.note||'')+'</p><p class="live-hint">روی خود اسم در یکی از جمله‌ها بزن تا هر دو تصویر و شکل جمع تغییر کند.</p>',a,c.index,c.e,'module-plural-pair-lab');
+}
+function countMathLab(a,c) {
+  const key=c.lessonId+':'+a.id;
+  const choices=a.items||[];
+  const idx=(Number(c.progress.mathChoices?.[key])||0)%Math.max(1,choices.length);
+  const item=choices[idx];
+  if(!item)return wrapper('',a,c.index,c.e);
+  const minus=Boolean(c.progress.mathOps?.[key]);
+  const singular=c.e(item.singular),plural=c.e(item.plural);
+  const emoji=(num)=>'<div class="count-picture-row count-math-pictures">'+Array.from({length:num},()=>countObjectSvg(item.shape,c.e)).join('')+'</div>';
+  const changeNoun='<button type="button" class="composer-token" data-count-math-key="'+c.e(key)+'" data-math-action="noun" aria-label="تغییر شیء">'+(minus?plural:singular)+'</button>';
+  const resultNoun='<button type="button" class="composer-token" data-count-math-key="'+c.e(key)+'" data-math-action="noun" aria-label="تغییر شیء">'+(minus?singular:plural)+'</button>';
+  const op='<button type="button" class="composer-token math-operator" data-count-math-key="'+c.e(key)+'" data-math-action="operator" aria-label="تغییر جمع و تفریق">'+(minus?'−':'+')+'</button>';
+  const sentence=minus?'Two '+item.plural+' minus one '+item.singular+' equals one '+item.singular+'.':'One '+item.singular+' plus one '+item.singular+' equals two '+item.plural+'.';
+  return wrapper('<p class="module-description">'+c.e(a.description||'')+'</p>'+
+    '<div class="count-math-equation" lang="en" dir="ltr"><div>'+emoji(minus?2:1)+'<span>'+(minus?'two ':'one ')+changeNoun+'</span></div>'+
+    op+'<div>'+emoji(1)+'<span>one '+singular+'</span></div><strong>=</strong>'+
+    '<div>'+emoji(minus?1:2)+'<span>'+(minus?'one ':'two ')+resultNoun+'</span></div></div>'+
+    '<div class="count-math-caption" dir="ltr" lang="en">'+c.e(sentence)+soundButton(sentence,c.e,c.i)+'</div>'+
+    '<p class="live-hint">با لمس اسم، شیء تغییر می‌کند؛ با لمس + یا −، جمع و تفریق جابه‌جا می‌شوند.</p>',a,c.index,c.e,'module-count-math-lab');
 }
 
 const renderers = {
@@ -488,7 +508,7 @@ const renderers = {
   'quiz-set': quizSet, dialogue, roleplay, 'free-write': freeWrite,
   'phrase-composer': phraseComposer, 'pattern-lab': patternLab, 'sentence-lab': sentenceLab,
   'guided-dialogue': guidedDialogue, 'response-practice': responsePractice,
-  'exchange-lab': exchangeLab, 'expression-study': expressionStudy, 'count-visual': countVisual, 'plural-pair-lab': pluralPairLab,
+  'exchange-lab': exchangeLab, 'expression-study': expressionStudy, 'count-visual': countVisual, 'plural-pair-lab': pluralPairLab, 'count-math-lab': countMathLab,
   shadowing, 'shadowing-review': shadowing, 'picture-description': pictureDescription,
   'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer,
   'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer
