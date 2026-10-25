@@ -130,6 +130,13 @@ function perspectiveGlyph(word, person=false) {
     picture:'<rect x="10" y="11" width="80" height="79" rx="6" fill="#dfb589" stroke="#9c764b" stroke-width="6"/><rect x="21" y="22" width="58" height="57" fill="#b3d6d5"/><circle cx="62" cy="39" r="9" fill="#f4d18a"/><path d="M21 74L44 49L55 62L70 43L80 58V79H21Z" fill="#789d85"/>',
     bird:'<path d="M12 62Q23 32 49 40Q78 35 83 64Q68 88 44 81Q20 86 12 62Z" fill="#8dafbf" stroke="#537a90" stroke-width="4"/><path d="M43 58Q35 29 75 19Q89 46 63 62Z" fill="#b6d0d8"/><circle cx="25" cy="56" r="4" fill="#304752"/><path d="M12 62L0 69L12 74M72 79L88 91" fill="#e4b168" stroke="#8f6b45" stroke-width="3"/>',
     rabbit:'<path d="M27 39L19 3Q28 -2 39 5L46 36M60 37L67 3Q83 0 82 11L74 48" fill="#d5b4a5" stroke="#906f66" stroke-width="5"/><ellipse cx="50" cy="66" rx="35" ry="29" fill="#e6d3c4" stroke="#9c7c70" stroke-width="5"/><circle cx="38" cy="63" r="5" fill="#4d514c"/><circle cx="62" cy="63" r="5" fill="#4d514c"/><path d="M46 77L50 81L54 77" fill="#c99496" stroke="#9c7c70" stroke-width="2"/>',
+    keys:'<circle cx="27" cy="27" r="20" fill="none" stroke="#bf9a64" stroke-width="8"/><path d="M41 41L85 85M71 71L81 61M81 81L91 71" stroke="#bf9a64" stroke-width="9" stroke-linecap="round"/>',
+    notebook:'<rect x="16" y="10" width="74" height="81" rx="5" fill="#a3bacf" stroke="#607e9a" stroke-width="5"/><path d="M24 18V83M38 33H80M38 47H80M38 61H80" stroke="#fff" stroke-width="4"/>',
+    laptop:'<rect x="11" y="9" width="78" height="61" rx="5" fill="#536e83" stroke="#2e4d61" stroke-width="4"/><rect x="18" y="17" width="64" height="45" fill="#a8d5d6"/><path d="M3 77H97L88 90H12Z" fill="#91a9ad" stroke="#526d7b" stroke-width="4"/>',
+    bottle:'<path d="M38 8H62V24L72 39V89Q51 103 28 89V39L38 24Z" fill="#a4c5cb" stroke="#56828f" stroke-width="4"/><path d="M39 14H61M29 63H71" stroke="#d6eff1" stroke-width="5"/>',
+    toy:'<circle cx="51" cy="26" r="22" fill="#d8b18e" stroke="#9b7863" stroke-width="4"/><ellipse cx="31" cy="16" rx="10" ry="14" fill="#d4a17b"/><ellipse cx="70" cy="16" rx="10" ry="14" fill="#d4a17b"/><ellipse cx="51" cy="71" rx="30" ry="25" fill="#d8b18e" stroke="#9b7863" stroke-width="4"/><circle cx="44" cy="28" r="3" fill="#53423b"/><circle cx="58" cy="28" r="3" fill="#53423b"/>',
+    glasses:'<circle cx="28" cy="53" r="22" fill="none" stroke="#596d74" stroke-width="6"/><circle cx="74" cy="53" r="22" fill="none" stroke="#596d74" stroke-width="6"/><path d="M50 47Q54 40 56 47M6 43L0 39M96 43L100 39" stroke="#596d74" stroke-width="6" fill="none"/>',
+    headphones:'<path d="M17 59V40Q17 10 50 10Q83 10 83 40V59" fill="none" stroke="#527b91" stroke-width="12"/><rect x="11" y="49" width="20" height="35" rx="8" fill="#86aabd"/><rect x="70" y="49" width="20" height="35" rx="8" fill="#86aabd"/>',
     apple:'<path d="M49 27Q19 10 13 37Q8 71 31 88Q43 91 49 83Q59 93 70 87Q93 71 88 37Q81 11 50 27Z" fill="#d87962" stroke="#994c43" stroke-width="4"/><path d="M49 27Q47 13 57 7M55 13Q76 3 83 16Q70 24 55 13Z" fill="#62916d" stroke="#497e58" stroke-width="4"/>',
     ball:'<circle cx="50" cy="50" r="40" fill="#d9a06c" stroke="#a76f48" stroke-width="5"/><path d="M18 24Q69 41 81 78M20 77Q45 31 79 23" fill="none" stroke="#f5d7a9" stroke-width="4"/>',
     lamp:'<path d="M50 60V85M27 88H74M27 48L39 11H62L75 48Z" fill="#d1b681" stroke="#8e7853" stroke-width="5"/><circle cx="51" cy="54" r="9" fill="#e8d19c"/>',
@@ -190,9 +197,73 @@ function roomMapScene(source, view, resolved, key, e) {
      '<svg class="perspective-picture room-map-picture" viewBox="0 0 680 472" role="img" aria-label="نقشهٔ خانه، اتاق انتخاب‌شده: '+e(selected)+'"><rect width="680" height="472" rx="20" fill="#e9f2ea"/>'+tiles+'</svg>'+
      '<figcaption>روی نام اتاق در جمله بزن؛ همان اتاق روی نقشه روشن می‌شود.</figcaption></figure>';
 }
+
+/** A1 house facts: the shared selected word slots determine the picture,
+ * numeric tokens, highlighted floor or apartment area, not a separate button. */
+function houseFactsScene(source,view,resolved,key,e){
+ const scene=view.scene||source.scene,focus=scene.focus||'count';
+ const s=resolved.state.slots||{};
+ const quantity={one:1,two:2,three:3,four:4}[s.amount]||2;
+ const thing=s.feature||'bedroom';
+ const level=s.level||'second';
+ const area=s.area||'eighty';
+ const title=focus==='count'?'COUNT: '+quantity+' '+(quantity===1?thing:thing+'s'):focus==='floor'?'FLOOR: '+level.toUpperCase():'AREA: '+area.toUpperCase()+' m²';
+ const symbols={bedroom:'<rect x="6" y="18" width="65" height="45" rx="8" fill="#d5b3ab" stroke="#aa8074" stroke-width="4"/><rect x="10" y="20" width="26" height="22" rx="5" fill="#fff0e4"/>',
+ bathroom:'<path d="M5 22H72V41Q69 61 48 62H26Q8 60 5 41Z" fill="#c2dde4" stroke="#7595a4" stroke-width="4"/>',
+ window:'<rect x="9" y="5" width="63" height="60" fill="#b8d9e0" stroke="#6b929b" stroke-width="5"/><path d="M40 7V65M10 35H72" stroke="#fff" stroke-width="4"/>',
+ door:'<rect x="12" y="3" width="55" height="65" fill="#cbac8c" stroke="#8b6749" stroke-width="5"/><circle cx="56" cy="36" r="4" fill="#faf0da"/>'};
+ const icons=Array.from({length:quantity},(_,i)=>{
+  const x=60+(i%4)*132;
+  return '<g transform="translate('+x+' 121) scale(.95)">'+symbols[thing]+'</g>';
+ }).join('');
+ const countSvg='<g>'+icons+'</g>';
+ const levels=['ground','first','second'].map((v,i)=>{
+  const y=242-i*58,hi=v===level;
+  return '<rect x="178" y="'+y+'" width="305" height="51" rx="6" fill="'+(hi?'#acd8c0':'#e4ece4')+'" stroke="'+(hi?'#287356':'#90a79a')+'" stroke-width="'+(hi?'4':'2')+'"/>'+
+   '<text x="330" y="'+(y+32)+'" text-anchor="middle" font-size="22" fill="#355c4b">'+v.toUpperCase()+'</text>';
+ }).join('');
+ const areas={forty:40,sixty:60,eighty:80,hundred:100},number=areas[area]||80;
+ const overview='<path d="M122 78H496V277H122Z" fill="#f8faf6" stroke="#557b67" stroke-width="7"/>'+
+  '<path d="M316 78V277M122 187H496" stroke="#94af9f" stroke-width="5"/>'+
+  '<path d="M171 78H254M365 78H455" stroke="#77adbd" stroke-width="9"/>'+
+  '<path d="M122 227V260" stroke="#bf9b72" stroke-width="12"/>'+
+  '<text x="309" y="187" text-anchor="middle" font-size="54" font-weight="bold" fill="#236d50">'+number+' m²</text>';
+ const content=focus==='count'?countSvg:focus==='floor'?levels:overview;
+ return '<figure class="perspective-visual house-facts-visual" data-house-fact="'+e(focus)+'" data-house-quantity="'+quantity+'" data-house-feature="'+e(thing)+'" data-house-floor="'+e(level)+'" data-house-area="'+number+'">'+
+ '<svg viewBox="0 0 620 330" role="img" aria-label="'+e(title)+'"><rect width="620" height="330" rx="22" fill="#eff6f0"/>'+
+ '<text x="310" y="48" text-anchor="middle" font-size="25" font-weight="bold" fill="#365e4b">'+e(title)+'</text>'+content+'</svg>'+
+ '<figcaption>عدد، بخش خانه، طبقه و مساحت مستقیماً از کلمه‌های همین جمله می‌آیند.</figcaption></figure>';
+}
+/** A shared rearrangeable room scene: moving a word on/under/next to changes
+ * the visual location of the object without teaching any new control gesture. */
+function roomObjectScene(source,view,resolved,key,e){
+ const scene=view.scene||source.scene,s=resolved.state.slots||{};
+ const item=s[scene.entitySlot||'object']||'book',surface=s[scene.surfaceSlot||'surface']||'desk';
+ const pos=s[scene.positionSlot||'position']||'on';
+ const surfaceSvg={
+  desk:'<rect x="125" y="166" width="400" height="21" rx="6" fill="#c6a27b" stroke="#81674d" stroke-width="5"/><path d="M152 184V293M491 184V293" stroke="#81674d" stroke-width="15"/>',
+  table:'<rect x="130" y="158" width="392" height="24" rx="6" fill="#bfa078" stroke="#81674d" stroke-width="5"/><path d="M161 179V296M488 179V296" stroke="#81674d" stroke-width="16"/>',
+  bed:'<rect x="116" y="168" width="417" height="65" rx="13" fill="#c4d8db" stroke="#73969a" stroke-width="7"/><rect x="136" y="161" width="88" height="39" rx="12" fill="#f3e4d7"/><path d="M128 230V295M524 230V295" stroke="#73969a" stroke-width="14"/>',
+  shelf:'<path d="M112 170H528V187H112Z" fill="#c5a078" stroke="#826245" stroke-width="5"/><path d="M132 185V288M507 185V288" stroke="#826245" stroke-width="13"/>'
+ }[surface]||'';
+ const at={on:{x:258,y:72},under:{x:272,y:203},'next-to':{x:539,y:192}}[pos]||{x:258,y:72};
+ const chosen=perspectiveGlyph(item);
+ const svg='<svg viewBox="0 0 700 330" role="img" aria-label="'+e(item+' '+pos+' '+surface)+'">'+
+  '<rect width="700" height="330" rx="20" fill="#f4f8f2"/><path d="M0 253H700V330H0Z" fill="#e1e9dc"/>'+
+  '<rect x="32" y="28" width="120" height="110" rx="4" fill="#b4d6db" stroke="#729ca3" stroke-width="8"/>'+
+  '<path d="M92 30V137M34 83H150" stroke="#e9f7f6" stroke-width="6"/>'+
+  surfaceSvg+
+  '<g transform="translate('+at.x+' '+at.y+') scale(.74)">'+chosen+'</g>'+
+  '<text x="350" y="317" font-size="22" text-anchor="middle" fill="#345c48">'+e(item+' · '+pos+' · '+surface)+'</text></svg>';
+ return '<figure class="perspective-visual room-objects-visual" data-room-object="'+e(item)+'" data-room-position="'+e(pos)+'" data-room-surface="'+e(surface)+'">'+
+  svg+'<figcaption>روی شیء، موقعیت یا وسیلهٔ زیر آن در جمله بزن؛ تصویر همان تغییر را نشان می‌دهد.</figcaption></figure>';
+}
+
 function perspectiveScene(source, view, resolved, key, e) {
   const scene = view.scene || source.scene;
   if(scene?.type==='rooms')return roomMapScene(source,view,resolved,key,e);
+  if(scene?.type==='house-facts')return houseFactsScene(source,view,resolved,key,e);
+  if(scene?.type==='room-objects')return roomObjectScene(source,view,resolved,key,e);
   if(!scene || scene.type!=='perspective')return '';
   const distanceSlot=scene.distanceSlot||'distance';
   const entitySlot=scene.entitySlot||'object';
