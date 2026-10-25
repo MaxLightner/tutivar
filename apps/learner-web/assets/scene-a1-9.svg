@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 580" role="img" aria-labelledby="t d"><title id="t">Bedroom object positions</title><desc id="d">Book on desk, bag under bed, pillow on bed, plant near window, mirror on wall near wardrobe</desc>
+<rect width="920" height="580" rx="24" fill="#eaf2ec"/><path d="M0 390H920V580H0Z" fill="#d4e0d2"/>
+<rect x="46" y="55" width="180" height="164" rx="6" fill="#b3d8de" stroke="#7195a0" stroke-width="10"/><path d="M136 55V219M46 136H226" stroke="#f5faf9" stroke-width="8"/>
+<path d="M55 220H165L142 362H85Z" fill="#a9c89e"/><path d="M109 260V159M109 228L70 193M109 212L156 176" stroke="#5f936b" stroke-width="11" fill="none"/>
+<rect x="165" y="312" width="306" height="20" rx="5" fill="#bb9774" stroke="#87654b" stroke-width="5"/><path d="M181 331V519M451 331V519" stroke="#87654b" stroke-width="16"/>
+<g transform="translate(250 257)"><path d="M0 10L61 0L62 61L0 70Z" fill="#99bcbf" stroke="#5c8493" stroke-width="5"/><path d="M62 0L122 10V70L62 61Z" fill="#d1e4da" stroke="#5c8493" stroke-width="5"/></g>
+<rect x="738" y="53" width="148" height="323" rx="8" fill="#c9b099" stroke="#967355" stroke-width="8"/><path d="M812 55V376" stroke="#967355" stroke-width="5"/><circle cx="798" cy="225" r="5" fill="#f8e9d5"/><circle cx="827" cy="225" r="5" fill="#f8e9d5"/>
+<rect x="619" y="96" width="87" height="171" rx="34" fill="#a8d0da" stroke="#b39571" stroke-width="13"/>
+<rect x="419" y="406" width="475" height="101" rx="20" fill="#a1bfca" stroke="#618b9b" stroke-width="8"/><rect x="435" y="359" width="440" height="97" rx="16" fill="#c8d9db" stroke="#8eafba" stroke-width="6"/>
+<rect x="460" y="377" width="145" height="65" rx="25" fill="#e5cec2" stroke="#bd9e90" stroke-width="5"/>
+<path d="M450 507V554M873 507V554" stroke="#6e8a95" stroke-width="18"/>
+<g transform="translate(632 486)"><rect y="13" width="95" height="70" rx="15" fill="#9eb8ce" stroke="#577d9d" stroke-width="6"/><path d="M21 16Q20 -9 49 -9Q76 -9 76 16" fill="none" stroke="#577d9d" stroke-width="8"/></g>
+</svg>
