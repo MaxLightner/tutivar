@@ -147,8 +147,47 @@ function perspectiveGlyph(word, person=false) {
   }
   return '<svg viewBox="0 0 100 100" width="100" height="100" aria-hidden="true">'+(shapes[word]||shapes.book)+'</svg>';
 }
+function roomMapScene(source, view, resolved, key, e) {
+  const scene=view.scene||source.scene;
+  const selected=resolved.state.slots?.[scene.entitySlot||'room']||'kitchen';
+  const rooms=[
+    {id:'kitchen',label:'KITCHEN',detail:'stove'},
+    {id:'bedroom',label:'BEDROOM',detail:'bed'},
+    {id:'bathroom',label:'BATHROOM',detail:'bath'},
+    {id:'living-room',label:'LIVING ROOM',detail:'sofa'},
+    {id:'dining-room',label:'DINING ROOM',detail:'dining'},
+    {id:'hallway',label:'HALLWAY',detail:'hall'},
+    {id:'garage',label:'GARAGE',detail:'car'},
+    {id:'balcony',label:'BALCONY',detail:'balcony'},
+    {id:'garden',label:'GARDEN',detail:'garden'}
+  ];
+  const icons={
+    stove:'<rect x="16" y="23" width="62" height="46" rx="6" fill="#b7cbd0" stroke="#688995" stroke-width="4"/><circle cx="34" cy="38" r="9" fill="#7d9ca5"/><circle cx="59" cy="38" r="9" fill="#7d9ca5"/><path d="M20 56H75" stroke="#7d9ca5" stroke-width="3"/>',
+    bed:'<rect x="8" y="31" width="80" height="47" rx="7" fill="#e2b9ad" stroke="#ae8176" stroke-width="4"/><rect x="14" y="31" width="28" height="18" rx="7" fill="#f4e9df"/><path d="M9 76V87M87 76V87" stroke="#947363" stroke-width="5"/>',
+    bath:'<path d="M8 42H87V60Q80 81 53 81H41Q15 81 8 60Z" fill="#c0e1e4" stroke="#6997a1" stroke-width="4"/><path d="M14 43V23H41" fill="none" stroke="#6997a1" stroke-width="5"/>',
+    sofa:'<rect x="10" y="41" width="76" height="31" rx="9" fill="#96b5a0" stroke="#668d73" stroke-width="4"/><path d="M16 49V24Q49 12 81 24V49M15 73V82M80 73V82" stroke="#668d73" fill="none" stroke-width="5"/>',
+    dining:'<ellipse cx="48" cy="44" rx="32" ry="19" fill="#caa17b" stroke="#8f704f" stroke-width="4"/><path d="M48 62V85M10 41H17M79 41H90" stroke="#8f704f" stroke-width="6"/>',
+    hall:'<path d="M22 82V15H78V82M36 80V30H65V80" stroke="#a18f76" stroke-width="7" fill="none"/><circle cx="58" cy="58" r="4" fill="#c29a65"/>',
+    car:'<path d="M13 58L25 35H73L86 58V73H12Z" fill="#a0b6cc" stroke="#62809d" stroke-width="4"/><circle cx="27" cy="75" r="9" fill="#3e5966"/><circle cx="73" cy="75" r="9" fill="#3e5966"/>',
+    balcony:'<path d="M12 36H86V82H12Z" stroke="#8b9aa4" stroke-width="5" fill="none"/><path d="M25 37V82M44 37V82M64 37V82M80 37V82" stroke="#8b9aa4" stroke-width="4"/><path d="M48 36V16" stroke="#579267" stroke-width="5"/><circle cx="49" cy="16" r="12" fill="#8db58a"/>',
+    garden:'<path d="M48 80V31M48 63Q28 43 18 57M48 58Q68 38 79 52" fill="none" stroke="#608f67" stroke-width="6"/><circle cx="48" cy="27" r="14" fill="#e5acb6"/><circle cx="48" cy="27" r="5" fill="#e4c66f"/><path d="M8 84H89" stroke="#80ab7e" stroke-width="6"/>'
+  };
+  const tiles=rooms.map((room,i)=>{
+    const x=15+(i%3)*215,y=17+Math.floor(i/3)*148;
+    const active=room.id===selected;
+    return '<g transform="translate('+x+' '+y+')">'+
+      '<rect width="207" height="137" rx="13" fill="'+(active?'#d0eee0':'#f2f6f2')+'" stroke="'+(active?'#247855':'#9eb8aa')+'" stroke-width="'+(active?'5':'2')+'"/>'+
+      '<g transform="translate(55 8) scale(.86)">'+icons[room.detail]+'</g>'+
+      '<text x="104" y="122" font-family="Arial,sans-serif" font-size="16" text-anchor="middle" font-weight="'+(active?'bold':'normal')+'" fill="'+(active?'#246746':'#4d6957')+'">'+room.label+'</text>'+
+      (active?'<circle cx="189" cy="17" r="9" fill="#247855"/>':'')+'</g>';
+  }).join('');
+  return '<figure class="perspective-visual room-map-visual" data-room-selected="'+e(selected)+'">'+
+     '<svg viewBox="0 0 680 472" role="img" aria-label="نقشهٔ خانه، اتاق انتخاب‌شده: '+e(selected)+'"><rect width="680" height="472" rx="20" fill="#e9f2ea"/>'+tiles+'</svg>'+
+     '<figcaption>روی نام اتاق در جمله بزن؛ همان اتاق روی نقشه روشن می‌شود.</figcaption></figure>';
+}
 function perspectiveScene(source, view, resolved, key, e) {
   const scene = view.scene || source.scene;
+  if(scene?.type==='rooms')return roomMapScene(source,view,resolved,key,e);
   if(!scene || scene.type!=='perspective')return '';
   const distanceSlot=scene.distanceSlot||'distance';
   const entitySlot=scene.entitySlot||'object';
