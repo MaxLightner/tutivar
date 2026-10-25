@@ -143,9 +143,9 @@ function perspectiveGlyph(word, person=false) {
     const dress=word==='doctor'||word==='nurse'?'#f0ece3':word==='teacher'||word==='student'?'#86a6b6':'#a2b595';
     const accessory=word==='doctor'||word==='nurse'?'<path d="M50 61V85M38 73H62" stroke="#d66e63" stroke-width="7"/>':
       word==='teacher'?'<path d="M13 76H35V93H13Z" fill="#e8cb87" stroke="#8c6c43" stroke-width="3"/>':'';
-    return '<svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="25" r="18" fill="#d8ac8d" stroke="#916c57" stroke-width="3"/><path d="M32 25Q28 -1 52 5Q70 5 69 25Q53 13 32 25Z" fill="#59493c"/><path d="M23 91L28 48Q51 38 72 48L77 91Z" fill="'+dress+'" stroke="#658375" stroke-width="4"/><path d="M31 89V99M69 89V99" stroke="#596c69" stroke-width="8"/>'+accessory+'</svg>';
+    return '<svg viewBox="0 0 100 100" width="100" height="100" aria-hidden="true"><circle cx="50" cy="25" r="18" fill="#d8ac8d" stroke="#916c57" stroke-width="3"/><path d="M32 25Q28 -1 52 5Q70 5 69 25Q53 13 32 25Z" fill="#59493c"/><path d="M23 91L28 48Q51 38 72 48L77 91Z" fill="'+dress+'" stroke="#658375" stroke-width="4"/><path d="M31 89V99M69 89V99" stroke="#596c69" stroke-width="8"/>'+accessory+'</svg>';
   }
-  return '<svg viewBox="0 0 100 100" aria-hidden="true">'+(shapes[word]||shapes.book)+'</svg>';
+  return '<svg viewBox="0 0 100 100" width="100" height="100" aria-hidden="true">'+(shapes[word]||shapes.book)+'</svg>';
 }
 function perspectiveScene(source, view, resolved, key, e) {
   const scene = view.scene || source.scene;
@@ -173,6 +173,8 @@ function perspectiveScene(source, view, resolved, key, e) {
     '<g transform="translate(442 178) scale(.35)">'+perspectiveGlyph('flower')+'</g>'+
     '<g transform="translate(142 112) scale(1.35)">'+symbol+'</g>'+
     '<g transform="translate(526 145) scale(.68)">'+symbol+'</g>'+
+    '<text x="210" y="264" text-anchor="middle" font-size="18" fill="#365b4d">'+e(label)+'</text>'+
+    '<text x="560" y="228" text-anchor="middle" font-size="15" fill="#365b4d">'+e(label)+'</text>'+
     '<rect x="24" y="19" width="140" height="36" rx="18" fill="'+(near?'#d1e8dd':'#fff')+'"/><text x="94" y="43" text-anchor="middle" font-size="19" font-weight="700" fill="#2b6d51">THIS · near</text>'+
     '<rect x="597" y="19" width="140" height="36" rx="18" fill="'+(!near?'#d1e8dd':'#fff')+'"/><text x="667" y="43" text-anchor="middle" font-size="19" font-weight="700" fill="#2b6d51">THAT · far</text>'+
     '<path d="'+arrow+'" stroke="#28765b" stroke-width="7" fill="none" stroke-linecap="round" marker-end="url(#'+uid+'-head)"/>'+
