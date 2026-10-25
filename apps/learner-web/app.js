@@ -1,5 +1,5 @@
 import { cycleComposerSlot } from './sentence-composer.js';
-import { addPuzzleWord, undoPuzzleWord, clearPuzzleSentence, submitPuzzleSentence } from './sentence-puzzle.js';
+import { addPuzzleWord, canAppendPuzzleWord, undoPuzzleWord, clearPuzzleSentence, submitPuzzleSentence } from './sentence-puzzle.js';
 import { renderActivity } from './lesson-modules.js';
 import { advanceDeck, answerDeck, deckState, jumpDeck, resumeDeck, startDeckTest, wordId } from './word-review.js';
 import { evaluateResponse, practiceState, submitPractice } from './practice-engine.js';
@@ -646,7 +646,48 @@ function onClick(event) {
     const activity = lessonActivity(key);
     if (!activity) return;
     if (activity.sentences?.length) {
-      progress.sentenceAnswers[key] = addPuzzleWord(activity, progress.sentenceAnswers[key], Number(el.dataset.tokenIndex));
+      const tokenIndex = Number(el.dataset.tokenIndex);
+      const source = lessonActivitiesById(route.lessonId)[activity.sourceActivityId] || null;
+      if (!canAppendPuzzleWord(activity, progress.sentenceAnswers[key], tokenIndex, source)) {
+        // A rejected tile never enters saved state: a short ghost visibly
+        // shakes at the sentence, then flies back to its original bank tile.
+        const output = el.closest('.module-builder')?.querySelector('.builder-output');
+        const from = output?.getBoundingClientRect();
+        const target = el.getBoundingClientRect();
+        if (from && target && typeof el.animate === 'function') {
+          const ghost = el.cloneNode(true);
+          ghost.removeAttribute('data-build-token');
+          ghost.removeAttribute('data-token-index');
+          ghost.removeAttribute('disabled');
+          ghost.classList.add('builder-token-ghost');
+          const x = Math.min(from.right - 58, from.left + 18);
+          const y = from.top + Math.max(0, (from.height - target.height) / 2);
+          ghost.style.left = x + 'px';
+          ghost.style.top = y + 'px';
+          ghost.style.width = Math.max(42, target.width) + 'px';
+          ghost.style.height = Math.max(36, target.height) + 'px';
+          document.body.appendChild(ghost);
+          const dx = target.left - x, dy = target.top - y;
+          const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+          const frames = reduced
+            ? [{opacity:1},{opacity:0}]
+            : [{transform:'translate(0,0)',opacity:1},
+               {transform:'translate(-7px,0)'},{transform:'translate(7px,0)'},
+               {transform:'translate(-5px,0)'},{transform:'translate(5px,0)'},
+               {transform:'translate(0,0)'},{transform:'translate(' + dx + 'px,' + dy + 'px)',opacity:.5}];
+          const animation = ghost.animate(frames,{duration:reduced?120:470,easing:'ease-in-out'});
+          animation.onfinish = () => ghost.remove();
+          animation.oncancel = () => ghost.remove();
+        } else {
+          el.classList.remove('builder-token-invalid');
+          void el.offsetWidth;
+          el.classList.add('builder-token-invalid');
+        }
+        const notice=el.closest('.module-builder')?.querySelector('.builder-prefix-notice');
+        if (notice) notice.textContent='این واژه اینجا ادامهٔ درست جمله نیست؛ به جای خودش برگشت.';
+        return;
+      }
+      progress.sentenceAnswers[key] = addPuzzleWord(activity, progress.sentenceAnswers[key], tokenIndex);
     } else {
       const current = progress.sentenceAnswers[key] || [];
       const tokenIndex = Number(el.dataset.tokenIndex);
