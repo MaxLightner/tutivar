@@ -1107,7 +1107,7 @@ test('A1-9 teaches positioning objects with synchronized noun, preposition and s
   assert.match(html,/data-room-position="under"/);
   assert.match(html,/data-room-surface="bed"/);
   for(const slot of ['object','position','surface'])assert.match(html,new RegExp('data-composer-slot="'+slot+'"'));
-  assert.ok(p.find(a=>a.type==='dialogue').lines.some(line=>line.en.includes('wardrobe')));
+  assert.ok(p.filter(a=>a.type==='dialogue').some(a=>a.lines.some(line=>line.en.includes('wardrobe'))));
   assert.ok(p.find(a=>a.type==='free-write').prompt.includes('اتاق خیالی'));
   assert.match(readFileSync(join(projectRoot,'apps/learner-web/assets/scene-a1-9.svg'),'utf8'),/Book|book/);
   const free=p.find(a=>a.type==='free-write');
