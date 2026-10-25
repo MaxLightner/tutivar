@@ -11,7 +11,7 @@ import { inspectVocabularyContinuity } from '../tools/audit-vocabulary.mjs';
 import { composeSegments, cycleComposerSlot, resolveSentenceComposer, validateSentenceComposer } from '../apps/learner-web/sentence-composer.js';
 import { LESSON_PHASES, validateLessonFlow } from '../apps/learner-web/lesson-flow.js';
 import { resolveMeaningForm, advanceMeaningForm, selectedSpatialPosition, validateVisualActivity } from '../apps/learner-web/visual-learning.js';
-import { puzzleTokenBank, normalizePuzzleState, normalizePuzzleSentence, puzzleDisplayWord, addPuzzleWord, undoPuzzleWord, clearPuzzleSentence, submitPuzzleSentence, validateMultiSentencePuzzle } from '../apps/learner-web/sentence-puzzle.js';
+import { puzzleTokenBank, normalizePuzzleState, normalizePuzzleSentence, puzzleDisplayWord, addPuzzleWord, canAppendPuzzleWord, undoPuzzleWord, clearPuzzleSentence, submitPuzzleSentence, validateMultiSentencePuzzle } from '../apps/learner-web/sentence-puzzle.js';
 
 const contentRoot = join(projectRoot, 'content/language-pairs/fa-en');
 const load = (file) => readJson(join(contentRoot, file));
@@ -158,6 +158,27 @@ test('each A1 puzzle mixes words from several valid sentences, not one', () => {
     assert.equal((html.match(/data-build-token=/g) || []).length, originals.length, 'every word, including repeated words, is shown');
     assert.doesNotMatch(html, /class="builder-found-item"/, 'answers are not revealed before the learner solves them');
   }
+});
+
+test('puzzle rejects impossible partial word order but keeps valid question starts and alternatives', () => {
+  const activity={id:'prefix-grammar',revision:1,goalCount:2,reuseBank:true,sentences:[
+    {id:'a',words:['The','book','is','here.']},
+    {id:'b',words:['Is','the','book','here?']}
+  ]};
+  const bank=puzzleTokenBank(activity);
+  const word=(name,skip=0)=>bank.findIndex((x,i)=>x.word.toLowerCase()===name.toLowerCase() && skip--===0);
+  const iBook=bank.findIndex(x=>x.word==='book');
+  const iIs=bank.findIndex(x=>x.word==='Is');
+  const iThe=bank.findIndex(x=>x.word==='the');
+  assert.equal(canAppendPuzzleWord(activity,null,iBook),false,'book is not a start of these authored sentences');
+  assert.equal(canAppendPuzzleWord(activity,null,iIs),true,'Is can begin a valid question');
+  const one=addPuzzleWord(activity,null,iIs);
+  assert.equal(canAppendPuzzleWord(activity,one,iBook),false,'Is book is not a valid prefix');
+  assert.equal(canAppendPuzzleWord(activity,one,iThe),true,'Is the is a valid prefix');
+  assert.deepEqual(normalizePuzzleState(activity,one).current,[iIs],'rejected word never enters progress');
+  const b0=bank.findIndex(x=>x.word==='The');
+  const p0=addPuzzleWord(activity,null,b0);
+  assert.equal(canAppendPuzzleWord(activity,p0,iBook),true,'the book is a valid statement prefix');
 });
 
 test('multi-sentence puzzle accepts solutions in any order and consumes only their words', () => {
@@ -506,7 +527,7 @@ test('each dialogue timeline renders only two consecutive spoken lines and can s
 test('first lesson retrieves morning greetings before the dialogue half', () => {
   const lesson = load('lessons/a1-1.json');
   const activity = lesson.sections[0].activities.find((entry) => entry.id === 'hello-intro-check');
-  assert.equal(activity.tasks.length, 2);
+  assert.equal(activity.tasks.length, 3);
   assert.equal(evaluateResponse(activity.tasks[0].assessment, 'Good morning! How are you?').ok, true);
   assert.equal(evaluateResponse(activity.tasks[0].assessment, 'Hello! How are you?').ok, false);
   assert.equal(evaluateResponse(activity.tasks[0].assessment, 'Good morning!').ok, false);
@@ -903,26 +924,56 @@ test('all lesson word banks introduce lexical items only once, including supplem
   for(const word of ['book','phone','bag','keys','box'])assert.ok(!words.includes(word),word+' was already taught');
   assert.ok(lessonFive.sections[1].activities.some(a=>JSON.stringify(a).includes('book')),'review is retained in contextual exercises');
 });
-test('A1-6 teaches name/age without duplicating earlier vocabulary', () => {
+test('A1-6 completes two-digit numbers before teaching age, without retesting names', () => {
   const lesson=load('lessons/a1-6.json');
   assert.deepEqual(validateLessonFlow(lesson),[]);
-  const vocabulary=lesson.sections[0].activities.find(a=>a.type==='vocabulary');
-  assert.ok(coreItems(vocabulary).length>=32);
-  assert.ok(supplementaryItems(vocabulary).length>=5);
-  assert.ok(vocabulary.items.every(item=>!/\\s/.test(item.en.trim())));
-  assert.ok(!vocabulary.items.some(item=>['name','one','two','how','is','are','you'].includes(item.en)));
-  const composer=lesson.sections[0].activities.find(a=>a.type==='sentence-composer');
-  assert.deepEqual(validateSentenceComposer(composer),[]);
-  const question=resolveSentenceComposer(composer,{pattern:'question',slots:{person:'sara',age:'twenty-four'}});
-  assert.equal(composeSegments(question.pattern.segments,composer,question),'How old is Sara?');
-  const statement=resolveSentenceComposer(composer,{pattern:'statement',slots:{person:'sara',age:'twenty-four'}});
-  assert.equal(composeSegments(statement.pattern.segments,composer,statement),'Sara is twenty-four years old.');
-  const picture=lesson.sections[1].activities.find(a=>a.type==='picture-description');
+  const foundation=lesson.sections[0].activities,production=lesson.sections[1].activities;
+  const words=foundation.find(a=>a.type==='vocabulary');
+  assert.ok(coreItems(words).length>=20);
+  assert.ok(words.items.every(item=>!/\\s/.test(item.en.trim())));
+  assert.ok(words.items.every(item=>!['name','first','last','spell','surname','birthday'].includes(item.en)));
+  assert.ok(words.items.some(item=>item.en==='ninety'));
+  const index=id=>foundation.findIndex(a=>a.id===id);
+  assert.ok(index('age-number-composer')<index('age-expressions'));
+  assert.ok(index('age-numbers-practice')<index('age-expressions'));
+  assert.ok(index('age-numbers-practice')<index('age-composer'));
+  assert.ok(!foundation[0].lines.some(line=>/how old|surname|last name/i.test(line)),'first exposure is numbers-only shadowing');
+  const numberBuilder=foundation.find(a=>a.id==='age-number-composer');
+  assert.deepEqual(validateSentenceComposer(numberBuilder),[]);
+  const number=resolveSentenceComposer(numberBuilder,{pattern:'compound',slots:{tens:'forty',units:'seven'}});
+  assert.equal(composeSegments(number.pattern.segments,numberBuilder,number),'forty-seven');
+  const singleTens=resolveSentenceComposer(numberBuilder,{pattern:'exact-tens',slots:{tens:'thirty',units:'eight'}});
+  assert.equal(composeSegments(singleTens.pattern.segments,numberBuilder,singleTens),'thirty');
+  const numberPractice=foundation.find(a=>a.id==='age-numbers-practice');
+  assert.ok(numberPractice.tasks.some(task=>task.task.includes('۳۷')));
+  assert.ok(numberPractice.tasks.some(task=>task.task.includes('۱۰۰')));
+  const ageComposer=foundation.find(a=>a.id==='age-composer');
+  assert.deepEqual(validateSentenceComposer(ageComposer),[]);
+  const question=resolveSentenceComposer(ageComposer,{pattern:'question',slots:{person:'sara',age:'twenty-four'}});
+  assert.equal(composeSegments(question.pattern.segments,ageComposer,question),'How old is Sara?');
+  const age=resolveSentenceComposer(ageComposer,{pattern:'statement',slots:{person:'sara',age:'twenty-four'}});
+  assert.equal(composeSegments(age.pattern.segments,ageComposer,age),'Sara is twenty-four years old.');
+  assert.ok(!production.some(a=>JSON.stringify(a).includes('What is your last name?')));
+  const picture=production.find(a=>a.type==='picture-description');
   assert.equal(picture.tasks.length,4);
-  assert.match(readFileSync(join(projectRoot,'apps/learner-web/assets/scene-a1-6.svg'),'utf8'),/Sara Rahimi/);
-  assert.ok(lesson.sections[1].activities.find(a=>a.type==='free-write').prompt.includes('ساختگی'));
+  assert.ok(picture.tasks.every(task=>!task.task.includes('نام کامل')));
+  const free=production.find(a=>a.type==='free-write');
+  assert.ok(free.prompt.includes('ساختگی'));
+  assert.ok(free.prompt.includes('عدد دورقمی'));
+  const arbitraryAge='twenty-seven, forty-three, sixty-eight\nHow old are you?\nI am twenty-seven years old.\nThis is my brother. He is thirty-five years old.';
+  assert.equal(evaluateResponse(free.assessment,arbitraryAge).ok,true,'personalized age is accepted');
   assert.deepEqual(auditLesson(lesson).errors,[]);
+  assert.match(readFileSync(join(projectRoot,'apps/learner-web/assets/scene-a1-6.svg'),'utf8'),/Sara Rahimi/);
 });
+test('asking a name is explicitly taught and assessed in A1-1', () => {
+  const lesson=load('lessons/a1-1.json');
+  assert.ok(lesson.goal.includes("What's your name?"));
+  const expressions=lesson.sections[0].activities.find(a=>a.type==='expression-study').items;
+  assert.ok(expressions.some(item=>item.en==="What's your name?"));
+  const check=lesson.sections[0].activities.find(a=>a.id==='hello-intro-check');
+  assert.ok(check.tasks.some(task=>task.assessment.required.some(req=>req.any?.includes("what's your name"))));
+});
+
 test('all six A1 lessons expose identical two-section navigation labels', () => {
   const labels=['از کلمه تا جمله','از سؤال و جواب تا مکالمه'];
   for (const id of ['a1-1','a1-2','a1-3','a1-4','a1-5','a1-6']) {
