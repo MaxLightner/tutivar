@@ -28,7 +28,7 @@ const TYPE_FOR_PHASE = {
   words: ['vocabulary'],
   phrases: ['expression-study', 'composer-view', 'sentence-composer', 'response-practice', 'family-tree', 'family-lab', 'spatial-lab', 'count-visual', 'plural-pair-lab', 'count-math-lab', 'tap-attributes-lab'],
   sentence: ['sentence-composer'],
-  variants: ['composer-view', 'sentence-transform', 'meaning-cluster', 'plural-pair-lab', 'sentence-composer', 'tap-attributes-lab'],
+  variants: ['composer-view', 'sentence-transform', 'meaning-cluster', 'plural-pair-lab', 'sentence-composer', 'tap-attributes-lab', 'tap-ownership-lab'],
   puzzle: ['sentence-builder'],
   construction: ['response-practice'],
   correspondence: ['exchange-lab', 'response-practice'],

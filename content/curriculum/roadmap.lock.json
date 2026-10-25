@@ -1,10 +1,71 @@
 {
   "schemaVersion": 1,
-  "approvedRevision": "2026-10-02-rewrite-1",
+  "approvedRevision": "2026-10-25-owner-cumulative-a1",
   "sourcePath": "docs/curriculum/01-universal-learning-path.md",
-  "sourceGitBlobSha": "bec805e498841b30ddf51f1223f4b118db32e200",
+  "sourceGitBlobSha": "20949575655d8e4d9af2e3485c526f2f9e09f808",
   "manifestPath": "content/curriculum/universal-path.v1.json",
-  "manifestGitBlobSha": "b6d0fa3518d8bc8e666821cfa1b07a9c7d8d70a2",
-  "approvedChanges": [],
+  "manifestGitBlobSha": "aafa77abc784be7809610119ae74292df7d8d6e5",
+  "approvedChanges": [
+    {
+      "revision": "2026-10-25-owner-cumulative-a1",
+      "authorizedBy": "product-owner",
+      "affectedIds": [
+        "A1-3",
+        "A1-4",
+        "A1-5",
+        "A1-6"
+      ],
+      "decisionReference": "Tutivar project conversation, 2026-10-25: owner explicitly moved counting to lesson 3, ownership to lesson 4, location to lesson 5 and requested cumulative reuse and dynamic descriptions in lesson 6.",
+      "rationale": "Counting and family must precede possession; later lessons recombine learned vocabulary and grammar without reintroducing words in the vocabulary bank."
+    },
+    {
+      "revision": "2026-10-25-owner-cumulative-a1",
+      "authorizedBy": "product-owner",
+      "affectedIds": [
+        "A1-3",
+        "A1-4",
+        "A1-5",
+        "A1-6"
+      ],
+      "decisionReference": "Tutivar project conversation, 2026-10-25: owner explicitly moved counting to lesson 3, ownership to lesson 4, location to lesson 5 and requested cumulative reuse and dynamic descriptions in lesson 6.",
+      "rationale": "Counting and family must precede possession; later lessons recombine learned vocabulary and grammar without reintroducing words in the vocabulary bank."
+    },
+    {
+      "revision": "2026-10-25-owner-cumulative-a1",
+      "authorizedBy": "product-owner",
+      "affectedIds": [
+        "A1-3",
+        "A1-4",
+        "A1-5",
+        "A1-6"
+      ],
+      "decisionReference": "Tutivar project conversation, 2026-10-25: owner explicitly moved counting to lesson 3, ownership to lesson 4, location to lesson 5 and requested cumulative reuse and dynamic descriptions in lesson 6.",
+      "rationale": "Counting and family must precede possession; later lessons recombine learned vocabulary and grammar without reintroducing words in the vocabulary bank."
+    },
+    {
+      "revision": "2026-10-25-owner-cumulative-a1",
+      "authorizedBy": "product-owner",
+      "affectedIds": [
+        "A1-3",
+        "A1-4",
+        "A1-5",
+        "A1-6"
+      ],
+      "decisionReference": "Tutivar project conversation, 2026-10-25: owner explicitly moved counting to lesson 3, ownership to lesson 4, location to lesson 5 and requested cumulative reuse and dynamic descriptions in lesson 6.",
+      "rationale": "Counting and family must precede possession; later lessons recombine learned vocabulary and grammar without reintroducing words in the vocabulary bank."
+    },
+    {
+      "revision": "2026-10-25-owner-cumulative-a1",
+      "authorizedBy": "product-owner",
+      "affectedIds": [
+        "A1-3",
+        "A1-4",
+        "A1-5",
+        "A1-6"
+      ],
+      "decisionReference": "Tutivar project conversation, 2026-10-25: owner explicitly moved counting to lesson 3, ownership to lesson 4, location to lesson 5 and requested cumulative reuse and dynamic descriptions in lesson 6.",
+      "rationale": "Counting and family must precede possession; later lessons recombine learned vocabulary and grammar without reintroducing words in the vocabulary bank."
+    }
+  ],
   "authorization": "Baseline from owner's supplied document. Future amendments require an explicit owner instruction and a matching decision entry and lock update."
 }

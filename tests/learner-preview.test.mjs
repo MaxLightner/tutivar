@@ -264,10 +264,10 @@ test('puzzle grading ignores capitalization and terminal punctuation, while givi
   assert.equal(again.completed.length,1);
 });
 
-test('A1-4 is a complete location lesson in the shared discovery and production stages', () => {
+test('archived location lesson has intact two-stage activities after reordering', () => {
   const lesson=load('lessons/a1-4.json');
   const catalog=lessons.find(entry=>entry.id===lesson.id);
-  assert.equal(catalog.file,'lessons/a1-4.json');
+  assert.equal(catalog.file,'lessons/a1-4-v2.json');
   assert.equal(catalog.status,'sample');
   assert.deepEqual(validateLessonFlow(lesson),[]);
   assert.equal(lesson.sections.length,2);

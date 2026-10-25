@@ -709,6 +709,39 @@ function tapAttributesLab(a,c) {
     const words=`There are <button data-attribute-key="${c.e(key)}" data-attribute-field="count" class="tap-word">${c.e(count.en)}</button> <button data-attribute-key="${c.e(key)}" data-attribute-field="color" class="tap-word">${c.e(color.en)}</button> balls.`;
     return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><div class="tap-scene"><div class="tap-count-pictures" aria-label="${c.e(count.fa+' توپ '+color.fa)}">${visual}</div><p class="tap-live-sentence" lang="en" dir="ltr">${words}${soundButton(sentence,c.e,c.i)}</p><p>${c.e(count.fa+' توپ '+color.fa)}</p></div><p class="live-hint">روی عدد یا رنگ در خود جمله بزن تا تعداد و رنگ توپ‌های تصویر هم تغییر کند.</p>`,a,c.index,c.e,'module-tap-attributes');
   }
+  if(a.mode==='progressive-features') {
+    const object=pick('object'),color=pick('color'),size=pick('size');
+    if(!object||!color||!size)return wrapper('',a,c.index,c.e);
+    const stage=a.stage||'one',full=stage==='full',two=stage==='two';
+    const eligibleShapes=(options.shape||[]).filter(item=>object.shapes?.includes(item.id));
+    const eligibleMaterials=(options.material||[]).filter(item=>object.materials?.includes(item.id));
+    const shape=eligibleShapes.find(item=>item.id===pick('shape')?.id)||eligibleShapes[0];
+    const material=eligibleMaterials.find(item=>item.id===pick('material')?.id)||eligibleMaterials[0];
+    const tok=(field,label)=>`<button type="button" class="tap-word" data-attribute-key="${c.e(key)}" data-attribute-field="${field}" aria-label="تغییر ${c.e(field)}">${c.e(label)}</button>`;
+    const phrase=[full||two?tok('size',size.en):'',tok('color',color.en),full?tok('shape',shape.en):'',full?tok('material',material.en):'',tok('object',object.en)].filter(Boolean).join(' ');
+    // Prefix a/an is fixed by the first adjective (all curated entries begin with consonants).
+    const sentence=`This is a ${[full||two?size.en:null,color.en,full?shape.en:null,full?material.en:null,object.en].filter(Boolean).join(' ')}.`;
+    const fa=[full||two?size.fa:null,color.fa,full?shape?.fa:null,full?material?.fa:null].filter(Boolean).join(' ');
+    const label=`${object.fa} ${fa}`.trim();
+    const patternId='attribute-'+c.index+'-'+object.id;
+    const scale=size.id==='big'?1.04:.78;
+    const stroke=color.id==='black'?'#151c28':'#3f4a55';
+    const texture=material?.id==='wooden'?`<path d="M95 60q65 20 140-7M93 82q70 15 151-7M100 115q60 13 135-7M96 149q64 18 142-6" fill="none" stroke="#7a532e" stroke-width="4" opacity=".55"/>`:'';
+    const glint=material?.id==='metal'?`<path d="M104 75L138 52L171 52L133 158" fill="#fff" opacity=".32"/>`:'';
+    let drawing='';
+    if(object.id==='ball')drawing=`<circle cx="170" cy="103" r="75" fill="${c.e(color.hex)}" stroke="${stroke}" stroke-width="3"/><ellipse cx="148" cy="70" rx="29" ry="15" fill="white" opacity=".25" transform="rotate(-34 148 70)"/>`;
+    else if(object.id==='book')drawing=`<rect x="94" y="43" width="157" height="127" rx="5" fill="${c.e(color.hex)}" stroke="${stroke}" stroke-width="3"/><rect x="102" y="44" width="17" height="126" fill="#000" opacity=".15"/><path d="M127 53V157M136 55H239M136 158H239" stroke="white" opacity=".4" stroke-width="3"/>`;
+    else if(object.id==='bag')drawing=`<path d="M97 73Q97 55 115 55H225Q245 55 245 73L257 166H83Z" fill="${c.e(color.hex)}" stroke="${stroke}" stroke-width="3"/><path d="M137 71V48C137 12 203 12 203 48V71" stroke="${stroke}" stroke-width="11" stroke-linecap="round" fill="none"/><path d="M100 98H241" stroke="white" opacity=".25" stroke-width="5"/>`;
+    else if(object.id==='bottle')drawing=`<rect x="150" y="24" width="40" height="31" rx="5" fill="#576579"/><path d="M142 56Q142 68 125 79L119 156Q118 177 140 177H200Q222 177 221 156L215 79Q198 68 198 56Z" fill="${c.e(color.hex)}" stroke="${stroke}" stroke-width="3"/><rect x="130" y="95" width="79" height="52" rx="5" fill="white" opacity=".2"/>`;
+    else if(shape.id==='round')drawing=`<path d="M95 82V150A75 27 0 0 0 245 150V82Z" fill="${c.e(color.hex)}" stroke="${stroke}" stroke-width="3"/><ellipse cx="170" cy="82" rx="75" ry="27" fill="${c.e(color.hex)}" stroke="${stroke}" stroke-width="3"/><ellipse cx="170" cy="82" rx="57" ry="16" fill="white" opacity=".2"/>${texture}${glint}`;
+    else {
+      const width=shape.id==='rectangular'?198:150,x=170-width/2,y=shape.id==='rectangular'?71:45,h=shape.id==='rectangular'?89:126;
+      drawing=`<rect x="${x}" y="${y}" width="${width}" height="${h}" rx="4" fill="${c.e(color.hex)}" stroke="${stroke}" stroke-width="3"/><path d="M${x} ${y}l23 -17h${width}l-23 17M${x+width} ${y}l23 -17v${h}" stroke="${stroke}" stroke-width="3" fill="${c.e(color.hex)}"/>${texture}${glint}`;
+    }
+    const svg=`<svg viewBox="0 0 340 215" role="img" aria-label="${c.e(label)}" class="attribute-illustration"><title>${c.e(label)}</title><ellipse cx="170" cy="194" rx="104" ry="12" fill="#101b29" opacity=".1"/><g transform="translate(170 100) scale(${scale}) translate(-170 -100)">${drawing}</g></svg>`;
+    const instruction=stage==='one'?'اول با یک صفت و اسم جمله بساز.':stage==='two'?'دو صفت: اندازه، رنگ، سپس اسم.':'اسم و جنس و شکل هم تغییر می‌کنند. برای هر شیء فقط ترکیب‌های واقعی نشان داده می‌شوند.';
+    return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><div class="tap-scene">${svg}<p class="tap-live-sentence" lang="en" dir="ltr">This is a ${phrase}.${soundButton(sentence,c.e,c.i)}</p><p class="tap-live-translation">${c.e('این یک '+label+' است.')}</p></div><p class="live-hint">${c.e(instruction)} روی کلمه‌های رنگی جمله لمس کن.</p>`,a,c.index,c.e,'module-tap-attributes');
+  }
   const size=pick('size'),shape=pick('shape'),material=pick('material');
   if(!size||!shape||!material)return wrapper('',a,c.index,c.e);
   const sentence=`This is a ${size.en} ${shape.en} ${material.en} box.`;
@@ -721,6 +754,25 @@ function tapAttributesLab(a,c) {
   return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><div class="tap-scene"><div class="tap-object-stage"><div class="tap-object" role="img" aria-label="${c.e(size.fa+' '+shape.fa+' '+material.fa+' جعبه')}" style="width:${width}px;height:${height}px;border-radius:${shapeRadius};transform:scale(${scale});background:${texture}"></div></div><p class="tap-live-sentence" lang="en" dir="ltr">${words}${soundButton(sentence,c.e,c.i)}</p><p>${c.e('این یک جعبهٔ '+size.fa+' '+shape.fa+' '+material.fa+' است.')}</p></div><p class="live-hint">برای مقایسه، کلمات اندازه، شکل و جنس را مستقیماً در جمله لمس کن؛ تصویر همان لحظه تغییر می‌کند.</p>`,a,c.index,c.e,'module-tap-attributes');
 }
 
+function tapOwnershipLab(a,c){
+  const key=`${c.lessonId}:${a.id}`;
+  const selected=c.progress.attributeChoices?.[key]||{};
+  const get=field=>a.options[field]?.[(Number(selected[field])||0)%a.options[field].length];
+  const who=get('subject'),amount=get('count'),noun=get('noun'),form=get('form');
+  if(!who||!amount||!noun||!form)return wrapper('',a,c.index,c.e);
+  const plural=amount.number>1,word=plural?noun.plural:noun.en;
+  const number=plural?amount.en:'a';
+  const possessive=plural?`These are my ${word}.`:`This is my ${word}.`;
+  const verb=who.id==='she'?'has':'have',negation=who.id==='she'?"doesn't have":"don't have";
+  const query=who.id==='she'?'Does she have':who.id==='you'?'Do you have':'Do I have';
+  const action=form.id==='have'?`${who.en} ${verb}`:form.id==='not-have'?`${who.en} ${negation}`:query;
+  const sentence=form.id==='belongs'?possessive:`${action} ${number} ${word}${form.id==='question'?'?':'.'}`;
+  const tok=(field,value)=>`<button type="button" class="tap-word" data-attribute-key="${c.e(key)}" data-attribute-field="${field}">${c.e(value)}</button>`;
+  const sentenceMarkup=form.id==='belongs'?`${tok('form',plural?'These are my':'This is my')} ${tok('noun',word)}.`:form.id==='question'?`${tok('form',query)} ${tok('count',number)} ${tok('noun',word)}?`:`${tok('subject',who.en)} ${tok('form',action.replace(who.en+' ',''))} ${tok('count',number)} ${tok('noun',word)}.`;
+  const translation=form.id==='belongs'?`${noun.fa} ${plural?'ها':' '} مال من ${plural?'هستند':'است'}.`:`${who.fa} ${amount.fa} ${noun.fa} ${form.id==='not-have'?'ندارد':form.id==='question'?'دارد؟':'دارد'}`;
+  return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><div class="tap-scene"><p class="tap-live-sentence" lang="en" dir="ltr">${sentenceMarkup}${soundButton(sentence,c.e,c.i)}</p><p class="tap-live-translation">${c.e(translation)}</p></div><p class="live-hint">روی کلمات جمله بزن. مقایسه کن «This is my bag» با «I have a bag»؛ و سپس عدد و نام را به خواهر و برادر تغییر بده.</p>`,a,c.index,c.e,'module-tap-attributes');
+}
+
 const renderers = {
   intro, vocabulary, pattern, match, 'sentence-builder': sentenceBuilder,
   'quiz-set': quizSet, dialogue, roleplay, 'free-write': freeWrite,
@@ -729,7 +781,7 @@ const renderers = {
   'exchange-lab': exchangeLab, 'expression-study': expressionStudy, 'count-visual': countVisual, 'plural-pair-lab': pluralPairLab, 'count-math-lab': countMathLab,
   shadowing, 'shadowing-review': shadowing, 'picture-description': pictureDescription,
   'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer,
-  'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer, 'tap-attributes-lab': tapAttributesLab
+  'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer, 'tap-attributes-lab': tapAttributesLab, 'tap-ownership-lab': tapOwnershipLab
 };
 export function renderActivity(activity, context) {
   const renderer = renderers[activity.type];

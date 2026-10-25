@@ -88,7 +88,7 @@ export function validatePublishedCatalog({ manifest, runtimeCourse, legacy, read
     errors.push('Published A1 order differs from the 126-lesson owner roadmap (must be a contiguous prefix)');
   const frozen = new Map((legacy.lockedMismatches||[]).map(x => [x.id, x]));
   const originallyPublished = new Set(legacy.legacyPublished);
-  const metadataGrandfathered = new Set(['A1-1', 'A1-2', 'A1-3', 'A1-4', 'A1-5']);
+  const metadataGrandfathered = new Set(['A1-1', 'A1-2']);
   for (const entry of entries) {
     const canonical = canonicalById.get(entry.id);
     if (!canonical) { errors.push(entry.id + ': missing from canonical roadmap'); continue; }
@@ -135,11 +135,23 @@ export function validatePublishedCatalog({ manifest, runtimeCourse, legacy, read
     const raw=readLesson?.(archived.archivedFile);
     if(!raw||gitBlobSha(raw)!==archived.legacyGitBlobSha)
       errors.push(archived.id+': immutable archived lesson changed');
-    if(ids.includes(archived.id)&&!entries.find(x=>x.id===archived.id)?.file?.includes('-v2.json'))
+    if(ids.includes(archived.id)&&!/-v[2-9]\d*\.json$/.test(entries.find(x=>x.id===archived.id)?.file||''))
       errors.push(archived.id+': replacement must use a distinct versioned file');
   }
   if((legacy.archivedMismatches||[]).length && legacy.progressMigration?.revision!=='a1-canonical-six-2026-10')
     errors.push('Historical progress migration contract is missing');
+  if(legacy.cumulativeReorder){
+    if(!legacy.cumulativeReorder.preserveProgress||!legacy.cumulativeReorder.archiveNamespace||legacy.cumulativeReorder.progressRevision!=='a1-cumulative-owner-2026-10')
+      errors.push('A1 reorder is missing preserved learner-progress history');
+    for(const previous of legacy.cumulativeReorder.previousActive||[]){
+      const raw=readLesson?.(previous.file);
+      if(!previous.gitBlobSha||!raw||gitBlobSha(raw)!==previous.gitBlobSha)
+        errors.push(previous.id+': earlier active lesson body was not preserved');
+      const replacement=legacy.cumulativeReorder.replacements?.[previous.id];
+      if(!replacement||entries.find(x=>x.id===previous.id)?.file!==replacement||replacement===previous.file)
+        errors.push(previous.id+': reordered lesson lacks a versioned replacement');
+    }
+  }
   return errors;
 }
 

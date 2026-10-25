@@ -14,14 +14,14 @@ const source=readFileSync(join(projectRoot,manifest.sourcePath),'utf8');
 const runtime=json('content/language-pairs/fa-en/curriculum.a1.json');
 const readLesson=path=>readFileSync(join(projectRoot,'content/language-pairs/fa-en',path),'utf8');
 
-test('owner-locked manifest contains all 126 original teaching outcomes and valid prerequisites',()=>{
+test('owner-locked manifest contains all 126 outcomes including approved A1 reorder',()=>{
   assert.equal(parseCanonicalSource(source).length,126);
   assert.equal(manifest.lessons.length,126);
   assert.deepEqual(validateCanonicalManifest({source,manifest,lock}),[]);
   assert.equal(gitBlobSha(source),lock.sourceGitBlobSha);
   assert.equal(gitBlobSha(JSON.stringify(manifest,null,2)+'\n'),lock.manifestGitBlobSha);
   const ids=['A1-1','A1-2','A1-3','A1-4','A1-5','A1-6','A1-7','A1-8','A1-9','A1-10'];
-  const expectedTitles=['معرفی خود و شروع گفت‌وگو','معرفی اعضای خانواده','مالکیت و داشتن اشیا','بیان موقعیت مکانی','تعداد و شمارش اشیا','توصیف ویژگی‌های اشیا','توصیف ظاهر افراد','تبادل اطلاعات شخصی','بیان وضعیت و احساسات روزمره','معرفی خانه و امکانات آن'];
+  const expectedTitles=['معرفی خود و شروع گفت‌وگو','معرفی اعضای خانواده','شمارش و جمع اشیا','مالکیت و داشتن و نداشتن','بیان موقعیت مکانی','توصیف ویژگی‌های اشیا','توصیف ظاهر افراد','تبادل اطلاعات شخصی','بیان وضعیت و احساسات روزمره','معرفی خانه و امکانات آن'];
   assert.deepEqual(ids.map(id=>manifest.lessons.find(l=>l.id===id).title),expectedTitles);
 });
 test('changed roadmap target, order, or document cannot bypass the lock',()=>{
