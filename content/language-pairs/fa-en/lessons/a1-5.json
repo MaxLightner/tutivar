@@ -1,6 +1,6 @@
 {
   "id": "A1-5",
-  "revision": 1,
+  "revision": 2,
   "status": "draft",
   "title": "تعداد و شمارش اشیا",
   "goal": "بتوانی عددهای یک تا ده را به کار ببری، تفاوت اسم مفرد و جمع را ببینی، تعداد اشیا را با How many ... are there? بپرسی و با There is one ... / There are ... پاسخ بدهی.",
@@ -49,7 +49,7 @@
     {
       "id": "foundation",
       "label": "از کلمه تا جمله",
-      "intro": "اول صداها و عددها را بشنو؛ بعد ببین با تغییر تعداد، شکل اسم و جمله چطور عوض می‌شود.",
+      "intro": "با تصویر تفاوت یک شیء و چند شیء را ببین؛ سپس a/an، ساخت مفرد و جمع و پرسیدن تعداد را تمرین کن.",
       "masteryActivityIds": [
         "counting-construction"
       ],
@@ -79,7 +79,7 @@
           "phase": "words",
           "title": "واژگان شمارش و اشیای آشنا",
           "batchSize": 5,
-          "deckRevision": 1,
+          "deckRevision": 2,
           "items": [
             {
               "en": "one",
@@ -399,7 +399,12 @@
             {
               "en": "orange",
               "fa": "پرتقال",
-              "role": "supplementary"
+              "hint": "میوه‌ای که با an می‌آید.",
+              "examples": [
+                "One orange.",
+                "An orange.",
+                "There are two oranges."
+              ]
             },
             {
               "en": "plate",
@@ -425,6 +430,56 @@
               "en": "crayon",
               "fa": "مداد شمعی",
               "role": "supplementary"
+            },
+            {
+              "en": "fish",
+              "fa": "ماهی",
+              "hint": "جمع fish نیز fish است.",
+              "examples": [
+                "One fish.",
+                "Two fish.",
+                "I can see two fish."
+              ]
+            },
+            {
+              "en": "sheep",
+              "fa": "گوسفند",
+              "hint": "مفرد و جمع sheep یکسان است.",
+              "examples": [
+                "One sheep.",
+                "Two sheep.",
+                "There are two sheep."
+              ]
+            },
+            {
+              "en": "person",
+              "fa": "نفر / شخص",
+              "hint": "جمع نامنظم آن people است.",
+              "examples": [
+                "One person.",
+                "Two people.",
+                "There are three people."
+              ]
+            },
+            {
+              "en": "bus",
+              "fa": "اتوبوس",
+              "hint": "جمع آن buses است.",
+              "examples": [
+                "One bus.",
+                "Two buses.",
+                "There are two buses."
+              ]
+            },
+            {
+              "en": "mouse",
+              "fa": "موش",
+              "hint": "جمع نامنظم آن mice است.",
+              "examples": [
+                "One mouse.",
+                "Two mice.",
+                "There are two mice."
+              ]
             }
           ]
         },
@@ -482,23 +537,47 @@
           ]
         },
         {
-          "id": "counting-phrase-view",
-          "type": "composer-view",
+          "id": "counting-picture-compare",
+          "type": "count-visual",
           "phase": "phrases",
-          "title": "از یک شیء به چند شیء",
-          "description": "الگو را عوض کن و ببین با تغییر عدد، اسم هم چگونه تغییر می‌کند.",
-          "sourceActivityId": "counting-composer",
-          "patternIds": [
-            "one-object",
-            "plural-phrase"
+          "title": "یک شیء، چند شیء؛ واقعاً ببین",
+          "description": "با چشم تعداد را مقایسه کن. واژه‌هایی مثل book و pencil قبلاً یاد گرفته شده‌اند؛ اینجا فقط عدد و شکل جمع را بررسی می‌کنی.",
+          "scenes": [
+            {
+              "shape": "book",
+              "singularCount": 1,
+              "pluralCount": 3,
+              "singular": "one book",
+              "plural": "three books",
+              "singularFa": "یک کتاب",
+              "pluralFa": "سه کتاب"
+            },
+            {
+              "shape": "apple",
+              "singularCount": 1,
+              "pluralCount": 2,
+              "singular": "one apple",
+              "plural": "two apples",
+              "singularFa": "یک سیب",
+              "pluralFa": "دو سیب"
+            },
+            {
+              "shape": "pencil",
+              "singularCount": 1,
+              "pluralCount": 5,
+              "singular": "one pencil",
+              "plural": "five pencils",
+              "singularFa": "یک مداد",
+              "pluralFa": "پنج مداد"
+            }
           ]
         },
         {
           "id": "counting-composer",
           "type": "sentence-composer",
           "phase": "sentence",
-          "title": "جملهٔ زنده؛ عدد و اسم را تغییر بده",
-          "description": "روی عدد یا اسم بزن تا جمله عوض شود. یک شیء با one می‌آید؛ از دو به بالا، اسم جمع را ببین.",
+          "title": "پرسیدن تعداد؛ اسم را عوض کن",
+          "description": "فقط نام شیء را در سؤال عوض کن. با How many سؤال تعداد را می‌سازی؛ پاسخ‌های There is و There are را در تمرین‌های بعدی تولید می‌کنی.",
           "targetLanguage": "en",
           "wordSets": {
             "objects": [
@@ -1062,78 +1141,152 @@
               ]
             }
           ],
-          "defaultPattern": "plural-phrase",
+          "defaultPattern": "how-many",
           "completion": "عدد، اسم مفرد یا جمع و پرسش تعداد را با هم ترکیب کردی."
         },
         {
           "id": "counting-meaning-variations",
           "type": "meaning-cluster",
           "phase": "variants",
-          "title": "یک مفهوم، چند بیان",
-          "description": "با یک، دو و چند شیء مقایسه کن؛ ببین عدد، شکل اسم و فعل در جمله چگونه با هم هماهنگ می‌شوند.",
+          "title": "یک مفهوم، چند بیان: one / a / an",
+          "description": "یک شیء را می‌توان با one یا حرف تعریف a/an معرفی کرد؛ one بر دقیقاً یک‌بودن تأکید می‌کند و a/an شمارش را برجسته نمی‌کند.",
           "concepts": [
             {
-              "id": "one-or-many",
-              "fa": "از یک کتاب به چند کتاب",
+              "id": "one-or-a-book",
+              "fa": "یک کتاب",
               "forms": [
                 {
                   "en": "one book",
-                  "fa": "یک کتاب",
-                  "relation": "equivalent",
-                  "note": "برای یک مورد، اسم مفرد می‌ماند."
+                  "fa": "دقیقاً یک کتاب",
+                  "relation": "related",
+                  "note": "one عدد است و روی تعداد دقیق تأکید دارد."
                 },
                 {
-                  "en": "two books",
-                  "fa": "دو کتاب",
+                  "en": "a book",
+                  "fa": "یک کتاب (نامعین)",
                   "relation": "related",
-                  "note": "برای بیشتر از یک، در این اسم s اضافه می‌شود."
-                },
-                {
-                  "en": "five books",
-                  "fa": "پنج کتاب",
-                  "relation": "related",
-                  "note": "عدد تغییر می‌کند اما اسم جمع می‌ماند."
+                  "note": "a پیش از اسم مفرد با صدای همخوان می‌آید؛ عدد را برجسته نمی‌کند."
                 }
               ]
             },
             {
-              "id": "question-and-answer",
-              "fa": "پرسیدن تعداد و پاسخ دادن",
+              "id": "one-or-an-apple",
+              "fa": "یک سیب",
               "forms": [
                 {
-                  "en": "How many books are there?",
-                  "fa": "چند کتاب وجود دارد؟",
-                  "relation": "equivalent",
-                  "note": "با How many تعداد را می‌پرسی."
+                  "en": "one apple",
+                  "fa": "دقیقاً یک سیب",
+                  "relation": "related",
+                  "note": "one بر یک عدد سیب تأکید می‌کند."
                 },
                 {
-                  "en": "There are three books.",
-                  "fa": "سه کتاب وجود دارد.",
+                  "en": "an apple",
+                  "fa": "یک سیب (نامعین)",
                   "relation": "related",
-                  "note": "با There are تعداد بیشتر از یک را بیان می‌کنی."
+                  "note": "an پیش از صدای مصوتِ apple می‌آید."
+                }
+              ]
+            },
+            {
+              "id": "one-or-a-pen",
+              "fa": "یک خودکار",
+              "forms": [
+                {
+                  "en": "one pen",
+                  "fa": "دقیقاً یک خودکار",
+                  "relation": "related",
+                  "note": "one تعداد را مهم می‌کند."
                 },
                 {
-                  "en": "There is one book.",
-                  "fa": "یک کتاب وجود دارد.",
+                  "en": "a pen",
+                  "fa": "یک خودکار (نامعین)",
                   "relation": "related",
-                  "note": "برای یک مورد از There is one استفاده می‌کنی."
+                  "note": "a برای نام‌بردن از یک مورد ناشناس/نامعین است."
+                }
+              ]
+            },
+            {
+              "id": "one-or-an-orange",
+              "fa": "یک پرتقال",
+              "forms": [
+                {
+                  "en": "one orange",
+                  "fa": "دقیقاً یک پرتقال",
+                  "relation": "related",
+                  "note": "one عددِ یک را مشخص می‌کند."
+                },
+                {
+                  "en": "an orange",
+                  "fa": "یک پرتقال (نامعین)",
+                  "relation": "related",
+                  "note": "قبل از صدای مصوت orange از an استفاده می‌شود."
                 }
               ]
             }
           ]
         },
         {
-          "id": "counting-singular-plural-view",
-          "type": "composer-view",
+          "id": "counting-plural-pairs",
+          "type": "plural-pair-lab",
           "phase": "variants",
-          "title": "مفرد و جمع؛ فعل هم تغییر می‌کند",
-          "description": "دو الگو را کنار هم ببین: There is one ... و There are ...",
-          "sourceActivityId": "counting-composer",
-          "patternIds": [
-            "there-is-one",
-            "there-are"
-          ],
-          "showNote": true
+          "title": "مفرد و جمع؛ فقط اسم تغییر می‌کند",
+          "description": "عدد سمت چپ همیشه one و عدد سمت راست همیشه two است. فقط اسم را عوض کن تا ببینی جمع چگونه ساخته می‌شود؛ بعضی اسم‌ها تغییر نمی‌کنند.",
+          "items": [
+            {
+              "shape": "fish",
+              "singular": "fish",
+              "plural": "fish",
+              "note": "fish شکل جمع معمولاً یکسان دارد: one fish / two fish."
+            },
+            {
+              "shape": "book",
+              "singular": "book",
+              "plural": "books",
+              "note": "بیشتر اسم‌ها با افزودن s جمع می‌شوند."
+            },
+            {
+              "shape": "apple",
+              "singular": "apple",
+              "plural": "apples",
+              "note": "بعد از two اسم جمع به کار می‌رود."
+            },
+            {
+              "shape": "box",
+              "singular": "box",
+              "plural": "boxes",
+              "note": "در پایان x معمولاً es اضافه می‌شود. box قبلاً آموزش داده شده است."
+            },
+            {
+              "shape": "sheep",
+              "singular": "sheep",
+              "plural": "sheep",
+              "note": "sheep در مفرد و جمع یکسان می‌ماند."
+            },
+            {
+              "shape": "person",
+              "singular": "person",
+              "plural": "people",
+              "note": "person به people تبدیل می‌شود؛ فقط s اضافه نمی‌کنیم."
+            },
+            {
+              "shape": "child",
+              "singular": "child",
+              "plural": "children",
+              "note": "child شکل جمع بی‌قاعدهٔ children دارد؛ این اسم را در تمرین مرور می‌کنی."
+            },
+            {
+              "shape": "bus",
+              "singular": "bus",
+              "plural": "buses",
+              "note": "bus به buses تبدیل می‌شود."
+            },
+            {
+              "shape": "mouse",
+              "singular": "mouse",
+              "plural": "mice",
+              "note": "mouse شکل جمع نامنظم mice دارد."
+            }
+          ]
         },
         {
           "id": "counting-puzzle",
