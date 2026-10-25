@@ -1,0 +1,1873 @@
+{
+  "id": "A1-6",
+  "revision": 1,
+  "status": "draft",
+  "title": "پرسیدن نام و سن",
+  "goal": "نام و نام خانوادگی را بپرسی و معرفی کنی؛ با عددهای ۱۱ تا ۱۰۰ و ترکیب آن‌ها سن خود و دیگران را بگویی، سؤال How old ...? بسازی و جواب درست بدهی.",
+  "duration": "حدود ۲۵ دقیقه",
+  "feature": "کارت‌های تصویری نام و سن",
+  "archetype": "name-and-age",
+  "teachingModel": {
+    "primary": "K1",
+    "support": "K2"
+  },
+  "orientation": {
+    "goal": "نام کامل و سن خودت یا دیگران را در گفت‌وگو بپرسی و بگویی؛ عدد را بشناسی نه اینکه جملهٔ حفظی تکرار کنی.",
+    "prerequisites": [
+      "پرسیدن اسم از درس اول",
+      "پرسش با is/are و شمارش از درس پنجم"
+    ],
+    "previously": "قبلاً What's your name? را آموختی و تعداد را شمردی. حالا بدون تکرار بانک واژه‌های قبلی، اسم کامل و سن را می‌پرسی.",
+    "quickCheck": {
+      "title": "اگر از قبل بلدی",
+      "question": "می‌توانی اسم کامل و سن یک نفر را بپرسی و دربارهٔ سن او پاسخ بدهی؟",
+      "example": "How old is Sara? She is twenty-four.",
+      "explanation": "در این درس از عددهای مرکب و پاسخ کوتاه یا کامل استفاده می‌کنی.",
+      "allowSkip": true
+    }
+  },
+  "visual": {
+    "src": null,
+    "alt": "چهار کارت نام و سن با تصویر افراد: اِما ۱۲ سال، نوآ ۱۷ سال، سارا ۲۴ سال و علی ۳۵ سال",
+    "caption": "چهار نفر با اسم و سن مشخص"
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "How old are you?",
+      "I'm twelve years old.",
+      "What is your last name?"
+    ],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": true
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "از کلمه تا جمله",
+      "intro": "ابتدا جمله‌های کوتاه را تقلید کن؛ سپس واژگان تازهٔ مربوط به سن و نام را با الگوهای جمله ترکیب کن.",
+      "masteryActivityIds": [
+        "age-construction"
+      ],
+      "activities": [
+        {
+          "id": "a1-6-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "شنیدن و سایه‌خوانی",
+          "description": "برای تقلید صدا گوش بده. قرار نیست در اولین شنیدن معنای همهٔ جمله‌ها را بدانی.",
+          "audioSrc": null,
+          "rate": 0.7,
+          "pauseMs": 550,
+          "lines": [
+            "What's your first name?",
+            "My first name is Sara.",
+            "What's your last name?",
+            "My last name is Rahimi.",
+            "How old are you?",
+            "I'm twenty-four years old.",
+            "How old is Noah?",
+            "He is seventeen."
+          ]
+        },
+        {
+          "id": "age-words",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "واژگان جدید: سن، اسم کامل و عددهای بزرگ‌تر",
+          "batchSize": 5,
+          "deckRevision": 1,
+          "items": [
+            {
+              "en": "eleven",
+              "fa": "یازده",
+              "hint": "عدد 11؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
+              "examples": [
+                "I am eleven years old.",
+                "My brother is eleven years old.",
+                "She is eleven."
+              ]
+            },
+            {
+              "en": "twelve",
+              "fa": "دوازده",
+              "hint": "عدد 12؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
+              "examples": [
+                "I am twelve years old.",
+                "My brother is twelve years old.",
+                "She is twelve."
+              ]
+            },
+            {
+              "en": "thirteen",
+              "fa": "سیزده",
+              "hint": "عدد 13؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
+              "examples": [
+                "I am thirteen years old.",
+                "My brother is thirteen years old.",
+                "She is thirteen."
+              ]
+            },
+            {
+              "en": "fourteen",
+              "fa": "چهارده",
+              "hint": "عدد 14؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
+              "examples": [
+                "I am fourteen years old.",
+                "My brother is fourteen years old.",
+                "She is fourteen."
+              ]
+            },
+            {
+              "en": "fifteen",
+              "fa": "پانزده",
+              "hint": "عدد 15؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
+              "examples": [
+                "I am fifteen years old.",
+                "My brother is fifteen years old.",
+                "She is fifteen."
+              ]
+            },
+            {
+              "en": "sixteen",
+              "fa": "شانزده",
+              "hint": "عدد 16؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
+              "examples": [
+                "I am sixteen years old.",
+                "My brother is sixteen years old.",
+                "She is sixteen."
+              ]
+            },
+            {
+              "en": "seventeen",
+              "fa": "هفده",
+              "hint": "عدد 17؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
+              "examples": [
+                "I am seventeen years old.",
+                "My brother is seventeen years old.",
+                "She is seventeen."
+              ]
+            },
+            {
+              "en": "eighteen",
+              "fa": "هجده",
+              "hint": "عدد 18؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
+              "examples": [
+                "I am eighteen years old.",
+                "My brother is eighteen years old.",
+                "She is eighteen."
+              ]
+            },
+            {
+              "en": "nineteen",
+              "fa": "نوزده",
+              "hint": "عدد 19؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
+              "examples": [
+                "I am nineteen years old.",
+                "My brother is nineteen years old.",
+                "She is nineteen."
+              ]
+            },
+            {
+              "en": "twenty",
+              "fa": "بیست",
+              "hint": "عدد 20؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
+              "examples": [
+                "I am twenty years old.",
+                "My brother is twenty years old.",
+                "She is twenty."
+              ]
+            },
+            {
+              "en": "thirty",
+              "fa": "سی",
+              "hint": "عدد 30؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
+              "examples": [
+                "I am thirty years old.",
+                "My brother is thirty years old.",
+                "She is thirty."
+              ]
+            },
+            {
+              "en": "forty",
+              "fa": "چهل",
+              "hint": "عدد 40؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
+              "examples": [
+                "I am forty years old.",
+                "My brother is forty years old.",
+                "She is forty."
+              ]
+            },
+            {
+              "en": "fifty",
+              "fa": "پنجاه",
+              "hint": "عدد 50؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
+              "examples": [
+                "I am fifty years old.",
+                "My brother is fifty years old.",
+                "She is fifty."
+              ]
+            },
+            {
+              "en": "sixty",
+              "fa": "شصت",
+              "hint": "عدد 60؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
+              "examples": [
+                "I am sixty years old.",
+                "My brother is sixty years old.",
+                "She is sixty."
+              ]
+            },
+            {
+              "en": "seventy",
+              "fa": "هفتاد",
+              "hint": "عدد 70؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
+              "examples": [
+                "I am seventy years old.",
+                "My brother is seventy years old.",
+                "She is seventy."
+              ]
+            },
+            {
+              "en": "eighty",
+              "fa": "هشتاد",
+              "hint": "عدد 80؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
+              "examples": [
+                "I am eighty years old.",
+                "My brother is eighty years old.",
+                "She is eighty."
+              ]
+            },
+            {
+              "en": "ninety",
+              "fa": "نود",
+              "hint": "عدد 90؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
+              "examples": [
+                "I am ninety years old.",
+                "My brother is ninety years old.",
+                "She is ninety."
+              ]
+            },
+            {
+              "en": "hundred",
+              "fa": "صد",
+              "hint": "عدد 100؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
+              "examples": [
+                "I am hundred years old.",
+                "My brother is hundred years old.",
+                "She is hundred."
+              ]
+            },
+            {
+              "en": "age",
+              "fa": "سن",
+              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
+              "examples": [
+                "How old are you?",
+                "What is your age?",
+                "Her age is twenty-four."
+              ]
+            },
+            {
+              "en": "old",
+              "fa": "ساله / قدیمی",
+              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
+              "examples": [
+                "How old are you?",
+                "I am twelve years old.",
+                "Sara is twenty-four years old."
+              ]
+            },
+            {
+              "en": "year",
+              "fa": "سال",
+              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
+              "examples": [
+                "I am twelve years old.",
+                "My brother is ten years old.",
+                "There is one year between us."
+              ]
+            },
+            {
+              "en": "first",
+              "fa": "اول / نخست",
+              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
+              "examples": [
+                "My first name is Sara.",
+                "What is your first name?",
+                "The first letter is S."
+              ]
+            },
+            {
+              "en": "last",
+              "fa": "آخر / نام خانوادگی در ترکیب",
+              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
+              "examples": [
+                "My last name is Rahimi.",
+                "What is your last name?",
+                "The last letter is i."
+              ]
+            },
+            {
+              "en": "full",
+              "fa": "کامل",
+              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
+              "examples": [
+                "My full name is Sara Rahimi.",
+                "What is your full name?",
+                "Tell me your full name."
+              ]
+            },
+            {
+              "en": "spell",
+              "fa": "هجی کردن",
+              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
+              "examples": [
+                "Can you spell your name?",
+                "Spell your first name.",
+                "Please spell it."
+              ]
+            },
+            {
+              "en": "letter",
+              "fa": "حرف الفبا",
+              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
+              "examples": [
+                "The first letter is S.",
+                "There are five letters.",
+                "What is the last letter?"
+              ]
+            },
+            {
+              "en": "surname",
+              "fa": "نام خانوادگی",
+              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
+              "examples": [
+                "My surname is Rahimi.",
+                "What is your surname?",
+                "Her surname is Nouri."
+              ]
+            },
+            {
+              "en": "birthday",
+              "fa": "روز تولد",
+              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
+              "examples": [
+                "My birthday is tomorrow.",
+                "Today is her birthday.",
+                "Is your birthday today?"
+              ]
+            },
+            {
+              "en": "today",
+              "fa": "امروز",
+              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
+              "examples": [
+                "Today is my birthday.",
+                "I am twenty years old today.",
+                "How old are you today?"
+              ]
+            },
+            {
+              "en": "tomorrow",
+              "fa": "فردا",
+              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
+              "examples": [
+                "My birthday is tomorrow.",
+                "I am eighteen tomorrow.",
+                "See you tomorrow."
+              ]
+            },
+            {
+              "en": "young",
+              "fa": "جوان",
+              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
+              "examples": [
+                "My brother is young.",
+                "She is a young adult.",
+                "He is young."
+              ]
+            },
+            {
+              "en": "adult",
+              "fa": "بزرگسال",
+              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
+              "examples": [
+                "She is an adult.",
+                "I am an adult.",
+                "The adult is thirty years old."
+              ]
+            },
+            {
+              "en": "teenager",
+              "fa": "نوجوان",
+              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
+              "examples": [
+                "He is a teenager.",
+                "My sister is a teenager.",
+                "The teenager is sixteen."
+              ]
+            },
+            {
+              "en": "number",
+              "fa": "عدد / شماره",
+              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
+              "examples": [
+                "This number is twenty.",
+                "What is your number?",
+                "The number is thirty-five."
+              ]
+            },
+            {
+              "en": "different",
+              "fa": "متفاوت",
+              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
+              "examples": [
+                "We have different ages.",
+                "The numbers are different.",
+                "Our last names are different."
+              ]
+            },
+            {
+              "en": "same",
+              "fa": "یکسان",
+              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
+              "examples": [
+                "We are the same age.",
+                "They have the same last name.",
+                "The numbers are the same."
+              ]
+            },
+            {
+              "en": "tell",
+              "fa": "گفتن / اطلاع دادن",
+              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
+              "examples": [
+                "Tell me your name.",
+                "Please tell me your age.",
+                "Can you tell me?"
+              ]
+            },
+            {
+              "en": "nickname",
+              "fa": "لقب / اسم خودمانی",
+              "role": "supplementary"
+            },
+            {
+              "en": "initial",
+              "fa": "حرف اول اسم",
+              "role": "supplementary"
+            },
+            {
+              "en": "profile",
+              "fa": "پروفایل / معرفی کوتاه",
+              "role": "supplementary"
+            },
+            {
+              "en": "classmate",
+              "fa": "همکلاسی",
+              "role": "supplementary"
+            },
+            {
+              "en": "form",
+              "fa": "فرم",
+              "role": "supplementary"
+            },
+            {
+              "en": "digit",
+              "fa": "رقم",
+              "role": "supplementary"
+            },
+            {
+              "en": "date",
+              "fa": "تاریخ",
+              "role": "supplementary"
+            },
+            {
+              "en": "younger",
+              "fa": "کم‌سن‌تر",
+              "role": "supplementary"
+            },
+            {
+              "en": "older",
+              "fa": "بزرگ‌تر از نظر سن",
+              "role": "supplementary"
+            }
+          ]
+        },
+        {
+          "id": "age-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "ترکیب‌های کاربردی برای پرسیدن نام و سن",
+          "description": "عبارت‌ها مستقل از بانک واژگان هستند؛ پرسش‌های کامل فقط وقتی عبارت تثبیت‌شده‌اند اینجا نمایش داده می‌شوند.",
+          "items": [
+            {
+              "en": "first name",
+              "fa": "نام کوچک",
+              "kind": "collocation",
+              "examples": [
+                "My first name is Sara.",
+                "What is your first name?",
+                "Her first name is Emma."
+              ]
+            },
+            {
+              "en": "last name",
+              "fa": "نام خانوادگی",
+              "kind": "collocation",
+              "examples": [
+                "My last name is Rahimi.",
+                "What is your last name?",
+                "His last name is Smith."
+              ]
+            },
+            {
+              "en": "full name",
+              "fa": "نام و نام خانوادگی",
+              "kind": "collocation",
+              "examples": [
+                "My full name is Sara Rahimi.",
+                "What is your full name?",
+                "Tell me your full name."
+              ]
+            },
+            {
+              "en": "years old",
+              "fa": "ساله",
+              "kind": "collocation",
+              "examples": [
+                "I'm twelve years old.",
+                "Sara is twenty-four years old.",
+                "He is seventeen years old."
+              ]
+            },
+            {
+              "en": "the same age",
+              "fa": "هم‌سن",
+              "kind": "collocation",
+              "examples": [
+                "We are the same age.",
+                "Are they the same age?",
+                "They are the same age."
+              ]
+            },
+            {
+              "en": "How old are you?",
+              "fa": "چند سالته؟ / چند سال دارید؟",
+              "kind": "fixed",
+              "examples": [
+                "How old are you?",
+                "Excuse me, how old are you?",
+                "And how old are you?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "age-phrase-view",
+          "type": "composer-view",
+          "phase": "phrases",
+          "title": "عدد مرکب را در عبارت بشنو",
+          "description": "سن را از دوازده به بیست‌وچهار یا سی‌وپنج عوض کن؛ هر عدد مرکب یک عبارت است، نه دو واژهٔ مستقل در بانک.",
+          "sourceActivityId": "age-composer",
+          "patternId": "phrase"
+        },
+        {
+          "id": "age-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "جملهٔ زنده: نام، شخص و سن",
+          "description": "روی نام یا سن در خود جمله بزن. بعد شکل پرسشی و پاسخ کوتاه را در بخش‌های بعدی مقایسه کن.",
+          "targetLanguage": "en",
+          "wordSets": {
+            "people": [
+              {
+                "id": "sara",
+                "label": "Sara",
+                "translation": "سارا",
+                "forms": {
+                  "name": "Sara",
+                  "possessive": "Sara's",
+                  "faName": "سارا",
+                  "surname": "Rahimi"
+                }
+              },
+              {
+                "id": "ali",
+                "label": "Ali",
+                "translation": "علی",
+                "forms": {
+                  "name": "Ali",
+                  "possessive": "Ali's",
+                  "faName": "علی",
+                  "surname": "Nouri"
+                }
+              },
+              {
+                "id": "emma",
+                "label": "Emma",
+                "translation": "اِما",
+                "forms": {
+                  "name": "Emma",
+                  "possessive": "Emma's",
+                  "faName": "اِما",
+                  "surname": "Brown"
+                }
+              },
+              {
+                "id": "noah",
+                "label": "Noah",
+                "translation": "نوآ",
+                "forms": {
+                  "name": "Noah",
+                  "possessive": "Noah's",
+                  "faName": "نوآ",
+                  "surname": "Smith"
+                }
+              }
+            ],
+            "ages": [
+              {
+                "id": "twelve",
+                "label": "twelve",
+                "translation": "دوازده",
+                "features": {
+                  "years": 12
+                },
+                "forms": {
+                  "word": "twelve",
+                  "faWord": "دوازده"
+                }
+              },
+              {
+                "id": "seventeen",
+                "label": "seventeen",
+                "translation": "هفده",
+                "features": {
+                  "years": 17
+                },
+                "forms": {
+                  "word": "seventeen",
+                  "faWord": "هفده"
+                }
+              },
+              {
+                "id": "twenty-four",
+                "label": "twenty-four",
+                "translation": "بیست‌وچهار",
+                "features": {
+                  "years": 24
+                },
+                "forms": {
+                  "word": "twenty-four",
+                  "faWord": "بیست‌وچهار"
+                }
+              },
+              {
+                "id": "thirty-five",
+                "label": "thirty-five",
+                "translation": "سی‌وپنج",
+                "features": {
+                  "years": 35
+                },
+                "forms": {
+                  "word": "thirty-five",
+                  "faWord": "سی‌وپنج"
+                }
+              },
+              {
+                "id": "forty-two",
+                "label": "forty-two",
+                "translation": "چهل‌ودو",
+                "features": {
+                  "years": 42
+                },
+                "forms": {
+                  "word": "forty-two",
+                  "faWord": "چهل‌ودو"
+                }
+              },
+              {
+                "id": "fifty",
+                "label": "fifty",
+                "translation": "پنجاه",
+                "features": {
+                  "years": 50
+                },
+                "forms": {
+                  "word": "fifty",
+                  "faWord": "پنجاه"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "person",
+              "label": "شخص",
+              "wordSet": "people",
+              "default": "sara",
+              "includeRoles": [
+                "core",
+                "supplementary"
+              ]
+            },
+            {
+              "id": "age",
+              "label": "سن",
+              "wordSet": "ages",
+              "default": "twenty-four",
+              "includeRoles": [
+                "core",
+                "supplementary"
+              ]
+            }
+          ],
+          "derivedDefaults": {},
+          "dependencies": [],
+          "defaultPattern": "statement",
+          "patterns": [
+            {
+              "id": "phrase",
+              "label": "عبارت سن",
+              "segments": [
+                {
+                  "slot": "age",
+                  "form": "word"
+                },
+                {
+                  "fixed": " years old"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "age",
+                  "form": "faWord"
+                },
+                {
+                  "fixed": " ساله"
+                }
+              ]
+            },
+            {
+              "id": "statement",
+              "label": "خبری",
+              "segments": [
+                {
+                  "slot": "person",
+                  "form": "name"
+                },
+                {
+                  "fixed": " is "
+                },
+                {
+                  "slot": "age",
+                  "form": "word"
+                },
+                {
+                  "fixed": " years old."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "person",
+                  "form": "faName"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "age",
+                  "form": "faWord"
+                },
+                {
+                  "fixed": " ساله است."
+                }
+              ]
+            },
+            {
+              "id": "question",
+              "label": "چند ساله؟",
+              "segments": [
+                {
+                  "fixed": "How old is "
+                },
+                {
+                  "slot": "person",
+                  "form": "name"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "person",
+                  "form": "faName"
+                },
+                {
+                  "fixed": " چند ساله است؟"
+                }
+              ]
+            },
+            {
+              "id": "yes-no",
+              "label": "درست است؟",
+              "segments": [
+                {
+                  "fixed": "Is "
+                },
+                {
+                  "slot": "person",
+                  "form": "name"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "age",
+                  "form": "word"
+                },
+                {
+                  "fixed": " years old?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "آیا "
+                },
+                {
+                  "slot": "person",
+                  "form": "faName"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "age",
+                  "form": "faWord"
+                },
+                {
+                  "fixed": " ساله است؟"
+                }
+              ]
+            },
+            {
+              "id": "negative",
+              "label": "منفی",
+              "segments": [
+                {
+                  "slot": "person",
+                  "form": "name"
+                },
+                {
+                  "fixed": " is not "
+                },
+                {
+                  "slot": "age",
+                  "form": "word"
+                },
+                {
+                  "fixed": " years old."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "person",
+                  "form": "faName"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "age",
+                  "form": "faWord"
+                },
+                {
+                  "fixed": " ساله نیست."
+                }
+              ]
+            },
+            {
+              "id": "surname",
+              "label": "نام خانوادگی",
+              "segments": [
+                {
+                  "slot": "person",
+                  "form": "possessive"
+                },
+                {
+                  "fixed": " last name is "
+                },
+                {
+                  "slot": "person",
+                  "form": "surname"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "نام خانوادگی "
+                },
+                {
+                  "slot": "person",
+                  "form": "faName"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "person",
+                  "form": "surname"
+                },
+                {
+                  "fixed": " است."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "age-meaning-variations",
+          "type": "meaning-cluster",
+          "phase": "variants",
+          "title": "یک معنی، چند شیوهٔ بیان",
+          "description": "معنا را ثابت نگه دار و ببین در گفت‌وگوی طبیعی چه شکل‌های دیگری دارد.",
+          "concepts": [
+            {
+              "id": "name-form",
+              "fa": "اسم تو چیست؟",
+              "forms": [
+                {
+                  "en": "What is your name?",
+                  "fa": "اسم شما چیست؟",
+                  "relation": "equivalent",
+                  "note": "شکل کامل‌تر فعل is."
+                },
+                {
+                  "en": "What's your name?",
+                  "fa": "اسمت چیست؟",
+                  "relation": "equivalent",
+                  "note": "شکل محاوره‌ای و رایج سؤال."
+                }
+              ]
+            },
+            {
+              "id": "my-age",
+              "fa": "من بیست‌وچهار سال دارم.",
+              "forms": [
+                {
+                  "en": "I'm twenty-four years old.",
+                  "fa": "من بیست‌وچهار ساله‌ام.",
+                  "relation": "equivalent",
+                  "note": "پاسخ کامل با years old."
+                },
+                {
+                  "en": "I'm twenty-four.",
+                  "fa": "من بیست‌وچهار سالم است.",
+                  "relation": "equivalent",
+                  "note": "اگر دربارهٔ سن سؤال شده، جواب کوتاه طبیعی است."
+                }
+              ]
+            },
+            {
+              "id": "first-name",
+              "fa": "اسم کوچک من سارا است.",
+              "forms": [
+                {
+                  "en": "My first name is Sara.",
+                  "fa": "اسم کوچک من سارا است.",
+                  "relation": "equivalent",
+                  "note": "برای تمایز از نام خانوادگی."
+                },
+                {
+                  "en": "I'm Sara.",
+                  "fa": "من سارا هستم.",
+                  "relation": "related",
+                  "note": "معرفی طبیعی؛ لزوماً نام خانوادگی را مشخص نمی‌کند."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "age-questions-view",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "پرسش سن و نام خانوادگی",
+          "description": "یک‌بار دربارهٔ سن و بار دیگر دربارهٔ درست‌بودن سن یا نام خانوادگی سؤال و جواب بساز.",
+          "sourceActivityId": "age-composer",
+          "patternIds": [
+            "question",
+            "yes-no",
+            "surname",
+            "negative"
+          ],
+          "showNote": true
+        },
+        {
+          "id": "age-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "revision": 1,
+          "reuseBank": true,
+          "goalCount": 5,
+          "title": "جورچین نام و سن",
+          "description": "واژه‌ها را دوباره استفاده کن تا چند جمله و سؤال متفاوت بسازی.",
+          "sourceActivityId": "age-composer",
+          "patternIds": [
+            "statement",
+            "question",
+            "yes-no",
+            "surname"
+          ],
+          "sentences": [
+            {
+              "id": "age-question",
+              "words": [
+                "How",
+                "old",
+                "is",
+                "Sara?"
+              ]
+            },
+            {
+              "id": "age-sara",
+              "words": [
+                "Sara",
+                "is",
+                "twenty-four",
+                "years",
+                "old."
+              ]
+            },
+            {
+              "id": "how-old-you",
+              "words": [
+                "How",
+                "old",
+                "are",
+                "you?"
+              ]
+            },
+            {
+              "id": "age-noah",
+              "words": [
+                "Noah",
+                "is",
+                "seventeen",
+                "years",
+                "old."
+              ]
+            },
+            {
+              "id": "last-name",
+              "words": [
+                "My",
+                "last",
+                "name",
+                "is",
+                "Rahimi."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "age-construction",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "با سن و نام، جملهٔ تازه بساز",
+          "description": "نام‌ها و سن‌ها را از کارت‌های این درس بگیر و خودت جمله بساز.",
+          "practiceRevision": 1,
+          "completion": "سن و نام را در خبر، سؤال و پاسخ بیان کردی.",
+          "tasks": [
+            {
+              "task": "از اِما بپرس چند ساله است.",
+              "hint": "How old are you?",
+              "example": "How old are you?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "how old are you"
+                    ],
+                    "feedback": "با How old are you? سؤال بساز."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              }
+            },
+            {
+              "task": "بپرس سارا چند سال دارد.",
+              "hint": "How old is Sara?",
+              "example": "How old is Sara?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "how old is sara"
+                    ],
+                    "feedback": "در سؤال دربارهٔ سارا از is استفاده کن."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              }
+            },
+            {
+              "task": "بگو نوآ هفده سال دارد.",
+              "hint": "Noah is seventeen years old.",
+              "example": "Noah is seventeen years old.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "noah is seventeen",
+                      "he is seventeen"
+                    ],
+                    "feedback": "سن نوآ را هفده بگو."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              }
+            },
+            {
+              "task": "نام خانوادگی علی را بپرس.",
+              "hint": "What is Ali's last name?",
+              "example": "What is Ali's last name?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "what is ali's last name",
+                      "what's ali's last name"
+                    ],
+                    "feedback": "با last name سؤال بساز."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              }
+            },
+            {
+              "task": "بگو من بیست‌وچهار سال دارم.",
+              "hint": "I'm twenty-four years old.",
+              "example": "I'm twenty-four years old.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i'm twenty-four",
+                      "i am twenty-four"
+                    ],
+                    "feedback": "سن را با I am یا I'm بیان کن."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "از سؤال و جواب تا مکالمه",
+      "intro": "با کارت‌های تصویری افراد مکالمه بساز؛ بعد اسم و سن را به موقعیت واقعی یا خیالی خودت منتقل کن.",
+      "masteryActivityIds": [
+        "age-guided",
+        "age-independent"
+      ],
+      "activities": [
+        {
+          "id": "age-exchanges",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "یک سؤال، چند پاسخ صحیح",
+          "description": "با تغییر نام و سن، پاسخ دقیق می‌سازی؛ گاهی جواب کوتاه‌تر هم طبیعی است.",
+          "pairs": [
+            {
+              "question": "How old are you?",
+              "questionFa": "چند سالته؟",
+              "variants": [
+                {
+                  "label": "۱۲ ساله",
+                  "en": "I'm twelve years old.",
+                  "fa": "دوازده سالم است."
+                },
+                {
+                  "label": "۲۴ ساله",
+                  "en": "I'm twenty-four.",
+                  "fa": "بیست‌وچهار سالم است."
+                }
+              ]
+            },
+            {
+              "question": "How old is Sara?",
+              "questionFa": "سارا چند سال دارد؟",
+              "variants": [
+                {
+                  "label": "۲۴ ساله",
+                  "en": "She is twenty-four.",
+                  "fa": "بیست‌وچهار ساله است."
+                },
+                {
+                  "label": "۳۵ ساله",
+                  "en": "She is thirty-five years old.",
+                  "fa": "سی‌وپنج ساله است."
+                }
+              ]
+            },
+            {
+              "question": "What is your last name?",
+              "questionFa": "نام خانوادگی‌ات چیست؟",
+              "variants": [
+                {
+                  "label": "رحیمی",
+                  "en": "My last name is Rahimi.",
+                  "fa": "نام خانوادگی من رحیمی است."
+                },
+                {
+                  "label": "نوری",
+                  "en": "My last name is Nouri.",
+                  "fa": "نام خانوادگی من نوری است."
+                }
+              ]
+            },
+            {
+              "question": "Is Noah seventeen?",
+              "questionFa": "آیا نوآ هفده ساله است؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, he is.",
+                  "fa": "بله."
+                },
+                {
+                  "label": "خیر؛ دوازده",
+                  "en": "No, he is twelve.",
+                  "fa": "نه، دوازده سال دارد."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "age-exchange-practice",
+          "type": "response-practice",
+          "phase": "correspondence",
+          "title": "بدون گزینه پاسخ بده",
+          "practiceRevision": 1,
+          "description": "خودت نوبت دوم را بساز.",
+          "completion": "به پرسش نام و سن پاسخ دادی.",
+          "tasks": [
+            {
+              "task": "بگو من دوازده سال دارم.",
+              "hint": "I'm twelve years old.",
+              "example": "I'm twelve years old.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i'm twelve",
+                      "i am twelve"
+                    ],
+                    "feedback": "با I'm یا I am سن خودت را بگو."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              },
+              "incoming": "How old are you?"
+            },
+            {
+              "task": "بگو نام خانوادگی من رحیمی است.",
+              "hint": "My last name is Rahimi.",
+              "example": "My last name is Rahimi.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my last name is rahimi"
+                    ],
+                    "feedback": "با My last name is شروع کن."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              },
+              "incoming": "What is your last name?"
+            },
+            {
+              "task": "بگو سارا بیست‌وچهار سال دارد.",
+              "hint": "She is twenty-four years old.",
+              "example": "She is twenty-four years old.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "she is twenty-four",
+                      "sara is twenty-four"
+                    ],
+                    "feedback": "نام یا ضمیر she را با عدد بیست‌وچهار ترکیب کن."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              },
+              "incoming": "How old is Sara?"
+            }
+          ]
+        },
+        {
+          "id": "age-dialogue-1",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "مکالمهٔ اول: آشنایی در کلاس",
+          "description": "دو نفر نام کامل و سن خودشان را معرفی می‌کنند.",
+          "lines": [
+            {
+              "speaker": "Sara",
+              "en": "Hello! What's your first name?",
+              "fa": "سلام، اسمت چیه؟"
+            },
+            {
+              "speaker": "Emma",
+              "en": "My first name is Emma.",
+              "fa": "اسم من اِما است."
+            },
+            {
+              "speaker": "Sara",
+              "en": "What's your last name?",
+              "fa": "نام خانوادگی‌ات چیست؟"
+            },
+            {
+              "speaker": "Emma",
+              "en": "My last name is Brown.",
+              "fa": "نام خانوادگی من براون است."
+            },
+            {
+              "speaker": "Sara",
+              "en": "Nice to meet you, Emma. How old are you?",
+              "fa": "از آشنایی خوشوقتم اِما؛ چند سالته؟"
+            },
+            {
+              "speaker": "Emma",
+              "en": "I'm twelve years old. And you?",
+              "fa": "دوازده سالم است. تو چطور؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "I'm twenty-four.",
+              "fa": "بیست‌وچهار سالم است."
+            },
+            {
+              "speaker": "Emma",
+              "en": "Nice to meet you!",
+              "fa": "خوشوقتم!"
+            }
+          ]
+        },
+        {
+          "id": "age-dialogue-1-practice",
+          "type": "response-practice",
+          "phase": "context",
+          "title": "دیالوگ را ادامه بده",
+          "practiceRevision": 1,
+          "description": "برای نوبت بعدی، سؤال یا جواب مناسب را بنویس.",
+          "completion": "گفت‌وگو را بدون حفظ مکانیکی ادامه دادی.",
+          "tasks": [
+            {
+              "task": "نام کوچک طرف را بپرس.",
+              "hint": "What's your first name?",
+              "example": "What's your first name?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "what's your first name",
+                      "what is your first name"
+                    ],
+                    "feedback": "پرسش first name را بساز."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              },
+              "incoming": "Hello!"
+            },
+            {
+              "task": "بگو نام خانوادگی من براون است.",
+              "hint": "My last name is Brown.",
+              "example": "My last name is Brown.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my last name is brown"
+                    ],
+                    "feedback": "با My last name is پاسخ بده."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              },
+              "incoming": "What's your last name?"
+            },
+            {
+              "task": "پاسخ بده دوازده سالم است.",
+              "hint": "I'm twelve years old.",
+              "example": "I'm twelve years old.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i'm twelve",
+                      "i am twelve"
+                    ],
+                    "feedback": "سن دوازده را بگو."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              },
+              "incoming": "How old are you?"
+            }
+          ]
+        },
+        {
+          "id": "age-dialogue-2",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "مکالمهٔ دوم: این عکس خانوادهٔ من است",
+          "description": "مکان و نسبت خانوادگیِ درس‌های قبل را با سن افراد ترکیب کن.",
+          "lines": [
+            {
+              "speaker": "Ali",
+              "en": "Look at my family photo.",
+              "fa": "به عکس خانواده‌ام نگاه کن."
+            },
+            {
+              "speaker": "Noah",
+              "en": "Who's this?",
+              "fa": "این کیست؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "This is my sister, Sara.",
+              "fa": "این خواهرم سارا است."
+            },
+            {
+              "speaker": "Noah",
+              "en": "How old is she?",
+              "fa": "چند ساله است؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "She is twenty-four years old.",
+              "fa": "بیست‌وچهار ساله است."
+            },
+            {
+              "speaker": "Noah",
+              "en": "And how old is your brother?",
+              "fa": "برادرت چند ساله است؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "He is seventeen.",
+              "fa": "هفده ساله است."
+            },
+            {
+              "speaker": "Noah",
+              "en": "What is his name?",
+              "fa": "اسمش چیست؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "His name is Noah.",
+              "fa": "اسمش نوآ است."
+            }
+          ]
+        },
+        {
+          "id": "age-dialogue-2-practice",
+          "type": "response-practice",
+          "phase": "context",
+          "title": "با اعضای خانواده پاسخ بده",
+          "practiceRevision": 1,
+          "description": "پرسش قبلی را برای شخص تازه تغییر بده.",
+          "completion": "دانسته‌های خانوادگی را برای بیان سن به کار بردی.",
+          "tasks": [
+            {
+              "task": "بگو خواهر من بیست‌وچهار سال دارد.",
+              "hint": "My sister is twenty-four years old.",
+              "example": "My sister is twenty-four years old.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my sister is twenty-four"
+                    ],
+                    "feedback": "سن را برای خواهر خودت بیان کن."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              },
+              "incoming": "How old is your sister?"
+            },
+            {
+              "task": "بپرس برادرت چند ساله است.",
+              "hint": "How old is your brother?",
+              "example": "How old is your brother?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "how old is your brother"
+                    ],
+                    "feedback": "نام نسبت خانوادگی را در سؤال به کار ببر."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              },
+              "incoming": "This is my brother."
+            }
+          ]
+        },
+        {
+          "id": "age-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "practiceRevision": 1,
+          "title": "از روی چهار کارت: نام و سن را بخوان",
+          "description": "به کارت‌ها نگاه کن و فقط از اطلاعات موجود در تصویر استفاده کن؛ اسم یا سن را حدس نزن.",
+          "image": "./assets/scene-a1-6.svg",
+          "imageAlt": "چهار کارت تصویری: Emma Brown دوازده سال، Noah Smith هفده سال، Sara Rahimi بیست‌وچهار سال، Ali Nouri سی‌وپنج سال",
+          "caption": "چهار کارت با نام و سن مشخص",
+          "tasks": [
+            {
+              "task": "سن اِما را در یک جمله بگو.",
+              "hint": "Emma is twelve years old.",
+              "example": "Emma is twelve years old.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "emma is twelve",
+                      "she is twelve"
+                    ],
+                    "feedback": "کارت اِما ۱۲ سال را نشان می‌دهد."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              }
+            },
+            {
+              "task": "نوآ چند ساله است؟ در یک جمله جواب بده.",
+              "hint": "Noah is seventeen.",
+              "example": "Noah is seventeen.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "noah is seventeen",
+                      "he is seventeen"
+                    ],
+                    "feedback": "نوآ ۱۷ سال دارد."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              }
+            },
+            {
+              "task": "نام کامل سارا را بگو.",
+              "hint": "Her full name is Sara Rahimi.",
+              "example": "Her full name is Sara Rahimi.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "sara rahimi"
+                    ],
+                    "feedback": "نام و نام خانوادگی سارا را از تصویر بخوان."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              }
+            },
+            {
+              "task": "سن علی را بگو.",
+              "hint": "Ali is thirty-five years old.",
+              "example": "Ali is thirty-five years old.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "ali is thirty-five",
+                      "he is thirty-five"
+                    ],
+                    "feedback": "کارت علی ۳۵ سال را نشان می‌دهد."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "age-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "title": "نوبت تو: خودت سؤال و جواب را بساز",
+          "practiceRevision": 1,
+          "description": "نام و سن افراد را جابه‌جا کن و جملهٔ درست بساز.",
+          "completion": "می‌توانی نام و سن را در یک مکالمهٔ چندنوبتی بپرسی و بگویی.",
+          "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "Hello, I'm Emma.",
+              "task": "اسم خانوادگی طرف را بپرس.",
+              "hint": "What's your last name?",
+              "example": "What's your last name?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "what's your last name",
+                      "what is your last name"
+                    ],
+                    "feedback": "بپرس last name چیست."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "My last name is Brown.",
+              "task": "حالا سن او را بپرس.",
+              "hint": "How old are you?",
+              "example": "How old are you?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "how old are you"
+                    ],
+                    "feedback": "با How old are you? سؤال بساز."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "I'm twelve. How old is Sara?",
+              "task": "بگو سارا بیست‌وچهار سال دارد.",
+              "hint": "Sara is twenty-four years old.",
+              "example": "Sara is twenty-four years old.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "sara is twenty-four",
+                      "she is twenty-four"
+                    ],
+                    "feedback": "به سؤال سن سارا جواب بده."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Is Noah twenty years old?",
+              "task": "بگو نه، هفده ساله است.",
+              "hint": "No, he is seventeen.",
+              "example": "No, he is seventeen.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no"
+                    ],
+                    "feedback": "حدس را رد کن."
+                  },
+                  {
+                    "any": [
+                      "he is seventeen",
+                      "noah is seventeen"
+                    ],
+                    "feedback": "سن نوآ را هفده بگو."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "What is Ali's last name?",
+              "task": "نام خانوادگی علی را بگو.",
+              "hint": "Ali's last name is Nouri.",
+              "example": "Ali's last name is Nouri.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "nouri"
+                    ],
+                    "feedback": "نام خانوادگی را نوری بیان کن."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "age-transfer",
+          "type": "dialogue-transfer",
+          "phase": "guided",
+          "practiceRevision": 1,
+          "title": "انتقال: معرفی یک نفر از خانواده",
+          "sceneTitle": "عکس یا نام‌های خانوادگی",
+          "description": "یک عکس خانوادگی در گوشی باز کن، یا یک خانوادهٔ خیالی انتخاب کن؛ نیازی به بارگذاری عکس نیست.",
+          "completion": "الگوی نام و سن را به موقعیت و افراد تازه منتقل کردی.",
+          "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "Who's this?",
+              "task": "فرض کن این خواهرت سارا است؛ او را معرفی کن.",
+              "hint": "This is my sister, Sara.",
+              "example": "This is my sister, Sara.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is my sister",
+                      "my sister is sara"
+                    ],
+                    "feedback": "از this is my sister استفاده کن."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "How old is your sister?",
+              "task": "بگو سارا بیست‌وچهار سال دارد.",
+              "hint": "She is twenty-four.",
+              "example": "She is twenty-four.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "she is twenty-four",
+                      "sara is twenty-four"
+                    ],
+                    "feedback": "سن خواهر را بیان کن."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "And what's her last name?",
+              "task": "بگو نام خانوادگی او رحیمی است.",
+              "hint": "Her last name is Rahimi.",
+              "example": "Her last name is Rahimi.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "her last name is rahimi"
+                    ],
+                    "feedback": "نام خانوادگی را کامل بگو."
+                  }
+                ],
+                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "age-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "تمرین واقعی: معرفی خودت و یک نفر دیگر",
+          "kind": "free-text",
+          "minWords": 17,
+          "prompt": "اسم کوچک و نام خانوادگی خودت را به انگلیسی معرفی کن و بنویس چند سال داری. برای حفظ حریم خصوصی می‌توانی از هویت و سن ساختگی استفاده کنی. بعد عکس یک عضو خانواده یا یک دوست را روی گوشی باز کن (یا شخص خیالی انتخاب کن)، نسبت یا ارتباطش را بگو، اسم و سنش را بنویس. در پایان دو سؤال بساز: What is your last name? و How old are you? از My، his/her، sister/brother و واژه‌های دوره‌های قبلی استفاده کن. هیچ عکسی نباید آپلود شود.",
+          "placeholder": "My first name is Sara.\nMy last name is Rahimi.\nI'm twenty-four years old.\nThis is my brother. He is seventeen.\nWhat is your last name?\nHow old are you?",
+          "hint": "اسم و سن واقعی اجباری نیست؛ مهم ساختن درست جمله و سؤال با واژه‌های آشناست.",
+          "assessment": {
+            "revision": 1,
+            "required": [
+              {
+                "any": [
+                  "my first name is",
+                  "my name is"
+                ],
+                "feedback": "نام کوچک خودت یا هویت خیالی را معرفی کن."
+              },
+              {
+                "any": [
+                  "my last name is",
+                  "my surname is"
+                ],
+                "feedback": "نام خانوادگی را هم اضافه کن."
+              },
+              {
+                "any": [
+                  "years old",
+                  "i'm twenty",
+                  "i am twenty",
+                  "i'm twelve",
+                  "i am twelve",
+                  "i'm thirty",
+                  "i am thirty"
+                ],
+                "feedback": "سن را با جمله‌ای مثل I'm twenty-four years old. بیان کن."
+              },
+              {
+                "any": [
+                  "this is my brother",
+                  "this is my sister",
+                  "this is my mother",
+                  "this is my father",
+                  "this is my friend",
+                  "my brother",
+                  "my sister",
+                  "my mother",
+                  "my father"
+                ],
+                "feedback": "یک نفر دیگر را با نسبت یا ارتباطش معرفی کن."
+              },
+              {
+                "any": [
+                  "how old are you"
+                ],
+                "feedback": "سؤال How old are you? را خودت بنویس."
+              },
+              {
+                "any": [
+                  "what is your last name",
+                  "what's your last name"
+                ],
+                "feedback": "دربارهٔ نام خانوادگی هم سؤال بساز."
+              }
+            ],
+            "success": "نام و سن خود و دیگری را در جمله‌ها و پرسش‌های مستقل ساختی."
+          }
+        },
+        {
+          "id": "a1-6-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "سایه‌خوانی دوباره",
+          "description": "حالا همان جمله‌های آغاز درس را بدون آزمون معنی دوباره بشنو و همراه صدا تکرار کن.",
+          "sourceActivityId": "a1-6-shadowing"
+        }
+      ]
+    }
+  ]
+}
