@@ -152,6 +152,19 @@ export function validatePublishedCatalog({ manifest, runtimeCourse, legacy, read
         errors.push(previous.id+': reordered lesson lacks a versioned replacement');
     }
   }
+  if(legacy.additiveEnhancement){
+    const enhancement=legacy.additiveEnhancement;
+    if(!enhancement.revision||!enhancement.reason)
+      errors.push('Additive A1 practice lacks a documented revision or rationale');
+    for(const previous of enhancement.priorActive||[]){
+      const raw=readLesson?.(previous.file);
+      if(!previous.gitBlobSha||!raw||gitBlobSha(raw)!==previous.gitBlobSha)
+        errors.push(previous.id+': pre-enhancement lesson was changed or lost');
+      const replacement=enhancement.replacement?.[previous.id];
+      if(!replacement||entries.find(x=>x.id===previous.id)?.file!==replacement||replacement===previous.file)
+        errors.push(previous.id+': additive practice requires a distinct versioned file');
+    }
+  }
   return errors;
 }
 
