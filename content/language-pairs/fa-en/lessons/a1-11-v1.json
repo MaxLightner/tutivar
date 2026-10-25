@@ -4,7 +4,7 @@
   "status": "draft",
   "title": "خوراکی‌ها و آشپزخانه",
   "goal": "خوراکی‌ها و وسایل آشپزخانه را بشناس؛ با eat / drink / cook / want جملهٔ خبری، منفی و پرسشی بساز و بعد سراغ یک منوی کوچک برو.",
-  "duration": 29,
+  "duration": 35,
   "feature": "جمله‌ساز فعل‌های کنشی و آشپزخانهٔ تعاملی",
   "archetype": "K2",
   "roadmapRef": {
@@ -572,72 +572,6 @@
                   "emoji": "🥪"
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": "a1-11-menu-lab",
-          "type": "daily-choice-lab",
-          "phase": "phrases",
-          "title": "منوی زنده: انتخاب کن، تعداد را بالا ببر، جمع قیمت را ببین",
-          "description": "روی غذا و تعداد بزن. سفارش، جمع قیمت و مفرد/جمع با هم تغییر می‌کنند؛ از عددهای درس سه استفاده کن.",
-          "mode": "menu",
-          "options": [
-            {
-              "item": "soup",
-              "fa": "سوپ",
-              "emoji": "🍲",
-              "price": 5,
-              "plural": "soups"
-            },
-            {
-              "item": "sandwich",
-              "fa": "ساندویچ",
-              "emoji": "🥪",
-              "price": 7,
-              "plural": "sandwiches"
-            },
-            {
-              "item": "salad",
-              "fa": "سالاد",
-              "emoji": "🥗",
-              "price": 6,
-              "plural": "salads"
-            },
-            {
-              "item": "pizza",
-              "fa": "پیتزا",
-              "emoji": "🍕",
-              "price": 9,
-              "plural": "pizzas"
-            },
-            {
-              "item": "tea",
-              "fa": "چای",
-              "emoji": "🍵",
-              "price": 2,
-              "plural": "teas"
-            },
-            {
-              "item": "coffee",
-              "fa": "قهوه",
-              "emoji": "☕",
-              "price": 4,
-              "plural": "coffees"
-            },
-            {
-              "item": "juice",
-              "fa": "آب‌میوه",
-              "emoji": "🧃",
-              "price": 3,
-              "plural": "juices"
-            },
-            {
-              "item": "rice",
-              "fa": "برنج",
-              "emoji": "🍚",
-              "price": 4,
-              "plural": "rice dishes"
             }
           ]
         },
@@ -1484,9 +1418,217 @@
           "id": "a1-11-exchange",
           "type": "exchange-lab",
           "phase": "correspondence",
-          "title": "12 سؤال؛ هر کدام ۴ پاسخ متفاوت",
-          "description": "پاسخ‌های مختلف را امتحان کن؛ هر بار معنا، عدد یا انتخاب را واقعاً تغییر بده.",
+          "title": "20 سؤال؛ از فعل در آشپزخانه تا انتخاب از منو",
+          "description": "اول فاعل و فعل را در سؤال‌ها تغییر بده؛ بعد همان ساختار را برای سفارش و قیمت استفاده کن.",
           "pairs": [
+            {
+              "question": "What do you eat at home?",
+              "questionFa": "در خانه چه می‌خوری؟",
+              "variants": [
+                {
+                  "label": "برنج",
+                  "en": "I eat rice at home.",
+                  "fa": "برنج"
+                },
+                {
+                  "label": "نان",
+                  "en": "I eat bread.",
+                  "fa": "نان"
+                },
+                {
+                  "label": "مرغ",
+                  "en": "I eat chicken.",
+                  "fa": "مرغ"
+                },
+                {
+                  "label": "سوپ",
+                  "en": "I eat soup.",
+                  "fa": "سوپ"
+                }
+              ]
+            },
+            {
+              "question": "What does your sister drink?",
+              "questionFa": "خواهرت چه می‌نوشد؟",
+              "variants": [
+                {
+                  "label": "آب",
+                  "en": "My sister drinks water.",
+                  "fa": "آب"
+                },
+                {
+                  "label": "چای",
+                  "en": "She drinks tea.",
+                  "fa": "چای"
+                },
+                {
+                  "label": "شیر",
+                  "en": "She drinks milk.",
+                  "fa": "شیر"
+                },
+                {
+                  "label": "آب‌میوه",
+                  "en": "She drinks juice.",
+                  "fa": "آب‌میوه"
+                }
+              ]
+            },
+            {
+              "question": "Does your father cook chicken?",
+              "questionFa": "پدرت مرغ می‌پزد؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, he cooks chicken.",
+                  "fa": "بله"
+                },
+                {
+                  "label": "نه",
+                  "en": "No, he doesn't cook chicken.",
+                  "fa": "نه"
+                },
+                {
+                  "label": "برنج می‌پزد",
+                  "en": "He cooks rice.",
+                  "fa": "برنج می‌پزد"
+                },
+                {
+                  "label": "سوپ می‌پزد",
+                  "en": "He cooks soup.",
+                  "fa": "سوپ می‌پزد"
+                }
+              ]
+            },
+            {
+              "question": "What do you want to eat?",
+              "questionFa": "چه می‌خواهی بخوری؟",
+              "variants": [
+                {
+                  "label": "سوپ",
+                  "en": "I want soup.",
+                  "fa": "سوپ"
+                },
+                {
+                  "label": "پیتزا",
+                  "en": "I want pizza.",
+                  "fa": "پیتزا"
+                },
+                {
+                  "label": "نان و پنیر",
+                  "en": "I want bread and cheese.",
+                  "fa": "نان و پنیر"
+                },
+                {
+                  "label": "یک ساندویچ",
+                  "en": "I want a sandwich.",
+                  "fa": "یک ساندویچ"
+                }
+              ]
+            },
+            {
+              "question": "Do you drink milk?",
+              "questionFa": "شیر می‌نوشی؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, I drink milk.",
+                  "fa": "بله"
+                },
+                {
+                  "label": "نه",
+                  "en": "No, I don't drink milk.",
+                  "fa": "نه"
+                },
+                {
+                  "label": "گاهی",
+                  "en": "I sometimes drink milk.",
+                  "fa": "گاهی"
+                },
+                {
+                  "label": "آب می‌خواهم",
+                  "en": "No, I want water.",
+                  "fa": "آب می‌خواهم"
+                }
+              ]
+            },
+            {
+              "question": "Does your brother want pizza?",
+              "questionFa": "برادرت پیتزا می‌خواهد؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, he wants pizza.",
+                  "fa": "بله"
+                },
+                {
+                  "label": "نه",
+                  "en": "No, he doesn't want pizza.",
+                  "fa": "نه"
+                },
+                {
+                  "label": "سوپ می‌خواهد",
+                  "en": "He wants soup.",
+                  "fa": "سوپ می‌خواهد"
+                },
+                {
+                  "label": "ساندویچ می‌خواهد",
+                  "en": "He wants a sandwich.",
+                  "fa": "ساندویچ می‌خواهد"
+                }
+              ]
+            },
+            {
+              "question": "What is in the pot?",
+              "questionFa": "داخل قابلمه چیست؟",
+              "variants": [
+                {
+                  "label": "سوپ",
+                  "en": "There is soup in the pot.",
+                  "fa": "سوپ"
+                },
+                {
+                  "label": "برنج",
+                  "en": "There is rice in the pot.",
+                  "fa": "برنج"
+                },
+                {
+                  "label": "مرغ",
+                  "en": "There is chicken in the pot.",
+                  "fa": "مرغ"
+                },
+                {
+                  "label": "هیچ",
+                  "en": "There is nothing in the pot.",
+                  "fa": "هیچ"
+                }
+              ]
+            },
+            {
+              "question": "Do you cook soup in the kitchen?",
+              "questionFa": "در آشپزخانه سوپ می‌پزی؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, I cook soup in the kitchen.",
+                  "fa": "بله"
+                },
+                {
+                  "label": "نه",
+                  "en": "No, I don't cook soup.",
+                  "fa": "نه"
+                },
+                {
+                  "label": "خواهرم می‌پزد",
+                  "en": "My sister cooks soup.",
+                  "fa": "خواهرم می‌پزد"
+                },
+                {
+                  "label": "پدرم می‌پزد",
+                  "en": "My father cooks soup.",
+                  "fa": "پدرم می‌پزد"
+                }
+              ]
+            },
             {
               "question": "What would you like to eat?",
               "questionFa": "چی دوست داری بخوری؟",
@@ -1802,6 +1944,131 @@
           ]
         },
         {
+          "id": "a1-11-menu-lab",
+          "type": "daily-choice-lab",
+          "phase": "correspondence",
+          "title": "منوی زنده: انتخاب کن، تعداد را بالا ببر، جمع قیمت را ببین",
+          "description": "روی غذا و تعداد بزن. سفارش، جمع قیمت و مفرد/جمع با هم تغییر می‌کنند؛ از عددهای درس سه استفاده کن.",
+          "mode": "menu",
+          "options": [
+            {
+              "item": "soup",
+              "fa": "سوپ",
+              "emoji": "🍲",
+              "price": 5,
+              "plural": "soups"
+            },
+            {
+              "item": "sandwich",
+              "fa": "ساندویچ",
+              "emoji": "🥪",
+              "price": 7,
+              "plural": "sandwiches"
+            },
+            {
+              "item": "salad",
+              "fa": "سالاد",
+              "emoji": "🥗",
+              "price": 6,
+              "plural": "salads"
+            },
+            {
+              "item": "pizza",
+              "fa": "پیتزا",
+              "emoji": "🍕",
+              "price": 9,
+              "plural": "pizzas"
+            },
+            {
+              "item": "tea",
+              "fa": "چای",
+              "emoji": "🍵",
+              "price": 2,
+              "plural": "teas"
+            },
+            {
+              "item": "coffee",
+              "fa": "قهوه",
+              "emoji": "☕",
+              "price": 4,
+              "plural": "coffees"
+            },
+            {
+              "item": "juice",
+              "fa": "آب‌میوه",
+              "emoji": "🧃",
+              "price": 3,
+              "plural": "juices"
+            },
+            {
+              "item": "rice",
+              "fa": "برنج",
+              "emoji": "🍚",
+              "price": 4,
+              "plural": "rice dishes"
+            }
+          ]
+        },
+        {
+          "id": "a1-11-kitchen-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "مکالمه در آشپزخانه: چه کسی چه چیزی می‌پزد؟",
+          "description": "فعل‌های کنشی را اول در یک گفت‌وگوی خانوادگی بشنو؛ بعد گفت‌وگوی سفارش غذا را تمرین کن.",
+          "lines": [
+            {
+              "speaker": "Sara",
+              "en": "I am hungry. What do we have?",
+              "fa": "گرسنه‌ام. چه غذایی داریم؟"
+            },
+            {
+              "speaker": "Father",
+              "en": "We have rice and chicken.",
+              "fa": "برنج و مرغ داریم."
+            },
+            {
+              "speaker": "Sara",
+              "en": "Do you cook the chicken?",
+              "fa": "تو مرغ را می‌پزی؟"
+            },
+            {
+              "speaker": "Father",
+              "en": "Yes, I cook chicken. Your mother cooks rice.",
+              "fa": "بله، من مرغ می‌پزم. مادرت برنج می‌پزد."
+            },
+            {
+              "speaker": "Sara",
+              "en": "Does my brother want rice?",
+              "fa": "برادرم برنج می‌خواهد؟"
+            },
+            {
+              "speaker": "Father",
+              "en": "No, he doesn't want rice. He wants soup.",
+              "fa": "نه، برنج نمی‌خواهد. سوپ می‌خواهد."
+            },
+            {
+              "speaker": "Sara",
+              "en": "I drink water with my food.",
+              "fa": "من با غذا آب می‌نوشم."
+            },
+            {
+              "speaker": "Father",
+              "en": "Your sister drinks milk.",
+              "fa": "خواهرت شیر می‌نوشد."
+            },
+            {
+              "speaker": "Sara",
+              "en": "Where is the soup?",
+              "fa": "سوپ کجاست؟"
+            },
+            {
+              "speaker": "Father",
+              "en": "The soup is in the pot on the stove.",
+              "fa": "سوپ داخل قابلمه روی اجاق است."
+            }
+          ]
+        },
+        {
           "id": "a1-11-dialogue",
           "type": "dialogue",
           "phase": "context",
@@ -1865,7 +2132,7 @@
           "type": "picture-description",
           "phase": "picture",
           "title": "آشپزخانهٔ تصویری را با فعل‌ها توضیح بده",
-          "description": "تصویر و قیمت‌ها را بخوان؛ سپس جمله‌ات را بنویس.",
+          "description": "وسایل و خوراکی‌های داخل تصویر را ببین؛ با فعل‌های جدید جمله بساز.",
           "image": "./assets/scene-a1-11-kitchen.svg",
           "imageAlt": "خوراکی‌ها، اجاق، قابلمه و فر آشپزخانه",
           "caption": "در تصویر برنج، مرغ، قابلمه و اجاق دیده می‌شود.",
@@ -1957,11 +2224,83 @@
           "id": "a1-11-guided",
           "type": "guided-dialogue",
           "phase": "guided",
-          "title": "تو مشتری هستی؛ خودت جواب بده",
-          "description": "از تعداد و قیمت و غذاهای قبلی با هم کمک بگیر.",
+          "title": "اول مکالمهٔ آشپزخانه، سپس سفارش",
+          "description": "از فعل‌های eat / drink / cook / want شروع کن و در پایان سفارش غذا را تمرین کن.",
           "practiceRevision": 1,
           "completion": "می‌توانی بدون حفظ‌کردن دیالوگ از منو سفارش بدهی.",
           "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "What do you eat?",
+              "task": "بگو من برنج می‌خورم.",
+              "hint": "I eat rice.",
+              "example": "I eat rice.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i eat rice"
+                    ],
+                    "feedback": "فاعل و فعل را بررسی کن."
+                  }
+                ],
+                "success": "درست!"
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "What does your sister drink?",
+              "task": "بگو خواهرم آب می‌نوشد.",
+              "hint": "My sister drinks water.",
+              "example": "My sister drinks water.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my sister drinks water"
+                    ],
+                    "feedback": "فاعل و فعل را بررسی کن."
+                  }
+                ],
+                "success": "درست!"
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Does your father cook soup?",
+              "task": "بگو بله، پدرم سوپ می‌پزد.",
+              "hint": "Yes, my father cooks soup.",
+              "example": "Yes, my father cooks soup.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "yes, my father cooks soup"
+                    ],
+                    "feedback": "فاعل و فعل را بررسی کن."
+                  }
+                ],
+                "success": "درست!"
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Do you want chicken?",
+              "task": "بگو نه، من مرغ نمی‌خواهم.",
+              "hint": "No, I don't want chicken.",
+              "example": "No, I don't want chicken.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no, i don't want chicken"
+                    ],
+                    "feedback": "فاعل و فعل را بررسی کن."
+                  }
+                ],
+                "success": "درست!"
+              }
+            },
             {
               "speaker": "فروشنده",
               "incoming": "Can I take your order?",
@@ -2112,10 +2451,58 @@
           "id": "a1-11-transfer",
           "type": "response-practice",
           "phase": "guided",
-          "title": "همان الگو را در موقعیت‌های تازه استفاده کن",
+          "title": "فعل‌های جدید را در موقعیت‌های دیگر استفاده کن",
           "description": "هر پرسش را با عدد و غذاهای متفاوت پاسخ بده.",
           "practiceRevision": 1,
           "tasks": [
+            {
+              "task": "بگو من شیر می‌نوشم.",
+              "hint": "I drink milk.",
+              "example": "I drink milk.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i drink milk"
+                    ],
+                    "feedback": "فاعل و فعل را بررسی کن."
+                  }
+                ],
+                "success": "درست!"
+              }
+            },
+            {
+              "task": "بگو مادرم غذا می‌پزد.",
+              "hint": "My mother cooks food.",
+              "example": "My mother cooks food.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my mother cooks food"
+                    ],
+                    "feedback": "فاعل و فعل را بررسی کن."
+                  }
+                ],
+                "success": "درست!"
+              }
+            },
+            {
+              "task": "بپرس آیا خواهرت برنج می‌خورد.",
+              "hint": "Does your sister eat rice?",
+              "example": "Does your sister eat rice?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "does your sister eat rice"
+                    ],
+                    "feedback": "فاعل و فعل را بررسی کن."
+                  }
+                ],
+                "success": "درست!"
+              }
+            },
             {
               "task": "یک سوپ و یک چای سفارش بده.",
               "hint": "One soup and one tea, please.",
@@ -2253,7 +2640,7 @@
           "title": "خوراکی‌ها و آشپزخانهٔ خودت را توصیف کن",
           "prompt": "پنج جملهٔ مستقل بساز: یک خوراکی را معرفی کن، بگو چه می‌خوری و چه می‌نوشی، بگو یکی از اعضای خانواده چه می‌پزد، یک جملهٔ منفی با don't/doesn't بنویس، و یک سؤال با Do/Does بپرس. در پایان اگر خواستی یک سفارش ساده هم اضافه کن. حتماً فعل want را هم در جملهٔ مستقل خودت به کار ببر.",
           "placeholder": "I eat rice.\nMy sister drinks water.\nMy father cooks soup in the kitchen.\nI don't want coffee.\nDoes your mother cook chicken?",
-          "hint": "I would like... / Can I have...? / How much is...?",
+          "hint": "I eat... / She drinks... / He cooks... / I don't want... / Does she...?",
           "kind": "free-text",
           "minWords": 22,
           "assessment": {

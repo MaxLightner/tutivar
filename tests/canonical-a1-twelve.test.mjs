@@ -55,6 +55,13 @@ test('A1-11 action verbs change naturally with person, negative and question for
  const lab=activity(lesson11,'a1-11-verbs');
  assert.equal(lab.mode,'kitchen');
  assert.equal(lab.options.length,4);
+ const exchange=activity(lesson11,'a1-11-exchange');
+ assert.ok(exchange.pairs.length>=18,'practice must combine kitchen verbs with menu transfer');
+ assert.equal(exchange.pairs[0].question,'What do you eat at home?');
+ assert.ok(exchange.pairs.slice(0,8).some(p=>p.question.includes('cook')));
+ assert.equal(lesson11.sections[1].activities[0].id,'a1-11-exchange');
+ assert.ok(lesson11.sections[1].activities.findIndex(x=>x.id==='a1-11-menu-lab')>0,'menu transfer follows verb questions');
+ assert.ok(lesson11.sections[1].activities.findIndex(x=>x.id==='a1-11-kitchen-dialogue')<lesson11.sections[1].activities.findIndex(x=>x.id==='a1-11-dialogue'),'kitchen conversation comes first');
  assert.match(renderActivity(lab,context(lesson11)),/I eat rice/);
  assert.match(renderActivity(lab,context(lesson11,{cumulativeLabStates:{'A1-11:a1-11-verbs':{subject:2,verb:1,form:2}}})),/Does my sister drink water/);
  for(const word of ['cook','want','pot','pan','oven'])assert.ok(activity(lesson11,'a1-11-vocabulary').items.some(x=>x.en===word));
