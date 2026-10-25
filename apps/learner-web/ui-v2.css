@@ -874,3 +874,17 @@ button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3p
 .builder-token-invalid{animation:puzzle-token-shake .28s ease-in-out}
 .builder-prefix-notice{font-size:12px;color:#9b5846;min-height:1.2em;margin:7px 0}
 @media(prefers-reduced-motion:reduce){.builder-token-invalid{animation:none}.builder-token-ghost{transition:none}}
+
+/* Consistent tap-the-word grammar interaction for counting. */
+.live-count-phrase{display:flex;align-items:center;justify-content:center;gap:5px;font-size:18px;font-weight:650;white-space:nowrap}
+.live-count-phrase .composer-token{font-size:inherit}
+.live-hint{font-size:12px;line-height:1.7;color:#657d71;margin-top:10px;text-align:center}
+.count-math-equation{display:flex;align-items:center;justify-content:center;gap:8px;margin:14px 0;flex-wrap:wrap}
+.count-math-equation>div{border:1px solid #dce6dc;border-radius:14px;background:#f7faf5;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;padding:8px;min-width:118px;flex:1 1 126px}
+.count-math-equation>div>span{white-space:nowrap;font-size:13px}
+.count-math-equation .count-math-pictures{min-height:68px}
+.count-math-equation .count-object-picture{width:40px;height:40px;flex-basis:40px}
+.count-math-equation .math-operator{font-weight:800;font-size:24px}
+.count-math-equation>strong{font-size:20px}
+.count-math-caption{text-align:center;font-size:14px;line-height:1.8;padding:10px;background:#f7faf5;border-radius:12px}
+@media(max-width:600px){.count-math-equation{gap:5px}.count-math-equation>div{min-width:92px;flex-basis:94px}.count-math-equation .count-object-picture{width:31px;height:31px;flex-basis:31px}}

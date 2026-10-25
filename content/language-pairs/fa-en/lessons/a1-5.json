@@ -1,6 +1,6 @@
 {
   "id": "A1-5",
-  "revision": 4,
+  "revision": 5,
   "status": "draft",
   "title": "تعداد و شمارش اشیا",
   "goal": "بتوانی عددهای یک تا ده را به کار ببری، تفاوت اسم مفرد و جمع را ببینی، تعداد اشیا را با How many ... are there? بپرسی و با There is one ... / There are ... پاسخ بدهی.",
@@ -47,7 +47,7 @@
     {
       "id": "foundation",
       "label": "از کلمه تا جمله",
-      "intro": "با تصویر تفاوت یک شیء و چند شیء را ببین؛ سپس a/an، ساخت مفرد و جمع و پرسیدن تعداد را تمرین کن.",
+      "intro": "اول مفرد و جمع را با لمس مستقیم اسم در تصویر ببین، سپس با جمع و تفریق ساده تمرین کن و تفاوت a و an را با دو جملهٔ زنده یاد بگیر.",
       "masteryActivityIds": [
         "counting-construction"
       ],
@@ -77,7 +77,7 @@
           "phase": "words",
           "title": "واژگان شمارش و اشیای آشنا",
           "batchSize": 5,
-          "deckRevision": 3,
+          "deckRevision": 4,
           "items": [
             {
               "en": "one",
@@ -293,6 +293,36 @@
                 "Two mice.",
                 "There are two mice."
               ]
+            },
+            {
+              "en": "plus",
+              "fa": "به‌علاوه",
+              "hint": "واژهٔ تازهٔ جمع و تفریق در جمله‌های همین درس.",
+              "examples": [
+                "One plus one equals two.",
+                "One apple plus one apple equals two apples.",
+                "Two plus one equals three."
+              ]
+            },
+            {
+              "en": "minus",
+              "fa": "منهای",
+              "hint": "واژهٔ تازهٔ جمع و تفریق در جمله‌های همین درس.",
+              "examples": [
+                "Two minus one equals one.",
+                "Two apples minus one apple equals one apple.",
+                "Three minus one equals two."
+              ]
+            },
+            {
+              "en": "equals",
+              "fa": "مساوی است با",
+              "hint": "واژهٔ تازهٔ جمع و تفریق در جمله‌های همین درس.",
+              "examples": [
+                "One plus one equals two.",
+                "Two minus one equals one.",
+                "One apple plus one apple equals two apples."
+              ]
             }
           ]
         },
@@ -300,8 +330,8 @@
           "id": "counting-expressions",
           "type": "expression-study",
           "phase": "phrases",
-          "title": "عبارت‌ها و ترکیب‌های کاربردی",
-          "description": "این‌ها عبارت و ترکیب‌اند، نه واژهٔ منفرد؛ آن‌ها را در جمله و موقعیت یاد بگیر.",
+          "title": "ترکیب پرسیدن تعداد",
+          "description": "عبارت How many را در مکالمه و جمله‌سازی همین درس به کار ببر.",
           "items": [
             {
               "en": "How many",
@@ -313,75 +343,113 @@
                 "How many pens are there?",
                 "How many apples are there?"
               ]
-            },
-            {
-              "en": "one more",
-              "fa": "یکی دیگر",
-              "kind": "collocation",
-              "hint": "وقتی یک مورد دیگر می‌خواهی یا می‌شماری.",
-              "examples": [
-                "One more book.",
-                "One more pen.",
-                "One more apple."
-              ]
-            },
-            {
-              "en": "a lot of",
-              "fa": "تعداد زیادی از",
-              "kind": "collocation",
-              "hint": "برای تعداد زیاد؛ بیشتر از یک یا دو مورد.",
-              "examples": [
-                "A lot of books.",
-                "A lot of pens.",
-                "A lot of apples."
-              ]
-            },
-            {
-              "en": "one by one",
-              "fa": "یکی یکی",
-              "kind": "collocation",
-              "hint": "وقتی هر مورد را جداگانه می‌شماری یا بررسی می‌کنی.",
-              "examples": [
-                "Count them one by one.",
-                "Read the numbers one by one.",
-                "Put the books here one by one."
-              ]
             }
           ]
         },
         {
-          "id": "counting-picture-compare",
-          "type": "count-visual",
+          "id": "counting-plural-pairs",
+          "type": "plural-pair-lab",
           "phase": "phrases",
-          "title": "یک شیء، چند شیء؛ واقعاً ببین",
-          "description": "با چشم تعداد را مقایسه کن. واژه‌هایی مثل book و pencil قبلاً یاد گرفته شده‌اند؛ اینجا فقط عدد و شکل جمع را بررسی می‌کنی.",
-          "scenes": [
+          "title": "یک یا دو شیء؛ فقط اسم را لمس کن",
+          "description": "عدد one و two ثابت است؛ روی خود اسم در یکی از جمله‌ها بزن تا هر دو تصویر و شکل جمع عوض شوند.",
+          "items": [
+            {
+              "shape": "fish",
+              "singular": "fish",
+              "plural": "fish",
+              "note": "fish شکل جمع معمولاً یکسان دارد: one fish / two fish."
+            },
             {
               "shape": "book",
-              "singularCount": 1,
-              "pluralCount": 3,
-              "singular": "one book",
-              "plural": "three books",
-              "singularFa": "یک کتاب",
-              "pluralFa": "سه کتاب"
+              "singular": "book",
+              "plural": "books",
+              "note": "بیشتر اسم‌ها با افزودن s جمع می‌شوند."
             },
             {
               "shape": "apple",
-              "singularCount": 1,
-              "pluralCount": 2,
-              "singular": "one apple",
-              "plural": "two apples",
-              "singularFa": "یک سیب",
-              "pluralFa": "دو سیب"
+              "singular": "apple",
+              "plural": "apples",
+              "note": "بعد از two اسم جمع به کار می‌رود."
+            },
+            {
+              "shape": "box",
+              "singular": "box",
+              "plural": "boxes",
+              "note": "در پایان x معمولاً es اضافه می‌شود. box قبلاً آموزش داده شده است."
+            },
+            {
+              "shape": "sheep",
+              "singular": "sheep",
+              "plural": "sheep",
+              "note": "sheep در مفرد و جمع یکسان می‌ماند."
+            },
+            {
+              "shape": "person",
+              "singular": "person",
+              "plural": "people",
+              "note": "person به people تبدیل می‌شود؛ فقط s اضافه نمی‌کنیم."
+            },
+            {
+              "shape": "child",
+              "singular": "child",
+              "plural": "children",
+              "note": "child شکل جمع بی‌قاعدهٔ children دارد؛ این اسم را در تمرین مرور می‌کنی."
+            },
+            {
+              "shape": "bus",
+              "singular": "bus",
+              "plural": "buses",
+              "note": "bus به buses تبدیل می‌شود."
+            },
+            {
+              "shape": "mouse",
+              "singular": "mouse",
+              "plural": "mice",
+              "note": "mouse شکل جمع نامنظم mice دارد."
+            }
+          ]
+        },
+        {
+          "id": "counting-math",
+          "type": "count-math-lab",
+          "phase": "phrases",
+          "title": "جمع و تفریق تصویری",
+          "description": "One apple plus one apple equals two apples. با لمس اسم، شکل‌ها تغییر می‌کنند؛ با لمس علامت، جمع به تفریق تبدیل می‌شود.",
+          "items": [
+            {
+              "shape": "apple",
+              "singular": "apple",
+              "plural": "apples"
+            },
+            {
+              "shape": "book",
+              "singular": "book",
+              "plural": "books"
+            },
+            {
+              "shape": "fish",
+              "singular": "fish",
+              "plural": "fish"
             },
             {
               "shape": "pencil",
-              "singularCount": 1,
-              "pluralCount": 5,
-              "singular": "one pencil",
-              "plural": "five pencils",
-              "singularFa": "یک مداد",
-              "pluralFa": "پنج مداد"
+              "singular": "pencil",
+              "plural": "pencils"
+            },
+            {
+              "shape": "pen",
+              "singular": "pen",
+              "plural": "pens"
+            },
+            {
+              "shape": "box",
+              "singular": "box",
+              "plural": "boxes"
+            },
+            {
+              "shape": "orange",
+              "singular": "orange",
+              "plural": "oranges"
             }
           ]
         },
@@ -958,148 +1026,228 @@
           "completion": "عدد، اسم مفرد یا جمع و پرسش تعداد را با هم ترکیب کردی."
         },
         {
-          "id": "counting-meaning-variations",
-          "type": "meaning-cluster",
+          "id": "counting-article-composer",
+          "type": "sentence-composer",
           "phase": "variants",
-          "title": "یک مفهوم، چند بیان: one / a / an",
-          "description": "یک شیء را می‌توان با one یا حرف تعریف a/an معرفی کرد؛ one بر دقیقاً یک‌بودن تأکید می‌کند و a/an شمارش را برجسته نمی‌کند.",
-          "concepts": [
+          "title": "یک مفهوم، چند بیان: a",
+          "description": "این فقط یک جملهٔ زنده است؛ روی اسم سبز بزن. a/an برای اسم مفرد نامعین هستند، ولی one بر تعداد دقیق یک تأکید می‌کند.",
+          "targetLanguage": "en",
+          "wordSets": {
+            "aNouns": [
+              {
+                "id": "book",
+                "label": "book",
+                "translation": "کتاب",
+                "forms": {
+                  "en": "book",
+                  "fa": "کتاب"
+                }
+              },
+              {
+                "id": "pen",
+                "label": "pen",
+                "translation": "خودکار",
+                "forms": {
+                  "en": "pen",
+                  "fa": "خودکار"
+                }
+              },
+              {
+                "id": "bag",
+                "label": "bag",
+                "translation": "کیف",
+                "forms": {
+                  "en": "bag",
+                  "fa": "کیف"
+                }
+              },
+              {
+                "id": "phone",
+                "label": "phone",
+                "translation": "تلفن",
+                "forms": {
+                  "en": "phone",
+                  "fa": "تلفن"
+                }
+              },
+              {
+                "id": "table",
+                "label": "table",
+                "translation": "میز",
+                "forms": {
+                  "en": "table",
+                  "fa": "میز"
+                }
+              },
+              {
+                "id": "chair",
+                "label": "chair",
+                "translation": "صندلی",
+                "forms": {
+                  "en": "chair",
+                  "fa": "صندلی"
+                }
+              },
+              {
+                "id": "cup",
+                "label": "cup",
+                "translation": "فنجان",
+                "forms": {
+                  "en": "cup",
+                  "fa": "فنجان"
+                }
+              },
+              {
+                "id": "pencil",
+                "label": "pencil",
+                "translation": "مداد",
+                "forms": {
+                  "en": "pencil",
+                  "fa": "مداد"
+                }
+              }
+            ],
+            "anNouns": [
+              {
+                "id": "apple",
+                "label": "apple",
+                "translation": "سیب",
+                "forms": {
+                  "en": "apple",
+                  "fa": "سیب"
+                }
+              },
+              {
+                "id": "orange",
+                "label": "orange",
+                "translation": "پرتقال",
+                "forms": {
+                  "en": "orange",
+                  "fa": "پرتقال"
+                }
+              },
+              {
+                "id": "egg",
+                "label": "egg",
+                "translation": "تخم‌مرغ",
+                "forms": {
+                  "en": "egg",
+                  "fa": "تخم‌مرغ"
+                }
+              },
+              {
+                "id": "umbrella",
+                "label": "umbrella",
+                "translation": "چتر",
+                "forms": {
+                  "en": "umbrella",
+                  "fa": "چتر"
+                }
+              },
+              {
+                "id": "elephant",
+                "label": "elephant",
+                "translation": "فیل",
+                "forms": {
+                  "en": "elephant",
+                  "fa": "فیل"
+                }
+              },
+              {
+                "id": "animal",
+                "label": "animal",
+                "translation": "حیوان",
+                "forms": {
+                  "en": "animal",
+                  "fa": "حیوان"
+                }
+              }
+            ]
+          },
+          "slots": [
             {
-              "id": "one-or-a-book",
-              "fa": "یک کتاب",
-              "forms": [
+              "id": "aNoun",
+              "label": "اسم بعد از a",
+              "wordSet": "aNouns",
+              "default": "book"
+            },
+            {
+              "id": "anNoun",
+              "label": "اسم بعد از an",
+              "wordSet": "anNouns",
+              "default": "apple"
+            }
+          ],
+          "derivedDefaults": {},
+          "dependencies": [],
+          "defaultPattern": "a",
+          "patterns": [
+            {
+              "id": "a",
+              "label": "a",
+              "segments": [
                 {
-                  "en": "one book",
-                  "fa": "دقیقاً یک کتاب",
-                  "relation": "related",
-                  "note": "one عدد است و روی تعداد دقیق تأکید دارد."
+                  "fixed": "This is a "
                 },
                 {
-                  "en": "a book",
-                  "fa": "یک کتاب (نامعین)",
-                  "relation": "related",
-                  "note": "a پیش از اسم مفرد با صدای همخوان می‌آید؛ عدد را برجسته نمی‌کند."
+                  "slot": "aNoun",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "این یک "
+                },
+                {
+                  "slot": "aNoun",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " است."
                 }
               ]
             },
             {
-              "id": "one-or-an-apple",
-              "fa": "یک سیب",
-              "forms": [
+              "id": "an",
+              "label": "an",
+              "segments": [
                 {
-                  "en": "one apple",
-                  "fa": "دقیقاً یک سیب",
-                  "relation": "related",
-                  "note": "one بر یک عدد سیب تأکید می‌کند."
+                  "fixed": "This is an "
                 },
                 {
-                  "en": "an apple",
-                  "fa": "یک سیب (نامعین)",
-                  "relation": "related",
-                  "note": "an پیش از صدای مصوتِ apple می‌آید."
+                  "slot": "anNoun",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
                 }
-              ]
-            },
-            {
-              "id": "one-or-a-pen",
-              "fa": "یک خودکار",
-              "forms": [
+              ],
+              "translationSegments": [
                 {
-                  "en": "one pen",
-                  "fa": "دقیقاً یک خودکار",
-                  "relation": "related",
-                  "note": "one تعداد را مهم می‌کند."
+                  "fixed": "این یک "
                 },
                 {
-                  "en": "a pen",
-                  "fa": "یک خودکار (نامعین)",
-                  "relation": "related",
-                  "note": "a برای نام‌بردن از یک مورد ناشناس/نامعین است."
-                }
-              ]
-            },
-            {
-              "id": "one-or-an-orange",
-              "fa": "یک پرتقال",
-              "forms": [
-                {
-                  "en": "one orange",
-                  "fa": "دقیقاً یک پرتقال",
-                  "relation": "related",
-                  "note": "one عددِ یک را مشخص می‌کند."
+                  "slot": "anNoun",
+                  "form": "fa"
                 },
                 {
-                  "en": "an orange",
-                  "fa": "یک پرتقال (نامعین)",
-                  "relation": "related",
-                  "note": "قبل از صدای مصوت orange از an استفاده می‌شود."
+                  "fixed": " است."
                 }
               ]
             }
           ]
         },
         {
-          "id": "counting-plural-pairs",
-          "type": "plural-pair-lab",
+          "id": "counting-article-an",
+          "type": "composer-view",
           "phase": "variants",
-          "title": "مفرد و جمع؛ فقط اسم تغییر می‌کند",
-          "description": "عدد سمت چپ همیشه one و عدد سمت راست همیشه two است. فقط اسم را عوض کن تا ببینی جمع چگونه ساخته می‌شود؛ بعضی اسم‌ها تغییر نمی‌کنند.",
-          "items": [
-            {
-              "shape": "fish",
-              "singular": "fish",
-              "plural": "fish",
-              "note": "fish شکل جمع معمولاً یکسان دارد: one fish / two fish."
-            },
-            {
-              "shape": "book",
-              "singular": "book",
-              "plural": "books",
-              "note": "بیشتر اسم‌ها با افزودن s جمع می‌شوند."
-            },
-            {
-              "shape": "apple",
-              "singular": "apple",
-              "plural": "apples",
-              "note": "بعد از two اسم جمع به کار می‌رود."
-            },
-            {
-              "shape": "box",
-              "singular": "box",
-              "plural": "boxes",
-              "note": "در پایان x معمولاً es اضافه می‌شود. box قبلاً آموزش داده شده است."
-            },
-            {
-              "shape": "sheep",
-              "singular": "sheep",
-              "plural": "sheep",
-              "note": "sheep در مفرد و جمع یکسان می‌ماند."
-            },
-            {
-              "shape": "person",
-              "singular": "person",
-              "plural": "people",
-              "note": "person به people تبدیل می‌شود؛ فقط s اضافه نمی‌کنیم."
-            },
-            {
-              "shape": "child",
-              "singular": "child",
-              "plural": "children",
-              "note": "child شکل جمع بی‌قاعدهٔ children دارد؛ این اسم را در تمرین مرور می‌کنی."
-            },
-            {
-              "shape": "bus",
-              "singular": "bus",
-              "plural": "buses",
-              "note": "bus به buses تبدیل می‌شود."
-            },
-            {
-              "shape": "mouse",
-              "singular": "mouse",
-              "plural": "mice",
-              "note": "mouse شکل جمع نامنظم mice دارد."
-            }
-          ]
+          "title": "همان مفهوم در یک جمله با an",
+          "description": "فقط روی خود اسم بزن تا چند مثال متفاوت از an را در یک جمله ببینی.",
+          "sourceActivityId": "counting-article-composer",
+          "patternId": "an"
         },
         {
           "id": "counting-puzzle",
@@ -1171,7 +1319,7 @@
           "type": "response-practice",
           "phase": "construction",
           "title": "بدون گزینه، جمله بساز",
-          "practiceRevision": 1,
+          "practiceRevision": 2,
           "description": "تعداد را به جمله تبدیل کن؛ در سؤال و جواب، عدد و شکل اسم را درست به کار ببر.",
           "completion": "توانستی تعداد را در جملهٔ خبری و پرسشی بیان کنی.",
           "tasks": [
@@ -1253,6 +1401,54 @@
                   }
                 ],
                 "success": "عدد و اسم جمع را درست ترکیب کردی."
+              }
+            },
+            {
+              "task": "بگو یک سیب به‌علاوهٔ یک سیب می‌شود دو سیب.",
+              "hint": "One apple plus one apple equals two apples.",
+              "example": "One apple plus one apple equals two apples.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "one apple plus one apple equals two apples"
+                    ],
+                    "feedback": "از plus یا minus و equals برای توضیح جمع یا تفریق استفاده کن."
+                  }
+                ],
+                "success": "جملهٔ حسابی را با اسم درست ساختی."
+              }
+            },
+            {
+              "task": "بگو دو سیب منهای یک سیب می‌شود یک سیب.",
+              "hint": "Two apples minus one apple equals one apple.",
+              "example": "Two apples minus one apple equals one apple.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "two apples minus one apple equals one apple"
+                    ],
+                    "feedback": "از plus یا minus و equals برای توضیح جمع یا تفریق استفاده کن."
+                  }
+                ],
+                "success": "جملهٔ حسابی را با اسم درست ساختی."
+              }
+            },
+            {
+              "task": "بگو یک ماهی به‌علاوهٔ یک ماهی می‌شود دو ماهی.",
+              "hint": "One fish plus one fish equals two fish.",
+              "example": "One fish plus one fish equals two fish.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "one fish plus one fish equals two fish"
+                    ],
+                    "feedback": "از plus یا minus و equals برای توضیح جمع یا تفریق استفاده کن."
+                  }
+                ],
+                "success": "جملهٔ حسابی را با اسم درست ساختی."
               }
             }
           ]
@@ -2046,7 +2242,7 @@
           "type": "free-write",
           "phase": "independent",
           "title": "تمرین واقعی: اطرافت را بشمار و گزارش بده",
-          "prompt": "چند شیء واقعی از روی میز، کیف یا اتاقت انتخاب کن و واقعاً بشمار. یک جمله با There is one ... و دست‌کم دو جمله با There are ... بساز. بعد دربارهٔ تعداد یکی از اشیای موجود سؤال How many ... are there? را بنویس و با تعداد واقعی جواب بده. در آخر یک جمله بنویس که مکان یا مالکیت را هم از درس‌های قبلی بیاورد. لازم نیست عکس بفرستی؛ اگر اشیای کافی نداری، یک چیدمان فرضی را واضح توصیف کن.",
+          "prompt": "چند شیء واقعی از روی میز، کیف یا اتاقت انتخاب کن و واقعاً بشمار. یک جمله با There is one ... و دست‌کم دو جمله با There are ... بساز. بعد دربارهٔ تعداد یکی از اشیای موجود سؤال How many ... are there? را بنویس و با تعداد واقعی جواب بده. در آخر یک جمله بنویس که مکان یا مالکیت را هم از درس‌های قبلی بیاورد. لازم نیست عکس بفرستی؛ اگر اشیای کافی نداری، یک چیدمان فرضی را واضح توصیف کن. یک جمع ساده با دو شیء هم‌نام در اطرافت هم به انگلیسی توضیح بده (one ... plus one ... equals two ...).",
           "placeholder": "There is one bag on my chair.\nThere are two pens in my bag.\nThere are four books on my table.\nHow many books are there?\nThere are four books.",
           "hint": "عددها باید با اشیایی که خودت انتخاب کرده‌ای هماهنگ باشند. تعداد سه کتاب یا یک کیف اجباری نیست.",
           "kind": "free-text",
