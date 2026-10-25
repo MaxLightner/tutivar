@@ -87,13 +87,14 @@ export function validatePublishedCatalog({ manifest, runtimeCourse, legacy, read
   if (numbers.some((n, i) => n !== i + 1))
     errors.push('Published A1 order differs from the 126-lesson owner roadmap (must be a contiguous prefix)');
   const frozen = new Map(legacy.lockedMismatches.map(x => [x.id, x]));
-  const allowed = new Set(legacy.legacyPublished);
+  const originallyPublished = new Set(legacy.legacyPublished);
+  const metadataGrandfathered = new Set(['A1-1', 'A1-2', 'A1-3', 'A1-4', 'A1-5']);
   for (const entry of entries) {
     const canonical = canonicalById.get(entry.id);
     if (!canonical) { errors.push(entry.id + ': missing from canonical roadmap'); continue; }
     const exception = frozen.get(entry.id);
     if (exception) {
-      if (!allowed.has(entry.id) || entry.title !== exception.catalogTitle)
+      if (!originallyPublished.has(entry.id) || entry.title !== exception.catalogTitle)
         errors.push(entry.id + ': historical exception changed without migration');
       if (!entry.file || !readLesson) continue;
       const raw = readLesson(entry.file);
@@ -108,7 +109,7 @@ export function validatePublishedCatalog({ manifest, runtimeCourse, legacy, read
     if (!raw) { errors.push(entry.id + ': missing published content'); continue; }
     const lesson = JSON.parse(raw);
     if (lesson.id !== entry.id) errors.push(entry.id + ': file lesson identifier mismatch');
-    if (!allowed.has(entry.id)) {
+    if (!metadataGrandfathered.has(entry.id)) {
       const ref = lesson.roadmapRef;
       if (!ref || ref.id !== entry.id || ref.revision !== manifest.revision ||
           ref.communicativeOutcome !== canonical.communicativeOutcome)
@@ -117,11 +118,11 @@ export function validatePublishedCatalog({ manifest, runtimeCourse, legacy, read
   }
   // Old 6–9 are only grandfathered while they await replacement. Never add A1-10
   // to the live path before this mismatch has been resolved and removed.
-  if (legacy.lockedMismatches.length && ids.some(id => !allowed.has(id)))
+  if (legacy.lockedMismatches.length && ids.some(id => !metadataGrandfathered.has(id) && !frozen.has(id)))
     errors.push('Cannot publish another new A1 lesson before migrating existing wrong-order A1-6..9');
   const checked = new Set(legacy.lockedMismatches.map(x => x.id));
   for (const mismatch of legacy.lockedMismatches) {
-    if (!allowed.has(mismatch.id)) errors.push(mismatch.id + ': unauthorized legacy exception');
+    if (!originallyPublished.has(mismatch.id)) errors.push(mismatch.id + ': unauthorized legacy exception');
     if (!/^A1-[6-9]$/.test(mismatch.id)) errors.push(mismatch.id + ': only current A1-6..9 may be grandfathered');
     if (!mismatch.preserveProgress || !mismatch.legacyGitBlobSha || !mismatch.canonicalTarget)
       errors.push(mismatch.id + ': migration history incomplete');
@@ -160,7 +161,7 @@ function cli() {
     console.log(JSON.stringify({
       ...lesson, roadmapRef:{id:lesson.id,revision:manifest.revision,
         communicativeOutcome:lesson.communicativeOutcome},
-      status:legacy.lockedMismatches.some(l=>l.id===id)?'legacy-must-migrate':'approved-for-authoring',
+      status:legacy.lockedMismatches.some(l=>l.id===id)?'legacy-must-migrate':(legacy.lockedMismatches.length && Number(id.split('-')[1])>9 && id.startsWith('A1-')?'blocked-until-legacy-migration':'approved-for-authoring'),
       authoringRule:'Use existing interaction modules; trace every target through introduction, practice, independent production and spaced review.'
     },null,2));
   } else if (mode === '--status') {
