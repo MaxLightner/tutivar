@@ -1,0 +1,1557 @@
+{
+  "id": "A1-8",
+  "revision": 1,
+  "status": "draft",
+  "title": "اتاق‌های خانه",
+  "archetype": "home-rooms",
+  "goal": "اتاق‌های مهم خانه را نام ببری، تفاوت اتاق و مکان را بشناسی و بتوانی بپرسی افراد یا وسایل در کدام اتاق هستند و پاسخ بدهی.",
+  "duration": "۲۵ دقیقه",
+  "feature": "نقشهٔ خانه و جملهٔ قابل‌تغییر",
+  "teachingModel": {
+    "primary": "K1",
+    "support": "K2"
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "در یک خانهٔ واقعی یا خیالی اتاق‌ها را شناسایی کنی، بپرسی «مادرم کجاست؟» و با She is in the kitchen. پاسخ بدهی.",
+    "prerequisites": [
+      "نسبت‌های خانوادگی در درس دوم",
+      "in/on و مکان در درس چهارم",
+      "شناسایی افراد و اشیا در درس هفتم"
+    ],
+    "previously": "از قبل person، room، in/on، mother/father و Where is ... را دیده‌ای. در این درس فقط اسمِ اتاق‌های تازه را آموزش می‌بینیم و همان جمله‌ها را در نقشهٔ خانه استفاده می‌کنیم.",
+    "quickCheck": {
+      "title": "اگر اتاق‌ها را می‌شناسی",
+      "question": "می‌توانی اسم kitchen، bedroom و living room را بگویی و محل یک نفر را سؤال کنی؟",
+      "example": "Where is my mother? She is in the kitchen.",
+      "explanation": "در این درس با نقشه، مکان را به جمله متصل می‌کنی.",
+      "allowSkip": true
+    }
+  },
+  "visual": {
+    "src": null,
+    "alt": "نقشهٔ اتاق‌های خانه با آشپزخانه، اتاق خواب، حمام، نشیمن و حیاط",
+    "caption": "در یک خانه، هر فرد و شیء کجا قرار دارد؟"
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "living room",
+      "in the kitchen"
+    ],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": true
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "از کلمه تا جمله",
+      "intro": "واژه‌های اتاق‌ها، سپس نقشهٔ خانه؛ اول با لمس نام اتاق، تصویر را تغییر بده، سپس در مورد محل افراد سؤال بساز.",
+      "masteryActivityIds": [
+        "rooms-construction"
+      ],
+      "activities": [
+        {
+          "id": "a1-8-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "شنیدن و سایه‌خوانی اتاق‌ها",
+          "description": "در ابتدا فقط تلفظ را تقلید کن؛ نیازی نیست همهٔ جمله‌ها را بفهمی.",
+          "audioSrc": null,
+          "rate": 0.72,
+          "pauseMs": 570,
+          "lines": [
+            "This is the kitchen.",
+            "This is the bedroom.",
+            "This is the bathroom.",
+            "This is the living room.",
+            "Where is my mother?",
+            "She is in the kitchen.",
+            "My brother is in the bedroom.",
+            "We are at home."
+          ]
+        },
+        {
+          "id": "rooms-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "فقط واژگان تازهٔ فضاهای خانه",
+          "batchSize": 5,
+          "deckRevision": 1,
+          "items": [
+            {
+              "en": "home",
+              "fa": "خانه / منزل",
+              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
+              "examples": [
+                "I'm at home.",
+                "This is my home.",
+                "Where is your home?"
+              ]
+            },
+            {
+              "en": "kitchen",
+              "fa": "آشپزخانه",
+              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
+              "examples": [
+                "My mother is in the kitchen.",
+                "The kitchen is next to the living room.",
+                "Is she in the kitchen?"
+              ]
+            },
+            {
+              "en": "bathroom",
+              "fa": "حمام / سرویس بهداشتی",
+              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
+              "examples": [
+                "The bathroom is next to the bedroom.",
+                "My brother is in the bathroom.",
+                "Where is the bathroom?"
+              ]
+            },
+            {
+              "en": "bedroom",
+              "fa": "اتاق‌خواب",
+              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
+              "examples": [
+                "My sister is in the bedroom.",
+                "This is the bedroom.",
+                "The bedroom is upstairs."
+              ]
+            },
+            {
+              "en": "hallway",
+              "fa": "راهرو",
+              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
+              "examples": [
+                "The hallway is next to the bedroom.",
+                "My father is in the hallway.",
+                "Where is the hallway?"
+              ]
+            },
+            {
+              "en": "garage",
+              "fa": "گاراژ",
+              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
+              "examples": [
+                "The car is in the garage.",
+                "Where is the garage?",
+                "The garage is downstairs."
+              ]
+            },
+            {
+              "en": "balcony",
+              "fa": "بالکن",
+              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
+              "examples": [
+                "My father is on the balcony.",
+                "The balcony is upstairs.",
+                "Where is the balcony?"
+              ]
+            },
+            {
+              "en": "garden",
+              "fa": "باغچه / باغ",
+              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
+              "examples": [
+                "My sister is in the garden.",
+                "The garden is near the house.",
+                "Is she in the garden?"
+              ]
+            },
+            {
+              "en": "stairs",
+              "fa": "پله‌ها",
+              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
+              "examples": [
+                "The stairs are near the hallway.",
+                "My brother is on the stairs.",
+                "Where are the stairs?"
+              ]
+            },
+            {
+              "en": "upstairs",
+              "fa": "طبقهٔ بالا",
+              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
+              "examples": [
+                "The bedroom is upstairs.",
+                "Is your sister upstairs?",
+                "She is upstairs."
+              ]
+            },
+            {
+              "en": "downstairs",
+              "fa": "طبقهٔ پایین",
+              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
+              "examples": [
+                "The kitchen is downstairs.",
+                "My father is downstairs.",
+                "Is the living room downstairs?"
+              ]
+            },
+            {
+              "en": "basement",
+              "fa": "زیرزمین",
+              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
+              "examples": [
+                "The basement is downstairs.",
+                "The box is in the basement.",
+                "Is the basement under the house?"
+              ]
+            },
+            {
+              "en": "attic",
+              "fa": "اتاق زیرشیروانی",
+              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
+              "examples": [
+                "The attic is upstairs.",
+                "The box is in the attic.",
+                "Where is the attic?"
+              ]
+            },
+            {
+              "en": "entrance",
+              "fa": "ورودی",
+              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
+              "examples": [
+                "The entrance is near the hallway.",
+                "He is at the entrance.",
+                "Where is the entrance?"
+              ]
+            },
+            {
+              "en": "roof",
+              "fa": "بام / سقف بیرونی",
+              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
+              "examples": [
+                "The roof is above the rooms.",
+                "Look at the roof.",
+                "The house has a roof."
+              ]
+            },
+            {
+              "en": "apartment",
+              "fa": "آپارتمان",
+              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
+              "examples": [
+                "This is my apartment.",
+                "My apartment has a balcony.",
+                "Is your apartment upstairs?"
+              ]
+            },
+            {
+              "en": "yard",
+              "fa": "حیاط",
+              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
+              "examples": [
+                "The cat is in the yard.",
+                "The yard is next to the house.",
+                "My brother is in the yard."
+              ]
+            },
+            {
+              "en": "laundry",
+              "fa": "رختشویی / لباس‌شویی",
+              "hint": "این واژه در نقشهٔ خانه و مکالمهٔ همین درس به کار می‌رود.",
+              "examples": [
+                "The laundry is downstairs.",
+                "Where is the laundry?",
+                "The laundry is in the basement."
+              ]
+            },
+            {
+              "en": "porch",
+              "fa": "ایوان",
+              "role": "supplementary"
+            },
+            {
+              "en": "patio",
+              "fa": "حیاط خلوت",
+              "role": "supplementary"
+            },
+            {
+              "en": "pantry",
+              "fa": "انباری مواد غذایی",
+              "role": "supplementary"
+            },
+            {
+              "en": "corridor",
+              "fa": "راهروی بلند",
+              "role": "supplementary"
+            },
+            {
+              "en": "closet",
+              "fa": "کمد دیواری",
+              "role": "supplementary"
+            }
+          ]
+        },
+        {
+          "id": "rooms-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "نام‌های ترکیبی و عبارت‌های کاربردی",
+          "description": "اینها یک‌واژه‌ای نیستند؛ برای معرفی اتاق یا پاسخ به سؤال مکان یاد می‌گیری و در مکالمه‌های بعدی استفاده می‌کنی.",
+          "items": [
+            {
+              "en": "living room",
+              "fa": "اتاق نشیمن",
+              "kind": "collocation",
+              "examples": [
+                "This is the living room.",
+                "My father is in the living room.",
+                "Where is the living room?"
+              ]
+            },
+            {
+              "en": "dining room",
+              "fa": "اتاق غذاخوری",
+              "kind": "collocation",
+              "examples": [
+                "This is the dining room.",
+                "The dining room is next to the kitchen.",
+                "My sister is in the dining room."
+              ]
+            },
+            {
+              "en": "in the kitchen",
+              "fa": "در آشپزخانه",
+              "kind": "collocation",
+              "examples": [
+                "My mother is in the kitchen.",
+                "Is she in the kitchen?",
+                "My friend is in the kitchen."
+              ]
+            },
+            {
+              "en": "at home",
+              "fa": "در خانه",
+              "kind": "collocation",
+              "examples": [
+                "I'm at home.",
+                "My sister is at home.",
+                "Are you at home?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rooms-names",
+          "type": "composer-view",
+          "phase": "phrases",
+          "title": "این کدام اتاق است؟ نامش را لمس کن",
+          "description": "نقشه و جمله با هم عوض می‌شوند. living room و dining room را به‌صورت یک عبارت لمس می‌کنی.",
+          "sourceActivityId": "rooms-composer",
+          "patternId": "which-room"
+        },
+        {
+          "id": "rooms-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "نام اتاق را لمس کن؛ همان اتاق در نقشه روشن می‌شود",
+          "description": "در یک جملهٔ کاربردی، شخص یا اتاق را تغییر بده؛ موقعیت روی نقشه همراه با تغییر کلمه به‌روزرسانی می‌شود. برای balcony به‌جای in از on استفاده می‌کنیم.",
+          "targetLanguage": "en",
+          "wordSets": {
+            "people": [
+              {
+                "id": "mother",
+                "label": "my mother",
+                "translation": "مادرم",
+                "forms": {
+                  "person": "My mother",
+                  "question": "my mother",
+                  "fa": "مادرم"
+                }
+              },
+              {
+                "id": "father",
+                "label": "my father",
+                "translation": "پدرم",
+                "forms": {
+                  "person": "My father",
+                  "question": "my father",
+                  "fa": "پدرم"
+                }
+              },
+              {
+                "id": "sister",
+                "label": "my sister",
+                "translation": "خواهرم",
+                "forms": {
+                  "person": "My sister",
+                  "question": "my sister",
+                  "fa": "خواهرم"
+                }
+              },
+              {
+                "id": "brother",
+                "label": "my brother",
+                "translation": "برادرم",
+                "forms": {
+                  "person": "My brother",
+                  "question": "my brother",
+                  "fa": "برادرم"
+                }
+              },
+              {
+                "id": "friend",
+                "label": "my friend",
+                "translation": "دوستم",
+                "forms": {
+                  "person": "My friend",
+                  "question": "my friend",
+                  "fa": "دوستم"
+                }
+              },
+              {
+                "id": "teacher",
+                "label": "the teacher",
+                "translation": "معلم",
+                "forms": {
+                  "person": "The teacher",
+                  "question": "the teacher",
+                  "fa": "معلم"
+                }
+              }
+            ],
+            "rooms": [
+              {
+                "id": "kitchen",
+                "label": "kitchen",
+                "translation": "آشپزخانه",
+                "forms": {
+                  "noun": "kitchen",
+                  "place": "in the kitchen",
+                  "faRoom": "آشپزخانه"
+                }
+              },
+              {
+                "id": "bedroom",
+                "label": "bedroom",
+                "translation": "اتاق‌خواب",
+                "forms": {
+                  "noun": "bedroom",
+                  "place": "in the bedroom",
+                  "faRoom": "اتاق‌خواب"
+                }
+              },
+              {
+                "id": "bathroom",
+                "label": "bathroom",
+                "translation": "حمام",
+                "forms": {
+                  "noun": "bathroom",
+                  "place": "in the bathroom",
+                  "faRoom": "حمام"
+                }
+              },
+              {
+                "id": "living-room",
+                "label": "living room",
+                "translation": "نشیمن",
+                "forms": {
+                  "noun": "living room",
+                  "place": "in the living room",
+                  "faRoom": "نشیمن"
+                }
+              },
+              {
+                "id": "dining-room",
+                "label": "dining room",
+                "translation": "غذاخوری",
+                "forms": {
+                  "noun": "dining room",
+                  "place": "in the dining room",
+                  "faRoom": "غذاخوری"
+                }
+              },
+              {
+                "id": "hallway",
+                "label": "hallway",
+                "translation": "راهرو",
+                "forms": {
+                  "noun": "hallway",
+                  "place": "in the hallway",
+                  "faRoom": "راهرو"
+                }
+              },
+              {
+                "id": "garage",
+                "label": "garage",
+                "translation": "گاراژ",
+                "forms": {
+                  "noun": "garage",
+                  "place": "in the garage",
+                  "faRoom": "گاراژ"
+                }
+              },
+              {
+                "id": "balcony",
+                "label": "balcony",
+                "translation": "بالکن",
+                "forms": {
+                  "noun": "balcony",
+                  "place": "on the balcony",
+                  "faRoom": "بالکن"
+                }
+              },
+              {
+                "id": "garden",
+                "label": "garden",
+                "translation": "باغچه",
+                "forms": {
+                  "noun": "garden",
+                  "place": "in the garden",
+                  "faRoom": "باغچه"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "person",
+              "label": "شخص",
+              "wordSet": "people",
+              "default": "mother"
+            },
+            {
+              "id": "room",
+              "label": "اتاق",
+              "wordSet": "rooms",
+              "default": "kitchen"
+            }
+          ],
+          "derivedDefaults": {},
+          "dependencies": [],
+          "defaultPattern": "location",
+          "scene": {
+            "type": "rooms",
+            "entitySlot": "room"
+          },
+          "patterns": [
+            {
+              "id": "location",
+              "label": "محل شخص",
+              "segments": [
+                {
+                  "slot": "person",
+                  "form": "person"
+                },
+                {
+                  "fixed": " is "
+                },
+                {
+                  "slot": "room",
+                  "form": "place"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "person",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " در "
+                },
+                {
+                  "slot": "room",
+                  "form": "faRoom"
+                },
+                {
+                  "fixed": " است."
+                }
+              ]
+            },
+            {
+              "id": "which-room",
+              "label": "معرفی اتاق",
+              "segments": [
+                {
+                  "fixed": "This is the "
+                },
+                {
+                  "slot": "room",
+                  "form": "noun"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "این "
+                },
+                {
+                  "slot": "room",
+                  "form": "faRoom"
+                },
+                {
+                  "fixed": " است."
+                }
+              ]
+            },
+            {
+              "id": "where-person",
+              "label": "محل شخص را بپرس",
+              "segments": [
+                {
+                  "fixed": "Where is "
+                },
+                {
+                  "slot": "person",
+                  "form": "question"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "person",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " کجاست؟"
+                }
+              ]
+            },
+            {
+              "id": "is-room",
+              "label": "آیا آنجاست؟",
+              "segments": [
+                {
+                  "fixed": "Is "
+                },
+                {
+                  "slot": "person",
+                  "form": "question"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "room",
+                  "form": "place"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "آیا "
+                },
+                {
+                  "slot": "person",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " در "
+                },
+                {
+                  "slot": "room",
+                  "form": "faRoom"
+                },
+                {
+                  "fixed": " است؟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rooms-variants",
+          "type": "meaning-cluster",
+          "phase": "variants",
+          "title": "مکان دقیق یا فقط خانه؟",
+          "description": "بین «در خانه» و «در یک اتاق مشخص» تفاوت وجود دارد؛ معنی و دقت جواب را مقایسه کن.",
+          "concepts": [
+            {
+              "id": "specific-v-general",
+              "fa": "گفتن محل فرد با دو درجهٔ دقت",
+              "forms": [
+                {
+                  "en": "She is at home.",
+                  "fa": "او در خانه است.",
+                  "relation": "related",
+                  "note": "مشخص نمی‌کند کدام اتاق."
+                },
+                {
+                  "en": "She is in the kitchen.",
+                  "fa": "او در آشپزخانه است.",
+                  "relation": "related",
+                  "note": "یک اتاق مشخص را معرفی می‌کند."
+                }
+              ]
+            },
+            {
+              "id": "living-v-dining",
+              "fa": "فضاهای مختلف خانه",
+              "forms": [
+                {
+                  "en": "This is the living room.",
+                  "fa": "این نشیمن است.",
+                  "relation": "related",
+                  "note": "اتاق استراحت و نشستن."
+                },
+                {
+                  "en": "This is the dining room.",
+                  "fa": "این غذاخوری است.",
+                  "relation": "related",
+                  "note": "فضای غذاخوردن."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rooms-question",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "محل یکی از اعضای خانه را بپرس",
+          "description": "نام شخص را در سؤال لمس کن؛ بعد در جملهٔ مرحلهٔ قبل محلش را تغییر بده.",
+          "sourceActivityId": "rooms-composer",
+          "patternId": "where-person"
+        },
+        {
+          "id": "rooms-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "جورچین: اتاق‌ها و سؤال مکان",
+          "description": "هم جملهٔ خبری و هم سؤال درست بساز. کلمهٔ نامعتبر با لرزش به بانک برمی‌گردد.",
+          "revision": 1,
+          "reuseBank": true,
+          "goalCount": 5,
+          "sourceActivityId": "rooms-composer",
+          "patternIds": [
+            "location",
+            "which-room",
+            "where-person"
+          ],
+          "sentences": [
+            {
+              "id": "where-mother",
+              "words": [
+                "Where",
+                "is",
+                "my",
+                "mother?"
+              ]
+            },
+            {
+              "id": "mother-kitchen",
+              "words": [
+                "My",
+                "mother",
+                "is",
+                "in",
+                "the",
+                "kitchen."
+              ]
+            },
+            {
+              "id": "sister-bedroom",
+              "words": [
+                "My",
+                "sister",
+                "is",
+                "in",
+                "the",
+                "bedroom."
+              ]
+            },
+            {
+              "id": "living-room",
+              "words": [
+                "This",
+                "is",
+                "the",
+                "living",
+                "room."
+              ]
+            },
+            {
+              "id": "father-dining",
+              "words": [
+                "My",
+                "father",
+                "is",
+                "in",
+                "the",
+                "dining",
+                "room."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rooms-construction",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "پنج جملهٔ کاربردی دربارهٔ اتاق‌ها",
+          "practiceRevision": 1,
+          "description": "مکان را روی نقشه مشخص کن و جمله را بدون گزینه بنویس.",
+          "completion": "توانستی اتاق‌ها را نام ببری و محل افراد را بپرسی و بگویی.",
+          "tasks": [
+            {
+              "task": "به آشپزخانه اشاره کن: این آشپزخانه است.",
+              "hint": "This is the kitchen.",
+              "example": "This is the kitchen.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is the kitchen"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "task": "بگو مادرم در آشپزخانه است.",
+              "hint": "My mother is in the kitchen.",
+              "example": "My mother is in the kitchen.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my mother is in the kitchen"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "task": "بپرس مادرم کجاست.",
+              "hint": "Where is my mother?",
+              "example": "Where is my mother?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "where is my mother"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "task": "بگو پدرم در نشیمن است.",
+              "hint": "My father is in the living room.",
+              "example": "My father is in the living room.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my father is in the living room"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "task": "بگو این اتاق غذاخوری است.",
+              "hint": "This is the dining room.",
+              "example": "This is the dining room.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is the dining room"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "task": "بگو دوستم روی بالکن است.",
+              "hint": "My friend is on the balcony.",
+              "example": "My friend is on the balcony.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my friend is on the balcony"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "از سؤال و جواب تا مکالمه",
+      "intro": "از سؤال‌وجواب دربارهٔ افراد شروع کن، سپس از روی نقشهٔ خانه و در نهایت خانهٔ واقعی یا خیالی خودت توضیح بده.",
+      "masteryActivityIds": [
+        "rooms-guided",
+        "rooms-independent"
+      ],
+      "activities": [
+        {
+          "id": "rooms-exchanges",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "یک سؤال مکان، چند جواب درست",
+          "description": "نام اتاق عوض می‌شود و جواب هم باید متناسب با آن عوض شود.",
+          "pairs": [
+            {
+              "question": "Where is my mother?",
+              "questionFa": "مادرم کجاست؟",
+              "variants": [
+                {
+                  "label": "آشپزخانه",
+                  "en": "She is in the kitchen.",
+                  "fa": "او در آشپزخانه است."
+                },
+                {
+                  "label": "نشیمن",
+                  "en": "She is in the living room.",
+                  "fa": "او در نشیمن است."
+                }
+              ]
+            },
+            {
+              "question": "Where is my brother?",
+              "questionFa": "برادرم کجاست؟",
+              "variants": [
+                {
+                  "label": "اتاق خواب",
+                  "en": "He is in the bedroom.",
+                  "fa": "او در اتاق خواب است."
+                },
+                {
+                  "label": "حیاط",
+                  "en": "He is in the garden.",
+                  "fa": "او در باغچه است."
+                }
+              ]
+            },
+            {
+              "question": "Is she in the kitchen?",
+              "questionFa": "او در آشپزخانه است؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, she is.",
+                  "fa": "بله."
+                },
+                {
+                  "label": "نه، نشیمن",
+                  "en": "No, she is in the living room.",
+                  "fa": "نه، در نشیمن است."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rooms-exchanges-practice",
+          "type": "response-practice",
+          "phase": "correspondence",
+          "title": "بشنو و محل را خودت بگو",
+          "practiceRevision": 1,
+          "description": "پاسخ را بر اساس موقعیتی که داده شده بساز.",
+          "completion": "پاسخ مکان را بدون گزینه ساختی.",
+          "tasks": [
+            {
+              "task": "جواب بده او در آشپزخانه است.",
+              "incoming": "Where is your mother?",
+              "hint": "She is in the kitchen.",
+              "example": "She is in the kitchen.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "she is in the kitchen",
+                      "my mother is in the kitchen"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "task": "جواب بده او در اتاق‌خواب است.",
+              "incoming": "Where is your brother?",
+              "hint": "He is in the bedroom.",
+              "example": "He is in the bedroom.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "he is in the bedroom",
+                      "my brother is in the bedroom"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "task": "بگو نه، پدر در نشیمن است.",
+              "incoming": "Is your father in the kitchen?",
+              "hint": "No, my father is in the living room.",
+              "example": "No, my father is in the living room.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "father is in the living room",
+                      "he is in the living room"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "rooms-dialogue-1",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "مکالمهٔ اول: مادرم کجاست؟",
+          "description": "یک نفر در خانه دنبال مادرش می‌گردد.",
+          "lines": [
+            {
+              "speaker": "Ali",
+              "en": "Hello! Where is my mother?",
+              "fa": "سلام! مادرم کجاست؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "She is in the kitchen.",
+              "fa": "در آشپزخانه است."
+            },
+            {
+              "speaker": "Ali",
+              "en": "Is my father in the living room?",
+              "fa": "پدرم در نشیمن است؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "Yes, he is.",
+              "fa": "بله."
+            },
+            {
+              "speaker": "Ali",
+              "en": "Where is my brother?",
+              "fa": "برادرم کجاست؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "He is in the bedroom.",
+              "fa": "در اتاق‌خواب است."
+            },
+            {
+              "speaker": "Ali",
+              "en": "And where is my sister?",
+              "fa": "و خواهرم کجاست؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "She is in the garden.",
+              "fa": "در باغچه است."
+            }
+          ]
+        },
+        {
+          "id": "rooms-dialogue-1-practice",
+          "type": "response-practice",
+          "phase": "context",
+          "title": "بر اساس گفت‌وگو جواب بده",
+          "practiceRevision": 1,
+          "description": "هر پاسخ باید اتاق مناسب را داشته باشد.",
+          "completion": "اطلاعات محل افراد را از مکالمه به کار بردی.",
+          "tasks": [
+            {
+              "task": "به انگلیسی بگو مادر در آشپزخانه است.",
+              "incoming": "Where is your mother?",
+              "hint": "She is in the kitchen.",
+              "example": "She is in the kitchen.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "she is in the kitchen",
+                      "mother is in the kitchen"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "task": "بگو پدر در نشیمن است.",
+              "incoming": "Where is your father?",
+              "hint": "He is in the living room.",
+              "example": "He is in the living room.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "he is in the living room",
+                      "father is in the living room"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "task": "بگو خواهر در باغچه است.",
+              "incoming": "Where is your sister?",
+              "hint": "She is in the garden.",
+              "example": "She is in the garden.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "she is in the garden",
+                      "sister is in the garden"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "rooms-dialogue-2",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "مکالمهٔ دوم: خانه را نشان بده",
+          "description": "اتاق‌ها و جای یک شیء را با واژه‌های قدیمی ترکیب کن.",
+          "lines": [
+            {
+              "speaker": "Emma",
+              "en": "Is this your home?",
+              "fa": "این خانهٔ توست؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "Yes, this is my home.",
+              "fa": "بله، این خانهٔ من است."
+            },
+            {
+              "speaker": "Emma",
+              "en": "What is this room?",
+              "fa": "این کدام اتاق است؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "This is the living room.",
+              "fa": "این نشیمن است."
+            },
+            {
+              "speaker": "Emma",
+              "en": "And what is that room?",
+              "fa": "و آن چه اتاقی است؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "That is the dining room.",
+              "fa": "آن غذاخوری است."
+            },
+            {
+              "speaker": "Emma",
+              "en": "Where is the kitchen?",
+              "fa": "آشپزخانه کجاست؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "The kitchen is next to the dining room.",
+              "fa": "آشپزخانه کنار غذاخوری است."
+            }
+          ]
+        },
+        {
+          "id": "rooms-dialogue-2-practice",
+          "type": "response-practice",
+          "phase": "context",
+          "title": "محل اتاق‌ها را خودت توضیح بده",
+          "practiceRevision": 1,
+          "description": "سؤال‌ها دربارهٔ اتاق‌هاست؛ جای آن‌ها را مشخص کن.",
+          "completion": "فضاهای مختلف خانه را توصیف کردی.",
+          "tasks": [
+            {
+              "task": "بگو این نشیمن است.",
+              "incoming": "What is this room?",
+              "hint": "This is the living room.",
+              "example": "This is the living room.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is the living room"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "task": "بگو آن غذاخوری است.",
+              "incoming": "What is that room?",
+              "hint": "That is the dining room.",
+              "example": "That is the dining room.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "that is the dining room"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "task": "بگو آشپزخانه کنار غذاخوری است.",
+              "incoming": "Where is the kitchen?",
+              "hint": "The kitchen is next to the dining room.",
+              "example": "The kitchen is next to the dining room.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "kitchen is next to the dining room"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "rooms-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "practiceRevision": 1,
+          "title": "از روی نقشهٔ خانه بگو هر نفر کجاست",
+          "description": "در طرح خانه، M در آشپزخانه، F در نشیمن و S در اتاق‌خواب است. حرف‌ها فقط نشانهٔ افرادند؛ جمله را خودت بساز.",
+          "image": "./assets/scene-a1-8.svg",
+          "imageAlt": "نقشهٔ سادهٔ چهار اتاق: آشپزخانه با نشان M، اتاق خواب با S، نشیمن با F و حمام بدون نفر",
+          "caption": "نقشهٔ یک خانه با سه نفر و چهار اتاق",
+          "tasks": [
+            {
+              "task": "حرف M مادر است؛ بگو مادر در آشپزخانه است.",
+              "hint": "My mother is in the kitchen.",
+              "example": "My mother is in the kitchen.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "mother is in the kitchen"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "task": "حرف F پدر است؛ بگو او در نشیمن است.",
+              "hint": "My father is in the living room.",
+              "example": "My father is in the living room.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "father is in the living room",
+                      "he is in the living room"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "task": "حرف S خواهر است؛ بگو در اتاق‌خواب است.",
+              "hint": "My sister is in the bedroom.",
+              "example": "My sister is in the bedroom.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "sister is in the bedroom",
+                      "she is in the bedroom"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "task": "در نقشه حمام را معرفی کن.",
+              "hint": "This is the bathroom.",
+              "example": "This is the bathroom.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is the bathroom"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "rooms-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "practiceRevision": 1,
+          "title": "مکالمهٔ چندنوبتی در خانه",
+          "description": "نام نفر را عوض کن، اتاق مناسب انتخاب کن و جمله را خودت تولید کن.",
+          "completion": "محل افراد مختلف را پرسیدی و پاسخ دادی.",
+          "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "Hello! Where is my mother?",
+              "task": "بگو او در آشپزخانه است.",
+              "hint": "She is in the kitchen.",
+              "example": "She is in the kitchen.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "she is in the kitchen"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Thank you. Where is my father?",
+              "task": "بگو او در نشیمن است.",
+              "hint": "He is in the living room.",
+              "example": "He is in the living room.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "he is in the living room"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Is my sister in the bathroom?",
+              "task": "بگو نه، او در اتاق خواب است.",
+              "hint": "No, she is in the bedroom.",
+              "example": "No, she is in the bedroom.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "she is in the bedroom"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  },
+                  {
+                    "any": [
+                      "no"
+                    ],
+                    "feedback": "جواب باید منفی باشد."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Is the dining room next to the kitchen?",
+              "task": "بگو بله و جای غذاخوری را توضیح بده.",
+              "hint": "Yes, the dining room is next to the kitchen.",
+              "example": "Yes, the dining room is next to the kitchen.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "dining room is next to the kitchen"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  },
+                  {
+                    "any": [
+                      "yes"
+                    ],
+                    "feedback": "با yes جواب بده."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "rooms-transfer",
+          "type": "dialogue-transfer",
+          "phase": "guided",
+          "practiceRevision": 1,
+          "title": "انتقال: یک خانهٔ دیگر",
+          "sceneTitle": "خانهٔ یک دوست",
+          "description": "خانهٔ فرضی جدیدی تصور کن و با همان دستور زبان، جای آدم‌ها را تغییر بده.",
+          "completion": "جواب را برای خانه‌ای دیگر هم ساختی.",
+          "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is your mother?",
+              "task": "این بار بگو مادرم در نشیمن است.",
+              "hint": "My mother is in the living room.",
+              "example": "My mother is in the living room.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "mother is in the living room"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is your friend?",
+              "task": "بگو دوستم در آشپزخانه است.",
+              "hint": "My friend is in the kitchen.",
+              "example": "My friend is in the kitchen.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "friend is in the kitchen"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is your sister?",
+              "task": "بگو خواهرم روی بالکن است.",
+              "hint": "My sister is on the balcony.",
+              "example": "My sister is on the balcony.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "sister is on the balcony"
+                    ],
+                    "feedback": "محل یا سؤال درست را با واژه‌های همین درس بنویس."
+                  }
+                ],
+                "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "rooms-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "تمرین واقعی: نقشهٔ خانهٔ خودت یا خیالی",
+          "kind": "free-text",
+          "minWords": 19,
+          "prompt": "یک خانهٔ واقعی یا خیالی در ذهنت تصور کن؛ اطلاعات خصوصی یا عکس لازم نیست. اول دو فضای living room و kitchen را معرفی کن. سپس بپرس Where is my mother? و یک پاسخ با in the kitchen بنویس. در ادامه جای شخص دیگر را با یک اتاق متفاوت توصیف کن و اگر می‌توانی رابطهٔ اتاق‌ها را با next to یا upstairs بگو.",
+          "placeholder": "This is the living room. This is the kitchen.\\nWhere is my mother?\\nShe is in the kitchen.\\nMy brother is in the bedroom. The bedroom is upstairs.",
+          "hint": "اتاق‌های خانه می‌توانند خیالی باشند؛ همین دو فضای living room و kitchen را برای تمرین استفاده کن و بقیه را آزادانه انتخاب کن.",
+          "assessment": {
+            "revision": 1,
+            "required": [
+              {
+                "any": [
+                  "living room"
+                ],
+                "feedback": "نام اتاق نشیمن را هم بنویس."
+              },
+              {
+                "any": [
+                  "in the kitchen"
+                ],
+                "feedback": "جمله‌ای دربارهٔ حضور یک نفر در آشپزخانه بنویس."
+              },
+              {
+                "any": [
+                  "where is"
+                ],
+                "feedback": "دربارهٔ محل یکی از افراد سؤال Where is ...? بپرس."
+              },
+              {
+                "any": [
+                  "bedroom",
+                  "bathroom",
+                  "garden",
+                  "balcony",
+                  "garage",
+                  "hallway",
+                  "dining room",
+                  "basement",
+                  "attic",
+                  "living room"
+                ],
+                "feedback": "محل یک نفر یا شیء دیگر را هم در اتاقی دیگر توصیف کن."
+              }
+            ],
+            "success": "دو فضای خانه، پرسش مکان و یک توصیف مستقل را در چند جمله بیان کردی."
+          }
+        },
+        {
+          "id": "a1-8-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "دوباره همان سایه‌خوانی",
+          "description": "در پایان همان جمله‌های آغاز درس را دوباره تقلید کن؛ معنی‌سنجی لازم نیست.",
+          "sourceActivityId": "a1-8-shadowing"
+        }
+      ]
+    }
+  ]
+}
