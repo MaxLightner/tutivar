@@ -104,6 +104,58 @@ export function normalizePuzzleState(activity, previous) {
     warning: typeof prev.warning === 'string' ? prev.warning : ''
   };
 }
+
+/**
+ * A token is allowed only if the complete prefix can still lead to at least
+ * one authored target or a valid sentence from the JSON sentence composer.
+ * No universal word-order rules (e.g. "is cannot begin a sentence") are used.
+ */
+export function canAppendPuzzleWord(activity, previous, tokenIndex, sourceComposer = null) {
+  const state = normalizePuzzleState(activity, previous);
+  const bank = puzzleTokenBank(activity);
+  const used = new Set(activity.reuseBank ? [] : state.completed.flatMap((entry) => entry.indices));
+  if (!Number.isInteger(tokenIndex) || tokenIndex < 0 || tokenIndex >= bank.length ||
+      used.has(tokenIndex) || state.current.includes(tokenIndex) ||
+      state.completed.length >= (activity.goalCount || activity.sentences.length)) return false;
+  const candidate = [...state.current, tokenIndex]
+    .map(index => puzzleDisplayWord(bank[index].word))
+    .join(' ');
+  const normalized = normalizePuzzleSentence(candidate);
+  if (!normalized) return false;
+  const isPrefix = (sentence) => {
+    const target = normalizePuzzleSentence(sentence);
+    return target === normalized || target.startsWith(normalized + ' ');
+  };
+  if ((activity.sentences || []).some(sentence => isPrefix(sentence.words.join(' ')))) return true;
+  if (!sourceComposer || sourceComposer.type !== 'sentence-composer') return false;
+  const patterns = (activity.patternIds?.length
+    ? sourceComposer.patterns.filter(p => activity.patternIds.includes(p.id))
+    : sourceComposer.patterns).filter(p => p.segments?.length);
+  const slots = sourceComposer.slots || [];
+  const options = slots.map(slot => (sourceComposer.wordSets[slot.wordSet] || [])
+    .filter(word => !slot.includeRoles?.length || slot.includeRoles.includes(word.role || 'core')));
+  if (options.some(entries => !entries.length)) return false;
+  let examined = 0;
+  const selected = {};
+  const search = (position) => {
+    if (position >= slots.length) {
+      for (const pattern of patterns) {
+        if (++examined > 15000) return false;
+        const resolved = resolveSentenceComposer(sourceComposer, { slots: selected, pattern: pattern.id });
+        if (isPrefix(composeSegments(pattern.segments, sourceComposer, resolved))) return true;
+      }
+      return false;
+    }
+    for (const word of options[position]) {
+      selected[slots[position].id] = word.id;
+      if (search(position + 1)) return true;
+      if (examined > 15000) break;
+    }
+    return false;
+  };
+  return search(0);
+}
+
 export function addPuzzleWord(activity, previous, tokenIndex) {
   const state = normalizePuzzleState(activity, previous);
   const bank = puzzleTokenBank(activity);
