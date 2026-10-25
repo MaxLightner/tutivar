@@ -851,3 +851,19 @@ button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3p
 .shadowing-transcript li .en{font-size:14px}
 .vocab-test-start{font-size:13px;padding:8px 12px;white-space:nowrap}
 @media(max-width:600px){.module-expression-study .expression-grid{grid-template-columns:1fr}.expression-card{padding:12px}.shadowing-playback{align-items:stretch;width:100%}.shadowing-playback .shadowing-play{flex:1}.shadowing-speed-label{width:100%;justify-content:space-between}.shadowing-speed-label select{flex:1}.vocab-test-start{padding:7px 9px}}
+
+/* Visual counting, with numbers locked while the noun changes in the singular/plural drill. */
+.count-visual-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px;margin-top:14px}
+.count-visual-scene{min-width:0}
+.count-visual-pair,.plural-contrast{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.count-visual-frame,.plural-contrast-cell{border:1px solid #dce6dc;border-radius:17px;background:#f7faf5;min-width:0;padding:14px 8px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:8px;text-align:center}
+.count-visual-frame strong,.plural-contrast-cell strong{font-size:17px;color:#273f37;font-family:'Plus Jakarta Sans',Arial,sans-serif;white-space:nowrap}
+.count-visual-frame span{color:#5d7567;font-size:13px}
+.count-picture-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px;min-height:104px;width:100%}
+.count-object-picture{width:48px;height:48px;flex:0 0 48px}
+.plural-contrast{margin:16px 0 10px}
+.plural-contrast-cell{padding:18px 10px}
+.plural-contrast-note{font-size:14px;color:#526c5f;line-height:1.8}
+.plural-contrast-control{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px}
+.plural-contrast-control span{color:#6c8072;font-size:13px}
+@media(max-width:600px){.count-visual-grid{grid-template-columns:1fr}.count-visual-frame,.plural-contrast-cell{padding:12px 5px}.count-object-picture{width:42px;height:42px;flex-basis:42px}.count-visual-frame strong,.plural-contrast-cell strong{font-size:15px}}

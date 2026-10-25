@@ -1,6 +1,6 @@
 {
   "id": "A1-4",
-  "revision": 10,
+  "revision": 11,
   "status": "draft",
   "title": "اشیا و مکان اطراف من",
   "goal": "بتوانی موقعیت توپ و اشیا را نسبت به یک جعبهٔ درباز با in، inside، on، on top of، above، under، behind، in front of، next to و outside توضیح بدهی.",
@@ -74,7 +74,7 @@
           "phase": "words",
           "title": "واژگان اصلی مکان و اشیا",
           "batchSize": 4,
-          "deckRevision": 3,
+          "deckRevision": 4,
           "items": [
             {
               "en": "ball",
@@ -94,16 +94,6 @@
                 "The ball is in the box.",
                 "The ball is outside the box.",
                 "Is the ball on the box?"
-              ]
-            },
-            {
-              "en": "in",
-              "fa": "در / داخل",
-              "hint": "موقعیت درون یک فضا",
-              "examples": [
-                "The ball is in the box.",
-                "Is the ball in the box?",
-                "The toy is in the box."
               ]
             },
             {
@@ -167,33 +157,6 @@
               ]
             },
             {
-              "en": "book",
-              "fa": "کتاب",
-              "examples": [
-                "Where is my book?",
-                "The book is on the table.",
-                "This is my book."
-              ]
-            },
-            {
-              "en": "phone",
-              "fa": "تلفن",
-              "examples": [
-                "Is the phone under the chair?",
-                "This is my phone.",
-                "Where is my phone?"
-              ]
-            },
-            {
-              "en": "keys",
-              "fa": "کلیدها",
-              "examples": [
-                "These are my keys.",
-                "Where are my keys?",
-                "I have my keys."
-              ]
-            },
-            {
               "en": "table",
               "fa": "میز",
               "examples": [
@@ -218,33 +181,6 @@
                 "The pen is on the desk.",
                 "The ball is under the desk.",
                 "My book is on the desk."
-              ]
-            },
-            {
-              "en": "bag",
-              "fa": "کیف",
-              "examples": [
-                "This is my bag.",
-                "Where is my bag?",
-                "I have a bag."
-              ]
-            },
-            {
-              "en": "pen",
-              "fa": "خودکار",
-              "examples": [
-                "This is my pen.",
-                "Where is my pen?",
-                "I have a pen."
-              ]
-            },
-            {
-              "en": "notebook",
-              "fa": "دفتر",
-              "examples": [
-                "This is my notebook.",
-                "Where is my notebook?",
-                "I have a notebook."
               ]
             },
             {

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+<title id="title">Four people with names and ages</title>
+<desc id="desc">Emma Brown, age 12; Noah Smith, age 17; Sara Rahimi, age 24; and Ali Nouri, age 35.</desc>
+<rect width="900" height="520" rx="26" fill="#f1f7f3"/>
+<path d="M0 456H900V520H0Z" fill="#e3eee7"/>
+<g transform="translate(50,105)">
+  <rect width="174" height="320" rx="22" fill="#fffefa" stroke="#d5e1d8" stroke-width="3"/>
+  <rect x="12" y="12" width="150" height="188" rx="16" fill="#e9f2ed"/>
+  <circle cx="87" cy="87" r="38" fill="#e7bea0" stroke="#b88b74" stroke-width="2"/>
+  <path d="M46 82Q45 36 85 37Q129 35 126 80Q104 57 82 63Q61 66 46 82Z" fill="#665140"/>
+  <circle cx="74" cy="88" r="3" fill="#3d403e"/><circle cx="101" cy="88" r="3" fill="#3d403e"/>
+  <path d="M79 107Q89 113 97 107" fill="none" stroke="#805b53" stroke-width="3" stroke-linecap="round"/>
+  <path d="M29 197Q31 140 70 136L106 136Q144 144 146 197Z" fill="#e5a16e"/>
+  <text x="87" y="233" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#2b4a3b">Emma Brown</text>
+  <rect x="36" y="248" width="102" height="51" rx="12" fill="#dcebe0"/>
+  <text x="87" y="281" text-anchor="middle" font-family="Arial,sans-serif" font-size="25" font-weight="750" fill="#265743">12</text>
+</g>
+<g transform="translate(260,105)">
+  <rect width="174" height="320" rx="22" fill="#fffefa" stroke="#d5e1d8" stroke-width="3"/>
+  <rect x="12" y="12" width="150" height="188" rx="16" fill="#e9f2ed"/>
+  <circle cx="87" cy="87" r="38" fill="#d9aa85" stroke="#b88b74" stroke-width="2"/>
+  <path d="M46 82Q45 36 85 37Q129 35 126 80Q104 57 82 63Q61 66 46 82Z" fill="#45494c"/>
+  <circle cx="74" cy="88" r="3" fill="#3d403e"/><circle cx="101" cy="88" r="3" fill="#3d403e"/>
+  <path d="M79 107Q89 113 97 107" fill="none" stroke="#805b53" stroke-width="3" stroke-linecap="round"/>
+  <path d="M29 197Q31 140 70 136L106 136Q144 144 146 197Z" fill="#83acb7"/>
+  <text x="87" y="233" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#2b4a3b">Noah Smith</text>
+  <rect x="36" y="248" width="102" height="51" rx="12" fill="#dcebe0"/>
+  <text x="87" y="281" text-anchor="middle" font-family="Arial,sans-serif" font-size="25" font-weight="750" fill="#265743">17</text>
+</g>
+<g transform="translate(470,105)">
+  <rect width="174" height="320" rx="22" fill="#fffefa" stroke="#d5e1d8" stroke-width="3"/>
+  <rect x="12" y="12" width="150" height="188" rx="16" fill="#e9f2ed"/>
+  <circle cx="87" cy="87" r="38" fill="#d4a184" stroke="#b88b74" stroke-width="2"/>
+  <path d="M46 82Q45 36 85 37Q129 35 126 80Q104 57 82 63Q61 66 46 82Z" fill="#57443c"/>
+  <circle cx="74" cy="88" r="3" fill="#3d403e"/><circle cx="101" cy="88" r="3" fill="#3d403e"/>
+  <path d="M79 107Q89 113 97 107" fill="none" stroke="#805b53" stroke-width="3" stroke-linecap="round"/>
+  <path d="M29 197Q31 140 70 136L106 136Q144 144 146 197Z" fill="#a4a1c8"/>
+  <text x="87" y="233" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#2b4a3b">Sara Rahimi</text>
+  <rect x="36" y="248" width="102" height="51" rx="12" fill="#dcebe0"/>
+  <text x="87" y="281" text-anchor="middle" font-family="Arial,sans-serif" font-size="25" font-weight="750" fill="#265743">24</text>
+</g>
+<g transform="translate(680,105)">
+  <rect width="174" height="320" rx="22" fill="#fffefa" stroke="#d5e1d8" stroke-width="3"/>
+  <rect x="12" y="12" width="150" height="188" rx="16" fill="#e9f2ed"/>
+  <circle cx="87" cy="87" r="38" fill="#c18f73" stroke="#b88b74" stroke-width="2"/>
+  <path d="M46 82Q45 36 85 37Q129 35 126 80Q104 57 82 63Q61 66 46 82Z" fill="#353c42"/>
+  <circle cx="74" cy="88" r="3" fill="#3d403e"/><circle cx="101" cy="88" r="3" fill="#3d403e"/>
+  <path d="M79 107Q89 113 97 107" fill="none" stroke="#805b53" stroke-width="3" stroke-linecap="round"/>
+  <path d="M29 197Q31 140 70 136L106 136Q144 144 146 197Z" fill="#93b59b"/>
+  <text x="87" y="233" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#2b4a3b">Ali Nouri</text>
+  <rect x="36" y="248" width="102" height="51" rx="12" fill="#dcebe0"/>
+  <text x="87" y="281" text-anchor="middle" font-family="Arial,sans-serif" font-size="25" font-weight="750" fill="#265743">35</text>
+</g>
+<text x="450" y="66" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#2f5944">Names and ages</text>
+</svg>

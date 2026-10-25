@@ -59,10 +59,15 @@
               "file": "lessons/a1-5.json",
               "status": "sample"
             },
-            [
-              "پرسیدن نام و سن",
-              "message"
-            ],
+            {
+              "id": "A1-6",
+              "title": "پرسیدن نام و سن",
+              "subtitle": "نام کامل، سن و اعداد بزرگ‌تر",
+              "icon": "message",
+              "feature": "کارت‌های سن و نام",
+              "file": "lessons/a1-6.json",
+              "status": "sample"
+            },
             [
               "این چیست؟ آن کیست؟",
               "sparkles"

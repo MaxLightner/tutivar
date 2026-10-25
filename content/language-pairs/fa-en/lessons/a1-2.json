@@ -1,6 +1,6 @@
 {
   "id": "A1-2",
-  "revision": 10,
+  "revision": 11,
   "status": "draft",
   "title": "معرفی اعضای خانواده",
   "goal": "بتوانی درباره اعضای خانواده سؤال کنی، نقش خودت را در خانواده بگویی، دیگران را با نسبت معرفی کنی و حدس اشتباه را اصلاح کنی.",
@@ -80,7 +80,7 @@
           "type": "vocabulary",
           "title": "واژگان اصلی خانواده",
           "batchSize": 4,
-          "deckRevision": 3,
+          "deckRevision": 4,
           "items": [
             {
               "en": "mother",
@@ -143,16 +143,6 @@
               ]
             },
             {
-              "en": "Please.",
-              "fa": "لطفاً؛ برای مؤدبانه‌تر کردن درخواست",
-              "hint": "در درس اول عبارت تکمیلی بود؛ اینجا آن را در یک موقعیت واقعی به کار می‌بری.",
-              "examples": [
-                "Please, come in.",
-                "Please, meet my sister.",
-                "Please, look at this photo."
-              ]
-            },
-            {
               "en": "family",
               "fa": "خانواده",
               "examples": [
@@ -168,24 +158,6 @@
                 "Please, look at this photo.",
                 "Look at this photo.",
                 "This is a family photo."
-              ]
-            },
-            {
-              "en": "my",
-              "fa": "ـم / مال من، پیش از اسم",
-              "examples": [
-                "This is my mother.",
-                "This is my father.",
-                "This is my sister, Anna."
-              ]
-            },
-            {
-              "en": "your",
-              "fa": "ـت / مال تو یا شما",
-              "examples": [
-                "Is he your son?",
-                "Is she your daughter?",
-                "Is this your brother?"
               ]
             },
             {
@@ -240,42 +212,6 @@
                 "Who's this?",
                 "Hello! Who's this?",
                 "Who's this, Anna?"
-              ]
-            },
-            {
-              "en": "is",
-              "fa": "است",
-              "examples": [
-                "This is my mother.",
-                "Her name is Nora.",
-                "This is my father."
-              ]
-            },
-            {
-              "en": "are",
-              "fa": "هستی / هستید / هستند",
-              "examples": [
-                "Are you a father?",
-                "How are you?",
-                "Are you my brother?"
-              ]
-            },
-            {
-              "en": "name",
-              "fa": "نام / اسم",
-              "examples": [
-                "Her name is Nora.",
-                "His name is David.",
-                "Her name is Anna."
-              ]
-            },
-            {
-              "en": "you",
-              "fa": "تو / شما",
-              "examples": [
-                "Her name is Anna. Nice to meet you!",
-                "Are you a father?",
-                "Thank you!"
               ]
             },
             {

@@ -7,6 +7,7 @@ import { renderActivity, renderDialogueLines, supportedActivities } from '../app
 import { advanceDeck, answerDeck, checkWordAnswer, coreItems, deckState, jumpDeck, resumeDeck, startDeckTest, supplementaryItems } from '../apps/learner-web/word-review.js';
 import { evaluateResponse, practiceState, submitPractice } from '../apps/learner-web/practice-engine.js';
 import { auditLesson } from '../tools/audit-lessons.mjs';
+import { inspectVocabularyContinuity } from '../tools/audit-vocabulary.mjs';
 import { composeSegments, cycleComposerSlot, resolveSentenceComposer, validateSentenceComposer } from '../apps/learner-web/sentence-composer.js';
 import { LESSON_PHASES, validateLessonFlow } from '../apps/learner-web/lesson-flow.js';
 import { resolveMeaningForm, advanceMeaningForm, selectedSpatialPosition, validateVisualActivity } from '../apps/learner-web/visual-learning.js';
@@ -63,8 +64,8 @@ test('every sample path node references a real content file with two teaching se
     assert.ok(!ids.has(lesson.id));
     ids.add(lesson.id);
   }
-  assert.equal(ids.size, 5);
-  assert.deepEqual([...new Set([...ids].map((id) => load(lessons.find((entry) => entry.id === id).file).archetype))].sort(), ['conversation', 'counting-objects', 'family', 'ownership', 'spatial-location']);
+  assert.equal(ids.size, 6);
+  assert.deepEqual([...new Set([...ids].map((id) => load(lessons.find((entry) => entry.id === id).file).archetype))].sort(), ['conversation', 'counting-objects', 'family', 'name-and-age', 'ownership', 'spatial-location']);
 });
 
 test('not-yet-produced nodes cannot be launched as content', () => {
@@ -252,7 +253,7 @@ test('A1-4 is a complete location lesson in the shared discovery and production 
   assert.deepEqual([...new Set(lesson.sections[1].activities.map(x=>x.phase))],LESSON_PHASES.production);
   const foundation=lesson.sections[0],production=lesson.sections[1];
   const vocabulary=foundation.activities.find(a=>a.type==='vocabulary');
-  assert.ok(coreItems(vocabulary).length>=20);
+  assert.ok(coreItems(vocabulary).length>=15);
   assert.ok(supplementaryItems(vocabulary).length>=8);
   assert.ok(vocabulary.items.every(item=>!/\s/.test(item.en.trim())),'word bank contains only single lexical words');
   assert.ok(coreItems(vocabulary).every(item=>item.examples?.length===3));
@@ -350,8 +351,9 @@ test('meaning expressions and reusable visual learning modules are lesson-author
   const expressions=fourth.sections[0].activities.find(a=>a.type==='expression-study');
   assert.ok(expressions.items.some(item=>item.en==='on top of'),'on top of remains a taught phrase, not a spatial-game position');
   assert.ok(core.every(item=>!/\s/.test(item.en.trim())));
-  assert.ok(core.some(item=>item.en==='phone'),'the location lesson includes useful objects to describe');
-  assert.ok(core.some(item=>item.en==='book'),'object vocabulary supports independent production');
+  assert.ok(!core.some(item=>item.en==='phone'),'previously taught phone must only recur in examples');
+  assert.ok(!core.some(item=>item.en==='book'),'previously taught book must only recur in examples');
+  assert.ok(fourth.sections[1].activities.some(a=>JSON.stringify(a).includes('phone')));
   const spatial=fourth.sections[0].activities.find(a=>a.type==='spatial-lab');
   assert.deepEqual(validateVisualActivity(spatial),[]);
   assert.equal(selectedSpatialPosition(spatial,'under').en,'The ball is under the box.');
@@ -521,7 +523,7 @@ test('second lesson reuses the shared composer for family relationships and dial
   assert.deepEqual(foundation.activities.map(a => a.type), ['shadowing','vocabulary','expression-study','composer-view','family-lab','sentence-composer','meaning-cluster','composer-view','sentence-transform','sentence-transform','sentence-builder','response-practice']);
   assert.deepEqual(production.activities.map(a=>a.type), ['exchange-lab','response-practice','dialogue','response-practice','dialogue','response-practice','picture-description','guided-dialogue','dialogue-transfer','free-write','shadowing-review']);
   const vocabulary=foundation.activities.find(a=>a.type==='vocabulary');
-  assert.ok(coreItems(vocabulary).length>=24);
+  assert.ok(coreItems(vocabulary).length>=18);
   assert.ok(supplementaryItems(vocabulary).length>=8);
   assert.ok(coreItems(vocabulary).every(item=>item.examples.length===3));
   assert.ok(supplementaryItems(vocabulary).every(item=>!item.examples&&!item.hint));
@@ -641,7 +643,7 @@ test('A1-3 uses one JSON-driven sentence composer for owners, objects and gramma
   assert.match(dialogueHtml, /Yes, they're mine\./);
 
   const vocabulary = foundation.activities.find((activity) => activity.type === 'vocabulary');
-  assert.equal(coreItems(vocabulary).length, 20);
+  assert.equal(coreItems(vocabulary).length, 16);
   assert.equal(supplementaryItems(vocabulary).length, 5);
   assert.ok(vocabulary.items.every(item=>!/\s/.test(item.en.trim())));
   assert.ok(supplementaryItems(vocabulary).every((entry) => !entry.examples && !entry.hint), 'supplementary vocabulary remains list-only');
@@ -733,14 +735,13 @@ test('supplementary items are excluded from mandatory vocabulary stages', () => 
 });
 
 
-test('a single word can move from optional to essential vocabulary in a later lesson', () => {
+test('previously taught supplementary words are reused in dialogue, never relisted in later vocabulary', () => {
   const first = load('lessons/a1-1.json');
   const second = load('lessons/a1-2.json');
   const firstVocabulary = first.sections[0].activities.find((activity) => activity.type === 'vocabulary');
   const secondVocabulary = second.sections[0].activities.find((activity) => activity.type === 'vocabulary');
   assert.ok(supplementaryItems(firstVocabulary).some((item) => item.en === 'Please.'));
-  assert.ok(coreItems(secondVocabulary).some((item) => item.en === 'Please.'));
-  assert.equal(secondVocabulary.items.find((item) => item.en === 'Please.').examples.length, 3);
+  assert.ok(!secondVocabulary.items.some((item) => item.en === 'Please.'), 'supplementary vocabulary from a prior lesson is already introduced');
   assert.ok(second.learningAudit.focusExpressions.includes('Please.'));
   assert.ok(second.sections[1].activities.find((activity) => activity.id === 'family-dialogue').lines.some((line) => line.en === 'Please, come in.'));
   assert.deepEqual(auditLesson(second).errors, [], 'the phrase is seen, guided and required in independent production');
@@ -852,13 +853,30 @@ test('A1-5 teaches counting with singular/plural agreement and real-world produc
   assert.deepEqual(foundation.activities.map(a => a.phase), ['shadowing','words','phrases','phrases','sentence','variants','variants','puzzle','construction']);
   assert.equal(foundation.activities[0].type, 'shadowing');
   const vocabulary = foundation.activities.find(a => a.type === 'vocabulary');
-  assert.ok(coreItems(vocabulary).length >= 28);
+  assert.ok(coreItems(vocabulary).length >= 18);
   assert.ok(vocabulary.items.every(item => !/\\s/.test(item.en.trim())));
   assert.ok(coreItems(vocabulary).every(item => item.examples?.length === 3));
   assert.ok(supplementaryItems(vocabulary).every(item => !item.examples && !item.hint));
   const expressions = foundation.activities.find(a => a.type === 'expression-study');
   assert.ok(expressions.items.some(item => item.en === 'one more'));
   assert.ok(expressions.items.every(item => !/[?.!]$/.test(item.en)));
+  const visual = foundation.activities.find(a=>a.type==='count-visual');
+  assert.equal(visual.scenes.length, 3);
+  const visualHtml=renderActivity(visual,{lessonId:'A1-5',index:0,e:String,en:String,i:()=>'',progress:{}});
+  assert.match(visualHtml,/count-object-picture/);
+  assert.match(visualHtml,/three books/);
+  const singularPlural=foundation.activities.find(a=>a.type==='plural-pair-lab');
+  assert.equal(singularPlural.items[0].singular,'fish');
+  assert.equal(singularPlural.items[0].plural,'fish');
+  assert.ok(singularPlural.items.some(item=>item.singular==='person'&&item.plural==='people'));
+  const contrastHtml=renderActivity(singularPlural,{lessonId:'A1-5',index:0,e:String,en:String,i:()=>'',progress:{}});
+  assert.match(contrastHtml,/one fish/);
+  assert.match(contrastHtml,/two fish/);
+  assert.match(contrastHtml,/data-plural-lab-key=/);
+  const meaning=foundation.activities.find(a=>a.type==='meaning-cluster');
+  assert.ok(meaning.concepts.some(item=>item.forms.some(form=>form.en==='a book')));
+  assert.ok(meaning.concepts.some(item=>item.forms.some(form=>form.en==='an apple')));
+  assert.equal(foundation.activities.filter(a=>a.type==='composer-view').length,0,'no duplicate number/name composer view');
   const composer = foundation.activities.find(a => a.type === 'sentence-composer');
   assert.deepEqual(validateSentenceComposer(composer), []);
   const singular = resolveSentenceComposer(composer, { pattern: 'there-is-one', slots: { object: 'bag', count: 'three' } });
@@ -872,13 +890,42 @@ test('A1-5 teaches counting with singular/plural agreement and real-world produc
   const picture = production.activities.find(a => a.type === 'picture-description');
   assert.equal(picture.tasks.length, 5);
   assert.ok(production.activities.find(a => a.type === 'dialogue-transfer').turns.some(turn => /my bag/.test(turn.example || '')));
-  assert.ok(production.activities.find(a => a.type === 'free-write').prompt.includes('وسایل واقعی'));
+  assert.ok(production.activities.find(a => a.type === 'free-write').prompt.includes('شیء واقعی'));
   assert.deepEqual(auditLesson(lesson).errors, []);
 });
 
-test('all five A1 lessons expose identical two-section navigation labels', () => {
+
+test('all lesson word banks introduce lexical items only once, including supplementary and inflected forms', () => {
+  const lessons=[1,2,3,4,5,6].map(i=>load('lessons/a1-'+i+'.json'));
+  assert.deepEqual(inspectVocabularyContinuity(lessons),[]);
+  const lessonFive=lessons[4];
+  const words=lessonFive.sections[0].activities.find(a=>a.type==='vocabulary').items.map(x=>x.en);
+  for(const word of ['book','phone','bag','keys','box'])assert.ok(!words.includes(word),word+' was already taught');
+  assert.ok(lessonFive.sections[1].activities.some(a=>JSON.stringify(a).includes('book')),'review is retained in contextual exercises');
+});
+test('A1-6 teaches name/age without duplicating earlier vocabulary', () => {
+  const lesson=load('lessons/a1-6.json');
+  assert.deepEqual(validateLessonFlow(lesson),[]);
+  const vocabulary=lesson.sections[0].activities.find(a=>a.type==='vocabulary');
+  assert.ok(coreItems(vocabulary).length>=32);
+  assert.ok(supplementaryItems(vocabulary).length>=5);
+  assert.ok(vocabulary.items.every(item=>!/\\s/.test(item.en.trim())));
+  assert.ok(!vocabulary.items.some(item=>['name','one','two','how','is','are','you'].includes(item.en)));
+  const composer=lesson.sections[0].activities.find(a=>a.type==='sentence-composer');
+  assert.deepEqual(validateSentenceComposer(composer),[]);
+  const question=resolveSentenceComposer(composer,{pattern:'question',slots:{person:'sara',age:'twenty-four'}});
+  assert.equal(composeSegments(question.pattern.segments,composer,question),'How old is Sara?');
+  const statement=resolveSentenceComposer(composer,{pattern:'statement',slots:{person:'sara',age:'twenty-four'}});
+  assert.equal(composeSegments(statement.pattern.segments,composer,statement),'Sara is twenty-four years old.');
+  const picture=lesson.sections[1].activities.find(a=>a.type==='picture-description');
+  assert.equal(picture.tasks.length,4);
+  assert.match(readFileSync(join(projectRoot,'apps/learner-web/assets/scene-a1-6.svg'),'utf8'),/Sara Rahimi/);
+  assert.ok(lesson.sections[1].activities.find(a=>a.type==='free-write').prompt.includes('ساختگی'));
+  assert.deepEqual(auditLesson(lesson).errors,[]);
+});
+test('all six A1 lessons expose identical two-section navigation labels', () => {
   const labels=['از کلمه تا جمله','از سؤال و جواب تا مکالمه'];
-  for (const id of ['a1-1','a1-2','a1-3','a1-4','a1-5']) {
+  for (const id of ['a1-1','a1-2','a1-3','a1-4','a1-5','a1-6']) {
     assert.deepEqual(load('lessons/'+id+'.json').sections.map(section=>section.label),labels,id);
   }
 });
