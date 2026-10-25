@@ -20,8 +20,8 @@ test('live click dispatcher reaches every cumulative visual practice control',()
  for(const key of ['attribute-key','count-scene-key','feature-hunt-key','count-math-key','plural-lab-key','cumulative-lab-key','cumulative-quest-key','cumulative-number-key'])
    assert.ok(selector.includes(`button[data-${key}]`),`click dispatcher omitted data-${key}`);
 });
-test('canonical A1 live curriculum follows approved outcomes through lesson ten',()=>{
- assert.deepEqual(active.map(x=>x.id),['A1-1','A1-2','A1-3','A1-4','A1-5','A1-6','A1-7','A1-8','A1-9','A1-10']);
+test('canonical A1 live curriculum follows approved outcomes through lesson twelve',()=>{
+ assert.deepEqual(active.map(x=>x.id),Array.from({length:12},(_,i)=>`A1-${i+1}`));
  assert.deepEqual(active.slice(2,6).map(x=>x.file),['lessons/a1-3-v3.json','lessons/a1-4-v3.json','lessons/a1-5-v3.json','lessons/a1-6-v4.json']);
  assert.equal(active[5].title,'توصیف ویژگی‌های اشیا');
  assert.deepEqual(inspectVocabularyContinuity(active.map(x=>load(x.file))),[]);
@@ -101,10 +101,10 @@ test('A1-6 has a visual search mission with increasing adjective complexity',()=
 });
 
 test('first A1 workshop is after planned lesson 9, not an unexplained boundary at lesson 6',()=>{
- const curriculum=load('curriculum.a1.json'),first=curriculum.stages[0].chapters[0];
- assert.deepEqual(first.lessons.slice(0,6).map(x=>x.id),['A1-1','A1-2','A1-3','A1-4','A1-5','A1-6']);
- assert.deepEqual(first.lessons.slice(6,9).map(x=>x.title),['توصیف ظاهر افراد','تبادل اطلاعات شخصی','بیان وضعیت و احساسات روزمره']);
- assert.equal(first.lessons[9].id,'A1-W1');
+ const curriculum=load('curriculum.a1.json'),first=curriculum.stages[0].chapters[0],second=curriculum.stages[0].chapters[1];
+ assert.deepEqual(first.lessons.map(x=>x.id),['A1-1','A1-2','A1-3','A1-4']);
+ assert.deepEqual(second.lessons.slice(0,5).map(x=>x.id),['A1-5','A1-6','A1-7','A1-8','A1-9']);
+ assert.equal(second.lessons[5].id,'A1-W1');
  assert.equal(curriculum.stages.length,3);
 });
 test('A1-3 teaches having, not having and asking, beyond ownership alone',()=>{

@@ -50,7 +50,7 @@ const ICONS = {
 const icon = (name, size = '') => `<span class="icon ${size}"><svg aria-hidden="true" viewBox="0 0 24 24">${ICONS[name] || ICONS.star}</svg></span>`;
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const en = (text) => `<span class="en" lang="en" dir="ltr">${escapeHtml(text)}</span>`;
-const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, sentenceComposers: {}, meaningChoices: {}, spatialChoices: {}, familyPeople: {}, agreementChoices: {}, pluralChoices: {}, mathChoices: {}, mathOps: {}, attributeChoices: {}, countSceneStates: {}, featureHuntStates: {}, cumulativeLabStates: {}, cumulativeQuestStates: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
+const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, sentenceComposers: {}, meaningChoices: {}, spatialChoices: {}, familyPeople: {}, agreementChoices: {}, pluralChoices: {}, mathChoices: {}, mathOps: {}, attributeChoices: {}, countSceneStates: {}, featureHuntStates: {}, cumulativeLabStates: {}, cumulativeQuestStates: {}, questionExplorerStates: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
 function readProgress() { try { const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); const migrated = migrateLegacyProgress(saved); if(migrated!==saved)localStorage.setItem(STORAGE_KEY,JSON.stringify(migrated)); return { ...defaultProgress(), ...migrated, settings: { ...defaultProgress().settings, ...(migrated.settings || {}) } }; } catch { return defaultProgress(); } }
 const progress = readProgress();
 // Historical completion records predate skill evidence. Preserve them in storage,
@@ -454,7 +454,7 @@ function wordKeydown(event) {
   document.querySelector('[data-word-swipe]')?.focus({ preventScroll: true });
 }
 function onClick(event) {
-  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-meaning-key],button[data-plural-lab-key],button[data-count-math-key],button[data-count-scene-key],button[data-feature-hunt-key],button[data-cumulative-lab-key],button[data-cumulative-quest-key],button[data-cumulative-number-key],button[data-attribute-key],button[data-spatial-key],button[data-family-key],button[data-agreement-key],button[data-finish-section],button[data-review],button[data-planned],button[data-shadowing-key],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-build-submit],button[data-build-undo],button[data-build-clear],button[data-roleplay],button[data-word-key],button[data-composer-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
+  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-meaning-key],button[data-plural-lab-key],button[data-count-math-key],button[data-count-scene-key],button[data-feature-hunt-key],button[data-cumulative-lab-key],button[data-daily-choice-key],button[data-cumulative-quest-key],button[data-cumulative-number-key],button[data-question-explorer-key],button[data-attribute-key],button[data-spatial-key],button[data-family-key],button[data-agreement-key],button[data-finish-section],button[data-review],button[data-planned],button[data-shadowing-key],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-build-submit],button[data-build-undo],button[data-build-clear],button[data-roleplay],button[data-word-key],button[data-composer-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
   if (!el) return;
   if (el.dataset.nav) { modal = null; navigate(el.dataset.nav); return; }
   if (el.dataset.openLesson) { modal = null; activePerson = 0; ownerIdx = 0; objectIdx = 0; navigate('lesson', el.dataset.openLesson, el.dataset.startSection || null); return; }
@@ -545,6 +545,27 @@ function onClick(event) {
     progress.featureHuntStates[key]=next;
     persist();updateInline();return;
   }
+  if (el.dataset.dailyChoiceKey) {
+    const key=el.dataset.dailyChoiceKey,activity=lessonActivity(key);
+    if(activity?.type!=='daily-choice-lab')return;
+    const field=el.dataset.dailyChoiceField,index=Number(el.dataset.dailyChoiceIndex);
+    if(!Number.isInteger(index))return;
+    if(field==='item'&&(index<0||index>=activity.options.length))return;
+    if(field==='subject'&&((activity.mode==='meal'&&(index<0||index>3))||(activity.mode==='kitchen'&&(index<0||index>5))||!['meal','kitchen'].includes(activity.mode)))return;
+    if(field==='quantity'&&(activity.mode!=='menu'||index<1||index>3))return;
+    if(['verb','object','form'].includes(field)){
+      if(activity.mode!=='kitchen')return;
+      if(field==='verb'&&(index<0||index>=activity.options.length))return;
+      if(field==='form'&&(index<0||index>2))return;
+      if(field==='object'){
+        const verbIndex=Number(progress.cumulativeLabStates?.[key]?.verb)||0;
+        if(index<0||index>=activity.options[verbIndex]?.objects?.length)return;
+      }
+    }else if(!['item','subject','quantity'].includes(field))return;
+    progress.cumulativeLabStates ||= {};
+    progress.cumulativeLabStates[key]={...(progress.cumulativeLabStates[key]||{}),[field]:index,...(field==='verb'?{object:0}:{})};
+    persist();updateInline();return;
+  }
   if (el.dataset.cumulativeLabKey) {
     const key=el.dataset.cumulativeLabKey,field=el.dataset.cumulativeLabField;
     const activity=lessonActivity(key),choices=activity?.options?.[field];
@@ -588,6 +609,7 @@ function onClick(event) {
     progress.cumulativeLabStates ||= {};
     const before=progress.cumulativeLabStates[key]||{},next={...before};
     if(el.dataset.cumulativeNumberSubject==='cycle')next.subject=((Number(before.subject)||0)+1)%activity.subjects.length;
+    else if(el.dataset.cumulativeNumberSubjectIndex!==undefined)next.subject=Number(el.dataset.cumulativeNumberSubjectIndex);
     else if(el.dataset.cumulativeNumberIndex!==undefined){
       const index=Number(el.dataset.cumulativeNumberIndex);
       if(!Number.isInteger(index)||index<0||index>=activity.numbers.length)return;
@@ -749,6 +771,14 @@ function onClick(event) {
     persist(); updateInline();
     const entry = activity.pairs[validPair];
     speakPair([entry.question, entry.variants[validVariant].en]);
+    return;
+  }
+  if (el.dataset.questionExplorerKey) {
+    const key = el.dataset.questionExplorerKey, activity = lessonActivity(key);
+    if (activity?.type !== 'question-explorer') return;
+    progress.questionExplorerStates ||= {};
+    progress.questionExplorerStates[key] = Math.max(0, Math.min(activity.questions.length - 1, Number(el.dataset.questionExplorerIndex)));
+    persist(); updateInline();
     return;
   }
   if (el.dataset.dialogueKey) {

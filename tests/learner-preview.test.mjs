@@ -64,8 +64,8 @@ test('every sample path node references a real content file with two teaching se
     assert.ok(!ids.has(lesson.id));
     ids.add(lesson.id);
   }
-  assert.equal(ids.size, 10);
-  assert.deepEqual([...ids],['A1-1','A1-2','A1-3','A1-4','A1-5','A1-6','A1-7','A1-8','A1-9','A1-10']);
+  assert.equal(ids.size, 12);
+  assert.deepEqual([...ids],Array.from({length:12},(_,i)=>`A1-${i+1}`));
   assert.deepEqual([...new Set([...ids].map((id) => load(lessons.find((entry) => entry.id === id).file).archetype))].sort(), ['K1/K2','K2','K4/K12','K4/K2','conversation','counting-objects','family','ownership','spatial-location']);
 });
 
@@ -75,15 +75,13 @@ test('not-yet-produced nodes cannot be launched as content', () => {
   assert.ok(manifest.levels.A2.chapters.length === 0);
 });
 
-test('A1 shows three structured stages with twelve chapters', () => {
+test('A1 shows three owner-defined stages: twelve, eight and fourteen lessons', () => {
   assert.deepEqual(curriculum.stages.map((stage) => stage.id), ['A1.1', 'A1.2', 'A1.3']);
-  assert.equal(curriculum.stages.reduce((sum, stage) => sum + stage.chapters.length, 0), 12);
+  assert.equal(curriculum.stages.reduce((sum, stage) => sum + stage.chapters.length, 0), 8);
   assert.ok(curriculum.stages.every((stage) => stage.chapters.every((chapter) => chapter.lessons.length >= 1)));
   assert.ok(curriculum.stages.every((stage) => stage.chapters.every((chapter) => chapter.lessons.every((entry) => Array.isArray(entry) ? entry.length >= 2 : entry.icon))));
-  assert.ok(curriculum.stages.every((stage) => stage.chapters.every((chapter) => {
-    const last = chapter.lessons.at(-1);
-    return Array.isArray(last) ? last[2] === 'workshop' : last.kind === 'workshop';
-  })));
+  assert.deepEqual(curriculum.stages.map(stage=>stage.chapters.flatMap(ch=>ch.lessons).filter(x=>/^A1-\d+$/.test(x.id)).length),[12,8,14]);
+  assert.deepEqual(curriculum.stages[0].chapters[2].lessons.slice(0,3).map(x=>x.id),['A1-10','A1-11','A1-12']);
   assert.equal(manifest.levels.A1.curriculumFile, 'curriculum.a1.json');
 });
 
@@ -672,7 +670,7 @@ test('A1-3 uses one JSON-driven sentence composer for owners, objects and gramma
   assert.ok(vocabulary.items.filter((entry) => entry.role !== 'supplementary').every((entry) => entry.examples?.length === 3));
   assert.equal(lesson.visual.src, './a1-3-personal-belongings.svg');
   const serviceWorker = readFileSync(join(projectRoot, 'apps/learner-web/sw.js'), 'utf8');
-  assert.ok(serviceWorker.includes('tutivar-ui-v6-network-first'));
+  assert.ok(serviceWorker.includes('tutivar-ui-v7-kitchen-verbs'));
   assert.ok(serviceWorker.includes("'./visual-learning.js'"), 'visual learning module is cached');
   assert.ok(serviceWorker.includes("'./sentence-composer.js'"), 'the shared composer runtime is precached for offline use');
   assert.match(readFileSync(join(projectRoot, 'apps/learner-web/a1-3-personal-belongings.svg'), 'utf8'), /<svg/);

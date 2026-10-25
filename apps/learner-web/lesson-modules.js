@@ -16,7 +16,7 @@ const MODULE_LABELS = {
   'phrase-composer': 'ترکیب واژه‌ها', 'pattern-lab': 'کشف الگو', 'sentence-lab': 'جمله‌ساز پویا',
   'guided-dialogue': 'تمرین مکالمه',
   'response-practice': 'ساختن پاسخ',
-  'exchange-lab': 'سؤال و جواب',
+  'exchange-lab': 'سؤال و جواب', 'question-explorer': 'شناخت پرسش‌ها',
   'sentence-transform': 'تبدیل جمله',
   'dialogue-transfer': 'مکالمه در موقعیت تازه',
   'family-tree': 'درخت خانواده', 'family-lab': 'خانوادهٔ تصویری', 'spatial-lab': 'بازی موقعیت توپ',
@@ -24,7 +24,8 @@ const MODULE_LABELS = {
   'picture-description': 'توصیف تصویر', 'meaning-cluster': 'یک مفهوم، چند بیان',
   'count-visual': 'یک یا چند شیء', 'plural-pair-lab': 'مفرد و جمع تصویری',
   'agreement-lab': 'جمله‌ساز وابسته', 'sentence-composer': 'جمله‌ساز تعاملی', 'composer-view': 'کشف و تغییر جمله',
-  'tap-attributes-lab': 'تغییر ویژگی در تصویر و جمله'
+  'tap-attributes-lab': 'تغییر ویژگی در تصویر و جمله',
+  'daily-choice-lab': 'انتخاب غذا و وعده'
 };
 function wrapper(body, activity, idx, e, extra = '') {
   return `<div class="lesson-block module-block ${extra}" data-module="${e(activity.type)}"><div class="block-top"><div><span class="block-label">${String(idx + 1).padStart(2, '0')} / ${e(activity.typeLabel || LESSON_PHASE_LABELS[activity.phase] || MODULE_LABELS[activity.type] || 'فعالیت')}</span><h3>${e(activity.title || '')}</h3></div></div>${body}</div>`;
@@ -473,9 +474,17 @@ function exchangeLab(a, c) {
   const variant = pair.variants[variantIndex];
   const question = `<div class="exchange-bubble question-bubble"><span class="exchange-speaker">نفر اول · سؤال</span><div class="exchange-spoken">${c.en(pair.question)}${soundButton(pair.question, c.e, c.i)}</div><small>${c.e(pair.questionFa)}</small></div>`;
   const answer = `<div class="exchange-bubble answer-bubble"><span class="exchange-speaker">نفر دوم · پاسخ</span><div class="exchange-spoken">${c.en(variant.en)}${soundButton(variant.en, c.e, c.i)}</div><small>${c.e(variant.fa)}</small></div>`;
-  const pairNav = `<div class="exchange-pair-tabs" role="group" aria-label="انتخاب سؤال">${a.pairs.map((entry, index) => `<button type="button" class="exchange-pair-btn ${index === pairIndex ? 'active' : ''}" aria-pressed="${index === pairIndex}" data-exchange-key="${c.e(key)}" data-exchange-pair="${index}">سؤال ${index + 1}</button>`).join('')}</div>`;
-  const variants = `<div class="exchange-variants" role="group" aria-label="مقایسه پاسخ‌ها">${pair.variants.map((entry, index) => `<button type="button" class="exchange-variant-btn ${index === variantIndex ? 'active' : ''}" aria-pressed="${index === variantIndex}" data-exchange-key="${c.e(key)}" data-exchange-variant="${index}">${c.e(entry.label)}</button>`).join('')}</div>`;
-  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p>${pairNav}<div class="exchange-stage">${question}${answer}</div>${variants}<p class="exchange-note">${c.e(variant.note || '')}</p>`, a, c.index, c.e, 'module-exchange-lab');
+  const progress = `<div class="exchange-progress" aria-label="پیشرفت سؤال‌ها"><span style="width:${(pairIndex + 1) / a.pairs.length * 100}%"></span></div>`;
+  const pairNav = `<div class="exchange-navigation" role="group" aria-label="جابجایی میان سؤال‌ها"><button type="button" class="exchange-step" data-exchange-key="${c.e(key)}" data-exchange-pair="${pairIndex - 1}" ${pairIndex === 0 ? 'disabled' : ''}>سؤال قبل</button><strong>سؤال ${pairIndex + 1} <span>از ${a.pairs.length}</span></strong><button type="button" class="exchange-step exchange-next" data-exchange-key="${c.e(key)}" data-exchange-pair="${pairIndex + 1}" ${pairIndex === a.pairs.length - 1 ? 'disabled' : ''}>سؤال بعد ←</button></div>`;
+  const variants = `<div class="exchange-variants" role="group" aria-label="چهار پاسخ معتبر برای مقایسه">${pair.variants.map((entry, index) => `<button type="button" class="exchange-variant-btn ${index === variantIndex ? 'active' : ''}" aria-pressed="${index === variantIndex}" data-exchange-key="${c.e(key)}" data-exchange-variant="${index}"><small>${String(index + 1).padStart(2, '0')}</small><span>${c.e(entry.label)}</span></button>`).join('')}</div>`;
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p>${pairNav}${progress}<div class="exchange-stage">${question}${answer}</div><div class="exchange-choice-intro">پاسخ را تغییر بده؛ هر گزینه جملهٔ متفاوت و درستی می‌سازد.</div>${variants}${variant.note ? `<p class="exchange-note">${c.e(variant.note)}</p>` : ''}`, a, c.index, c.e, 'module-exchange-lab');
+}
+function questionExplorer(a, c) {
+  const key = `${c.lessonId}:${a.id}`;
+  const index = Math.max(0, Math.min(a.questions.length - 1, Number(c.progress.questionExplorerStates?.[key]) || 0));
+  const item = a.questions[index];
+  const chips = a.questions.map((entry, i) => `<button type="button" class="question-explorer-chip ${i === index ? 'active' : ''}" aria-pressed="${i === index}" data-question-explorer-key="${c.e(key)}" data-question-explorer-index="${i}"><span>${String(i + 1).padStart(2, '0')}</span>${c.e(entry.label)}</button>`).join('');
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="question-explorer" aria-label="پرسش‌های اطلاعات شخصی"><div class="question-explorer-rail" role="group" aria-label="انتخاب نوع پرسش">${chips}</div><div class="question-explorer-stage"><div class="question-explorer-top"><span class="question-explorer-keyword" lang="en">${c.e(item.word)}</span><span>پرسش ${index + 1} از ${a.questions.length}</span></div><div class="question-explorer-question" lang="en" dir="ltr">${c.e(item.question)}${soundButton(item.question, c.e, c.i)}</div><p class="question-explorer-fa">${c.e(item.fa)}</p><div class="question-explorer-answer"><span>یک پاسخِ نمونه</span><strong lang="en" dir="ltr">${c.e(item.answer)}${soundButton(item.answer, c.e, c.i)}</strong></div><div class="question-explorer-rule">${c.e(item.tip)}</div></div><div class="question-explorer-controls"><button type="button" class="exchange-step" data-question-explorer-key="${c.e(key)}" data-question-explorer-index="${index - 1}" ${index === 0 ? 'disabled' : ''}>قبلی</button><button type="button" class="exchange-step exchange-next" data-question-explorer-key="${c.e(key)}" data-question-explorer-index="${index + 1}" ${index === a.questions.length - 1 ? 'disabled' : ''}>سؤال بعد ←</button></div></div>`, a, c.index, c.e, 'module-question-explorer');
 }
 function sentenceTransform(a, c) {
   const key = `${c.lessonId}:${a.id}`;
@@ -846,7 +855,8 @@ function cumulativeNumberLab(a,c){
   const number=a.numbers[current],subject=a.subjects[(Number(state.subject)||0)%a.subjects.length];
   const sentence=`${subject.en} ${subject.be} ${number.en} years old.`;
   const cards=a.numbers.map((entry,i)=>`<button type="button" class="cumulative-number-chip ${i===current?'active':''}" aria-pressed="${i===current}" data-cumulative-number-key="${c.e(key)}" data-cumulative-number-index="${i}">${entry.number}</button>`).join('');
-  return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><div class="cumulative-number-board"><p>عدد را لمس کن؛ هم تلفظ و هم سنِ جمله عوض می‌شود.</p><div class="cumulative-number-display"><span aria-label="عدد ${number.number}">${number.number}</span><strong lang="en" dir="ltr">${c.e(number.en)} ${soundButton(number.en,c.e,c.i)}</strong></div><p class="tap-live-sentence" dir="ltr" lang="en"><button type="button" class="tap-word" data-cumulative-number-key="${c.e(key)}" data-cumulative-number-subject="cycle">${c.e(subject.en)}</button> ${c.e(subject.be+' '+number.en+' years old.')}${soundButton(sentence,c.e,c.i)}</p><div class="cumulative-number-chip-grid" aria-label="اعداد و سن‌های قابل انتخاب">${cards}</div><p class="live-hint">روی نام شخص بزن تا I am به My sister is یا My brother is تبدیل شود؛ از ۱۳ تا ۱۰۰ را امتحان کن.</p></div>`,a,c.index,c.e,'module-cumulative-numbers');
+  const subjects=a.subjects.map((entry,i)=>`<button type="button" class="cumulative-subject-chip ${i === (Number(state.subject)||0)%a.subjects.length?'active':''}" aria-pressed="${i === (Number(state.subject)||0)%a.subjects.length}" data-cumulative-number-key="${c.e(key)}" data-cumulative-number-subject-index="${i}"><span lang="en" dir="ltr">${c.e(entry.en)}</span></button>`).join('');
+  return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><div class="cumulative-number-board"><p>عدد و فاعل را انتخاب کن؛ فعل و تلفظ هم‌زمان تغییر می‌کنند.</p><div class="cumulative-number-display"><span aria-label="عدد ${number.number}">${number.number}</span><strong lang="en" dir="ltr">${c.e(number.en)} ${soundButton(number.en,c.e,c.i)}</strong></div><p class="tap-live-sentence" dir="ltr" lang="en"><button type="button" class="tap-word" data-cumulative-number-key="${c.e(key)}" data-cumulative-number-subject="cycle">${c.e(subject.en)}</button> ${c.e(subject.be+' '+number.en+' years old.')}${soundButton(sentence,c.e,c.i)}</p><span class="cumulative-board-label">چه کسی؟</span><div class="cumulative-subject-grid" role="group" aria-label="تغییر فاعل جمله">${subjects}</div><span class="cumulative-board-label">چند سال؟</span><div class="cumulative-number-chip-grid" aria-label="اعداد و سن‌های قابل انتخاب">${cards}</div><p class="live-hint">فاعل‌های I / you / he / she / we / they و اعضای خانواده، am / is / are را به‌درستی تغییر می‌دهند.</p></div>`,a,c.index,c.e,'module-cumulative-numbers');
 }
 
 function tapAttributesLab(a,c) {
@@ -931,12 +941,37 @@ function tapOwnershipLab(a,c){
   return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><div class="tap-scene"><div class="count-scene-items" role="img" aria-label="${c.e(amount.fa+' '+noun.fa)}">${pictures}</div><p class="tap-live-sentence" lang="en" dir="ltr">${sentenceMarkup}${soundButton(sentence,c.e,c.i)}</p><p class="tap-live-translation">${c.e(translation)}</p>${numberRail}</div><p class="live-hint">تعداد را از ۱ تا ۱۲ انتخاب کن. روی فاعل، فعل یا اسم در جمله بزن تا هم گفتار و هم تصویر تغییر کند؛ «This is my bag» را با «I have a bag» مقایسه کن.</p>`,a,c.index,c.e,'module-tap-attributes');
 }
 
+function dailyChoiceLab(a,c) {
+  const key=`${c.lessonId}:${a.id}`,state=c.progress.cumulativeLabStates?.[key]||{},e=c.e;
+  const chip=(field,index,label,active)=>`<button type="button" class="daily-chip ${active?'is-active':''}" data-daily-choice-key="${e(key)}" data-daily-choice-field="${field}" data-daily-choice-index="${index}" aria-pressed="${active}">${e(label)}</button>`;
+  if(a.mode==='kitchen') {
+    const subjects=[{name:'I',query:'I',fa:'من',third:false},{name:'You',query:'you',fa:'تو',third:false},{name:'My sister',query:'my sister',fa:'خواهرم',third:true},{name:'My father',query:'my father',fa:'پدرم',third:true},{name:'We',query:'we',fa:'ما',third:false},{name:'They',query:'they',fa:'آن‌ها',third:false}];
+    const s=Math.max(0,Math.min(subjects.length-1,Number(state.subject)||0)),v=Math.max(0,Math.min(a.options.length-1,Number(state.verb)||0)),f=Math.max(0,Math.min(2,Number(state.form)||0));
+    const subject=subjects[s],action=a.options[v],o=Math.max(0,Math.min(action.objects.length-1,Number(state.object)||0)),food=action.objects[o];
+    const plain=action.en,third=action.third||`${plain}s`;
+    const forms=[`${subject.name} ${subject.third?third:plain} ${food.en}.`,`${subject.name} ${subject.third?"doesn't":"don't"} ${plain} ${food.en}.`,`${subject.third?'Does':'Do'} ${subject.query} ${plain} ${food.en}?`],sentence=forms[f];
+    return wrapper(`<p class="module-description">${e(a.description||'')}</p><div class="daily-choice-lab"><div class="daily-hero"><div class="daily-emoji" aria-hidden="true">${action.emoji} ${food.emoji}</div><div><span class="daily-eyebrow">فاعل + فعل + خوراکی</span><div class="daily-live-sentence" dir="ltr" lang="en">${c.en(sentence)}${soundButton(sentence,e,c.i)}</div><p>با خواهر یا پدر: ${e(third)}؛ در منفی و سؤال، بعد از does از ${e(plain)} استفاده می‌شود.</p></div></div><div class="daily-option-group" role="group" aria-label="فاعل">${subjects.map((x,i)=>chip('subject',i,x.fa,s===i)).join('')}</div><div class="daily-option-group" role="group" aria-label="فعل">${a.options.map((x,i)=>chip('verb',i,x.fa,v===i)).join('')}</div><div class="daily-option-group" role="group" aria-label="خوراکی">${action.objects.map((x,i)=>chip('object',i,`${x.emoji} ${x.fa}`,o===i)).join('')}</div><div class="daily-number-row" role="group" aria-label="نوع جمله">${['خبری +','منفی −','پرسشی ؟'].map((x,i)=>chip('form',i,x,f===i)).join('')}</div></div>`,a,c.index,e,'module-daily-choice');
+  }
+  if(a.mode==='menu') {
+    const selected=Math.max(0,Math.min(a.options.length-1,Number(state.item)||0)),quantity=Math.max(1,Math.min(3,Number(state.quantity)||1));
+    const item=a.options[selected],name=quantity===1?item.item:item.plural,order=`I would like ${quantity} ${name}, please.`,price=`${quantity} × $${item.price} = $${quantity*item.price}`;
+    return wrapper(`<p class="module-description">${e(a.description||'')}</p><div class="daily-choice-lab"><div class="daily-hero"><div class="daily-emoji" aria-hidden="true">${item.emoji.repeat(quantity)}</div><div><span class="daily-eyebrow">YOUR ORDER · سفارش تو</span><div class="daily-live-sentence" lang="en" dir="ltr">${c.en(order)}${soundButton(order,e,c.i)}</div><p>قیمت واحد $${item.price} · جمع ${price}</p></div></div><div class="daily-option-group" role="group" aria-label="انتخاب غذا">${a.options.map((x,i)=>chip('item',i,`${x.emoji} ${x.fa} · $${x.price}`,selected===i)).join('')}</div><div class="daily-number-row" role="group" aria-label="تعداد غذا">${[1,2,3].map(n=>chip('quantity',n,`${n} عدد`,quantity===n)).join('')}</div><p class="daily-price" dir="ltr">${price}</p></div>`,a,c.index,e,'module-daily-choice');
+  }
+  if(a.mode==='meal') {
+    const selected=Math.max(0,Math.min(a.options.length-1,Number(state.item)||0)),subject=Math.max(0,Math.min(3,Number(state.subject)||0));
+    const subjects=[{en:'I',fa:'من',verb:'eat'},{en:'We',fa:'ما',verb:'eat'},{en:'My sister',fa:'خواهرم',verb:'eats'},{en:'My brother',fa:'برادرم',verb:'eats'}],meal=a.options[selected],who=subjects[subject];
+    const phrase=`${who.en} ${who.verb} ${meal.food} for ${meal.meal}.`;
+    return wrapper(`<p class="module-description">${e(a.description||'')}</p><div class="daily-choice-lab"><div class="daily-hero"><div class="daily-emoji" aria-hidden="true">${meal.emoji}</div><div><span class="daily-eyebrow">${e(meal.fa)} · ${e(who.fa)}</span><div class="daily-live-sentence" lang="en" dir="ltr">${c.en(phrase)}${soundButton(phrase,e,c.i)}</div><p>همین فاعل می‌تواند ${e(meal.other)} را هم برای ${e(meal.fa)} بخورد.</p></div></div><div class="daily-option-group" role="group" aria-label="انتخاب وعده">${a.options.map((x,i)=>chip('item',i,`${x.emoji} ${x.fa}`,selected===i)).join('')}</div><div class="daily-number-row" role="group" aria-label="انتخاب فاعل">${subjects.map((x,i)=>chip('subject',i,x.fa,subject===i)).join('')}</div></div>`,a,c.index,e,'module-daily-choice');
+  }
+  return wrapper('',a,c.index,e);
+}
+
 const renderers = {
   intro, vocabulary, pattern, match, 'sentence-builder': sentenceBuilder,
   'quiz-set': quizSet, dialogue, roleplay, 'free-write': freeWrite,
   'phrase-composer': phraseComposer, 'pattern-lab': patternLab, 'sentence-lab': sentenceLab,
   'guided-dialogue': guidedDialogue, 'response-practice': responsePractice,
-  'exchange-lab': exchangeLab, 'expression-study': expressionStudy, 'count-visual': countVisual, 'plural-pair-lab': pluralPairLab, 'count-math-lab': countMathLab,
+  'exchange-lab': exchangeLab, 'question-explorer': questionExplorer, 'daily-choice-lab': dailyChoiceLab, 'expression-study': expressionStudy, 'count-visual': countVisual, 'plural-pair-lab': pluralPairLab, 'count-math-lab': countMathLab,
   shadowing, 'shadowing-review': shadowing, 'picture-description': pictureDescription,
   'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer,
   'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer, 'tap-attributes-lab': tapAttributesLab, 'tap-ownership-lab': tapOwnershipLab, 'count-scene-lab':countSceneLab, 'feature-hunt':featureHunt, 'cumulative-scene-lab':cumulativeSceneLab, 'cumulative-visual-quest':cumulativeVisualQuest, 'cumulative-number-lab':cumulativeNumberLab

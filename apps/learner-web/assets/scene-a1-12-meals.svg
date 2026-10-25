@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" role="img" aria-labelledby="title description">
+  <title id="title">Three meals: breakfast, lunch, dinner</title><desc id="description">Breakfast: eggs and bread. Lunch: chicken and rice. Dinner: soup and salad.</desc>
+  <defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#f4f8fa"/><stop offset="1" stop-color="#e7ebe6"/></linearGradient><filter id="shade"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#40575b" flood-opacity=".17"/></filter></defs>
+  <rect width="960" height="520" rx="24" fill="url(#bg)"/>
+  <g filter="url(#shade)"><rect x="32" y="30" width="286" height="458" rx="24" fill="#fefbf4"/><rect x="337" y="30" width="286" height="458" rx="24" fill="#fdfcf5"/><rect x="642" y="30" width="286" height="458" rx="24" fill="#fcf9f5"/></g>
+  <g font-family="Arial,sans-serif" font-size="29" font-weight="700" text-anchor="middle" fill="#31525b"><text x="175" y="94">BREAKFAST</text><text x="480" y="94">LUNCH</text><text x="785" y="94">DINNER</text></g>
+  <g fill="#d0e6e0"><rect x="74" y="129" width="202" height="238" rx="23"/><rect x="379" y="129" width="202" height="238" rx="23"/><rect x="684" y="129" width="202" height="238" rx="23"/></g>
+  <g stroke="#9ab9ae" stroke-width="6" fill="#fefdfa"><ellipse cx="175" cy="244" rx="92" ry="88"/><ellipse cx="480" cy="244" rx="92" ry="88"/><ellipse cx="785" cy="244" rx="92" ry="88"/></g>
+  <g><path d="M116 207h117v72H116z" fill="#d29c5a" stroke="#a5723f" stroke-width="5"/><path d="M125 220h99v53h-99z" fill="#eed6a2"/><ellipse cx="170" cy="231" rx="31" ry="27" fill="#fff"/><circle cx="170" cy="231" r="16" fill="#f3bb38"/><path d="M126 294q47 28 99 0" stroke="#db8a4d" stroke-width="7" fill="none"/></g>
+  <g><path d="M419 208q42-60 103-11t5 97q-43 35-107 0" fill="#d8a46b" stroke="#b78349" stroke-width="6"/><path d="M432 234q49-23 84 3" stroke="#f4e3bb" stroke-width="18" fill="none" stroke-linecap="round"/><path d="M453 274q44-40 85-22" stroke="#f4e3bb" stroke-width="14" fill="none" stroke-linecap="round"/><g fill="#7bae72"><circle cx="445" cy="288" r="10"/><circle cx="476" cy="292" r="9"/><circle cx="506" cy="282" r="10"/></g></g>
+  <g><path d="M719 227q-4 75 66 79t68-79" fill="#f5e1bc" stroke="#bb986e" stroke-width="7"/><ellipse cx="785" cy="225" rx="68" ry="20" fill="#dc9561"/><path d="M746 223q18-11 40 3t45-1" fill="none" stroke="#f6b17c" stroke-width="7"/><path d="M738 279q48 39 101 0" stroke="#8daf72" stroke-width="8" fill="none"/></g>
+  <g font-family="Arial,sans-serif" font-size="25" font-weight="600" text-anchor="middle" fill="#446269"><text x="175" y="409">eggs + bread</text><text x="480" y="409">rice + chicken</text><text x="785" y="409">soup + salad</text></g>
+  <g font-family="Arial,sans-serif" font-size="17" text-anchor="middle" fill="#667d7f"><text x="175" y="451">I eat eggs.</text><text x="480" y="451">She eats rice.</text><text x="785" y="451">We have soup.</text></g>
+</svg>

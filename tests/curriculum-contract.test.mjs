@@ -42,7 +42,7 @@ test('published lesson order follows canonical order; archival data remains inta
   assert.deepEqual(validatePublishedCatalog({manifest,runtimeCourse:runtime,legacy,readLesson}),[]);
   const unordered=structuredClone(runtime);
   const first=unordered.stages[0].chapters[0].lessons;
-  [first[4],first[5]]=[first[5],first[4]];
+  [first[1],first[2]]=[first[2],first[1]];
   assert.ok(validatePublishedCatalog({manifest,runtimeCourse:unordered,legacy,readLesson})
     .some(s=>s.includes('order')));
   const tampered=path=>path==='lessons/a1-6.json'?'{"id":"A1-6","goal":"silently replaced"}':readLesson(path);

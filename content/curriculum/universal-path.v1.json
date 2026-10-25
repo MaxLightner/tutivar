@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "revision": "2026-10-25-owner-cumulative-a1",
+  "revision": "2026-10-25-owner-kitchen-verbs-a1",
   "sourcePath": "docs/curriculum/01-universal-learning-path.md",
-  "sourceGitBlobSha": "20949575655d8e4d9af2e3485c526f2f9e09f808",
+  "sourceGitBlobSha": "50d51f0bbd4275447a27541a1a8198b2e5af27af",
   "policy": "User-approved explicit amendments take precedence; otherwise lesson order, objectives and prerequisites are fixed by this manifest. Pair-specific realization may add bounded language bridges, not reorder the path.",
   "totals": {
     "total": 126,
@@ -200,16 +200,18 @@
       "id": "A1-11",
       "level": "A1",
       "order": 11,
-      "title": "انتخاب و سفارش غذا",
+      "title": "خوراکی‌ها و آشپزخانه",
       "axis": "موضوع/مأموریت‌محور",
-      "communicativeOutcome": "خواسته غذایی را بیان می‌کند؛ نام و قیمت یک یا دو قلم را از منوی بسیار کوتاه می‌خواند و براساس آن سفارش ساده می‌دهد.",
-      "prerequisiteBridge": "A1-5، A1-9؛ پل قیمت لازم",
+      "communicativeOutcome": "خوراکی‌ها و وسایل آشپزخانه را معرفی می‌کند؛ فعل‌های عملی خوردن، نوشیدن، پختن و خواستن را با فاعل‌های مختلف در جملهٔ خبری، منفی و پرسشی به کار می‌برد؛ از منوی محدود خوراکی انتخاب می‌کند و قیمت ساده را می‌خواند.",
+      "prerequisiteBridge": "A1-5، A1-9؛ پل عدد و قیمت از A1-3، وسایل آشپزخانه از A1-10",
       "prerequisiteIds": [
         "A1-5",
-        "A1-9"
+        "A1-9",
+        "A1-3",
+        "A1-10"
       ],
-      "globalConcept": "خواست و انتخاب در سفارش",
-      "scopeBoundary": "منوی محدود و سفارش واقعی؛ عدد قیمت پیش از کاربرد آموزش داده شود.",
+      "globalConcept": "آغاز نظام‌مند فعل‌های کنشی و ساخت جمله دربارهٔ خوراکی",
+      "scopeBoundary": "نام خوراکی و وسایل، eat/drink/cook/want و صرف مناسب فاعل؛ منوی کوتاه فقط موقعیت کاربردی پایانی، نه محور اصلی درس.",
       "archetypes": [
         "K5",
         "K3"
@@ -219,15 +221,15 @@
       "id": "A1-12",
       "level": "A1",
       "order": 12,
-      "title": "گفت‌وگو درباره وعده‌های غذایی",
+      "title": "وعده‌های اصلی و گفت‌وگو سر میز",
       "axis": "موضوع/مأموریت‌محور",
-      "communicativeOutcome": "درباره‌ی وعده‌های غذا حرف می‌زند؛ خوردن و آشامیدن را در جمله به کار می‌برد؛ سر میز تعامل ساده دارد.",
+      "communicativeOutcome": "درباره‌ی صبحانه، ناهار و شام حرف می‌زند؛ خوردن و آشامیدن را با فاعل‌های متنوع و زمان وعده در جمله به کار می‌برد؛ سر میز تعامل ساده و مؤدبانه دارد.",
       "prerequisiteBridge": "A1-11",
       "prerequisiteIds": [
         "A1-11"
       ],
-      "globalConcept": "عمل روزمره و پسند",
-      "scopeBoundary": "خوردن/نوشیدن و تعامل سر میز؛ جمله‌های کاربردی فراتر از نام غذا.",
+      "globalConcept": "کارهای روزانه، وعده‌های اصلی و تعامل سر میز",
+      "scopeBoundary": "تمایز وعده‌ها، توصیف خوراک هر نفر، درخواست ظرف و غذا؛ استفادهٔ مجدد از فعل‌های درس ۱۱.",
       "archetypes": [
         "K4"
       ]
