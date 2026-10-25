@@ -1,3 +1,4 @@
+import { auditCurriculum } from './curriculum-contract.mjs';
 import { cpSync, mkdirSync, copyFileSync, rmSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -6,6 +7,12 @@ const root = resolve(fileURLToPath(import.meta.url), '../..');
 const source = join(root, 'apps/learner-web');
 const target = join(root, 'dist');
 const content = join(root, 'content/language-pairs/fa-en');
+
+// Never produce or publish a site built with an unauthorized lesson sequence.
+const curriculumAudit = auditCurriculum(root);
+if (curriculumAudit.errors.length) {
+  throw new Error('Curriculum lock violation:\n' + curriculumAudit.errors.join('\n'));
+}
 
 // Generated dist/ is an artifact. Lessons remain authored under content/.
 rmSync(target, { recursive: true, force: true });
