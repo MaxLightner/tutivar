@@ -39,9 +39,10 @@ export function inspectVocabularyContinuity(lessons) {
 }
 export function loadA1Lessons() {
   const directory = join(root, 'content/language-pairs/fa-en/lessons');
-  return readdirSync(directory).filter(n => /^a1-\d+\.json$/.test(n))
-    .sort((a,b) => Number(a.match(/\d+/)[0]) - Number(b.match(/\d+/)[0]))
-    .map(name => JSON.parse(readFileSync(join(directory, name), 'utf8')));
+  const course=JSON.parse(readFileSync(join(root,'content/language-pairs/fa-en/curriculum.a1.json'),'utf8'));
+  const entries=course.stages.flatMap(stage=>stage.chapters).flatMap(chapter=>chapter.lessons)
+    .filter(entry=>entry && !Array.isArray(entry) && entry.status==='sample' && entry.file);
+  return entries.map(entry=>JSON.parse(readFileSync(join(root,'content/language-pairs/fa-en',entry.file),'utf8')));
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const lessons = loadA1Lessons();

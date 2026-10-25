@@ -1,6 +1,6 @@
 {
   "id": "A1-5",
-  "revision": 5,
+  "revision": "2026-10-25-canonical-completion-1",
   "status": "draft",
   "title": "تعداد و شمارش اشیا",
   "goal": "بتوانی عددهای یک تا ده را به کار ببری، تفاوت اسم مفرد و جمع را ببینی، تعداد اشیا را با How many ... are there? بپرسی و با There is one ... / There are ... پاسخ بدهی.",
@@ -33,7 +33,8 @@
   },
   "learningAudit": {
     "focusExpressions": [
-      "How many"
+      "How many",
+      "What color"
     ],
     "specificIndependentExpressions": [
       "How many"
@@ -49,7 +50,8 @@
       "label": "از کلمه تا جمله",
       "intro": "اول مفرد و جمع را با لمس مستقیم اسم در تصویر ببین، سپس با جمع و تفریق ساده تمرین کن و تفاوت a و an را با دو جملهٔ زنده یاد بگیر.",
       "masteryActivityIds": [
-        "counting-construction"
+        "counting-construction",
+        "count-color-practice"
       ],
       "activities": [
         {
@@ -77,7 +79,7 @@
           "phase": "words",
           "title": "واژگان شمارش و اشیای آشنا",
           "batchSize": 5,
-          "deckRevision": 4,
+          "deckRevision": 5,
           "items": [
             {
               "en": "one",
@@ -323,6 +325,78 @@
                 "Two minus one equals one.",
                 "One apple plus one apple equals two apples."
               ]
+            },
+            {
+              "en": "eleven",
+              "fa": "یازده",
+              "examples": [
+                "Eleven blue balls.",
+                "There are eleven balls.",
+                "I see eleven red balls."
+              ]
+            },
+            {
+              "en": "twelve",
+              "fa": "دوازده",
+              "examples": [
+                "Twelve green balls.",
+                "There are twelve balls.",
+                "I see twelve yellow balls."
+              ]
+            },
+            {
+              "en": "red",
+              "fa": "قرمز",
+              "examples": [
+                "This ball is red.",
+                "There are eleven red balls.",
+                "What color is the ball?"
+              ]
+            },
+            {
+              "en": "blue",
+              "fa": "آبی",
+              "examples": [
+                "This ball is blue.",
+                "There are twelve blue balls.",
+                "I have a blue pen."
+              ]
+            },
+            {
+              "en": "green",
+              "fa": "سبز",
+              "examples": [
+                "This ball is green.",
+                "There are eleven green balls.",
+                "The bag is green."
+              ]
+            },
+            {
+              "en": "yellow",
+              "fa": "زرد",
+              "examples": [
+                "This ball is yellow.",
+                "There are twelve yellow balls.",
+                "I have a yellow pencil."
+              ]
+            },
+            {
+              "en": "black",
+              "fa": "سیاه",
+              "examples": [
+                "This pen is black.",
+                "I have a black bag.",
+                "What color is your pen?"
+              ]
+            },
+            {
+              "en": "white",
+              "fa": "سفید",
+              "examples": [
+                "This bag is white.",
+                "The ball is white.",
+                "What color is the bag?"
+              ]
             }
           ]
         },
@@ -343,8 +417,77 @@
                 "How many pens are there?",
                 "How many apples are there?"
               ]
+            },
+            {
+              "en": "What color",
+              "fa": "چه رنگی؟",
+              "kind": "fixed",
+              "examples": [
+                "What color is the ball?",
+                "What color is your bag?",
+                "What color are the balls?"
+              ]
+            },
+            {
+              "en": "How many red balls",
+              "fa": "چند توپ قرمز؟",
+              "kind": "fixed",
+              "examples": [
+                "How many red balls are there?",
+                "There are eleven red balls.",
+                "There are twelve red balls."
+              ]
             }
           ]
+        },
+        {
+          "id": "count-color-tap",
+          "type": "tap-attributes-lab",
+          "phase": "phrases",
+          "title": "تعداد و رنگ با لمس کلمه",
+          "description": "شمارش را با رنگ شیء ترکیب کن و هر دو را در تصویر بررسی کن.",
+          "mode": "count-color",
+          "options": {
+            "count": [
+              {
+                "number": 10,
+                "en": "ten",
+                "fa": "ده"
+              },
+              {
+                "number": 11,
+                "en": "eleven",
+                "fa": "یازده"
+              },
+              {
+                "number": 12,
+                "en": "twelve",
+                "fa": "دوازده"
+              }
+            ],
+            "color": [
+              {
+                "en": "red",
+                "fa": "قرمز",
+                "hex": "#d84146"
+              },
+              {
+                "en": "blue",
+                "fa": "آبی",
+                "hex": "#327bd0"
+              },
+              {
+                "en": "green",
+                "fa": "سبز",
+                "hex": "#31a477"
+              },
+              {
+                "en": "yellow",
+                "fa": "زرد",
+                "hex": "#e6bc24"
+              }
+            ]
+          }
         },
         {
           "id": "counting-plural-pairs",
@@ -789,6 +932,32 @@
                 "forms": {
                   "word": "ten",
                   "faWord": "ده"
+                }
+              },
+              {
+                "id": "eleven",
+                "label": "eleven",
+                "translation": "یازده",
+                "role": "core",
+                "features": {
+                  "number": "plural"
+                },
+                "forms": {
+                  "word": "eleven",
+                  "faWord": "یازده"
+                }
+              },
+              {
+                "id": "twelve",
+                "label": "twelve",
+                "translation": "دوازده",
+                "role": "core",
+                "features": {
+                  "number": "plural"
+                },
+                "forms": {
+                  "word": "twelve",
+                  "faWord": "دوازده"
                 }
               }
             ]
@@ -1315,6 +1484,96 @@
           ]
         },
         {
+          "id": "count-color-practice",
+          "type": "response-practice",
+          "phase": "construction",
+          "practiceRevision": 1,
+          "title": "رنگ و تعداد را در جمله بساز",
+          "description": "بدون انتخاب گزینه، پاسخ مناسب را در موقعیت تازه بنویس.",
+          "tasks": [
+            {
+              "task": "بگو یازده توپ قرمز وجود دارد.",
+              "hint": "There are eleven red balls.",
+              "example": "There are eleven red balls.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are eleven red balls"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو دوازده توپ آبی وجود دارد.",
+              "hint": "There are twelve blue balls.",
+              "example": "There are twelve blue balls.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are twelve blue balls"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "از رنگ توپ سؤال کن.",
+              "hint": "What color is the ball?",
+              "example": "What color is the ball?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "what color is the ball"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بپرس چند توپ سبز وجود دارد.",
+              "hint": "How many green balls are there?",
+              "example": "How many green balls are there?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "how many green balls are there"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو این کیف سیاه است.",
+              "hint": "This bag is black.",
+              "example": "This bag is black.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this bag is black"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
           "id": "counting-construction",
           "type": "response-practice",
           "phase": "construction",
@@ -1621,6 +1880,64 @@
                   }
                 ],
                 "success": "پاسخ مفرد را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "count-color-exchange-practice",
+          "type": "response-practice",
+          "phase": "correspondence",
+          "practiceRevision": 1,
+          "title": "سؤال‌های رنگ و تعداد",
+          "description": "بدون انتخاب گزینه، پاسخ مناسب را در موقعیت تازه بنویس.",
+          "tasks": [
+            {
+              "task": "دوستت دربارهٔ رنگ توپ می‌پرسد؛ بگو توپ قرمز است.",
+              "hint": "The ball is red.",
+              "example": "The ball is red.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the ball is red"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بپرس چند توپ آبی هست.",
+              "hint": "How many blue balls are there?",
+              "example": "How many blue balls are there?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "how many blue balls are there"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو یازده توپ آبی هست.",
+              "hint": "There are eleven blue balls.",
+              "example": "There are eleven blue balls.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are eleven blue balls"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
               }
             }
           ]
@@ -2238,17 +2555,75 @@
           ]
         },
         {
+          "id": "count-color-guided-transfer",
+          "type": "response-practice",
+          "phase": "guided",
+          "practiceRevision": 1,
+          "title": "چیدمان تازه با دو رنگ",
+          "description": "بدون انتخاب گزینه، پاسخ مناسب را در موقعیت تازه بنویس.",
+          "tasks": [
+            {
+              "task": "در تصویر فرضی دوازده توپ زرد می‌بینی؛ گزارش بده.",
+              "hint": "There are twelve yellow balls.",
+              "example": "There are twelve yellow balls.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are twelve yellow balls"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "رنگ توپ‌های یک نفر را بپرس.",
+              "hint": "What color are the balls?",
+              "example": "What color are the balls?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "what color are the balls"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "در تصویر فرضی یازده توپ سبز هست؛ گزارش بده.",
+              "hint": "There are eleven green balls.",
+              "example": "There are eleven green balls.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are eleven green balls"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
           "id": "counting-independent",
           "type": "free-write",
           "phase": "independent",
           "title": "تمرین واقعی: اطرافت را بشمار و گزارش بده",
-          "prompt": "چند شیء واقعی از روی میز، کیف یا اتاقت انتخاب کن و واقعاً بشمار. یک جمله با There is one ... و دست‌کم دو جمله با There are ... بساز. بعد دربارهٔ تعداد یکی از اشیای موجود سؤال How many ... are there? را بنویس و با تعداد واقعی جواب بده. در آخر یک جمله بنویس که مکان یا مالکیت را هم از درس‌های قبلی بیاورد. لازم نیست عکس بفرستی؛ اگر اشیای کافی نداری، یک چیدمان فرضی را واضح توصیف کن. یک جمع ساده با دو شیء هم‌نام در اطرافت هم به انگلیسی توضیح بده (one ... plus one ... equals two ...).",
+          "prompt": "چند شیء واقعی از روی میز، کیف یا اتاقت انتخاب کن و واقعاً بشمار. یک جمله با There is one ... و دست‌کم دو جمله با There are ... بساز. بعد دربارهٔ تعداد یکی از اشیای موجود سؤال How many ... are there? را بنویس و با تعداد واقعی جواب بده. در آخر یک جمله بنویس که مکان یا مالکیت را هم از درس‌های قبلی بیاورد. لازم نیست عکس بفرستی؛ اگر اشیای کافی نداری، یک چیدمان فرضی را واضح توصیف کن. یک جمع ساده با دو شیء هم‌نام در اطرافت هم به انگلیسی توضیح بده (one ... plus one ... equals two ...). حالا بخش دیگری اضافه کن: از دو رنگ متفاوت نام ببر، یک بار عدد یازده و یک بار دوازده را در جملهٔ تعداد به کار ببر، و با What color ...? یک سؤال رنگ بساز.",
           "placeholder": "There is one bag on my chair.\nThere are two pens in my bag.\nThere are four books on my table.\nHow many books are there?\nThere are four books.",
           "hint": "عددها باید با اشیایی که خودت انتخاب کرده‌ای هماهنگ باشند. تعداد سه کتاب یا یک کیف اجباری نیست.",
           "kind": "free-text",
           "minWords": 15,
           "assessment": {
-            "revision": 2,
+            "revision": 3,
             "required": [
               {
                 "any": [
@@ -2318,6 +2693,35 @@
                   "in my room"
                 ],
                 "feedback": "مکان یا مالکیتِ آشنا از درس‌های قبلی را در یکی از جمله‌ها اضافه کن."
+              },
+              {
+                "any": [
+                  "eleven"
+                ],
+                "feedback": "یک جمله با عدد eleven اضافه کن."
+              },
+              {
+                "any": [
+                  "twelve"
+                ],
+                "feedback": "یک جمله با عدد twelve اضافه کن."
+              },
+              {
+                "any": [
+                  "red",
+                  "blue",
+                  "green",
+                  "yellow",
+                  "black",
+                  "white"
+                ],
+                "feedback": "حداقل یک رنگ در جمله بیاور."
+              },
+              {
+                "any": [
+                  "what color"
+                ],
+                "feedback": "از رنگ با What color ...? سؤال کن."
               }
             ],
             "success": "شمارش، پرسش و پاسخ و یکی از الگوهای قبلی را در یک گزارش واقعی به کار بردی."

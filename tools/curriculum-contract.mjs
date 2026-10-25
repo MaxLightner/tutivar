@@ -86,7 +86,7 @@ export function validatePublishedCatalog({ manifest, runtimeCourse, legacy, read
   const numbers = ids.map(x => Number(x.split('-')[1]));
   if (numbers.some((n, i) => n !== i + 1))
     errors.push('Published A1 order differs from the 126-lesson owner roadmap (must be a contiguous prefix)');
-  const frozen = new Map(legacy.lockedMismatches.map(x => [x.id, x]));
+  const frozen = new Map((legacy.lockedMismatches||[]).map(x => [x.id, x]));
   const originallyPublished = new Set(legacy.legacyPublished);
   const metadataGrandfathered = new Set(['A1-1', 'A1-2', 'A1-3', 'A1-4', 'A1-5']);
   for (const entry of entries) {
@@ -118,17 +118,28 @@ export function validatePublishedCatalog({ manifest, runtimeCourse, legacy, read
   }
   // Old 6–9 are only grandfathered while they await replacement. Never add A1-10
   // to the live path before this mismatch has been resolved and removed.
-  if (legacy.lockedMismatches.length && ids.some(id => Number(id.slice(3)) > 9))
+  if ((legacy.lockedMismatches||[]).length && ids.some(id => Number(id.slice(3)) > 9))
     errors.push('Cannot publish another new A1 lesson before migrating existing wrong-order A1-6..9');
-  const checked = new Set(legacy.lockedMismatches.map(x => x.id));
-  for (const mismatch of legacy.lockedMismatches) {
+  const checked = new Set((legacy.lockedMismatches||[]).map(x => x.id));
+  for (const mismatch of legacy.lockedMismatches||[]) {
     if (!originallyPublished.has(mismatch.id)) errors.push(mismatch.id + ': unauthorized legacy exception');
     if (!/^A1-[6-9]$/.test(mismatch.id)) errors.push(mismatch.id + ': only current A1-6..9 may be grandfathered');
     if (!mismatch.preserveProgress || !mismatch.legacyGitBlobSha || !mismatch.canonicalTarget)
       errors.push(mismatch.id + ': migration history incomplete');
     if (!ids.includes(mismatch.id)) errors.push(mismatch.id + ': legacy entry removed without documented progress migration');
   }
-  if (checked.size !== legacy.lockedMismatches.length) errors.push('Repeated legacy exception ID');
+  if (checked.size !== (legacy.lockedMismatches||[]).length) errors.push('Repeated legacy exception ID');
+  for(const archived of legacy.archivedMismatches||[]) {
+    if(!archived.preserveProgress||!archived.legacyGitBlobSha||!archived.archivedFile)
+      errors.push(archived.id+': archived lesson has no recovery record');
+    const raw=readLesson?.(archived.archivedFile);
+    if(!raw||gitBlobSha(raw)!==archived.legacyGitBlobSha)
+      errors.push(archived.id+': immutable archived lesson changed');
+    if(ids.includes(archived.id)&&!entries.find(x=>x.id===archived.id)?.file?.includes('-v2.json'))
+      errors.push(archived.id+': replacement must use a distinct versioned file');
+  }
+  if((legacy.archivedMismatches||[]).length && legacy.progressMigration?.revision!=='a1-canonical-six-2026-10')
+    errors.push('Historical progress migration contract is missing');
   return errors;
 }
 
@@ -213,15 +224,16 @@ function cli() {
     console.log(JSON.stringify({
       ...lesson, roadmapRef:{id:lesson.id,revision:manifest.revision,
         communicativeOutcome:lesson.communicativeOutcome},
-      status:legacy.lockedMismatches.some(l=>l.id===id)?'legacy-must-migrate':(legacy.lockedMismatches.length && Number(id.split('-')[1])>9 && id.startsWith('A1-')?'blocked-until-legacy-migration':'approved-for-authoring'),
+      status:(legacy.lockedMismatches||[]).some(l=>l.id===id)?'legacy-must-migrate':((legacy.lockedMismatches||[]).length && Number(id.split('-')[1])>9 && id.startsWith('A1-')?'blocked-until-legacy-migration':'approved-for-authoring'),
       authoringRule:'Use existing interaction modules; trace every target through introduction, practice, independent production and spaced review.'
     },null,2));
   } else if (mode === '--status') {
     console.log('Canonical path: 126 lessons; A1=34, A2=30, B1=29, B2=33');
     console.log('Live baseline: ' + legacy.legacyPublished.join(', '));
-    console.log('Frozen out-of-plan content: ' + legacy.lockedMismatches.map(x=>x.id+' → '+x.canonicalTarget).join('; '));
+    console.log('Frozen out-of-plan content: ' + (legacy.lockedMismatches||[]).map(x=>x.id+' → '+x.canonicalTarget).join('; '));
+    console.log('Archived legacy lessons: '+(legacy.archivedMismatches||[]).map(x=>x.id).join(', '));
     console.log('Known content gaps: ' + legacy.contentGaps.map(x=>x.id).join(', '));
-    console.log('New publications blocked until existing A1-6..9 are safely migrated.');
+    console.log((legacy.lockedMismatches||[]).length?'New publications blocked until existing A1-6..9 are safely migrated.':'Legacy content versioned and retired from the active path.');
   } else if (mode === '--validate') {
     console.log('PASS: canonical 126-lesson sequence, owner lock, prerequisites and published path');
   } else {

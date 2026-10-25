@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img" aria-labelledby="title desc">
+  <title id="title">Two boxes with different properties</title>
+  <desc id="desc">A large square wooden box on the left and a small round metal box on the right.</desc>
+  <defs>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e1b884"/><stop offset=".5" stop-color="#b87c44"/><stop offset="1" stop-color="#966039"/></linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7a8b99"/><stop offset=".45" stop-color="#ecf3f7"/><stop offset="1" stop-color="#7f94a5"/></linearGradient>
+  </defs>
+  <rect width="720" height="320" rx="24" fill="#f2f7fb"/>
+  <ellipse cx="209" cy="268" rx="125" ry="15" fill="#879bb2" opacity=".25"/>
+  <ellipse cx="535" cy="263" rx="80" ry="12" fill="#879bb2" opacity=".22"/>
+  <rect x="95" y="48" width="228" height="202" rx="12" fill="url(#wood)" stroke="#8f5e34" stroke-width="4"/>
+  <path d="M109 89h199M110 147h199M110 208h199" stroke="#925e37" opacity=".36" stroke-width="4"/>
+  <path d="M146 49c-20 80 12 130-7 200M244 49c15 60-17 129 7 200" stroke="#f7d3a5" opacity=".32" stroke-width="6" fill="none"/>
+  <circle cx="535" cy="177" r="74" fill="url(#metal)" stroke="#788b9d" stroke-width="4"/>
+  <ellipse cx="522" cy="147" rx="28" ry="17" fill="#ffffff" opacity=".38"/>
+  <g font-family="Arial,sans-serif" text-anchor="middle" fill="#21394d">
+    <text x="208" y="289" font-size="18" font-weight="700">big · square · wooden</text>
+    <text x="535" y="289" font-size="18" font-weight="700">small · round · metal</text>
+  </g>
+</svg>

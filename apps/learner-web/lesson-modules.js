@@ -23,7 +23,8 @@ const MODULE_LABELS = {
   'expression-study': 'عبارت‌های کاربردی', shadowing: 'سایه‌خوانی', 'shadowing-review': 'سایه‌خوانی دوباره',
   'picture-description': 'توصیف تصویر', 'meaning-cluster': 'یک مفهوم، چند بیان',
   'count-visual': 'یک یا چند شیء', 'plural-pair-lab': 'مفرد و جمع تصویری',
-  'agreement-lab': 'جمله‌ساز وابسته', 'sentence-composer': 'جمله‌ساز تعاملی', 'composer-view': 'کشف و تغییر جمله'
+  'agreement-lab': 'جمله‌ساز وابسته', 'sentence-composer': 'جمله‌ساز تعاملی', 'composer-view': 'کشف و تغییر جمله',
+  'tap-attributes-lab': 'تغییر ویژگی در تصویر و جمله'
 };
 function wrapper(body, activity, idx, e, extra = '') {
   return `<div class="lesson-block module-block ${extra}" data-module="${e(activity.type)}"><div class="block-top"><div><span class="block-label">${String(idx + 1).padStart(2, '0')} / ${e(activity.typeLabel || LESSON_PHASE_LABELS[activity.phase] || MODULE_LABELS[activity.type] || 'فعالیت')}</span><h3>${e(activity.title || '')}</h3></div></div>${body}</div>`;
@@ -695,6 +696,31 @@ function countMathLab(a,c) {
     '<p class="live-hint">با لمس اسم، شیء تغییر می‌کند؛ با لمس + یا −، جمع و تفریق جابه‌جا می‌شوند.</p>',a,c.index,c.e,'module-count-math-lab');
 }
 
+function tapAttributesLab(a,c) {
+  const key=`${c.lessonId}:${a.id}`;
+  const selected=c.progress.attributeChoices?.[key] || {};
+  const options=a.options || {};
+  const pick=(field)=>options[field]?.[Math.max(0,Number(selected[field])||0)%options[field].length] || options[field]?.[0];
+  if(a.mode==='count-color') {
+    const count=pick('count'),color=pick('color');
+    if(!count||!color)return wrapper('',a,c.index,c.e);
+    const sentence=`There are ${count.en} ${color.en} balls.`;
+    const visual=Array.from({length:count.number},()=>`<span class="tap-ball" style="background:${c.e(color.hex)}"></span>`).join('');
+    const words=`There are <button data-attribute-key="${c.e(key)}" data-attribute-field="count" class="tap-word">${c.e(count.en)}</button> <button data-attribute-key="${c.e(key)}" data-attribute-field="color" class="tap-word">${c.e(color.en)}</button> balls.`;
+    return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><div class="tap-scene"><div class="tap-count-pictures" aria-label="${c.e(count.fa+' توپ '+color.fa)}">${visual}</div><p class="tap-live-sentence" lang="en" dir="ltr">${words}${soundButton(sentence,c.e,c.i)}</p><p>${c.e(count.fa+' توپ '+color.fa)}</p></div><p class="live-hint">روی عدد یا رنگ در خود جمله بزن تا تعداد و رنگ توپ‌های تصویر هم تغییر کند.</p>`,a,c.index,c.e,'module-tap-attributes');
+  }
+  const size=pick('size'),shape=pick('shape'),material=pick('material');
+  if(!size||!shape||!material)return wrapper('',a,c.index,c.e);
+  const sentence=`This is a ${size.en} ${shape.en} ${material.en} box.`;
+  const shapeRadius=shape.id==='round'?'50%':shape.id==='rectangular'?'16%':'4%';
+  const width=shape.id==='rectangular'?190:shape.id==='round'?145:155;
+  const height=shape.id==='rectangular'?100:145;
+  const scale=size.id==='big'?1.08:.72;
+  const texture=material.id==='wooden'?'repeating-linear-gradient(105deg,#c99658 0px,#c99658 13px,#aa7845 15px,#d6aa73 25px)':material.id==='metal'?'linear-gradient(130deg,#6d859c,#ecf2f7 44%,#8798ad 76%,#53677e)':'linear-gradient(130deg,#48a8d1,#acdfee,#2489b7)';
+  const words=`This is a <button data-attribute-key="${c.e(key)}" data-attribute-field="size" class="tap-word">${c.e(size.en)}</button> <button data-attribute-key="${c.e(key)}" data-attribute-field="shape" class="tap-word">${c.e(shape.en)}</button> <button data-attribute-key="${c.e(key)}" data-attribute-field="material" class="tap-word">${c.e(material.en)}</button> box.`;
+  return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><div class="tap-scene"><div class="tap-object-stage"><div class="tap-object" role="img" aria-label="${c.e(size.fa+' '+shape.fa+' '+material.fa+' جعبه')}" style="width:${width}px;height:${height}px;border-radius:${shapeRadius};transform:scale(${scale});background:${texture}"></div></div><p class="tap-live-sentence" lang="en" dir="ltr">${words}${soundButton(sentence,c.e,c.i)}</p><p>${c.e('این یک جعبهٔ '+size.fa+' '+shape.fa+' '+material.fa+' است.')}</p></div><p class="live-hint">برای مقایسه، کلمات اندازه، شکل و جنس را مستقیماً در جمله لمس کن؛ تصویر همان لحظه تغییر می‌کند.</p>`,a,c.index,c.e,'module-tap-attributes');
+}
+
 const renderers = {
   intro, vocabulary, pattern, match, 'sentence-builder': sentenceBuilder,
   'quiz-set': quizSet, dialogue, roleplay, 'free-write': freeWrite,
@@ -703,7 +729,7 @@ const renderers = {
   'exchange-lab': exchangeLab, 'expression-study': expressionStudy, 'count-visual': countVisual, 'plural-pair-lab': pluralPairLab, 'count-math-lab': countMathLab,
   shadowing, 'shadowing-review': shadowing, 'picture-description': pictureDescription,
   'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer,
-  'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer
+  'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer, 'tap-attributes-lab': tapAttributesLab
 };
 export function renderActivity(activity, context) {
   const renderer = renderers[activity.type];

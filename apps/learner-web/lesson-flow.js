@@ -26,15 +26,15 @@ export const LESSON_PHASE_LABELS = Object.freeze({
 const TYPE_FOR_PHASE = {
   shadowing: ['shadowing'],
   words: ['vocabulary'],
-  phrases: ['expression-study', 'composer-view', 'sentence-composer', 'response-practice', 'family-tree', 'family-lab', 'spatial-lab', 'count-visual', 'plural-pair-lab', 'count-math-lab'],
+  phrases: ['expression-study', 'composer-view', 'sentence-composer', 'response-practice', 'family-tree', 'family-lab', 'spatial-lab', 'count-visual', 'plural-pair-lab', 'count-math-lab', 'tap-attributes-lab'],
   sentence: ['sentence-composer'],
-  variants: ['composer-view', 'sentence-transform', 'meaning-cluster', 'plural-pair-lab', 'sentence-composer'],
+  variants: ['composer-view', 'sentence-transform', 'meaning-cluster', 'plural-pair-lab', 'sentence-composer', 'tap-attributes-lab'],
   puzzle: ['sentence-builder'],
   construction: ['response-practice'],
   correspondence: ['exchange-lab', 'response-practice'],
   context: ['dialogue', 'response-practice'],
   picture: ['picture-description'],
-  guided: ['guided-dialogue', 'dialogue-transfer'],
+  guided: ['guided-dialogue', 'dialogue-transfer', 'response-practice'],
   independent: ['free-write', 'shadowing-review']
 };
 

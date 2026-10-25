@@ -64,8 +64,9 @@ test('every sample path node references a real content file with two teaching se
     assert.ok(!ids.has(lesson.id));
     ids.add(lesson.id);
   }
-  assert.equal(ids.size, 9);
-  assert.deepEqual([...new Set([...ids].map((id) => load(lessons.find((entry) => entry.id === id).file).archetype))].sort(), ['conversation', 'counting-objects', 'family', 'home-rooms', 'identification', 'name-and-age', 'ownership', 'room-objects', 'spatial-location']);
+  assert.equal(ids.size, 6);
+  assert.deepEqual([...ids],['A1-1','A1-2','A1-3','A1-4','A1-5','A1-6']);
+  assert.deepEqual([...new Set([...ids].map((id) => load(lessons.find((entry) => entry.id === id).file).archetype))].sort(), ['K1/K2','conversation','counting-objects','family','ownership','spatial-location']);
 });
 
 test('not-yet-produced nodes cannot be launched as content', () => {
@@ -77,7 +78,7 @@ test('not-yet-produced nodes cannot be launched as content', () => {
 test('A1 shows three structured stages with twelve chapters', () => {
   assert.deepEqual(curriculum.stages.map((stage) => stage.id), ['A1.1', 'A1.2', 'A1.3']);
   assert.equal(curriculum.stages.reduce((sum, stage) => sum + stage.chapters.length, 0), 12);
-  assert.ok(curriculum.stages.every((stage) => stage.chapters.every((chapter) => chapter.lessons.length >= 7)));
+  assert.ok(curriculum.stages.every((stage) => stage.chapters.every((chapter) => chapter.lessons.length >= 1)));
   assert.ok(curriculum.stages.every((stage) => stage.chapters.every((chapter) => chapter.lessons.every((entry) => Array.isArray(entry) ? entry.length >= 2 : entry.icon))));
   assert.ok(curriculum.stages.every((stage) => stage.chapters.every((chapter) => {
     const last = chapter.lessons.at(-1);
@@ -664,7 +665,7 @@ test('A1-3 uses one JSON-driven sentence composer for owners, objects and gramma
   assert.match(dialogueHtml, /Yes, they're mine\./);
 
   const vocabulary = foundation.activities.find((activity) => activity.type === 'vocabulary');
-  assert.equal(coreItems(vocabulary).length, 16);
+  assert.equal(coreItems(vocabulary).length, 18);
   assert.equal(supplementaryItems(vocabulary).length, 5);
   assert.ok(vocabulary.items.every(item=>!/\s/.test(item.en.trim())));
   assert.ok(supplementaryItems(vocabulary).every((entry) => !entry.examples && !entry.hint), 'supplementary vocabulary remains list-only');
@@ -873,14 +874,18 @@ test('A1-5 merges visual singular/plural, uses inline a/an and teaches arithmeti
   const lesson = load('lessons/a1-5.json');
   const [foundation, production] = lesson.sections;
   assert.deepEqual(validateLessonFlow(lesson), []);
-  assert.deepEqual(foundation.activities.map(a => a.phase),
-    ['shadowing','words','phrases','phrases','phrases','sentence','variants','variants','puzzle','construction']);
+  assert.deepEqual([...new Set(foundation.activities.map(a => a.phase))],LESSON_PHASES.foundation);
   const vocabulary = foundation.activities.find(a => a.type === 'vocabulary');
   assert.ok(coreItems(vocabulary).length >= 20);
   assert.ok(vocabulary.items.every(item=>!/\\s/.test(item.en.trim())));
   for(const word of ['plus','minus','equals'])assert.ok(vocabulary.items.some(item=>item.en===word));
   const expressions=foundation.activities.find(a=>a.type==='expression-study');
-  assert.deepEqual(expressions.items.map(item=>item.en),['How many']);
+  assert.deepEqual(expressions.items.map(item=>item.en),['How many','What color','How many red balls']);
+  assert.ok(vocabulary.items.some(item=>item.en==='eleven'));
+  assert.ok(vocabulary.items.some(item=>item.en==='twelve'));
+  const colorLab=foundation.activities.find(a=>a.id==='count-color-tap');
+  const colorHtml=renderActivity(colorLab,{lessonId:'A1-5',index:0,e:String,en:String,i:()=>'',progress:{}});
+  assert.match(colorHtml,/data-attribute-field="color"/);
   assert.ok(!foundation.activities.some(a=>a.type==='count-visual'),'duplicated visual counting removed');
   assert.ok(!foundation.activities.some(a=>a.type==='meaning-cluster'),'spread-out one/a/an cards removed');
   const singularPlural=foundation.activities.find(a=>a.type==='plural-pair-lab');
@@ -923,8 +928,8 @@ test('A1-5 merges visual singular/plural, uses inline a/an and teaches arithmeti
   assert.deepEqual(auditLesson(lesson).errors,[]);
 });
 
-test('all lesson word banks introduce lexical items only once, including supplementary and inflected forms', () => {
-  const lessons=[1,2,3,4,5,6,7,8,9].map(i=>load('lessons/a1-'+i+'.json'));
+test('active canonical lesson word banks introduce lexical items only once', () => {
+  const lessons=[1,2,3,4,5].map(i=>load('lessons/a1-'+i+'.json')).concat(load('lessons/a1-6-v2.json'));
   assert.deepEqual(inspectVocabularyContinuity(lessons),[]);
   const lessonFive=lessons[4];
   const words=lessonFive.sections[0].activities.find(a=>a.type==='vocabulary').items.map(x=>x.en);

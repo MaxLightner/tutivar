@@ -900,3 +900,12 @@ button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3p
 .house-facts-visual svg,.room-objects-visual svg{width:100%;height:auto;display:block;max-height:310px}
 .room-objects-visual{background:#f4f8f2}
 .house-facts-visual figcaption,.room-objects-visual figcaption{font-size:12px;line-height:1.7}
+/* Direct-word interaction shared by counting/colors and object properties. */
+.tap-scene{background:var(--surface, #f7f9fb);border:1px solid #dfe6ed;border-radius:18px;padding:18px;text-align:center;margin:14px 0}
+.tap-count-pictures{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;max-width:350px;margin:12px auto;min-height:120px;align-content:center}
+.tap-ball{display:inline-block;width:37px;height:37px;border-radius:50%;border:2px solid #ffffffb0;box-shadow:inset -5px -6px 7px #0002,0 2px 3px #0002}
+.tap-object-stage{height:230px;display:flex;align-items:center;justify-content:center;perspective:500px}
+.tap-object{box-shadow:inset -10px -11px 18px #0002,10px 17px 22px #0002;border:2px solid #0001;transition:width .25s,height .25s,transform .25s,border-radius .25s,background .25s}
+.tap-live-sentence{font-size:clamp(17px,4vw,24px);font-weight:650;line-height:2.2;margin:10px auto}
+.tap-word{font:inherit;color:#115cb5;background:#e7f1ff;border:1px solid #8eb8ef;border-radius:9px;padding:2px 7px;margin:0 2px;cursor:pointer}
+.tap-word:focus-visible{outline:3px solid #1857a1;outline-offset:2px}
