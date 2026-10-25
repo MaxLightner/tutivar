@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" role="img" aria-labelledby="title desc">
+<title id="title">Near objects and distant people in a school yard</title>
+<desc id="desc">In the foreground, a cat sits beside an open book on a desk. In the distance a teacher and a student are standing near a classroom entrance.</desc>
+<defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#edf6f7"/><stop offset="1" stop-color="#cfdfe0"/></linearGradient><linearGradient id="ground" x2="0" y2="1"><stop stop-color="#dee4dc"/><stop offset="1" stop-color="#afc4b3"/></linearGradient></defs>
+<rect width="1000" height="600" rx="30" fill="url(#sky)"/>
+<rect y="270" width="1000" height="330" fill="url(#ground)"/>
+<path d="M0 310H1000" stroke="#b8c7bc" stroke-width="5"/>
+<!-- perspective school building -->
+<path d="M545 60L960 60L960 313L545 313Z" fill="#d8c3a7" stroke="#ac967c" stroke-width="5"/>
+<path d="M566 88H808V236H566Z" rx="9" fill="#93b5af" stroke="#657e79" stroke-width="7"/>
+<path d="M680 88V236M566 162H808" stroke="#e4efeb" stroke-width="6"/>
+<path d="M833 100H929V313H833Z" fill="#78968e" stroke="#57756b" stroke-width="6"/>
+<path d="M881 100V313" stroke="#c7d5ca" stroke-width="4"/>
+<circle cx="909" cy="214" r="5" fill="#ead7b0"/>
+<path d="M545 313L960 313" stroke="#9c8972" stroke-width="12"/>
+<!-- distant people -->
+<ellipse cx="714" cy="360" rx="76" ry="9" fill="#638170" opacity=".25"/>
+<g transform="translate(642 197)">
+<circle cx="61" cy="32" r="25" fill="#d49d7f"/><path d="M36 32Q31 0 60 4Q93 3 88 29Q66 13 36 32Z" fill="#483f39"/>
+<path d="M35 61Q60 48 86 61L104 132H22Z" fill="#607f9b" stroke="#44657a" stroke-width="4"/>
+<path d="M32 78L0 110M92 79L117 110" stroke="#d49d7f" stroke-width="12" stroke-linecap="round"/>
+<path d="M48 132L43 177M79 132L84 177" stroke="#514c4d" stroke-width="12" stroke-linecap="round"/>
+<path d="M57 81H79V114H57Z" fill="#fff4d9" stroke="#a98c5e" stroke-width="3"/>
+</g>
+<g transform="translate(805 225) scale(.82)">
+<circle cx="55" cy="30" r="25" fill="#ebb38d"/><path d="M29 24Q29 0 57 4Q83 3 79 31L69 14L41 20Z" fill="#563b33"/>
+<path d="M31 59Q55 51 83 61L90 128H20Z" fill="#8ba57d" stroke="#648560" stroke-width="4"/>
+<path d="M20 72L-2 106M89 72L103 107" stroke="#ebb38d" stroke-width="11" stroke-linecap="round"/>
+<path d="M45 128L41 171M70 128L76 171" stroke="#3e5860" stroke-width="13" stroke-linecap="round"/>
+<path d="M43 87H77V114H43Z" fill="#e3d39e" stroke="#ab9653" stroke-width="3"/>
+</g>
+<path d="M450 355L960 400L1000 530L510 492Z" fill="#c1cfbf" opacity=".38"/>
+<!-- foreground desk -->
+<ellipse cx="260" cy="515" rx="247" ry="40" fill="#798f7b" opacity=".25"/>
+<path d="M24 407L460 401L504 473L2 479Z" fill="#d8b589" stroke="#a78158" stroke-width="7"/>
+<path d="M50 475L77 565M432 475L414 565" stroke="#8e6d4a" stroke-width="19" stroke-linecap="round"/>
+<!-- open book front -->
+<path d="M83 429Q144 402 207 432L208 484Q141 460 83 485Z" fill="#f8f3df" stroke="#9b8268" stroke-width="5"/>
+<path d="M208 432Q266 402 331 430L334 485Q267 460 208 484Z" fill="#fff8e7" stroke="#9b8268" stroke-width="5"/>
+<path d="M208 432V484M101 443L181 443M101 456L178 456M225 443L312 443M226 456L309 456" fill="none" stroke="#b5aaa0" stroke-width="3"/>
+<!-- near cat foreground, clearly identifiable -->
+<g transform="translate(280 270)">
+<path d="M75 138Q131 81 191 139L185 179L83 181Z" fill="#b6ac9a" stroke="#736d62" stroke-width="6"/>
+<path d="M175 164Q232 171 219 122Q216 105 233 101" fill="none" stroke="#9a8f7f" stroke-width="15" stroke-linecap="round"/>
+<path d="M88 95L85 36L124 57L159 54L186 30L184 106Q174 143 136 142Q96 144 88 95Z" fill="#d2c0aa" stroke="#736d62" stroke-width="6"/>
+<path d="M95 68L95 47L114 62M162 60L176 43L176 69" fill="#dc9c9c"/>
+<ellipse cx="118" cy="97" rx="7" ry="10" fill="#4b604d"/><ellipse cx="159" cy="97" rx="7" ry="10" fill="#4b604d"/>
+<path d="M137 105L126 112L146 112Z" fill="#bd8278"/>
+<path d="M137 113Q127 127 118 116M137 113Q149 126 158 116" stroke="#736d62" fill="none" stroke-width="3"/>
+<path d="M96 116L65 108M96 124L66 128M177 116L208 106M176 125L207 132" stroke="#736d62" stroke-width="3"/>
+<path d="M97 177L97 195M169 177L169 195" stroke="#938775" stroke-width="14" stroke-linecap="round"/>
+</g>
+<rect x="35" y="38" width="245" height="50" rx="25" fill="#f9fcf8" stroke="#afc4b5" stroke-width="3"/>
+<text x="157" y="71" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" fill="#3e6650">Near: this</text>
+<rect x="709" y="25" width="245" height="50" rx="25" fill="#f9fcf8" stroke="#afc4b5" stroke-width="3"/>
+<text x="831" y="58" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" fill="#3e6650">Far: that</text>
+</svg>
