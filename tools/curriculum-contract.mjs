@@ -1,4 +1,4 @@
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { resolve, join } from 'node:path';
@@ -132,6 +132,44 @@ export function validatePublishedCatalog({ manifest, runtimeCourse, legacy, read
   return errors;
 }
 
+/**
+ * All future pair/level catalogs use the same 126-slot path; unlike the frozen
+ * fa-en A1 preview, they have no legacy exception. Indexes and objectives
+ * are always checked, even when the pair has not been deployed yet.
+ */
+export function validateFutureLevelCatalog({manifest, course, readLesson = null}) {
+  const errors = [];
+  const level = course.level?.toUpperCase();
+  if (!Object.hasOwn(LEVELS,level)) return ['Unknown level in future curriculum: ' + level];
+  const rows=(course.stages || []).flatMap(s=>s.chapters || []).flatMap(c=>c.lessons || []);
+  if (rows.some(row=>Array.isArray(row)))
+    errors.push(level + ': future catalogs need canonical IDs, not untracked title-only placeholders');
+  const entries=rows.filter(e=>e && !Array.isArray(e) && /^(?:A1|A2|B1|B2)-\d+$/.test(e.id || ''));
+  const byId=new Map(manifest.lessons.map(l=>[l.id,l]));
+  const present=new Set();
+  entries.forEach((entry,index)=>{
+    const expected=level+'-'+(index+1);
+    if (entry.id!==expected)errors.push(level+': out of order or missing '+expected);
+    if(present.has(entry.id))errors.push(level+': duplicate '+entry.id);
+    present.add(entry.id);
+    const canonical=byId.get(entry.id);
+    if(!canonical || canonical.level!==level){errors.push(entry.id+': not in the approved level');return;}
+    if(entry.title!==canonical.title)errors.push(entry.id+': incorrect canonical lesson title');
+    if(entry.status==='sample' && !entry.file)errors.push(entry.id+': published without a file');
+    if(!entry.file || !readLesson)return;
+    const raw=readLesson(entry.file);
+    if(!raw){errors.push(entry.id+': file missing');return;}
+    let authored;
+    try{authored=JSON.parse(raw);}catch{errors.push(entry.id+': lesson is invalid JSON');return;}
+    if(authored.id!==entry.id)errors.push(entry.id+': content ID mismatch');
+    const ref=authored.roadmapRef;
+    if(!ref || ref.id!==entry.id || ref.revision!==manifest.revision ||
+       ref.communicativeOutcome!==canonical.communicativeOutcome)
+      errors.push(entry.id+': new lesson requires the approved roadmapRef');
+  });
+  return errors;
+}
+
 export function auditCurriculum(base = root) {
   const manifest = read('content/curriculum/universal-path.v1.json', base);
   const lock = read('content/curriculum/roadmap.lock.json', base);
@@ -144,6 +182,20 @@ export function auditCurriculum(base = root) {
   };
   const errors = [...validateCanonicalManifest({source, manifest, lock}),
     ...validatePublishedCatalog({manifest, runtimeCourse:course, legacy, readLesson:get})];
+  const pairRoot = join(base,'content/language-pairs');
+  for (const pairId of readdirSync(pairRoot,{withFileTypes:true}).filter(e=>e.isDirectory()).map(e=>e.name)) {
+    const dir=join(pairRoot,pairId);
+    for (const name of readdirSync(dir).filter(x=>/^curriculum\.(?:a1|a2|b1|b2)\.json$/i.test(x))) {
+      if (pairId==='fa-en' && name==='curriculum.a1.json') continue;
+      const otherCourse=JSON.parse(readFileSync(join(dir,name),'utf8'));
+      const getOther=path=>{
+        const filepath=join(dir,path);
+        return existsSync(filepath)?readFileSync(filepath,'utf8'):null;
+      };
+      errors.push(...validateFutureLevelCatalog({manifest,course:otherCourse,readLesson:getOther})
+        .map(error=>pairId+'/'+name+': '+error));
+    }
+  }
   return {errors, manifest, legacy};
 }
 
