@@ -1,6 +1,6 @@
 {
   "id": "A1-3",
-  "revision": 11,
+  "revision": "2026-10-25-canonical-completion-1",
   "status": "draft",
   "title": "مالکیت و داشتن اشیا",
   "goal": "بتوانی با تغییر صاحب یا وسیله، جمله بسازی و بگویی یک وسیله مال چه کسی است.",
@@ -35,7 +35,9 @@
       "This is my book.",
       "Is this your book?",
       "It's mine.",
-      "It's yours."
+      "It's yours.",
+      "I have",
+      "I don't have"
     ],
     "specificIndependentExpressions": [],
     "minDownstreamActivities": 2,
@@ -48,7 +50,8 @@
       "label": "از کلمه تا جمله",
       "intro": "واژه‌های وسایل شخصی را مرور کن؛ روی کلمات داخل عبارت و جمله بزن و بدون انتخاب از فهرست، ترکیب‌های تازه بساز. سپس شکل‌های مختلف جمله، جورچین و تولید جمله را انجام بده.",
       "masteryActivityIds": [
-        "ownership-owner-check"
+        "ownership-owner-check",
+        "ownership-have-practice"
       ],
       "activities": [
         {
@@ -73,7 +76,7 @@
           "type": "vocabulary",
           "title": "واژگان اصلی وسایل و مالکیت",
           "batchSize": 4,
-          "deckRevision": 4,
+          "deckRevision": 5,
           "items": [
             {
               "en": "book",
@@ -251,6 +254,24 @@
               "en": "suitcase",
               "fa": "چمدان",
               "role": "supplementary"
+            },
+            {
+              "en": "have",
+              "fa": "داشتن",
+              "examples": [
+                "I have a book.",
+                "Do you have a pen?",
+                "I have my bag."
+              ]
+            },
+            {
+              "en": "don't",
+              "fa": "نفی برای من/تو/ما/آن‌ها",
+              "examples": [
+                "I don't have a pen.",
+                "I don't have a bag.",
+                "They don't have a phone."
+              ]
             }
           ],
           "phase": "words"
@@ -300,6 +321,36 @@
                 "This is my own bag.",
                 "I have my own phone.",
                 "My own keys are here."
+              ]
+            },
+            {
+              "en": "I have",
+              "fa": "من دارم",
+              "kind": "fixed",
+              "examples": [
+                "I have a book.",
+                "I have two pens.",
+                "I have my keys."
+              ]
+            },
+            {
+              "en": "don't have",
+              "fa": "نداشتن",
+              "kind": "fixed",
+              "examples": [
+                "I don't have a pen.",
+                "I don't have a phone.",
+                "We don't have a bag."
+              ]
+            },
+            {
+              "en": "Do you have",
+              "fa": "آیا داری؟",
+              "kind": "fixed",
+              "examples": [
+                "Do you have a book?",
+                "Do you have a pen?",
+                "Do you have your keys?"
               ]
             }
           ]
@@ -1291,6 +1342,96 @@
             }
           ],
           "phase": "construction"
+        },
+        {
+          "id": "ownership-have-practice",
+          "type": "response-practice",
+          "phase": "construction",
+          "practiceRevision": 1,
+          "title": "داشتن، نداشتن و پرسیدن",
+          "description": "بدون انتخاب گزینه، پاسخ مناسب را در موقعیت تازه بنویس.",
+          "tasks": [
+            {
+              "task": "بگو یک کتاب داری.",
+              "hint": "I have a book.",
+              "example": "I have a book.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i have a book"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو خودکار نداری.",
+              "hint": "I don't have a pen.",
+              "example": "I don't have a pen.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i don't have a pen"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بپرس آیا دوستت کیف دارد.",
+              "hint": "Do you have a bag?",
+              "example": "Do you have a bag?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "do you have a bag"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو کلیدهایت را داری.",
+              "hint": "I have my keys.",
+              "example": "I have my keys.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i have my keys"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو تلفن نداری.",
+              "hint": "I don't have a phone.",
+              "example": "I don't have a phone.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i don't have a phone"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
+              }
+            }
+          ]
         }
       ]
     },
@@ -1554,6 +1695,64 @@
             }
           ],
           "phase": "correspondence"
+        },
+        {
+          "id": "ownership-have-dialogue-prep",
+          "type": "response-practice",
+          "phase": "correspondence",
+          "practiceRevision": 1,
+          "title": "پرسش و پاسخ دربارهٔ داشتن",
+          "description": "بدون انتخاب گزینه، پاسخ مناسب را در موقعیت تازه بنویس.",
+          "tasks": [
+            {
+              "task": "دوستت می‌پرسد Do you have a book? پاسخ مثبت بده.",
+              "hint": "Yes, I have a book.",
+              "example": "Yes, I have a book.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "yes, i have a book"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "دوستت می‌پرسد Do you have a pen? و تو خودکار نداری.",
+              "hint": "No, I don't have a pen.",
+              "example": "No, I don't have a pen.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no, i don't have a pen"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "این بار از او بپرس آیا تلفن دارد.",
+              "hint": "Do you have a phone?",
+              "example": "Do you have a phone?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "do you have a phone"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
+              }
+            }
+          ]
         },
         {
           "id": "ownership-dialogue",
@@ -2423,16 +2622,74 @@
           "phase": "guided"
         },
         {
+          "id": "ownership-have-transfer",
+          "type": "response-practice",
+          "phase": "guided",
+          "practiceRevision": 1,
+          "title": "موقعیت واقعی: چه چیزی داری؟",
+          "description": "بدون انتخاب گزینه، پاسخ مناسب را در موقعیت تازه بنویس.",
+          "tasks": [
+            {
+              "task": "فرض کن بیرون از خانه‌ای؛ بگو کیف داری.",
+              "hint": "I have a bag.",
+              "example": "I have a bag.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i have a bag"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو در کیف خودکار نداری.",
+              "hint": "I don't have a pen.",
+              "example": "I don't have a pen.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i don't have a pen"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "از دوستت بپرس آیا دفتر دارد.",
+              "hint": "Do you have a notebook?",
+              "example": "Do you have a notebook?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "do you have a notebook"
+                    ],
+                    "feedback": "ساخت جمله را از نمونه یاد بگیر و خودت بنویس."
+                  }
+                ],
+                "success": "جمله را در موقعیت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
           "id": "ownership-independent",
           "type": "free-write",
           "title": "از وسایل واقعی اطرافت استفاده کن",
-          "prompt": "سه وسیلهٔ واقعی از اطرافت بردار: مثلاً کتاب، گوشی، خودکار، کیف، دفتر یا بطری. یکی را کنار وسیلهٔ دیگری بگذار. حالا برای کسی که کنارت است، یا در یک مکالمهٔ دو‌نفرهٔ خیالی، بگو کدام وسیله مال توست (This is my ...)، بپرس وسیله‌ای مال اوست یا نه (Is this your ...?)، یک بار It's mine و یک بار It's yours بگو و یک وسیله را با his یا her به یکی از اعضای خانوادهٔ درس قبل نسبت بده. گفت‌وگوی خودت را اینجا ثبت کن.",
+          "prompt": "سه وسیلهٔ واقعی از اطرافت بردار: مثلاً کتاب، گوشی، خودکار، کیف، دفتر یا بطری. یکی را کنار وسیلهٔ دیگری بگذار. حالا برای کسی که کنارت است، یا در یک مکالمهٔ دو‌نفرهٔ خیالی، بگو کدام وسیله مال توست (This is my ...)، بپرس وسیله‌ای مال اوست یا نه (Is this your ...?)، یک بار It's mine و یک بار It's yours بگو و یک وسیله را با his یا her به یکی از اعضای خانوادهٔ درس قبل نسبت بده. گفت‌وگوی خودت را اینجا ثبت کن. در پایان دو جملهٔ جدا هم بنویس: یکی دربارهٔ وسیله‌ای که داری با I have و دیگری دربارهٔ چیزی که نداری با I don't have؛ سپس یک سؤال Do you have ...? بساز.",
           "placeholder": "You: This is my phone.\nFriend: Is this your book?\nYou: Yes, it's mine.\nFriend: ...",
           "hint": "لازم نیست حتماً کتاب داشته باشی؛ از چیزی استفاده کن که واقعاً نزدیک توست. اسم یکی از اعضای خانواده را هم از درس قبل وارد مکالمه کن.",
           "kind": "free-text",
           "minWords": 17,
           "assessment": {
-            "revision": 3,
+            "revision": 4,
             "required": [
               {
                 "any": [
@@ -2496,6 +2753,25 @@
                   "no"
                 ],
                 "feedback": "یک حدس مالکیت را با No رد کن."
+              },
+              {
+                "any": [
+                  "i have"
+                ],
+                "feedback": "یک جمله دربارهٔ داشتن با I have بساز."
+              },
+              {
+                "any": [
+                  "i don't have",
+                  "i do not have"
+                ],
+                "feedback": "یک جملهٔ نداشتن با I don't have بساز."
+              },
+              {
+                "any": [
+                  "do you have"
+                ],
+                "feedback": "یک سؤال Do you have ...? اضافه کن."
               }
             ],
             "success": "از یک موقعیت واقعی یا شخصی برای ساخت جمله استفاده کردی؛ حالا می‌توانی اشیا، نام‌ها و رابطه‌ها را عوض کنی."

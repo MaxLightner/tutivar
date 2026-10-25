@@ -37,7 +37,7 @@ test('changed roadmap target, order, or document cannot bypass the lock',()=>{
   assert.ok(validateCanonicalManifest({source:source.replace('توصیف ویژگی‌های اشیا','توصیف ویژگی‌های دیگر'),manifest,lock})
     .some(x=>x.includes('source') || x.includes('Manifest')));
 });
-test('published lesson order follows canonical order; only frozen old content is temporarily exempt',()=>{
+test('published lesson order follows canonical order; archival data remains intact',()=>{
   assert.deepEqual(auditCurriculum(projectRoot).errors,[]);
   assert.deepEqual(validatePublishedCatalog({manifest,runtimeCourse:runtime,legacy,readLesson}),[]);
   const unordered=structuredClone(runtime);
@@ -47,9 +47,9 @@ test('published lesson order follows canonical order; only frozen old content is
     .some(s=>s.includes('order')));
   const tampered=path=>path==='lessons/a1-6.json'?'{"id":"A1-6","goal":"silently replaced"}':readLesson(path);
   assert.ok(validatePublishedCatalog({manifest,runtimeCourse:runtime,legacy,readLesson:tampered})
-    .some(s=>s.includes('legacy content changed')));
+    .some(s=>s.includes('immutable archived lesson changed')));
 });
-test('cannot publish A1-10 while migrated A1-6..9 are still missing',()=>{
+test('cannot publish A1-10 out of sequence before A1-7..9',()=>{
   const extra=structuredClone(runtime);
   extra.stages[0].chapters[1].lessons.push({
     id:'A1-10',title:'معرفی خانه و امکانات آن',status:'sample',
@@ -59,7 +59,7 @@ test('cannot publish A1-10 while migrated A1-6..9 are still missing',()=>{
     if(path==='lessons/a1-10.json')return JSON.stringify({id:'A1-10'});
     return readLesson(path);
   }});
-  assert.ok(errors.some(x=>x.includes('Cannot publish another new')));
+  assert.ok(errors.some(x=>x.includes('order')));
   assert.ok(errors.some(x=>x.includes('roadmapRef')));
 });
 

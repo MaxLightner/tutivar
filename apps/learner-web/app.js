@@ -3,6 +3,7 @@ import { addPuzzleWord, canAppendPuzzleWord, undoPuzzleWord, clearPuzzleSentence
 import { renderActivity } from './lesson-modules.js';
 import { advanceDeck, answerDeck, deckState, jumpDeck, resumeDeck, startDeckTest, wordId } from './word-review.js';
 import { evaluateResponse, practiceState, submitPractice } from './practice-engine.js';
+import { migrateLegacyProgress } from './progress-migration.js';
 
 const $root = document.getElementById('app');
 // The compiled JS URL carries the deployment SHA. Use it for lesson and course
@@ -49,8 +50,8 @@ const ICONS = {
 const icon = (name, size = '') => `<span class="icon ${size}"><svg aria-hidden="true" viewBox="0 0 24 24">${ICONS[name] || ICONS.star}</svg></span>`;
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const en = (text) => `<span class="en" lang="en" dir="ltr">${escapeHtml(text)}</span>`;
-const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, sentenceComposers: {}, meaningChoices: {}, spatialChoices: {}, familyPeople: {}, agreementChoices: {}, pluralChoices: {}, mathChoices: {}, mathOps: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
-function readProgress() { try { const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); return { ...defaultProgress(), ...saved, settings: { ...defaultProgress().settings, ...(saved.settings || {}) } }; } catch { return defaultProgress(); } }
+const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, sentenceLabs: {}, sentenceComposers: {}, meaningChoices: {}, spatialChoices: {}, familyPeople: {}, agreementChoices: {}, pluralChoices: {}, mathChoices: {}, mathOps: {}, attributeChoices: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
+function readProgress() { try { const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); const migrated = migrateLegacyProgress(saved); if(migrated!==saved)localStorage.setItem(STORAGE_KEY,JSON.stringify(migrated)); return { ...defaultProgress(), ...migrated, settings: { ...defaultProgress().settings, ...(migrated.settings || {}) } }; } catch { return defaultProgress(); } }
 const progress = readProgress();
 // Historical completion records predate skill evidence. Preserve them in storage,
 // but don't label a revised activity as mastered before its new checks are passed.
@@ -478,6 +479,15 @@ function onClick(event) {
     const previous = progress.meaningChoices[key] || {};
     const index = ((Number(previous[concept.id]) || 0) + 1) % concept.forms.length;
     progress.meaningChoices[key] = { ...previous, [concept.id]: index };
+    persist(); updateInline(); return;
+  }
+  if (el.dataset.attributeKey) {
+    const key=el.dataset.attributeKey,field=el.dataset.attributeField;
+    const activity=lessonActivity(key);
+    if(activity?.type!=='tap-attributes-lab'||!activity.options?.[field]?.length)return;
+    progress.attributeChoices ||= {};
+    const values=progress.attributeChoices[key]||{};
+    progress.attributeChoices[key]={...values,[field]:((Number(values[field])||0)+1)%activity.options[field].length};
     persist(); updateInline(); return;
   }
   if (el.dataset.countMathKey) {

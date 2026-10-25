@@ -64,7 +64,7 @@ test('spatial lab uses clear, distinct depth and side-on box states', () => {
 for (const [number, sample] of [
   [1, `You: Good evening! How are you? Friend: I'm fine, thanks. And you? You: My name is Ali. What's your name? Nice to meet you! Bye!`],
   [2, `Hello! Please look at this photo. Who's this? This is my mother. Her name is Roya. Is this your father? Yes. His name is Ali. Bye!`],
-  [3, `This is my pen. Is this your phone? No, it's mine. It's yours. It's his bag.`],
+  [3, `This is my pen. Is this your phone? No, it's mine. It's yours. It's his bag. I have a book. I don't have a pen. Do you have a notebook?`],
   [4, `My pen is in my bag. My pen is on the bag. The book is next to my bag. Where is my phone?`]
 ]) {
   test(`A1-${number} personal production accepts a real-world response`, () => {

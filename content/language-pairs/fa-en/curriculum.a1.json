@@ -61,20 +61,11 @@
             },
             {
               "id": "A1-6",
-              "title": "از عددهای دورقمی تا سن",
-              "subtitle": "اول ساخت عددهای ۱۱ تا ۱۰۰، بعد پرسیدن سن",
-              "icon": "message",
-              "feature": "عددسازی و گفتن سن",
-              "file": "lessons/a1-6.json",
-              "status": "sample"
-            },
-            {
-              "id": "A1-7",
-              "title": "این چیست؟ آن کیست؟",
-              "subtitle": "شناسایی افراد و اشیای نزدیک و دور",
+              "title": "توصیف ویژگی‌های اشیا",
+              "subtitle": "اندازه، شکل، جنس و سؤال از ویژگی",
               "icon": "sparkles",
-              "feature": "What / Who و this / that",
-              "file": "lessons/a1-7.json",
+              "feature": "مقایسهٔ زندهٔ دو شیء",
+              "file": "lessons/a1-6-v2.json",
               "status": "sample"
             },
             {
@@ -90,24 +81,6 @@
           "title": "خانه و زندگی روزمره",
           "description": "خانه، اتاق و چیزهایی که هر روز به کار می‌بری",
           "lessons": [
-            {
-              "id": "A1-8",
-              "title": "اتاق‌های خانه",
-              "subtitle": "اتاق‌ها، نقشهٔ خانه و محل افراد",
-              "icon": "home",
-              "feature": "نقشهٔ تعاملی و جمله‌سازی",
-              "file": "lessons/a1-8.json",
-              "status": "sample"
-            },
-            {
-              "id": "A1-9",
-              "title": "وسایل اتاق من",
-              "subtitle": "وسایل، چیدمان و جملهٔ دومکانی",
-              "icon": "objects",
-              "feature": "موقعیت تعاملی وسایل",
-              "file": "lessons/a1-9.json",
-              "status": "sample"
-            },
             [
               "رنگ‌ها و شکل‌ها",
               "sparkles"
