@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "approvedRevision": "2026-10-25-owner-cumulative-a1",
+  "approvedRevision": "2026-10-25-owner-kitchen-verbs-a1",
   "sourcePath": "docs/curriculum/01-universal-learning-path.md",
-  "sourceGitBlobSha": "20949575655d8e4d9af2e3485c526f2f9e09f808",
+  "sourceGitBlobSha": "50d51f0bbd4275447a27541a1a8198b2e5af27af",
   "manifestPath": "content/curriculum/universal-path.v1.json",
-  "manifestGitBlobSha": "aafa77abc784be7809610119ae74292df7d8d6e5",
+  "manifestGitBlobSha": "d267774ffea263b1846ef6a7ad0d67de71f3eaf5",
   "approvedChanges": [
     {
       "revision": "2026-10-25-owner-cumulative-a1",
@@ -65,6 +65,13 @@
       ],
       "decisionReference": "Tutivar project conversation, 2026-10-25: owner explicitly moved counting to lesson 3, ownership to lesson 4, location to lesson 5 and requested cumulative reuse and dynamic descriptions in lesson 6.",
       "rationale": "Counting and family must precede possession; later lessons recombine learned vocabulary and grammar without reintroducing words in the vocabulary bank."
+    },
+    {
+      "revision": "2026-10-25-owner-kitchen-verbs-a1",
+      "authorizedBy": "product-owner",
+      "affectedIds": ["A1-11", "A1-12"],
+      "decisionReference": "Tutivar project conversation, 2026-10-25: owner explicitly corrected A1-11 to foods and kitchen as the first systematic action-verb lesson and defined A1-12 as main meals and table conversation; owner required every corrected title to update the GitHub-stored canonical table.",
+      "rationale": "Food and kitchen action verbs must precede talking about breakfast, lunch, dinner and practical table dialogue. The menu and price bridge remain a final transfer exercise in A1-11, not its subject. A1 stage grouping is display-only: 1–12, 13–20, 21–34."
     }
   ],
   "authorization": "Baseline from owner's supplied document. Future amendments require an explicit owner instruction and a matching decision entry and lock update."

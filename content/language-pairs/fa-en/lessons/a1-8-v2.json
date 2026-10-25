@@ -9,7 +9,7 @@
   "archetype": "K4/K12",
   "roadmapRef": {
     "id": "A1-8",
-    "revision": "2026-10-25-owner-cumulative-a1",
+    "revision": "2026-10-25-owner-kitchen-verbs-a1",
     "communicativeOutcome": "سن، نشانی، شماره تماس، زبان و اطلاعات شخصی ساده را می‌پرسد و می‌گوید؛ همان اطلاعات را در یک پروفایل بسیار کوتاهِ دو یا سه‌خانه‌ای ثبت می‌کند. دانشجو یا شاغل بودن و رشتهٔ تحصیلی فعلی را با قالب ساده بیان می‌کند؛ کشور و زبان را در همین مرحله به معرفی اضافه می‌کند."
   },
   "teachingModel": {
@@ -18,7 +18,7 @@
   },
   "lessonTemplate": "discovery-production-v1",
   "orientation": {
-    "goal": "با عددهای بزرگ‌تر، سن، کشور، زبان، تحصیل، شغل و اطلاعات تماس را در یک معرفی کوتاه بیان کن.",
+    "goal": "با What / How / Where / Do پرسش‌های نام، سن، تلفن، نشانی، زبان، کشور و تحصیل را بساز و پاسخ بده.",
     "prerequisites": [
       "A1-1: نام و احوال‌پرسی",
       "A1-2: خانواده",
@@ -55,7 +55,7 @@
     {
       "id": "foundation",
       "label": "کشف و ساخت جمله",
-      "intro": "اول اعداد ۱۳ تا ۱۰۰ را در سن و شماره امتحان کن، بعد کارت اطلاعات نمونه را با لمس جمله تغییر بده.",
+      "intro": "اول یاد بگیر با What / How / Where / Do چه سؤالی بپرسی؛ بعد عددها و فاعل‌های متفاوت را وارد جواب کن.",
       "masteryActivityIds": [
         "a1-8-build"
       ],
@@ -76,7 +76,11 @@
             "I speak Persian and English.",
             "I am a student.",
             "I study architecture.",
-            "What is your phone number?"
+            "What is your phone number?",
+            "How old are you?",
+            "What language do you speak?",
+            "Where do you live?",
+            "What do you study?"
           ]
         },
         {
@@ -396,6 +400,129 @@
           ]
         },
         {
+          "id": "a1-8-question-explorer",
+          "type": "question-explorer",
+          "phase": "phrases",
+          "title": "چطور اطلاعات کسی را بپرسیم؟",
+          "description": "هر کارت یک کلمهٔ پرسشی، یک سؤال، پاسخ نمونه و دلیل انتخاب آن را نشان می‌دهد. روی نوع سؤال بزن و تفاوت را ببین؛ هیچ اطلاعات واقعی لازم نیست.",
+          "questions": [
+            {
+              "label": "اسم",
+              "word": "WHAT",
+              "question": "What is your name?",
+              "fa": "اسمت چیست؟",
+              "answer": "My name is Sara.",
+              "tip": "What is ...? برای پرسیدن نام یا یک داده به کار می‌رود."
+            },
+            {
+              "label": "سن",
+              "word": "HOW OLD",
+              "question": "How old are you?",
+              "fa": "چند سال داری؟",
+              "answer": "I am twenty-four years old.",
+              "tip": "How old ...? ترکیب ثابتِ پرسیدن سن است؛ سن در پاسخ با am/is/are بیان می‌شود."
+            },
+            {
+              "label": "تلفن",
+              "word": "WHAT",
+              "question": "What is your phone number?",
+              "fa": "شماره تلفنت چیست؟",
+              "answer": "My phone number is 000-111-222.",
+              "tip": "شمارهٔ تلفن نمونه است. رقم‌ها را جداگانه بخوان؛ از شمارهٔ واقعی استفاده نکن."
+            },
+            {
+              "label": "زبان",
+              "word": "WHAT",
+              "question": "What language do you speak?",
+              "fa": "به چه زبانی صحبت می‌کنی؟",
+              "answer": "I speak Persian and English.",
+              "tip": "What language ...? زبان گفتاری را می‌پرسد؛ Do you speak English? پاسخ بله/نه می‌خواهد."
+            },
+            {
+              "label": "کشور",
+              "word": "WHERE",
+              "question": "Where are you from?",
+              "fa": "اهل کدام کشور هستی؟",
+              "answer": "I am from Iran.",
+              "tip": "Where ... from? برای خاستگاه است. Where do you live? جای زندگی فعلی را می‌پرسد."
+            },
+            {
+              "label": "محل زندگی",
+              "word": "WHERE",
+              "question": "Where do you live?",
+              "fa": "کجا زندگی می‌کنی؟",
+              "answer": "I live in Tehran.",
+              "tip": "با I و You از do استفاده می‌کنیم؛ برای She و He می‌گوییم Where does she/he live?"
+            },
+            {
+              "label": "نشانی",
+              "word": "WHAT",
+              "question": "What is your address?",
+              "fa": "آدرست چیست؟",
+              "answer": "My address is 12 River Street.",
+              "tip": "نشانی فقط ساختگی است؛ برای یادگیری ساختار جمله به کار می‌رود."
+            },
+            {
+              "label": "شغل",
+              "word": "WHAT",
+              "question": "What do you do?",
+              "fa": "شغلت چیست / چه‌کار می‌کنی؟",
+              "answer": "I am a teacher.",
+              "tip": "What do you do? برای پرسیدن شغل رایج است؛ با How are you? اشتباه نکن."
+            },
+            {
+              "label": "تحصیل",
+              "word": "WHAT",
+              "question": "What do you study?",
+              "fa": "چه رشته‌ای می‌خوانی؟",
+              "answer": "I study architecture.",
+              "tip": "Study + رشته؛ I am a student فقط دانشجو بودن را می‌گوید."
+            },
+            {
+              "label": "دانشجو هستی؟",
+              "word": "ARE",
+              "question": "Are you a student?",
+              "fa": "آیا دانشجو هستی؟",
+              "answer": "Yes, I am a student.",
+              "tip": "سؤال Are you ...? پاسخ بله/نه می‌خواهد؛ برخلاف What / Where که اطلاعات می‌خواهند."
+            },
+            {
+              "label": "نام او",
+              "word": "WHAT",
+              "question": "What is her name?",
+              "fa": "اسم او (دختر/زن) چیست؟",
+              "answer": "Her name is Mina.",
+              "tip": "برای پرسیدن دربارهٔ شخص دیگر her / his را به‌جای your می‌آوریم."
+            },
+            {
+              "label": "سن او",
+              "word": "HOW OLD",
+              "question": "How old is your brother?",
+              "fa": "برادرت چند سال دارد؟",
+              "answer": "My brother is nineteen years old.",
+              "tip": "وقتی دربارهٔ او می‌پرسی are you به is your brother تبدیل می‌شود."
+            }
+          ]
+        },
+        {
+          "id": "a1-8-question-practice",
+          "type": "response-practice",
+          "phase": "phrases",
+          "title": "این بار خودت سؤال درست کن",
+          "description": "پرسش‌ها را از روی معنی فارسی بساز؛ What / How old / Where و تفاوت do و is را تمرین کن.",
+          "practiceRevision": 1,
+          "tasks": [
+            {"task":"از مخاطب نامش را بپرس.","hint":"What is your name?","example":"What is your name?","assessment":{"required":[{"any":["what is your name"],"feedback":"What is your name? با what شروع می‌شود."}],"success":"درست پرسیدی."}},
+            {"task":"از مخاطب بپرس چند سال دارد.","hint":"How old are you?","example":"How old are you?","assessment":{"required":[{"any":["how old are you"],"feedback":"برای سن از How old are ... استفاده کن."}],"success":"سؤال سن درست است."}},
+            {"task":"از مخاطب شمارهٔ تلفنش را بپرس.","hint":"What is your phone number?","example":"What is your phone number?","assessment":{"required":[{"any":["what is your phone number"],"feedback":"What is your phone number? را کامل بساز."}],"success":"سؤال تماس را ساختی."}},
+            {"task":"بپرس به چه زبانی صحبت می‌کند.","hint":"What language do you speak?","example":"What language do you speak?","assessment":{"required":[{"any":["what language do you speak"],"feedback":"What language با do you speak همراه می‌شود."}],"success":"سؤال زبان را ساختی."}},
+            {"task":"از مخاطب بپرس اهل کجاست.","hint":"Where are you from?","example":"Where are you from?","assessment":{"required":[{"any":["where are you from"],"feedback":"Where are you from? را بساز."}],"success":"پرسش کشور درست است."}},
+            {"task":"بپرس در کدام شهر زندگی می‌کند.","hint":"Where do you live?","example":"Where do you live?","assessment":{"required":[{"any":["where do you live"],"feedback":"برای live از do you استفاده کن."}],"success":"سؤال محل زندگی را ساختی."}},
+            {"task":"از مخاطب رشتهٔ تحصیلی‌اش را بپرس.","hint":"What do you study?","example":"What do you study?","assessment":{"required":[{"any":["what do you study"],"feedback":"What do you study? را کامل کن."}],"success":"سؤال تحصیل درست است."}},
+            {"task":"این بار از سنِ خواهر مخاطب بپرس.","hint":"How old is your sister?","example":"How old is your sister?","assessment":{"required":[{"any":["how old is your sister"],"feedback":"در مورد she / sister فعل is می‌آید."}],"success":"فاعل را تغییر دادی و فعل را هم درست عوض کردی."}}
+          ]
+        },
+        {
           "id": "a1-8-expressions",
           "type": "expression-study",
           "phase": "phrases",
@@ -586,6 +713,46 @@
             {
               "en": "My brother",
               "be": "is"
+            },
+            {
+              "en": "You",
+              "be": "are"
+            },
+            {
+              "en": "He",
+              "be": "is"
+            },
+            {
+              "en": "She",
+              "be": "is"
+            },
+            {
+              "en": "We",
+              "be": "are"
+            },
+            {
+              "en": "They",
+              "be": "are"
+            },
+            {
+              "en": "My mother",
+              "be": "is"
+            },
+            {
+              "en": "My father",
+              "be": "is"
+            },
+            {
+              "en": "My parents",
+              "be": "are"
+            },
+            {
+              "en": "Sara",
+              "be": "is"
+            },
+            {
+              "en": "Ali and Mina",
+              "be": "are"
             }
           ]
         },
@@ -1437,8 +1604,8 @@
           "id": "a1-8-exchange",
           "type": "exchange-lab",
           "phase": "correspondence",
-          "title": "یک سؤال، چند مشخصات درست",
-          "description": "یک سؤال را نگه دار و پاسخ‌ها را جابه‌جا کن تا تفاوت معنی روشن شود.",
+          "title": "۱۴ سؤال واقعیِ معرفی، با ۴ پاسخ متنوع",
+          "description": "از نام و سن تا تلفن، نشانی، زبان و رشتهٔ تحصیلی؛ برای هر سؤال چهار پاسخ نمونه را مقایسه و با صدای بلند تکرار کن. همهٔ داده‌ها ساختگی‌اند.",
           "pairs": [
             {
               "question": "How old are you?",
@@ -1455,7 +1622,9 @@
                   "en": "I am nineteen years old.",
                   "fa": "نوزده سال دارم.",
                   "note": "پاسخ تغییر کرد."
-                }
+                },
+                {"label":"۳۵","en":"I am thirty-five years old.","fa":"سی‌وپنج سال دارم.","note":"دهگان و یکان را ترکیب کردی."},
+                {"label":"۴۲","en":"I am forty-two years old.","fa":"چهل‌ودو سال دارم.","note":"حالا با عدد دو رقمی تازه جواب بده."}
               ]
             },
             {
@@ -1473,7 +1642,9 @@
                   "en": "I am from Japan.",
                   "fa": "اهل ژاپن هستم.",
                   "note": "کشور تغییر کرد."
-                }
+                },
+                {"label":"فرانسه","en":"I am from France.","fa":"اهل فرانسه هستم."},
+                {"label":"کشور + زبان","en":"I am from Iran. I speak Persian.","fa":"اهل ایرانم و فارسی صحبت می‌کنم."}
               ]
             },
             {
@@ -1491,9 +1662,22 @@
                   "en": "I work as a teacher.",
                   "fa": "به‌عنوان معلم کار می‌کنم.",
                   "note": "شغل فعلی."
-                }
+                },
+                {"label":"مهندس","en":"I am an engineer.","fa":"مهندس هستم."},
+                {"label":"دانشجوی معماری","en":"I am a student. I study architecture.","fa":"دانشجو هستم و معماری می‌خوانم."}
               ]
-            }
+            },
+            {"question":"What is your name?","questionFa":"اسمت چیست؟","variants":[{"label":"سارا","en":"My name is Sara.","fa":"اسم من سارا است."},{"label":"علی","en":"My name is Ali.","fa":"اسم من علی است."},{"label":"مینا","en":"My name is Mina.","fa":"اسم من مینا است."},{"label":"نام کامل","en":"My name is Sara Ahmadi.","fa":"نام من سارا احمدی است."}]},
+            {"question":"What language do you speak?","questionFa":"به چه زبانی صحبت می‌کنی؟","variants":[{"label":"فارسی","en":"I speak Persian.","fa":"فارسی حرف می‌زنم."},{"label":"انگلیسی","en":"I speak English.","fa":"انگلیسی صحبت می‌کنم."},{"label":"هر دو","en":"I speak Persian and English.","fa":"فارسی و انگلیسی صحبت می‌کنم."},{"label":"ژاپنی","en":"I speak Japanese.","fa":"ژاپنی صحبت می‌کنم."}]},
+            {"question":"What is your phone number?","questionFa":"شمارهٔ تلفنت چیست؟","variants":[{"label":"شمارهٔ ۱","en":"My phone number is 000-111-222.","fa":"شمارهٔ نمونهٔ من ۰۰۰-۱۱۱-۲۲۲ است."},{"label":"شمارهٔ ۲","en":"My phone number is 000-333-444.","fa":"شمارهٔ نمونهٔ من ۰۰۰-۳۳۳-۴۴۴ است."},{"label":"شمارهٔ ۳","en":"It is 000-555-666.","fa":"شمارهٔ نمونه ۰۰۰-۵۵۵-۶۶۶ است."},{"label":"بلد نیستم","en":"I do not remember my phone number.","fa":"شماره‌ام را به خاطر ندارم."}]},
+            {"question":"What is your address?","questionFa":"نشانی‌ات چیست؟","variants":[{"label":"خیابان رود","en":"My address is 12 River Street.","fa":"آدرسم خیابان رود، پلاک ۱۲ است."},{"label":"خیابان پارک","en":"My address is 5 Park Street.","fa":"آدرسم خیابان پارک، پلاک ۵ است."},{"label":"کوتاه","en":"I live on Park Street.","fa":"در خیابان پارک زندگی می‌کنم."},{"label":"بدون نشانی","en":"I do not want to share my address.","fa":"نمی‌خواهم آدرسم را بگویم."}]},
+            {"question":"Where do you live?","questionFa":"کجا زندگی می‌کنی؟","variants":[{"label":"تهران","en":"I live in Tehran.","fa":"تهران زندگی می‌کنم."},{"label":"توکیو","en":"I live in Tokyo.","fa":"توکیو زندگی می‌کنم."},{"label":"مشهد","en":"I live in Mashhad.","fa":"مشهد زندگی می‌کنم."},{"label":"پاریس","en":"I live in Paris.","fa":"پاریس زندگی می‌کنم."}]},
+            {"question":"What do you study?","questionFa":"چه رشته‌ای می‌خوانی؟","variants":[{"label":"معماری","en":"I study architecture.","fa":"معماری می‌خوانم."},{"label":"انگلیسی","en":"I study English.","fa":"انگلیسی می‌خوانم."},{"label":"زبان","en":"I study languages.","fa":"زبان‌ها را مطالعه می‌کنم."},{"label":"دانشجو نیستم","en":"I do not study now. I work.","fa":"الان درس نمی‌خوانم، کار می‌کنم."}]},
+            {"question":"Are you a student?","questionFa":"دانشجو هستی؟","variants":[{"label":"بله","en":"Yes, I am a student.","fa":"بله، دانشجو هستم."},{"label":"نه","en":"No, I am not a student.","fa":"نه، دانشجو نیستم."},{"label":"دانشجوی معماری","en":"Yes, I study architecture.","fa":"بله، معماری می‌خوانم."},{"label":"کار می‌کنم","en":"No, I work as a teacher.","fa":"نه، معلم هستم."}]},
+            {"question":"How old is your sister?","questionFa":"خواهرت چند سال دارد؟","variants":[{"label":"۱۹","en":"My sister is nineteen years old.","fa":"خواهرم ۱۹ سال دارد."},{"label":"۲۱","en":"She is twenty-one years old.","fa":"۲۱ سال دارد."},{"label":"۲۴","en":"My sister is twenty-four.","fa":"خواهرم ۲۴ ساله است."},{"label":"۳۵","en":"She is thirty-five years old.","fa":"۳۵ ساله است."}]},
+            {"question":"Does your brother speak English?","questionFa":"برادرت انگلیسی صحبت می‌کند؟","variants":[{"label":"بله","en":"Yes, he speaks English.","fa":"بله، انگلیسی صحبت می‌کند."},{"label":"نه","en":"No, he speaks Persian.","fa":"نه، فارسی صحبت می‌کند."},{"label":"هر دو","en":"Yes, he speaks English and Persian.","fa":"بله، انگلیسی و فارسی صحبت می‌کند."},{"label":"کمی","en":"Yes, he speaks a little English.","fa":"بله، کمی انگلیسی صحبت می‌کند."}]},
+            {"question":"Where is your mother from?","questionFa":"مادرت اهل کجاست؟","variants":[{"label":"ایران","en":"My mother is from Iran.","fa":"مادرم اهل ایران است."},{"label":"ژاپن","en":"She is from Japan.","fa":"اهل ژاپن است."},{"label":"فرانسه","en":"My mother is from France.","fa":"مادرم اهل فرانسه است."},{"label":"ایران + زندگی","en":"She is from Iran, but she lives in Japan.","fa":"اهل ایران است، ولی در ژاپن زندگی می‌کند."}]},
+            {"question":"What does your father do?","questionFa":"پدرت چه شغلی دارد؟","variants":[{"label":"معلم","en":"My father is a teacher.","fa":"پدرم معلم است."},{"label":"مهندس","en":"He is an engineer.","fa":"مهندس است."},{"label":"دانشجو","en":"My father is a student.","fa":"پدرم دانشجو است."},{"label":"معماری","en":"He works in architecture.","fa":"در زمینهٔ معماری کار می‌کند."}]}
           ]
         },
         {

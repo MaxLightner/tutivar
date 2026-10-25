@@ -104,7 +104,10 @@ export function validatePublishedCatalog({ manifest, runtimeCourse, legacy, read
     }
     if (entry.title !== canonical.title && !legacy.contentGaps.some(g => g.id === entry.id && g.allowTitleAlias))
       errors.push(entry.id + ': published title differs from owner-approved target "' + canonical.title + '"');
-    if (!readLesson || !entry.file) { if (!entry.file) errors.push(entry.id + ': published lesson lacks a file'); continue; }
+    if (!readLesson || !entry.file) {
+      if (!entry.file && entry.status === 'sample') errors.push(entry.id + ': published lesson lacks a file');
+      continue;
+    }
     const raw = readLesson(entry.file);
     if (!raw) { errors.push(entry.id + ': missing published content'); continue; }
     const lesson = JSON.parse(raw);

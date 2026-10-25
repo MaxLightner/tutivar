@@ -9,7 +9,7 @@
   "archetype": "K2",
   "roadmapRef": {
     "id": "A1-10",
-    "revision": "2026-10-25-owner-cumulative-a1",
+    "revision": "2026-10-25-owner-kitchen-verbs-a1",
     "communicativeOutcome": "خانه و اتاق‌ها و امکاناتش را توصیف می‌کند؛ می‌گوید در خانه‌اش چه هست و چه نیست."
   },
   "teachingModel": {
@@ -1230,8 +1230,8 @@
           "id": "a1-10-exchange",
           "type": "exchange-lab",
           "phase": "correspondence",
-          "title": "خانهٔ من چه دارد؟ یک سؤال، چند پاسخ",
-          "description": "یک سؤال را نگه دار و پاسخ‌ها را جابه‌جا کن تا تفاوت معنی روشن شود.",
+          "title": "۱۲ سؤال دربارهٔ خانه، هر بار ۴ جواب",
+          "description": "اتاق‌ها، وسایل، تعداد، جای اشیا و نبودن امکانات را در یک سؤال به هم پیوند بده؛ هر پاسخ یک تصویر تازه از خانه می‌سازد.",
           "pairs": [
             {
               "question": "Is there a fridge in the kitchen?",
@@ -1248,7 +1248,9 @@
                   "en": "No, there is no fridge.",
                   "fa": "نه، یخچال نیست.",
                   "note": "نبودن."
-                }
+                },
+                {"label":"دو یخچال","en":"Yes, there are two fridges.","fa":"بله، دو یخچال هست."},
+                {"label":"یخچال و اجاق","en":"Yes, there is a fridge and a stove.","fa":"بله، یک یخچال و یک اجاق هست."}
               ]
             },
             {
@@ -1266,7 +1268,9 @@
                   "en": "There are four rooms.",
                   "fa": "چهار اتاق هست.",
                   "note": "تعداد را عوض کردی."
-                }
+                },
+                {"label":"دو","en":"There are two rooms.","fa":"دو اتاق هست."},
+                {"label":"پنج","en":"There are five rooms.","fa":"پنج اتاق هست."}
               ]
             },
             {
@@ -1284,9 +1288,20 @@
                   "en": "No, there are no chairs.",
                   "fa": "نه، هیچ صندلی نیست.",
                   "note": "نبودن در جمع."
-                }
+                },
+                {"label":"سه عدد","en":"Yes, there are three chairs.","fa":"بله، سه صندلی هست."},
+                {"label":"یک صندلی","en":"Yes, there is one chair.","fa":"بله، یک صندلی هست."}
               ]
-            }
+            },
+            {"question":"How many books are on the table?","questionFa":"چند کتاب روی میز است؟","variants":[{"label":"سه کتاب","en":"There are three books on the table.","fa":"سه کتاب روی میز هست."},{"label":"شش کتاب","en":"There are six books on the table.","fa":"شش کتاب روی میز هست."},{"label":"یک کتاب","en":"There is one book on the table.","fa":"یک کتاب روی میز هست."},{"label":"هیچ کتاب","en":"There are no books on the table.","fa":"هیچ کتابی روی میز نیست."}]},
+            {"question":"Is there a window in the bedroom?","questionFa":"در اتاق‌خواب پنجره هست؟","variants":[{"label":"بله","en":"Yes, there is a window.","fa":"بله، پنجره هست."},{"label":"دو پنجره","en":"Yes, there are two windows.","fa":"بله، دو پنجره هست."},{"label":"نه","en":"No, there is no window.","fa":"نه، پنجره‌ای نیست."},{"label":"یک پنجرهٔ بزرگ","en":"Yes, there is a big window.","fa":"بله، یک پنجرهٔ بزرگ هست."}]},
+            {"question":"What is in the kitchen?","questionFa":"در آشپزخانه چه چیزی هست؟","variants":[{"label":"یخچال","en":"There is a fridge in the kitchen.","fa":"یک یخچال در آشپزخانه است."},{"label":"اجاق","en":"There is a stove in the kitchen.","fa":"یک اجاق در آشپزخانه است."},{"label":"میز و دو صندلی","en":"There is a table and there are two chairs.","fa":"یک میز و دو صندلی هست."},{"label":"سینک و یخچال","en":"There is a sink and a fridge.","fa":"سینک و یخچال هست."}]},
+            {"question":"Where is the sofa?","questionFa":"مبل کجاست؟","variants":[{"label":"نشیمن","en":"The sofa is in the living room.","fa":"مبل در نشیمن است."},{"label":"کنار پنجره","en":"The sofa is next to the window.","fa":"مبل کنار پنجره است."},{"label":"پشت میز","en":"The sofa is behind the table.","fa":"مبل پشت میز است."},{"label":"نزدیک در","en":"The sofa is near the door.","fa":"مبل نزدیک در است."}]},
+            {"question":"Does your house have a balcony?","questionFa":"خانه‌ات بالکن دارد؟","variants":[{"label":"بله","en":"Yes, my house has a balcony.","fa":"بله، خانه‌ام بالکن دارد."},{"label":"نه","en":"No, my house has no balcony.","fa":"نه، خانه‌ام بالکن ندارد."},{"label":"بالکن بزرگ","en":"Yes, it has a big balcony.","fa":"بله، بالکن بزرگی دارد."},{"label":"بالکن کوچک","en":"Yes, it has a small balcony.","fa":"بله، بالکن کوچکی دارد."}]},
+            {"question":"How many beds are in the bedrooms?","questionFa":"چند تخت در اتاق‌خواب‌ها هست؟","variants":[{"label":"یک تخت","en":"There is one bed.","fa":"یک تخت هست."},{"label":"دو تخت","en":"There are two beds.","fa":"دو تخت هست."},{"label":"سه تخت","en":"There are three beds.","fa":"سه تخت هست."},{"label":"هیچ تخت","en":"There are no beds.","fa":"هیچ تختی نیست."}]},
+            {"question":"Is there a mirror in the bathroom?","questionFa":"در حمام آینه هست؟","variants":[{"label":"بله","en":"Yes, there is a mirror.","fa":"بله، آینه هست."},{"label":"نه","en":"No, there is no mirror.","fa":"نه، آینه‌ای نیست."},{"label":"دو آینه","en":"Yes, there are two mirrors.","fa":"بله، دو آینه هست."},{"label":"بالای سینک","en":"Yes, the mirror is above the sink.","fa":"بله، آینه بالای سینک است."}]},
+            {"question":"What does your house not have?","questionFa":"خانهٔ تو چه چیزی ندارد؟","variants":[{"label":"گاراژ","en":"My house does not have a garage.","fa":"خانه‌ام گاراژ ندارد."},{"label":"باغ","en":"My house does not have a garden.","fa":"خانه‌ام باغچه ندارد."},{"label":"بالکن","en":"My house does not have a balcony.","fa":"خانه‌ام بالکن ندارد."},{"label":"اتاق اضافی","en":"My house does not have another bedroom.","fa":"خانه‌ام اتاق‌خواب دیگری ندارد."}]},
+            {"question":"Where are your two sisters?","questionFa":"دو خواهرت کجا هستند؟","variants":[{"label":"نشیمن","en":"My two sisters are in the living room.","fa":"دو خواهرم در نشیمن هستند."},{"label":"اتاق خواب","en":"They are in the bedroom.","fa":"در اتاق‌خواب هستند."},{"label":"آشپزخانه","en":"They are in the kitchen.","fa":"در آشپزخانه هستند."},{"label":"کنار میز","en":"They are next to the table.","fa":"کنار میز هستند."}]}
           ]
         },
         {

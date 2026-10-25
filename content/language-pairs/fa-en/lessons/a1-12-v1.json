@@ -1,0 +1,1724 @@
+{
+  "id": "A1-12",
+  "revision": "2026-10-25-canonical-a1-11-12",
+  "status": "draft",
+  "title": "وعده‌های اصلی و گفت‌وگو سر میز",
+  "goal": "از صبحانه، ناهار و شام خودت بگو؛ eat/eats و drink/drinks را در جملهٔ واقعی بیاور و سر میز مؤدبانه گفت‌وگو کن.",
+  "duration": 29,
+  "feature": "سه وعدهٔ تعاملی و گفت‌وگوی سر میز",
+  "archetype": "K2",
+  "roadmapRef": {
+    "id": "A1-12",
+    "revision": "2026-10-25-owner-kitchen-verbs-a1",
+    "communicativeOutcome": "درباره‌ی صبحانه، ناهار و شام حرف می‌زند؛ خوردن و آشامیدن را با فاعل‌های متنوع و زمان وعده در جمله به کار می‌برد؛ سر میز تعامل ساده و مؤدبانه دارد."
+  },
+  "teachingModel": {
+    "type": "discovery-production",
+    "sections": 2
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "دربارهٔ وعده‌ها حرف بزن و کنار میز درخواست مؤدبانه بده.",
+    "prerequisites": [
+      "A1-11: سفارش غذا",
+      "A1-3: تعداد",
+      "A1-8: فاعل‌های مختلف"
+    ],
+    "previously": "قبلاً می‌گفتی گرسنه‌ام، غذا می‌خواهم و دو ساندویچ سفارش می‌دادم؛ حالا می‌گویی هر کس در چه وعده‌ای چه می‌خورد.",
+    "quickCheck": {
+      "title": "مرور کوتاه",
+      "question": "چطور یک سوپ سفارش می‌دهی؟",
+      "example": "I would like one soup, please.",
+      "explanation": "در این درس سفارش را به گفت‌وگوی سر میز پیوند می‌دهیم.",
+      "allowSkip": false
+    }
+  },
+  "visual": {
+    "src": "./assets/scene-a1-12-meals.svg",
+    "alt": "سه میز صبحانه، ناهار و شام",
+    "caption": "هر وعده خوراک خودش را دارد؛ با لمس گزینه‌ها جمله تغییر می‌کند."
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "for breakfast",
+      "for lunch",
+      "for dinner",
+      "Pass me the"
+    ],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": true
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "بخش اول · واژه و کشف",
+      "intro": "از واژه به ترکیب و جمله",
+      "masteryActivityIds": [
+        "a1-12-puzzle",
+        "a1-12-build"
+      ],
+      "activities": [
+        {
+          "id": "a1-12-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "صدای میز غذا را بشنو و تکرار کن",
+          "description": "فعلاً مجبور نیستی معنای همهٔ جمله‌ها را بلد باشی.",
+          "audioSrc": null,
+          "rate": 0.78,
+          "pauseMs": 520,
+          "lines": [
+            "Breakfast is ready.",
+            "I eat eggs for breakfast.",
+            "My sister eats rice for lunch.",
+            "We have dinner together.",
+            "Can you pass me the water?",
+            "Here you are.",
+            "Thank you."
+          ]
+        },
+        {
+          "id": "a1-12-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "وعده‌ها، ظروف و رفتار سر میز",
+          "batchSize": 4,
+          "deckRevision": 1,
+          "items": [
+            {
+              "en": "breakfast",
+              "fa": "صبحانه",
+              "examples": [
+                "I eat eggs for breakfast.",
+                "My sister has breakfast at home.",
+                "What do you eat for breakfast?"
+              ]
+            },
+            {
+              "en": "lunch",
+              "fa": "ناهار",
+              "examples": [
+                "We eat lunch together.",
+                "I have rice for lunch.",
+                "What do you have for lunch?"
+              ]
+            },
+            {
+              "en": "dinner",
+              "fa": "شام",
+              "examples": [
+                "My family eats dinner at home.",
+                "We have chicken for dinner.",
+                "Dinner is ready."
+              ]
+            },
+            {
+              "en": "meal",
+              "fa": "وعدهٔ غذایی",
+              "examples": [
+                "Breakfast is a meal.",
+                "This meal is delicious.",
+                "We eat three meals today."
+              ]
+            },
+            {
+              "en": "snack",
+              "fa": "میان‌وعده",
+              "examples": [
+                "I eat an apple as a snack.",
+                "My brother wants a snack.",
+                "A small sandwich is a snack."
+              ]
+            },
+            {
+              "en": "usually",
+              "fa": "معمولاً",
+              "examples": [
+                "I usually eat bread for breakfast.",
+                "We usually have lunch at home.",
+                "My sister usually drinks tea."
+              ]
+            },
+            {
+              "en": "sometimes",
+              "fa": "گاهی",
+              "examples": [
+                "I sometimes have pizza for dinner.",
+                "We sometimes eat in a restaurant.",
+                "My father sometimes drinks coffee."
+              ]
+            },
+            {
+              "en": "always",
+              "fa": "همیشه",
+              "examples": [
+                "I always eat breakfast.",
+                "She always drinks water.",
+                "We always eat together."
+              ]
+            },
+            {
+              "en": "never",
+              "fa": "هرگز",
+              "examples": [
+                "I never drink coffee.",
+                "My brother never eats soup.",
+                "We never miss dinner."
+              ]
+            },
+            {
+              "en": "together",
+              "fa": "با هم",
+              "examples": [
+                "We eat lunch together.",
+                "My family has dinner together.",
+                "We sit together."
+              ]
+            },
+            {
+              "en": "ready",
+              "fa": "آماده",
+              "examples": [
+                "Dinner is ready.",
+                "The soup is ready.",
+                "Are you ready for lunch?"
+              ]
+            },
+            {
+              "en": "knife",
+              "fa": "چاقو",
+              "examples": [
+                "The knife is on the table.",
+                "I need a knife.",
+                "There are two knives on the table."
+              ]
+            },
+            {
+              "en": "fork",
+              "fa": "چنگال",
+              "examples": [
+                "The fork is next to the plate.",
+                "Can I have a fork?",
+                "There are three forks."
+              ]
+            },
+            {
+              "en": "spoon",
+              "fa": "قاشق",
+              "examples": [
+                "I need a spoon for my soup.",
+                "The spoon is on the table.",
+                "Pass me the spoon, please."
+              ]
+            },
+            {
+              "en": "plate",
+              "fa": "بشقاب",
+              "examples": [
+                "The rice is on the plate.",
+                "I have two plates.",
+                "The plate is white."
+              ]
+            },
+            {
+              "en": "bowl",
+              "fa": "کاسه",
+              "examples": [
+                "The soup is in the bowl.",
+                "There are two bowls.",
+                "My bowl is blue."
+              ]
+            },
+            {
+              "en": "napkin",
+              "fa": "دستمال سفره",
+              "examples": [
+                "I need a napkin.",
+                "The napkin is next to the plate.",
+                "Pass me a napkin, please."
+              ]
+            },
+            {
+              "en": "pass",
+              "fa": "دادن / رد کردن چیزی",
+              "examples": [
+                "Pass me the water, please.",
+                "Please pass the bread.",
+                "Can you pass me a spoon?"
+              ]
+            },
+            {
+              "en": "share",
+              "fa": "تقسیم کردن / شریک شدن",
+              "examples": [
+                "We share a pizza.",
+                "My sister and I share soup.",
+                "Can we share this meal?"
+              ]
+            },
+            {
+              "en": "serve",
+              "fa": "سرو کردن",
+              "examples": [
+                "We serve lunch at home.",
+                "Dinner is served.",
+                "Please serve the tea."
+              ]
+            },
+            {
+              "en": "more",
+              "fa": "بیشتر",
+              "examples": [
+                "Some more water, please.",
+                "Can I have more bread?",
+                "Do you want more soup?"
+              ]
+            },
+            {
+              "en": "enough",
+              "fa": "کافی",
+              "examples": [
+                "This is enough, thank you.",
+                "Do you have enough rice?",
+                "I have enough water."
+              ]
+            },
+            {
+              "en": "before",
+              "fa": "قبل از",
+              "examples": [
+                "We drink water before lunch.",
+                "I eat an apple before dinner.",
+                "Wash your hands before dinner."
+              ]
+            },
+            {
+              "en": "after",
+              "fa": "بعد از",
+              "examples": [
+                "I drink tea after lunch.",
+                "We sit together after dinner.",
+                "I feel happy after breakfast."
+              ]
+            },
+            {
+              "en": "with",
+              "fa": "با",
+              "examples": [
+                "I eat bread with cheese.",
+                "I have tea with milk.",
+                "We eat dinner with our family."
+              ]
+            },
+            {
+              "en": "without",
+              "fa": "بدون",
+              "examples": [
+                "Tea without sugar, please.",
+                "I eat salad without cheese.",
+                "Coffee without milk, please."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-12-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "عبارت‌هایی که در زندگی واقعی به هم می‌چسبند",
+          "description": "سازمان جمله را ببین: فاعل + خوردن/نوشیدن + خوراک + وعده.",
+          "items": [
+            {
+              "en": "for breakfast",
+              "fa": "برای صبحانه",
+              "kind": "fixed",
+              "examples": [
+                "I eat eggs for breakfast.",
+                "I have bread for breakfast.",
+                "What do you eat for breakfast?"
+              ]
+            },
+            {
+              "en": "for lunch",
+              "fa": "برای ناهار",
+              "kind": "fixed",
+              "examples": [
+                "We have rice for lunch.",
+                "My sister eats soup for lunch.",
+                "What do you eat for lunch?"
+              ]
+            },
+            {
+              "en": "for dinner",
+              "fa": "برای شام",
+              "kind": "fixed",
+              "examples": [
+                "I eat chicken for dinner.",
+                "We have soup for dinner.",
+                "What do you want for dinner?"
+              ]
+            },
+            {
+              "en": "at the table",
+              "fa": "سر میز",
+              "kind": "fixed",
+              "examples": [
+                "We sit at the table.",
+                "The family is at the table.",
+                "There are three plates at the table."
+              ]
+            },
+            {
+              "en": "Pass me the",
+              "fa": "لطفاً ... را بده",
+              "kind": "fixed",
+              "examples": [
+                "Pass me the water, please.",
+                "Pass me the spoon, please.",
+                "Pass me the bread, please."
+              ]
+            },
+            {
+              "en": "some more",
+              "fa": "کمی بیشتر",
+              "kind": "fixed",
+              "examples": [
+                "Some more water, please.",
+                "Can I have some more rice?",
+                "Do you want some more soup?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-12-meal-lab",
+          "type": "daily-choice-lab",
+          "phase": "phrases",
+          "title": "یک روز غذایی: وعده، فاعل و غذا را تغییر بده",
+          "description": "با لمس صبحانه، ناهار و شام و فاعل‌ها ببین eat به eats تبدیل می‌شود. غذای هر وعده هم در تصویر عوض می‌شود.",
+          "mode": "meal",
+          "options": [
+            {
+              "meal": "breakfast",
+              "fa": "صبحانه",
+              "emoji": "🍳",
+              "food": "eggs",
+              "other": "bread"
+            },
+            {
+              "meal": "lunch",
+              "fa": "ناهار",
+              "emoji": "🍚",
+              "food": "rice",
+              "other": "chicken"
+            },
+            {
+              "meal": "dinner",
+              "fa": "شام",
+              "emoji": "🍲",
+              "food": "soup",
+              "other": "salad"
+            }
+          ]
+        },
+        {
+          "id": "a1-12-warmup",
+          "type": "response-practice",
+          "phase": "phrases",
+          "title": "از صبحانه تا شام، بدون حذف درس قبل",
+          "practiceRevision": 1,
+          "description": "در جمله‌ها، فاعل، وعده و خوراک را تغییر بده؛ صرفاً تکرار نکن.",
+          "tasks": [
+            {
+              "task": "بگو من برای صبحانه نان و پنیر می‌خورم.",
+              "hint": "I eat bread and cheese for breakfast.",
+              "example": "I eat bread and cheese for breakfast.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i eat bread and cheese for breakfast"
+                    ],
+                    "feedback": "زمان و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "درست؛ می‌توانی این الگو را دوباره به کار ببری."
+              }
+            },
+            {
+              "task": "بگو خواهرم برای ناهار سوپ می‌خورد.",
+              "hint": "My sister eats soup for lunch.",
+              "example": "My sister eats soup for lunch.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my sister eats soup for lunch"
+                    ],
+                    "feedback": "زمان و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "درست؛ می‌توانی این الگو را دوباره به کار ببری."
+              }
+            },
+            {
+              "task": "بگو ما با خانواده شام می‌خوریم.",
+              "hint": "We eat dinner with our family.",
+              "example": "We eat dinner with our family.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "we eat dinner with our family"
+                    ],
+                    "feedback": "زمان و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "درست؛ می‌توانی این الگو را دوباره به کار ببری."
+              }
+            },
+            {
+              "task": "بپرس قاشق کجاست.",
+              "hint": "Where is the spoon?",
+              "example": "Where is the spoon?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "where is the spoon"
+                    ],
+                    "feedback": "زمان و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "درست؛ می‌توانی این الگو را دوباره به کار ببری."
+              }
+            },
+            {
+              "task": "بگو روی میز سه بشقاب هست.",
+              "hint": "There are three plates on the table.",
+              "example": "There are three plates on the table.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are three plates on the table"
+                    ],
+                    "feedback": "زمان و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "درست؛ می‌توانی این الگو را دوباره به کار ببری."
+              }
+            },
+            {
+              "task": "یک لیوان آب بیشتر بخواه.",
+              "hint": "Some more water, please.",
+              "example": "Some more water, please.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "some more water, please"
+                    ],
+                    "feedback": "زمان و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "درست؛ می‌توانی این الگو را دوباره به کار ببری."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-12-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "فاعل را عوض کن؛ eat / eats خودکار تغییر می‌کند",
+          "description": "صبحانه، ناهار و شام را با خواهر، برادر، من و ما ترکیب کن.",
+          "targetLanguage": "en",
+          "wordSets": {
+            "people": [
+              {
+                "id": "i",
+                "label": "I",
+                "translation": "من",
+                "forms": {
+                  "en": "I",
+                  "fa": "من"
+                }
+              },
+              {
+                "id": "we",
+                "label": "We",
+                "translation": "ما",
+                "forms": {
+                  "en": "We",
+                  "fa": "ما"
+                }
+              },
+              {
+                "id": "sister",
+                "label": "My sister",
+                "translation": "خواهرم",
+                "forms": {
+                  "en": "My sister",
+                  "fa": "خواهرم"
+                }
+              },
+              {
+                "id": "brother",
+                "label": "My brother",
+                "translation": "برادرم",
+                "forms": {
+                  "en": "My brother",
+                  "fa": "برادرم"
+                }
+              }
+            ],
+            "foods": [
+              {
+                "id": "eggs",
+                "label": "eggs",
+                "translation": "تخم‌مرغ",
+                "forms": {
+                  "en": "eggs",
+                  "fa": "تخم‌مرغ"
+                }
+              },
+              {
+                "id": "rice",
+                "label": "rice",
+                "translation": "برنج",
+                "forms": {
+                  "en": "rice",
+                  "fa": "برنج"
+                }
+              },
+              {
+                "id": "soup",
+                "label": "soup",
+                "translation": "سوپ",
+                "forms": {
+                  "en": "soup",
+                  "fa": "سوپ"
+                }
+              },
+              {
+                "id": "bread",
+                "label": "bread",
+                "translation": "نان",
+                "forms": {
+                  "en": "bread",
+                  "fa": "نان"
+                }
+              }
+            ],
+            "meals": [
+              {
+                "id": "breakfast",
+                "label": "breakfast",
+                "translation": "صبحانه",
+                "forms": {
+                  "en": "breakfast",
+                  "fa": "صبحانه"
+                }
+              },
+              {
+                "id": "lunch",
+                "label": "lunch",
+                "translation": "ناهار",
+                "forms": {
+                  "en": "lunch",
+                  "fa": "ناهار"
+                }
+              },
+              {
+                "id": "dinner",
+                "label": "dinner",
+                "translation": "شام",
+                "forms": {
+                  "en": "dinner",
+                  "fa": "شام"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "person",
+              "label": "فاعل",
+              "wordSet": "people",
+              "default": "i"
+            },
+            {
+              "id": "food",
+              "label": "خوراک",
+              "wordSet": "foods",
+              "default": "eggs"
+            },
+            {
+              "id": "meal",
+              "label": "وعده",
+              "wordSet": "meals",
+              "default": "breakfast"
+            }
+          ],
+          "derivedDefaults": {
+            "eat": "eat",
+            "have": "have"
+          },
+          "dependencies": [
+            {
+              "id": "she",
+              "when": {
+                "slot": "person",
+                "equals": "sister"
+              },
+              "set": {
+                "eat": "eats",
+                "have": "has"
+              }
+            },
+            {
+              "id": "he",
+              "when": {
+                "slot": "person",
+                "equals": "brother"
+              },
+              "set": {
+                "eat": "eats",
+                "have": "has"
+              }
+            }
+          ],
+          "defaultPattern": "eat",
+          "patterns": [
+            {
+              "id": "eat",
+              "label": "خوردن",
+              "segments": [
+                {
+                  "slot": "person",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "eat"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "food",
+                  "form": "en"
+                },
+                {
+                  "fixed": " for "
+                },
+                {
+                  "slot": "meal",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": []
+            },
+            {
+              "id": "have",
+              "label": "وعده داشتن",
+              "segments": [
+                {
+                  "slot": "person",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "have"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "meal",
+                  "form": "en"
+                },
+                {
+                  "fixed": " at home."
+                }
+              ],
+              "translationSegments": []
+            },
+            {
+              "id": "question",
+              "label": "سؤال از مخاطب",
+              "segments": [
+                {
+                  "fixed": "Do you eat "
+                },
+                {
+                  "slot": "food",
+                  "form": "en"
+                },
+                {
+                  "fixed": " for "
+                },
+                {
+                  "slot": "meal",
+                  "form": "en"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": []
+            }
+          ]
+        },
+        {
+          "id": "a1-12-forms",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "یک غذا، سه فرم جمله",
+          "sourceActivityId": "a1-12-composer",
+          "patternIds": [
+            "eat",
+            "have",
+            "question"
+          ]
+        },
+        {
+          "id": "a1-12-mini-quiz",
+          "type": "quiz-set",
+          "phase": "variants",
+          "title": "وعده و فاعل را درست تشخیص بده",
+          "questions": [
+            {
+              "question": "Which sentence describes your sister?",
+              "choices": [
+                "My sister eat rice.",
+                "My sister eats rice.",
+                "My sister eating rice.",
+                "My sister are eat rice."
+              ],
+              "answer": 1
+            },
+            {
+              "question": "کدام جمله از جای قاشق می‌پرسد؟",
+              "choices": [
+                "Where is the spoon?",
+                "Who is the spoon?",
+                "How much is the spoon?",
+                "What is your spoon?"
+              ],
+              "answer": 0
+            },
+            {
+              "question": "Breakfast / Lunch / Dinner کدام شام است؟",
+              "choices": [
+                "Breakfast",
+                "Dinner",
+                "Lunch",
+                "Snack"
+              ],
+              "answer": 1
+            }
+          ]
+        },
+        {
+          "id": "a1-12-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "هم وعده، هم خوردن، هم جای وسایل",
+          "revision": 1,
+          "goalCount": 6,
+          "reuseBank": true,
+          "sentences": [
+            {
+              "id": "sentence-1",
+              "words": [
+                "I",
+                "eat",
+                "eggs",
+                "for",
+                "breakfast."
+              ]
+            },
+            {
+              "id": "sentence-2",
+              "words": [
+                "My",
+                "sister",
+                "eats",
+                "rice",
+                "for",
+                "lunch."
+              ]
+            },
+            {
+              "id": "sentence-3",
+              "words": [
+                "We",
+                "have",
+                "dinner",
+                "together."
+              ]
+            },
+            {
+              "id": "sentence-4",
+              "words": [
+                "The",
+                "spoon",
+                "is",
+                "next",
+                "to",
+                "the",
+                "plate."
+              ]
+            },
+            {
+              "id": "sentence-5",
+              "words": [
+                "Please",
+                "pass",
+                "me",
+                "the",
+                "water."
+              ]
+            },
+            {
+              "id": "sentence-6",
+              "words": [
+                "Do",
+                "you",
+                "drink",
+                "tea",
+                "after",
+                "dinner?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-12-build",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "با ضمیرها و شمارش قبلی جملهٔ تازه بساز",
+          "practiceRevision": 1,
+          "description": "در جمله‌ها، فاعل، وعده و خوراک را تغییر بده؛ صرفاً تکرار نکن.",
+          "tasks": [
+            {
+              "task": "بگو برادرم برای شام سوپ می‌خورد.",
+              "hint": "My brother eats soup for dinner.",
+              "example": "My brother eats soup for dinner.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my brother eats soup for dinner"
+                    ],
+                    "feedback": "زمان و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "درست؛ می‌توانی این الگو را دوباره به کار ببری."
+              }
+            },
+            {
+              "task": "بگو ما صبحانه را با هم می‌خوریم.",
+              "hint": "We eat breakfast together.",
+              "example": "We eat breakfast together.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "we eat breakfast together"
+                    ],
+                    "feedback": "زمان و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "درست؛ می‌توانی این الگو را دوباره به کار ببری."
+              }
+            },
+            {
+              "task": "بپرس برای ناهار چه می‌خوری.",
+              "hint": "What do you eat for lunch?",
+              "example": "What do you eat for lunch?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "what do you eat for lunch"
+                    ],
+                    "feedback": "زمان و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "درست؛ می‌توانی این الگو را دوباره به کار ببری."
+              }
+            },
+            {
+              "task": "بگو روی میز دو چنگال است.",
+              "hint": "There are two forks on the table.",
+              "example": "There are two forks on the table.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are two forks on the table"
+                    ],
+                    "feedback": "زمان و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "درست؛ می‌توانی این الگو را دوباره به کار ببری."
+              }
+            },
+            {
+              "task": "آب را مؤدبانه درخواست کن.",
+              "hint": "Can you pass me the water, please?",
+              "example": "Can you pass me the water, please?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "can you pass me the water, please"
+                    ],
+                    "feedback": "زمان و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "درست؛ می‌توانی این الگو را دوباره به کار ببری."
+              }
+            },
+            {
+              "task": "بگو شام آماده است.",
+              "hint": "Dinner is ready.",
+              "example": "Dinner is ready.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "dinner is ready"
+                    ],
+                    "feedback": "زمان و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "درست؛ می‌توانی این الگو را دوباره به کار ببری."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "بخش دوم · گفت‌وگو و تولید",
+      "intro": "از پاسخ‌های مختلف تا متن مستقل",
+      "masteryActivityIds": [
+        "a1-12-guided",
+        "a1-12-independent"
+      ],
+      "activities": [
+        {
+          "id": "a1-12-exchange",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "۱۲ پرسش متنوع از صبحانه تا شام",
+          "description": "هر سؤال ۴ جواب معتبر دارد؛ ضمیر، غذا، زمان، تعداد یا رفتار سر میز را جابه‌جا کن.",
+          "pairs": [
+            {
+              "question": "What do you eat for breakfast?",
+              "questionFa": "برای صبحانه چه می‌خوری؟",
+              "variants": [
+                {
+                  "label": "تخم‌مرغ",
+                  "en": "I eat eggs for breakfast.",
+                  "fa": "تخم‌مرغ"
+                },
+                {
+                  "label": "نان و پنیر",
+                  "en": "I eat bread and cheese.",
+                  "fa": "نان و پنیر"
+                },
+                {
+                  "label": "یک سیب",
+                  "en": "I eat an apple.",
+                  "fa": "یک سیب"
+                },
+                {
+                  "label": "ساندویچ",
+                  "en": "I eat a small sandwich.",
+                  "fa": "ساندویچ"
+                }
+              ]
+            },
+            {
+              "question": "What does your sister eat for lunch?",
+              "questionFa": "خواهرت برای ناهار چه می‌خورد؟",
+              "variants": [
+                {
+                  "label": "برنج",
+                  "en": "She eats rice for lunch.",
+                  "fa": "برنج"
+                },
+                {
+                  "label": "مرغ",
+                  "en": "She eats chicken.",
+                  "fa": "مرغ"
+                },
+                {
+                  "label": "سوپ",
+                  "en": "She eats soup for lunch.",
+                  "fa": "سوپ"
+                },
+                {
+                  "label": "سالاد",
+                  "en": "She eats a salad.",
+                  "fa": "سالاد"
+                }
+              ]
+            },
+            {
+              "question": "What do you drink with dinner?",
+              "questionFa": "با شام چه می‌نوشی؟",
+              "variants": [
+                {
+                  "label": "آب",
+                  "en": "I drink water with dinner.",
+                  "fa": "آب"
+                },
+                {
+                  "label": "شیر",
+                  "en": "I drink milk.",
+                  "fa": "شیر"
+                },
+                {
+                  "label": "چای",
+                  "en": "I have tea after dinner.",
+                  "fa": "چای"
+                },
+                {
+                  "label": "آب‌میوه",
+                  "en": "I drink juice.",
+                  "fa": "آب‌میوه"
+                }
+              ]
+            },
+            {
+              "question": "Is dinner ready?",
+              "questionFa": "شام آماده است؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, dinner is ready.",
+                  "fa": "بله"
+                },
+                {
+                  "label": "نه",
+                  "en": "No, not yet.",
+                  "fa": "نه"
+                },
+                {
+                  "label": "روی میز است",
+                  "en": "Yes, it is on the table.",
+                  "fa": "روی میز است"
+                },
+                {
+                  "label": "سوپ آماده است",
+                  "en": "The soup is ready.",
+                  "fa": "سوپ آماده است"
+                }
+              ]
+            },
+            {
+              "question": "Can you pass me the bread?",
+              "questionFa": "می‌توانی نان را بدهی؟",
+              "variants": [
+                {
+                  "label": "بفرمایید",
+                  "en": "Yes, here you are.",
+                  "fa": "بفرمایید"
+                },
+                {
+                  "label": "حتماً",
+                  "en": "Of course. Here is the bread.",
+                  "fa": "حتماً"
+                },
+                {
+                  "label": "روی میز",
+                  "en": "It is on the table.",
+                  "fa": "روی میز"
+                },
+                {
+                  "label": "من ندارم",
+                  "en": "Sorry, I don't have bread.",
+                  "fa": "من ندارم"
+                }
+              ]
+            },
+            {
+              "question": "Would you like more water?",
+              "questionFa": "آب بیشتری می‌خواهی؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, please.",
+                  "fa": "بله"
+                },
+                {
+                  "label": "کافی است",
+                  "en": "No, this is enough.",
+                  "fa": "کافی است"
+                },
+                {
+                  "label": "یک لیوان",
+                  "en": "One more cup, please.",
+                  "fa": "یک لیوان"
+                },
+                {
+                  "label": "چای می‌خواهم",
+                  "en": "No, tea, please.",
+                  "fa": "چای می‌خواهم"
+                }
+              ]
+            },
+            {
+              "question": "Do you usually eat lunch at home?",
+              "questionFa": "معمولاً خانه ناهار می‌خوری؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, I usually eat at home.",
+                  "fa": "بله"
+                },
+                {
+                  "label": "نه رستوران",
+                  "en": "No, I eat at a restaurant.",
+                  "fa": "نه رستوران"
+                },
+                {
+                  "label": "گاهی",
+                  "en": "Sometimes I eat at home.",
+                  "fa": "گاهی"
+                },
+                {
+                  "label": "با خانواده",
+                  "en": "Yes, I eat with my family.",
+                  "fa": "با خانواده"
+                }
+              ]
+            },
+            {
+              "question": "What does your father drink?",
+              "questionFa": "پدرت چه می‌نوشد؟",
+              "variants": [
+                {
+                  "label": "آب",
+                  "en": "He drinks water.",
+                  "fa": "آب"
+                },
+                {
+                  "label": "قهوه",
+                  "en": "He drinks coffee.",
+                  "fa": "قهوه"
+                },
+                {
+                  "label": "چای",
+                  "en": "He drinks tea.",
+                  "fa": "چای"
+                },
+                {
+                  "label": "شیر",
+                  "en": "He drinks milk.",
+                  "fa": "شیر"
+                }
+              ]
+            },
+            {
+              "question": "How many plates are on the table?",
+              "questionFa": "چند بشقاب روی میز است؟",
+              "variants": [
+                {
+                  "label": "دو",
+                  "en": "There are two plates.",
+                  "fa": "دو"
+                },
+                {
+                  "label": "سه",
+                  "en": "There are three plates.",
+                  "fa": "سه"
+                },
+                {
+                  "label": "چهار",
+                  "en": "There are four plates.",
+                  "fa": "چهار"
+                },
+                {
+                  "label": "یکی",
+                  "en": "There is one plate.",
+                  "fa": "یکی"
+                }
+              ]
+            },
+            {
+              "question": "Where is the spoon?",
+              "questionFa": "قاشق کجاست؟",
+              "variants": [
+                {
+                  "label": "روی میز",
+                  "en": "It is on the table.",
+                  "fa": "روی میز"
+                },
+                {
+                  "label": "کنار بشقاب",
+                  "en": "It is next to the plate.",
+                  "fa": "کنار بشقاب"
+                },
+                {
+                  "label": "در کاسه",
+                  "en": "It is in the bowl.",
+                  "fa": "در کاسه"
+                },
+                {
+                  "label": "کنار چنگال",
+                  "en": "It is next to the fork.",
+                  "fa": "کنار چنگال"
+                }
+              ]
+            },
+            {
+              "question": "Do you have breakfast with your family?",
+              "questionFa": "با خانواده صبحانه می‌خوری؟",
+              "variants": [
+                {
+                  "label": "همیشه",
+                  "en": "Yes, we always eat together.",
+                  "fa": "همیشه"
+                },
+                {
+                  "label": "معمولاً",
+                  "en": "We usually eat breakfast together.",
+                  "fa": "معمولاً"
+                },
+                {
+                  "label": "گاهی",
+                  "en": "Sometimes we do.",
+                  "fa": "گاهی"
+                },
+                {
+                  "label": "نه",
+                  "en": "No, I eat alone.",
+                  "fa": "نه"
+                }
+              ]
+            },
+            {
+              "question": "What would you like for dinner?",
+              "questionFa": "برای شام چه می‌خواهی؟",
+              "variants": [
+                {
+                  "label": "سوپ",
+                  "en": "I would like soup for dinner.",
+                  "fa": "سوپ"
+                },
+                {
+                  "label": "پیتزا",
+                  "en": "I would like pizza.",
+                  "fa": "پیتزا"
+                },
+                {
+                  "label": "برنج و مرغ",
+                  "en": "I would like chicken and rice.",
+                  "fa": "برنج و مرغ"
+                },
+                {
+                  "label": "سالاد",
+                  "en": "I would like a salad.",
+                  "fa": "سالاد"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-12-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "مکالمه سر میز شام",
+          "description": "هر نقش را جدا گوش کن و بعد خودت جواب بده.",
+          "lines": [
+            {
+              "speaker": "Mother",
+              "en": "Dinner is ready!",
+              "fa": "شام آماده است!"
+            },
+            {
+              "speaker": "Ali",
+              "en": "What are we having for dinner?",
+              "fa": "برای شام چی داریم؟"
+            },
+            {
+              "speaker": "Mother",
+              "en": "We have chicken, rice and salad.",
+              "fa": "مرغ و برنج و سالاد داریم."
+            },
+            {
+              "speaker": "Sara",
+              "en": "I am hungry. Can I have some rice?",
+              "fa": "گرسنه‌ام. می‌شود کمی برنج بدهی؟"
+            },
+            {
+              "speaker": "Mother",
+              "en": "Yes, here you are.",
+              "fa": "بله، بفرمایید."
+            },
+            {
+              "speaker": "Ali",
+              "en": "Where is my fork?",
+              "fa": "چنگال من کجاست؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "It is next to your plate.",
+              "fa": "کنار بشقابت است."
+            },
+            {
+              "speaker": "Ali",
+              "en": "Can you pass me the water, please?",
+              "fa": "می‌توانی آب را به من بدهی؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "Of course. Would you like more?",
+              "fa": "حتماً. بیشتر می‌خواهی؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "No, this is enough. Thank you.",
+              "fa": "نه، کافی است. ممنون!"
+            }
+          ]
+        },
+        {
+          "id": "a1-12-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "title": "سه میز، سه وعده؛ از تصویر توضیح بده",
+          "description": "تصویر را بخوان و با کلمات جدید و قبلی پاسخ بساز.",
+          "image": "./assets/scene-a1-12-meals.svg",
+          "imageAlt": "سه بخش صبحانه ناهار شام",
+          "caption": "تخم‌مرغ و نان، برنج و مرغ، سوپ و سالاد",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "بگو من برای صبحانه تخم‌مرغ می‌خورم.",
+              "hint": "I eat eggs for breakfast.",
+              "example": "I eat eggs for breakfast.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i eat eggs for breakfast"
+                    ],
+                    "feedback": "جمله را دوباره مرتب کن."
+                  }
+                ],
+                "success": "آفرین!"
+              }
+            },
+            {
+              "task": "بگو خواهرم برای ناهار برنج می‌خورد.",
+              "hint": "My sister eats rice for lunch.",
+              "example": "My sister eats rice for lunch.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my sister eats rice for lunch"
+                    ],
+                    "feedback": "جمله را دوباره مرتب کن."
+                  }
+                ],
+                "success": "آفرین!"
+              }
+            },
+            {
+              "task": "بگو برای شام سوپ داریم.",
+              "hint": "We have soup for dinner.",
+              "example": "We have soup for dinner.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "we have soup for dinner"
+                    ],
+                    "feedback": "جمله را دوباره مرتب کن."
+                  }
+                ],
+                "success": "آفرین!"
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-12-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "title": "این بار تو مهمان یا میزبان هستی",
+          "description": "می‌توانی با واژه‌های درس‌های یک تا دوازده جواب بسازی.",
+          "practiceRevision": 1,
+          "completion": "غذا، ظرف، تعداد و درخواست مؤدبانه را در گفت‌وگو ترکیب کردی.",
+          "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "What do you eat for breakfast?",
+              "task": "بگو برای صبحانه تخم‌مرغ و نان می‌خورم.",
+              "hint": "I eat eggs and bread for breakfast.",
+              "example": "I eat eggs and bread for breakfast.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i eat eggs and bread for breakfast"
+                    ],
+                    "feedback": "جمله را در پاسخ خودت بساز."
+                  }
+                ],
+                "success": "پاسخ درست!"
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "What does your brother eat for lunch?",
+              "task": "بگو برادرم برای ناهار برنج می‌خورد.",
+              "hint": "My brother eats rice for lunch.",
+              "example": "My brother eats rice for lunch.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my brother eats rice for lunch"
+                    ],
+                    "feedback": "جمله را در پاسخ خودت بساز."
+                  }
+                ],
+                "success": "پاسخ درست!"
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where are the plates?",
+              "task": "بگو سه بشقاب روی میز است.",
+              "hint": "There are three plates on the table.",
+              "example": "There are three plates on the table.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are three plates on the table"
+                    ],
+                    "feedback": "جمله را در پاسخ خودت بساز."
+                  }
+                ],
+                "success": "پاسخ درست!"
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Can you pass me the spoon?",
+              "task": "پاسخ بده بفرمایید.",
+              "hint": "Of course. Here you are.",
+              "example": "Of course. Here you are.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "of course. here you are"
+                    ],
+                    "feedback": "جمله را در پاسخ خودت بساز."
+                  }
+                ],
+                "success": "پاسخ درست!"
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Would you like more water?",
+              "task": "بگو دیگر کافی است.",
+              "hint": "No, this is enough, thank you.",
+              "example": "No, this is enough, thank you.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no, this is enough, thank you"
+                    ],
+                    "feedback": "جمله را در پاسخ خودت بساز."
+                  }
+                ],
+                "success": "پاسخ درست!"
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-12-transfer",
+          "type": "response-practice",
+          "phase": "guided",
+          "title": "از میز غذا به زندگی روزمره",
+          "practiceRevision": 1,
+          "description": "در جمله‌ها، فاعل، وعده و خوراک را تغییر بده؛ صرفاً تکرار نکن.",
+          "tasks": [
+            {
+              "task": "بگو پدرم معمولاً چای می‌نوشد.",
+              "hint": "My father usually drinks tea.",
+              "example": "My father usually drinks tea.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my father usually drinks tea"
+                    ],
+                    "feedback": "زمان و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "درست؛ می‌توانی این الگو را دوباره به کار ببری."
+              }
+            },
+            {
+              "task": "بگو ما گاهی ناهار در رستوران می‌خوریم.",
+              "hint": "We sometimes eat lunch in a restaurant.",
+              "example": "We sometimes eat lunch in a restaurant.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "we sometimes eat lunch in a restaurant"
+                    ],
+                    "feedback": "زمان و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "درست؛ می‌توانی این الگو را دوباره به کار ببری."
+              }
+            },
+            {
+              "task": "بگو سوپ داخل کاسه است.",
+              "hint": "The soup is in the bowl.",
+              "example": "The soup is in the bowl.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the soup is in the bowl"
+                    ],
+                    "feedback": "زمان و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "درست؛ می‌توانی این الگو را دوباره به کار ببری."
+              }
+            },
+            {
+              "task": "بگو دو خواهر من با هم شام می‌خورند.",
+              "hint": "My two sisters eat dinner together.",
+              "example": "My two sisters eat dinner together.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my two sisters eat dinner together"
+                    ],
+                    "feedback": "زمان و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "درست؛ می‌توانی این الگو را دوباره به کار ببری."
+              }
+            },
+            {
+              "task": "بپرس آیا شکر داری؟",
+              "hint": "Do you have sugar?",
+              "example": "Do you have sugar?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "do you have sugar"
+                    ],
+                    "feedback": "زمان و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "درست؛ می‌توانی این الگو را دوباره به کار ببری."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-12-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "یک روز غذایی خودت را تعریف کن",
+          "prompt": "از هر سه وعدهٔ صبحانه، ناهار، شام جداگانه یک جمله بساز؛ از حداقل دو فاعل متفاوت (I و My sister یا We) استفاده کن. دربارهٔ خوردن و نوشیدن بگو و با عبارت Pass me the ... یک وسیلهٔ سر میز را مؤدبانه درخواست کن. بدون کپی کردن گفت‌وگو.",
+          "placeholder": "I eat eggs for breakfast.\nMy sister eats rice for lunch.\nWe drink water with dinner.\nCan you pass me the spoon, please?",
+          "hint": "for breakfast / for lunch / for dinner / Can you pass me...",
+          "kind": "free-text",
+          "minWords": 25,
+          "assessment": {
+            "revision": 1,
+            "required": [
+              {
+                "any": [
+                  "breakfast",
+                  "lunch",
+                  "dinner"
+                ],
+                "feedback": "یک وعدهٔ غذایی را نام ببر."
+              },
+              {
+                "any": [
+                  "eat",
+                  "eats",
+                  "have",
+                  "has"
+                ],
+                "feedback": "خوردن یا داشتن یک وعده را بگو."
+              },
+              {
+                "any": [
+                  "please",
+                  "can you"
+                ],
+                "feedback": "یک درخواست مؤدبانه هم بنویس."
+              },
+              {
+                "any": ["for breakfast"],
+                "feedback": "برای صبحانه یک جمله بساز."
+              },
+              {
+                "any": ["for lunch"],
+                "feedback": "برای ناهار یک جمله بساز."
+              },
+              {
+                "any": ["for dinner"],
+                "feedback": "برای شام یک جمله بساز."
+              },
+              {
+                "any": ["pass me the"],
+                "feedback": "درخواست Pass me the ... را وارد گفت‌وگو کن."
+              }
+            ],
+            "success": "توانستی یک روز غذایی با واژه‌ها و ساختارهای قدیمی و جدید توضیح بدهی."
+          }
+        },
+        {
+          "id": "a1-12-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "دوباره گوش بده؛ این بار فهمیدن هم آسان‌تر است",
+          "description": "جمله‌های ابتدایی را با دانش تازه از وعده‌ها تکرار کن.",
+          "sourceActivityId": "a1-12-shadowing"
+        }
+      ]
+    }
+  ]
+}

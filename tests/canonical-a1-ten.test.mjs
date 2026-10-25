@@ -14,18 +14,18 @@ const load=(relative)=>JSON.parse(readFileSync(join(pairRoot,relative),'utf8'));
 const curriculum=load('curriculum.a1.json');
 const active=curriculum.stages.flatMap(stage=>stage.chapters).flatMap(chapter=>chapter.lessons).filter(entry=>entry?.status==='sample');
 const lessons=active.map(entry=>load(entry.file));
-const newer=lessons.slice(6);
+const newer=lessons.slice(6,10);
 const context=(lesson,progress={})=>({lessonId:lesson.id,index:0,e:String,en:String,i:()=>'',progress});
 const activity=(lesson,id)=>lesson.sections.flatMap(s=>s.activities).find(a=>a.id===id);
 
 test('A1-7..10 follow the canon and preserve workshop after 9, before the home chapter',()=>{
  const first=curriculum.stages[0].chapters[0].lessons;
  const second=curriculum.stages[0].chapters[1].lessons;
- assert.deepEqual(first.slice(6,10).map(x=>x.id),['A1-7','A1-8','A1-9','A1-W1']);
- assert.equal(second[0].id,'A1-10');
- assert.deepEqual(active.map(x=>x.id),Array.from({length:10},(_,i)=>`A1-${i+1}`));
- assert.ok(first.slice(0,6).every(x=>x.status==='sample'));
- assert.ok(second.slice(1).every(x=>Array.isArray(x)),'planned subsequent content was kept');
+ const third=curriculum.stages[0].chapters[2].lessons;
+ assert.deepEqual(second.slice(2,6).map(x=>x.id),['A1-7','A1-8','A1-9','A1-W1']);
+ assert.deepEqual(third.map(x=>x.id),['A1-10','A1-11','A1-12','A1-W2']);
+ assert.deepEqual(active.map(x=>x.id),Array.from({length:12},(_,i)=>`A1-${i+1}`));
+ assert.ok(first.every(x=>x.status==='sample'));
  for(const number of [7,8,9])assert.ok(existsSync(join(pairRoot,`lessons/a1-${number}.json`)),`archived original A1-${number} must remain`);
 });
 
@@ -34,7 +34,7 @@ test('four complete two-section courses pass the same production and content con
  for(const lesson of newer){
   assert.deepEqual(validateLessonFlow(lesson),[],`${lesson.id}: lesson flow`);
   assert.deepEqual(auditLesson(lesson).errors,[],`${lesson.id}: expression practice audit`);
-  assert.equal(lesson.roadmapRef.revision,'2026-10-25-owner-cumulative-a1');
+  assert.equal(lesson.roadmapRef.revision,'2026-10-25-owner-kitchen-verbs-a1');
   assert.ok(lesson.sections[0].activities.some(a=>a.type==='cumulative-scene-lab'));
   assert.ok(lesson.sections[0].activities.some(a=>a.type==='cumulative-visual-quest'));
   assert.ok(lesson.sections[0].activities.some(a=>a.type==='sentence-builder'&&a.goalCount>=5));
@@ -116,4 +116,53 @@ test('A1-10 keeps furniture, count, color and room synchronized and handles zero
  assert.equal(composeSegments(resolved.pattern.segments,composer,resolved),'There is one blue chair in the living room.');
  assert.match(JSON.stringify(l.sections),/My two sisters are in the living room/);
  assert.match(JSON.stringify(l.sections),/There are no mirrors in the bathroom/);
+});
+
+test('A1-7..10 start production with ten or more distinct questions and four legitimate answer variants',()=>{
+ for(const lesson of newer){
+  const exchange=lesson.sections[1].activities[0];
+  assert.equal(exchange.type,'exchange-lab');
+  assert.ok(exchange.pairs.length>=10,lesson.id+' needs at least ten questions');
+  assert.equal(new Set(exchange.pairs.map(pair=>pair.question.toLowerCase())).size,exchange.pairs.length);
+  assert.ok(exchange.pairs.every(pair=>pair.variants.length>=4),lesson.id+' needs four options per question');
+  for(const pair of exchange.pairs)assert.equal(new Set(pair.variants.map(variant=>variant.en.toLowerCase())).size,pair.variants.length);
+  const screen=renderActivity(exchange,context(lesson));
+  assert.match(screen,/exchange-navigation/);
+  assert.match(screen,/exchange-progress/);
+  assert.match(screen,/data-exchange-variant="3"/);
+  assert.match(screen,/data-exchange-pair="1"/);
+ }
+});
+
+test('A1-7 introduces body and appearance without relisting taught child/children, and reuses them in production',()=>{
+ const lesson=newer[0],vocabulary=activity(lesson,'a1-7-vocabulary');
+ assert.ok(vocabulary.items.filter(item=>item.role!=='supplementary').length>=20);
+ for(const word of ['hand','nose','mouth','ear','kid','beautiful','slim','overweight','tongue','ugly','fat'])
+  assert.ok(vocabulary.items.some(item=>item.en===word),'missing '+word);
+ assert.equal(vocabulary.items.find(item=>item.en==='child'),undefined);
+ assert.equal(vocabulary.items.find(item=>item.en==='ugly').role,'supplementary');
+ assert.ok(activity(lesson,'a1-7-build').tasks.some(task=>task.example.includes('smile')));
+ assert.ok(activity(lesson,'a1-7-warmup').tasks.some(task=>task.example.includes('nose')));
+});
+
+test('A1-8 explores question words then writes questions and switches a wide variety of subjects',()=>{
+ const lesson=newer[1],explorer=activity(lesson,'a1-8-question-explorer');
+ assert.ok(explorer.questions.length>=10);
+ for(const phrase of ['What is your name?','How old are you?','What is your phone number?','What language do you speak?','What do you study?'])
+  assert.ok(explorer.questions.some(question=>question.question===phrase));
+ const screen=renderActivity(explorer,context(lesson));
+ assert.match(screen,/question-explorer-stage/);
+ assert.match(screen,/What is your name\?/);
+ const changed=renderActivity(explorer,context(lesson,{questionExplorerStates:{'A1-8:a1-8-question-explorer':3}}));
+ assert.match(changed,/What language do you speak\?/);
+ const questionPractice=activity(lesson,'a1-8-question-practice');
+ assert.ok(questionPractice.tasks.length>=8);
+ const wheel=activity(lesson,'a1-8-number-lab');
+ assert.ok(wheel.subjects.length>=10);
+ for(const subject of ['I','You','My father','My sister','They','We'])
+  assert.ok(wheel.subjects.some(entry=>entry.en===subject));
+ const youIndex=wheel.subjects.findIndex(entry=>entry.en==='You');
+ const you=renderActivity(wheel,context(lesson,{cumulativeLabStates:{'A1-8:a1-8-number-lab':{subject:youIndex}}}));
+ assert.match(you,/You.*are thirteen years old/);
+ assert.match(you,/data-cumulative-number-subject-index=/);
 });

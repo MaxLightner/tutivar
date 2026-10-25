@@ -9,7 +9,7 @@
   "archetype": "K4/K2",
   "roadmapRef": {
     "id": "A1-9",
-    "revision": "2026-10-25-owner-cumulative-a1",
+    "revision": "2026-10-25-owner-kitchen-verbs-a1",
     "communicativeOutcome": "حال کسی را می‌پرسد و حال خودش را می‌گوید؛ سرما/گرما و گرسنگی/تشنگی را بیان می‌کند؛ همدردی ساده می‌کند."
   },
   "teachingModel": {
@@ -982,8 +982,8 @@
           "id": "a1-9-exchange",
           "type": "exchange-lab",
           "phase": "correspondence",
-          "title": "یک سؤال، جواب مناسب و همدلانه",
-          "description": "یک سؤال را نگه دار و پاسخ‌ها را جابه‌جا کن تا تفاوت معنی روشن شود.",
+          "title": "۱۲ پرسش دربارهٔ حال و احساس، با ۴ پاسخ",
+          "description": "حال خودت، اعضای خانواده و یک گروه را در موقعیت‌های تازه بگو؛ پاسخ همدلانه و am / is / are را مرور کن.",
           "pairs": [
             {
               "question": "How are you today?",
@@ -1000,7 +1000,9 @@
                   "en": "I am tired.",
                   "fa": "خسته‌ام.",
                   "note": "حال دقیق‌تر."
-                }
+                },
+                {"label":"ناراحت","en":"I am sad today.","fa":"امروز ناراحتم."},
+                {"label":"خوب اما گرسنه","en":"I am okay, but I am hungry.","fa":"خوبم، اما گرسنه‌ام."}
               ]
             },
             {
@@ -1018,7 +1020,9 @@
                   "en": "No, I am not thirsty.",
                   "fa": "نه، تشنه نیستم.",
                   "note": "جواب منفی."
-                }
+                },
+                {"label":"خیلی","en":"Yes, I am very thirsty.","fa":"بله، خیلی تشنه‌ام."},
+                {"label":"گرسنه‌ام","en":"No, but I am hungry.","fa":"نه، اما گرسنه‌ام."}
               ]
             },
             {
@@ -1036,9 +1040,20 @@
                   "en": "He is happy.",
                   "fa": "خوشحال است.",
                   "note": "تغییر حالت."
-                }
+                },
+                {"label":"بیمار","en":"He is sick today.","fa":"امروز بیمار است."},
+                {"label":"بهتر","en":"He is better now.","fa":"الان حالش بهتر است."}
               ]
-            }
+            },
+            {"question":"Is your sister hungry?","questionFa":"خواهرت گرسنه است؟","variants":[{"label":"بله","en":"Yes, she is hungry.","fa":"بله، گرسنه است."},{"label":"نه","en":"No, she is not hungry.","fa":"نه، گرسنه نیست."},{"label":"تشنه هم هست","en":"Yes, she is hungry and thirsty.","fa":"بله، گرسنه و تشنه است."},{"label":"خسته است","en":"No, but she is tired.","fa":"نه، اما خسته است."}]},
+            {"question":"Are you cold?","questionFa":"سردت است؟","variants":[{"label":"بله","en":"Yes, I am cold.","fa":"بله، سردم است."},{"label":"نه، گرمم است","en":"No, I am hot.","fa":"نه، گرمم است."},{"label":"کمی","en":"Yes, I am a little cold.","fa":"بله، کمی سردم است."},{"label":"خوبم","en":"No, I am okay.","fa":"نه، خوبم."}]},
+            {"question":"How are your two sisters?","questionFa":"دو خواهرت چه حال دارند؟","variants":[{"label":"خوشحال","en":"They are happy.","fa":"خوشحال‌اند."},{"label":"خسته","en":"They are tired.","fa":"خسته‌اند."},{"label":"یکی بیمار","en":"One is sick. The other is fine.","fa":"یکی بیمار است و دیگری خوب است."},{"label":"هر دو تشنه","en":"They are both thirsty.","fa":"هر دو تشنه‌اند."}]},
+            {"question":"What do you need?","questionFa":"به چه چیزی نیاز داری؟","variants":[{"label":"آب","en":"I need water.","fa":"آب می‌خواهم."},{"label":"غذا","en":"I need food.","fa":"غذا می‌خواهم."},{"label":"استراحت","en":"I need to rest.","fa":"به استراحت نیاز دارم."},{"label":"کمک","en":"I need some help.","fa":"کمی کمک لازم دارم."}]},
+            {"question":"Are you tired after work?","questionFa":"بعد از کار خسته‌ای؟","variants":[{"label":"بله","en":"Yes, I am tired.","fa":"بله، خسته‌ام."},{"label":"خیلی","en":"Yes, I am very tired.","fa":"بله، خیلی خسته‌ام."},{"label":"نه","en":"No, I am fine.","fa":"نه، حالم خوب است."},{"label":"گرسنه‌ام","en":"No, but I am hungry.","fa":"نه، اما گرسنه‌ام."}]},
+            {"question":"How is your mother today?","questionFa":"امروز مادرت چه حال دارد؟","variants":[{"label":"خوب","en":"She is fine today.","fa":"امروز خوب است."},{"label":"خوشحال","en":"My mother is happy.","fa":"مادرم خوشحال است."},{"label":"بیمار","en":"She is sick.","fa":"بیمار است."},{"label":"بهتر","en":"She feels better today.","fa":"امروز حالش بهتر است."}]},
+            {"question":"Is the child sick?","questionFa":"بچه بیمار است؟","variants":[{"label":"بله","en":"Yes, the child is sick.","fa":"بله، بچه بیمار است."},{"label":"نه","en":"No, the child is fine.","fa":"نه، بچه خوب است."},{"label":"فقط خسته","en":"No, the child is just tired.","fa":"نه، فقط خسته است."},{"label":"بهتر شده","en":"The child is better now.","fa":"الان حال بچه بهتر است."}]},
+            {"question":"How do you feel now?","questionFa":"الان چه احساسی داری؟","variants":[{"label":"شاد","en":"I feel happy.","fa":"خوشحالم."},{"label":"ناراحت","en":"I feel sad.","fa":"ناراحتم."},{"label":"تشنه","en":"I feel thirsty.","fa":"تشنه‌ام."},{"label":"بهتر","en":"I feel better now.","fa":"حالم بهتر شده."}]},
+            {"question":"What can you say to a sad friend?","questionFa":"به دوستی که ناراحت است چه می‌گویی؟","variants":[{"label":"متأسفم","en":"I am sorry.","fa":"متأسفم."},{"label":"کنارت هستم","en":"I am here for you.","fa":"کنارت هستم."},{"label":"کمک می‌خواهی؟","en":"Do you need help?","fa":"کمک می‌خواهی؟"},{"label":"استراحت کن","en":"Please rest.","fa":"لطفاً استراحت کن."}]}
           ]
         },
         {

@@ -9,7 +9,7 @@
   "archetype": "K2",
   "roadmapRef": {
     "id": "A1-7",
-    "revision": "2026-10-25-owner-cumulative-a1",
+    "revision": "2026-10-25-owner-kitchen-verbs-a1",
     "communicativeOutcome": "ظاهر یک نفر را توصیف می‌کند؛ از آدم‌ها محترمانه حرف می‌زند؛ با ضمیر جمع درباره‌ی گروه صحبت می‌کند."
   },
   "teachingModel": {
@@ -83,7 +83,7 @@
           "phase": "words",
           "title": "واژه‌های جدید برای چهره؛ رنگ و تعداد را قبلاً بلدی",
           "batchSize": 4,
-          "deckRevision": 1,
+          "deckRevision": 2,
           "items": [
             {
               "en": "hair",
@@ -192,6 +192,135 @@
                 "His face is round.",
                 "Look at her face."
               ]
+            },
+            {
+              "en": "hand",
+              "fa": "دست",
+              "examples": [
+                "My child has small hands.",
+                "Her hands are on the table.",
+                "His hand is big."
+              ]
+            },
+            {
+              "en": "arm",
+              "fa": "بازو",
+              "examples": [
+                "My brother has long arms.",
+                "His arm is strong.",
+                "Her arms are short."
+              ]
+            },
+            {
+              "en": "nose",
+              "fa": "بینی",
+              "examples": [
+                "The child has a small nose.",
+                "Her nose is small.",
+                "His nose is long."
+              ]
+            },
+            {
+              "en": "mouth",
+              "fa": "دهان",
+              "examples": [
+                "My mouth is small.",
+                "The child has a small mouth.",
+                "His mouth is open."
+              ]
+            },
+            {
+              "en": "ear",
+              "fa": "گوش",
+              "examples": [
+                "I have two ears.",
+                "His ears are small.",
+                "The child has small ears."
+              ]
+            },
+            {
+              "en": "kid",
+              "fa": "بچه (محاوره‌ای؛ children را قبلاً یاد گرفته‌ای)",
+              "examples": [
+                "The kid is happy.",
+                "That kid has curly hair.",
+                "The kid has two small hands."
+              ]
+            },
+            {
+              "en": "beautiful",
+              "fa": "زیبا",
+              "examples": [
+                "My mother is beautiful.",
+                "She has beautiful eyes.",
+                "That woman has beautiful hair."
+              ]
+            },
+            {
+              "en": "handsome",
+              "fa": "خوش‌چهره",
+              "examples": [
+                "He is handsome.",
+                "That man is handsome.",
+                "My brother is handsome."
+              ]
+            },
+            {
+              "en": "slim",
+              "fa": "باریک‌اندام / لاغر",
+              "examples": [
+                "That man is slim.",
+                "My brother is tall and slim.",
+                "She is slim."
+              ]
+            },
+            {
+              "en": "overweight",
+              "fa": "دارای اضافه‌وزن (توصیف خنثی‌تر)",
+              "examples": [
+                "That man is overweight.",
+                "He is overweight.",
+                "Is he overweight?"
+              ]
+            },
+            {
+              "en": "smile",
+              "fa": "لبخند",
+              "examples": [
+                "She has a beautiful smile.",
+                "The child has a big smile.",
+                "I like her smile."
+              ]
+            },
+            {
+              "en": "tongue",
+              "fa": "زبان (عضو بدن؛ language یعنی زبان گفتاری)",
+              "role": "supplementary",
+              "examples": [
+                "Your tongue is inside your mouth.",
+                "The child has a tongue.",
+                "My tongue is in my mouth."
+              ]
+            },
+            {
+              "en": "fat",
+              "fa": "چاق (برای توصیف افراد ممکن است آزاردهنده باشد)",
+              "role": "supplementary",
+              "examples": [
+                "The word fat can be unkind.",
+                "Please do not call a person fat.",
+                "Overweight is a more neutral word."
+              ]
+            },
+            {
+              "en": "ugly",
+              "fa": "زشت (برای شناخت واژه، نه قضاوت دربارهٔ افراد)",
+              "role": "supplementary",
+              "examples": [
+                "Ugly is not a kind word for a person.",
+                "Do not call a child ugly.",
+                "This word can hurt people."
+              ]
             }
           ]
         },
@@ -250,6 +379,36 @@
                 "I have two sisters.",
                 "My two sisters are tall.",
                 "My two sisters have curly hair."
+              ]
+            },
+            {
+              "en": "small hands",
+              "fa": "دست‌های کوچک",
+              "kind": "collocation",
+              "examples": [
+                "The child has small hands.",
+                "My little sister has small hands.",
+                "Her small hands are on the table."
+              ]
+            },
+            {
+              "en": "beautiful eyes",
+              "fa": "چشم‌های زیبا",
+              "kind": "collocation",
+              "examples": [
+                "She has beautiful eyes.",
+                "My mother has beautiful eyes.",
+                "The child has beautiful eyes."
+              ]
+            },
+            {
+              "en": "a tall, slim man",
+              "fa": "یک مرد بلندقد و لاغر",
+              "kind": "fixed",
+              "examples": [
+                "He is a tall, slim man.",
+                "That tall, slim man is my brother.",
+                "I see a tall, slim man."
               ]
             }
           ]
@@ -357,7 +516,7 @@
           "type": "response-practice",
           "phase": "phrases",
           "title": "کدام ویژگی به کدام نفر مربوط است؟",
-          "practiceRevision": 1,
+          "practiceRevision": 2,
           "description": "چشم، چهره، سن و شکل مو را روی آدم‌های متفاوت به کار ببر؛ نه فقط رنگ و قد.",
           "tasks": [
             {
@@ -455,6 +614,30 @@
                 ],
                 "success": "جمله را در این موقعیت درست ساختی."
               }
+            },
+            {
+              "task": "بگو بچه دست‌های کوچکی دارد.",
+              "hint": "The kid has small hands.",
+              "example": "The kid has small hands.",
+              "assessment": {"required":[{"any":["the kid has small hands"],"feedback":"kid و has را کنار هم بگذار."}],"success":"بچه و ویژگی دست را ترکیب کردی."}
+            },
+            {
+              "task": "بگو آن کودک بینی کوچکی دارد.",
+              "hint": "The child has a small nose.",
+              "example": "The child has a small nose.",
+              "assessment": {"required":[{"any":["the child has a small nose"],"feedback":"بعد از has یک اسم مفرد را با a بیاور."}],"success":"واژهٔ قبلی child را با بینی ترکیب کردی."}
+            },
+            {
+              "task": "بگو خواهرم چشم‌های زیبایی دارد.",
+              "hint": "My sister has beautiful eyes.",
+              "example": "My sister has beautiful eyes.",
+              "assessment": {"required":[{"any":["my sister has beautiful eyes"],"feedback":"beautiful پیش از eyes می‌آید."}],"success":"صفت جدید را با خانوادهٔ درس قبل پیوند دادی."}
+            },
+            {
+              "task": "بگو برادرم بلندقد و لاغراندام است.",
+              "hint": "My brother is tall and slim.",
+              "example": "My brother is tall and slim.",
+              "assessment": {"required":[{"any":["my brother is tall and slim"],"feedback":"دو صفت را با and به هم وصل کن."}],"success":"دو توصیف را دربارهٔ یک نفر ساختی."}
             }
           ]
         },
@@ -890,7 +1073,7 @@
           "type": "response-practice",
           "phase": "construction",
           "title": "از خانواده + تعداد + رنگ، توصیف تازه بساز",
-          "practiceRevision": 1,
+          "practiceRevision": 2,
           "description": "با خانواده، شمارش، مالکیت، مکان و صفت‌های قبلی جمله‌های جدید بنویس.",
           "tasks": [
             {
@@ -972,6 +1155,18 @@
                 ],
                 "success": "جمله را در این موقعیت درست ساختی."
               }
+            },
+            {
+              "task": "بگو خواهرم لبخند زیبایی دارد.",
+              "hint": "My sister has a beautiful smile.",
+              "example": "My sister has a beautiful smile.",
+              "assessment": {"required":[{"any":["my sister has a beautiful smile"],"feedback":"a beautiful smile را کامل بساز."}],"success":"احساس مثبت را به توصیف ظاهر اضافه کردی."}
+            },
+            {
+              "task": "بگو آن بچه دهان کوچکی دارد.",
+              "hint": "That kid has a small mouth.",
+              "example": "That kid has a small mouth.",
+              "assessment": {"required":[{"any":["that kid has a small mouth"],"feedback":"That kid has a small mouth."}],"success":"عضو بدن را در جملهٔ جدید به کار بردی."}
             }
           ]
         }
@@ -989,8 +1184,8 @@
           "id": "a1-7-exchange",
           "type": "exchange-lab",
           "phase": "correspondence",
-          "title": "او چه شکلی است؟ یک سؤال و چند پاسخ",
-          "description": "یک سؤال را نگه دار و پاسخ‌ها را جابه‌جا کن تا تفاوت معنی روشن شود.",
+          "title": "۱۲ سؤال دربارهٔ ظاهر، ۴ پاسخ برای هر سؤال",
+          "description": "هر سؤال را با چهار پاسخ درست اما متفاوت مقایسه کن؛ سپس شخص، تعداد یا ویژگی را عوض کن و بلند تکرار کن.",
           "pairs": [
             {
               "question": "What does your sister look like?",
@@ -1007,7 +1202,9 @@
                   "en": "She has curly black hair.",
                   "fa": "موی مشکی فرفری دارد.",
                   "note": "ویژگی را عوض کردی."
-                }
+                },
+                {"label":"چشم آبی","en":"She has blue eyes and short hair.","fa":"چشم‌های آبی و موی کوتاه دارد.","note":"مو و چشم را با هم ترکیب کردی."},
+                {"label":"قد کوتاه","en":"She is short and has straight hair.","fa":"کوتاه‌قد است و موی صاف دارد.","note":"صفت قد را با شکل مو پیوند دادی."}
               ]
             },
             {
@@ -1025,7 +1222,9 @@
                   "en": "No, they are short.",
                   "fa": "نه، کوتاه‌قد هستند.",
                   "note": "پاسخ منفی."
-                }
+                },
+                {"label":"یکی بلند","en":"One is tall and one is short.","fa":"یکی بلندقد است و دیگری کوتاه‌قد.","note":"دو نفر را مقایسه کردی."},
+                {"label":"هر سه بلند","en":"Yes, my three brothers are tall.","fa":"بله، هر سه برادرم بلندقد هستند.","note":"عدد و ضمیر جمع را مرور کردی."}
               ]
             },
             {
@@ -1043,9 +1242,20 @@
                   "en": "No, he does not wear glasses.",
                   "fa": "نه، عینک نمی‌زند.",
                   "note": "بعد از does شکل سادهٔ wear می‌آید."
-                }
+                },
+                {"label":"گاهی","en":"Yes, he sometimes wears glasses.","fa":"بله، گاهی عینک می‌زند.","note":"دربارهٔ عادت با sometimes صحبت کردی."},
+                {"label":"فقط مادرم","en":"No, but my mother wears glasses.","fa":"نه، اما مادرم عینک می‌زند.","note":"دو عضو خانواده را مقایسه کردی."}
               ]
-            }
+            },
+            {"question":"What color are your mother's eyes?","questionFa":"چشم‌های مادرت چه رنگی است؟","variants":[{"label":"قهوه‌ای","en":"Her eyes are brown.","fa":"چشم‌هایش قهوه‌ای است."},{"label":"آبی","en":"Her eyes are blue.","fa":"چشم‌هایش آبی است."},{"label":"چشم تیره","en":"She has dark eyes.","fa":"چشم‌های تیره دارد."},{"label":"چشم زیبا","en":"She has beautiful brown eyes.","fa":"چشم‌های قهوه‌ای زیبایی دارد."}]},
+            {"question":"What does the child look like?","questionFa":"این بچه چه ظاهری دارد؟","variants":[{"label":"مو فرفری","en":"The child has curly hair.","fa":"بچه موی فرفری دارد."},{"label":"بینی کوچک","en":"The child has a small nose.","fa":"بچه بینی کوچکی دارد."},{"label":"دست کوچک","en":"The child has small hands.","fa":"بچه دست‌های کوچکی دارد."},{"label":"لبخند زیبا","en":"The child has a beautiful smile.","fa":"بچه لبخند زیبایی دارد."}]},
+            {"question":"What do his hands look like?","questionFa":"دست‌هایش چه شکلی هستند؟","variants":[{"label":"کوچک","en":"His hands are small.","fa":"دست‌هایش کوچک است."},{"label":"بزرگ","en":"His hands are big.","fa":"دست‌هایش بزرگ است."},{"label":"دست پدر","en":"My father's hands are big.","fa":"دست‌های پدرم بزرگ است."},{"label":"دست بچه","en":"The child's hands are small.","fa":"دست‌های بچه کوچک است."}]},
+            {"question":"Is your brother slim?","questionFa":"برادرت لاغراندام است؟","variants":[{"label":"بله","en":"Yes, he is slim.","fa":"بله، لاغراندام است."},{"label":"قدبلند و لاغر","en":"Yes, he is tall and slim.","fa":"بله، بلندقد و لاغر است."},{"label":"نه","en":"No, he is not slim.","fa":"نه، لاغراندام نیست."},{"label":"قد کوتاه","en":"No, he is short and strong.","fa":"نه، کوتاه‌قد و قوی است."}]},
+            {"question":"What is her hair like?","questionFa":"موهای او چه شکلی است؟","variants":[{"label":"صاف","en":"Her hair is long and straight.","fa":"مویش بلند و صاف است."},{"label":"فرفری","en":"Her hair is short and curly.","fa":"مویش کوتاه و فرفری است."},{"label":"بلوند","en":"Her hair is blond.","fa":"موهایش بلوند است."},{"label":"مشکی","en":"She has curly black hair.","fa":"موی مشکی فرفری دارد."}]},
+            {"question":"What is different about the two sisters?","questionFa":"این دو خواهر چه تفاوتی دارند؟","variants":[{"label":"قد","en":"One is tall and one is short.","fa":"یکی بلندقد و دیگری کوتاه‌قد است."},{"label":"مو","en":"One has curly hair. The other has straight hair.","fa":"یکی موی فرفری و دیگری صاف دارد."},{"label":"رنگ مو","en":"One has blond hair. The other has brown hair.","fa":"یکی موهای بلوند و دیگری قهوه‌ای دارد."},{"label":"چشم","en":"They have different eye colors.","fa":"رنگ چشم‌های متفاوتی دارند."}]},
+            {"question":"Does the baby have small ears?","questionFa":"بچهٔ کوچک گوش‌های کوچکی دارد؟","variants":[{"label":"بله","en":"Yes, the baby has small ears.","fa":"بله، گوش‌های کوچکی دارد."},{"label":"نه","en":"No, the baby has big ears.","fa":"نه، گوش‌های بزرگی دارد."},{"label":"چشم هم","en":"Yes, and the baby has big eyes.","fa":"بله، و چشم‌های بزرگی هم دارد."},{"label":"بینی هم","en":"Yes, and the baby has a small nose.","fa":"بله، و بینی کوچکی هم دارد."}]},
+            {"question":"How would you describe that man politely?","questionFa":"چطور آن مرد را محترمانه توصیف می‌کنی؟","variants":[{"label":"قدبلند","en":"He is tall.","fa":"بلندقد است."},{"label":"لاغر","en":"He is slim.","fa":"لاغراندام است."},{"label":"اضافه‌وزن","en":"He is overweight.","fa":"اضافه‌وزن دارد."},{"label":"چهره","en":"He has a friendly face.","fa":"چهرهٔ مهربانی دارد."}]},
+            {"question":"Who has a beautiful smile?","questionFa":"چه کسی لبخند زیبایی دارد؟","variants":[{"label":"خواهرم","en":"My sister has a beautiful smile.","fa":"خواهرم لبخند زیبایی دارد."},{"label":"مادرم","en":"My mother has a beautiful smile.","fa":"مادرم لبخند زیبایی دارد."},{"label":"بچه","en":"The child has a beautiful smile.","fa":"بچه لبخند زیبایی دارد."},{"label":"این خانم","en":"That woman has a beautiful smile.","fa":"آن خانم لبخند زیبایی دارد."}]}
           ]
         },
         {
@@ -1246,7 +1456,7 @@
           "type": "response-practice",
           "phase": "guided",
           "title": "همان ساختار، فرد یا گروه جدید",
-          "practiceRevision": 1,
+          "practiceRevision": 2,
           "description": "موقعیت عوض شده است؛ همان الگوی جمله را با آدم، شیء یا تعداد تازه به کار ببر.",
           "tasks": [
             {
@@ -1312,6 +1522,18 @@
                 ],
                 "success": "جمله را در این موقعیت درست ساختی."
               }
+            },
+            {
+              "task": "بگو برادرم دست‌های بزرگ دارد و قدبلند است.",
+              "hint": "My brother has big hands and is tall.",
+              "example": "My brother has big hands and is tall.",
+              "assessment": {"required":[{"any":["my brother has big hands and is tall"],"feedback":"has برای دست و is برای قد استفاده می‌شود."}],"success":"دو ساختار has و is را به هم وصل کردی."}
+            },
+            {
+              "task": "بگو مادرم چشم‌های قهوه‌ای و موی صاف دارد.",
+              "hint": "My mother has brown eyes and straight hair.",
+              "example": "My mother has brown eyes and straight hair.",
+              "assessment": {"required":[{"any":["my mother has brown eyes and straight hair"],"feedback":"دو عضو بدن با یک has آمده‌اند."}],"success":"دربارهٔ یک نفر دو ویژگی ساختی."}
             }
           ]
         },
@@ -1320,7 +1542,7 @@
           "type": "free-write",
           "phase": "independent",
           "title": "از یک نفر شروع کن، بعد یک گروه",
-          "prompt": "چهار جمله دربارهٔ دو نفر از خانواده و یک گروه بساز. باید long brown hair و curly black hair و عبارت two sisters را در جمله‌های کامل بیاوری. یک جمله هم با تعداد و مالکیت درس‌های قبل بساز.",
+          "prompt": "چهار جمله دربارهٔ دو نفر از خانواده و یک گروه بساز. long brown hair و curly black hair و two sisters را در جمله‌های کامل بیاور. بعد با یکی از واژه‌های تازهٔ دست، بینی، لبخند یا زیبایی یک جملهٔ دیگر بساز و یک جمله هم با تعداد یا مالکیت درس‌های قبل بنویس.",
           "placeholder": "My sister has long brown hair.\nMy two sisters have curly black hair.\nI have two sisters.\nThey are tall.",
           "hint": "She has / He has ... / They have ... ؛ دربارهٔ ویژگی‌ها محترمانه و بدون داوری بنویس.",
           "kind": "free-text",

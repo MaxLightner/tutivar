@@ -26,9 +26,9 @@ export const LESSON_PHASE_LABELS = Object.freeze({
 const TYPE_FOR_PHASE = {
   shadowing: ['shadowing'],
   words: ['vocabulary'],
-  phrases: ['expression-study', 'composer-view', 'sentence-composer', 'response-practice', 'family-tree', 'family-lab', 'spatial-lab', 'count-visual', 'plural-pair-lab', 'count-math-lab', 'tap-attributes-lab', 'count-scene-lab', 'feature-hunt', 'cumulative-scene-lab', 'cumulative-visual-quest', 'cumulative-number-lab'],
+  phrases: ['question-explorer', 'daily-choice-lab', 'expression-study', 'composer-view', 'sentence-composer', 'response-practice', 'family-tree', 'family-lab', 'spatial-lab', 'count-visual', 'plural-pair-lab', 'count-math-lab', 'tap-attributes-lab', 'count-scene-lab', 'feature-hunt', 'cumulative-scene-lab', 'cumulative-visual-quest', 'cumulative-number-lab'],
   sentence: ['sentence-composer'],
-  variants: ['composer-view', 'sentence-transform', 'meaning-cluster', 'plural-pair-lab', 'sentence-composer', 'tap-attributes-lab', 'tap-ownership-lab', 'count-scene-lab', 'feature-hunt', 'cumulative-scene-lab', 'cumulative-visual-quest'],
+  variants: ['quiz-set', 'composer-view', 'sentence-transform', 'meaning-cluster', 'plural-pair-lab', 'sentence-composer', 'tap-attributes-lab', 'tap-ownership-lab', 'count-scene-lab', 'feature-hunt', 'cumulative-scene-lab', 'cumulative-visual-quest'],
   puzzle: ['sentence-builder'],
   construction: ['response-practice'],
   correspondence: ['exchange-lab', 'response-practice'],
@@ -68,6 +68,21 @@ export function validateLessonFlow(lesson) {
           if (!item.en || !item.fa || !['fixed', 'collocation', 'preposition'].includes(item.kind))
             errors.push(activity.id + ': expression item needs en, fa and a valid kind');
         }
+      }
+      if (activity.type === 'question-explorer') {
+        if (!Array.isArray(activity.questions) || activity.questions.length < 8)
+          errors.push(activity.id + ': question-explorer needs at least eight prompts');
+        for (const prompt of activity.questions || [])
+          if (!prompt.word || !prompt.question || !prompt.answer || !prompt.fa || !prompt.tip)
+            errors.push(activity.id + ': question-explorer prompt missing a field');
+      }
+      if (activity.type === 'exchange-lab') {
+        if (!Array.isArray(activity.pairs) || !activity.pairs.length)
+          errors.push(activity.id + ': missing exchange pairs');
+        for (const pair of activity.pairs || [])
+          if (!pair.question || !pair.questionFa || !Array.isArray(pair.variants) || pair.variants.length < 2 ||
+            pair.variants.some((variant) => !variant.label || !variant.en || !variant.fa))
+            errors.push(activity.id + ': incomplete exchange question or answer');
       }
       if (activity.type === 'shadowing') {
         if (!Array.isArray(activity.lines) || activity.lines.length < 3) errors.push(activity.id + ': shadowing needs at least three short lines');
