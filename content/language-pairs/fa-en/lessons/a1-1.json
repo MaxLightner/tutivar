@@ -1,9 +1,9 @@
 {
   "id": "A1-1",
-  "revision": 12,
+  "revision": 13,
   "status": "draft",
   "title": "معرفی خود و شروع گفت‌وگو",
-  "goal": "در یک برخورد کوتاه متناسب با ساعت سلام کنی، احوال بپرسی، خودت را معرفی کنی و گفت‌وگو را تمام کنی.",
+  "goal": "در برخورد کوتاه سلام کنی و احوال بپرسی، با What's your name? نام مخاطب را بپرسی، نام خودت را بگویی و گفت‌وگو را تمام کنی.",
   "duration": "حدود ۲۵ تا ۳۵ دقیقه با تمرین‌های رفت‌وبرگشتی",
   "feature": "مکالمه نوبتی",
   "archetype": "conversation",
@@ -12,8 +12,9 @@
     "support": "K3"
   },
   "orientation": {
-    "goal": "متناسب با زمان روز سلام کنی، حال طرف را بپرسی، خودت را معرفی کنی، نامش را بپرسی و خداحافظی کنی.",
-    "prerequisites": []
+    "goal": "در یک آشنایی کوتاه هم احوال طرف را بپرسی، هم نام او را با What's your name? بپرسی و نام خودت را معرفی کنی.",
+    "prerequisites": [],
+    "previously": "این اولین درس مکالمه است."
   },
   "visual": {
     "src": null,
@@ -472,6 +473,26 @@
                 "Please introduce yourself.",
                 "Introduce yourself to the class.",
                 "I can introduce myself."
+              ]
+            },
+            {
+              "en": "What's your name?",
+              "fa": "اسمت چیست؟",
+              "kind": "fixed",
+              "examples": [
+                "What's your name?",
+                "Hello! What's your name?",
+                "Excuse me, what's your name?"
+              ]
+            },
+            {
+              "en": "My name is",
+              "fa": "اسم من ... است",
+              "kind": "collocation",
+              "examples": [
+                "My name is Sara.",
+                "My name is Ali.",
+                "My name is Noah."
               ]
             }
           ]
@@ -1032,7 +1053,7 @@
           "type": "response-practice",
           "practiceRevision": 2,
           "title": "از عبارت تا گفتنِ جمله",
-          "description": "دو موقعیت کوتاه؛ اول یک سلام واقعی بساز، بعد خودت را معرفی کن. اگر بلدی، بدون باز کردن راهنما جواب بده.",
+          "description": "دو موقعیت کوتاه؛ اول یک سلام واقعی بساز، بعد خودت را معرفی کن. اگر بلدی، بدون باز کردن راهنما جواب بده. در این درس خودت سؤال نام مخاطب را هم می‌سازی؛ پرسیدن نام مربوط به درس اول است.",
           "completion": "توانستی با صبح بخیر مکالمه را آغاز کنی، احوال بپرسی و خودت را معرفی کنی.",
           "tasks": [
             {
@@ -1101,6 +1122,30 @@
                   }
                 ],
                 "success": "سلام، معرفی خود و پرسیدن نام را درست کنار هم گذاشتی."
+              }
+            },
+            {
+              "task": "از طرف مقابل اسمش را بپرس و بعد نام خودت را معرفی کن.",
+              "incoming": "Hello! I'm new here.",
+              "hint": "What's your name? My name is Ali.",
+              "example": "What's your name? My name is Ali.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "what's your name",
+                      "what is your name"
+                    ],
+                    "feedback": "برای پرسیدن اسم از What's your name? استفاده کن."
+                  },
+                  {
+                    "patterns": [
+                      "\\b(?:my name is|i'm|i am)\\s+[a-z]+\\b"
+                    ],
+                    "feedback": "نام خودت را هم معرفی کن."
+                  }
+                ],
+                "success": "هم نام مخاطب را پرسیدی و هم خودت را معرفی کردی."
               }
             }
           ],
