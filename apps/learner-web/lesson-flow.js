@@ -26,7 +26,7 @@ export const LESSON_PHASE_LABELS = Object.freeze({
 const TYPE_FOR_PHASE = {
   shadowing: ['shadowing'],
   words: ['vocabulary'],
-  phrases: ['expression-study', 'composer-view', 'family-tree', 'family-lab', 'spatial-lab', 'count-visual'],
+  phrases: ['expression-study', 'composer-view', 'sentence-composer', 'response-practice', 'family-tree', 'family-lab', 'spatial-lab', 'count-visual'],
   sentence: ['sentence-composer'],
   variants: ['composer-view', 'sentence-transform', 'meaning-cluster', 'plural-pair-lab'],
   puzzle: ['sentence-builder'],
