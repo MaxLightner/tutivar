@@ -896,3 +896,7 @@ button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3p
 .perspective-visual[data-perspective-distance="this"]{border-color:#81b39a}
 .perspective-visual[data-perspective-distance="that"]{border-color:#8ab3ba}
 @media(max-width:550px){.perspective-picture{min-height:160px}.perspective-visual figcaption{font-size:11px}}
+
+.house-facts-visual svg,.room-objects-visual svg{width:100%;height:auto;display:block;max-height:310px}
+.room-objects-visual{background:#f4f8f2}
+.house-facts-visual figcaption,.room-objects-visual figcaption{font-size:12px;line-height:1.7}
