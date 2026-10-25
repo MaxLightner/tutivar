@@ -28,7 +28,7 @@ export function inspectVocabularyContinuity(lessons) {
     for (const entry of vocabulary.items || []) {
       const key = vocabularyKey(entry.en);
       if (!key) { errors.push(lesson.id + ': empty vocabulary entry'); continue; }
-      if (/\\s/.test(entry.en.trim())) errors.push(lesson.id + ': multiword expression in word bank: ' + entry.en);
+      if (/\s/.test(entry.en.trim())) errors.push(lesson.id + ': multiword expression in word bank: ' + entry.en);
       if (within.has(key)) errors.push(lesson.id + ': repeated entry within lesson: ' + entry.en);
       else within.add(key);
       if (seen.has(key)) errors.push(lesson.id + ': "' + entry.en + '" repeats a taught word from ' + seen.get(key));
@@ -39,8 +39,8 @@ export function inspectVocabularyContinuity(lessons) {
 }
 export function loadA1Lessons() {
   const directory = join(root, 'content/language-pairs/fa-en/lessons');
-  return readdirSync(directory).filter(n => /^a1-\\d+\\.json$/.test(n))
-    .sort((a,b) => Number(a.match(/\\d+/)[0]) - Number(b.match(/\\d+/)[0]))
+  return readdirSync(directory).filter(n => /^a1-\d+\.json$/.test(n))
+    .sort((a,b) => Number(a.match(/\d+/)[0]) - Number(b.match(/\d+/)[0]))
     .map(name => JSON.parse(readFileSync(join(directory, name), 'utf8')));
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
