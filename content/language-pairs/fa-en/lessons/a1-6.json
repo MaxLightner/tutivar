@@ -1106,8 +1106,7 @@
           "patternIds": [
             "statement",
             "question",
-            "yes-no",
-            "surname"
+            "yes-no"
           ],
           "sentences": [
             {
