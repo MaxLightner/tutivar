@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "policy": "Transitional exceptions exist only for the four already published 2026-10-25 lessons. They are immutable under their Git blob hashes: a change requires migrating to the owner's canonical objectives, not adding another exception. Do not reuse old A1-6..A1-9 progress under new objectives.",
+  "legacyPublished": [
+    "A1-1",
+    "A1-2",
+    "A1-3",
+    "A1-4",
+    "A1-5",
+    "A1-6",
+    "A1-7",
+    "A1-8",
+    "A1-9"
+  ],
+  "lockedMismatches": [
+    {
+      "id": "A1-6",
+      "canonicalTarget": "A1-8",
+      "note": "Existing lesson combines larger numbers and ages; retain its content for transfer into personal-information lesson after introducing characteristics and appearances.",
+      "currentTitle": "از عددهای دورقمی تا گفتن سن",
+      "legacyGitBlobSha": "cc78c3b6efb5ac231c2ffd9ac7d7cc5af18903b3",
+      "preserveProgress": true
+    },
+    {
+      "id": "A1-7",
+      "canonicalTarget": "A1-6 / A1-7",
+      "note": "Existing this/that person-and-object identification content is useful for review; it is not a substitute for object features or describing people's appearance.",
+      "currentTitle": "این چیست؟ آن کیست؟",
+      "legacyGitBlobSha": "ba69b587edbfdefc6e88d39d2b0fa005550854d4",
+      "preserveProgress": true
+    },
+    {
+      "id": "A1-8",
+      "canonicalTarget": "A1-10",
+      "note": "Existing home, room counts, floors and area are useful input to canonical home-and-amenities lesson; content is not personal-information A1-8.",
+      "currentTitle": "اتاق‌های خانه",
+      "legacyGitBlobSha": "0a73d28b095fd01b0ad11aed0a5159d4ca0a9e10",
+      "preserveProgress": true
+    },
+    {
+      "id": "A1-9",
+      "canonicalTarget": "A1-10 (supplementary) / A2-3",
+      "note": "Existing room objects and precise positioning belong with home descriptions or later detail, not everyday feelings A1-9.",
+      "currentTitle": "وسایل اتاق من",
+      "legacyGitBlobSha": "c5b52a0b20c743342ed615bf5145b98fea067234",
+      "preserveProgress": true
+    }
+  ],
+  "contentGaps": [
+    {
+      "id": "A1-3",
+      "gap": "The owner-approved outcome includes having/not-having possessions (have / don't have), in addition to whose/mine."
+    },
+    {
+      "id": "A1-4",
+      "gap": "Teaching objective matches location, but old displayed title should become بیان موقعیت مکانی."
+    },
+    {
+      "id": "A1-5",
+      "gap": "Owner-approved outcome is counting 1–12 and asking for both color and quantity; current lesson stops at 10 and does not sufficiently teach colors."
+    }
+  ],
+  "migrationRule": "Before publishing another new lesson, migrate or archive the four mismatched published entries in a way that preserves their historical progress and source content. Reassignments require versioned IDs or an explicit progress-migration map; never silently overwrite existing data.",
+  "approvedExceptionScope": "A1-6 through A1-9 only; locked at snapshot above"
+}
