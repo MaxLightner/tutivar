@@ -118,7 +118,7 @@ export function validatePublishedCatalog({ manifest, runtimeCourse, legacy, read
   }
   // Old 6–9 are only grandfathered while they await replacement. Never add A1-10
   // to the live path before this mismatch has been resolved and removed.
-  if (legacy.lockedMismatches.length && ids.some(id => !metadataGrandfathered.has(id) && !frozen.has(id)))
+  if (legacy.lockedMismatches.length && ids.some(id => Number(id.slice(3)) > 9))
     errors.push('Cannot publish another new A1 lesson before migrating existing wrong-order A1-6..9');
   const checked = new Set(legacy.lockedMismatches.map(x => x.id));
   for (const mismatch of legacy.lockedMismatches) {
