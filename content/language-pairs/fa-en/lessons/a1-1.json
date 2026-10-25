@@ -1,6 +1,6 @@
 {
   "id": "A1-1",
-  "revision": 13,
+  "revision": 14,
   "status": "draft",
   "title": "معرفی خود و شروع گفت‌وگو",
   "goal": "در برخورد کوتاه سلام کنی و احوال بپرسی، با What's your name? نام مخاطب را بپرسی، نام خودت را بگویی و گفت‌وگو را تمام کنی.",
@@ -43,7 +43,7 @@
     {
       "id": "foundation",
       "label": "از کلمه تا جمله",
-      "intro": "ابتدا واژه‌ها را مرور کن، عبارت را با لمس مستقیم بساز، سپس جمله و شکل‌هایش را کشف کن. در پایان جورچین را حل کن و خودت جمله بنویس.",
+      "intro": "واژه‌ها و عبارت‌های کوتاه را یاد بگیر، سپس پنج موقعیت را به‌ترتیب از سلام‌کردن تا خداحافظی تمرین کن.",
       "masteryActivityIds": [
         "hello-intro-check",
         "hello-transform"
@@ -1051,10 +1051,10 @@
         {
           "id": "hello-intro-check",
           "type": "response-practice",
-          "practiceRevision": 2,
-          "title": "از عبارت تا گفتنِ جمله",
-          "description": "دو موقعیت کوتاه؛ اول یک سلام واقعی بساز، بعد خودت را معرفی کن. اگر بلدی، بدون باز کردن راهنما جواب بده. در این درس خودت سؤال نام مخاطب را هم می‌سازی؛ پرسیدن نام مربوط به درس اول است.",
-          "completion": "توانستی با صبح بخیر مکالمه را آغاز کنی، احوال بپرسی و خودت را معرفی کنی.",
+          "practiceRevision": 3,
+          "title": "چهار موقعیت پله‌پله؛ از سلام تا پایان گفت‌وگو",
+          "description": "از ساده به دشوار: اول احوالپرسی، سپس پرسیدن نام، بعد پاسخ‌دادن متناسب با موقعیت و در پایان خداحافظی. همه در همین بخش جمع شده‌اند.",
+          "completion": "سلام متناسب، پرسیدن نام، خوشوقتی و خداحافظی را در چند موقعیت مختلف تمرین کردی.",
           "tasks": [
             {
               "task": "صبح وارد کلاس می‌شوی. با «صبح بخیر» سلام کن و از حال همکلاسی‌ات بپرس.",
@@ -1125,27 +1125,72 @@
               }
             },
             {
-              "task": "از طرف مقابل اسمش را بپرس و بعد نام خودت را معرفی کن.",
-              "incoming": "Hello! I'm new here.",
-              "hint": "What's your name? My name is Ali.",
-              "example": "What's your name? My name is Ali.",
+              "task": "یک نفر می‌گوید اسمش سارا است. خوشوقتی را بگو و اسم او را تکرار کن.",
+              "incoming": "Hi, I'm Sara.",
+              "hint": "Nice to meet you, Sara.",
+              "example": "Nice to meet you, Sara.",
               "assessment": {
                 "required": [
                   {
                     "any": [
-                      "what's your name",
-                      "what is your name"
+                      "nice to meet you"
                     ],
-                    "feedback": "برای پرسیدن اسم از What's your name? استفاده کن."
+                    "feedback": "از Nice to meet you استفاده کن."
                   },
                   {
-                    "patterns": [
-                      "\\b(?:my name is|i'm|i am)\\s+[a-z]+\\b"
+                    "any": [
+                      "sara"
                     ],
-                    "feedback": "نام خودت را هم معرفی کن."
+                    "feedback": "اسم طرف را بیاور."
                   }
                 ],
-                "success": "هم نام مخاطب را پرسیدی و هم خودت را معرفی کردی."
+                "success": "متناسب با موقعیت، جمله را خودت ساختی."
+              }
+            },
+            {
+              "task": "بعدازظهر همکلاسی را می‌بینی؛ به او سلام کن و از حالش بپرس.",
+              "hint": "Good afternoon! How are you?",
+              "example": "Good afternoon! How are you?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "good afternoon"
+                    ],
+                    "feedback": "این موقعیت بعدازظهر است."
+                  },
+                  {
+                    "any": [
+                      "how are you"
+                    ],
+                    "feedback": "احوال او را هم بپرس."
+                  }
+                ],
+                "success": "متناسب با موقعیت، جمله را خودت ساختی."
+              }
+            },
+            {
+              "task": "مکالمه تمام شده؛ مؤدبانه خداحافظی کن و بگو به زودی می‌بینمت.",
+              "incoming": "Nice to meet you! I have to go.",
+              "hint": "Bye! See you!",
+              "example": "Bye! See you!",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "bye",
+                      "goodbye"
+                    ],
+                    "feedback": "خداحافظی را بگو."
+                  },
+                  {
+                    "any": [
+                      "see you"
+                    ],
+                    "feedback": "See you را هم اضافه کن."
+                  }
+                ],
+                "success": "متناسب با موقعیت، جمله را خودت ساختی."
               }
             }
           ],
@@ -1156,7 +1201,7 @@
     {
       "id": "production",
       "label": "از سؤال و جواب تا مکالمه",
-      "intro": "اینجا هر جمله پاسخی دارد و هر پاسخ می‌تواند یک سؤال تازه بسازد. ابتدا دو نفر را رفت‌وبرگشتی ببین؛ بعد پاسخ مثبت و منفی، دو مکالمه و تمرین‌های شنیدن و جواب‌دادن را انجام بده.",
+      "intro": "اول نوبت‌های کوتاه، بعد دو مکالمه، تصویر و سرانجام گفت‌وگوی مستقل. تمرین‌ها از ساده به پیچیده پیش می‌روند.",
       "masteryActivityIds": [
         "hello-exchange-practice",
         "hello-guided-talk",
@@ -1248,7 +1293,7 @@
         {
           "id": "hello-exchange-practice",
           "type": "response-practice",
-          "practiceRevision": 1,
+          "practiceRevision": 2,
           "title": "جواب بده، سؤال را برگردان",
           "description": "این‌بار جواب را خودت بساز؛ هر موقعیت یک انتخاب معنایی متفاوت دارد.",
           "completion": "چهار رفت‌وبرگشت با پاسخ مثبت و منفی را بدون گزینه ساختی.",
@@ -1365,6 +1410,63 @@
                 ],
                 "success": "گفت‌وگو را بعد از معرفی متوقف نکردی."
               }
+            },
+            {
+              "task": "به کسی که نامت را پرسیده بگو اسم تو سارا است و اسم او را هم بپرس.",
+              "incoming": "What's your name?",
+              "hint": "My name is Sara. What's your name?",
+              "example": "My name is Sara. What's your name?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my name is sara",
+                      "i'm sara",
+                      "i am sara"
+                    ],
+                    "feedback": "خودت را با نام سارا معرفی کن."
+                  },
+                  {
+                    "any": [
+                      "what's your name",
+                      "what is your name"
+                    ],
+                    "feedback": "پرسش نام را به او برگردان."
+                  }
+                ],
+                "success": "متناسب با موقعیت، جمله را خودت ساختی."
+              }
+            },
+            {
+              "task": "غروب به دوستت سلام کن؛ بگو حالت خوب است و از حالش بپرس.",
+              "hint": "Good evening! I'm fine, thanks. And you?",
+              "example": "Good evening! I'm fine, thanks. And you?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "good evening"
+                    ],
+                    "feedback": "سلام مناسب غروب را انتخاب کن."
+                  },
+                  {
+                    "any": [
+                      "i'm fine",
+                      "i am fine",
+                      "i'm good",
+                      "i am good"
+                    ],
+                    "feedback": "حال خودت را بگو."
+                  },
+                  {
+                    "any": [
+                      "and you"
+                    ],
+                    "feedback": "سؤال را برگردان."
+                  }
+                ],
+                "success": "متناسب با موقعیت، جمله را خودت ساختی."
+              }
             }
           ],
           "phase": "correspondence"
@@ -1421,7 +1523,7 @@
         {
           "id": "hello-dialogue-recall",
           "type": "response-practice",
-          "practiceRevision": 1,
+          "practiceRevision": 2,
           "title": "بعد از شنیدن، خودت نوبت بعد را بگو",
           "description": "مکالمهٔ اول را دیدی. حالا قبل از نوشتن، حدس بزن نفر مقابل چه جوابی لازم دارد.",
           "completion": "سه نوبت اصلی مکالمه را از حافظه ساختی.",
@@ -1515,6 +1617,32 @@
                   }
                 ],
                 "success": "مکالمه را طبیعی تمام کردی."
+              }
+            },
+            {
+              "task": "اسم خودت را معرفی کن، بعد از طرف مقابل بپرس اسمش چیست.",
+              "incoming": "Hello, I'm Emma.",
+              "hint": "I'm Ali. What's your name?",
+              "example": "I'm Ali. What's your name?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i'm ali",
+                      "i am ali",
+                      "my name is ali"
+                    ],
+                    "feedback": "اسم خودت را معرفی کن."
+                  },
+                  {
+                    "any": [
+                      "what's your name",
+                      "what is your name"
+                    ],
+                    "feedback": "نام طرف مقابل را هم بپرس."
+                  }
+                ],
+                "success": "متناسب با موقعیت، جمله را خودت ساختی."
               }
             }
           ],
@@ -1673,7 +1801,7 @@
           "id": "hello-picture",
           "type": "picture-description",
           "phase": "picture",
-          "practiceRevision": 1,
+          "practiceRevision": 2,
           "title": "از روی تصویر: آشنایی صبحگاهی",
           "description": "دو دانش‌آموز کنار مدرسه‌اند. به زمان روز، اسم‌ها و موقعیتشان نگاه کن؛ سپس مکالمه را با جمله‌های خودت بساز.",
           "image": "./assets/scene-a1-1.svg",
@@ -1736,13 +1864,43 @@
                 ],
                 "success": "با کمک تصویر، جمله را خودت درست ساختی."
               }
+            },
+            {
+              "task": "در تصویر نام دوستت سارا است؛ با اسم او خودت را معرفی کن.",
+              "hint": "Hello, Sara! My name is Ali.",
+              "example": "Hello, Sara! My name is Ali.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "hello",
+                      "hi"
+                    ],
+                    "feedback": "سلام کن."
+                  },
+                  {
+                    "any": [
+                      "sara"
+                    ],
+                    "feedback": "اسم سارا را به کار ببر."
+                  },
+                  {
+                    "any": [
+                      "my name is ali",
+                      "i'm ali"
+                    ],
+                    "feedback": "اسم خودت را هم بگو."
+                  }
+                ],
+                "success": "متناسب با موقعیت، جمله را خودت ساختی."
+              }
             }
           ]
         },
         {
           "id": "hello-guided-talk",
           "type": "guided-dialogue",
-          "practiceRevision": 3,
+          "practiceRevision": 4,
           "title": "نوبت تو؛ گوش کن و مکالمه را ادامه بده",
           "description": "نوبت اول صدای همکلاسی را بشنو و پاسخ بده؛ در نوبت‌های بعدی مکالمه را پیش ببر. اگر چیزی ناقص بود، همان بخش را اصلاح می‌کنی.",
           "completion": "سه نوبت سلام، معرفی و خداحافظی را خودت پیش بردی.",
@@ -1849,6 +2007,55 @@
                   }
                 ],
                 "success": "خوش‌وقتی و خداحافظی را طبیعی به هم وصل کردی."
+              }
+            },
+            {
+              "speaker": "همکلاسی",
+              "incoming": "I'm Sara. Nice to meet you!",
+              "task": "با نام او خوشوقتی را پاسخ بده.",
+              "hint": "Nice to meet you too, Sara.",
+              "example": "Nice to meet you too, Sara.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "nice to meet you"
+                    ],
+                    "feedback": "خوشوقتی را پاسخ بده."
+                  },
+                  {
+                    "any": [
+                      "sara"
+                    ],
+                    "feedback": "از اسم سارا استفاده کن."
+                  }
+                ],
+                "success": "متناسب با موقعیت، جمله را خودت ساختی."
+              }
+            },
+            {
+              "speaker": "همکلاسی",
+              "incoming": "Bye! See you!",
+              "task": "مکالمه را تمام کن و خداحافظی کن.",
+              "hint": "Bye, Sara! See you!",
+              "example": "Bye, Sara! See you!",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "bye",
+                      "goodbye"
+                    ],
+                    "feedback": "خداحافظی کن."
+                  },
+                  {
+                    "any": [
+                      "see you"
+                    ],
+                    "feedback": "عبارت See you را اضافه کن."
+                  }
+                ],
+                "success": "متناسب با موقعیت، جمله را خودت ساختی."
               }
             }
           ],
