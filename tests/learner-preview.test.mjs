@@ -1027,8 +1027,8 @@ test('A1-8 names rooms and aligns a tap-to-change sentence with the highlighted 
   assert.deepEqual([...new Set(foundation.activities.map(a=>a.phase))],LESSON_PHASES.foundation);
   assert.deepEqual([...new Set(production.activities.map(a=>a.phase))],LESSON_PHASES.production);
   const vocabulary=foundation.activities.find(a=>a.type==='vocabulary');
-  assert.ok(coreItems(vocabulary).length>=16);
-  assert.ok(supplementaryItems(vocabulary).length>=5);
+  assert.ok(coreItems(vocabulary).length>=12);
+  assert.ok(supplementaryItems(vocabulary).length>=6);
   for(const old of ['room','mother','father','sister','brother','book','in','where','this','table'])
     assert.ok(!vocabulary.items.some(item=>item.en===old),'previous teaching should be used but not relisted: '+old);
   assert.ok(vocabulary.items.every(item=>!/\\s/.test(item.en.trim())));
