@@ -1013,7 +1013,7 @@ test('A1-7 keeps prior dialogue vocabulary out and synchronizes this/that with d
   assert.equal(noun.slots.object,'dog');
   const personView=foundation.activities.find(a=>a.id==='identify-models');
   assert.equal(personView.patternId,'point-person');
-  const viewHtml=renderActivity(personView,{lessonId:'A1-7',index:0,e:String,en:String,i:()=>'',progress:{sentenceComposers:{}},activitiesById:Object.fromEntries(foundation.map(a=>[a.id,a]))});
+  const viewHtml=renderActivity(personView,{lessonId:'A1-7',index:0,e:String,en:String,i:()=>'',progress:{sentenceComposers:{}},activitiesById:Object.fromEntries(foundation.activities.map(a=>[a.id,a]))});
   assert.match(viewHtml,/data-perspective-object="teacher"/);
   assert.match(viewHtml,/data-composer-slot="distance"/);
   assert.ok(production.activities.find(a=>a.type==='guided-dialogue').turns.some(turn=>turn.example==='Who is that?'));
@@ -1043,7 +1043,7 @@ test('A1-8 names rooms and aligns a tap-to-change sentence with the highlighted 
   assert.match(scene,/GARDEN/);
   assert.match(scene,/data-composer-slot="room"/);
   const roomView=foundation.activities.find(a=>a.id==='rooms-names');
-  assert.match(renderActivity(roomView,{lessonId:'A1-8',index:0,e:String,en:String,i:()=>'',progress:{sentenceComposers:{}},activitiesById:Object.fromEntries(foundation.map(a=>[a.id,a]))}),/data-room-selected="kitchen"/);
+  assert.match(renderActivity(roomView,{lessonId:'A1-8',index:0,e:String,en:String,i:()=>'',progress:{sentenceComposers:{}},activitiesById:Object.fromEntries(foundation.activities.map(a=>[a.id,a]))}),/data-room-selected="kitchen"/);
   assert.ok(foundation.activities.find(a=>a.type==='expression-study').items.some(item=>item.en==='living room'));
   assert.ok(production.activities.find(a=>a.type==='free-write').prompt.includes('واقعی یا خیالی'));
   assert.match(readFileSync(join(projectRoot,'apps/learner-web/assets/scene-a1-8.svg'),'utf8'),/KITCHEN/);
