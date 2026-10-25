@@ -1,6 +1,6 @@
 {
   "id": "A1-6",
-  "revision": 2,
+  "revision": 3,
   "status": "draft",
   "title": "پرسیدن نام و سن",
   "goal": "نام و نام خانوادگی را بپرسی و معرفی کنی؛ با عددهای ۱۱ تا ۱۰۰ و ترکیب آن‌ها سن خود و دیگران را بگویی، سؤال How old ...? بسازی و جواب درست بدهی.",
@@ -254,9 +254,9 @@
               "fa": "صد",
               "hint": "عدد 100؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
               "examples": [
-                "I am hundred years old.",
-                "My brother is hundred years old.",
-                "She is hundred."
+                "The number is one hundred.",
+                "There are one hundred books.",
+                "My grandfather is one hundred years old."
               ]
             },
             {
