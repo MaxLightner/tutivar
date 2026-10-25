@@ -1,25 +1,25 @@
 {
   "id": "A1-8",
-  "revision": 2,
+  "revision": 3,
   "status": "draft",
   "title": "اتاق‌های خانه",
   "archetype": "home-rooms",
-  "goal": "اتاق‌های مهم خانه را نام ببری، تفاوت اتاق و مکان را بشناسی و بتوانی بپرسی افراد یا وسایل در کدام اتاق هستند و پاسخ بدهی.",
+  "goal": "بتوانی تعداد اتاق‌ها و پنجره‌ها را با مفرد/جمع درست بشماری، طبقه و مساحت سادهٔ یک خانه را بگویی و در یک جمله جای یک فرد یا شیء را در اتاق توصیف کنی.",
   "duration": "۲۵ دقیقه",
-  "feature": "نقشهٔ خانه و جملهٔ قابل‌تغییر",
+  "feature": "یک خانه؛ عدد، طبقه، اندازه و موقعیت",
   "teachingModel": {
     "primary": "K1",
     "support": "K2"
   },
   "lessonTemplate": "discovery-production-v1",
   "orientation": {
-    "goal": "در یک خانهٔ واقعی یا خیالی اتاق‌ها را شناسایی کنی، بپرسی «مادرم کجاست؟» و با She is in the kitchen. پاسخ بدهی.",
+    "goal": "یک خانهٔ فرضی را با تعداد اتاق‌ها، طبقه، مساحت و موقعیت افراد و وسایل در چند جمله توصیف کنی.",
     "prerequisites": [
       "نسبت‌های خانوادگی در درس دوم",
       "in/on و مکان در درس چهارم",
       "شناسایی افراد و اشیا در درس هفتم"
     ],
-    "previously": "از قبل person، room، in/on، mother/father و Where is ... را دیده‌ای. در این درس فقط اسمِ اتاق‌های تازه را آموزش می‌بینیم و همان جمله‌ها را در نقشهٔ خانه استفاده می‌کنیم.",
+    "previously": "از قبل person، room، in/on، mother/father و Where is ... را دیده‌ای. در این درس فقط اسمِ اتاق‌های تازه را آموزش می‌بینیم و همان جمله‌ها را در نقشهٔ خانه استفاده می‌کنیم. پنجره، در، دیوار، میز و کیف قبلاً در درس‌های ۳ و ۴ معرفی شده‌اند؛ آن‌ها را اینجا در جمله‌های جدید مرور می‌کنی.",
     "quickCheck": {
       "title": "اگر اتاق‌ها را می‌شناسی",
       "question": "می‌توانی اسم kitchen، bedroom و living room را بگویی و محل یک نفر را سؤال کنی؟",
@@ -47,7 +47,7 @@
     {
       "id": "foundation",
       "label": "از کلمه تا جمله",
-      "intro": "فقط اتاق‌ها و مکان‌های لازم برای معرفی یک خانه را یاد بگیر؛ نام فضاهای کم‌کاربردتر اختیاری‌اند. با لمس خود نام اتاق، نقشهٔ خانه هم تغییر می‌کند.",
+      "intro": "یک خانهٔ فرضی را با تعداد اتاق‌ها و پنجره‌ها، طبقه، مساحت و محل افراد توصیف کن. بیشتر اسم وسایل را از درس چهارم مرور می‌کنیم، نه از نو حفظ.",
       "masteryActivityIds": [
         "rooms-construction"
       ],
@@ -69,7 +69,11 @@
             "Where is my mother?",
             "She is in the kitchen.",
             "My brother is in the bedroom.",
-            "We are at home."
+            "We are at home.",
+            "There are two bedrooms.",
+            "My apartment is on the second floor.",
+            "My home is eighty square meters.",
+            "My bag is on the table in the kitchen."
           ]
         },
         {
@@ -78,7 +82,7 @@
           "phase": "words",
           "title": "اتاق‌های اصلی خانه و واژه‌های لازم برای گفتن مکان",
           "batchSize": 5,
-          "deckRevision": 2,
+          "deckRevision": 3,
           "items": [
             {
               "en": "home",
@@ -234,6 +238,66 @@
               "en": "patio",
               "fa": "حیاط خلوت",
               "role": "supplementary"
+            },
+            {
+              "en": "ceiling",
+              "fa": "سقفِ داخل اتاق",
+              "hint": "سقف درون اتاق است؛ roof سقف بیرونی ساختمان.",
+              "examples": [
+                "The ceiling is above the bed.",
+                "The lamp is near the ceiling.",
+                "The room has a white ceiling."
+              ]
+            },
+            {
+              "en": "roof",
+              "fa": "بام / سقف بیرونی ساختمان",
+              "hint": "این واژه در توصیف تعداد، طبقه یا مساحت همان خانه استفاده می‌شود.",
+              "examples": [
+                "The roof is above the rooms.",
+                "The roof is on the house.",
+                "Look at the roof."
+              ]
+            },
+            {
+              "en": "square",
+              "fa": "مربع / واحد مساحت",
+              "hint": "این واژه در توصیف تعداد، طبقه یا مساحت همان خانه استفاده می‌شود.",
+              "examples": [
+                "My apartment is eighty square meters.",
+                "This room is twenty square meters.",
+                "One square meter is small."
+              ]
+            },
+            {
+              "en": "meter",
+              "fa": "متر",
+              "hint": "این واژه در توصیف تعداد، طبقه یا مساحت همان خانه استفاده می‌شود.",
+              "examples": [
+                "My apartment is eighty square meters.",
+                "This room is twenty square meters.",
+                "The wall is three meters long."
+              ]
+            },
+            {
+              "en": "first",
+              "fa": "اول",
+              "hint": "این واژه در توصیف تعداد، طبقه یا مساحت همان خانه استفاده می‌شود.",
+              "examples": [
+                "My apartment is on the first floor.",
+                "This is the first floor.",
+                "The first room is the kitchen."
+              ]
+            },
+            {
+              "en": "second",
+              "fa": "دوم",
+              "hint": "این واژه در توصیف تعداد، طبقه یا مساحت همان خانه استفاده می‌شود.",
+              "examples": [
+                "My apartment is on the second floor.",
+                "This is the second floor.",
+                "The second room is the bedroom."
+              ]
             }
           ]
         },
@@ -242,7 +306,7 @@
           "type": "expression-study",
           "phase": "phrases",
           "title": "نام‌های ترکیبی و عبارت‌های کاربردی",
-          "description": "اینها یک‌واژه‌ای نیستند؛ برای معرفی اتاق یا پاسخ به سؤال مکان یاد می‌گیری و در مکالمه‌های بعدی استفاده می‌کنی.",
+          "description": "ترکیب‌های اتاق، طبقه و متراژ بعداً در ساخت جمله، مکالمه و معرفی خانه استفاده می‌شوند.",
           "items": [
             {
               "en": "living room",
@@ -283,6 +347,26 @@
                 "My sister is at home.",
                 "Are you at home?"
               ]
+            },
+            {
+              "en": "square meters",
+              "fa": "متر مربع",
+              "kind": "collocation",
+              "examples": [
+                "My apartment is eighty square meters.",
+                "The house is sixty square meters.",
+                "This room is forty square meters."
+              ]
+            },
+            {
+              "en": "on the second floor",
+              "fa": "در طبقهٔ دوم",
+              "kind": "collocation",
+              "examples": [
+                "My apartment is on the second floor.",
+                "The bedroom is on the second floor.",
+                "The kitchen is on the second floor."
+              ]
             }
           ]
         },
@@ -294,6 +378,19 @@
           "description": "نقشه و جمله با هم عوض می‌شوند. living room و dining room را به‌صورت یک عبارت لمس می‌کنی.",
           "sourceActivityId": "rooms-composer",
           "patternId": "which-room"
+        },
+        {
+          "id": "house-counts",
+          "type": "composer-view",
+          "phase": "phrases",
+          "title": "تعداد اتاق‌ها، پنجره‌ها و درها",
+          "description": "روی تعداد یا اسم شیء در یک جمله بزن. با تغییر one/two شکل is/are و مفرد/جمع خودکار درست می‌شود.",
+          "sourceActivityId": "house-facts-composer",
+          "patternId": "count",
+          "scene": {
+            "type": "house-facts",
+            "focus": "count"
+          }
         },
         {
           "id": "rooms-composer",
@@ -456,6 +553,73 @@
                   "faRoom": "باغچه"
                 }
               }
+            ],
+            "objects": [
+              {
+                "id": "bag",
+                "label": "bag",
+                "translation": "کیف",
+                "forms": {
+                  "en": "My bag",
+                  "fa": "کیف من"
+                }
+              },
+              {
+                "id": "book",
+                "label": "book",
+                "translation": "کتاب",
+                "forms": {
+                  "en": "My book",
+                  "fa": "کتاب من"
+                }
+              },
+              {
+                "id": "phone",
+                "label": "phone",
+                "translation": "گوشی",
+                "forms": {
+                  "en": "My phone",
+                  "fa": "گوشی من"
+                }
+              },
+              {
+                "id": "keys",
+                "label": "keys",
+                "translation": "کلیدها",
+                "forms": {
+                  "en": "My keys",
+                  "fa": "کلیدهای من"
+                }
+              }
+            ],
+            "positions": [
+              {
+                "id": "on",
+                "label": "on",
+                "translation": "روی",
+                "forms": {
+                  "en": "on the table",
+                  "fa": "روی میز"
+                }
+              },
+              {
+                "id": "under",
+                "label": "under",
+                "translation": "زیر",
+                "forms": {
+                  "en": "under the table",
+                  "fa": "زیر میز"
+                }
+              },
+              {
+                "id": "near",
+                "label": "near",
+                "translation": "نزدیک",
+                "forms": {
+                  "en": "near the window",
+                  "fa": "نزدیک پنجره"
+                }
+              }
             ]
           },
           "slots": [
@@ -470,6 +634,18 @@
               "label": "اتاق",
               "wordSet": "rooms",
               "default": "kitchen"
+            },
+            {
+              "id": "object",
+              "label": "وسیله",
+              "wordSet": "objects",
+              "default": "bag"
+            },
+            {
+              "id": "position",
+              "label": "مکان وسیله",
+              "wordSet": "positions",
+              "default": "on"
             }
           ],
           "derivedDefaults": {},
@@ -610,6 +786,377 @@
                   "fixed": " است؟"
                 }
               ]
+            },
+            {
+              "id": "compound-object",
+              "label": "دو مکان در یک جمله",
+              "segments": [
+                {
+                  "slot": "object",
+                  "form": "en"
+                },
+                {
+                  "fixed": " is "
+                },
+                {
+                  "slot": "position",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "room",
+                  "form": "place"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "object",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "position",
+                  "form": "fa"
+                },
+                {
+                  "fixed": "، در "
+                },
+                {
+                  "slot": "room",
+                  "form": "faRoom"
+                },
+                {
+                  "fixed": " است."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "house-facts-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "خانه را توصیف کن؛ عدد، قسمت، طبقه و مساحت را لمس کن",
+          "description": "خانهٔ نمونه را با کلمات جمله تغییر بده. تعداد اتاق‌ها و پنجره‌ها، طبقه و متراژ سه مشخصهٔ متفاوت‌اند، اما همه با همان روش لمس مستقیم واژه عوض می‌شوند.",
+          "targetLanguage": "en",
+          "wordSets": {
+            "amounts": [
+              {
+                "id": "one",
+                "label": "one",
+                "translation": "یک",
+                "forms": {
+                  "en": "one",
+                  "fa": "یک"
+                },
+                "features": {
+                  "singular": true
+                }
+              },
+              {
+                "id": "two",
+                "label": "two",
+                "translation": "دو",
+                "forms": {
+                  "en": "two",
+                  "fa": "دو"
+                },
+                "features": {
+                  "singular": false
+                }
+              },
+              {
+                "id": "three",
+                "label": "three",
+                "translation": "سه",
+                "forms": {
+                  "en": "three",
+                  "fa": "سه"
+                },
+                "features": {
+                  "singular": false
+                }
+              },
+              {
+                "id": "four",
+                "label": "four",
+                "translation": "چهار",
+                "forms": {
+                  "en": "four",
+                  "fa": "چهار"
+                },
+                "features": {
+                  "singular": false
+                }
+              }
+            ],
+            "features": [
+              {
+                "id": "bedroom",
+                "label": "bedroom",
+                "translation": "اتاق خواب",
+                "forms": {
+                  "singular": "bedroom",
+                  "plural": "bedrooms",
+                  "fa": "اتاق خواب"
+                }
+              },
+              {
+                "id": "bathroom",
+                "label": "bathroom",
+                "translation": "حمام",
+                "forms": {
+                  "singular": "bathroom",
+                  "plural": "bathrooms",
+                  "fa": "حمام"
+                }
+              },
+              {
+                "id": "window",
+                "label": "window",
+                "translation": "پنجره",
+                "forms": {
+                  "singular": "window",
+                  "plural": "windows",
+                  "fa": "پنجره"
+                }
+              },
+              {
+                "id": "door",
+                "label": "door",
+                "translation": "در",
+                "forms": {
+                  "singular": "door",
+                  "plural": "doors",
+                  "fa": "در"
+                }
+              }
+            ],
+            "levels": [
+              {
+                "id": "first",
+                "label": "first",
+                "translation": "اول",
+                "forms": {
+                  "en": "first",
+                  "fa": "اول"
+                }
+              },
+              {
+                "id": "second",
+                "label": "second",
+                "translation": "دوم",
+                "forms": {
+                  "en": "second",
+                  "fa": "دوم"
+                }
+              },
+              {
+                "id": "third",
+                "label": "third",
+                "translation": "سوم",
+                "forms": {
+                  "en": "third",
+                  "fa": "سوم"
+                }
+              }
+            ],
+            "areas": [
+              {
+                "id": "forty",
+                "label": "forty",
+                "translation": "چهل",
+                "forms": {
+                  "en": "forty",
+                  "fa": "چهل"
+                }
+              },
+              {
+                "id": "sixty",
+                "label": "sixty",
+                "translation": "شصت",
+                "forms": {
+                  "en": "sixty",
+                  "fa": "شصت"
+                }
+              },
+              {
+                "id": "eighty",
+                "label": "eighty",
+                "translation": "هشتاد",
+                "forms": {
+                  "en": "eighty",
+                  "fa": "هشتاد"
+                }
+              },
+              {
+                "id": "hundred",
+                "label": "hundred",
+                "translation": "صد",
+                "forms": {
+                  "en": "one hundred",
+                  "fa": "صد"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "amount",
+              "label": "تعداد",
+              "wordSet": "amounts",
+              "default": "two"
+            },
+            {
+              "id": "feature",
+              "label": "بخش خانه",
+              "wordSet": "features",
+              "default": "bedroom"
+            },
+            {
+              "id": "level",
+              "label": "طبقه",
+              "wordSet": "levels",
+              "default": "second"
+            },
+            {
+              "id": "area",
+              "label": "مساحت",
+              "wordSet": "areas",
+              "default": "eighty"
+            }
+          ],
+          "derivedDefaults": {
+            "be": "are "
+          },
+          "dependencies": [
+            {
+              "id": "singular-exists",
+              "when": {
+                "slot": "amount",
+                "equals": "one"
+              },
+              "set": {
+                "be": "is "
+              }
+            }
+          ],
+          "defaultPattern": "count",
+          "scene": {
+            "type": "house-facts",
+            "focus": "count",
+            "entitySlot": "feature",
+            "numberSlot": "amount"
+          },
+          "patterns": [
+            {
+              "id": "count",
+              "label": "شمارش خانه",
+              "segments": [
+                {
+                  "fixed": "There "
+                },
+                {
+                  "derived": "be"
+                },
+                {
+                  "slot": "amount",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "feature",
+                  "numberSlot": "amount"
+                },
+                {
+                  "fixed": " in my home."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "در خانهٔ من "
+                },
+                {
+                  "slot": "amount",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "feature",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " وجود دارد."
+                }
+              ]
+            },
+            {
+              "id": "floor",
+              "label": "طبقه",
+              "segments": [
+                {
+                  "fixed": "My apartment is on the "
+                },
+                {
+                  "slot": "level",
+                  "form": "en"
+                },
+                {
+                  "fixed": " floor."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "آپارتمان من در طبقهٔ "
+                },
+                {
+                  "slot": "level",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " است."
+                }
+              ],
+              "note": "اینجا شیوهٔ رایج آمریکایی را داریم: first floor طبقهٔ همکف است؛ در بریتانیا آن را ground floor می‌گویند."
+            },
+            {
+              "id": "area",
+              "label": "متراژ",
+              "segments": [
+                {
+                  "fixed": "My apartment is "
+                },
+                {
+                  "slot": "area",
+                  "form": "en"
+                },
+                {
+                  "fixed": " square meters."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "مساحت آپارتمان من "
+                },
+                {
+                  "slot": "area",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " متر مربع است."
+                }
+              ]
             }
           ]
         },
@@ -666,6 +1213,45 @@
           "description": "نام شخص را در سؤال لمس کن؛ بعد در جملهٔ مرحلهٔ قبل محلش را تغییر بده.",
           "sourceActivityId": "rooms-composer",
           "patternId": "where-person",
+          "scene": {
+            "type": "none"
+          }
+        },
+        {
+          "id": "house-floor",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "خانه در کدام طبقه است؟",
+          "description": "طبقه را در خود جمله تغییر بده؛ طبقهٔ انتخاب‌شده در تصویر روشن می‌شود. فعلاً قرارداد آمریکایی طبقات را تمرین می‌کنیم.",
+          "sourceActivityId": "house-facts-composer",
+          "patternId": "floor",
+          "scene": {
+            "type": "house-facts",
+            "focus": "floor"
+          },
+          "showNote": true
+        },
+        {
+          "id": "house-area",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "مساحت خانه چند متر مربع است؟",
+          "description": "روی عدد در جمله بزن تا متراژ خانهٔ فرضی تغییر کند؛ عددهای ۴۰ تا ۱۰۰ را از درس ششم به کار می‌بریم.",
+          "sourceActivityId": "house-facts-composer",
+          "patternId": "area",
+          "scene": {
+            "type": "house-facts",
+            "focus": "area"
+          }
+        },
+        {
+          "id": "house-compound-location",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "یک جمله، دو مکان؛ اتاق و جای وسیله",
+          "description": "مثل درس ۴ می‌دانیم وسایل روی یا زیر چیزها هستند؛ اینجا مکان کوچک‌تر را در مکان بزرگ‌تر بیان می‌کنیم. جای دقیق وسایل را در درس ۹ بیشتر تمرین می‌کنیم.",
+          "sourceActivityId": "rooms-composer",
+          "patternId": "compound-object",
           "scene": {
             "type": "none"
           }
@@ -745,8 +1331,8 @@
           "id": "rooms-construction",
           "type": "response-practice",
           "phase": "construction",
-          "title": "پنج جملهٔ کاربردی دربارهٔ اتاق‌ها",
-          "practiceRevision": 1,
+          "title": "نام، تعداد، طبقه، مساحت و مکان را ترکیب کن",
+          "practiceRevision": 2,
           "description": "مکان را روی نقشه مشخص کن و جمله را بدون گزینه بنویس.",
           "completion": "توانستی اتاق‌ها را نام ببری و محل افراد را بپرسی و بگویی.",
           "tasks": [
@@ -844,6 +1430,102 @@
                   }
                 ],
                 "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "task": "بگو در خانهٔ من دو اتاق خواب وجود دارد.",
+              "hint": "There are two bedrooms in my home.",
+              "example": "There are two bedrooms in my home.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are two bedrooms in my home"
+                    ],
+                    "feedback": "الگوی شمارش، طبقه، مساحت یا دو مکان را درست به کار ببر."
+                  }
+                ],
+                "success": "اطلاعات خانه را در جملهٔ درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو در خانهٔ من فقط یک حمام هست.",
+              "hint": "There is one bathroom in my home.",
+              "example": "There is one bathroom in my home.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there is one bathroom in my home"
+                    ],
+                    "feedback": "الگوی شمارش، طبقه، مساحت یا دو مکان را درست به کار ببر."
+                  }
+                ],
+                "success": "اطلاعات خانه را در جملهٔ درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو آپارتمان من در طبقهٔ دوم است.",
+              "hint": "My apartment is on the second floor.",
+              "example": "My apartment is on the second floor.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my apartment is on the second floor"
+                    ],
+                    "feedback": "الگوی شمارش، طبقه، مساحت یا دو مکان را درست به کار ببر."
+                  }
+                ],
+                "success": "اطلاعات خانه را در جملهٔ درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو آپارتمان من هشتاد متر مربع است.",
+              "hint": "My apartment is eighty square meters.",
+              "example": "My apartment is eighty square meters.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my apartment is eighty square meters"
+                    ],
+                    "feedback": "الگوی شمارش، طبقه، مساحت یا دو مکان را درست به کار ببر."
+                  }
+                ],
+                "success": "اطلاعات خانه را در جملهٔ درست بیان کردی."
+              }
+            },
+            {
+              "task": "کیفم در آشپزخانه، روی میز است.",
+              "hint": "My bag is on the table in the kitchen.",
+              "example": "My bag is on the table in the kitchen.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my bag is on the table in the kitchen"
+                    ],
+                    "feedback": "الگوی شمارش، طبقه، مساحت یا دو مکان را درست به کار ببر."
+                  }
+                ],
+                "success": "اطلاعات خانه را در جملهٔ درست بیان کردی."
+              }
+            },
+            {
+              "task": "سقف داخلی اتاق بالای تخت است.",
+              "hint": "The ceiling is above the bed.",
+              "example": "The ceiling is above the bed.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the ceiling is above the bed"
+                    ],
+                    "feedback": "الگوی شمارش، طبقه، مساحت یا دو مکان را درست به کار ببر."
+                  }
+                ],
+                "success": "اطلاعات خانه را در جملهٔ درست بیان کردی."
               }
             }
           ]
@@ -1027,6 +1709,16 @@
               "speaker": "Sara",
               "en": "She is in the garden.",
               "fa": "در باغچه است."
+            },
+            {
+              "speaker": "Ali",
+              "en": "How many bedrooms are there?",
+              "fa": "چند اتاق خواب وجود دارد؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "There are two bedrooms.",
+              "fa": "دو اتاق خواب وجود دارد."
             }
           ]
         },
@@ -1141,6 +1833,16 @@
               "speaker": "Noah",
               "en": "The kitchen is next to the dining room.",
               "fa": "آشپزخانه کنار غذاخوری است."
+            },
+            {
+              "speaker": "Emma",
+              "en": "Is your apartment on the second floor?",
+              "fa": "آپارتمان شما در طبقهٔ دوم است؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "Yes. It is eighty square meters.",
+              "fa": "بله؛ مساحتش هشتاد متر مربع است."
             }
           ]
         },
@@ -1149,7 +1851,7 @@
           "type": "response-practice",
           "phase": "context",
           "title": "محل اتاق‌ها را خودت توضیح بده",
-          "practiceRevision": 1,
+          "practiceRevision": 2,
           "description": "سؤال‌ها دربارهٔ اتاق‌هاست؛ جای آن‌ها را مشخص کن.",
           "completion": "فضاهای مختلف خانه را توصیف کردی.",
           "tasks": [
@@ -1202,6 +1904,38 @@
                   }
                 ],
                 "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
+              }
+            },
+            {
+              "task": "بگو خانه دو اتاق خواب دارد.",
+              "hint": "There are two bedrooms in my home.",
+              "example": "There are two bedrooms in my home.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are two bedrooms"
+                    ],
+                    "feedback": "الگوی شمارش، طبقه، مساحت یا دو مکان را درست به کار ببر."
+                  }
+                ],
+                "success": "اطلاعات خانه را در جملهٔ درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو آپارتمان هشتاد متر مربع است.",
+              "hint": "My apartment is eighty square meters.",
+              "example": "My apartment is eighty square meters.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "eighty square meters"
+                    ],
+                    "feedback": "الگوی شمارش، طبقه، مساحت یا دو مکان را درست به کار ببر."
+                  }
+                ],
+                "success": "اطلاعات خانه را در جملهٔ درست بیان کردی."
               }
             }
           ]
@@ -1289,7 +2023,7 @@
           "id": "rooms-guided",
           "type": "guided-dialogue",
           "phase": "guided",
-          "practiceRevision": 2,
+          "practiceRevision": 3,
           "title": "مکالمهٔ چندنوبتی در خانه",
           "description": "نام نفر را عوض کن، اتاق مناسب انتخاب کن و جمله را خودت تولید کن.",
           "completion": "محل افراد مختلف را پرسیدی و پاسخ دادی.",
@@ -1401,6 +2135,42 @@
                 ],
                 "success": "عبارت at home را در گفت‌وگوی طبیعی استفاده کردی."
               }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "How many bedrooms are there?",
+              "task": "بگو در خانه‌ات دو اتاق خواب هست.",
+              "hint": "There are two bedrooms in my home.",
+              "example": "There are two bedrooms in my home.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are two bedrooms"
+                    ],
+                    "feedback": "الگوی شمارش، طبقه، مساحت یا دو مکان را درست به کار ببر."
+                  }
+                ],
+                "success": "اطلاعات خانه را در جملهٔ درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "How big is your apartment?",
+              "task": "بگو هشتاد متر مربع است.",
+              "hint": "My apartment is eighty square meters.",
+              "example": "My apartment is eighty square meters.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "eighty square meters"
+                    ],
+                    "feedback": "الگوی شمارش، طبقه، مساحت یا دو مکان را درست به کار ببر."
+                  }
+                ],
+                "success": "اطلاعات خانه را در جملهٔ درست بیان کردی."
+              }
             }
           ]
         },
@@ -1408,7 +2178,7 @@
           "id": "rooms-transfer",
           "type": "dialogue-transfer",
           "phase": "guided",
-          "practiceRevision": 1,
+          "practiceRevision": 2,
           "title": "انتقال: یک خانهٔ دیگر",
           "sceneTitle": "خانهٔ یک دوست",
           "description": "خانهٔ فرضی جدیدی تصور کن و با همان دستور زبان، جای آدم‌ها را تغییر بده.",
@@ -1467,6 +2237,24 @@
                 ],
                 "success": "اتاق یا محل را در جملهٔ درست به کار بردی."
               }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is your bag?",
+              "task": "بگو کیفت روی میز در آشپزخانه است.",
+              "hint": "My bag is on the table in the kitchen.",
+              "example": "My bag is on the table in the kitchen.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "bag is on the table in the kitchen"
+                    ],
+                    "feedback": "الگوی شمارش، طبقه، مساحت یا دو مکان را درست به کار ببر."
+                  }
+                ],
+                "success": "اطلاعات خانه را در جملهٔ درست بیان کردی."
+              }
             }
           ]
         },
@@ -1476,12 +2264,12 @@
           "phase": "independent",
           "title": "تمرین واقعی: نقشهٔ خانهٔ خودت یا خیالی",
           "kind": "free-text",
-          "minWords": 19,
-          "prompt": "یک خانهٔ واقعی یا خیالی در ذهنت تصور کن؛ اطلاعات خصوصی یا عکس لازم نیست. اول دو فضای living room و kitchen را معرفی کن. سپس بپرس Where is my mother? و یک پاسخ با in the kitchen بنویس. در ادامه جای شخص دیگر را با یک اتاق متفاوت توصیف کن و اگر می‌توانی رابطهٔ اتاق‌ها را با next to یا upstairs بگو.",
-          "placeholder": "This is the living room. This is the kitchen.\\nWhere is my mother?\\nShe is in the kitchen.\\nMy brother is in the bedroom. The bedroom is upstairs.",
-          "hint": "اتاق‌های خانه می‌توانند خیالی باشند؛ همین دو فضای living room و kitchen را برای تمرین استفاده کن و بقیه را آزادانه انتخاب کن.",
+          "minWords": 33,
+          "prompt": "یک خانهٔ واقعی یا خیالی در نظر بگیر. در ۵ تا ۷ جمله، نام دو اتاق، تعداد اتاق‌خواب‌ها یا پنجره‌ها، طبقه (با قرارداد آمریکایی) و متراژ فرضی را بگو. سپس پاسخ بده Where is my mother? و یک شیء آشنا مثل bag یا phone را با دو مکان در یک جمله توصیف کن: روی میز در آشپزخانه یا زیر تخت در اتاق خواب. لازم نیست هیچ نشانی یا اطلاعات خصوصی واقعی بدهی.",
+          "placeholder": "This is the living room. This is the kitchen. There are two bedrooms in my home. My apartment is on the second floor. My apartment is eighty square meters. Where is my mother? She is in the kitchen. My bag is on the table in the kitchen.",
+          "hint": "اتاق‌ها، تعداد و متراژ همگی می‌توانند خیالی باشند. از واژه‌های شناخته‌شدهٔ درس‌های قبل استفاده کن.",
           "assessment": {
-            "revision": 1,
+            "revision": 2,
             "required": [
               {
                 "any": [
@@ -1515,6 +2303,32 @@
                   "living room"
                 ],
                 "feedback": "محل یک نفر یا شیء دیگر را هم در اتاقی دیگر توصیف کن."
+              },
+              {
+                "patterns": [
+                  "\\bthere (?:is|are)\\s+(?:one|two|three|four)\\s+(?:bedroom|bedrooms|bathroom|bathrooms|window|windows|door|doors)\\b"
+                ],
+                "feedback": "تعداد یک بخش خانه را با There is/are و شکل درست اسم بنویس."
+              },
+              {
+                "any": [
+                  "on the first floor",
+                  "on the second floor",
+                  "on the third floor"
+                ],
+                "feedback": "طبقهٔ خانه را هم توصیف کن."
+              },
+              {
+                "patterns": [
+                  "\\b(?:forty|sixty|eighty|one hundred)\\s+square meters\\b"
+                ],
+                "feedback": "مساحت را با یک عدد و square meters بیان کن."
+              },
+              {
+                "patterns": [
+                  "\\b(?:my\\s+)?(?:bag|book|phone|keys)\\s+(?:is|are)\\s+(?:on the table|under the table|near the window)\\s+(?:in the\\s+(?:kitchen|bedroom|bathroom|living room|dining room|hallway)|on the balcony|in the garden)\\b"
+                ],
+                "feedback": "جای یک وسیله را هم در دو مکانِ کوچک و بزرگ بگو."
               }
             ],
             "success": "دو فضای خانه، پرسش مکان و یک توصیف مستقل را در چند جمله بیان کردی."
