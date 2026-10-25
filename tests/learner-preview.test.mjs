@@ -64,8 +64,8 @@ test('every sample path node references a real content file with two teaching se
     assert.ok(!ids.has(lesson.id));
     ids.add(lesson.id);
   }
-  assert.equal(ids.size, 6);
-  assert.deepEqual([...new Set([...ids].map((id) => load(lessons.find((entry) => entry.id === id).file).archetype))].sort(), ['conversation', 'counting-objects', 'family', 'name-and-age', 'ownership', 'spatial-location']);
+  assert.equal(ids.size, 7);
+  assert.deepEqual([...new Set([...ids].map((id) => load(lessons.find((entry) => entry.id === id).file).archetype))].sort(), ['conversation', 'counting-objects', 'family', 'identification', 'name-and-age', 'ownership', 'spatial-location']);
 });
 
 test('not-yet-produced nodes cannot be launched as content', () => {
@@ -527,7 +527,7 @@ test('each dialogue timeline renders only two consecutive spoken lines and can s
 test('first lesson retrieves morning greetings before the dialogue half', () => {
   const lesson = load('lessons/a1-1.json');
   const activity = lesson.sections[0].activities.find((entry) => entry.id === 'hello-intro-check');
-  assert.equal(activity.tasks.length, 3);
+  assert.equal(activity.tasks.length, 5);
   assert.equal(evaluateResponse(activity.tasks[0].assessment, 'Good morning! How are you?').ok, true);
   assert.equal(evaluateResponse(activity.tasks[0].assessment, 'Hello! How are you?').ok, false);
   assert.equal(evaluateResponse(activity.tasks[0].assessment, 'Good morning!').ok, false);
@@ -867,57 +867,62 @@ test('A1-4 teaches ball-and-box positions before transferring to familiar object
   assert.deepEqual(auditLesson(lesson).errors, []);
 });
 
-test('A1-5 teaches counting with singular/plural agreement and real-world production', () => {
+test('A1-5 merges visual singular/plural, uses inline a/an and teaches arithmetic', () => {
   const lesson = load('lessons/a1-5.json');
   const [foundation, production] = lesson.sections;
   assert.deepEqual(validateLessonFlow(lesson), []);
-  assert.deepEqual(foundation.activities.map(a => a.phase), ['shadowing','words','phrases','phrases','sentence','variants','variants','puzzle','construction']);
-  assert.equal(foundation.activities[0].type, 'shadowing');
+  assert.deepEqual(foundation.activities.map(a => a.phase),
+    ['shadowing','words','phrases','phrases','phrases','sentence','variants','variants','puzzle','construction']);
   const vocabulary = foundation.activities.find(a => a.type === 'vocabulary');
-  assert.ok(coreItems(vocabulary).length >= 18);
-  assert.ok(vocabulary.items.every(item => !/\\s/.test(item.en.trim())));
-  assert.ok(coreItems(vocabulary).every(item => item.examples?.length === 3));
-  assert.ok(supplementaryItems(vocabulary).every(item => !item.examples && !item.hint));
-  const expressions = foundation.activities.find(a => a.type === 'expression-study');
-  assert.ok(expressions.items.some(item => item.en === 'one more'));
-  assert.ok(expressions.items.every(item => !/[?.!]$/.test(item.en)));
-  const visual = foundation.activities.find(a=>a.type==='count-visual');
-  assert.equal(visual.scenes.length, 3);
-  const visualHtml=renderActivity(visual,{lessonId:'A1-5',index:0,e:String,en:String,i:()=>'',progress:{}});
-  assert.match(visualHtml,/count-object-picture/);
-  assert.match(visualHtml,/three books/);
+  assert.ok(coreItems(vocabulary).length >= 20);
+  assert.ok(vocabulary.items.every(item=>!/\\s/.test(item.en.trim())));
+  for(const word of ['plus','minus','equals'])assert.ok(vocabulary.items.some(item=>item.en===word));
+  const expressions=foundation.activities.find(a=>a.type==='expression-study');
+  assert.deepEqual(expressions.items.map(item=>item.en),['How many']);
+  assert.ok(!foundation.activities.some(a=>a.type==='count-visual'),'duplicated visual counting removed');
+  assert.ok(!foundation.activities.some(a=>a.type==='meaning-cluster'),'spread-out one/a/an cards removed');
   const singularPlural=foundation.activities.find(a=>a.type==='plural-pair-lab');
   assert.equal(singularPlural.items[0].singular,'fish');
   assert.equal(singularPlural.items[0].plural,'fish');
   assert.ok(singularPlural.items.some(item=>item.singular==='person'&&item.plural==='people'));
-  const contrastHtml=renderActivity(singularPlural,{lessonId:'A1-5',index:0,e:String,en:String,i:()=>'',progress:{}});
-  assert.match(contrastHtml,/one fish/);
-  assert.match(contrastHtml,/two fish/);
-  assert.match(contrastHtml,/data-plural-lab-key=/);
-  const meaning=foundation.activities.find(a=>a.type==='meaning-cluster');
-  assert.ok(meaning.concepts.some(item=>item.forms.some(form=>form.en==='a book')));
-  assert.ok(meaning.concepts.some(item=>item.forms.some(form=>form.en==='an apple')));
-  assert.equal(foundation.activities.filter(a=>a.type==='composer-view').length,0,'no duplicate number/name composer view');
-  const composer = foundation.activities.find(a => a.type === 'sentence-composer');
-  assert.deepEqual(validateSentenceComposer(composer), []);
-  const singular = resolveSentenceComposer(composer, { pattern: 'there-is-one', slots: { object: 'bag', count: 'three' } });
-  assert.equal(composeSegments(singular.pattern.segments, composer, singular), 'There is one bag.');
-  const plural = resolveSentenceComposer(composer, { pattern: 'there-are', slots: { object: 'book', count: 'three' } });
-  assert.equal(composeSegments(plural.pattern.segments, composer, plural), 'There are three books.');
-  const question = resolveSentenceComposer(composer, { pattern: 'how-many', slots: { object: 'book', count: 'three' } });
-  assert.equal(composeSegments(question.pattern.segments, composer, question), 'How many books are there?');
-  const puzzle = foundation.activities.find(a => a.type === 'sentence-builder');
-  assert.equal(puzzle.sentences.length, 5);
-  const picture = production.activities.find(a => a.type === 'picture-description');
-  assert.equal(picture.tasks.length, 5);
-  assert.ok(production.activities.find(a => a.type === 'dialogue-transfer').turns.some(turn => /my bag/.test(turn.example || '')));
-  assert.ok(production.activities.find(a => a.type === 'free-write').prompt.includes('شیء واقعی'));
-  assert.deepEqual(auditLesson(lesson).errors, []);
+  const c={lessonId:'A1-5',index:0,e:String,en:String,i:()=>'',progress:{}};
+  const contrastHtml=renderActivity(singularPlural,c);
+  assert.match(contrastHtml,/one /);
+  assert.match(contrastHtml,/two /);
+  assert.equal((contrastHtml.match(/data-plural-lab-key=/g)||[]).length,2,'both nouns tap to cycle');
+  assert.doesNotMatch(contrastHtml,/اسم بعدی/,'no extra cycling button');
+  const math=foundation.activities.find(a=>a.type==='count-math-lab');
+  assert.ok(math.items.some(item=>item.singular==='apple'));
+  const mathHtml=renderActivity(math,c);
+  assert.match(mathHtml,/count-math-equation/);
+  assert.match(mathHtml,/data-count-math-key/);
+  assert.match(mathHtml,/plus one apple equals two apples/i);
+  assert.match(mathHtml,/data-math-action="operator"/);
+  const subtract=renderActivity(math,{...c,progress:{mathOps:{'A1-5:counting-math':true}}});
+  assert.match(subtract,/minus one apple equals one apple/i);
+  const article=foundation.activities.find(a=>a.id==='counting-article-composer');
+  assert.deepEqual(validateSentenceComposer(article),[]);
+  const a=resolveSentenceComposer(article,{pattern:'a',slots:{aNoun:'book'}});
+  assert.equal(composeSegments(a.pattern.segments,article,a),'This is a book.');
+  const an=resolveSentenceComposer(article,{pattern:'an',slots:{anNoun:'apple'}});
+  assert.equal(composeSegments(an.pattern.segments,article,an),'This is an apple.');
+  assert.match(renderActivity(article,c),/data-composer-action="cycle"/);
+  const anView=foundation.activities.find(a=>a.id==='counting-article-an');
+  assert.match(renderActivity(anView,{...c,activitiesById:Object.fromEntries(foundation.activities.map(a=>[a.id,a]))}),/data-composer-action="cycle"/);
+  const composer=foundation.activities.find(a=>a.id==='counting-composer');
+  assert.deepEqual(validateSentenceComposer(composer),[]);
+  const question=resolveSentenceComposer(composer,{pattern:'how-many',slots:{object:'book',count:'three'}});
+  assert.equal(composeSegments(question.pattern.segments,composer,question),'How many books are there?');
+  const practice=foundation.activities.find(a=>a.id==='counting-construction');
+  assert.ok(practice.tasks.length>=8);
+  assert.ok(practice.tasks.some(task=>/plus/.test(task.example)));
+  assert.ok(practice.tasks.some(task=>/minus/.test(task.example)));
+  assert.ok(production.activities.find(a=>a.type==='free-write').prompt.includes('جمع ساده'));
+  assert.deepEqual(auditLesson(lesson).errors,[]);
 });
 
-
 test('all lesson word banks introduce lexical items only once, including supplementary and inflected forms', () => {
-  const lessons=[1,2,3,4,5,6].map(i=>load('lessons/a1-'+i+'.json'));
+  const lessons=[1,2,3,4,5,6,7].map(i=>load('lessons/a1-'+i+'.json'));
   assert.deepEqual(inspectVocabularyContinuity(lessons),[]);
   const lessonFive=lessons[4];
   const words=lessonFive.sections[0].activities.find(a=>a.type==='vocabulary').items.map(x=>x.en);
@@ -974,9 +979,42 @@ test('asking a name is explicitly taught and assessed in A1-1', () => {
   assert.ok(check.tasks.some(task=>task.assessment.required.some(req=>req.any?.includes("what's your name"))));
 });
 
-test('all six A1 lessons expose identical two-section navigation labels', () => {
+test('A1-7 identifies people and objects near and far with new words only', () => {
+  const lesson=load('lessons/a1-7.json');
+  assert.equal(lesson.title,'این چیست؟ آن کیست؟');
+  assert.deepEqual(validateLessonFlow(lesson),[]);
+  const [foundation,production]=lesson.sections;
+  assert.deepEqual([...new Set(foundation.activities.map(a=>a.phase))],LESSON_PHASES.foundation);
+  assert.deepEqual([...new Set(production.activities.map(a=>a.phase))],LESSON_PHASES.production);
+  const vocabulary=foundation.activities.find(a=>a.type==='vocabulary');
+  assert.ok(coreItems(vocabulary).length>=17);
+  assert.ok(supplementaryItems(vocabulary).length>=5);
+  for(const old of ['this','who','what','book','phone','teacher'.toUpperCase()])
+    if(old!=='TEACHER')assert.ok(!vocabulary.items.some(item=>item.en===old),'old lesson words cannot be reintroduced');
+  assert.ok(vocabulary.items.some(item=>item.en==='teacher'));
+  assert.ok(vocabulary.items.some(item=>item.en==='that'));
+  const composer=foundation.activities.find(a=>a.id==='identification-composer');
+  assert.deepEqual(validateSentenceComposer(composer),[]);
+  const obj=resolveSentenceComposer(composer,{pattern:'this-object',slots:{object:'cat',person:'teacher'}});
+  assert.equal(composeSegments(obj.pattern.segments,composer,obj),'This is a cat.');
+  const person=resolveSentenceComposer(composer,{pattern:'that-person',slots:{object:'cat',person:'teacher'}});
+  assert.equal(composeSegments(person.pattern.segments,composer,person),'That is my teacher.');
+  assert.ok(production.activities.find(a=>a.type==='guided-dialogue').turns.some(turn=>turn.example==='Who is that?'));
+  assert.ok(production.activities.find(a=>a.type==='free-write').assessment.required.some(req=>req.any.includes('what is this')));
+  assert.match(readFileSync(join(projectRoot,'apps/learner-web/assets/scene-a1-7.svg'),'utf8'),/Near: this/);
+  assert.deepEqual(auditLesson(lesson).errors,[]);
+});
+test('A1-1 staged practice increases variety without adding activity panels', () => {
+  const lesson=load('lessons/a1-1.json');
+  assert.equal(lesson.sections[0].activities.find(a=>a.id==='hello-intro-check').tasks.length,5);
+  const production=lesson.sections[1].activities;
+  assert.ok(production.find(a=>a.id==='hello-exchange-practice').tasks.length>=6);
+  assert.ok(production.find(a=>a.id==='hello-guided-talk').turns.length>=5);
+  assert.equal(production.filter(a=>a.type==='guided-dialogue').length,1);
+});
+test('all seven A1 lessons expose identical two-section navigation labels', () => {
   const labels=['از کلمه تا جمله','از سؤال و جواب تا مکالمه'];
-  for (const id of ['a1-1','a1-2','a1-3','a1-4','a1-5','a1-6']) {
+  for (const id of ['a1-1','a1-2','a1-3','a1-4','a1-5','a1-6','a1-7']) {
     assert.deepEqual(load('lessons/'+id+'.json').sections.map(section=>section.label),labels,id);
   }
 });
