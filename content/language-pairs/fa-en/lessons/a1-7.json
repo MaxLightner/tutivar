@@ -1,6 +1,6 @@
 {
   "id": "A1-7",
-  "revision": 2,
+  "revision": 3,
   "status": "draft",
   "title": "این چیست؟ آن کیست؟",
   "goal": "بتوانی دربارهٔ چیزها و آدم‌های نزدیک و دور سؤال‌های مناسب What is this/that? و Who is this/that? بسازی، شخص و شیء را درست تشخیص بدهی و با جواب کوتاه یا کامل پاسخ دهی.",
@@ -458,6 +458,15 @@
                   "word": "apple",
                   "faWord": "سیب"
                 }
+              },
+              {
+                "id": "rabbit",
+                "label": "rabbit",
+                "translation": "خرگوش",
+                "forms": {
+                  "word": "rabbit",
+                  "faWord": "خرگوش"
+                }
               }
             ],
             "people": [
@@ -531,6 +540,87 @@
                 "forms": {
                   "word": "woman",
                   "faWord": "زن"
+                }
+              },
+              {
+                "id": "visitor",
+                "label": "visitor",
+                "translation": "بازدیدکننده",
+                "forms": {
+                  "word": "visitor",
+                  "faWord": "بازدیدکننده"
+                }
+              },
+              {
+                "id": "driver",
+                "label": "driver",
+                "translation": "راننده",
+                "forms": {
+                  "word": "driver",
+                  "faWord": "راننده"
+                }
+              },
+              {
+                "id": "neighbor",
+                "label": "neighbor",
+                "translation": "همسایه",
+                "forms": {
+                  "word": "neighbor",
+                  "faWord": "همسایه"
+                }
+              },
+              {
+                "id": "artist",
+                "label": "artist",
+                "translation": "هنرمند",
+                "forms": {
+                  "word": "artist",
+                  "faWord": "هنرمند"
+                }
+              },
+              {
+                "id": "nurse",
+                "label": "nurse",
+                "translation": "پرستار",
+                "forms": {
+                  "word": "nurse",
+                  "faWord": "پرستار"
+                }
+              },
+              {
+                "id": "pilot",
+                "label": "pilot",
+                "translation": "خلبان",
+                "forms": {
+                  "word": "pilot",
+                  "faWord": "خلبان"
+                }
+              },
+              {
+                "id": "chef",
+                "label": "chef",
+                "translation": "سرآشپز",
+                "forms": {
+                  "word": "chef",
+                  "faWord": "سرآشپز"
+                }
+              },
+              {
+                "id": "farmer",
+                "label": "farmer",
+                "translation": "کشاورز",
+                "forms": {
+                  "word": "farmer",
+                  "faWord": "کشاورز"
+                }
+              },
+              {
+                "id": "painter",
+                "label": "painter",
+                "translation": "نقاش",
+                "forms": {
+                  "word": "painter",
+                  "faWord": "نقاش"
                 }
               }
             ],
