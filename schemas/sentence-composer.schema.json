@@ -146,7 +146,8 @@
     "phase": {
       "type": "string",
       "enum": [
-        "sentence"
+        "sentence",
+        "phrases"
       ]
     }
   }
