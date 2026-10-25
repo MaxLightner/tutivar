@@ -1,28 +1,29 @@
 {
   "id": "A1-6",
-  "revision": 3,
+  "revision": 4,
   "status": "draft",
-  "title": "پرسیدن نام و سن",
-  "goal": "نام و نام خانوادگی را بپرسی و معرفی کنی؛ با عددهای ۱۱ تا ۱۰۰ و ترکیب آن‌ها سن خود و دیگران را بگویی، سؤال How old ...? بسازی و جواب درست بدهی.",
-  "duration": "حدود ۲۵ دقیقه",
-  "feature": "کارت‌های تصویری نام و سن",
+  "title": "از عددهای دورقمی تا گفتن سن",
+  "goal": "اول عددهای ۱۱ تا ۱۰۰ را با الگوی ده‌تایی و ترکیب عددهای دورقمی بسازی و بخوانی؛ سپس از اعداد برای پرسیدن و گفتن سن خود و دیگران استفاده کنی.",
+  "duration": "حدود ۲۵ تا ۳۰ دقیقه",
+  "feature": "ساخت عدد و پرسیدن سن",
   "archetype": "name-and-age",
   "teachingModel": {
     "primary": "K1",
     "support": "K2"
   },
   "orientation": {
-    "goal": "نام کامل و سن خودت یا دیگران را در گفت‌وگو بپرسی و بگویی؛ عدد را بشناسی نه اینکه جملهٔ حفظی تکرار کنی.",
+    "goal": "عددهای ۱۱ تا ۱۹ و ده‌تایی‌ها را بشناسی، هر عددی مثل ۲۴، ۳۷ یا ۶۸ را بسازی، سپس How old ...? را یاد بگیری و سن افراد را بپرسی و بگویی.",
     "prerequisites": [
-      "پرسیدن اسم از درس اول",
-      "پرسش با is/are و شمارش از درس پنجم"
+      "شمارش یک تا ده از درس پنجم",
+      "معرفی نام با What's your name? از درس اول",
+      "شناخت is و are و ضمیرهای خانواده"
     ],
-    "previously": "قبلاً What's your name? را آموختی و تعداد را شمردی. حالا بدون تکرار بانک واژه‌های قبلی، اسم کامل و سن را می‌پرسی.",
+    "previously": "در درس پنجم تا ده شمردی؛ در درس اول نام را پرسیدی. اینجا اول عددهای بزرگ‌تر را یاد می‌گیری و فقط بعد از آن سراغ کاربرد جدیدشان در سن می‌رویم.",
     "quickCheck": {
-      "title": "اگر از قبل بلدی",
-      "question": "می‌توانی اسم کامل و سن یک نفر را بپرسی و دربارهٔ سن او پاسخ بدهی؟",
-      "example": "How old is Sara? She is twenty-four.",
-      "explanation": "در این درس از عددهای مرکب و پاسخ کوتاه یا کامل استفاده می‌کنی.",
+      "title": "اگر عددها را بلدی",
+      "question": "آیا می‌توانی ۱۳، ۲۰، ۲۷ و ۴۶ را به انگلیسی بخوانی و عدد دیگری مثل ۵۸ بسازی؟",
+      "example": "thirteen · twenty · twenty-seven · forty-six",
+      "explanation": "اگر این اعداد را می‌شناسی، سریع‌تر به تمرین ساخت عدد برو؛ پرسش دربارهٔ سن بعد از آن است.",
       "allowSkip": true
     }
   },
@@ -33,8 +34,7 @@
   },
   "learningAudit": {
     "focusExpressions": [
-      "How old are you?",
-      "What is your last name?"
+      "How old are you?"
     ],
     "specificIndependentExpressions": [],
     "minDownstreamActivities": 2,
@@ -46,7 +46,7 @@
     {
       "id": "foundation",
       "label": "از کلمه تا جمله",
-      "intro": "ابتدا جمله‌های کوتاه را تقلید کن؛ سپس واژگان تازهٔ مربوط به سن و نام را با الگوهای جمله ترکیب کن.",
+      "intro": "ابتدا شمارش را از ۱۰ به ۱۰۰ گسترش بده، عددهای مرکب بساز و تمرین کن؛ وقتی عددها را بلد شدی، کاربرد آن‌ها در پرسیدن سن را یاد بگیر.",
       "masteryActivityIds": [
         "age-construction"
       ],
@@ -55,38 +55,38 @@
           "id": "a1-6-shadowing",
           "type": "shadowing",
           "phase": "shadowing",
-          "title": "شنیدن و سایه‌خوانی",
-          "description": "برای تقلید صدا گوش بده. قرار نیست در اولین شنیدن معنای همهٔ جمله‌ها را بدانی.",
+          "title": "سایه‌خوانی عددها؛ قبل از پرسیدن سن",
+          "description": "در شروع فقط آهنگ و تلفظ عددهای تازه را تقلید کن؛ لازم نیست هنوز سؤال سن را بفهمی.",
           "audioSrc": null,
-          "rate": 0.7,
-          "pauseMs": 550,
+          "rate": 0.67,
+          "pauseMs": 650,
           "lines": [
-            "What's your first name?",
-            "My first name is Sara.",
-            "What's your last name?",
-            "My last name is Rahimi.",
-            "How old are you?",
-            "I'm twenty-four years old.",
-            "How old is Noah?",
-            "He is seventeen."
+            "Eleven, twelve, thirteen.",
+            "Fourteen, fifteen, sixteen.",
+            "Seventeen, eighteen, nineteen.",
+            "Twenty, thirty, forty.",
+            "Fifty, sixty, seventy.",
+            "Eighty, ninety, one hundred.",
+            "Twenty-one, twenty-two, twenty-three.",
+            "Thirty-four, forty-five, fifty-six."
           ]
         },
         {
           "id": "age-words",
           "type": "vocabulary",
           "phase": "words",
-          "title": "واژگان جدید: سن، اسم کامل و عددهای بزرگ‌تر",
+          "title": "عددهای ۱۱ تا ۱۰۰ و سه واژهٔ مربوط به سن",
           "batchSize": 5,
-          "deckRevision": 1,
+          "deckRevision": 2,
           "items": [
             {
               "en": "eleven",
               "fa": "یازده",
               "hint": "عدد 11؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
               "examples": [
-                "I am eleven years old.",
-                "My brother is eleven years old.",
-                "She is eleven."
+                "Eleven books.",
+                "There are eleven books.",
+                "I can count eleven pencils."
               ]
             },
             {
@@ -94,9 +94,9 @@
               "fa": "دوازده",
               "hint": "عدد 12؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
               "examples": [
-                "I am twelve years old.",
-                "My brother is twelve years old.",
-                "She is twelve."
+                "Twelve books.",
+                "There are twelve books.",
+                "I can count twelve pencils."
               ]
             },
             {
@@ -104,9 +104,9 @@
               "fa": "سیزده",
               "hint": "عدد 13؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
               "examples": [
-                "I am thirteen years old.",
-                "My brother is thirteen years old.",
-                "She is thirteen."
+                "Thirteen books.",
+                "There are thirteen books.",
+                "I can count thirteen pencils."
               ]
             },
             {
@@ -114,9 +114,9 @@
               "fa": "چهارده",
               "hint": "عدد 14؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
               "examples": [
-                "I am fourteen years old.",
-                "My brother is fourteen years old.",
-                "She is fourteen."
+                "Fourteen books.",
+                "There are fourteen books.",
+                "I can count fourteen pencils."
               ]
             },
             {
@@ -124,9 +124,9 @@
               "fa": "پانزده",
               "hint": "عدد 15؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
               "examples": [
-                "I am fifteen years old.",
-                "My brother is fifteen years old.",
-                "She is fifteen."
+                "Fifteen books.",
+                "There are fifteen books.",
+                "I can count fifteen pencils."
               ]
             },
             {
@@ -134,9 +134,9 @@
               "fa": "شانزده",
               "hint": "عدد 16؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
               "examples": [
-                "I am sixteen years old.",
-                "My brother is sixteen years old.",
-                "She is sixteen."
+                "Sixteen books.",
+                "There are sixteen books.",
+                "I can count sixteen pencils."
               ]
             },
             {
@@ -144,9 +144,9 @@
               "fa": "هفده",
               "hint": "عدد 17؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
               "examples": [
-                "I am seventeen years old.",
-                "My brother is seventeen years old.",
-                "She is seventeen."
+                "Seventeen books.",
+                "There are seventeen books.",
+                "I can count seventeen pencils."
               ]
             },
             {
@@ -154,9 +154,9 @@
               "fa": "هجده",
               "hint": "عدد 18؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
               "examples": [
-                "I am eighteen years old.",
-                "My brother is eighteen years old.",
-                "She is eighteen."
+                "Eighteen books.",
+                "There are eighteen books.",
+                "I can count eighteen pencils."
               ]
             },
             {
@@ -164,9 +164,9 @@
               "fa": "نوزده",
               "hint": "عدد 19؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
               "examples": [
-                "I am nineteen years old.",
-                "My brother is nineteen years old.",
-                "She is nineteen."
+                "Nineteen books.",
+                "There are nineteen books.",
+                "I can count nineteen pencils."
               ]
             },
             {
@@ -174,9 +174,9 @@
               "fa": "بیست",
               "hint": "عدد 20؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
               "examples": [
-                "I am twenty years old.",
-                "My brother is twenty years old.",
-                "She is twenty."
+                "Twenty books.",
+                "There are twenty books.",
+                "I can count twenty pencils."
               ]
             },
             {
@@ -184,9 +184,9 @@
               "fa": "سی",
               "hint": "عدد 30؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
               "examples": [
-                "I am thirty years old.",
-                "My brother is thirty years old.",
-                "She is thirty."
+                "Thirty books.",
+                "There are thirty books.",
+                "I can count thirty pencils."
               ]
             },
             {
@@ -194,9 +194,9 @@
               "fa": "چهل",
               "hint": "عدد 40؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
               "examples": [
-                "I am forty years old.",
-                "My brother is forty years old.",
-                "She is forty."
+                "Forty books.",
+                "There are forty books.",
+                "I can count forty pencils."
               ]
             },
             {
@@ -204,9 +204,9 @@
               "fa": "پنجاه",
               "hint": "عدد 50؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
               "examples": [
-                "I am fifty years old.",
-                "My brother is fifty years old.",
-                "She is fifty."
+                "Fifty books.",
+                "There are fifty books.",
+                "I can count fifty pencils."
               ]
             },
             {
@@ -214,9 +214,9 @@
               "fa": "شصت",
               "hint": "عدد 60؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
               "examples": [
-                "I am sixty years old.",
-                "My brother is sixty years old.",
-                "She is sixty."
+                "Sixty books.",
+                "There are sixty books.",
+                "I can count sixty pencils."
               ]
             },
             {
@@ -224,9 +224,9 @@
               "fa": "هفتاد",
               "hint": "عدد 70؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
               "examples": [
-                "I am seventy years old.",
-                "My brother is seventy years old.",
-                "She is seventy."
+                "Seventy books.",
+                "There are seventy books.",
+                "I can count seventy pencils."
               ]
             },
             {
@@ -234,9 +234,9 @@
               "fa": "هشتاد",
               "hint": "عدد 80؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
               "examples": [
-                "I am eighty years old.",
-                "My brother is eighty years old.",
-                "She is eighty."
+                "Eighty books.",
+                "There are eighty books.",
+                "I can count eighty pencils."
               ]
             },
             {
@@ -244,9 +244,9 @@
               "fa": "نود",
               "hint": "عدد 90؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
               "examples": [
-                "I am ninety years old.",
-                "My brother is ninety years old.",
-                "She is ninety."
+                "Ninety books.",
+                "There are ninety books.",
+                "I can count ninety pencils."
               ]
             },
             {
@@ -254,9 +254,9 @@
               "fa": "صد",
               "hint": "عدد 100؛ عددهای قبلی در جمله‌ها مرور می‌شوند.",
               "examples": [
-                "The number is one hundred.",
+                "Hundred books.",
                 "There are one hundred books.",
-                "My grandfather is one hundred years old."
+                "I can count one hundred pencils."
               ]
             },
             {
@@ -290,126 +290,6 @@
               ]
             },
             {
-              "en": "first",
-              "fa": "اول / نخست",
-              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
-              "examples": [
-                "My first name is Sara.",
-                "What is your first name?",
-                "The first letter is S."
-              ]
-            },
-            {
-              "en": "last",
-              "fa": "آخر / نام خانوادگی در ترکیب",
-              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
-              "examples": [
-                "My last name is Rahimi.",
-                "What is your last name?",
-                "The last letter is i."
-              ]
-            },
-            {
-              "en": "full",
-              "fa": "کامل",
-              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
-              "examples": [
-                "My full name is Sara Rahimi.",
-                "What is your full name?",
-                "Tell me your full name."
-              ]
-            },
-            {
-              "en": "spell",
-              "fa": "هجی کردن",
-              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
-              "examples": [
-                "Can you spell your name?",
-                "Spell your first name.",
-                "Please spell it."
-              ]
-            },
-            {
-              "en": "letter",
-              "fa": "حرف الفبا",
-              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
-              "examples": [
-                "The first letter is S.",
-                "There are five letters.",
-                "What is the last letter?"
-              ]
-            },
-            {
-              "en": "surname",
-              "fa": "نام خانوادگی",
-              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
-              "examples": [
-                "My surname is Rahimi.",
-                "What is your surname?",
-                "Her surname is Nouri."
-              ]
-            },
-            {
-              "en": "birthday",
-              "fa": "روز تولد",
-              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
-              "examples": [
-                "My birthday is tomorrow.",
-                "Today is her birthday.",
-                "Is your birthday today?"
-              ]
-            },
-            {
-              "en": "today",
-              "fa": "امروز",
-              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
-              "examples": [
-                "Today is my birthday.",
-                "I am twenty years old today.",
-                "How old are you today?"
-              ]
-            },
-            {
-              "en": "tomorrow",
-              "fa": "فردا",
-              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
-              "examples": [
-                "My birthday is tomorrow.",
-                "I am eighteen tomorrow.",
-                "See you tomorrow."
-              ]
-            },
-            {
-              "en": "young",
-              "fa": "جوان",
-              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
-              "examples": [
-                "My brother is young.",
-                "She is a young adult.",
-                "He is young."
-              ]
-            },
-            {
-              "en": "adult",
-              "fa": "بزرگسال",
-              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
-              "examples": [
-                "She is an adult.",
-                "I am an adult.",
-                "The adult is thirty years old."
-              ]
-            },
-            {
-              "en": "teenager",
-              "fa": "نوجوان",
-              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
-              "examples": [
-                "He is a teenager.",
-                "My sister is a teenager.",
-                "The teenager is sixteen."
-              ]
-            },
-            {
               "en": "number",
               "fa": "عدد / شماره",
               "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
@@ -418,81 +298,365 @@
                 "What is your number?",
                 "The number is thirty-five."
               ]
+            }
+          ]
+        },
+        {
+          "id": "age-number-composer",
+          "type": "sentence-composer",
+          "phase": "phrases",
+          "title": "عدد دورقمی بساز؛ روی ده‌تایی یا یکی بزن",
+          "description": "از عددهای آشنا ۱ تا ۹ و ده‌تایی‌های ۲۰، ۳۰، ... یک عدد جدید بساز؛ روی هر بخشِ سبزِ خود عدد بزن تا تغییر کند.",
+          "targetLanguage": "en",
+          "wordSets": {
+            "tens": [
+              {
+                "id": "twenty",
+                "label": "twenty",
+                "translation": "بیست",
+                "forms": {
+                  "en": "twenty",
+                  "fa": "بیست"
+                }
+              },
+              {
+                "id": "thirty",
+                "label": "thirty",
+                "translation": "سی",
+                "forms": {
+                  "en": "thirty",
+                  "fa": "سی"
+                }
+              },
+              {
+                "id": "forty",
+                "label": "forty",
+                "translation": "چهل",
+                "forms": {
+                  "en": "forty",
+                  "fa": "چهل"
+                }
+              },
+              {
+                "id": "fifty",
+                "label": "fifty",
+                "translation": "پنجاه",
+                "forms": {
+                  "en": "fifty",
+                  "fa": "پنجاه"
+                }
+              },
+              {
+                "id": "sixty",
+                "label": "sixty",
+                "translation": "شصت",
+                "forms": {
+                  "en": "sixty",
+                  "fa": "شصت"
+                }
+              },
+              {
+                "id": "seventy",
+                "label": "seventy",
+                "translation": "هفتاد",
+                "forms": {
+                  "en": "seventy",
+                  "fa": "هفتاد"
+                }
+              },
+              {
+                "id": "eighty",
+                "label": "eighty",
+                "translation": "هشتاد",
+                "forms": {
+                  "en": "eighty",
+                  "fa": "هشتاد"
+                }
+              },
+              {
+                "id": "ninety",
+                "label": "ninety",
+                "translation": "نود",
+                "forms": {
+                  "en": "ninety",
+                  "fa": "نود"
+                }
+              }
+            ],
+            "units": [
+              {
+                "id": "one",
+                "label": "one",
+                "translation": "یک",
+                "forms": {
+                  "en": "one",
+                  "fa": "یک"
+                }
+              },
+              {
+                "id": "two",
+                "label": "two",
+                "translation": "دو",
+                "forms": {
+                  "en": "two",
+                  "fa": "دو"
+                }
+              },
+              {
+                "id": "three",
+                "label": "three",
+                "translation": "سه",
+                "forms": {
+                  "en": "three",
+                  "fa": "سه"
+                }
+              },
+              {
+                "id": "four",
+                "label": "four",
+                "translation": "چهار",
+                "forms": {
+                  "en": "four",
+                  "fa": "چهار"
+                }
+              },
+              {
+                "id": "five",
+                "label": "five",
+                "translation": "پنج",
+                "forms": {
+                  "en": "five",
+                  "fa": "پنج"
+                }
+              },
+              {
+                "id": "six",
+                "label": "six",
+                "translation": "شش",
+                "forms": {
+                  "en": "six",
+                  "fa": "شش"
+                }
+              },
+              {
+                "id": "seven",
+                "label": "seven",
+                "translation": "هفت",
+                "forms": {
+                  "en": "seven",
+                  "fa": "هفت"
+                }
+              },
+              {
+                "id": "eight",
+                "label": "eight",
+                "translation": "هشت",
+                "forms": {
+                  "en": "eight",
+                  "fa": "هشت"
+                }
+              },
+              {
+                "id": "nine",
+                "label": "nine",
+                "translation": "نه",
+                "forms": {
+                  "en": "nine",
+                  "fa": "نه"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "tens",
+              "label": "ده‌تایی",
+              "wordSet": "tens",
+              "default": "twenty"
             },
             {
-              "en": "different",
-              "fa": "متفاوت",
-              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
-              "examples": [
-                "We have different ages.",
-                "The numbers are different.",
-                "Our last names are different."
+              "id": "units",
+              "label": "یکی",
+              "wordSet": "units",
+              "default": "four"
+            }
+          ],
+          "derivedDefaults": {},
+          "dependencies": [],
+          "defaultPattern": "compound",
+          "patterns": [
+            {
+              "id": "compound",
+              "label": "عدد مرکب",
+              "segments": [
+                {
+                  "slot": "tens",
+                  "form": "en"
+                },
+                {
+                  "fixed": "-"
+                },
+                {
+                  "slot": "units",
+                  "form": "en"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "tens",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " و "
+                },
+                {
+                  "slot": "units",
+                  "form": "fa"
+                }
               ]
             },
             {
-              "en": "same",
-              "fa": "یکسان",
-              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
-              "examples": [
-                "We are the same age.",
-                "They have the same last name.",
-                "The numbers are the same."
+              "id": "exact-tens",
+              "label": "ده‌تایی کامل",
+              "segments": [
+                {
+                  "slot": "tens",
+                  "form": "en"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "tens",
+                  "form": "fa"
+                }
               ]
+            }
+          ]
+        },
+        {
+          "id": "age-numbers-practice",
+          "type": "response-practice",
+          "phase": "phrases",
+          "title": "اول عددسازی را تمرین کن",
+          "practiceRevision": 1,
+          "description": "قبل از هر پرسش دربارهٔ سن، این عددها را بساز. پاسخ‌های عددی را به انگلیسی بنویس.",
+          "completion": "عددهای دورقمی را بدون اتکا به سنِ شخص دیگری ساختی.",
+          "tasks": [
+            {
+              "task": "عدد ۱۳ را به انگلیسی بنویس.",
+              "hint": "thirteen",
+              "example": "thirteen",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "thirteen"
+                    ],
+                    "feedback": "۱۳ برابر thirteen است."
+                  }
+                ],
+                "success": "عددهای ۱۳ تا ۱۹ از teen ساخته می‌شوند؛ استثناهای نوشتاری را هم به خاطر بسپار."
+              }
             },
             {
-              "en": "tell",
-              "fa": "گفتن / اطلاع دادن",
-              "hint": "این واژه را در پرسیدن یا معرفی نام و سن به کار ببر.",
-              "examples": [
-                "Tell me your name.",
-                "Please tell me your age.",
-                "Can you tell me?"
-              ]
+              "task": "عدد ۲۰ را بنویس.",
+              "hint": "twenty",
+              "example": "twenty",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "twenty"
+                    ],
+                    "feedback": "۲۰ به انگلیسی twenty است."
+                  }
+                ],
+                "success": "ده‌تایی بیست را شناختی."
+              }
             },
             {
-              "en": "nickname",
-              "fa": "لقب / اسم خودمانی",
-              "role": "supplementary"
+              "task": "عدد ۲۴ را از ۲۰ و ۴ بساز.",
+              "hint": "twenty-four",
+              "example": "twenty-four",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "twenty-four",
+                      "twenty four"
+                    ],
+                    "feedback": "۲۰ + ۴: twenty-four."
+                  }
+                ],
+                "success": "ده‌تایی و یکی را ترکیب کردی."
+              }
             },
             {
-              "en": "initial",
-              "fa": "حرف اول اسم",
-              "role": "supplementary"
+              "task": "عدد ۳۷ را به انگلیسی بنویس.",
+              "hint": "thirty-seven",
+              "example": "thirty-seven",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "thirty-seven",
+                      "thirty seven"
+                    ],
+                    "feedback": "۳۰ + ۷: thirty-seven."
+                  }
+                ],
+                "success": "۳۷ را ساختی."
+              }
             },
             {
-              "en": "profile",
-              "fa": "پروفایل / معرفی کوتاه",
-              "role": "supplementary"
+              "task": "عدد ۵۸ را به انگلیسی بنویس.",
+              "hint": "fifty-eight",
+              "example": "fifty-eight",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "fifty-eight",
+                      "fifty eight"
+                    ],
+                    "feedback": "۵۰ + ۸: fifty-eight."
+                  }
+                ],
+                "success": "۵۸ را ساختی."
+              }
             },
             {
-              "en": "classmate",
-              "fa": "همکلاسی",
-              "role": "supplementary"
+              "task": "عدد ۹۹ را به انگلیسی بنویس.",
+              "hint": "ninety-nine",
+              "example": "ninety-nine",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "ninety-nine",
+                      "ninety nine"
+                    ],
+                    "feedback": "۹۰ + ۹: ninety-nine."
+                  }
+                ],
+                "success": "۹۹ را ساختی."
+              }
             },
             {
-              "en": "form",
-              "fa": "فرم",
-              "role": "supplementary"
-            },
-            {
-              "en": "digit",
-              "fa": "رقم",
-              "role": "supplementary"
-            },
-            {
-              "en": "date",
-              "fa": "تاریخ",
-              "role": "supplementary"
-            },
-            {
-              "en": "younger",
-              "fa": "کم‌سن‌تر",
-              "role": "supplementary"
-            },
-            {
-              "en": "older",
-              "fa": "بزرگ‌تر از نظر سن",
-              "role": "supplementary"
+              "task": "عدد ۱۰۰ را به انگلیسی بنویس.",
+              "hint": "one hundred",
+              "example": "one hundred",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "one hundred"
+                    ],
+                    "feedback": "۱۰۰: one hundred."
+                  }
+                ],
+                "success": "به صد رسیدی."
+              }
             }
           ]
         },
@@ -500,39 +664,9 @@
           "id": "age-expressions",
           "type": "expression-study",
           "phase": "phrases",
-          "title": "ترکیب‌های کاربردی برای پرسیدن نام و سن",
-          "description": "عبارت‌ها مستقل از بانک واژگان هستند؛ پرسش‌های کامل فقط وقتی عبارت تثبیت‌شده‌اند اینجا نمایش داده می‌شوند.",
+          "title": "حالا از عددها برای گفتن سن استفاده کن",
+          "description": "بعد از اینکه عددهای دورقمی را ساختی، فقط دو عبارت کاربردی برای سن یاد بگیر.",
           "items": [
-            {
-              "en": "first name",
-              "fa": "نام کوچک",
-              "kind": "collocation",
-              "examples": [
-                "My first name is Sara.",
-                "What is your first name?",
-                "Her first name is Emma."
-              ]
-            },
-            {
-              "en": "last name",
-              "fa": "نام خانوادگی",
-              "kind": "collocation",
-              "examples": [
-                "My last name is Rahimi.",
-                "What is your last name?",
-                "His last name is Smith."
-              ]
-            },
-            {
-              "en": "full name",
-              "fa": "نام و نام خانوادگی",
-              "kind": "collocation",
-              "examples": [
-                "My full name is Sara Rahimi.",
-                "What is your full name?",
-                "Tell me your full name."
-              ]
-            },
             {
               "en": "years old",
               "fa": "ساله",
@@ -541,16 +675,6 @@
                 "I'm twelve years old.",
                 "Sara is twenty-four years old.",
                 "He is seventeen years old."
-              ]
-            },
-            {
-              "en": "the same age",
-              "fa": "هم‌سن",
-              "kind": "collocation",
-              "examples": [
-                "We are the same age.",
-                "Are they the same age?",
-                "They are the same age."
               ]
             },
             {
@@ -569,8 +693,8 @@
           "id": "age-phrase-view",
           "type": "composer-view",
           "phase": "phrases",
-          "title": "عدد مرکب را در عبارت بشنو",
-          "description": "سن را از دوازده به بیست‌وچهار یا سی‌وپنج عوض کن؛ هر عدد مرکب یک عبارت است، نه دو واژهٔ مستقل در بانک.",
+          "title": "از عدد به عبارت سن",
+          "description": "همین عدد تازه را در years old استفاده کن. ده‌تایی و یکی را قبلاً در بخش عددسازی تمرین کردی.",
           "sourceActivityId": "age-composer",
           "patternId": "phrase"
         },
@@ -578,8 +702,8 @@
           "id": "age-composer",
           "type": "sentence-composer",
           "phase": "sentence",
-          "title": "جملهٔ زنده: نام، شخص و سن",
-          "description": "روی نام یا سن در خود جمله بزن. بعد شکل پرسشی و پاسخ کوتاه را در بخش‌های بعدی مقایسه کن.",
+          "title": "عدد یادگرفته‌شده را در جملهٔ سن به کار ببر",
+          "description": "حالا که عددهای دورقمی را ساختی، نام شخص یا سن را در جمله لمس کن تا جمله عوض شود.",
           "targetLanguage": "en",
           "wordSets": {
             "people": [
@@ -699,6 +823,42 @@
                 "forms": {
                   "word": "fifty",
                   "faWord": "پنجاه"
+                }
+              },
+              {
+                "id": "twenty-seven",
+                "label": "twenty-seven",
+                "translation": "بیست‌وهفت",
+                "features": {
+                  "years": 27
+                },
+                "forms": {
+                  "word": "twenty-seven",
+                  "faWord": "بیست‌وهفت"
+                }
+              },
+              {
+                "id": "thirty-eight",
+                "label": "thirty-eight",
+                "translation": "سی‌وهشت",
+                "features": {
+                  "years": 38
+                },
+                "forms": {
+                  "word": "thirty-eight",
+                  "faWord": "سی‌وهشت"
+                }
+              },
+              {
+                "id": "sixty-nine",
+                "label": "sixty-nine",
+                "translation": "شصت‌ونه",
+                "features": {
+                  "years": 69
+                },
+                "forms": {
+                  "word": "sixty-nine",
+                  "faWord": "شصت‌ونه"
                 }
               }
             ]
@@ -889,45 +1049,6 @@
                   "fixed": " ساله نیست."
                 }
               ]
-            },
-            {
-              "id": "surname",
-              "label": "نام خانوادگی",
-              "segments": [
-                {
-                  "slot": "person",
-                  "form": "possessive"
-                },
-                {
-                  "fixed": " last name is "
-                },
-                {
-                  "slot": "person",
-                  "form": "surname"
-                },
-                {
-                  "fixed": "."
-                }
-              ],
-              "translationSegments": [
-                {
-                  "fixed": "نام خانوادگی "
-                },
-                {
-                  "slot": "person",
-                  "form": "faName"
-                },
-                {
-                  "fixed": " "
-                },
-                {
-                  "slot": "person",
-                  "form": "surname"
-                },
-                {
-                  "fixed": " است."
-                }
-              ]
             }
           ]
         },
@@ -935,27 +1056,9 @@
           "id": "age-meaning-variations",
           "type": "meaning-cluster",
           "phase": "variants",
-          "title": "یک معنی، چند شیوهٔ بیان",
-          "description": "معنا را ثابت نگه دار و ببین در گفت‌وگوی طبیعی چه شکل‌های دیگری دارد.",
+          "title": "یک سن، چند شکل طبیعی",
+          "description": "عدد همان است؛ شکل بیان سن تغییر می‌کند. نوشتن نام در درس اول آموزش داده شد.",
           "concepts": [
-            {
-              "id": "name-form",
-              "fa": "اسم تو چیست؟",
-              "forms": [
-                {
-                  "en": "What is your name?",
-                  "fa": "اسم شما چیست؟",
-                  "relation": "equivalent",
-                  "note": "شکل کامل‌تر فعل is."
-                },
-                {
-                  "en": "What's your name?",
-                  "fa": "اسمت چیست؟",
-                  "relation": "equivalent",
-                  "note": "شکل محاوره‌ای و رایج سؤال."
-                }
-              ]
-            },
             {
               "id": "my-age",
               "fa": "من بیست‌وچهار سال دارم.",
@@ -973,24 +1076,6 @@
                   "note": "اگر دربارهٔ سن سؤال شده، جواب کوتاه طبیعی است."
                 }
               ]
-            },
-            {
-              "id": "first-name",
-              "fa": "اسم کوچک من سارا است.",
-              "forms": [
-                {
-                  "en": "My first name is Sara.",
-                  "fa": "اسم کوچک من سارا است.",
-                  "relation": "equivalent",
-                  "note": "برای تمایز از نام خانوادگی."
-                },
-                {
-                  "en": "I'm Sara.",
-                  "fa": "من سارا هستم.",
-                  "relation": "related",
-                  "note": "معرفی طبیعی؛ لزوماً نام خانوادگی را مشخص نمی‌کند."
-                }
-              ]
             }
           ]
         },
@@ -998,13 +1083,12 @@
           "id": "age-questions-view",
           "type": "composer-view",
           "phase": "variants",
-          "title": "پرسش سن و نام خانوادگی",
-          "description": "یک‌بار دربارهٔ سن و بار دیگر دربارهٔ درست‌بودن سن یا نام خانوادگی سؤال و جواب بساز.",
+          "title": "پرسیدن و پاسخ‌دادن دربارهٔ سن",
+          "description": "بعد از ساختن عدد، آن را در سؤال و جواب دربارهٔ سن به کار ببر.",
           "sourceActivityId": "age-composer",
           "patternIds": [
             "question",
             "yes-no",
-            "surname",
             "negative"
           ],
           "showNote": true
@@ -1013,11 +1097,11 @@
           "id": "age-puzzle",
           "type": "sentence-builder",
           "phase": "puzzle",
-          "revision": 1,
+          "revision": 2,
           "reuseBank": true,
-          "goalCount": 5,
-          "title": "جورچین نام و سن",
-          "description": "واژه‌ها را دوباره استفاده کن تا چند جمله و سؤال متفاوت بسازی.",
+          "goalCount": 6,
+          "title": "جورچین اعداد و سن",
+          "description": "اول عدد و سپس جملهٔ سن بساز. اگر واژه‌ای نتواند ادامهٔ معتبر جمله باشد، با لرزش به بانک برمی‌گردد.",
           "sourceActivityId": "age-composer",
           "patternIds": [
             "statement",
@@ -1026,6 +1110,15 @@
             "surname"
           ],
           "sentences": [
+            {
+              "id": "count-twenty-four",
+              "words": [
+                "There",
+                "are",
+                "twenty-four",
+                "books."
+              ]
+            },
             {
               "id": "age-question",
               "words": [
@@ -1065,13 +1158,12 @@
               ]
             },
             {
-              "id": "last-name",
+              "id": "age-question-third",
               "words": [
-                "My",
-                "last",
-                "name",
+                "How",
+                "old",
                 "is",
-                "Rahimi."
+                "Noah?"
               ]
             }
           ]
@@ -1080,8 +1172,8 @@
           "id": "age-construction",
           "type": "response-practice",
           "phase": "construction",
-          "title": "با سن و نام، جملهٔ تازه بساز",
-          "description": "نام‌ها و سن‌ها را از کارت‌های این درس بگیر و خودت جمله بساز.",
+          "title": "عددها را در کاربرد واقعیِ سن به کار ببر",
+          "description": "از اینجا به بعد سؤال و جواب دربارهٔ سن تمرین می‌کنیم؛ الگوی عددها را در مراحل قبل یاد گرفته‌ای.",
           "practiceRevision": 1,
           "completion": "سن و نام را در خبر، سؤال و پاسخ بیان کردی.",
           "tasks": [
@@ -1135,23 +1227,6 @@
               }
             },
             {
-              "task": "نام خانوادگی علی را بپرس.",
-              "hint": "What is Ali's last name?",
-              "example": "What is Ali's last name?",
-              "assessment": {
-                "required": [
-                  {
-                    "any": [
-                      "what is ali's last name",
-                      "what's ali's last name"
-                    ],
-                    "feedback": "با last name سؤال بساز."
-                  }
-                ],
-                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
-              }
-            },
-            {
               "task": "بگو من بیست‌وچهار سال دارم.",
               "hint": "I'm twenty-four years old.",
               "example": "I'm twenty-four years old.",
@@ -1166,6 +1241,22 @@
                   }
                 ],
                 "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              }
+            },
+            {
+              "task": "بپرس نوآ چند ساله است.",
+              "hint": "How old is Noah?",
+              "example": "How old is Noah?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "how old is noah"
+                    ],
+                    "feedback": "برای نوآ از How old is Noah? استفاده کن."
+                  }
+                ],
+                "success": "سؤال دربارهٔ سن شخص دیگر را ساختی."
               }
             }
           ]
@@ -1186,7 +1277,7 @@
           "type": "exchange-lab",
           "phase": "correspondence",
           "title": "یک سؤال، چند پاسخ صحیح",
-          "description": "با تغییر نام و سن، پاسخ دقیق می‌سازی؛ گاهی جواب کوتاه‌تر هم طبیعی است.",
+          "description": "پرسش سن را با پاسخ کوتاه و کامل تمرین کن؛ عددها را در بخش اول ساخته‌ای.",
           "pairs": [
             {
               "question": "How old are you?",
@@ -1217,22 +1308,6 @@
                   "label": "۳۵ ساله",
                   "en": "She is thirty-five years old.",
                   "fa": "سی‌وپنج ساله است."
-                }
-              ]
-            },
-            {
-              "question": "What is your last name?",
-              "questionFa": "نام خانوادگی‌ات چیست؟",
-              "variants": [
-                {
-                  "label": "رحیمی",
-                  "en": "My last name is Rahimi.",
-                  "fa": "نام خانوادگی من رحیمی است."
-                },
-                {
-                  "label": "نوری",
-                  "en": "My last name is Nouri.",
-                  "fa": "نام خانوادگی من نوری است."
                 }
               ]
             },
@@ -1282,23 +1357,6 @@
               "incoming": "How old are you?"
             },
             {
-              "task": "بگو نام خانوادگی من رحیمی است.",
-              "hint": "My last name is Rahimi.",
-              "example": "My last name is Rahimi.",
-              "assessment": {
-                "required": [
-                  {
-                    "any": [
-                      "my last name is rahimi"
-                    ],
-                    "feedback": "با My last name is شروع کن."
-                  }
-                ],
-                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
-              },
-              "incoming": "What is your last name?"
-            },
-            {
               "task": "بگو سارا بیست‌وچهار سال دارد.",
               "hint": "She is twenty-four years old.",
               "example": "She is twenty-four years old.",
@@ -1322,43 +1380,43 @@
           "id": "age-dialogue-1",
           "type": "dialogue",
           "phase": "context",
-          "title": "مکالمهٔ اول: آشنایی در کلاس",
-          "description": "دو نفر نام کامل و سن خودشان را معرفی می‌کنند.",
+          "title": "مکالمهٔ اول: بعد از آشنایی، سن را می‌پرسیم",
+          "description": "نام افراد را از درس اول می‌شناسی. این مکالمه فقط نشان می‌دهد عددهایی که ساخته‌ای چگونه در سن استفاده می‌شوند.",
           "lines": [
             {
               "speaker": "Sara",
-              "en": "Hello! What's your first name?",
-              "fa": "سلام، اسمت چیه؟"
+              "en": "Hello! I'm Sara.",
+              "fa": "سلام، من سارا هستم."
             },
             {
               "speaker": "Emma",
-              "en": "My first name is Emma.",
-              "fa": "اسم من اِما است."
+              "en": "Hi, Sara. I'm Emma.",
+              "fa": "سلام سارا، من اِما هستم."
             },
             {
               "speaker": "Sara",
-              "en": "What's your last name?",
-              "fa": "نام خانوادگی‌ات چیست؟"
+              "en": "How old are you?",
+              "fa": "چند سالته؟"
             },
             {
               "speaker": "Emma",
-              "en": "My last name is Brown.",
-              "fa": "نام خانوادگی من براون است."
-            },
-            {
-              "speaker": "Sara",
-              "en": "Nice to meet you, Emma. How old are you?",
-              "fa": "از آشنایی خوشوقتم اِما؛ چند سالته؟"
-            },
-            {
-              "speaker": "Emma",
-              "en": "I'm twelve years old. And you?",
-              "fa": "دوازده سالم است. تو چطور؟"
+              "en": "I'm twelve years old.",
+              "fa": "دوازده سالمه."
             },
             {
               "speaker": "Sara",
               "en": "I'm twenty-four.",
-              "fa": "بیست‌وچهار سالم است."
+              "fa": "بیست‌وچهار سالمه."
+            },
+            {
+              "speaker": "Emma",
+              "en": "Twenty-four?",
+              "fa": "بیست‌وچهار؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "Yes, twenty-four.",
+              "fa": "بله، بیست‌وچهار."
             },
             {
               "speaker": "Emma",
@@ -1371,46 +1429,11 @@
           "id": "age-dialogue-1-practice",
           "type": "response-practice",
           "phase": "context",
-          "title": "دیالوگ را ادامه بده",
+          "title": "مکالمهٔ سن را ادامه بده",
           "practiceRevision": 1,
           "description": "برای نوبت بعدی، سؤال یا جواب مناسب را بنویس.",
           "completion": "گفت‌وگو را بدون حفظ مکانیکی ادامه دادی.",
           "tasks": [
-            {
-              "task": "نام کوچک طرف را بپرس.",
-              "hint": "What's your first name?",
-              "example": "What's your first name?",
-              "assessment": {
-                "required": [
-                  {
-                    "any": [
-                      "what's your first name",
-                      "what is your first name"
-                    ],
-                    "feedback": "پرسش first name را بساز."
-                  }
-                ],
-                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
-              },
-              "incoming": "Hello!"
-            },
-            {
-              "task": "بگو نام خانوادگی من براون است.",
-              "hint": "My last name is Brown.",
-              "example": "My last name is Brown.",
-              "assessment": {
-                "required": [
-                  {
-                    "any": [
-                      "my last name is brown"
-                    ],
-                    "feedback": "با My last name is پاسخ بده."
-                  }
-                ],
-                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
-              },
-              "incoming": "What's your last name?"
-            },
             {
               "task": "پاسخ بده دوازده سالم است.",
               "hint": "I'm twelve years old.",
@@ -1616,7 +1639,7 @@
           "phase": "guided",
           "title": "نوبت تو: خودت سؤال و جواب را بساز",
           "practiceRevision": 1,
-          "description": "نام و سن افراد را جابه‌جا کن و جملهٔ درست بساز.",
+          "description": "حالا سؤال سن را خودت بساز؛ اطلاعات روی کارت مشخص است و نیاز نیست سؤال اسم را از نو یاد بگیری.",
           "completion": "می‌توانی نام و سن را در یک مکالمهٔ چندنوبتی بپرسی و بگویی.",
           "turns": [
             {
@@ -1633,24 +1656,6 @@
                       "what is your last name"
                     ],
                     "feedback": "بپرس last name چیست."
-                  }
-                ],
-                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
-              }
-            },
-            {
-              "speaker": "دوستت",
-              "incoming": "My last name is Brown.",
-              "task": "حالا سن او را بپرس.",
-              "hint": "How old are you?",
-              "example": "How old are you?",
-              "assessment": {
-                "required": [
-                  {
-                    "any": [
-                      "how old are you"
-                    ],
-                    "feedback": "با How old are you? سؤال بساز."
                   }
                 ],
                 "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
@@ -1695,24 +1700,6 @@
                       "noah is seventeen"
                     ],
                     "feedback": "سن نوآ را هفده بگو."
-                  }
-                ],
-                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
-              }
-            },
-            {
-              "speaker": "دوستت",
-              "incoming": "What is Ali's last name?",
-              "task": "نام خانوادگی علی را بگو.",
-              "hint": "Ali's last name is Nouri.",
-              "example": "Ali's last name is Nouri.",
-              "assessment": {
-                "required": [
-                  {
-                    "any": [
-                      "nouri"
-                    ],
-                    "feedback": "نام خانوادگی را نوری بیان کن."
                   }
                 ],
                 "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
@@ -1792,70 +1779,52 @@
           "id": "age-independent",
           "type": "free-write",
           "phase": "independent",
-          "title": "تمرین واقعی: معرفی خودت و یک نفر دیگر",
+          "title": "تمرین واقعی: عدد، سن و یک نفر دیگر",
           "kind": "free-text",
-          "minWords": 17,
-          "prompt": "اسم کوچک و نام خانوادگی خودت را به انگلیسی معرفی کن و بنویس چند سال داری. برای حفظ حریم خصوصی می‌توانی از هویت و سن ساختگی استفاده کنی. بعد عکس یک عضو خانواده یا یک دوست را روی گوشی باز کن (یا شخص خیالی انتخاب کن)، نسبت یا ارتباطش را بگو، اسم و سنش را بنویس. در پایان دو سؤال بساز: What is your last name? و How old are you? از My، his/her، sister/brother و واژه‌های دوره‌های قبلی استفاده کن. هیچ عکسی نباید آپلود شود.",
-          "placeholder": "My first name is Sara.\nMy last name is Rahimi.\nI'm twenty-four years old.\nThis is my brother. He is seventeen.\nWhat is your last name?\nHow old are you?",
-          "hint": "اسم و سن واقعی اجباری نیست؛ مهم ساختن درست جمله و سؤال با واژه‌های آشناست.",
+          "minWords": 12,
+          "prompt": "اول سه عدد دورقمی دلخواه را به انگلیسی بنویس (مثلاً ۲۷، ۴۳، ۶۸). بعد بپرس How old are you? و با سن واقعی یا ساختگی خودت به انگلیسی پاسخ بده. یک نفر دیگر از خانواده یا دوستت را معرفی کن و سن واقعی یا خیالی او را بنویس. لازم نیست اسم یا اطلاعات شخصی واقعی را منتشر کنی و نیازی به بارگذاری عکس نیست.",
+          "placeholder": "twenty-seven, forty-three, sixty-eight\nHow old are you?\nI'm twenty-seven years old.\nThis is my brother. He is seventeen.",
+          "hint": "از عددهای دلخواه استفاده کن، نه سن ثابت سارا. اگر خواستی سن ساختگی بنویس؛ ارزیابی باید شکل جمله را بررسی کند، نه عدد خاص را.",
           "assessment": {
-            "revision": 1,
+            "revision": 3,
             "required": [
               {
-                "any": [
-                  "my first name is",
-                  "my name is"
+                "patterns": [
+                  "\\b(?:eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety)(?:-[a-z]+)?\\b"
                 ],
-                "feedback": "نام کوچک خودت یا هویت خیالی را معرفی کن."
-              },
-              {
-                "any": [
-                  "my last name is",
-                  "my surname is"
-                ],
-                "feedback": "نام خانوادگی را هم اضافه کن."
-              },
-              {
-                "any": [
-                  "years old",
-                  "i'm twenty",
-                  "i am twenty",
-                  "i'm twelve",
-                  "i am twelve",
-                  "i'm thirty",
-                  "i am thirty"
-                ],
-                "feedback": "سن را با جمله‌ای مثل I'm twenty-four years old. بیان کن."
-              },
-              {
-                "any": [
-                  "this is my brother",
-                  "this is my sister",
-                  "this is my mother",
-                  "this is my father",
-                  "this is my friend",
-                  "my brother",
-                  "my sister",
-                  "my mother",
-                  "my father"
-                ],
-                "feedback": "یک نفر دیگر را با نسبت یا ارتباطش معرفی کن."
+                "feedback": "حداقل یک عددِ بالاتر از ده به انگلیسی بنویس."
               },
               {
                 "any": [
                   "how old are you"
                 ],
-                "feedback": "سؤال How old are you? را خودت بنویس."
+                "feedback": "پرسش How old are you? را بنویس."
+              },
+              {
+                "patterns": [
+                  "\\b(?:i'm|i am)\\s+(?:(?:eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen)|(?:(?:twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety)(?:[- ](?:one|two|three|four|five|six|seven|eight|nine))?)|(?:one hundred))(?:\\s+years old)?\\b"
+                ],
+                "feedback": "با I'm یا I am و یک عدد مناسب سن خود یا شخصیت خیالی را بگو."
               },
               {
                 "any": [
-                  "what is your last name",
-                  "what's your last name"
+                  "my brother",
+                  "my sister",
+                  "my mother",
+                  "my father",
+                  "my friend",
+                  "this is my"
                 ],
-                "feedback": "دربارهٔ نام خانوادگی هم سؤال بساز."
+                "feedback": "یک نفر دیگر را معرفی کن."
+              },
+              {
+                "patterns": [
+                  "\\b(?:he|she|my brother|my sister|my friend)\\s+is\\s+(?:(?:eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen)|(?:(?:twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety)(?:[- ](?:one|two|three|four|five|six|seven|eight|nine))?)|(?:one hundred))\\b"
+                ],
+                "feedback": "برای نفر دوم هم یک سن بگو."
               }
             ],
-            "success": "نام و سن خود و دیگری را در جمله‌ها و پرسش‌های مستقل ساختی."
+            "success": "عددها را ساختی و سن خودت و یک نفر دیگر را در جمله‌های مستقل گفتی."
           }
         },
         {
@@ -1863,7 +1832,7 @@
           "type": "shadowing-review",
           "phase": "independent",
           "title": "سایه‌خوانی دوباره",
-          "description": "حالا همان جمله‌های آغاز درس را بدون آزمون معنی دوباره بشنو و همراه صدا تکرار کن.",
+          "description": "همان تمرین عددهای ابتدای درس را دوباره تکرار کن؛ هدف روان‌ترگفتن اعداد است، نه آزمون درک مطلب.",
           "sourceActivityId": "a1-6-shadowing"
         }
       ]
