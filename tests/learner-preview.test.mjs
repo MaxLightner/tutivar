@@ -329,7 +329,7 @@ test('A1-4 is a complete location lesson in the shared discovery and production 
 });
 
 test('meaning expressions and reusable visual learning modules are lesson-authored', () => {
-  for(const id of ['a1-1','a1-2','a1-3','a1-4','a1-5']){
+  for(const id of ['a1-1','a1-2','a1-3','a1-4','a1-7']){
     const lesson=load('lessons/'+id+'.json');
     assert.deepEqual(validateLessonFlow(lesson),[],lesson.id);
     const concept=lesson.sections[0].activities.find(a=>a.type==='meaning-cluster');
@@ -484,7 +484,7 @@ test('production begins with two-turn question and answer, switching positive an
   context.progress.exchangeChoices['A1-1:hello-exchanges'] = { pair: 1, variant: 1 };
   assert.match(renderActivity(exchange, context), /No, I'm not/);
   const practice = lesson.sections[1].activities[1];
-  assert.equal(practice.tasks.length, 4);
+  assert.equal(practice.tasks.length, 6);
   assert.equal(evaluateResponse(practice.tasks[0].assessment, "I'm fine, thanks. And you?").ok, true);
   assert.equal(evaluateResponse(practice.tasks[1].assessment, "No, I'm not.").ok, true);
   assert.equal(evaluateResponse(practice.tasks[2].assessment, 'Yes, I am.').ok, true);
@@ -722,8 +722,10 @@ test('guided dialogue supports feedback, correction, alternate names, mastery an
   assert.equal(state.answers.length, 1);
   state = submitPractice(state, activity, "I'm Omar. What's your name?").state;
   state = submitPractice(state, activity, 'Nice to meet you too, goodbye!').state;
+  state = submitPractice(state, activity, 'Nice to meet you too, Sara!').state;
+  state = submitPractice(state, activity, 'Bye, Sara! See you!').state;
   assert.equal(state.answers.length, activity.turns.length);
-  assert.equal(practiceState(state, { ...activity, practiceRevision: 4 }).answers.length, 0, 'new exercise revision invalidates old answers');
+  assert.equal(practiceState(state, { ...activity, practiceRevision: activity.practiceRevision + 1 }).answers.length, 0, 'new exercise revision invalidates old answers');
 });
 
 test('transfer and independent production require communication, not arbitrary submissions', () => {
