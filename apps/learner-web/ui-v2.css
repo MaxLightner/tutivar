@@ -867,3 +867,10 @@ button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3p
 .plural-contrast-control{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px}
 .plural-contrast-control span{color:#6c8072;font-size:13px}
 @media(max-width:600px){.count-visual-grid{grid-template-columns:1fr}.count-visual-frame,.plural-contrast-cell{padding:12px 5px}.count-object-picture{width:42px;height:42px;flex-basis:42px}.count-visual-frame strong,.plural-contrast-cell strong{font-size:15px}}
+
+/* Invalid puzzle tile: quick shake and visible return into the shared word bank. */
+.builder-token-ghost{position:fixed!important;z-index:1500;pointer-events:none;display:flex;align-items:center;justify-content:center;background:#fff4ec!important;color:#8b3c29!important;border:1px solid #d88c76!important;border-radius:12px;box-shadow:0 7px 18px rgba(60,40,30,.16);padding:7px 10px}
+@keyframes puzzle-token-shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.builder-token-invalid{animation:puzzle-token-shake .28s ease-in-out}
+.builder-prefix-notice{font-size:12px;color:#9b5846;min-height:1.2em;margin:7px 0}
+@media(prefers-reduced-motion:reduce){.builder-token-invalid{animation:none}.builder-token-ghost{transition:none}}
