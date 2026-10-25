@@ -93,7 +93,7 @@ export function validatePublishedCatalog({ manifest, runtimeCourse, legacy, read
     if (!canonical) { errors.push(entry.id + ': missing from canonical roadmap'); continue; }
     const exception = frozen.get(entry.id);
     if (exception) {
-      if (!allowed.has(entry.id) || entry.title !== exception.currentTitle)
+      if (!allowed.has(entry.id) || entry.title !== exception.catalogTitle)
         errors.push(entry.id + ': historical exception changed without migration');
       if (!entry.file || !readLesson) continue;
       const raw = readLesson(entry.file);
