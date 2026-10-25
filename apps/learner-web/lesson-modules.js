@@ -22,6 +22,7 @@ const MODULE_LABELS = {
   'family-tree': 'درخت خانواده', 'family-lab': 'خانوادهٔ تصویری', 'spatial-lab': 'بازی موقعیت توپ',
   'expression-study': 'عبارت‌های کاربردی', shadowing: 'سایه‌خوانی', 'shadowing-review': 'سایه‌خوانی دوباره',
   'picture-description': 'توصیف تصویر', 'meaning-cluster': 'یک مفهوم، چند بیان',
+  'count-visual': 'یک یا چند شیء', 'plural-pair-lab': 'مفرد و جمع تصویری',
   'agreement-lab': 'جمله‌ساز وابسته', 'sentence-composer': 'جمله‌ساز تعاملی', 'composer-view': 'کشف و تغییر جمله'
 };
 function wrapper(body, activity, idx, e, extra = '') {
@@ -440,12 +441,53 @@ function freeWrite(a, c) {
   const status = feedback ? `<div class="practice-feedback ${feedback.passed ? 'success' : 'error'}" role="status"><strong>${c.e(feedback.feedback)}</strong>${feedback.repair ? `<p>${c.e(feedback.repair)}</p>` : ''}${feedback.passed ? '<span>✓ نشانهٔ یادگیری این بخش ثبت شد.</span>' : '<span>متنت باقی می‌ماند؛ می‌توانی همان را اصلاح کنی.</span>'}</div>` : '';
   return wrapper(`<label class="input-label" for="free-response">${c.e(a.prompt)}</label><textarea class="free-input" id="free-response" lang="en" dir="ltr" placeholder="${c.e(a.placeholder)}" rows="3">${c.e(stored)}</textarea><p class="hint">${c.e(a.hint)}</p><button class="secondary-btn" data-action="save-production">${a.assessment ? 'بررسی گفت‌وگوی من' : 'ذخیره پاسخ'} ${c.i('check')}</button>${status}${a.assessment ? '<p class="practice-caveat">بازخورد بر اساس ساختارهای مشخص همین درس است؛ تصحیح آزادِ همهٔ جمله‌های انگلیسی نیست.</p>' : ''}`, a, c.index, c.e);
 }
+
+/* Shared visual grammar blocks; scenes and lexical contrasts are authored by lesson JSON. */
+function countObjectSvg(shape, e) {
+  const symbols = {
+    book: '<rect x="12" y="8" width="43" height="48" rx="5" fill="#6c9b91" stroke="#335f58" stroke-width="3"/><path d="M24 8V56M32 20H49M32 28H49" stroke="#d8eee6" stroke-width="3"/>',
+    apple: '<path d="M33 20C16 10 9 28 16 46C22 61 31 55 34 52C40 57 50 60 55 43C61 25 49 12 35 20Z" fill="#e37e60" stroke="#9b4c3f" stroke-width="3"/><path d="M33 20Q31 12 38 8M38 12Q50 4 54 11Q46 18 38 12Z" fill="none" stroke="#598d64" stroke-width="4"/>',
+    fish: '<path d="M15 33Q34 7 54 33Q34 58 15 33Z" fill="#79adb6" stroke="#34717b" stroke-width="3"/><path d="M15 33L4 17L4 49Z" fill="#5b9ba5" stroke="#34717b" stroke-width="3"/><circle cx="43" cy="28" r="3" fill="#23464a"/>',
+    pencil: '<path d="M27 6H41V48L34 62L27 48Z" fill="#e3bb5a" stroke="#99763e" stroke-width="3"/><path d="M27 12H41M27 47H41M34 62V51" stroke="#8d6548" stroke-width="2"/>',
+    pen: '<rect x="28" y="7" width="13" height="43" rx="6" fill="#779bc3" stroke="#40658d" stroke-width="3"/><path d="M29 50L34 62L41 50" fill="#e8cc9b" stroke="#40658d" stroke-width="2"/><path d="M29 15H41" stroke="#d9e9f6" stroke-width="3"/>',
+    bag: '<rect x="12" y="22" width="46" height="37" rx="6" fill="#8da6bd" stroke="#4c6e88" stroke-width="3"/><path d="M23 23V16A12 12 0 0 1 47 16V23" fill="none" stroke="#4c6e88" stroke-width="4"/><path d="M15 35H55" stroke="#dce8ef" stroke-width="3"/>',
+    box: '<path d="M6 21L34 9L62 21L34 34Z" fill="#e8c18d" stroke="#9b704a" stroke-width="3"/><path d="M6 21L34 34V61L6 47Z" fill="#d2a26c" stroke="#9b704a" stroke-width="3"/><path d="M62 21L34 34V61L62 47Z" fill="#bf8a54" stroke="#9b704a" stroke-width="3"/>',
+    child: '<circle cx="34" cy="17" r="10" fill="#e7b78c"/><path d="M18 58L23 31H45L50 58Z" fill="#7fa78e" stroke="#416f5b" stroke-width="3"/><path d="M27 58V64M41 58V64" stroke="#537c69" stroke-width="5"/>',
+    person: '<circle cx="34" cy="15" r="10" fill="#e7b78c"/><path d="M16 59L22 29H46L52 59Z" fill="#7fa2bd" stroke="#426480" stroke-width="3"/><path d="M27 59V64M41 59V64" stroke="#426480" stroke-width="5"/>',
+    sheep: '<ellipse cx="32" cy="38" rx="25" ry="19" fill="#f2eee4" stroke="#acb4ae" stroke-width="3"/><circle cx="52" cy="30" r="12" fill="#a4adb0"/><circle cx="55" cy="26" r="2.5" fill="#2b4147"/><path d="M17 53V63M39 53V63" stroke="#87918f" stroke-width="5"/>',
+    orange: '<circle cx="34" cy="35" r="23" fill="#eda45a" stroke="#b56e31" stroke-width="3"/><path d="M34 12Q43 2 51 12Q43 17 34 12Z" fill="#659268"/>'
+  };
+  return '<svg viewBox="0 0 68 68" class="count-object-picture" aria-hidden="true">'+(symbols[shape]||symbols.book)+'</svg>';
+}
+function countVisual(a,c) {
+  const scenes=(a.scenes||[]).map((scene)=>{
+    const renderAmount=(qty)=>Array.from({length:Math.min(10,qty)},()=>countObjectSvg(scene.shape,c.e)).join('');
+    return '<div class="count-visual-scene"><div class="count-visual-pair">'+
+      '<div class="count-visual-frame"><div class="count-picture-row">'+renderAmount(scene.singularCount||1)+'</div><strong lang="en" dir="ltr">'+c.e(scene.singular)+'</strong><span>'+c.e(scene.singularFa||'')+'</span></div>'+
+      '<div class="count-visual-frame"><div class="count-picture-row">'+renderAmount(scene.pluralCount||2)+'</div><strong lang="en" dir="ltr">'+c.e(scene.plural)+'</strong><span>'+c.e(scene.pluralFa||'')+'</span></div>'+
+      '</div></div>';
+  }).join('');
+  return wrapper('<p class="module-description">'+c.e(a.description||'')+'</p><div class="count-visual-grid">'+scenes+'</div>',a,c.index,c.e,'module-count-visual');
+}
+function pluralPairLab(a,c) {
+  const key=c.lessonId+':'+a.id;
+  const selected=(Number(c.progress.pluralChoices?.[key])||0)%(a.items?.length||1);
+  const item=a.items[selected];
+  if(!item)return wrapper('',a,c.index,c.e);
+  const pictures=(count)=>Array.from({length:count},()=>countObjectSvg(item.shape,c.e)).join('');
+  return wrapper('<p class="module-description">'+c.e(a.description||'')+'</p>'+
+    '<div class="plural-contrast"><div class="plural-contrast-cell"><div class="count-picture-row">'+pictures(1)+'</div><strong lang="en" dir="ltr">one '+c.e(item.singular)+'</strong></div>'+
+    '<div class="plural-contrast-cell"><div class="count-picture-row">'+pictures(2)+'</div><strong lang="en" dir="ltr">two '+c.e(item.plural)+'</strong></div></div>'+
+    '<p class="plural-contrast-note">'+c.e(item.note||'')+'</p><div class="plural-contrast-control">'+
+    '<span>'+c.e(selected+1)+' / '+c.e(a.items.length)+'</span><button class="outline-btn" type="button" data-plural-lab-key="'+c.e(key)+'">اسم بعدی؛ عدد ثابت <span aria-hidden="true">←</span></button></div>',a,c.index,c.e,'module-plural-pair-lab');
+}
+
 const renderers = {
   intro, vocabulary, pattern, match, 'sentence-builder': sentenceBuilder,
   'quiz-set': quizSet, dialogue, roleplay, 'free-write': freeWrite,
   'phrase-composer': phraseComposer, 'pattern-lab': patternLab, 'sentence-lab': sentenceLab,
   'guided-dialogue': guidedDialogue, 'response-practice': responsePractice,
-  'exchange-lab': exchangeLab, 'expression-study': expressionStudy,
+  'exchange-lab': exchangeLab, 'expression-study': expressionStudy, 'count-visual': countVisual, 'plural-pair-lab': pluralPairLab,
   shadowing, 'shadowing-review': shadowing, 'picture-description': pictureDescription,
   'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer,
   'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer
