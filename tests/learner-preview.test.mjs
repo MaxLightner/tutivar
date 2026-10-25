@@ -890,7 +890,7 @@ test('A1-5 teaches counting with singular/plural agreement and real-world produc
   const picture = production.activities.find(a => a.type === 'picture-description');
   assert.equal(picture.tasks.length, 5);
   assert.ok(production.activities.find(a => a.type === 'dialogue-transfer').turns.some(turn => /my bag/.test(turn.example || '')));
-  assert.ok(production.activities.find(a => a.type === 'free-write').prompt.includes('وسایل واقعی'));
+  assert.ok(production.activities.find(a => a.type === 'free-write').prompt.includes('شیء واقعی'));
   assert.deepEqual(auditLesson(lesson).errors, []);
 });
 
