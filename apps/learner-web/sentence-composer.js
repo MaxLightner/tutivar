@@ -63,6 +63,11 @@ export function composerSegmentValue(segment, activity, resolved) {
   if (segment.slot) {
     const item = selectedItem(activity, resolved.state, segment.slot);
     if (!item) return '';
+    if (segment.numberSlot) {
+      const count = selectedItem(activity, resolved.state, segment.numberSlot);
+      const form = count?.features?.singular ? 'singular' : 'plural';
+      return String(item.forms?.[form] ?? item[form] ?? item.label ?? item.id ?? '');
+    }
     return String(item.forms?.[segment.form] ?? item[segment.form] ?? item.label ?? item.id ?? '');
   }
   return '';

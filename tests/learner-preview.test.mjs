@@ -64,8 +64,8 @@ test('every sample path node references a real content file with two teaching se
     assert.ok(!ids.has(lesson.id));
     ids.add(lesson.id);
   }
-  assert.equal(ids.size, 8);
-  assert.deepEqual([...new Set([...ids].map((id) => load(lessons.find((entry) => entry.id === id).file).archetype))].sort(), ['conversation', 'counting-objects', 'family', 'home-rooms', 'identification', 'name-and-age', 'ownership', 'spatial-location']);
+  assert.equal(ids.size, 9);
+  assert.deepEqual([...new Set([...ids].map((id) => load(lessons.find((entry) => entry.id === id).file).archetype))].sort(), ['conversation', 'counting-objects', 'family', 'home-rooms', 'identification', 'name-and-age', 'ownership', 'room-objects', 'spatial-location']);
 });
 
 test('not-yet-produced nodes cannot be launched as content', () => {
@@ -924,7 +924,7 @@ test('A1-5 merges visual singular/plural, uses inline a/an and teaches arithmeti
 });
 
 test('all lesson word banks introduce lexical items only once, including supplementary and inflected forms', () => {
-  const lessons=[1,2,3,4,5,6,7,8].map(i=>load('lessons/a1-'+i+'.json'));
+  const lessons=[1,2,3,4,5,6,7,8,9].map(i=>load('lessons/a1-'+i+'.json'));
   assert.deepEqual(inspectVocabularyContinuity(lessons),[]);
   const lessonFive=lessons[4];
   const words=lessonFive.sections[0].activities.find(a=>a.type==='vocabulary').items.map(x=>x.en);
@@ -1050,6 +1050,72 @@ test('A1-8 names rooms and aligns a tap-to-change sentence with the highlighted 
   assert.deepEqual(auditLesson(lesson).errors,[]);
 });
 
+test('A1-8 builds count, level, area and compound positions with synchronized images', () => {
+  const lesson=load('lessons/a1-8.json'),f=lesson.sections[0].activities,p=lesson.sections[1].activities;
+  assert.deepEqual(validateLessonFlow(lesson),[]);
+  const vocab=f.find(a=>a.type==='vocabulary').items.map(x=>x.en);
+  assert.ok(vocab.includes('ceiling') && vocab.includes('roof'));
+  assert.ok(!vocab.includes('window') && !vocab.includes('door') && !vocab.includes('wall'),'previously taught words remain review-only');
+  const facts=f.find(a=>a.id==='house-facts-composer');
+  assert.deepEqual(validateSentenceComposer(facts),[]);
+  const render=(pattern,slots)=>{const state=resolveSentenceComposer(facts,{pattern,slots});return composeSegments(state.pattern.segments,facts,state)};
+  assert.equal(render('count',{amount:'one',feature:'bedroom'}),'There is one bedroom in my home.');
+  assert.equal(render('count',{amount:'two',feature:'bedroom'}),'There are two bedrooms in my home.');
+  assert.equal(render('count',{amount:'three',feature:'window'}),'There are three windows in my home.');
+  assert.equal(render('floor',{level:'second'}),'My apartment is on the second floor.');
+  assert.equal(render('area',{area:'eighty'}),'My apartment is eighty square meters.');
+  const ctx={lessonId:'A1-8',index:1,e:String,en:String,i:()=>'',activitiesById:Object.fromEntries(f.map(a=>[a.id,a])),progress:{sentenceComposers:{}}};
+  const countView=f.find(a=>a.id==='house-counts');
+  const visual=renderActivity(countView,ctx);
+  assert.match(visual,/data-house-fact="count"/);
+  assert.match(visual,/data-house-quantity="2"/);
+  assert.match(visual,/data-composer-slot="amount"/);
+  assert.match(visual,/data-composer-slot="feature"/);
+  assert.match(renderActivity(f.find(a=>a.id==='house-floor'),ctx),/data-house-fact="floor"/);
+  assert.match(renderActivity(f.find(a=>a.id==='house-area'),ctx),/data-house-fact="area"/);
+  const rooms=f.find(a=>a.id==='rooms-composer');
+  assert.deepEqual(validateSentenceComposer(rooms),[]);
+  const st=resolveSentenceComposer(rooms,{pattern:'compound-object',slots:{object:'bag',position:'on',room:'kitchen'}});
+  assert.equal(composeSegments(st.pattern.segments,rooms,st),'My bag is on the table in the kitchen.');
+  const free=p.find(a=>a.type==='free-write');
+  const answer='This is the living room. This is the kitchen. There are two bedrooms in my home. My apartment is on the second floor. My apartment is eighty square meters. Where is my mother? She is in the kitchen. My bag is on the table in the kitchen.';
+  assert.equal(evaluateResponse(free.assessment,answer).ok,true);
+  assert.deepEqual(auditLesson(lesson).errors,[]);
+});
+test('A1-9 teaches positioning objects with synchronized noun, preposition and support', () => {
+  const lesson=load('lessons/a1-9.json'),f=lesson.sections[0].activities,p=lesson.sections[1].activities;
+  assert.deepEqual(validateLessonFlow(lesson),[]);
+  const vocab=f.find(a=>a.type==='vocabulary');
+  assert.ok(coreItems(vocab).length>=10);
+  assert.ok(supplementaryItems(vocab).length>=5);
+  for(const known of ['book','phone','bag','desk','bed','shelf','window','door','in','on','under','next','to'])
+    assert.ok(!vocab.items.some(x=>x.en===known),'already-taught '+known+' cannot re-enter the word bank');
+  assert.ok(vocab.items.every(x=>!x.role||!x.examples),'supplementary lexical items remain optional');
+  const comp=f.find(a=>a.id==='room-object-composer');
+  assert.deepEqual(validateSentenceComposer(comp),[]);
+  const sentence=(pattern,slots)=>{
+    const state=resolveSentenceComposer(comp,{pattern,slots});
+    return composeSegments(state.pattern.segments,comp,state);
+  };
+  assert.equal(sentence('object-location',{object:'book',position:'on',surface:'desk'}),'My book is on the desk in my bedroom.');
+  assert.equal(sentence('object-location',{object:'bag',position:'under',surface:'bed'}),'My bag is under the bed in my bedroom.');
+  assert.equal(sentence('near-window',{object:'phone',position:'next-to',surface:'shelf'}),'My phone is next to the shelf near the window.');
+  assert.equal(sentence('where',{object:'bag'}),'Where is my bag?');
+  const ctx={lessonId:'A1-9',index:0,e:String,en:String,i:()=>'',progress:{sentenceComposers:{'A1-9:room-object-composer':{slots:{object:'bag',position:'under',surface:'bed'}}}}};
+  const html=renderActivity(comp,ctx);
+  assert.match(html,/data-room-object="bag"/);
+  assert.match(html,/data-room-position="under"/);
+  assert.match(html,/data-room-surface="bed"/);
+  for(const slot of ['object','position','surface'])assert.match(html,new RegExp('data-composer-slot="'+slot+'"'));
+  assert.ok(p.filter(a=>a.type==='dialogue').some(a=>a.lines.some(line=>line.en.includes('wardrobe'))));
+  assert.ok(p.find(a=>a.type==='free-write').prompt.includes('اتاق خیالی'));
+  assert.match(readFileSync(join(projectRoot,'apps/learner-web/assets/scene-a1-9.svg'),'utf8'),/Book|book/);
+  const free=p.find(a=>a.type==='free-write');
+  const answer='Where is my book? My book is on the desk in my bedroom. My bag is under the bed. The pillow is on the bed. The mirror is on the wall near the wardrobe. The curtain is near the window.';
+  assert.equal(evaluateResponse(free.assessment,answer).ok,true);
+  assert.deepEqual(auditLesson(lesson).errors,[]);
+});
+
 test('A1-1 staged practice increases variety without adding activity panels', () => {
   const lesson=load('lessons/a1-1.json');
   assert.equal(lesson.sections[0].activities.find(a=>a.id==='hello-intro-check').tasks.length,5);
@@ -1058,9 +1124,9 @@ test('A1-1 staged practice increases variety without adding activity panels', ()
   assert.ok(production.find(a=>a.id==='hello-guided-talk').turns.length>=5);
   assert.equal(production.filter(a=>a.type==='guided-dialogue').length,1);
 });
-test('all eight A1 lessons expose identical two-section navigation labels', () => {
+test('all nine A1 lessons expose identical two-section navigation labels', () => {
   const labels=['از کلمه تا جمله','از سؤال و جواب تا مکالمه'];
-  for (const id of ['a1-1','a1-2','a1-3','a1-4','a1-5','a1-6','a1-7','a1-8']) {
+  for (const id of ['a1-1','a1-2','a1-3','a1-4','a1-5','a1-6','a1-7','a1-8','a1-9']) {
     assert.deepEqual(load('lessons/'+id+'.json').sections.map(section=>section.label),labels,id);
   }
 });

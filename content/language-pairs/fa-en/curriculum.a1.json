@@ -99,10 +99,15 @@
               "file": "lessons/a1-8.json",
               "status": "sample"
             },
-            [
-              "وسایل اتاق من",
-              "objects"
-            ],
+            {
+              "id": "A1-9",
+              "title": "وسایل اتاق من",
+              "subtitle": "وسایل، چیدمان و جملهٔ دومکانی",
+              "icon": "objects",
+              "feature": "موقعیت تعاملی وسایل",
+              "file": "lessons/a1-9.json",
+              "status": "sample"
+            },
             [
               "رنگ‌ها و شکل‌ها",
               "sparkles"

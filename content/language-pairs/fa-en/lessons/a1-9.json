@@ -1,0 +1,1635 @@
+{
+  "id": "A1-9",
+  "revision": 1,
+  "status": "draft",
+  "title": "وسایل اتاق من",
+  "archetype": "room-objects",
+  "lessonTemplate": "discovery-production-v1",
+  "goal": "در اتاق‌خوابت یا یک اتاق فرضی بتوانی محل دقیق وسایل را با on، under و next to بگویی، دربارهٔ آن‌ها سؤال کنی، چیدمان را تغییر بدهی و در دو موقعیت پشت سر هم توضیح بدهی.",
+  "duration": "۲۵ دقیقه",
+  "feature": "چیدمان وسایل با تغییر خود جمله",
+  "teachingModel": {
+    "primary": "K1",
+    "support": "K2"
+  },
+  "orientation": {
+    "goal": "دوستت دربارهٔ جای کتاب، گوشی یا بالش سؤال می‌کند. پاسخ را با یک اتاق و موقعیت دقیق می‌گویی و در صورت اشتباه، جمله را اصلاح می‌کنی.",
+    "prerequisites": [
+      "مالکیت my و your از درس ۳",
+      "موقعیت‌های on، under، next to از درس ۴",
+      "ساخت جملهٔ ترکیبی داخل اتاق از درس ۸"
+    ],
+    "previously": "اتاق‌ها، پنجره، تخت، میز، قفسه، کیف و کتاب را قبلاً دیده‌ای؛ اینجا دوباره حفظشان نمی‌کنی. چند وسیلهٔ تازه یاد می‌گیری و با یک تصویر ثابت جای وسایل را تغییر می‌دهی.",
+    "quickCheck": {
+      "title": "اگر آماده‌ای",
+      "question": "می‌توانی بگویی کتابم روی میز و کیفم زیر تخت است؟",
+      "example": "My book is on the desk. My bag is under the bed.",
+      "explanation": "اگر راحتی، مستقیم وارد تصویر تعاملی شو؛ در پایان باید مکان‌های ترکیبی را در گفت‌وگو به کار ببری.",
+      "allowSkip": true
+    }
+  },
+  "visual": {
+    "src": null,
+    "alt": "اتاق خواب با میز، تخت، پنجره و وسایل",
+    "caption": "محل اشیا را از تصویر بخوان و تغییر بده."
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "on the desk",
+      "under the bed"
+    ],
+    "specificIndependentExpressions": [
+      "on the desk",
+      "under the bed"
+    ],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": true
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "از کلمه تا جمله",
+      "intro": "اول نام وسایل تازه را بشنو و ببین، سپس در یک تصویر، جای کتاب یا کیف را با لمس خود کلمه عوض کن. تمرکز روی جملهٔ واقعی است نه دکمه‌های متفاوت.",
+      "masteryActivityIds": [
+        "room-object-construction"
+      ],
+      "activities": [
+        {
+          "id": "a1-9-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "سایه‌خوانی وسایل و موقعیت‌ها",
+          "description": "فقط تلفظ کوتاه جمله‌ها را تقلید کن، فهم کامل در این مرحله لازم نیست.",
+          "audioSrc": null,
+          "rate": 0.7,
+          "pauseMs": 650,
+          "lines": [
+            "Where is my book?",
+            "It is on the desk.",
+            "My bag is under the bed.",
+            "The pillow is on the bed.",
+            "The mirror is on the wall.",
+            "The curtain is near the window.",
+            "My toy is next to the table.",
+            "My phone is on the shelf."
+          ]
+        },
+        {
+          "id": "room-object-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "وسایل تازهٔ داخل اتاق",
+          "batchSize": 5,
+          "deckRevision": 1,
+          "items": [
+            {
+              "en": "wardrobe",
+              "fa": "کمد لباس",
+              "hint": "این واژه در تصویر اتاق و جمله‌های درس استفاده می‌شود.",
+              "examples": [
+                "The wardrobe is near the bed.",
+                "My coat is in the wardrobe.",
+                "This is my wardrobe."
+              ]
+            },
+            {
+              "en": "mirror",
+              "fa": "آینه",
+              "hint": "این واژه در تصویر اتاق و جمله‌های درس استفاده می‌شود.",
+              "examples": [
+                "The mirror is on the wall.",
+                "The mirror is near the wardrobe.",
+                "Look at the mirror."
+              ]
+            },
+            {
+              "en": "pillow",
+              "fa": "بالش",
+              "hint": "این واژه در تصویر اتاق و جمله‌های درس استفاده می‌شود.",
+              "examples": [
+                "My pillow is on the bed.",
+                "The pillow is next to the blanket.",
+                "Where is my pillow?"
+              ]
+            },
+            {
+              "en": "blanket",
+              "fa": "پتو",
+              "hint": "این واژه در تصویر اتاق و جمله‌های درس استفاده می‌شود.",
+              "examples": [
+                "My blanket is on the bed.",
+                "The pillow is on the blanket.",
+                "Where is the blanket?"
+              ]
+            },
+            {
+              "en": "curtain",
+              "fa": "پرده",
+              "hint": "این واژه در تصویر اتاق و جمله‌های درس استفاده می‌شود.",
+              "examples": [
+                "The curtain is near the window.",
+                "There is a curtain near the window.",
+                "The curtain is in my bedroom."
+              ]
+            },
+            {
+              "en": "carpet",
+              "fa": "فرش / موکت",
+              "hint": "این واژه در تصویر اتاق و جمله‌های درس استفاده می‌شود.",
+              "examples": [
+                "The carpet is under the table.",
+                "My bag is on the carpet.",
+                "The carpet is in my room."
+              ]
+            },
+            {
+              "en": "plant",
+              "fa": "گیاه",
+              "hint": "این واژه در تصویر اتاق و جمله‌های درس استفاده می‌شود.",
+              "examples": [
+                "The plant is near the window.",
+                "This is my plant.",
+                "Is the plant on the shelf?"
+              ]
+            },
+            {
+              "en": "clock",
+              "fa": "ساعت دیواری / رومیزی",
+              "hint": "این واژه در تصویر اتاق و جمله‌های درس استفاده می‌شود.",
+              "examples": [
+                "The clock is on the wall.",
+                "Is the clock near the window?",
+                "This is my clock."
+              ]
+            },
+            {
+              "en": "poster",
+              "fa": "پوستر",
+              "hint": "این واژه در تصویر اتاق و جمله‌های درس استفاده می‌شود.",
+              "examples": [
+                "The poster is on the wall.",
+                "That is my poster.",
+                "The poster is above the desk."
+              ]
+            },
+            {
+              "en": "basket",
+              "fa": "سبد",
+              "hint": "این واژه در تصویر اتاق و جمله‌های درس استفاده می‌شود.",
+              "examples": [
+                "The basket is next to the bed.",
+                "My toys are in the basket.",
+                "The basket is under the desk."
+              ]
+            },
+            {
+              "en": "cabinet",
+              "fa": "کابینت",
+              "role": "supplementary"
+            },
+            {
+              "en": "rug",
+              "fa": "قالیچه",
+              "role": "supplementary"
+            },
+            {
+              "en": "nightstand",
+              "fa": "پاتختی",
+              "role": "supplementary"
+            },
+            {
+              "en": "bookcase",
+              "fa": "کتابخانهٔ قفسه‌ای",
+              "role": "supplementary"
+            },
+            {
+              "en": "towel",
+              "fa": "حوله",
+              "role": "supplementary"
+            },
+            {
+              "en": "dresser",
+              "fa": "دراور",
+              "role": "supplementary"
+            }
+          ]
+        },
+        {
+          "id": "room-object-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "سه جای کاربردی در یک جمله",
+          "description": "فقط عبارت‌های پرکاربرد را مرور و سپس در جملهٔ زنده، مکالمه و تمرین مستقل استفاده کن.",
+          "items": [
+            {
+              "en": "on the desk",
+              "fa": "روی میز تحریر",
+              "kind": "preposition",
+              "examples": [
+                "My book is on the desk.",
+                "My phone is on the desk.",
+                "My notebook is on the desk."
+              ]
+            },
+            {
+              "en": "under the bed",
+              "fa": "زیر تخت",
+              "kind": "preposition",
+              "examples": [
+                "My bag is under the bed.",
+                "The basket is under the bed.",
+                "Where is my bag? Under the bed."
+              ]
+            },
+            {
+              "en": "near the window",
+              "fa": "نزدیک پنجره",
+              "kind": "preposition",
+              "examples": [
+                "The curtain is near the window.",
+                "The plant is near the window.",
+                "My book is on the desk near the window."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "room-object-phrase-view",
+          "type": "composer-view",
+          "phase": "phrases",
+          "title": "روی شیء بزن تا در تصویر جابه‌جا شود",
+          "description": "به‌جای انتخاب از چندین دکمه، خود کلمات سبز را لمس کن تا شیء و موقعیتش در صحنه تغییر کند.",
+          "sourceActivityId": "room-object-composer",
+          "patternId": "object-location"
+        },
+        {
+          "id": "room-object-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "یک جملهٔ زنده؛ اسم، وسیلهٔ زیر آن و جای شیء را لمس کن",
+          "description": "یک اتاق ثابت داریم. وقتی روی کلمات سبز object، on/under/next to یا desk/bed/shelf/table بزنی، همان شیء واقعاً روی/زیر/کنار وسیلهٔ جدید در تصویر قرار می‌گیرد.",
+          "targetLanguage": "en",
+          "wordSets": {
+            "objects": [
+              {
+                "id": "book",
+                "label": "book",
+                "translation": "کتاب",
+                "forms": {
+                  "en": "book",
+                  "fa": "کتاب"
+                }
+              },
+              {
+                "id": "bag",
+                "label": "bag",
+                "translation": "کیف",
+                "forms": {
+                  "en": "bag",
+                  "fa": "کیف"
+                }
+              },
+              {
+                "id": "phone",
+                "label": "phone",
+                "translation": "گوشی",
+                "forms": {
+                  "en": "phone",
+                  "fa": "گوشی"
+                }
+              },
+              {
+                "id": "notebook",
+                "label": "notebook",
+                "translation": "دفتر",
+                "forms": {
+                  "en": "notebook",
+                  "fa": "دفتر"
+                }
+              },
+              {
+                "id": "laptop",
+                "label": "laptop",
+                "translation": "لپ‌تاپ",
+                "forms": {
+                  "en": "laptop",
+                  "fa": "لپ‌تاپ"
+                }
+              },
+              {
+                "id": "bottle",
+                "label": "bottle",
+                "translation": "بطری",
+                "forms": {
+                  "en": "bottle",
+                  "fa": "بطری"
+                }
+              },
+              {
+                "id": "toy",
+                "label": "toy",
+                "translation": "اسباب‌بازی",
+                "forms": {
+                  "en": "toy",
+                  "fa": "اسباب‌بازی"
+                }
+              },
+              {
+                "id": "pillow",
+                "label": "pillow",
+                "translation": "بالش",
+                "forms": {
+                  "en": "pillow",
+                  "fa": "بالش"
+                }
+              },
+              {
+                "id": "blanket",
+                "label": "blanket",
+                "translation": "پتو",
+                "forms": {
+                  "en": "blanket",
+                  "fa": "پتو"
+                }
+              },
+              {
+                "id": "basket",
+                "label": "basket",
+                "translation": "سبد",
+                "forms": {
+                  "en": "basket",
+                  "fa": "سبد"
+                }
+              }
+            ],
+            "surfaces": [
+              {
+                "id": "desk",
+                "label": "desk",
+                "translation": "میز تحریر",
+                "forms": {
+                  "en": "desk",
+                  "fa": "میز تحریر"
+                }
+              },
+              {
+                "id": "bed",
+                "label": "bed",
+                "translation": "تخت",
+                "forms": {
+                  "en": "bed",
+                  "fa": "تخت"
+                }
+              },
+              {
+                "id": "shelf",
+                "label": "shelf",
+                "translation": "قفسه",
+                "forms": {
+                  "en": "shelf",
+                  "fa": "قفسه"
+                }
+              },
+              {
+                "id": "table",
+                "label": "table",
+                "translation": "میز",
+                "forms": {
+                  "en": "table",
+                  "fa": "میز"
+                }
+              }
+            ],
+            "positions": [
+              {
+                "id": "on",
+                "label": "on",
+                "translation": "روی",
+                "forms": {
+                  "en": "on",
+                  "fa": "روی"
+                }
+              },
+              {
+                "id": "under",
+                "label": "under",
+                "translation": "زیر",
+                "forms": {
+                  "en": "under",
+                  "fa": "زیر"
+                }
+              },
+              {
+                "id": "next-to",
+                "label": "next-to",
+                "translation": "کنار",
+                "forms": {
+                  "en": "next to",
+                  "fa": "کنار"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "object",
+              "label": "شیء",
+              "wordSet": "objects",
+              "default": "book"
+            },
+            {
+              "id": "position",
+              "label": "موقعیت",
+              "wordSet": "positions",
+              "default": "on"
+            },
+            {
+              "id": "surface",
+              "label": "وسیلهٔ مرجع",
+              "wordSet": "surfaces",
+              "default": "desk"
+            }
+          ],
+          "derivedDefaults": {},
+          "dependencies": [],
+          "defaultPattern": "object-location",
+          "scene": {
+            "type": "room-objects",
+            "entitySlot": "object",
+            "surfaceSlot": "surface",
+            "positionSlot": "position"
+          },
+          "patterns": [
+            {
+              "id": "object-location",
+              "label": "جای شیء در اتاق",
+              "segments": [
+                {
+                  "fixed": "My "
+                },
+                {
+                  "slot": "object",
+                  "form": "en"
+                },
+                {
+                  "fixed": " is "
+                },
+                {
+                  "slot": "position",
+                  "form": "en"
+                },
+                {
+                  "fixed": " the "
+                },
+                {
+                  "slot": "surface",
+                  "form": "en"
+                },
+                {
+                  "fixed": " in my bedroom."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": ""
+                },
+                {
+                  "slot": "object",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " من "
+                },
+                {
+                  "slot": "position",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "surface",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " در اتاق خوابم است."
+                }
+              ]
+            },
+            {
+              "id": "near-window",
+              "label": "دو محل در یک جمله",
+              "segments": [
+                {
+                  "fixed": "My "
+                },
+                {
+                  "slot": "object",
+                  "form": "en"
+                },
+                {
+                  "fixed": " is "
+                },
+                {
+                  "slot": "position",
+                  "form": "en"
+                },
+                {
+                  "fixed": " the "
+                },
+                {
+                  "slot": "surface",
+                  "form": "en"
+                },
+                {
+                  "fixed": " near the window."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "object",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " من "
+                },
+                {
+                  "slot": "position",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "surface",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " نزدیک پنجره است."
+                }
+              ]
+            },
+            {
+              "id": "where",
+              "label": "پرسیدن محل",
+              "segments": [
+                {
+                  "fixed": "Where is my "
+                },
+                {
+                  "slot": "object",
+                  "form": "en"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "object",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " من کجاست؟"
+                }
+              ]
+            },
+            {
+              "id": "is-it",
+              "label": "سؤال جای شیء",
+              "segments": [
+                {
+                  "fixed": "Is my "
+                },
+                {
+                  "slot": "object",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "position",
+                  "form": "en"
+                },
+                {
+                  "fixed": " the "
+                },
+                {
+                  "slot": "surface",
+                  "form": "en"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "آیا "
+                },
+                {
+                  "slot": "object",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " من "
+                },
+                {
+                  "slot": "position",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "surface",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " است؟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "room-object-meaning",
+          "type": "meaning-cluster",
+          "phase": "variants",
+          "title": "از یک مکان تا دو مکان دقیق",
+          "description": "یک موقعیت کلی می‌تواند به یک جملهٔ دقیق تبدیل شود؛ همین تفاوت را در تصویر ببین.",
+          "concepts": [
+            {
+              "id": "specific-place",
+              "fa": "جای کتابم دقیق‌تر می‌شود",
+              "forms": [
+                {
+                  "en": "My book is in my bedroom.",
+                  "fa": "کتابم در اتاق خوابم است.",
+                  "relation": "related",
+                  "note": "اتاق را مشخص می‌کند."
+                },
+                {
+                  "en": "My book is on the desk in my bedroom.",
+                  "fa": "کتابم روی میز در اتاق خوابم است.",
+                  "relation": "related",
+                  "note": "هم جای کوچک و هم اتاق را مشخص می‌کند."
+                }
+              ]
+            },
+            {
+              "id": "moved-bag",
+              "fa": "اگر محل کیف عوض شود",
+              "forms": [
+                {
+                  "en": "My bag is under the bed.",
+                  "fa": "کیف من زیر تخت است.",
+                  "relation": "related",
+                  "note": "زیر."
+                },
+                {
+                  "en": "My bag is next to the bed.",
+                  "fa": "کیف من کنار تخت است.",
+                  "relation": "related",
+                  "note": "کنار."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "room-object-window",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "همان جمله، این بار نزدیک پنجره",
+          "description": "نام شیء، on/under/next to و میز یا تخت را در خود جمله لمس کن؛ پایان جمله near the window است.",
+          "sourceActivityId": "room-object-composer",
+          "patternId": "near-window"
+        },
+        {
+          "id": "room-object-where",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "حالا محل همان شیء را بپرس",
+          "description": "روی اسم شیء در سؤال بزن و بعد با کمک تصویر جملهٔ مکانش را بساز.",
+          "sourceActivityId": "room-object-composer",
+          "patternId": "where",
+          "scene": {
+            "type": "none"
+          }
+        },
+        {
+          "id": "room-object-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "جورچین اتاق من",
+          "description": "کلمه‌ای که ادامهٔ درستی برای جمله نباشد به بانک برمی‌گردد؛ هر پنج جمله را بدون گزینه بساز.",
+          "revision": 1,
+          "reuseBank": true,
+          "goalCount": 5,
+          "sourceActivityId": "room-object-composer",
+          "patternIds": [
+            "object-location",
+            "near-window",
+            "where",
+            "is-it"
+          ],
+          "sentences": [
+            {
+              "id": "where-book",
+              "words": [
+                "Where",
+                "is",
+                "my",
+                "book?"
+              ]
+            },
+            {
+              "id": "book-desk",
+              "words": [
+                "My",
+                "book",
+                "is",
+                "on",
+                "the",
+                "desk",
+                "in",
+                "my",
+                "bedroom."
+              ]
+            },
+            {
+              "id": "bag-bed",
+              "words": [
+                "My",
+                "bag",
+                "is",
+                "under",
+                "the",
+                "bed",
+                "in",
+                "my",
+                "bedroom."
+              ]
+            },
+            {
+              "id": "phone-shelf",
+              "words": [
+                "My",
+                "phone",
+                "is",
+                "on",
+                "the",
+                "shelf",
+                "near",
+                "the",
+                "window."
+              ]
+            },
+            {
+              "id": "is-pillow",
+              "words": [
+                "Is",
+                "my",
+                "pillow",
+                "on",
+                "the",
+                "bed?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "room-object-construction",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "از جای وسیله تا جملهٔ ترکیبی",
+          "practiceRevision": 1,
+          "description": "با راهنمایی کوتاه شروع کن؛ بعد بدون گزینه جای وسایل مختلف را دقیق بگو.",
+          "completion": "نام وسیله، موقعیت و اتاق را در جملهٔ مستقل به کار بردی.",
+          "tasks": [
+            {
+              "task": "بپرس کتاب من کجاست.",
+              "hint": "Where is my book?",
+              "example": "Where is my book?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "where is my book"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "task": "بگو کتابم روی میز تحریر است.",
+              "hint": "My book is on the desk.",
+              "example": "My book is on the desk.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my book is on the desk"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "task": "بگو کیفم زیر تخت است.",
+              "hint": "My bag is under the bed.",
+              "example": "My bag is under the bed.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my bag is under the bed"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "task": "بگو بالشم روی تخت است.",
+              "hint": "My pillow is on the bed.",
+              "example": "My pillow is on the bed.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my pillow is on the bed"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "task": "بگو کتابم روی میز تحریر در اتاق خوابم است.",
+              "hint": "My book is on the desk in my bedroom.",
+              "example": "My book is on the desk in my bedroom.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my book is on the desk in my bedroom"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "task": "بگو پوستر روی دیوار و کنار آینه است.",
+              "hint": "The poster is on the wall near the mirror.",
+              "example": "The poster is on the wall near the mirror.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "poster is on the wall near the mirror"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "task": "بگو سبد کنار تخت قرار دارد.",
+              "hint": "The basket is next to the bed.",
+              "example": "The basket is next to the bed.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "basket is next to the bed"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "task": "بگو گیاه کنار پنجره است.",
+              "hint": "The plant is near the window.",
+              "example": "The plant is near the window.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "plant is near the window"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "از سؤال و جواب تا مکالمه",
+      "intro": "وسایل اتاق را پیدا کن، جای نادرست را اصلاح کن و در پایان چیدمان واقعی یا فرضی اتاقت را با چند جمله معرفی کن.",
+      "masteryActivityIds": [
+        "room-object-guided",
+        "room-object-independent"
+      ],
+      "activities": [
+        {
+          "id": "room-object-exchanges",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "یک سؤال، دو جای ممکن",
+          "description": "با جابه‌جاشدن وسیله، پاسخ عوض می‌شود؛ مجبور نیستی تنها یک جواب را حفظ کنی.",
+          "pairs": [
+            {
+              "question": "Where is my book?",
+              "questionFa": "کتاب من کجاست؟",
+              "variants": [
+                {
+                  "label": "روی میز",
+                  "en": "It is on the desk.",
+                  "fa": "روی میز تحریر است."
+                },
+                {
+                  "label": "زیر تخت",
+                  "en": "It is under the bed.",
+                  "fa": "زیر تخت است."
+                }
+              ]
+            },
+            {
+              "question": "Where is my bag?",
+              "questionFa": "کیف من کجاست؟",
+              "variants": [
+                {
+                  "label": "زیر تخت",
+                  "en": "My bag is under the bed.",
+                  "fa": "کیفم زیر تخت است."
+                },
+                {
+                  "label": "کنار میز",
+                  "en": "My bag is next to the desk.",
+                  "fa": "کیفم کنار میز است."
+                }
+              ]
+            },
+            {
+              "question": "Where is the plant?",
+              "questionFa": "گیاه کجاست؟",
+              "variants": [
+                {
+                  "label": "پنجره",
+                  "en": "The plant is near the window.",
+                  "fa": "گیاه نزدیک پنجره است."
+                },
+                {
+                  "label": "میز",
+                  "en": "The plant is on the desk.",
+                  "fa": "گیاه روی میز است."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "room-object-exchanges-practice",
+          "type": "response-practice",
+          "phase": "correspondence",
+          "title": "پاسخ مکان را با جزئیات بگو",
+          "practiceRevision": 1,
+          "description": "به جای انتخاب گزینه، جای وسیله را خودت بنویس.",
+          "completion": "پاسخ محل چند شیء را مستقل ساختی.",
+          "tasks": [
+            {
+              "task": "بگو کتاب روی میز است.",
+              "incoming": "Where is my book?",
+              "hint": "My book is on the desk.",
+              "example": "My book is on the desk.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "on the desk"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "task": "بگو کیف زیر تخت است.",
+              "incoming": "Where is my bag?",
+              "hint": "My bag is under the bed.",
+              "example": "My bag is under the bed.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "under the bed"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "task": "بگو گیاه نزدیک پنجره است.",
+              "incoming": "Where is the plant?",
+              "hint": "The plant is near the window.",
+              "example": "The plant is near the window.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "near the window"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "room-object-dialogue-1",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "مکالمهٔ اول: کتاب و کیفم کجاست؟",
+          "description": "در اتاق به دنبال وسایل خودت می‌گردی و جای آن‌ها را مشخص می‌کنی.",
+          "lines": [
+            {
+              "speaker": "Ali",
+              "en": "Where is my book?",
+              "fa": "کتابم کجاست؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "It is on the desk.",
+              "fa": "روی میز تحریر است."
+            },
+            {
+              "speaker": "Ali",
+              "en": "Where is my bag?",
+              "fa": "کیفم کجاست؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "Your bag is under the bed.",
+              "fa": "کیفت زیر تخت است."
+            },
+            {
+              "speaker": "Ali",
+              "en": "Is my phone on the shelf?",
+              "fa": "گوشی‌ام روی قفسه است؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "Yes, it is.",
+              "fa": "بله."
+            },
+            {
+              "speaker": "Ali",
+              "en": "And my notebook?",
+              "fa": "دفترم چی؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "It is next to your phone.",
+              "fa": "کنار گوشی‌ات است."
+            }
+          ]
+        },
+        {
+          "id": "room-object-recall-1",
+          "type": "response-practice",
+          "phase": "context",
+          "title": "جای وسایل مکالمهٔ اول را بگو",
+          "practiceRevision": 1,
+          "description": "برای هر شیء پاسخ مناسب تولید کن.",
+          "completion": "جای سه وسیله را از مکالمه بازیابی کردی.",
+          "tasks": [
+            {
+              "task": "بگو کتاب روی میز تحریر است.",
+              "incoming": "Where is my book?",
+              "hint": "My book is on the desk.",
+              "example": "My book is on the desk.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "on the desk"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "task": "بگو کیف زیر تخت است.",
+              "incoming": "Where is my bag?",
+              "hint": "My bag is under the bed.",
+              "example": "My bag is under the bed.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "under the bed"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "task": "بگو دفترم کنار گوشی من است.",
+              "incoming": "Where is my notebook?",
+              "hint": "My notebook is next to my phone.",
+              "example": "My notebook is next to my phone.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "next to my phone"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "room-object-dialogue-2",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "مکالمهٔ دوم: اتاق را مرتب کنیم",
+          "description": "در گفت‌وگوی دوم محل یکی از وسایل اصلاح می‌شود و چند شیء تازه در تصویر به کار می‌روند.",
+          "lines": [
+            {
+              "speaker": "Emma",
+              "en": "Is the pillow under the bed?",
+              "fa": "بالش زیر تخت است؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "No, the pillow is on the bed.",
+              "fa": "نه، بالش روی تخت است."
+            },
+            {
+              "speaker": "Emma",
+              "en": "Where is the blanket?",
+              "fa": "پتو کجاست؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "The blanket is on the bed.",
+              "fa": "پتو روی تخت است."
+            },
+            {
+              "speaker": "Emma",
+              "en": "Where is the mirror?",
+              "fa": "آینه کجاست؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "It is on the wall near the wardrobe.",
+              "fa": "روی دیوار کنار کمد لباس است."
+            },
+            {
+              "speaker": "Emma",
+              "en": "The curtain and the clock?",
+              "fa": "پرده و ساعت چی؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "The curtain is near the window. The clock is on the wall.",
+              "fa": "پرده نزدیک پنجره است. ساعت روی دیوار است."
+            },
+            {
+              "speaker": "Emma",
+              "en": "And the carpet, the poster and the basket?",
+              "fa": "و فرش، پوستر و سبد؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "The carpet is under the desk. The poster is on the wall. The basket is next to the bed.",
+              "fa": "فرش زیر میز است؛ پوستر روی دیوار است و سبد کنار تخت."
+            }
+          ]
+        },
+        {
+          "id": "room-object-recall-2",
+          "type": "response-practice",
+          "phase": "context",
+          "title": "محل اشتباه را اصلاح کن",
+          "practiceRevision": 1,
+          "description": "فقط تکرار جمله نیست؛ وقتی محل گفته‌شده غلط است جای صحیح را بگو.",
+          "completion": "توانستی موقعیت را تصحیح و یک جای دیگر اضافه کنی.",
+          "tasks": [
+            {
+              "task": "کسی می‌گوید بالش زیر تخت است. تصحیح کن: نه، روی تخت است.",
+              "incoming": "Is the pillow under the bed?",
+              "hint": "No, the pillow is on the bed.",
+              "example": "No, the pillow is on the bed.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "pillow is on the bed"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  },
+                  {
+                    "any": [
+                      "no"
+                    ],
+                    "feedback": "جواب را منفی کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "task": "بگو آینه روی دیوار نزدیک کمد لباس است.",
+              "hint": "The mirror is on the wall near the wardrobe.",
+              "example": "The mirror is on the wall near the wardrobe.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "mirror is on the wall near the wardrobe"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "task": "بگو سبد کنار تخت است.",
+              "hint": "The basket is next to the bed.",
+              "example": "The basket is next to the bed.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "basket is next to the bed"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "room-object-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "practiceRevision": 1,
+          "title": "از روی تصویر واقعیِ اتاق، محل وسایل را توضیح بده",
+          "description": "در تصویر کتاب روی میز، کیف زیر تخت، بالش روی تخت و گیاه نزدیک پنجره است. هیچ جواب انگلیسی به‌صورت آماده روی تصویر نوشته نشده.",
+          "image": "./assets/scene-a1-9.svg",
+          "imageAlt": "اتاق با تخت و بالش، کتاب روی میز، کیف زیر تخت، گیاه کنار پنجره، آینه و کمد لباس",
+          "caption": "چهار محل مشخص را از تصویر به زبان انگلیسی بیان کن.",
+          "tasks": [
+            {
+              "task": "کتاب روی میز تحریر کجاست؟ با یک جمله بگو.",
+              "hint": "My book is on the desk.",
+              "example": "My book is on the desk.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "book is on the desk"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "task": "کیف زیر تخت است؛ توصیف کن.",
+              "hint": "My bag is under the bed.",
+              "example": "My bag is under the bed.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "bag is under the bed"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "task": "بالش روی تخت است؛ بگو.",
+              "hint": "The pillow is on the bed.",
+              "example": "The pillow is on the bed.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "pillow is on the bed"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "task": "گیاه نزدیک پنجره است؛ بگو.",
+              "hint": "The plant is near the window.",
+              "example": "The plant is near the window.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "plant is near the window"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "task": "آینه روی دیوار نزدیک کمد است؛ بگو.",
+              "hint": "The mirror is on the wall near the wardrobe.",
+              "example": "The mirror is on the wall near the wardrobe.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "mirror is on the wall near the wardrobe"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "room-object-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "practiceRevision": 1,
+          "title": "دوستت جای اشیا را می‌پرسد؛ تو جواب بده",
+          "description": "هم جملهٔ کوتاه و هم دو موقعیت پشت‌سرهم را تمرین کن.",
+          "completion": "در گفت‌وگو توانستی اشیا را پیدا و جای آن‌ها را تصحیح کنی.",
+          "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is your book?",
+              "task": "بگو کتابم روی میز تحریر است.",
+              "hint": "My book is on the desk.",
+              "example": "My book is on the desk.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "on the desk"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Is your bag on the bed?",
+              "task": "بگو نه، کیفم زیر تخت است.",
+              "hint": "No, my bag is under the bed.",
+              "example": "No, my bag is under the bed.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "under the bed"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  },
+                  {
+                    "any": [
+                      "no"
+                    ],
+                    "feedback": "پاسخ منفی بده."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is the pillow?",
+              "task": "بگو بالش روی تخت در اتاق خواب است.",
+              "hint": "The pillow is on the bed in my bedroom.",
+              "example": "The pillow is on the bed in my bedroom.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "pillow is on the bed in my bedroom"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is the plant?",
+              "task": "بگو گیاه نزدیک پنجره است.",
+              "hint": "The plant is near the window.",
+              "example": "The plant is near the window.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "plant is near the window"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "And the poster?",
+              "task": "بگو پوستر روی دیوار نزدیک میز است.",
+              "hint": "The poster is on the wall near the desk.",
+              "example": "The poster is on the wall near the desk.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "poster is on the wall near the desk"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "room-object-transfer",
+          "type": "dialogue-transfer",
+          "phase": "guided",
+          "practiceRevision": 1,
+          "title": "انتقال به یک اتاق دیگر",
+          "sceneTitle": "اتاق دوستم",
+          "description": "نام شیء و مکان را عوض کن؛ قرار نیست همان جواب قبلی را حفظ کنی.",
+          "completion": "در یک اتاق تازه هم محل وسایل را مستقل توصیف کردی.",
+          "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is my phone?",
+              "task": "در این اتاق گوشی زیر میز است.",
+              "hint": "My phone is under the desk.",
+              "example": "My phone is under the desk.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "phone is under the desk"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is the blanket?",
+              "task": "این بار پتو کنار تخت است.",
+              "hint": "The blanket is next to the bed.",
+              "example": "The blanket is next to the bed.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "blanket is next to the bed"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is my bag?",
+              "task": "کیفم روی میز در اتاق خواب است.",
+              "hint": "My bag is on the desk in my bedroom.",
+              "example": "My bag is on the desk in my bedroom.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "bag is on the desk in my bedroom"
+                    ],
+                    "feedback": "از اسم، موقعیت و وسیلهٔ مرجع درست استفاده کن."
+                  }
+                ],
+                "success": "محل شیء را با یک جملهٔ واقعی توضیح دادی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "room-object-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "تمرین واقعی: اتاق خودت یا یک اتاق خیالی را توصیف کن",
+          "kind": "free-text",
+          "minWords": 30,
+          "prompt": "اتاق خودت یا یک اتاق خیالی را در ۶ تا ۸ جمله توصیف کن؛ عکس یا اطلاعات شخصی واقعی لازم نیست. اول یک سؤال Where is my ...? دربارهٔ کتاب یا گوشی بساز. بعد یک وسیله را on the desk و یکی را under the bed قرار بده. یک موقعیت دوگانه مثل on the desk in my bedroom بساز. در پایان از دو واژهٔ تازه مانند mirror، pillow، blanket، wardrobe، curtain، clock یا plant برای توصیف چیدمان استفاده کن.",
+          "placeholder": "Where is my book? My book is on the desk in my bedroom. My bag is under the bed. The pillow is on the bed. The mirror is on the wall near the wardrobe. The curtain is near the window.",
+          "hint": "از اتاق فرضی هم می‌توانی استفاده کنی. واژه را با موقعیت واقعی انتخاب کن؛ تصویر و کلمات باید سازگار باشند.",
+          "assessment": {
+            "revision": 1,
+            "required": [
+              {
+                "any": [
+                  "where is my book",
+                  "where is my phone",
+                  "where is my bag",
+                  "where is my notebook"
+                ],
+                "feedback": "یک پرسش Where is my ...? دربارهٔ وسیله بساز."
+              },
+              {
+                "any": [
+                  "on the desk"
+                ],
+                "feedback": "یک وسیله را با عبارت on the desk توصیف کن."
+              },
+              {
+                "any": [
+                  "under the bed"
+                ],
+                "feedback": "یک وسیله را با عبارت under the bed توصیف کن."
+              },
+              {
+                "patterns": [
+                  "\\b(?:on|under|next to) the (?:desk|bed|table|shelf)\\s+in my bedroom\\b"
+                ],
+                "feedback": "یک جملهٔ دومکانی، مثلاً on the desk in my bedroom بنویس."
+              },
+              {
+                "patterns": [
+                  "\\b(?:mirror|pillow|blanket|wardrobe|curtain|clock|plant|carpet|poster|basket)\\b"
+                ],
+                "feedback": "حداقل یکی از اسامی جدید اتاق را در جمله به کار ببر."
+              }
+            ],
+            "success": "اتاق را با سؤال، دو موقعیت متفاوت و حداقل یک جملهٔ دومکانی معرفی کردی."
+          }
+        },
+        {
+          "id": "a1-9-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "برگشت به سایه‌خوانی",
+          "description": "همان جمله‌های اول درس را دوباره بخوان؛ سرعت و اطمینان تلفظ خودت را مقایسه کن.",
+          "sourceActivityId": "a1-9-shadowing"
+        }
+      ]
+    }
+  ]
+}
