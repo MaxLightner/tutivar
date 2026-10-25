@@ -1,6 +1,6 @@
 {
   "id": "A1-6",
-  "revision": 1,
+  "revision": 2,
   "status": "draft",
   "title": "پرسیدن نام و سن",
   "goal": "نام و نام خانوادگی را بپرسی و معرفی کنی؛ با عددهای ۱۱ تا ۱۰۰ و ترکیب آن‌ها سن خود و دیگران را بگویی، سؤال How old ...? بسازی و جواب درست بدهی.",
@@ -34,7 +34,6 @@
   "learningAudit": {
     "focusExpressions": [
       "How old are you?",
-      "I'm twelve years old.",
       "What is your last name?"
     ],
     "specificIndependentExpressions": [],
