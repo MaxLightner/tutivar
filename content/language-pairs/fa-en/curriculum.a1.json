@@ -68,10 +68,15 @@
               "file": "lessons/a1-6.json",
               "status": "sample"
             },
-            [
-              "این چیست؟ آن کیست؟",
-              "sparkles"
-            ],
+            {
+              "id": "A1-7",
+              "title": "این چیست؟ آن کیست؟",
+              "subtitle": "شناسایی افراد و اشیای نزدیک و دور",
+              "icon": "sparkles",
+              "feature": "What / Who و this / that",
+              "file": "lessons/a1-7.json",
+              "status": "sample"
+            },
             {
               "id": "A1-W1",
               "title": "کارگاه آشنایی",
