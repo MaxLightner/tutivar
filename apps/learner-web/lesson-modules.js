@@ -129,6 +129,7 @@ function perspectiveGlyph(word, person=false) {
     car:'<path d="M14 60L25 32Q50 20 77 32L89 61V81H10V61Z" fill="#9aadc1" stroke="#5a7893" stroke-width="5"/><path d="M30 36H70L79 56H20Z" fill="#dceef0" stroke="#5a7893" stroke-width="3"/><circle cx="26" cy="80" r="11" fill="#354653"/><circle cx="75" cy="80" r="11" fill="#354653"/>',
     picture:'<rect x="10" y="11" width="80" height="79" rx="6" fill="#dfb589" stroke="#9c764b" stroke-width="6"/><rect x="21" y="22" width="58" height="57" fill="#b3d6d5"/><circle cx="62" cy="39" r="9" fill="#f4d18a"/><path d="M21 74L44 49L55 62L70 43L80 58V79H21Z" fill="#789d85"/>',
     bird:'<path d="M12 62Q23 32 49 40Q78 35 83 64Q68 88 44 81Q20 86 12 62Z" fill="#8dafbf" stroke="#537a90" stroke-width="4"/><path d="M43 58Q35 29 75 19Q89 46 63 62Z" fill="#b6d0d8"/><circle cx="25" cy="56" r="4" fill="#304752"/><path d="M12 62L0 69L12 74M72 79L88 91" fill="#e4b168" stroke="#8f6b45" stroke-width="3"/>',
+    rabbit:'<path d="M27 39L19 3Q28 -2 39 5L46 36M60 37L67 3Q83 0 82 11L74 48" fill="#d5b4a5" stroke="#906f66" stroke-width="5"/><ellipse cx="50" cy="66" rx="35" ry="29" fill="#e6d3c4" stroke="#9c7c70" stroke-width="5"/><circle cx="38" cy="63" r="5" fill="#4d514c"/><circle cx="62" cy="63" r="5" fill="#4d514c"/><path d="M46 77L50 81L54 77" fill="#c99496" stroke="#9c7c70" stroke-width="2"/>',
     apple:'<path d="M49 27Q19 10 13 37Q8 71 31 88Q43 91 49 83Q59 93 70 87Q93 71 88 37Q81 11 50 27Z" fill="#d87962" stroke="#994c43" stroke-width="4"/><path d="M49 27Q47 13 57 7M55 13Q76 3 83 16Q70 24 55 13Z" fill="#62916d" stroke="#497e58" stroke-width="4"/>',
     ball:'<circle cx="50" cy="50" r="40" fill="#d9a06c" stroke="#a76f48" stroke-width="5"/><path d="M18 24Q69 41 81 78M20 77Q45 31 79 23" fill="none" stroke="#f5d7a9" stroke-width="4"/>',
     lamp:'<path d="M50 60V85M27 88H74M27 48L39 11H62L75 48Z" fill="#d1b681" stroke="#8e7853" stroke-width="5"/><circle cx="51" cy="54" r="9" fill="#e8d19c"/>',
@@ -142,7 +143,11 @@ function perspectiveGlyph(word, person=false) {
   if(person){
     const dress=word==='doctor'||word==='nurse'?'#f0ece3':word==='teacher'||word==='student'?'#86a6b6':'#a2b595';
     const accessory=word==='doctor'||word==='nurse'?'<path d="M50 61V85M38 73H62" stroke="#d66e63" stroke-width="7"/>':
-      word==='teacher'?'<path d="M13 76H35V93H13Z" fill="#e8cb87" stroke="#8c6c43" stroke-width="3"/>':'';
+      word==='teacher'?'<path d="M13 76H35V93H13Z" fill="#e8cb87" stroke="#8c6c43" stroke-width="3"/>':
+      word==='chef'?'<path d="M18 13Q10 -6 31 2Q49 -13 64 2Q91 -4 83 13Z" fill="#f5f4e8" stroke="#9ca7a0" stroke-width="3"/>':
+      word==='pilot'?'<path d="M26 16Q49 -2 75 16L72 23H28Z" fill="#4c6173" stroke="#35495b" stroke-width="3"/><circle cx="49" cy="12" r="4" fill="#e4c079"/>':
+      word==='artist'||word==='painter'?'<ellipse cx="77" cy="81" rx="17" ry="13" fill="#d4b594"/><circle cx="73" cy="77" r="4" fill="#d56b66"/><circle cx="85" cy="79" r="4" fill="#709cb4"/><circle cx="78" cy="89" r="4" fill="#e3bd54"/>':
+      word==='driver'?'<circle cx="78" cy="76" r="16" stroke="#576974" fill="none" stroke-width="6"/>':'';
     return '<svg viewBox="0 0 100 100" width="100" height="100" aria-hidden="true"><circle cx="50" cy="25" r="18" fill="#d8ac8d" stroke="#916c57" stroke-width="3"/><path d="M32 25Q28 -1 52 5Q70 5 69 25Q53 13 32 25Z" fill="#59493c"/><path d="M23 91L28 48Q51 38 72 48L77 91Z" fill="'+dress+'" stroke="#658375" stroke-width="4"/><path d="M31 89V99M69 89V99" stroke="#596c69" stroke-width="8"/>'+accessory+'</svg>';
   }
   return '<svg viewBox="0 0 100 100" width="100" height="100" aria-hidden="true">'+(shapes[word]||shapes.book)+'</svg>';
@@ -182,7 +187,7 @@ function roomMapScene(source, view, resolved, key, e) {
       (active?'<circle cx="189" cy="17" r="9" fill="#247855"/>':'')+'</g>';
   }).join('');
   return '<figure class="perspective-visual room-map-visual" data-room-selected="'+e(selected)+'">'+
-     '<svg viewBox="0 0 680 472" role="img" aria-label="نقشهٔ خانه، اتاق انتخاب‌شده: '+e(selected)+'"><rect width="680" height="472" rx="20" fill="#e9f2ea"/>'+tiles+'</svg>'+
+     '<svg class="perspective-picture room-map-picture" viewBox="0 0 680 472" role="img" aria-label="نقشهٔ خانه، اتاق انتخاب‌شده: '+e(selected)+'"><rect width="680" height="472" rx="20" fill="#e9f2ea"/>'+tiles+'</svg>'+
      '<figcaption>روی نام اتاق در جمله بزن؛ همان اتاق روی نقشه روشن می‌شود.</figcaption></figure>';
 }
 function perspectiveScene(source, view, resolved, key, e) {
