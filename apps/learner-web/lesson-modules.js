@@ -340,6 +340,7 @@ function sentenceBuilder(a, c) {
     return wrapper(`<p class="module-description">${c.e(a.description || '')}</p>
       <div class="builder-multi-progress"><strong>${done} از ${total} جملهٔ درست</strong><span>جمله‌ها را به هر ترتیبی که پیدا می‌کنی بساز.</span></div>
       <div class="builder-output" lang="en" dir="ltr">${chosen ? c.e(chosen) : '<span class="builder-placeholder">کلمات جملهٔ جدید را لمس کن…</span>'}</div>
+      <p class="builder-prefix-notice" aria-live="polite"></p>
       ${feedback}${state.warning ? `<p class="builder-feedback" role="status">${c.e(state.warning)}</p>` : ''}
       ${done ? `<details class="builder-found" ${allDone ? 'open' : ''}><summary>جمله‌های ساخته‌شده (${done})</summary><ol>${solved}</ol></details>` : ''}
       <div class="builder-tokens" dir="ltr" aria-label="بانک کلمات چند جمله">${tokens}</div>
