@@ -1558,8 +1558,8 @@
           "type": "picture-description",
           "phase": "picture",
           "practiceRevision": 1,
-          "title": "از روی چهار کارت: نام و سن را بخوان",
-          "description": "به کارت‌ها نگاه کن و فقط از اطلاعات موجود در تصویر استفاده کن؛ اسم یا سن را حدس نزن.",
+          "title": "از روی تصویر: هر نفر چند سال دارد؟",
+          "description": "این چهار کارت را با عددهای دورقمی که در ابتدای درس ساختی بخوان. نام صرفاً برای مشخص‌کردن فرد است؛ نام کامل را دوباره آموزش نمی‌دهیم.",
           "image": "./assets/scene-a1-6.svg",
           "imageAlt": "چهار کارت تصویری: Emma Brown دوازده سال، Noah Smith هفده سال، Sara Rahimi بیست‌وچهار سال، Ali Nouri سی‌وپنج سال",
           "caption": "چهار کارت با نام و سن مشخص",
@@ -1599,22 +1599,6 @@
               }
             },
             {
-              "task": "نام کامل سارا را بگو.",
-              "hint": "Her full name is Sara Rahimi.",
-              "example": "Her full name is Sara Rahimi.",
-              "assessment": {
-                "required": [
-                  {
-                    "any": [
-                      "sara rahimi"
-                    ],
-                    "feedback": "نام و نام خانوادگی سارا را از تصویر بخوان."
-                  }
-                ],
-                "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
-              }
-            },
-            {
               "task": "سن علی را بگو.",
               "hint": "Ali is thirty-five years old.",
               "example": "Ali is thirty-five years old.",
@@ -1629,6 +1613,23 @@
                   }
                 ],
                 "success": "جمله را بر اساس اطلاعات گفته‌شده ساختی."
+              }
+            },
+            {
+              "task": "با عدد روی کارت سارا، سن او را به انگلیسی بگو.",
+              "hint": "Sara is twenty-four years old.",
+              "example": "Sara is twenty-four years old.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "sara is twenty-four",
+                      "she is twenty-four"
+                    ],
+                    "feedback": "سن سارا روی کارت ۲۴ است: twenty-four."
+                  }
+                ],
+                "success": "عدد دورقمی را در توصیف سن به کار بردی."
               }
             }
           ]
