@@ -1,0 +1,7 @@
+# Curriculum decisions must be reviewed by the product owner.
+# Effective only when GitHub branch protection requires code-owner review.
+/content/curriculum/ @MaxLightner
+/docs/curriculum/ @MaxLightner
+/AGENTS.md @MaxLightner
+/tools/curriculum-contract.mjs @MaxLightner
+/tests/curriculum-contract.test.mjs @MaxLightner

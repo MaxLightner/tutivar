@@ -8,9 +8,12 @@
   },
   "scripts": {
     "validate": "node tools/validate.mjs",
-    "test": "node --test tests/*.test.mjs && node tools/validate.mjs && node tools/audit-lessons.mjs && node tools/audit-vocabulary.mjs",
+    "test": "node --test tests/*.test.mjs && node tools/validate.mjs && node tools/audit-lessons.mjs && node tools/audit-vocabulary.mjs && npm run curriculum:check",
     "audit:lessons": "node tools/audit-lessons.mjs",
     "build": "node tools/build-web.mjs",
-    "preview": "npm run build && npx --yes serve dist"
+    "preview": "npm run build && npx --yes serve dist",
+    "curriculum:check": "node tools/curriculum-contract.mjs --validate",
+    "curriculum:status": "node tools/curriculum-contract.mjs --status",
+    "curriculum:plan": "node tools/curriculum-contract.mjs --plan"
   }
 }

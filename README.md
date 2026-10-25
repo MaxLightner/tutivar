@@ -7,7 +7,8 @@ An extensible, language-pair-independent learning platform. Content and app rend
 - Architecture baseline: `0.1.0` (draft)
 - **Active pilot: Persian (`fa`) → English (`en`)**. Earlier `fa-de` stays as an unpopulated future pair.
 - Mobile-first PWA learner preview: `apps/learner-web` (draft UI)
-- Three runnable **illustrative, unapproved** A1 lessons, based on the A1-1, A1-2, A1-3 mechanisms in the 126-lesson review sheet. They do not supersede the approved Blueprint.
+- Nine runnable **pilot** A1 lesson files exist. A1-6 through A1-9 currently have historical topics that do **not** match the owner's approved universal order; they are locked for safe migration, not a precedent for future topics.
+- The author's **126-lesson roadmap** is now repository-native and mandatory. See `AGENTS.md` and `content/curriculum/universal-path.v1.json`.
 - No production course, placement exam, backend, social account, AI coach, or real Leitner scheduling yet.
 - Files in `examples/` are illustrative fixtures, **not published educational content**.
 
@@ -42,6 +43,18 @@ Then open `http://localhost:8080`. The app must be served over HTTP; it will not
 `.github/workflows/deploy-pages.yml` validates the content, builds `dist/`, and deploys that folder on pushes to `main`. In repository **Settings → Pages → Build and deployment**, select **GitHub Actions** as the source. Once GitHub Pages is enabled and the workflow completes successfully, the learner preview is at `https://maxlightner.github.io/tutivar/`. The app uses relative paths to support this subdirectory. The site is publicly reachable even if GitHub permits the repository to remain private; do not put secrets into `content/`.
 
 The demo works without a backend. Completed lessons, review clicks, and written practice are saved only in this browser's `localStorage`. Review keys 1–7 **do not implement Leitner scheduling**. Chat, account sync, market and leaderboards are marked as upcoming.
+
+### Locked curriculum — must use before authoring a lesson
+
+```sh
+npm run curriculum:status
+npm run curriculum:plan -- A1-10
+npm run curriculum:check
+```
+
+The machine-readable `content/curriculum/universal-path.v1.json` preserves all 126 owner-approved lessons and their full objectives, prerequisite bridges, limits and archetypes. Its source and manifest hashes are pinned by `roadmap.lock.json`; `npm test` and the production build reject unauthorized edits, wrong lesson order and premature publication after the existing A1-6..9 mismatch. Only an explicit owner amendment may revise the planned order (with documented decision and safe progress migration). See `docs/curriculum/WORKFLOW.md`. `AGENTS.md` makes the same check mandatory for future AI-assisted work.
+
+**GitHub setting:** To require owner review of curriculum edits, enable branch protection/ruleset for `main` with required status checks and **Require review from Code Owners**; `.github/CODEOWNERS` already nominates `@MaxLightner`. No repository file alone can turn that setting on.
 
 ### Editorial workflow
 

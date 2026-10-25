@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "approvedRevision": "2026-10-02-rewrite-1",
+  "sourcePath": "docs/curriculum/01-universal-learning-path.md",
+  "sourceGitBlobSha": "bec805e498841b30ddf51f1223f4b118db32e200",
+  "manifestPath": "content/curriculum/universal-path.v1.json",
+  "manifestGitBlobSha": "b6d0fa3518d8bc8e666821cfa1b07a9c7d8d70a2",
+  "approvedChanges": [],
+  "authorization": "Baseline from owner's supplied document. Future amendments require an explicit owner instruction and a matching decision entry and lock update."
+}
