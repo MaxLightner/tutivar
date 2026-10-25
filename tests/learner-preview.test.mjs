@@ -64,9 +64,9 @@ test('every sample path node references a real content file with two teaching se
     assert.ok(!ids.has(lesson.id));
     ids.add(lesson.id);
   }
-  assert.equal(ids.size, 6);
-  assert.deepEqual([...ids],['A1-1','A1-2','A1-3','A1-4','A1-5','A1-6']);
-  assert.deepEqual([...new Set([...ids].map((id) => load(lessons.find((entry) => entry.id === id).file).archetype))].sort(), ['K1/K2','conversation','counting-objects','family','ownership','spatial-location']);
+  assert.equal(ids.size, 10);
+  assert.deepEqual([...ids],['A1-1','A1-2','A1-3','A1-4','A1-5','A1-6','A1-7','A1-8','A1-9','A1-10']);
+  assert.deepEqual([...new Set([...ids].map((id) => load(lessons.find((entry) => entry.id === id).file).archetype))].sort(), ['K1/K2','K2','K4/K12','K4/K2','conversation','counting-objects','family','ownership','spatial-location']);
 });
 
 test('not-yet-produced nodes cannot be launched as content', () => {

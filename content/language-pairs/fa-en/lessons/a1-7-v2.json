@@ -1,0 +1,1364 @@
+{
+  "id": "A1-7",
+  "revision": "2026-10-25-cumulative-a1-7-10",
+  "status": "draft",
+  "title": "توصیف ظاهر افراد",
+  "goal": "چهره، رنگ و حالت مو و قد افراد خانواده یا یک گروه را محترمانه توصیف کن.",
+  "duration": 24,
+  "feature": "چهره‌های زنده و جملهٔ قابل تغییر",
+  "archetype": "K2",
+  "roadmapRef": {
+    "id": "A1-7",
+    "revision": "2026-10-25-owner-cumulative-a1",
+    "communicativeOutcome": "ظاهر یک نفر را توصیف می‌کند؛ از آدم‌ها محترمانه حرف می‌زند؛ با ضمیر جمع درباره‌ی گروه صحبت می‌کند."
+  },
+  "teachingModel": {
+    "type": "discovery-production",
+    "sections": 2
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "چهره، رنگ و حالت مو و قد افراد خانواده یا یک گروه را محترمانه توصیف کن.",
+    "prerequisites": [
+      "A1-2: خانواده و ضمیرهای he/she",
+      "A1-3: عدد و جمع",
+      "A1-6: رنگ، اندازه و صفت"
+    ],
+    "previously": "می‌توانی بگویی دو خواهر داری و آن‌ها کجا هستند؛ حالا می‌توانی ظاهر هر نفر را هم توصیف کنی.",
+    "quickCheck": {
+      "title": "یک سؤال قبل از شروع",
+      "question": "چطور می‌گویی دو خواهرم موی فرفریِ مشکی دارند؟",
+      "example": "My two sisters have curly black hair.",
+      "explanation": "برای چند نفر have و برای یک نفر has به کار می‌رود.",
+      "allowSkip": false
+    }
+  },
+  "visual": {
+    "src": "./assets/scene-a1-7-people.svg",
+    "alt": "سه پرترهٔ متفاوت با موی قهوه‌ای بلند، سیاه فرفری و بور کوتاه",
+    "caption": "سه نفر؛ هرکدام با شکل و رنگ موی متفاوت"
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "long brown hair",
+      "curly black hair",
+      "two sisters"
+    ],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": true
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "کشف و ساخت جمله",
+      "intro": "از رنگ و قد آشنا شروع کن؛ در صحنهٔ زنده مو، شخص و تعداد را لمس کن.",
+      "masteryActivityIds": [
+        "a1-7-build"
+      ],
+      "activities": [
+        {
+          "id": "a1-7-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "اول گوش بده و در همان ریتم تکرار کن",
+          "description": "در اولین دور، لازم نیست همهٔ کلمه‌ها را بلد باشی.",
+          "audioSrc": null,
+          "rate": 0.76,
+          "pauseMs": 520,
+          "lines": [
+            "My sister has long hair.",
+            "Her hair is brown.",
+            "My brother is tall.",
+            "He has short black hair.",
+            "My two sisters have curly hair.",
+            "They have brown hair.",
+            "My mother wears glasses."
+          ]
+        },
+        {
+          "id": "a1-7-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "واژه‌های جدید برای چهره؛ رنگ و تعداد را قبلاً بلدی",
+          "batchSize": 4,
+          "deckRevision": 1,
+          "items": [
+            {
+              "en": "hair",
+              "fa": "مو",
+              "examples": [
+                "My sister has long hair.",
+                "Her hair is brown.",
+                "Is your hair short?"
+              ]
+            },
+            {
+              "en": "eyes",
+              "fa": "چشم‌ها",
+              "examples": [
+                "Her eyes are brown.",
+                "His eyes are blue.",
+                "What color are your eyes?"
+              ]
+            },
+            {
+              "en": "curly",
+              "fa": "فرفری",
+              "examples": [
+                "She has curly hair.",
+                "My two sisters have curly hair.",
+                "Is her hair curly?"
+              ]
+            },
+            {
+              "en": "straight",
+              "fa": "صاف",
+              "examples": [
+                "My mother has straight hair.",
+                "Her hair is long and straight.",
+                "Is his hair straight?"
+              ]
+            },
+            {
+              "en": "brown",
+              "fa": "قهوه‌ای",
+              "examples": [
+                "She has brown hair.",
+                "His eyes are brown.",
+                "I have a brown bag."
+              ]
+            },
+            {
+              "en": "blond",
+              "fa": "بلوند",
+              "examples": [
+                "She has blond hair.",
+                "Her blond hair is short.",
+                "Is his hair blond?"
+              ]
+            },
+            {
+              "en": "tall",
+              "fa": "بلندقد",
+              "examples": [
+                "My brother is tall.",
+                "My two brothers are tall.",
+                "Are they tall?"
+              ]
+            },
+            {
+              "en": "young",
+              "fa": "جوان",
+              "examples": [
+                "She is young.",
+                "My mother is young.",
+                "Is that man young?"
+              ]
+            },
+            {
+              "en": "old",
+              "fa": "مسن / پیر",
+              "examples": [
+                "My grandfather is old.",
+                "My grandmother is old.",
+                "Is he old?"
+              ]
+            },
+            {
+              "en": "man",
+              "fa": "مرد",
+              "examples": [
+                "That man is tall.",
+                "The man has black hair.",
+                "There are two men."
+              ]
+            },
+            {
+              "en": "woman",
+              "fa": "زن",
+              "examples": [
+                "That woman has brown hair.",
+                "The woman is tall.",
+                "There are two women."
+              ]
+            },
+            {
+              "en": "face",
+              "fa": "صورت / چهره",
+              "examples": [
+                "Her face is round.",
+                "His face is round.",
+                "Look at her face."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-7-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "از یک صفت تا «یک گروه با ویژگی مشترک»",
+          "description": "این جمله‌های کوتاه را یک واحدِ معنی‌دار ببین و با واژه‌های قبلی جابه‌جا کن.",
+          "items": [
+            {
+              "en": "long brown hair",
+              "fa": "موی بلند قهوه‌ای",
+              "kind": "fixed",
+              "examples": [
+                "My sister has long brown hair.",
+                "My mother has long brown hair.",
+                "She has long brown hair."
+              ]
+            },
+            {
+              "en": "curly black hair",
+              "fa": "موی فرفری مشکی",
+              "kind": "fixed",
+              "examples": [
+                "My two sisters have curly black hair.",
+                "He has curly black hair.",
+                "They have curly black hair."
+              ]
+            },
+            {
+              "en": "wears glasses",
+              "fa": "عینک می‌زند",
+              "kind": "fixed",
+              "examples": [
+                "My father wears glasses.",
+                "Does your sister wear glasses?",
+                "My brother wears glasses."
+              ]
+            },
+            {
+              "en": "What does she look like?",
+              "fa": "ظاهر او چطور است؟",
+              "kind": "fixed",
+              "examples": [
+                "What does she look like?",
+                "She has brown hair.",
+                "She is tall."
+              ]
+            },
+            {
+              "en": "two sisters",
+              "fa": "دو خواهر",
+              "kind": "fixed",
+              "examples": [
+                "I have two sisters.",
+                "My two sisters are tall.",
+                "My two sisters have curly hair."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-7-live",
+          "type": "cumulative-scene-lab",
+          "phase": "phrases",
+          "title": "صحنهٔ متغیر: ظاهر خواهر، برادر یا چند نفر را بساز",
+          "description": "روی «شخص»، «مدل مو»، «رنگ مو» و «قد» در جمله بزن؛ تعداد آدم‌ها و has/have و She/He/They هماهنگ عوض می‌شود.",
+          "mode": "people",
+          "options": {
+            "subject": [
+              {
+                "id": "sister",
+                "en": "My sister",
+                "fa": "خواهرم",
+                "count": 1,
+                "pronoun": "She"
+              },
+              {
+                "id": "brother",
+                "en": "My brother",
+                "fa": "برادرم",
+                "count": 1,
+                "pronoun": "He"
+              },
+              {
+                "id": "two-sisters",
+                "en": "My two sisters",
+                "fa": "دو خواهرم",
+                "count": 2,
+                "pronoun": "They"
+              },
+              {
+                "id": "three-brothers",
+                "en": "My three brothers",
+                "fa": "سه برادرم",
+                "count": 3,
+                "pronoun": "They"
+              },
+              {
+                "id": "mother",
+                "en": "My mother",
+                "fa": "مادرم",
+                "count": 1,
+                "pronoun": "She"
+              }
+            ],
+            "style": [
+              {
+                "id": "long",
+                "en": "long",
+                "fa": "بلند"
+              },
+              {
+                "id": "short",
+                "en": "short",
+                "fa": "کوتاه"
+              },
+              {
+                "id": "curly",
+                "en": "curly",
+                "fa": "فرفری"
+              },
+              {
+                "id": "straight",
+                "en": "straight",
+                "fa": "صاف"
+              }
+            ],
+            "color": [
+              {
+                "id": "black",
+                "en": "black",
+                "fa": "مشکی"
+              },
+              {
+                "id": "brown",
+                "en": "brown",
+                "fa": "قهوه‌ای"
+              },
+              {
+                "id": "blond",
+                "en": "blond",
+                "fa": "بلوند"
+              }
+            ],
+            "height": [
+              {
+                "id": "tall",
+                "en": "tall",
+                "fa": "بلندقد"
+              },
+              {
+                "id": "short",
+                "en": "short",
+                "fa": "کوتاه‌قد"
+              }
+            ]
+          }
+        },
+        {
+          "id": "a1-7-warmup",
+          "type": "response-practice",
+          "phase": "phrases",
+          "title": "کدام ویژگی به کدام نفر مربوط است؟",
+          "practiceRevision": 1,
+          "description": "چشم، چهره، سن و شکل مو را روی آدم‌های متفاوت به کار ببر؛ نه فقط رنگ و قد.",
+          "tasks": [
+            {
+              "task": "بگو چشم‌های خواهرم آبی است.",
+              "hint": "My sister has blue eyes.",
+              "example": "My sister has blue eyes.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my sister has blue eyes"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو صورت برادرم گرد است.",
+              "hint": "My brother has a round face.",
+              "example": "My brother has a round face.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my brother has a round face"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو مادرم جوان است.",
+              "hint": "My mother is young.",
+              "example": "My mother is young.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my mother is young"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو پدربزرگ من مسن است.",
+              "hint": "My grandfather is old.",
+              "example": "My grandfather is old.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my grandfather is old"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو آن مرد قدبلند است.",
+              "hint": "That man is tall.",
+              "example": "That man is tall.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "that man is tall"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو آن زن موی صاف دارد.",
+              "hint": "That woman has straight hair.",
+              "example": "That woman has straight hair.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "that woman has straight hair"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-7-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "ظاهر و فعل مناسب را هم‌زمان بساز",
+          "description": "فاعل را از یک نفر به دو یا سه نفر تغییر بده. فعل و ضمیر را در جمله و پرسش ببین.",
+          "targetLanguage": "en",
+          "wordSets": {
+            "subjects": [
+              {
+                "id": "sister",
+                "label": "My sister",
+                "translation": "خواهرم",
+                "forms": {
+                  "en": "My sister",
+                  "question": "my sister",
+                  "fa": "خواهرم"
+                }
+              },
+              {
+                "id": "brother",
+                "label": "My brother",
+                "translation": "برادرم",
+                "forms": {
+                  "en": "My brother",
+                  "question": "my brother",
+                  "fa": "برادرم"
+                }
+              },
+              {
+                "id": "two-sisters",
+                "label": "My two sisters",
+                "translation": "دو خواهرم",
+                "forms": {
+                  "en": "My two sisters",
+                  "question": "my two sisters",
+                  "fa": "دو خواهرم"
+                }
+              }
+            ],
+            "styles": [
+              {
+                "id": "long",
+                "label": "long",
+                "translation": "بلند",
+                "forms": {
+                  "en": "long",
+                  "fa": "بلند"
+                }
+              },
+              {
+                "id": "curly",
+                "label": "curly",
+                "translation": "فرفری",
+                "forms": {
+                  "en": "curly",
+                  "fa": "فرفری"
+                }
+              },
+              {
+                "id": "short",
+                "label": "short",
+                "translation": "کوتاه",
+                "forms": {
+                  "en": "short",
+                  "fa": "کوتاه"
+                }
+              }
+            ],
+            "colors": [
+              {
+                "id": "brown",
+                "label": "brown",
+                "translation": "قهوه‌ای",
+                "forms": {
+                  "en": "brown",
+                  "fa": "قهوه‌ای"
+                }
+              },
+              {
+                "id": "black",
+                "label": "black",
+                "translation": "مشکی",
+                "forms": {
+                  "en": "black",
+                  "fa": "مشکی"
+                }
+              },
+              {
+                "id": "blond",
+                "label": "blond",
+                "translation": "بلوند",
+                "forms": {
+                  "en": "blond",
+                  "fa": "بلوند"
+                }
+              }
+            ],
+            "heights": [
+              {
+                "id": "tall",
+                "label": "tall",
+                "translation": "بلندقد",
+                "forms": {
+                  "en": "tall",
+                  "fa": "بلندقد"
+                }
+              },
+              {
+                "id": "short",
+                "label": "short",
+                "translation": "کوتاه‌قد",
+                "forms": {
+                  "en": "short",
+                  "fa": "کوتاه‌قد"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "subject",
+              "label": "شخص",
+              "wordSet": "subjects",
+              "default": "sister"
+            },
+            {
+              "id": "style",
+              "label": "حالت مو",
+              "wordSet": "styles",
+              "default": "long"
+            },
+            {
+              "id": "color",
+              "label": "رنگ مو",
+              "wordSet": "colors",
+              "default": "brown"
+            },
+            {
+              "id": "height",
+              "label": "قد",
+              "wordSet": "heights",
+              "default": "tall"
+            }
+          ],
+          "derivedDefaults": {
+            "have": "has",
+            "be": "is",
+            "do": "Does"
+          },
+          "dependencies": [
+            {
+              "id": "plural",
+              "when": {
+                "slot": "subject",
+                "equals": "two-sisters"
+              },
+              "set": {
+                "have": "have",
+                "be": "are",
+                "do": "Do"
+              }
+            }
+          ],
+          "defaultPattern": "hair",
+          "patterns": [
+            {
+              "id": "hair",
+              "label": "موی شخص",
+              "segments": [
+                {
+                  "slot": "subject",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "have"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "style",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "color",
+                  "form": "en"
+                },
+                {
+                  "fixed": " hair."
+                }
+              ],
+              "translationSegments": []
+            },
+            {
+              "id": "height",
+              "label": "قد شخص",
+              "segments": [
+                {
+                  "slot": "subject",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "be"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "height",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": []
+            },
+            {
+              "id": "question",
+              "label": "سؤال دربارهٔ مو",
+              "segments": [
+                {
+                  "derived": "do"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "subject",
+                  "form": "question"
+                },
+                {
+                  "fixed": " have "
+                },
+                {
+                  "slot": "color",
+                  "form": "en"
+                },
+                {
+                  "fixed": " hair?"
+                }
+              ],
+              "translationSegments": []
+            }
+          ]
+        },
+        {
+          "id": "a1-7-forms",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "یک معنا، چند جمله و سؤال",
+          "description": "روی واژه‌های جمله بزن و ساختارهای خبری، پرسشی و ترکیبی را مقایسه کن.",
+          "sourceActivityId": "a1-7-composer",
+          "patternIds": [
+            "hair",
+            "height",
+            "question"
+          ]
+        },
+        {
+          "id": "a1-7-quest",
+          "type": "cumulative-visual-quest",
+          "phase": "variants",
+          "title": "از روی جمله پرترهٔ درست را پیدا کن",
+          "description": "جمله را گوش بده و تصویر درست را انتخاب کن. در هر مرحله بیش از یک ویژگی را بررسی کن.",
+          "mode": "people",
+          "rounds": [
+            {
+              "prompt": "My sister has long brown hair.",
+              "correct": 1,
+              "choices": [
+                {
+                  "description": "Short black hair",
+                  "count": 1,
+                  "style": "short",
+                  "color": "black",
+                  "height": "tall"
+                },
+                {
+                  "description": "Long brown hair",
+                  "count": 1,
+                  "style": "long",
+                  "color": "brown",
+                  "height": "tall"
+                },
+                {
+                  "description": "Curly blond hair",
+                  "count": 1,
+                  "style": "curly",
+                  "color": "blond",
+                  "height": "tall"
+                }
+              ]
+            },
+            {
+              "prompt": "My two sisters have curly black hair.",
+              "correct": 2,
+              "choices": [
+                {
+                  "description": "One sister, curly black hair",
+                  "count": 1,
+                  "style": "curly",
+                  "color": "black",
+                  "height": "tall"
+                },
+                {
+                  "description": "Two sisters, straight black hair",
+                  "count": 2,
+                  "style": "straight",
+                  "color": "black",
+                  "height": "tall"
+                },
+                {
+                  "description": "Two sisters, curly black hair",
+                  "count": 2,
+                  "style": "curly",
+                  "color": "black",
+                  "height": "tall"
+                }
+              ]
+            },
+            {
+              "prompt": "My brother is short. He has blond hair.",
+              "correct": 0,
+              "choices": [
+                {
+                  "description": "Short person, blond hair",
+                  "count": 1,
+                  "style": "short",
+                  "color": "blond",
+                  "height": "short"
+                },
+                {
+                  "description": "Tall person, blond hair",
+                  "count": 1,
+                  "style": "short",
+                  "color": "blond",
+                  "height": "tall"
+                },
+                {
+                  "description": "Short person, black hair",
+                  "count": 1,
+                  "style": "short",
+                  "color": "black",
+                  "height": "short"
+                }
+              ]
+            }
+          ],
+          "completion": "حالا از روی جمله می‌توانی چند ویژگی را با هم در تصویر پیدا کنی."
+        },
+        {
+          "id": "a1-7-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "پنج جمله بساز، نه پنج پاسخ حفظی",
+          "description": "واژه‌های یک بانک مشترک را کنار هم قرار بده و به پنج جملهٔ متفاوت برس.",
+          "revision": 1,
+          "reuseBank": true,
+          "goalCount": 5,
+          "sentences": [
+            {
+              "id": "sentence-1",
+              "words": [
+                "My",
+                "sister",
+                "has",
+                "long",
+                "brown",
+                "hair."
+              ]
+            },
+            {
+              "id": "sentence-2",
+              "words": [
+                "My",
+                "two",
+                "sisters",
+                "have",
+                "curly",
+                "hair."
+              ]
+            },
+            {
+              "id": "sentence-3",
+              "words": [
+                "His",
+                "hair",
+                "is",
+                "short",
+                "and",
+                "black."
+              ]
+            },
+            {
+              "id": "sentence-4",
+              "words": [
+                "My",
+                "brother",
+                "is",
+                "tall."
+              ]
+            },
+            {
+              "id": "sentence-5",
+              "words": [
+                "Do",
+                "my",
+                "two",
+                "sisters",
+                "have",
+                "blond",
+                "hair?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-7-build",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "از خانواده + تعداد + رنگ، توصیف تازه بساز",
+          "practiceRevision": 1,
+          "description": "با خانواده، شمارش، مالکیت، مکان و صفت‌های قبلی جمله‌های جدید بنویس.",
+          "tasks": [
+            {
+              "task": "بگو خواهرم موی بلند قهوه‌ای دارد.",
+              "hint": "My sister has long brown hair.",
+              "example": "My sister has long brown hair.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my sister has long brown hair"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو دو خواهرم موی فرفریِ مشکی دارند.",
+              "hint": "My two sisters have curly black hair.",
+              "example": "My two sisters have curly black hair.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my two sisters have curly black hair"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو برادرم قدبلند است.",
+              "hint": "My brother is tall.",
+              "example": "My brother is tall.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my brother is tall"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو پدر من عینک می‌زند.",
+              "hint": "My father wears glasses.",
+              "example": "My father wears glasses.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my father wears glasses"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو سه برادرم موی مشکی دارند.",
+              "hint": "My three brothers have black hair.",
+              "example": "My three brothers have black hair.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my three brothers have black hair"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "گفت‌وگو و انتقال",
+      "intro": "از معرفی خانواده به توصیف یک گروه و پرسیدن ظاهر افراد برس.",
+      "masteryActivityIds": [
+        "a1-7-independent"
+      ],
+      "activities": [
+        {
+          "id": "a1-7-exchange",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "او چه شکلی است؟ یک سؤال و چند پاسخ",
+          "description": "یک سؤال را نگه دار و پاسخ‌ها را جابه‌جا کن تا تفاوت معنی روشن شود.",
+          "pairs": [
+            {
+              "question": "What does your sister look like?",
+              "questionFa": "خواهرت چه ظاهری دارد؟",
+              "variants": [
+                {
+                  "label": "موی بلند",
+                  "en": "She has long brown hair.",
+                  "fa": "موی قهوه‌ای بلند دارد.",
+                  "note": "شکل و رنگ مو را گفتی."
+                },
+                {
+                  "label": "موهای فرفری",
+                  "en": "She has curly black hair.",
+                  "fa": "موی مشکی فرفری دارد.",
+                  "note": "ویژگی را عوض کردی."
+                }
+              ]
+            },
+            {
+              "question": "Are your brothers tall?",
+              "questionFa": "برادرانت قدبلند هستند؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, they are tall.",
+                  "fa": "بله، قدبلند هستند.",
+                  "note": "فاعل جمع است."
+                },
+                {
+                  "label": "نه",
+                  "en": "No, they are short.",
+                  "fa": "نه، کوتاه‌قد هستند.",
+                  "note": "پاسخ منفی."
+                }
+              ]
+            },
+            {
+              "question": "Does your father wear glasses?",
+              "questionFa": "پدرت عینک می‌زند؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, he wears glasses.",
+                  "fa": "بله، عینک می‌زند.",
+                  "note": "با he از wears استفاده شد."
+                },
+                {
+                  "label": "نه",
+                  "en": "No, he does not wear glasses.",
+                  "fa": "نه، عینک نمی‌زند.",
+                  "note": "بعد از does شکل سادهٔ wear می‌آید."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-7-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "گفت‌وگو: عکس خانوادگی",
+          "description": "گفت‌وگوی کوتاه و واقعی؛ هر نوبت را جدا گوش بده و تکرار کن.",
+          "lines": [
+            {
+              "speaker": "Nora",
+              "en": "Is this your family photo?",
+              "fa": "این عکس خانواده‌ات است؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "Yes. This is my sister.",
+              "fa": "بله، این خواهر من است."
+            },
+            {
+              "speaker": "Nora",
+              "en": "She has long brown hair.",
+              "fa": "او موی قهوه‌ای بلند دارد."
+            },
+            {
+              "speaker": "Ali",
+              "en": "Yes, and she wears glasses.",
+              "fa": "بله، و عینک می‌زند."
+            },
+            {
+              "speaker": "Nora",
+              "en": "Who are these two people?",
+              "fa": "این دو نفر چه کسانی هستند؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "They are my brothers.",
+              "fa": "آن‌ها برادرهای من هستند."
+            },
+            {
+              "speaker": "Nora",
+              "en": "Are they tall?",
+              "fa": "آن‌ها قدبلند هستند؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "Yes, and they have curly black hair.",
+              "fa": "بله، و موهای فرفری مشکی دارند."
+            }
+          ]
+        },
+        {
+          "id": "a1-7-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "title": "سه چهره را با دو ویژگی تشخیص بده",
+          "description": "ابتدا تصویر را نگاه کن، سپس بدون انتخاب گزینه جمله بساز.",
+          "image": "./assets/scene-a1-7-people.svg",
+          "imageAlt": "سه پرترهٔ متفاوت با موی قهوه‌ای بلند، سیاه فرفری و بور کوتاه",
+          "caption": "سه نفر؛ هرکدام با شکل و رنگ موی متفاوت",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "چهرهٔ اول سمت چپ را با طول و رنگ مو معرفی کن.",
+              "hint": "She has long brown hair.",
+              "example": "She has long brown hair.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "she has long brown hair"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "چهرهٔ وسط را با شکل و رنگ مو معرفی کن.",
+              "hint": "He has curly black hair.",
+              "example": "He has curly black hair.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "he has curly black hair"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "دربارهٔ قد فرد سوم یک سؤال بساز.",
+              "hint": "Is she tall?",
+              "example": "Is she tall?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "is she tall"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-7-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "title": "نوبت توست: جملهٔ بعدی را بساز",
+          "description": "دوستت حرف می‌زند؛ تو باید با دانسته‌های چند درس پاسخ بدهی.",
+          "practiceRevision": 1,
+          "completion": "توانستی واژه‌های جدید و قبلی را در گفت‌وگو کنار هم بگذاری.",
+          "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "What does your sister look like?",
+              "task": "با «موی قهوه‌ای بلند» پاسخ بده.",
+              "hint": "My sister has long brown hair.",
+              "example": "My sister has long brown hair.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my sister has long brown hair"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "What do your two sisters look like?",
+              "task": "با موی فرفری مشکی جواب بده.",
+              "hint": "My two sisters have curly black hair.",
+              "example": "My two sisters have curly black hair.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my two sisters have curly black hair"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Are your brothers tall?",
+              "task": "بگو دو برادرم قدبلندند.",
+              "hint": "My two brothers are tall.",
+              "example": "My two brothers are tall.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my two brothers are tall"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "How many sisters do you have?",
+              "task": "بگو من دو خواهر دارم.",
+              "hint": "I have two sisters.",
+              "example": "I have two sisters.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i have two sisters"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-7-transfer",
+          "type": "response-practice",
+          "phase": "guided",
+          "title": "همان ساختار، فرد یا گروه جدید",
+          "practiceRevision": 1,
+          "description": "موقعیت عوض شده است؛ همان الگوی جمله را با آدم، شیء یا تعداد تازه به کار ببر.",
+          "tasks": [
+            {
+              "task": "بگو مادرم موهای بلند قهوه‌ای دارد.",
+              "hint": "My mother has long brown hair.",
+              "example": "My mother has long brown hair.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my mother has long brown hair"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو برادرم موی کوتاه مشکی دارد.",
+              "hint": "My brother has short black hair.",
+              "example": "My brother has short black hair.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my brother has short black hair"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو دو خواهرم پشت میز هستند.",
+              "hint": "My two sisters are behind the table.",
+              "example": "My two sisters are behind the table.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my two sisters are behind the table"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو دو خواهرم موهای فرفری دارند.",
+              "hint": "My two sisters have curly hair.",
+              "example": "My two sisters have curly hair.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my two sisters have curly hair"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-7-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "از یک نفر شروع کن، بعد یک گروه",
+          "prompt": "چهار جمله دربارهٔ دو نفر از خانواده و یک گروه بساز. باید long brown hair و curly black hair و عبارت two sisters را در جمله‌های کامل بیاوری. یک جمله هم با تعداد و مالکیت درس‌های قبل بساز.",
+          "placeholder": "My sister has long brown hair.\nMy two sisters have curly black hair.\nI have two sisters.\nThey are tall.",
+          "hint": "She has / He has ... / They have ... ؛ دربارهٔ ویژگی‌ها محترمانه و بدون داوری بنویس.",
+          "kind": "free-text",
+          "minWords": 21,
+          "assessment": {
+            "revision": 1,
+            "required": [
+              {
+                "any": [
+                  "long brown hair"
+                ],
+                "feedback": "عبارت long brown hair را در یک جملهٔ کامل به کار ببر."
+              },
+              {
+                "any": [
+                  "curly black hair"
+                ],
+                "feedback": "عبارت curly black hair را در یک جملهٔ کامل به کار ببر."
+              },
+              {
+                "any": [
+                  "two sisters"
+                ],
+                "feedback": "عبارت two sisters را در یک جملهٔ کامل به کار ببر."
+              }
+            ],
+            "success": "چند الگوی تازه را با اطلاعات و واژه‌های قبلی خودت ترکیب کردی."
+          }
+        },
+        {
+          "id": "a1-7-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "دوباره گوش بده؛ حالا معنای جمله‌ها را می‌سازی",
+          "description": "همان جمله‌های شروع درس را با فهم تازه دوباره تکرار کن.",
+          "sourceActivityId": "a1-7-shadowing"
+        }
+      ]
+    }
+  ]
+}

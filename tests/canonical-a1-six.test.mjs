@@ -17,12 +17,12 @@ test('live click dispatcher reaches every cumulative visual practice control',()
  const code=readFileSync(join(projectRoot,'apps/learner-web/app.js'),'utf8');
  const selector=code.match(/function onClick\(event\)\s*\{\s*const el\s*=\s*event\.target\.closest\('([^']+)'\)/)?.[1];
  assert.ok(selector,'cannot locate delegated click selectors');
- for(const key of ['attribute-key','count-scene-key','feature-hunt-key','count-math-key','plural-lab-key'])
+ for(const key of ['attribute-key','count-scene-key','feature-hunt-key','count-math-key','plural-lab-key','cumulative-lab-key','cumulative-quest-key','cumulative-number-key'])
    assert.ok(selector.includes(`button[data-${key}]`),`click dispatcher omitted data-${key}`);
 });
-test('canonical A1 live curriculum stops at the first six approved outcomes',()=>{
- assert.deepEqual(active.map(x=>x.id),['A1-1','A1-2','A1-3','A1-4','A1-5','A1-6']);
- assert.deepEqual(active.slice(2).map(x=>x.file),['lessons/a1-3-v3.json','lessons/a1-4-v3.json','lessons/a1-5-v3.json','lessons/a1-6-v4.json']);
+test('canonical A1 live curriculum follows approved outcomes through lesson ten',()=>{
+ assert.deepEqual(active.map(x=>x.id),['A1-1','A1-2','A1-3','A1-4','A1-5','A1-6','A1-7','A1-8','A1-9','A1-10']);
+ assert.deepEqual(active.slice(2,6).map(x=>x.file),['lessons/a1-3-v3.json','lessons/a1-4-v3.json','lessons/a1-5-v3.json','lessons/a1-6-v4.json']);
  assert.equal(active[5].title,'توصیف ویژگی‌های اشیا');
  assert.deepEqual(inspectVocabularyContinuity(active.map(x=>load(x.file))),[]);
 });
@@ -103,7 +103,7 @@ test('A1-6 has a visual search mission with increasing adjective complexity',()=
 test('first A1 workshop is after planned lesson 9, not an unexplained boundary at lesson 6',()=>{
  const curriculum=load('curriculum.a1.json'),first=curriculum.stages[0].chapters[0];
  assert.deepEqual(first.lessons.slice(0,6).map(x=>x.id),['A1-1','A1-2','A1-3','A1-4','A1-5','A1-6']);
- assert.deepEqual(first.lessons.slice(6,9).map(x=>x[0]),['توصیف ظاهر افراد','تبادل اطلاعات شخصی','بیان وضعیت و احساسات روزمره']);
+ assert.deepEqual(first.lessons.slice(6,9).map(x=>x.title),['توصیف ظاهر افراد','تبادل اطلاعات شخصی','بیان وضعیت و احساسات روزمره']);
  assert.equal(first.lessons[9].id,'A1-W1');
  assert.equal(curriculum.stages.length,3);
 });

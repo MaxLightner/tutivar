@@ -1,0 +1,1650 @@
+{
+  "id": "A1-10",
+  "revision": "2026-10-25-cumulative-a1-7-10",
+  "status": "draft",
+  "title": "معرفی خانه و امکانات آن",
+  "goal": "خانه و اتاق‌هایش را با رنگ و تعداد وسایل معرفی کن و بگو چه چیزهایی وجود دارند یا ندارند.",
+  "duration": 26,
+  "feature": "اتاق‌های تعاملی با وسایل شمارش‌پذیر",
+  "archetype": "K2",
+  "roadmapRef": {
+    "id": "A1-10",
+    "revision": "2026-10-25-owner-cumulative-a1",
+    "communicativeOutcome": "خانه و اتاق‌ها و امکاناتش را توصیف می‌کند؛ می‌گوید در خانه‌اش چه هست و چه نیست."
+  },
+  "teachingModel": {
+    "type": "discovery-production",
+    "sections": 2
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "خانه و اتاق‌هایش را با رنگ و تعداد وسایل معرفی کن و بگو چه چیزهایی وجود دارند یا ندارند.",
+    "prerequisites": [
+      "A1-3: تعداد و جمع",
+      "A1-4: داشتن و نداشتن",
+      "A1-5: مکان اشیا",
+      "A1-6: رنگ و اندازه"
+    ],
+    "previously": "قبلاً می‌گفتی سه کتاب روی میز هستند؛ حالا همین ساختار را برای اتاق و کل خانه به کار می‌بری.",
+    "quickCheck": {
+      "title": "یک سؤال قبل از شروع",
+      "question": "چطور می‌گویی سه صندلی آبی در اتاق نشیمن هستند؟",
+      "example": "There are three blue chairs in the living room.",
+      "explanation": "با یک وسیله There is و با چند وسیله There are به کار می‌رود.",
+      "allowSkip": false
+    }
+  },
+  "visual": {
+    "src": "./assets/scene-a1-10-house.svg",
+    "alt": "خانهٔ فرضی با اتاق نشیمن، آشپزخانه، اتاق خواب و حمام و وسایل مشخص",
+    "caption": "چهار اتاق و وسایل آن‌ها؛ رنگ، مکان و تعداد را از روی شکل بخوان"
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "There is",
+      "There are",
+      "My house has",
+      "in the bedroom"
+    ],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": true
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "کشف و ساخت جمله",
+      "intro": "از کتاب و میزِ درس ۵ وارد خانه شو؛ کلمه را لمس کن و جای همان وسیله در اتاق تازه را ببین.",
+      "masteryActivityIds": [
+        "a1-10-build"
+      ],
+      "activities": [
+        {
+          "id": "a1-10-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "اول گوش بده و در همان ریتم تکرار کن",
+          "description": "در اولین دور، لازم نیست همهٔ کلمه‌ها را بلد باشی.",
+          "audioSrc": null,
+          "rate": 0.76,
+          "pauseMs": 520,
+          "lines": [
+            "This is my home.",
+            "My house has three rooms.",
+            "There is a bed in the bedroom.",
+            "There are three chairs in the living room.",
+            "There is a fridge in the kitchen.",
+            "There is no mirror in the bedroom.",
+            "Do you have a balcony?"
+          ]
+        },
+        {
+          "id": "a1-10-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "نام بخش‌های خانه و امکاناتِ جدید",
+          "batchSize": 4,
+          "deckRevision": 1,
+          "items": [
+            {
+              "en": "home",
+              "fa": "خانه / محل زندگی",
+              "examples": [
+                "This is my home.",
+                "My home is small.",
+                "Welcome to my home."
+              ]
+            },
+            {
+              "en": "house",
+              "fa": "خانه / ساختمان مسکونی",
+              "examples": [
+                "My house has three rooms.",
+                "This is my house.",
+                "Is your house big?"
+              ]
+            },
+            {
+              "en": "kitchen",
+              "fa": "آشپزخانه",
+              "examples": [
+                "The fridge is in the kitchen.",
+                "Our kitchen is small.",
+                "Is there a table in the kitchen?"
+              ]
+            },
+            {
+              "en": "bedroom",
+              "fa": "اتاق خواب",
+              "examples": [
+                "There is a bed in the bedroom.",
+                "My bedroom is small.",
+                "The lamp is in the bedroom."
+              ]
+            },
+            {
+              "en": "bathroom",
+              "fa": "حمام / دستشویی",
+              "examples": [
+                "There is a mirror in the bathroom.",
+                "Our bathroom is small.",
+                "Is there a shower in the bathroom?"
+              ]
+            },
+            {
+              "en": "fridge",
+              "fa": "یخچال",
+              "examples": [
+                "There is a fridge in the kitchen.",
+                "My fridge is white.",
+                "Do you have a fridge?"
+              ]
+            },
+            {
+              "en": "sink",
+              "fa": "سینک / روشویی",
+              "examples": [
+                "There is a sink in the kitchen.",
+                "The sink is white.",
+                "There is no sink here."
+              ]
+            },
+            {
+              "en": "stove",
+              "fa": "اجاق گاز",
+              "examples": [
+                "There is a stove in the kitchen.",
+                "The stove is black.",
+                "Is there a stove?"
+              ]
+            },
+            {
+              "en": "mirror",
+              "fa": "آینه",
+              "examples": [
+                "There is a mirror in the bathroom.",
+                "The mirror is above the sink.",
+                "Is there a mirror in your room?"
+              ]
+            },
+            {
+              "en": "shower",
+              "fa": "دوش",
+              "examples": [
+                "There is a shower in the bathroom.",
+                "Is the shower new?",
+                "Our shower is in the bathroom."
+              ]
+            },
+            {
+              "en": "garden",
+              "fa": "باغچه / حیاط سبز",
+              "examples": [
+                "Our house has a garden.",
+                "The garden is green.",
+                "There is no garden here."
+              ]
+            },
+            {
+              "en": "balcony",
+              "fa": "بالکن",
+              "examples": [
+                "Our house has a balcony.",
+                "There is no balcony.",
+                "Is there a balcony in your house?"
+              ]
+            },
+            {
+              "en": "garage",
+              "fa": "گاراژ",
+              "examples": [
+                "There is a garage near the house.",
+                "Our garage is small.",
+                "Do you have a garage?"
+              ]
+            },
+            {
+              "en": "has",
+              "fa": "دارد (برای he/she/it)",
+              "examples": [
+                "My house has three rooms.",
+                "She has two books.",
+                "My room has one window."
+              ]
+            },
+            {
+              "en": "any",
+              "fa": "هیچ / مقداری در پرسش",
+              "examples": [
+                "Are there any chairs?",
+                "Is there any water?",
+                "Do you have any books?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-10-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "پرسیدن امکانات و توضیح داشتن یا نداشتن",
+          "description": "این جمله‌های کوتاه را یک واحدِ معنی‌دار ببین و با واژه‌های قبلی جابه‌جا کن.",
+          "items": [
+            {
+              "en": "living room",
+              "fa": "اتاق نشیمن",
+              "kind": "fixed",
+              "examples": [
+                "There are three chairs in the living room.",
+                "Our living room has a blue sofa.",
+                "Is there a table in the living room?"
+              ]
+            },
+            {
+              "en": "There is",
+              "fa": "وجود دارد (یک چیز)",
+              "kind": "fixed",
+              "examples": [
+                "There is a bed in the bedroom.",
+                "There is one table in the kitchen.",
+                "There is no mirror."
+              ]
+            },
+            {
+              "en": "There are",
+              "fa": "وجود دارند (چند چیز)",
+              "kind": "fixed",
+              "examples": [
+                "There are three chairs in the living room.",
+                "There are two books on the table.",
+                "There are no lamps here."
+              ]
+            },
+            {
+              "en": "in the bedroom",
+              "fa": "در اتاق خواب",
+              "kind": "fixed",
+              "examples": [
+                "There is a bed in the bedroom.",
+                "The lamp is in the bedroom.",
+                "There are two books in the bedroom."
+              ]
+            },
+            {
+              "en": "My house has",
+              "fa": "خانهٔ من دارد",
+              "kind": "fixed",
+              "examples": [
+                "My house has three rooms.",
+                "My house has a garden.",
+                "My house has two bedrooms."
+              ]
+            },
+            {
+              "en": "Is there",
+              "fa": "آیا وجود دارد؟",
+              "kind": "fixed",
+              "examples": [
+                "Is there a fridge in the kitchen?",
+                "Is there a mirror?",
+                "Is there a balcony?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-10-live",
+          "type": "cumulative-scene-lab",
+          "phase": "phrases",
+          "title": "خانهٔ زنده: تعداد، وسیله و اتاق را لمس کن",
+          "description": "روی رنگ، تعداد، اسمِ وسیله، اتاق یا تعداد اتاق‌ها بزن. هم تصویر و هم is/are و مفرد/جمع عوض می‌شود؛ عدد صفر نبودن را نشان می‌دهد.",
+          "mode": "home",
+          "options": {
+            "room": [
+              {
+                "id": "living room",
+                "en": "living room",
+                "fa": "اتاق نشیمن",
+                "itemIds": [
+                  "chair",
+                  "sofa",
+                  "table",
+                  "lamp"
+                ]
+              },
+              {
+                "id": "bedroom",
+                "en": "bedroom",
+                "fa": "اتاق خواب",
+                "itemIds": [
+                  "bed",
+                  "chair",
+                  "lamp",
+                  "mirror"
+                ]
+              },
+              {
+                "id": "kitchen",
+                "en": "kitchen",
+                "fa": "آشپزخانه",
+                "itemIds": [
+                  "fridge",
+                  "table",
+                  "chair"
+                ]
+              },
+              {
+                "id": "bathroom",
+                "en": "bathroom",
+                "fa": "حمام",
+                "itemIds": [
+                  "shower",
+                  "mirror"
+                ]
+              }
+            ],
+            "item": [
+              {
+                "id": "chair",
+                "en": "chair",
+                "plural": "chairs",
+                "fa": "صندلی"
+              },
+              {
+                "id": "sofa",
+                "en": "sofa",
+                "plural": "sofas",
+                "fa": "مبل"
+              },
+              {
+                "id": "table",
+                "en": "table",
+                "plural": "tables",
+                "fa": "میز"
+              },
+              {
+                "id": "lamp",
+                "en": "lamp",
+                "plural": "lamps",
+                "fa": "چراغ"
+              },
+              {
+                "id": "bed",
+                "en": "bed",
+                "plural": "beds",
+                "fa": "تخت"
+              },
+              {
+                "id": "mirror",
+                "en": "mirror",
+                "plural": "mirrors",
+                "fa": "آینه"
+              },
+              {
+                "id": "fridge",
+                "en": "fridge",
+                "plural": "fridges",
+                "fa": "یخچال"
+              },
+              {
+                "id": "shower",
+                "en": "shower",
+                "plural": "showers",
+                "fa": "دوش"
+              }
+            ],
+            "count": [
+              {
+                "id": "3",
+                "number": 3
+              },
+              {
+                "id": "1",
+                "number": 1
+              },
+              {
+                "id": "2",
+                "number": 2
+              },
+              {
+                "id": "0",
+                "number": 0
+              },
+              {
+                "id": "4",
+                "number": 4
+              },
+              {
+                "id": "5",
+                "number": 5
+              }
+            ],
+            "color": [
+              {
+                "id": "blue",
+                "en": "blue",
+                "fa": "آبی",
+                "hex": "#5297d2"
+              },
+              {
+                "id": "red",
+                "en": "red",
+                "fa": "قرمز",
+                "hex": "#df7169"
+              },
+              {
+                "id": "green",
+                "en": "green",
+                "fa": "سبز",
+                "hex": "#67a780"
+              },
+              {
+                "id": "white",
+                "en": "white",
+                "fa": "سفید",
+                "hex": "#e5e8e8"
+              }
+            ],
+            "roomsCount": [
+              {
+                "id": "two",
+                "en": "two",
+                "fa": "دو"
+              },
+              {
+                "id": "three",
+                "en": "three",
+                "fa": "سه"
+              },
+              {
+                "id": "four",
+                "en": "four",
+                "fa": "چهار"
+              }
+            ]
+          }
+        },
+        {
+          "id": "a1-10-warmup",
+          "type": "response-practice",
+          "phase": "phrases",
+          "title": "امکانات خانه را یکی‌یکی پیدا کن",
+          "practiceRevision": 1,
+          "description": "وسایلی را که در صحنهٔ شمارش نیستند هم یاد بگیر؛ از جنس، رنگ و مکان قبلی کمک بگیر.",
+          "tasks": [
+            {
+              "task": "بگو سینک داخل آشپزخانه است.",
+              "hint": "The sink is in the kitchen.",
+              "example": "The sink is in the kitchen.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the sink is in the kitchen"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو اجاق گاز مشکی است.",
+              "hint": "The stove is black.",
+              "example": "The stove is black.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the stove is black"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو گاراژ کنار خانه است.",
+              "hint": "The garage is next to the house.",
+              "example": "The garage is next to the house.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the garage is next to the house"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو خانهٔ ما یک باغچه دارد.",
+              "hint": "Our house has a garden.",
+              "example": "Our house has a garden.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "our house has a garden"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو حمام یک دوش دارد.",
+              "hint": "The bathroom has a shower.",
+              "example": "The bathroom has a shower.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the bathroom has a shower"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو یخچال سفید داخل آشپزخانه است.",
+              "hint": "There is a white fridge in the kitchen.",
+              "example": "There is a white fridge in the kitchen.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there is a white fridge in the kitchen"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-10-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "There is / There are و موقعیت را بساز",
+          "description": "یک، سه و هیچ را تغییر بده تا فعل و اسم جمع هم درست شوند؛ رنگ‌های درس شش را دوباره استفاده کن.",
+          "targetLanguage": "en",
+          "wordSets": {
+            "counts": [
+              {
+                "id": "one",
+                "label": "one",
+                "translation": "یک",
+                "forms": {
+                  "en": "one",
+                  "fa": "یک"
+                },
+                "features": {
+                  "singular": true
+                }
+              },
+              {
+                "id": "two",
+                "label": "two",
+                "translation": "دو",
+                "forms": {
+                  "en": "two",
+                  "fa": "دو"
+                },
+                "features": {
+                  "singular": false
+                }
+              },
+              {
+                "id": "three",
+                "label": "three",
+                "translation": "سه",
+                "forms": {
+                  "en": "three",
+                  "fa": "سه"
+                },
+                "features": {
+                  "singular": false
+                }
+              },
+              {
+                "id": "no",
+                "label": "no",
+                "translation": "هیچ",
+                "forms": {
+                  "en": "no",
+                  "fa": "هیچ"
+                },
+                "features": {
+                  "singular": false
+                }
+              }
+            ],
+            "objects": [
+              {
+                "id": "chair",
+                "label": "chair",
+                "translation": "صندلی",
+                "forms": {
+                  "en": "chair",
+                  "singular": "chair",
+                  "plural": "chairs",
+                  "fa": "صندلی"
+                }
+              },
+              {
+                "id": "bed",
+                "label": "bed",
+                "translation": "تخت",
+                "forms": {
+                  "en": "bed",
+                  "singular": "bed",
+                  "plural": "beds",
+                  "fa": "تخت"
+                }
+              },
+              {
+                "id": "lamp",
+                "label": "lamp",
+                "translation": "چراغ",
+                "forms": {
+                  "en": "lamp",
+                  "singular": "lamp",
+                  "plural": "lamps",
+                  "fa": "چراغ"
+                }
+              }
+            ],
+            "colors": [
+              {
+                "id": "blue",
+                "label": "blue",
+                "translation": "آبی",
+                "forms": {
+                  "en": "blue",
+                  "fa": "آبی"
+                }
+              },
+              {
+                "id": "red",
+                "label": "red",
+                "translation": "قرمز",
+                "forms": {
+                  "en": "red",
+                  "fa": "قرمز"
+                }
+              },
+              {
+                "id": "white",
+                "label": "white",
+                "translation": "سفید",
+                "forms": {
+                  "en": "white",
+                  "fa": "سفید"
+                }
+              }
+            ],
+            "rooms": [
+              {
+                "id": "living",
+                "label": "living room",
+                "translation": "اتاق نشیمن",
+                "forms": {
+                  "en": "living room",
+                  "fa": "اتاق نشیمن"
+                }
+              },
+              {
+                "id": "bedroom",
+                "label": "bedroom",
+                "translation": "اتاق خواب",
+                "forms": {
+                  "en": "bedroom",
+                  "fa": "اتاق خواب"
+                }
+              },
+              {
+                "id": "kitchen",
+                "label": "kitchen",
+                "translation": "آشپزخانه",
+                "forms": {
+                  "en": "kitchen",
+                  "fa": "آشپزخانه"
+                }
+              }
+            ],
+            "roomCounts": [
+              {
+                "id": "two",
+                "label": "two",
+                "translation": "دو",
+                "forms": {
+                  "en": "two",
+                  "fa": "دو"
+                }
+              },
+              {
+                "id": "three",
+                "label": "three",
+                "translation": "سه",
+                "forms": {
+                  "en": "three",
+                  "fa": "سه"
+                }
+              },
+              {
+                "id": "four",
+                "label": "four",
+                "translation": "چهار",
+                "forms": {
+                  "en": "four",
+                  "fa": "چهار"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "count",
+              "label": "تعداد",
+              "wordSet": "counts",
+              "default": "one"
+            },
+            {
+              "id": "object",
+              "label": "وسیله",
+              "wordSet": "objects",
+              "default": "chair"
+            },
+            {
+              "id": "color",
+              "label": "رنگ",
+              "wordSet": "colors",
+              "default": "blue"
+            },
+            {
+              "id": "room",
+              "label": "اتاق",
+              "wordSet": "rooms",
+              "default": "living"
+            },
+            {
+              "id": "roomCount",
+              "label": "اتاق‌های خانه",
+              "wordSet": "roomCounts",
+              "default": "three"
+            }
+          ],
+          "derivedDefaults": {
+            "there": "There is"
+          },
+          "dependencies": [
+            {
+              "id": "two",
+              "when": {
+                "slot": "count",
+                "equals": "two"
+              },
+              "set": {
+                "there": "There are"
+              }
+            },
+            {
+              "id": "three",
+              "when": {
+                "slot": "count",
+                "equals": "three"
+              },
+              "set": {
+                "there": "There are"
+              }
+            },
+            {
+              "id": "none",
+              "when": {
+                "slot": "count",
+                "equals": "no"
+              },
+              "set": {
+                "there": "There are"
+              }
+            }
+          ],
+          "defaultPattern": "count-place",
+          "patterns": [
+            {
+              "id": "count-place",
+              "label": "تعداد و مکان",
+              "segments": [
+                {
+                  "derived": "there"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "count",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "color",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "plural",
+                  "numberSlot": "count"
+                },
+                {
+                  "fixed": " in the "
+                },
+                {
+                  "slot": "room",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": []
+            },
+            {
+              "id": "house",
+              "label": "تعداد اتاق‌ها",
+              "segments": [
+                {
+                  "fixed": "My house has "
+                },
+                {
+                  "slot": "roomCount",
+                  "form": "en"
+                },
+                {
+                  "fixed": " rooms."
+                }
+              ],
+              "translationSegments": []
+            },
+            {
+              "id": "question",
+              "label": "پرسش دربارهٔ امکانات",
+              "segments": [
+                {
+                  "fixed": "Are there any "
+                },
+                {
+                  "slot": "object",
+                  "form": "plural"
+                },
+                {
+                  "fixed": " in the "
+                },
+                {
+                  "slot": "room",
+                  "form": "en"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": []
+            }
+          ]
+        },
+        {
+          "id": "a1-10-forms",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "یک معنا، چند جمله و سؤال",
+          "description": "روی واژه‌های جمله بزن و ساختارهای خبری، پرسشی و ترکیبی را مقایسه کن.",
+          "sourceActivityId": "a1-10-composer",
+          "patternIds": [
+            "count-place",
+            "house",
+            "question"
+          ]
+        },
+        {
+          "id": "a1-10-quest",
+          "type": "cumulative-visual-quest",
+          "phase": "variants",
+          "title": "سه مأموریت: اتاق، تعداد و نبودن",
+          "description": "جمله را گوش بده و تصویر درست را انتخاب کن. در هر مرحله بیش از یک ویژگی را بررسی کن.",
+          "mode": "home",
+          "rounds": [
+            {
+              "prompt": "There are three blue chairs in the living room.",
+              "correct": 2,
+              "choices": [
+                {
+                  "description": "two red chairs in living room",
+                  "room": "living room",
+                  "item": "chair",
+                  "count": 2,
+                  "color": "#df7169"
+                },
+                {
+                  "description": "three blue chairs in bedroom",
+                  "room": "bedroom",
+                  "item": "chair",
+                  "count": 3,
+                  "color": "#5297d2"
+                },
+                {
+                  "description": "three blue chairs in living room",
+                  "room": "living room",
+                  "item": "chair",
+                  "count": 3,
+                  "color": "#5297d2"
+                }
+              ]
+            },
+            {
+              "prompt": "There is one green fridge in the kitchen.",
+              "correct": 0,
+              "choices": [
+                {
+                  "description": "green fridge in kitchen",
+                  "room": "kitchen",
+                  "item": "fridge",
+                  "count": 1,
+                  "color": "#67a780"
+                },
+                {
+                  "description": "two green fridges in kitchen",
+                  "room": "kitchen",
+                  "item": "fridge",
+                  "count": 2,
+                  "color": "#67a780"
+                },
+                {
+                  "description": "green fridge in bedroom",
+                  "room": "bedroom",
+                  "item": "fridge",
+                  "count": 1,
+                  "color": "#67a780"
+                }
+              ]
+            },
+            {
+              "prompt": "There are no mirrors in the bathroom.",
+              "correct": 1,
+              "choices": [
+                {
+                  "description": "one mirror in bathroom",
+                  "room": "bathroom",
+                  "item": "mirror",
+                  "count": 1,
+                  "color": "#e5e8e8"
+                },
+                {
+                  "description": "no mirrors in bathroom",
+                  "room": "bathroom",
+                  "item": "mirror",
+                  "count": 0,
+                  "color": "#e5e8e8"
+                },
+                {
+                  "description": "two mirrors in bathroom",
+                  "room": "bathroom",
+                  "item": "mirror",
+                  "count": 2,
+                  "color": "#e5e8e8"
+                }
+              ]
+            },
+            {
+              "prompt": "There are two white beds in the bedroom.",
+              "correct": 0,
+              "choices": [
+                {
+                  "description": "two white beds in bedroom",
+                  "room": "bedroom",
+                  "item": "bed",
+                  "count": 2,
+                  "color": "#e5e8e8"
+                },
+                {
+                  "description": "one white bed in bedroom",
+                  "room": "bedroom",
+                  "item": "bed",
+                  "count": 1,
+                  "color": "#e5e8e8"
+                },
+                {
+                  "description": "two blue beds in bedroom",
+                  "room": "bedroom",
+                  "item": "bed",
+                  "count": 2,
+                  "color": "#5297d2"
+                }
+              ]
+            }
+          ],
+          "completion": "حالا از روی جمله می‌توانی چند ویژگی را با هم در تصویر پیدا کنی."
+        },
+        {
+          "id": "a1-10-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "پنج جمله بساز، نه پنج پاسخ حفظی",
+          "description": "واژه‌های یک بانک مشترک را کنار هم قرار بده و به پنج جملهٔ متفاوت برس.",
+          "revision": 1,
+          "reuseBank": true,
+          "goalCount": 5,
+          "sentences": [
+            {
+              "id": "sentence-1",
+              "words": [
+                "There",
+                "is",
+                "a",
+                "bed",
+                "in",
+                "the",
+                "bedroom."
+              ]
+            },
+            {
+              "id": "sentence-2",
+              "words": [
+                "There",
+                "are",
+                "three",
+                "blue",
+                "chairs",
+                "in",
+                "the",
+                "living",
+                "room."
+              ]
+            },
+            {
+              "id": "sentence-3",
+              "words": [
+                "My",
+                "house",
+                "has",
+                "four",
+                "rooms."
+              ]
+            },
+            {
+              "id": "sentence-4",
+              "words": [
+                "There",
+                "is",
+                "no",
+                "fridge",
+                "in",
+                "the",
+                "kitchen."
+              ]
+            },
+            {
+              "id": "sentence-5",
+              "words": [
+                "Is",
+                "there",
+                "a",
+                "mirror",
+                "in",
+                "the",
+                "bathroom?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-10-build",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "از «سه کتاب روی میز» تا «سه صندلی در خانه»",
+          "practiceRevision": 1,
+          "description": "با خانواده، شمارش، مالکیت، مکان و صفت‌های قبلی جمله‌های جدید بنویس.",
+          "tasks": [
+            {
+              "task": "بگو سه صندلی آبی در اتاق نشیمن هستند.",
+              "hint": "There are three blue chairs in the living room.",
+              "example": "There are three blue chairs in the living room.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are three blue chairs in the living room"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو یک تخت در اتاق خواب است.",
+              "hint": "There is a bed in the bedroom.",
+              "example": "There is a bed in the bedroom.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there is a bed in the bedroom"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو خانهٔ من سه اتاق دارد.",
+              "hint": "My house has three rooms.",
+              "example": "My house has three rooms.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my house has three rooms"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو در حمام هیچ آینه‌ای نیست.",
+              "hint": "There are no mirrors in the bathroom.",
+              "example": "There are no mirrors in the bathroom.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are no mirrors in the bathroom"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو دو کتاب من روی میز اتاق خواب هستند.",
+              "hint": "My two books are on the table in the bedroom.",
+              "example": "My two books are on the table in the bedroom.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my two books are on the table in the bedroom"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بپرس آیا در آشپزخانه یخچال وجود دارد.",
+              "hint": "Is there a fridge in the kitchen?",
+              "example": "Is there a fridge in the kitchen?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "is there a fridge in the kitchen"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "گفت‌وگو و انتقال",
+      "intro": "خانهٔ فرضی خود را با تعداد اتاق‌ها، امکانات و نبودن بعضی وسایل معرفی کن.",
+      "masteryActivityIds": [
+        "a1-10-independent"
+      ],
+      "activities": [
+        {
+          "id": "a1-10-exchange",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "خانهٔ من چه دارد؟ یک سؤال، چند پاسخ",
+          "description": "یک سؤال را نگه دار و پاسخ‌ها را جابه‌جا کن تا تفاوت معنی روشن شود.",
+          "pairs": [
+            {
+              "question": "Is there a fridge in the kitchen?",
+              "questionFa": "در آشپزخانه یخچال هست؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, there is a fridge.",
+                  "fa": "بله، یک یخچال هست.",
+                  "note": "یک وسیله."
+                },
+                {
+                  "label": "نه",
+                  "en": "No, there is no fridge.",
+                  "fa": "نه، یخچال نیست.",
+                  "note": "نبودن."
+                }
+              ]
+            },
+            {
+              "question": "How many rooms are there?",
+              "questionFa": "چند اتاق وجود دارد؟",
+              "variants": [
+                {
+                  "label": "سه",
+                  "en": "There are three rooms.",
+                  "fa": "سه اتاق هست.",
+                  "note": "چند اتاق."
+                },
+                {
+                  "label": "چهار",
+                  "en": "There are four rooms.",
+                  "fa": "چهار اتاق هست.",
+                  "note": "تعداد را عوض کردی."
+                }
+              ]
+            },
+            {
+              "question": "Are there any chairs in the living room?",
+              "questionFa": "در اتاق نشیمن صندلی هست؟",
+              "variants": [
+                {
+                  "label": "دو عدد",
+                  "en": "Yes, there are two chairs.",
+                  "fa": "بله، دو صندلی هست.",
+                  "note": "جمع."
+                },
+                {
+                  "label": "هیچ",
+                  "en": "No, there are no chairs.",
+                  "fa": "نه، هیچ صندلی نیست.",
+                  "note": "نبودن در جمع."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-10-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "گفت‌وگو: خانهٔ جدید",
+          "description": "گفت‌وگوی کوتاه و واقعی؛ هر نوبت را جدا گوش بده و تکرار کن.",
+          "lines": [
+            {
+              "speaker": "Nina",
+              "en": "This is my new house.",
+              "fa": "این خانهٔ جدید من است."
+            },
+            {
+              "speaker": "Reza",
+              "en": "How many rooms are there?",
+              "fa": "چند اتاق دارد؟"
+            },
+            {
+              "speaker": "Nina",
+              "en": "My house has four rooms.",
+              "fa": "خانهٔ من چهار اتاق دارد."
+            },
+            {
+              "speaker": "Reza",
+              "en": "Is there a kitchen?",
+              "fa": "آشپزخانه دارد؟"
+            },
+            {
+              "speaker": "Nina",
+              "en": "Yes. There is a fridge in the kitchen.",
+              "fa": "بله. در آشپزخانه یخچال هست."
+            },
+            {
+              "speaker": "Reza",
+              "en": "What is in the living room?",
+              "fa": "در اتاق نشیمن چه هست؟"
+            },
+            {
+              "speaker": "Nina",
+              "en": "There are three blue chairs and a sofa.",
+              "fa": "سه صندلی آبی و یک مبل هست."
+            },
+            {
+              "speaker": "Reza",
+              "en": "Do you have a balcony?",
+              "fa": "بالکن داری؟"
+            },
+            {
+              "speaker": "Nina",
+              "en": "No, there is no balcony.",
+              "fa": "نه، بالکن ندارد."
+            }
+          ]
+        },
+        {
+          "id": "a1-10-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "title": "خانهٔ تصویری چهار اتاقه را توصیف کن",
+          "description": "ابتدا تصویر را نگاه کن، سپس بدون انتخاب گزینه جمله بساز.",
+          "image": "./assets/scene-a1-10-house.svg",
+          "imageAlt": "خانهٔ فرضی با اتاق نشیمن، آشپزخانه، اتاق خواب و حمام و وسایل مشخص",
+          "caption": "چهار اتاق و وسایل آن‌ها؛ رنگ، مکان و تعداد را از روی شکل بخوان",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "از روی تصویر بگو در نشیمن سه صندلی آبی هست.",
+              "hint": "There are three blue chairs in the living room.",
+              "example": "There are three blue chairs in the living room.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are three blue chairs in the living room"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو در اتاق خواب یک تخت هست.",
+              "hint": "There is a bed in the bedroom.",
+              "example": "There is a bed in the bedroom.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there is a bed in the bedroom"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو خانه چهار اتاق دارد.",
+              "hint": "My house has four rooms.",
+              "example": "My house has four rooms.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my house has four rooms"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-10-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "title": "نوبت توست: جملهٔ بعدی را بساز",
+          "description": "دوستت حرف می‌زند؛ تو باید با دانسته‌های چند درس پاسخ بدهی.",
+          "practiceRevision": 1,
+          "completion": "توانستی واژه‌های جدید و قبلی را در گفت‌وگو کنار هم بگذاری.",
+          "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "What is in the bedroom?",
+              "task": "بگو در اتاق خواب یک تخت است.",
+              "hint": "There is a bed in the bedroom.",
+              "example": "There is a bed in the bedroom.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there is a bed in the bedroom"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "What is in the living room?",
+              "task": "بگو سه صندلی آبی در نشیمن هستند.",
+              "hint": "There are three blue chairs in the living room.",
+              "example": "There are three blue chairs in the living room.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are three blue chairs in the living room"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "How many rooms does your house have?",
+              "task": "بگو خانهٔ من چهار اتاق دارد.",
+              "hint": "My house has four rooms.",
+              "example": "My house has four rooms.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my house has four rooms"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is the bed?",
+              "task": "بگو تخت در اتاق خواب است.",
+              "hint": "The bed is in the bedroom.",
+              "example": "The bed is in the bedroom.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the bed is in the bedroom"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Are there any mirrors in the bedroom?",
+              "task": "بگو هیچ آینه‌ای در اتاق خواب نیست.",
+              "hint": "There are no mirrors in the bedroom.",
+              "example": "There are no mirrors in the bedroom.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are no mirrors in the bedroom"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-10-transfer",
+          "type": "response-practice",
+          "phase": "guided",
+          "title": "ترکیب تعداد، مالکیت، مکان و رنگ در خانه",
+          "practiceRevision": 1,
+          "description": "موقعیت عوض شده است؛ همان الگوی جمله را با آدم، شیء یا تعداد تازه به کار ببر.",
+          "tasks": [
+            {
+              "task": "بگو سه کتاب قرمز روی میز آشپزخانه هستند.",
+              "hint": "There are three red books on the kitchen table.",
+              "example": "There are three red books on the kitchen table.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are three red books on the kitchen table"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو دو خواهر من داخل اتاق نشیمن هستند.",
+              "hint": "My two sisters are in the living room.",
+              "example": "My two sisters are in the living room.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my two sisters are in the living room"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو خانهٔ من یک بالکن کوچک دارد.",
+              "hint": "My house has a small balcony.",
+              "example": "My house has a small balcony.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my house has a small balcony"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو در آشپزخانه یخچال نیست.",
+              "hint": "There is no fridge in the kitchen.",
+              "example": "There is no fridge in the kitchen.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there is no fridge in the kitchen"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو در اتاق خواب آینه‌ای نیست.",
+              "hint": "There is no mirror in the bedroom.",
+              "example": "There is no mirror in the bedroom.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there is no mirror in the bedroom"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-10-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "خانهٔ فرضی خودت را معرفی کن",
+          "prompt": "یک خانهٔ فرضی با دو تا چهار اتاق توصیف کن. یک جمله با There is و یک جمله با There are و جملهٔ My house has بنویس. مکان یک شیء را با in the bedroom مشخص کن. نبودن یک وسیله را هم بگو و حداقل دو رنگ یا عدد از درس‌های قبل بیاور.",
+          "placeholder": "My house has three rooms.\nThere is a bed in the bedroom.\nThere are three blue chairs in the living room.\nThere is no mirror in the bedroom.",
+          "hint": "یک: There is a... / چند: There are three... / نبودن: There is no... یا There are no...",
+          "kind": "free-text",
+          "minWords": 25,
+          "assessment": {
+            "revision": 1,
+            "required": [
+              {
+                "any": [
+                  "there is"
+                ],
+                "feedback": "عبارت There is را در یک جملهٔ کامل به کار ببر."
+              },
+              {
+                "any": [
+                  "there are"
+                ],
+                "feedback": "عبارت There are را در یک جملهٔ کامل به کار ببر."
+              },
+              {
+                "any": [
+                  "my house has"
+                ],
+                "feedback": "عبارت My house has را در یک جملهٔ کامل به کار ببر."
+              },
+              {
+                "any": [
+                  "in the bedroom"
+                ],
+                "feedback": "عبارت in the bedroom را در یک جملهٔ کامل به کار ببر."
+              }
+            ],
+            "success": "چند الگوی تازه را با اطلاعات و واژه‌های قبلی خودت ترکیب کردی."
+          }
+        },
+        {
+          "id": "a1-10-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "دوباره گوش بده؛ حالا معنای جمله‌ها را می‌سازی",
+          "description": "همان جمله‌های شروع درس را با فهم تازه دوباره تکرار کن.",
+          "sourceActivityId": "a1-10-shadowing"
+        }
+      ]
+    }
+  ]
+}

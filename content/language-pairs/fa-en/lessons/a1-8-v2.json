@@ -1,0 +1,1852 @@
+{
+  "id": "A1-8",
+  "revision": "2026-10-25-cumulative-a1-7-10",
+  "status": "draft",
+  "title": "تبادل اطلاعات شخصی",
+  "goal": "با عددهای بزرگ‌تر، سن، کشور، زبان، تحصیل، شغل و اطلاعات تماس را در یک معرفی کوتاه بیان کن.",
+  "duration": 27,
+  "feature": "کارت معرفی زنده با اطلاعات نمونه",
+  "archetype": "K4/K12",
+  "roadmapRef": {
+    "id": "A1-8",
+    "revision": "2026-10-25-owner-cumulative-a1",
+    "communicativeOutcome": "سن، نشانی، شماره تماس، زبان و اطلاعات شخصی ساده را می‌پرسد و می‌گوید؛ همان اطلاعات را در یک پروفایل بسیار کوتاهِ دو یا سه‌خانه‌ای ثبت می‌کند. دانشجو یا شاغل بودن و رشتهٔ تحصیلی فعلی را با قالب ساده بیان می‌کند؛ کشور و زبان را در همین مرحله به معرفی اضافه می‌کند."
+  },
+  "teachingModel": {
+    "type": "discovery-production",
+    "sections": 2
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "با عددهای بزرگ‌تر، سن، کشور، زبان، تحصیل، شغل و اطلاعات تماس را در یک معرفی کوتاه بیان کن.",
+    "prerequisites": [
+      "A1-1: نام و احوال‌پرسی",
+      "A1-2: خانواده",
+      "A1-3: اعداد ۱ تا ۱۲",
+      "A1-5: موقعیت ساده"
+    ],
+    "previously": "حالا که می‌توانی خانواده و تعداد را معرفی کنی، اعداد ۱۳ به بالا را برای سن و تماس به کار می‌بری.",
+    "quickCheck": {
+      "title": "یک سؤال قبل از شروع",
+      "question": "چطور می‌گویی من ۲۴ سال دارم و دانشجو هستم؟",
+      "example": "I am twenty-four years old. I am a student.",
+      "explanation": "برای سن از am ... years old و برای تحصیل از a student استفاده کن.",
+      "allowSkip": false
+    }
+  },
+  "visual": {
+    "src": "./assets/scene-a1-8-profile.svg",
+    "alt": "دو کارت پروفایل کاملاً ساختگی با نام، سن، کشور و زبان متفاوت",
+    "caption": "اطلاعات نمونهٔ سارا و علی؛ نام و داده‌های واقعی لازم نیست"
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "years old",
+      "I am from",
+      "I speak",
+      "I study"
+    ],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": true
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "کشف و ساخت جمله",
+      "intro": "اول اعداد ۱۳ تا ۱۰۰ را در سن و شماره امتحان کن، بعد کارت اطلاعات نمونه را با لمس جمله تغییر بده.",
+      "masteryActivityIds": [
+        "a1-8-build"
+      ],
+      "activities": [
+        {
+          "id": "a1-8-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "اول گوش بده و در همان ریتم تکرار کن",
+          "description": "در اولین دور، لازم نیست همهٔ کلمه‌ها را بلد باشی.",
+          "audioSrc": null,
+          "rate": 0.76,
+          "pauseMs": 520,
+          "lines": [
+            "My name is Sara.",
+            "I am twenty-four years old.",
+            "I am from Iran.",
+            "I speak Persian and English.",
+            "I am a student.",
+            "I study architecture.",
+            "What is your phone number?"
+          ]
+        },
+        {
+          "id": "a1-8-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "پل شمارش به سن و پروفایل؛ بدون تکرار یک تا دوازده",
+          "batchSize": 4,
+          "deckRevision": 1,
+          "items": [
+            {
+              "en": "thirteen",
+              "fa": "سیزده",
+              "examples": [
+                "I am thirteen.",
+                "My brother is thirteen.",
+                "There are thirteen books."
+              ]
+            },
+            {
+              "en": "fourteen",
+              "fa": "چهارده",
+              "examples": [
+                "She is fourteen.",
+                "He has fourteen books.",
+                "Is your sister fourteen?"
+              ]
+            },
+            {
+              "en": "fifteen",
+              "fa": "پانزده",
+              "examples": [
+                "I am fifteen.",
+                "Fifteen is after fourteen.",
+                "My brother is fifteen."
+              ]
+            },
+            {
+              "en": "sixteen",
+              "fa": "شانزده",
+              "examples": [
+                "She is sixteen.",
+                "I have sixteen pens.",
+                "Is he sixteen?"
+              ]
+            },
+            {
+              "en": "seventeen",
+              "fa": "هفده",
+              "examples": [
+                "My sister is seventeen.",
+                "He is seventeen.",
+                "Are you seventeen?"
+              ]
+            },
+            {
+              "en": "eighteen",
+              "fa": "هجده",
+              "examples": [
+                "I am eighteen.",
+                "My brother is eighteen.",
+                "She is eighteen."
+              ]
+            },
+            {
+              "en": "nineteen",
+              "fa": "نوزده",
+              "examples": [
+                "She is nineteen.",
+                "He is nineteen.",
+                "Are you nineteen?"
+              ]
+            },
+            {
+              "en": "twenty",
+              "fa": "بیست",
+              "examples": [
+                "I am twenty years old.",
+                "Twenty books are on the shelf.",
+                "He is twenty."
+              ]
+            },
+            {
+              "en": "thirty",
+              "fa": "سی",
+              "examples": [
+                "My father is thirty.",
+                "Thirty is after twenty.",
+                "I am thirty."
+              ]
+            },
+            {
+              "en": "forty",
+              "fa": "چهل",
+              "examples": [
+                "She is forty.",
+                "Forty is after thirty.",
+                "My mother is forty."
+              ]
+            },
+            {
+              "en": "fifty",
+              "fa": "پنجاه",
+              "examples": [
+                "My father is fifty.",
+                "Fifty is after forty.",
+                "Is he fifty?"
+              ]
+            },
+            {
+              "en": "sixty",
+              "fa": "شصت",
+              "examples": [
+                "My grandfather is sixty.",
+                "Sixty is after fifty.",
+                "Is she sixty?"
+              ]
+            },
+            {
+              "en": "seventy",
+              "fa": "هفتاد",
+              "examples": [
+                "My grandmother is seventy.",
+                "Seventy is after sixty.",
+                "He is seventy."
+              ]
+            },
+            {
+              "en": "eighty",
+              "fa": "هشتاد",
+              "examples": [
+                "My grandfather is eighty.",
+                "Eighty is after seventy.",
+                "He is eighty."
+              ]
+            },
+            {
+              "en": "ninety",
+              "fa": "نود",
+              "examples": [
+                "Ninety is after eighty.",
+                "The number is ninety.",
+                "Is that ninety?"
+              ]
+            },
+            {
+              "en": "hundred",
+              "fa": "صد",
+              "examples": [
+                "The number is one hundred.",
+                "One hundred is after ninety-nine.",
+                "Write one hundred."
+              ]
+            },
+            {
+              "en": "age",
+              "fa": "سن",
+              "examples": [
+                "What is your age?",
+                "My age is twenty-four.",
+                "Is your age twenty?"
+              ]
+            },
+            {
+              "en": "year",
+              "fa": "سال",
+              "examples": [
+                "I am twenty years old.",
+                "My sister is nineteen years old.",
+                "There are two years."
+              ]
+            },
+            {
+              "en": "country",
+              "fa": "کشور",
+              "examples": [
+                "What is your country?",
+                "My country is Iran.",
+                "This country is Japan."
+              ]
+            },
+            {
+              "en": "language",
+              "fa": "زبان",
+              "examples": [
+                "What language do you speak?",
+                "My language is Persian.",
+                "English is a language."
+              ]
+            },
+            {
+              "en": "student",
+              "fa": "دانشجو / دانش‌آموز",
+              "examples": [
+                "I am a student.",
+                "My sister is a student.",
+                "Are you a student?"
+              ]
+            },
+            {
+              "en": "teacher",
+              "fa": "معلم",
+              "examples": [
+                "My sister is a teacher.",
+                "I am a teacher.",
+                "Is he a teacher?"
+              ]
+            },
+            {
+              "en": "engineer",
+              "fa": "مهندس",
+              "examples": [
+                "My brother is an engineer.",
+                "I am an engineer.",
+                "Is she an engineer?"
+              ]
+            },
+            {
+              "en": "address",
+              "fa": "نشانی",
+              "examples": [
+                "What is your address?",
+                "My address is 12 River Street.",
+                "Write your address."
+              ]
+            },
+            {
+              "en": "street",
+              "fa": "خیابان",
+              "examples": [
+                "I live on River Street.",
+                "This is Park Street.",
+                "My address is 12 River Street."
+              ]
+            },
+            {
+              "en": "speak",
+              "fa": "صحبت کردن",
+              "examples": [
+                "I speak Persian.",
+                "Do you speak English?",
+                "My sister speaks English."
+              ]
+            },
+            {
+              "en": "study",
+              "fa": "تحصیل کردن",
+              "examples": [
+                "I study architecture.",
+                "I study English.",
+                "Do you study English?"
+              ]
+            },
+            {
+              "en": "work",
+              "fa": "کار کردن",
+              "examples": [
+                "I work as a teacher.",
+                "Where do you work?",
+                "My brother works here."
+              ]
+            },
+            {
+              "en": "live",
+              "fa": "زندگی کردن",
+              "examples": [
+                "I live in Iran.",
+                "Where do you live?",
+                "My sister lives in Japan."
+              ]
+            },
+            {
+              "en": "architecture",
+              "fa": "معماری",
+              "examples": [
+                "I study architecture.",
+                "My brother studies architecture.",
+                "Is architecture your subject?"
+              ]
+            },
+            {
+              "en": "English",
+              "fa": "انگلیسی",
+              "examples": [
+                "I speak English.",
+                "Do you study English?",
+                "My sister speaks English."
+              ]
+            },
+            {
+              "en": "Persian",
+              "fa": "فارسی",
+              "examples": [
+                "I speak Persian.",
+                "Persian is my language.",
+                "Do you speak Persian?"
+              ]
+            },
+            {
+              "en": "Iran",
+              "fa": "ایران",
+              "examples": [
+                "I am from Iran.",
+                "I live in Iran.",
+                "Iran is my country."
+              ]
+            },
+            {
+              "en": "Japan",
+              "fa": "ژاپن",
+              "examples": [
+                "She is from Japan.",
+                "I live in Japan.",
+                "Japan is a country."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-8-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "سن و اطلاعات را سؤال و جواب کن",
+          "description": "این جمله‌های کوتاه را یک واحدِ معنی‌دار ببین و با واژه‌های قبلی جابه‌جا کن.",
+          "items": [
+            {
+              "en": "years old",
+              "fa": "ساله / سن",
+              "kind": "fixed",
+              "examples": [
+                "I am twenty-four years old.",
+                "My sister is nineteen years old.",
+                "How old are you?"
+              ]
+            },
+            {
+              "en": "I am from",
+              "fa": "من اهلِ ... هستم",
+              "kind": "fixed",
+              "examples": [
+                "I am from Iran.",
+                "I am from Japan.",
+                "My brother is from Iran."
+              ]
+            },
+            {
+              "en": "I speak",
+              "fa": "من ... صحبت می‌کنم",
+              "kind": "fixed",
+              "examples": [
+                "I speak English.",
+                "I speak Persian.",
+                "I speak English and Persian."
+              ]
+            },
+            {
+              "en": "I study",
+              "fa": "من ... می‌خوانم",
+              "kind": "fixed",
+              "examples": [
+                "I study architecture.",
+                "I study English.",
+                "My sister studies architecture."
+              ]
+            },
+            {
+              "en": "phone number",
+              "fa": "شمارهٔ تلفن",
+              "kind": "fixed",
+              "examples": [
+                "What is your phone number?",
+                "My phone number is 000-111-222.",
+                "Please write your phone number."
+              ]
+            },
+            {
+              "en": "How old are you?",
+              "fa": "چند سال داری؟",
+              "kind": "fixed",
+              "examples": [
+                "How old are you?",
+                "I am twenty-four years old.",
+                "My brother is twenty."
+              ]
+            },
+            {
+              "en": "I am a student",
+              "fa": "من دانشجو هستم",
+              "kind": "fixed",
+              "examples": [
+                "I am a student.",
+                "My sister is a student.",
+                "I study architecture."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-8-number-lab",
+          "type": "cumulative-number-lab",
+          "phase": "phrases",
+          "title": "پل شمارش به سن و اطلاعات شخصی",
+          "description": "از سیزده تا صد را در سن خودت و اعضای خانواده جابه‌جا کن؛ روی هر عدد و نام شخص بزن.",
+          "numbers": [
+            {
+              "number": 13,
+              "en": "thirteen"
+            },
+            {
+              "number": 14,
+              "en": "fourteen"
+            },
+            {
+              "number": 15,
+              "en": "fifteen"
+            },
+            {
+              "number": 16,
+              "en": "sixteen"
+            },
+            {
+              "number": 17,
+              "en": "seventeen"
+            },
+            {
+              "number": 18,
+              "en": "eighteen"
+            },
+            {
+              "number": 19,
+              "en": "nineteen"
+            },
+            {
+              "number": 20,
+              "en": "twenty"
+            },
+            {
+              "number": 21,
+              "en": "twenty-one"
+            },
+            {
+              "number": 22,
+              "en": "twenty-two"
+            },
+            {
+              "number": 23,
+              "en": "twenty-three"
+            },
+            {
+              "number": 24,
+              "en": "twenty-four"
+            },
+            {
+              "number": 25,
+              "en": "twenty-five"
+            },
+            {
+              "number": 30,
+              "en": "thirty"
+            },
+            {
+              "number": 35,
+              "en": "thirty-five"
+            },
+            {
+              "number": 40,
+              "en": "forty"
+            },
+            {
+              "number": 42,
+              "en": "forty-two"
+            },
+            {
+              "number": 50,
+              "en": "fifty"
+            },
+            {
+              "number": 60,
+              "en": "sixty"
+            },
+            {
+              "number": 70,
+              "en": "seventy"
+            },
+            {
+              "number": 80,
+              "en": "eighty"
+            },
+            {
+              "number": 90,
+              "en": "ninety"
+            },
+            {
+              "number": 100,
+              "en": "one hundred"
+            }
+          ],
+          "subjects": [
+            {
+              "en": "I",
+              "be": "am"
+            },
+            {
+              "en": "My sister",
+              "be": "is"
+            },
+            {
+              "en": "My brother",
+              "be": "is"
+            }
+          ]
+        },
+        {
+          "id": "a1-8-live",
+          "type": "cumulative-scene-lab",
+          "phase": "phrases",
+          "title": "کارت معرفی زنده: هر سؤال یک دادهٔ تازه",
+          "description": "پرسش و پاسخ آبی را لمس کن؛ سن، کشور، زبان، شغل و نشانیِ شخصیت ساختگی داخل کارت هم تغییر می‌کند.",
+          "mode": "profile",
+          "options": {
+            "name": [
+              {
+                "id": "sara",
+                "en": "Sara"
+              },
+              {
+                "id": "ali",
+                "en": "Ali"
+              },
+              {
+                "id": "mina",
+                "en": "Mina"
+              }
+            ],
+            "age": [
+              {
+                "id": "21",
+                "number": 21
+              },
+              {
+                "id": "24",
+                "number": 24
+              },
+              {
+                "id": "32",
+                "number": 32
+              },
+              {
+                "id": "19",
+                "number": 19
+              }
+            ],
+            "country": [
+              {
+                "id": "iran",
+                "en": "Iran"
+              },
+              {
+                "id": "japan",
+                "en": "Japan"
+              },
+              {
+                "id": "france",
+                "en": "France"
+              }
+            ],
+            "language": [
+              {
+                "id": "english",
+                "en": "English"
+              },
+              {
+                "id": "persian",
+                "en": "Persian"
+              },
+              {
+                "id": "japanese",
+                "en": "Japanese"
+              }
+            ],
+            "role": [
+              {
+                "id": "student",
+                "en": "student",
+                "article": "a"
+              },
+              {
+                "id": "teacher",
+                "en": "teacher",
+                "article": "a"
+              },
+              {
+                "id": "engineer",
+                "en": "engineer",
+                "article": "an"
+              }
+            ],
+            "phone": [
+              {
+                "id": "111",
+                "en": "000-111-222"
+              },
+              {
+                "id": "333",
+                "en": "000-333-444"
+              }
+            ],
+            "address": [
+              {
+                "id": "river",
+                "en": "12 River Street"
+              },
+              {
+                "id": "park",
+                "en": "5 Park Street"
+              }
+            ],
+            "topic": [
+              {
+                "id": "age",
+                "question": "How old are you?",
+                "fa": "چند سال داری؟"
+              },
+              {
+                "id": "country",
+                "question": "Where are you from?",
+                "fa": "اهل کجا هستی؟"
+              },
+              {
+                "id": "language",
+                "question": "What language do you speak?",
+                "fa": "به چه زبانی صحبت می‌کنی؟"
+              },
+              {
+                "id": "role",
+                "question": "What do you do?",
+                "fa": "شغل یا موقعیت تحصیلی تو چیست؟"
+              },
+              {
+                "id": "phone",
+                "question": "What is your phone number?",
+                "fa": "شمارهٔ تماسِ نمونه چیست؟"
+              },
+              {
+                "id": "address",
+                "question": "What is your address?",
+                "fa": "نشانیِ نمونه چیست؟"
+              }
+            ]
+          }
+        },
+        {
+          "id": "a1-8-warmup",
+          "type": "response-practice",
+          "phase": "phrases",
+          "title": "از ۱۲ به ۲۴ و ۳۵ برس",
+          "practiceRevision": 1,
+          "description": "قبل از کارت اطلاعات، ۱۳ تا ۱۹، دهگان‌ها و عدد ترکیبی با خط تیره را امتحان کن.",
+          "tasks": [
+            {
+              "task": "عدد ۱۳ را به انگلیسی بنویس.",
+              "hint": "thirteen",
+              "example": "thirteen",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "thirteen"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "عدد ۲۰ را به انگلیسی بنویس.",
+              "hint": "twenty",
+              "example": "twenty",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "twenty"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "سن ۲۴ سال را در جمله بگو.",
+              "hint": "I am twenty-four years old.",
+              "example": "I am twenty-four years old.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i am twenty-four years old"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو برادرم ۳۵ سال دارد.",
+              "hint": "My brother is thirty-five years old.",
+              "example": "My brother is thirty-five years old.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my brother is thirty-five years old"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "سن ۴۲ سال را در یک جمله بگو.",
+              "hint": "I am forty-two years old.",
+              "example": "I am forty-two years old.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i am forty-two years old"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "عدد ۱۰۰ را بنویس.",
+              "hint": "one hundred",
+              "example": "one hundred",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "one hundred"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-8-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "سن، کشور، زبان و درس را با یک فاعل تغییر بده",
+          "description": "هر تغییر در I / My sister باید am/is و speak/speaks و study/studies را هماهنگ نگه دارد.",
+          "targetLanguage": "en",
+          "wordSets": {
+            "subjects": [
+              {
+                "id": "i",
+                "label": "I",
+                "translation": "من",
+                "forms": {
+                  "en": "I",
+                  "fa": "من"
+                }
+              },
+              {
+                "id": "sister",
+                "label": "My sister",
+                "translation": "خواهرم",
+                "forms": {
+                  "en": "My sister",
+                  "fa": "خواهرم"
+                }
+              }
+            ],
+            "ages": [
+              {
+                "id": "twenty",
+                "label": "twenty",
+                "translation": "بیست",
+                "forms": {
+                  "en": "twenty",
+                  "fa": "بیست"
+                }
+              },
+              {
+                "id": "twenty-four",
+                "label": "twenty-four",
+                "translation": "بیست‌وچهار",
+                "forms": {
+                  "en": "twenty-four",
+                  "fa": "بیست‌وچهار"
+                }
+              },
+              {
+                "id": "thirty-five",
+                "label": "thirty-five",
+                "translation": "سی‌وپنج",
+                "forms": {
+                  "en": "thirty-five",
+                  "fa": "سی‌وپنج"
+                }
+              }
+            ],
+            "countries": [
+              {
+                "id": "Iran",
+                "label": "Iran",
+                "translation": "ایران",
+                "forms": {
+                  "en": "Iran",
+                  "fa": "ایران"
+                }
+              },
+              {
+                "id": "Japan",
+                "label": "Japan",
+                "translation": "ژاپن",
+                "forms": {
+                  "en": "Japan",
+                  "fa": "ژاپن"
+                }
+              }
+            ],
+            "languages": [
+              {
+                "id": "English",
+                "label": "English",
+                "translation": "انگلیسی",
+                "forms": {
+                  "en": "English",
+                  "fa": "انگلیسی"
+                }
+              },
+              {
+                "id": "Persian",
+                "label": "Persian",
+                "translation": "فارسی",
+                "forms": {
+                  "en": "Persian",
+                  "fa": "فارسی"
+                }
+              }
+            ],
+            "subjectsOfStudy": [
+              {
+                "id": "architecture",
+                "label": "architecture",
+                "translation": "معماری",
+                "forms": {
+                  "en": "architecture",
+                  "fa": "معماری"
+                }
+              },
+              {
+                "id": "English",
+                "label": "English",
+                "translation": "انگلیسی",
+                "forms": {
+                  "en": "English",
+                  "fa": "انگلیسی"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "subject",
+              "label": "شخص",
+              "wordSet": "subjects",
+              "default": "i"
+            },
+            {
+              "id": "age",
+              "label": "سن",
+              "wordSet": "ages",
+              "default": "twenty-four"
+            },
+            {
+              "id": "country",
+              "label": "کشور",
+              "wordSet": "countries",
+              "default": "Iran"
+            },
+            {
+              "id": "language",
+              "label": "زبان",
+              "wordSet": "languages",
+              "default": "Persian"
+            },
+            {
+              "id": "study",
+              "label": "رشته / درس",
+              "wordSet": "subjectsOfStudy",
+              "default": "architecture"
+            }
+          ],
+          "derivedDefaults": {
+            "be": "am",
+            "speak": "speak",
+            "study": "study"
+          },
+          "dependencies": [
+            {
+              "id": "sister",
+              "when": {
+                "slot": "subject",
+                "equals": "sister"
+              },
+              "set": {
+                "be": "is",
+                "speak": "speaks",
+                "study": "studies"
+              }
+            }
+          ],
+          "defaultPattern": "age",
+          "patterns": [
+            {
+              "id": "age",
+              "label": "سن",
+              "segments": [
+                {
+                  "slot": "subject",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "be"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "age",
+                  "form": "en"
+                },
+                {
+                  "fixed": " years old."
+                }
+              ],
+              "translationSegments": []
+            },
+            {
+              "id": "country",
+              "label": "کشور",
+              "segments": [
+                {
+                  "slot": "subject",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "be"
+                },
+                {
+                  "fixed": " from "
+                },
+                {
+                  "slot": "country",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": []
+            },
+            {
+              "id": "language",
+              "label": "زبان",
+              "segments": [
+                {
+                  "slot": "subject",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "speak"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "language",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": []
+            },
+            {
+              "id": "study",
+              "label": "تحصیل",
+              "segments": [
+                {
+                  "slot": "subject",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "study"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "study",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": []
+            }
+          ]
+        },
+        {
+          "id": "a1-8-forms",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "یک معنا، چند جمله و سؤال",
+          "description": "روی واژه‌های جمله بزن و ساختارهای خبری، پرسشی و ترکیبی را مقایسه کن.",
+          "sourceActivityId": "a1-8-composer",
+          "patternIds": [
+            "age",
+            "country",
+            "language",
+            "study"
+          ]
+        },
+        {
+          "id": "a1-8-quest",
+          "type": "cumulative-visual-quest",
+          "phase": "variants",
+          "title": "پروفایل کدام شخص با جمله یکی است؟",
+          "description": "جمله را گوش بده و تصویر درست را انتخاب کن. در هر مرحله بیش از یک ویژگی را بررسی کن.",
+          "mode": "profile",
+          "rounds": [
+            {
+              "prompt": "Sara is twenty-four years old.",
+              "correct": 1,
+              "choices": [
+                {
+                  "description": "Sara, 21",
+                  "name": "Sara",
+                  "age": "21",
+                  "country": "Iran",
+                  "language": "Persian",
+                  "role": "student",
+                  "phone": "000-111-222",
+                  "address": "12 River Street",
+                  "topic": "Age"
+                },
+                {
+                  "description": "Sara, 24",
+                  "name": "Sara",
+                  "age": "24",
+                  "country": "Iran",
+                  "language": "Persian",
+                  "role": "student",
+                  "phone": "000-111-222",
+                  "address": "12 River Street",
+                  "topic": "Age"
+                },
+                {
+                  "description": "Ali, 24",
+                  "name": "Ali",
+                  "age": "24",
+                  "country": "Iran",
+                  "language": "Persian",
+                  "role": "student",
+                  "phone": "000-111-222",
+                  "address": "12 River Street",
+                  "topic": "Age"
+                }
+              ]
+            },
+            {
+              "prompt": "Ali is from Japan and speaks English.",
+              "correct": 2,
+              "choices": [
+                {
+                  "description": "Ali, Iran, English",
+                  "name": "Ali",
+                  "age": "24",
+                  "country": "Iran",
+                  "language": "English",
+                  "role": "student",
+                  "phone": "000-111-222",
+                  "address": "12 River Street",
+                  "topic": "Age"
+                },
+                {
+                  "description": "Sara, Japan, English",
+                  "name": "Sara",
+                  "age": "24",
+                  "country": "Japan",
+                  "language": "English",
+                  "role": "student",
+                  "phone": "000-111-222",
+                  "address": "12 River Street",
+                  "topic": "Age"
+                },
+                {
+                  "description": "Ali, Japan, English",
+                  "name": "Ali",
+                  "age": "24",
+                  "country": "Japan",
+                  "language": "English",
+                  "role": "student",
+                  "phone": "000-111-222",
+                  "address": "12 River Street",
+                  "topic": "Age"
+                }
+              ]
+            },
+            {
+              "prompt": "Mina is thirty-two. She is a teacher.",
+              "correct": 0,
+              "choices": [
+                {
+                  "description": "Mina, 32, teacher",
+                  "name": "Mina",
+                  "age": "32",
+                  "country": "Iran",
+                  "language": "Persian",
+                  "role": "teacher",
+                  "phone": "000-111-222",
+                  "address": "12 River Street",
+                  "topic": "Age"
+                },
+                {
+                  "description": "Mina, 32, student",
+                  "name": "Mina",
+                  "age": "32",
+                  "country": "Iran",
+                  "language": "Persian",
+                  "role": "student",
+                  "phone": "000-111-222",
+                  "address": "12 River Street",
+                  "topic": "Age"
+                },
+                {
+                  "description": "Mina, 21, teacher",
+                  "name": "Mina",
+                  "age": "21",
+                  "country": "Iran",
+                  "language": "Persian",
+                  "role": "teacher",
+                  "phone": "000-111-222",
+                  "address": "12 River Street",
+                  "topic": "Age"
+                }
+              ]
+            }
+          ],
+          "completion": "حالا از روی جمله می‌توانی چند ویژگی را با هم در تصویر پیدا کنی."
+        },
+        {
+          "id": "a1-8-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "پنج جمله بساز، نه پنج پاسخ حفظی",
+          "description": "واژه‌های یک بانک مشترک را کنار هم قرار بده و به پنج جملهٔ متفاوت برس.",
+          "revision": 1,
+          "reuseBank": true,
+          "goalCount": 5,
+          "sentences": [
+            {
+              "id": "sentence-1",
+              "words": [
+                "I",
+                "am",
+                "twenty-four",
+                "years",
+                "old."
+              ]
+            },
+            {
+              "id": "sentence-2",
+              "words": [
+                "My",
+                "sister",
+                "is",
+                "nineteen",
+                "years",
+                "old."
+              ]
+            },
+            {
+              "id": "sentence-3",
+              "words": [
+                "I",
+                "am",
+                "from",
+                "Iran."
+              ]
+            },
+            {
+              "id": "sentence-4",
+              "words": [
+                "I",
+                "speak",
+                "English",
+                "and",
+                "Persian."
+              ]
+            },
+            {
+              "id": "sentence-5",
+              "words": [
+                "I",
+                "study",
+                "architecture."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-8-build",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "پروفایل دو یا سه‌خانه‌ای را با جملهٔ کامل بساز",
+          "practiceRevision": 1,
+          "description": "با خانواده، شمارش، مالکیت، مکان و صفت‌های قبلی جمله‌های جدید بنویس.",
+          "tasks": [
+            {
+              "task": "بگو ۲۴ سال داری.",
+              "hint": "I am twenty-four years old.",
+              "example": "I am twenty-four years old.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i am twenty-four years old"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو اهل ایران هستی.",
+              "hint": "I am from Iran.",
+              "example": "I am from Iran.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i am from iran"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو فارسی و انگلیسی حرف می‌زنی.",
+              "hint": "I speak Persian and English.",
+              "example": "I speak Persian and English.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i speak persian and english"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو معماری می‌خوانی.",
+              "hint": "I study architecture.",
+              "example": "I study architecture.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i study architecture"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو دانشجو هستی.",
+              "hint": "I am a student.",
+              "example": "I am a student.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i am a student"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو خواهرت ۱۹ سال دارد.",
+              "hint": "My sister is nineteen years old.",
+              "example": "My sister is nineteen years old.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my sister is nineteen years old"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "گفت‌وگو و انتقال",
+      "intro": "از یک جواب کوتاه به گفت‌وگوی دوطرفه و یک پروفایل دو یا سه‌خانه‌ای برس.",
+      "masteryActivityIds": [
+        "a1-8-independent"
+      ],
+      "activities": [
+        {
+          "id": "a1-8-exchange",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "یک سؤال، چند مشخصات درست",
+          "description": "یک سؤال را نگه دار و پاسخ‌ها را جابه‌جا کن تا تفاوت معنی روشن شود.",
+          "pairs": [
+            {
+              "question": "How old are you?",
+              "questionFa": "چند سال داری؟",
+              "variants": [
+                {
+                  "label": "۲۴",
+                  "en": "I am twenty-four years old.",
+                  "fa": "بیست‌وچهار سال دارم.",
+                  "note": "سن را گفتی."
+                },
+                {
+                  "label": "۱۹",
+                  "en": "I am nineteen years old.",
+                  "fa": "نوزده سال دارم.",
+                  "note": "پاسخ تغییر کرد."
+                }
+              ]
+            },
+            {
+              "question": "Where are you from?",
+              "questionFa": "اهل کجایی؟",
+              "variants": [
+                {
+                  "label": "ایران",
+                  "en": "I am from Iran.",
+                  "fa": "اهل ایران هستم.",
+                  "note": "کشور را گفتی."
+                },
+                {
+                  "label": "ژاپن",
+                  "en": "I am from Japan.",
+                  "fa": "اهل ژاپن هستم.",
+                  "note": "کشور تغییر کرد."
+                }
+              ]
+            },
+            {
+              "question": "What do you do?",
+              "questionFa": "چکار می‌کنی؟",
+              "variants": [
+                {
+                  "label": "دانشجو",
+                  "en": "I am a student.",
+                  "fa": "دانشجو هستم.",
+                  "note": "تحصیل."
+                },
+                {
+                  "label": "معلم",
+                  "en": "I work as a teacher.",
+                  "fa": "به‌عنوان معلم کار می‌کنم.",
+                  "note": "شغل فعلی."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-8-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "گفت‌وگو: آشنایی با دانشجوی جدید",
+          "description": "گفت‌وگوی کوتاه و واقعی؛ هر نوبت را جدا گوش بده و تکرار کن.",
+          "lines": [
+            {
+              "speaker": "Sara",
+              "en": "Hello! What is your name?",
+              "fa": "سلام! اسمت چیست؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "My name is Ali.",
+              "fa": "نام من علی است."
+            },
+            {
+              "speaker": "Sara",
+              "en": "How old are you?",
+              "fa": "چند سال داری؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "I am twenty-four years old.",
+              "fa": "۲۴ سال دارم."
+            },
+            {
+              "speaker": "Sara",
+              "en": "Where are you from?",
+              "fa": "اهل کجا هستی؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "I am from Iran.",
+              "fa": "اهل ایران هستم."
+            },
+            {
+              "speaker": "Sara",
+              "en": "What do you study?",
+              "fa": "چه رشته‌ای می‌خوانی؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "I study architecture. I speak Persian and English.",
+              "fa": "معماری می‌خوانم. فارسی و انگلیسی صحبت می‌کنم."
+            }
+          ]
+        },
+        {
+          "id": "a1-8-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "title": "کارت‌های ساختگی را بخوان و مشخصات را بگو",
+          "description": "ابتدا تصویر را نگاه کن، سپس بدون انتخاب گزینه جمله بساز.",
+          "image": "./assets/scene-a1-8-profile.svg",
+          "imageAlt": "دو کارت پروفایل کاملاً ساختگی با نام، سن، کشور و زبان متفاوت",
+          "caption": "اطلاعات نمونهٔ سارا و علی؛ نام و داده‌های واقعی لازم نیست",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "سن سارا را از روی تصویر در یک جمله بگو.",
+              "hint": "Sara is twenty-four years old.",
+              "example": "Sara is twenty-four years old.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "sara is twenty-four years old"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو علی اهل ایران است.",
+              "hint": "Ali is from Iran.",
+              "example": "Ali is from Iran.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "ali is from iran"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو علی به انگلیسی صحبت می‌کند.",
+              "hint": "Ali speaks English.",
+              "example": "Ali speaks English.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "ali speaks english"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-8-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "title": "نوبت توست: جملهٔ بعدی را بساز",
+          "description": "دوستت حرف می‌زند؛ تو باید با دانسته‌های چند درس پاسخ بدهی.",
+          "practiceRevision": 1,
+          "completion": "توانستی واژه‌های جدید و قبلی را در گفت‌وگو کنار هم بگذاری.",
+          "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "How old are you?",
+              "task": "بگو ۲۴ سال داری.",
+              "hint": "I am twenty-four years old.",
+              "example": "I am twenty-four years old.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i am twenty-four years old"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where are you from?",
+              "task": "بگو اهل ایران هستی.",
+              "hint": "I am from Iran.",
+              "example": "I am from Iran.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i am from iran"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "What language do you speak?",
+              "task": "بگو انگلیسی حرف می‌زنی.",
+              "hint": "I speak English.",
+              "example": "I speak English.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i speak english"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "What do you study?",
+              "task": "بگو معماری می‌خوانی.",
+              "hint": "I study architecture.",
+              "example": "I study architecture.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i study architecture"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Are you a student?",
+              "task": "بگو دانشجو هستی.",
+              "hint": "I am a student.",
+              "example": "I am a student.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i am a student"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-8-transfer",
+          "type": "response-practice",
+          "phase": "guided",
+          "title": "کشور، سن و تحصیل را عوض کن",
+          "practiceRevision": 1,
+          "description": "موقعیت عوض شده است؛ همان الگوی جمله را با آدم، شیء یا تعداد تازه به کار ببر.",
+          "tasks": [
+            {
+              "task": "از خواهرت بگو که ۱۹ سال دارد.",
+              "hint": "My sister is nineteen years old.",
+              "example": "My sister is nineteen years old.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my sister is nineteen years old"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو برادرت مهندس است.",
+              "hint": "My brother is an engineer.",
+              "example": "My brother is an engineer.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my brother is an engineer"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو خواهرت در ژاپن زندگی می‌کند.",
+              "hint": "My sister lives in Japan.",
+              "example": "My sister lives in Japan.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my sister lives in japan"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بپرس شماره تلفن طرف چیست.",
+              "hint": "What is your phone number?",
+              "example": "What is your phone number?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "what is your phone number"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو من در خیابان ریور زندگی می‌کنم.",
+              "hint": "I live on River Street.",
+              "example": "I live on River Street.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i live on river street"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-8-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "پروفایل دو یا سه‌خانه‌ای، به زبان خودت",
+          "prompt": "برای یک شخصیت کاملاً فرضی، سن، کشور و زبان را بنویس. سپس دربارهٔ تحصیل یا شغلش یک جمله بساز. حتماً عبارت‌های years old و I am from و I speak و I study را در جمله‌های کامل به کار ببر. دادهٔ واقعی یا شمارهٔ واقعی ننویس.",
+          "placeholder": "I am twenty-four years old.\nI am from Iran.\nI speak Persian.\nI study architecture.",
+          "hint": "برای ۲۴ بنویس twenty-four و برای ۳۵ بنویس thirty-five. همهٔ مشخصات می‌تواند ساختگی باشد.",
+          "kind": "free-text",
+          "minWords": 18,
+          "assessment": {
+            "revision": 1,
+            "required": [
+              {
+                "any": [
+                  "years old"
+                ],
+                "feedback": "عبارت years old را در یک جملهٔ کامل به کار ببر."
+              },
+              {
+                "any": [
+                  "i am from"
+                ],
+                "feedback": "عبارت I am from را در یک جملهٔ کامل به کار ببر."
+              },
+              {
+                "any": [
+                  "i speak"
+                ],
+                "feedback": "عبارت I speak را در یک جملهٔ کامل به کار ببر."
+              },
+              {
+                "any": [
+                  "i study"
+                ],
+                "feedback": "عبارت I study را در یک جملهٔ کامل به کار ببر."
+              }
+            ],
+            "success": "چند الگوی تازه را با اطلاعات و واژه‌های قبلی خودت ترکیب کردی."
+          }
+        },
+        {
+          "id": "a1-8-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "دوباره گوش بده؛ حالا معنای جمله‌ها را می‌سازی",
+          "description": "همان جمله‌های شروع درس را با فهم تازه دوباره تکرار کن.",
+          "sourceActivityId": "a1-8-shadowing"
+        }
+      ]
+    }
+  ]
+}
