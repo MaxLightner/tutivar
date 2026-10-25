@@ -147,7 +147,8 @@
       "type": "string",
       "enum": [
         "sentence",
-        "phrases"
+        "phrases",
+        "variants"
       ]
     }
   }
