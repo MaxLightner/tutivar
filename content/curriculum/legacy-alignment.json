@@ -19,7 +19,8 @@
       "note": "Existing lesson combines larger numbers and ages; retain its content for transfer into personal-information lesson after introducing characteristics and appearances.",
       "currentTitle": "از عددهای دورقمی تا گفتن سن",
       "legacyGitBlobSha": "cc78c3b6efb5ac231c2ffd9ac7d7cc5af18903b3",
-      "preserveProgress": true
+      "preserveProgress": true,
+      "catalogTitle": "از عددهای دورقمی تا سن"
     },
     {
       "id": "A1-7",
@@ -27,7 +28,8 @@
       "note": "Existing this/that person-and-object identification content is useful for review; it is not a substitute for object features or describing people's appearance.",
       "currentTitle": "این چیست؟ آن کیست؟",
       "legacyGitBlobSha": "ba69b587edbfdefc6e88d39d2b0fa005550854d4",
-      "preserveProgress": true
+      "preserveProgress": true,
+      "catalogTitle": "این چیست؟ آن کیست؟"
     },
     {
       "id": "A1-8",
@@ -35,7 +37,8 @@
       "note": "Existing home, room counts, floors and area are useful input to canonical home-and-amenities lesson; content is not personal-information A1-8.",
       "currentTitle": "اتاق‌های خانه",
       "legacyGitBlobSha": "0a73d28b095fd01b0ad11aed0a5159d4ca0a9e10",
-      "preserveProgress": true
+      "preserveProgress": true,
+      "catalogTitle": "اتاق‌های خانه"
     },
     {
       "id": "A1-9",
@@ -43,7 +46,8 @@
       "note": "Existing room objects and precise positioning belong with home descriptions or later detail, not everyday feelings A1-9.",
       "currentTitle": "وسایل اتاق من",
       "legacyGitBlobSha": "c5b52a0b20c743342ed615bf5145b98fea067234",
-      "preserveProgress": true
+      "preserveProgress": true,
+      "catalogTitle": "وسایل اتاق من"
     }
   ],
   "contentGaps": [
