@@ -581,15 +581,6 @@
                   "en": "My phone",
                   "fa": "گوشی من"
                 }
-              },
-              {
-                "id": "keys",
-                "label": "keys",
-                "translation": "کلیدها",
-                "forms": {
-                  "en": "My keys",
-                  "fa": "کلیدهای من"
-                }
               }
             ],
             "positions": [
@@ -956,15 +947,6 @@
                 "forms": {
                   "en": "second",
                   "fa": "دوم"
-                }
-              },
-              {
-                "id": "third",
-                "label": "third",
-                "translation": "سوم",
-                "forms": {
-                  "en": "third",
-                  "fa": "سوم"
                 }
               }
             ],
@@ -2313,8 +2295,7 @@
               {
                 "any": [
                   "on the first floor",
-                  "on the second floor",
-                  "on the third floor"
+                  "on the second floor"
                 ],
                 "feedback": "طبقهٔ خانه را هم توصیف کن."
               },
