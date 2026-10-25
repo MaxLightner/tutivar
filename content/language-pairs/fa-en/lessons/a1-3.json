@@ -1,6 +1,6 @@
 {
   "id": "A1-3",
-  "revision": 10,
+  "revision": 11,
   "status": "draft",
   "title": "مالکیت و داشتن اشیا",
   "goal": "بتوانی با تغییر صاحب یا وسیله، جمله بسازی و بگویی یک وسیله مال چه کسی است.",
@@ -73,7 +73,7 @@
           "type": "vocabulary",
           "title": "واژگان اصلی وسایل و مالکیت",
           "batchSize": 4,
-          "deckRevision": 3,
+          "deckRevision": 4,
           "items": [
             {
               "en": "book",
@@ -153,46 +153,6 @@
                 "This is my bottle.",
                 "Is this your bottle?",
                 "It's her bottle."
-              ]
-            },
-            {
-              "en": "my",
-              "fa": "من / مال من",
-              "hint": "به صاحب اشاره می‌کند",
-              "examples": [
-                "This is my book.",
-                "This is my bag.",
-                "This is my phone."
-              ]
-            },
-            {
-              "en": "your",
-              "fa": "تو / مال تو",
-              "hint": "به صاحب یا مخاطب اشاره می‌کند",
-              "examples": [
-                "Is this your book?",
-                "Is this your bag?",
-                "Is this your pen?"
-              ]
-            },
-            {
-              "en": "his",
-              "fa": "او / مال او (مذکر)",
-              "hint": "برای یک پسر یا مرد",
-              "examples": [
-                "This is his phone.",
-                "It's his book.",
-                "It's his bag."
-              ]
-            },
-            {
-              "en": "her",
-              "fa": "او / مال او (مونث)",
-              "hint": "برای یک دختر یا زن",
-              "examples": [
-                "This is her bag.",
-                "It's her phone.",
-                "It's her book."
               ]
             },
             {
