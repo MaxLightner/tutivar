@@ -1,6 +1,6 @@
 {
   "id": "A1-5",
-  "revision": 3,
+  "revision": 4,
   "status": "draft",
   "title": "تعداد و شمارش اشیا",
   "goal": "بتوانی عددهای یک تا ده را به کار ببری، تفاوت اسم مفرد و جمع را ببینی، تعداد اشیا را با How many ... are there? بپرسی و با There is one ... / There are ... پاسخ بدهی.",
@@ -33,12 +33,10 @@
   },
   "learningAudit": {
     "focusExpressions": [
-      "How many books are there?",
-      "There are three books.",
-      "There is one bag."
+      "How many"
     ],
     "specificIndependentExpressions": [
-      "How many books are there?"
+      "How many"
     ],
     "minDownstreamActivities": 2,
     "minGuidedActivities": 1,
@@ -2048,17 +2046,17 @@
           "type": "free-write",
           "phase": "independent",
           "title": "تمرین واقعی: اطرافت را بشمار و گزارش بده",
-          "prompt": "روی میز، داخل کیف یا در اتاقت ۱ تا ۱۰ شیء قابل‌شمارش پیدا کن. آن‌ها را واقعاً بشمار؛ اگر لازم است چند شیء را کنار هم بچین. اینجا بنویس: یک عبارت با one و اسم مفرد، دو جمله با There are و اسم جمع، سؤال دقیق How many books are there? و جوابش، و یک جمله که مکان یا مالکیت اشیا را از درس‌های قبلی هم نشان دهد. لازم نیست عکس بفرستی؛ از وسایل واقعی خودت استفاده کن.",
-          "placeholder": "one book\nThere is one bag on my chair.\nThere are three books on my table.\nHow many books are there?\nThere are three books.\nThere are two pens in my bag.",
-          "hint": "اگر تعداد واقعی کتاب‌هایت سه تا نیست، برای جملهٔ اجباری سؤال و جواب از همین الگوی نمونه استفاده کن؛ بقیهٔ جمله‌ها را با وسایل واقعی خودت بساز.",
+          "prompt": "چند شیء واقعی از روی میز، کیف یا اتاقت انتخاب کن و واقعاً بشمار. یک جمله با There is one ... و دست‌کم دو جمله با There are ... بساز. بعد دربارهٔ تعداد یکی از اشیای موجود سؤال How many ... are there? را بنویس و با تعداد واقعی جواب بده. در آخر یک جمله بنویس که مکان یا مالکیت را هم از درس‌های قبلی بیاورد. لازم نیست عکس بفرستی؛ اگر اشیای کافی نداری، یک چیدمان فرضی را واضح توصیف کن.",
+          "placeholder": "There is one bag on my chair.\nThere are two pens in my bag.\nThere are four books on my table.\nHow many books are there?\nThere are four books.",
+          "hint": "عددها باید با اشیایی که خودت انتخاب کرده‌ای هماهنگ باشند. تعداد سه کتاب یا یک کیف اجباری نیست.",
           "kind": "free-text",
           "minWords": 15,
           "assessment": {
-            "revision": 1,
+            "revision": 2,
             "required": [
               {
                 "any": [
-                  "There is one bag.",
+                  "there is one",
                   "one book",
                   "one bag",
                   "one phone",
@@ -2066,28 +2064,51 @@
                   "one pencil",
                   "one cup"
                 ],
-                "feedback": "یک عبارت با one و اسم مفرد بنویس."
+                "feedback": "یک مورد مفرد را با one یا There is one ... توصیف کن."
               },
               {
                 "any": [
+                  "there are two",
+                  "there are three",
+                  "there are four",
+                  "there are five",
+                  "there are six",
+                  "there are seven",
+                  "there are eight",
+                  "there are nine",
+                  "there are ten"
+                ],
+                "feedback": "یک یا چند جملهٔ There are ... برای تعداد بیشتر از یک بساز."
+              },
+              {
+                "any": [
+                  "how many books are there",
+                  "how many pens are there",
+                  "how many pencils are there",
+                  "how many apples are there",
+                  "how many keys are there",
+                  "how many cups are there",
+                  "how many phones are there",
+                  "how many bags are there"
+                ],
+                "feedback": "دربارهٔ تعداد یکی از اشیای آشنا سؤال How many ... are there? بساز."
+              },
+              {
+                "any": [
+                  "there are two books",
                   "there are three books",
+                  "there are four books",
+                  "there are five books",
                   "there are two pens",
-                  "there are four apples",
-                  "there are five pencils"
+                  "there are three pens",
+                  "there are four pens",
+                  "there are two pencils",
+                  "there are five pencils",
+                  "there is one book",
+                  "there is one pen",
+                  "there is one bag"
                 ],
-                "feedback": "حداقل یک جمله با There are و اسم جمع بنویس."
-              },
-              {
-                "any": [
-                  "How many books are there?"
-                ],
-                "feedback": "سؤال مشخص How many books are there? را بنویس."
-              },
-              {
-                "any": [
-                  "There are three books."
-                ],
-                "feedback": "به سؤال دربارهٔ کتاب‌ها پاسخ بده: There are three books."
+                "feedback": "حداقل یک پاسخ با عدد مشخص به سؤال شمارش بده."
               },
               {
                 "any": [
@@ -2096,9 +2117,11 @@
                   "under my chair",
                   "next to my box",
                   "on the table",
-                  "in the bag"
+                  "in the bag",
+                  "on my chair",
+                  "in my room"
                 ],
-                "feedback": "یک مکان را با واژه‌های درس چهارم اضافه کن."
+                "feedback": "مکان یا مالکیتِ آشنا از درس‌های قبلی را در یکی از جمله‌ها اضافه کن."
               }
             ],
             "success": "شمارش، پرسش و پاسخ و یکی از الگوهای قبلی را در یک گزارش واقعی به کار بردی."
