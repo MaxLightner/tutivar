@@ -13,6 +13,13 @@ const root=join(projectRoot,'content/language-pairs/fa-en');
 const load=path=>JSON.parse(readFileSync(join(root,path),'utf8'));
 const active=load('curriculum.a1.json').stages.flatMap(s=>s.chapters).flatMap(c=>c.lessons)
   .filter(x=>x?.status==='sample');
+test('live click dispatcher reaches every cumulative visual practice control',()=>{
+ const code=readFileSync(join(projectRoot,'apps/learner-web/app.js'),'utf8');
+ const selector=code.match(/function onClick\(event\)\s*\{\s*const el\s*=\s*event\.target\.closest\('([^']+)'\)/)?.[1];
+ assert.ok(selector,'cannot locate delegated click selectors');
+ for(const key of ['attribute-key','count-scene-key','feature-hunt-key','count-math-key','plural-lab-key'])
+   assert.ok(selector.includes(`button[data-${key}]`),`click dispatcher omitted data-${key}`);
+});
 test('canonical A1 live curriculum stops at the first six approved outcomes',()=>{
  assert.deepEqual(active.map(x=>x.id),['A1-1','A1-2','A1-3','A1-4','A1-5','A1-6']);
  assert.deepEqual(active.slice(2).map(x=>x.file),['lessons/a1-3-v3.json','lessons/a1-4-v3.json','lessons/a1-5-v3.json','lessons/a1-6-v4.json']);
