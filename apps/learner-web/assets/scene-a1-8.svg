@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 580" role="img" aria-labelledby="title desc">
+<title id="title">Four-room home map with three family members</title>
+<desc id="desc">A kitchen with M for mother, a bedroom with S for sister, a living room with F for father, and an unoccupied bathroom.</desc>
+<rect width="900" height="580" rx="30" fill="#eef4ee"/>
+<g transform="translate(20 24)">
+  <rect width="418" height="247" rx="22" fill="#d9e9e1" stroke="#97b2a5" stroke-width="5"/>
+  <g transform="translate(60 8)"><rect x="74" y="84" width="150" height="93" rx="12" fill="#9fbdbb" stroke="#567e7f" stroke-width="6"/><circle cx="114" cy="124" r="21" fill="#d6e4df" stroke="#60827f" stroke-width="4"/><circle cx="184" cy="124" r="21" fill="#d6e4df" stroke="#60827f" stroke-width="4"/></g>
+  <rect x="18" y="14" width="188" height="43" rx="21" fill="#fffdfa"/>
+  <text x="112" y="43" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#3e5f50">KITCHEN</text>
+  <g transform="translate(314 159)"><circle cx="36" cy="22" r="30" fill="#e8b68f" stroke="#9c7155" stroke-width="3"/><path d="M8 100L13 61Q37 50 61 61L65 100Z" fill="#829fba"/><text x="36" y="30" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#2f4859">M</text></g>
+</g>
+<g transform="translate(458 24)">
+  <rect width="418" height="247" rx="22" fill="#e2e8f1" stroke="#97b2a5" stroke-width="5"/>
+  <g transform="translate(60 8)"><path d="M56 173H241V213H56Z" fill="#b9cbd5" stroke="#6b8795" stroke-width="6"/><rect x="66" y="127" width="166" height="58" rx="15" fill="#e3bfba"/><rect x="74" y="128" width="65" height="32" rx="10" fill="#f7e5d5"/><path d="M61 212V237M236 212V237" stroke="#6b8795" stroke-width="9"/></g>
+  <rect x="18" y="14" width="188" height="43" rx="21" fill="#fffdfa"/>
+  <text x="112" y="43" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#3e5f50">BEDROOM</text>
+  <g transform="translate(314 159)"><circle cx="36" cy="22" r="30" fill="#e8b68f" stroke="#9c7155" stroke-width="3"/><path d="M8 100L13 61Q37 50 61 61L65 100Z" fill="#829fba"/><text x="36" y="30" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#2f4859">S</text></g>
+</g>
+<g transform="translate(20 295)">
+  <rect width="418" height="247" rx="22" fill="#f2e6d9" stroke="#97b2a5" stroke-width="5"/>
+  <g transform="translate(60 8)"><rect x="58" y="129" width="187" height="79" rx="20" fill="#98b89b" stroke="#5a845d" stroke-width="6"/><path d="M66 140V92Q150 73 235 92V140M70 210V239M229 210V239" stroke="#5a845d" fill="none" stroke-width="9"/></g>
+  <rect x="18" y="14" width="188" height="43" rx="21" fill="#fffdfa"/>
+  <text x="112" y="43" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#3e5f50">LIVING ROOM</text>
+  <g transform="translate(314 159)"><circle cx="36" cy="22" r="30" fill="#e8b68f" stroke="#9c7155" stroke-width="3"/><path d="M8 100L13 61Q37 50 61 61L65 100Z" fill="#829fba"/><text x="36" y="30" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#2f4859">F</text></g>
+</g>
+<g transform="translate(458 295)">
+  <rect width="418" height="247" rx="22" fill="#dcecef" stroke="#97b2a5" stroke-width="5"/>
+  <g transform="translate(60 8)"><path d="M47 130H252V180Q240 233 176 235H121Q60 233 47 180Z" fill="#bbdce6" stroke="#6b9eaf" stroke-width="7"/><path d="M63 133V90H128" stroke="#6b9eaf" stroke-width="9" fill="none"/><path d="M78 233V246M221 233V246" stroke="#6b9eaf" stroke-width="7"/></g>
+  <rect x="18" y="14" width="188" height="43" rx="21" fill="#fffdfa"/>
+  <text x="112" y="43" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#3e5f50">BATHROOM</text>
+  
+</g>
+<text x="450" y="564" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#49645b">M = mother    F = father    S = sister</text>
+</svg>

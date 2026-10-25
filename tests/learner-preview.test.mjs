@@ -64,8 +64,8 @@ test('every sample path node references a real content file with two teaching se
     assert.ok(!ids.has(lesson.id));
     ids.add(lesson.id);
   }
-  assert.equal(ids.size, 7);
-  assert.deepEqual([...new Set([...ids].map((id) => load(lessons.find((entry) => entry.id === id).file).archetype))].sort(), ['conversation', 'counting-objects', 'family', 'identification', 'name-and-age', 'ownership', 'spatial-location']);
+  assert.equal(ids.size, 8);
+  assert.deepEqual([...new Set([...ids].map((id) => load(lessons.find((entry) => entry.id === id).file).archetype))].sort(), ['conversation', 'counting-objects', 'family', 'home-rooms', 'identification', 'name-and-age', 'ownership', 'spatial-location']);
 });
 
 test('not-yet-produced nodes cannot be launched as content', () => {
@@ -924,7 +924,7 @@ test('A1-5 merges visual singular/plural, uses inline a/an and teaches arithmeti
 });
 
 test('all lesson word banks introduce lexical items only once, including supplementary and inflected forms', () => {
-  const lessons=[1,2,3,4,5,6,7].map(i=>load('lessons/a1-'+i+'.json'));
+  const lessons=[1,2,3,4,5,6,7,8].map(i=>load('lessons/a1-'+i+'.json'));
   assert.deepEqual(inspectVocabularyContinuity(lessons),[]);
   const lessonFive=lessons[4];
   const words=lessonFive.sections[0].activities.find(a=>a.type==='vocabulary').items.map(x=>x.en);
@@ -981,31 +981,75 @@ test('asking a name is explicitly taught and assessed in A1-1', () => {
   assert.ok(check.tasks.some(task=>task.assessment.required.some(req=>req.any?.includes("what's your name"))));
 });
 
-test('A1-7 identifies people and objects near and far with new words only', () => {
+test('A1-7 keeps prior dialogue vocabulary out and synchronizes this/that with dynamic scene and arrow', () => {
   const lesson=load('lessons/a1-7.json');
-  assert.equal(lesson.title,'این چیست؟ آن کیست؟');
   assert.deepEqual(validateLessonFlow(lesson),[]);
-  const [foundation,production]=lesson.sections;
-  assert.deepEqual([...new Set(foundation.activities.map(a=>a.phase))],LESSON_PHASES.foundation);
-  assert.deepEqual([...new Set(production.activities.map(a=>a.phase))],LESSON_PHASES.production);
-  const vocabulary=foundation.activities.find(a=>a.type==='vocabulary');
-  assert.ok(coreItems(vocabulary).length>=17);
+  const [foundation,production]=lesson.sections, vocabulary=foundation.activities.find(a=>a.type==='vocabulary');
+  assert.ok(coreItems(vocabulary).length>=18);
   assert.ok(supplementaryItems(vocabulary).length>=5);
-  for(const old of ['this','who','what','book','phone','teacher'.toUpperCase()])
-    if(old!=='TEACHER')assert.ok(!vocabulary.items.some(item=>item.en===old),'old lesson words cannot be reintroduced');
-  assert.ok(vocabulary.items.some(item=>item.en==='teacher'));
-  assert.ok(vocabulary.items.some(item=>item.en==='that'));
-  const composer=foundation.activities.find(a=>a.id==='identification-composer');
-  assert.deepEqual(validateSentenceComposer(composer),[]);
-  const obj=resolveSentenceComposer(composer,{pattern:'this-object',slots:{object:'cat',person:'teacher'}});
-  assert.equal(composeSegments(obj.pattern.segments,composer,obj),'This is a cat.');
-  const person=resolveSentenceComposer(composer,{pattern:'that-person',slots:{object:'cat',person:'teacher'}});
-  assert.equal(composeSegments(person.pattern.segments,composer,person),'That is my teacher.');
+  assert.ok(!vocabulary.items.some(item=>['this','who','what','book','phone','teacher','student','friend','yes','no','it','picture','boy','girl'].includes(item.en)));
+  const earlier=[1,2,3,4,5,6].map(i=>JSON.stringify(load('lessons/a1-'+i+'.json')).toLowerCase());
+  for(const item of vocabulary.items)for(const old of earlier)
+    assert.ok(!new RegExp('\\b'+item.en+'\\b','i').test(old),'previously used word unexpectedly reintroduced: '+item.en);
+  const source=foundation.activities.find(a=>a.id==='identification-composer');
+  assert.deepEqual(validateSentenceComposer(source),[]);
+  const near=resolveSentenceComposer(source,{pattern:'point-object',slots:{distance:'this',object:'cat',person:'teacher'}});
+  assert.equal(composeSegments(near.pattern.segments,source,near),'This is a cat.');
+  const far=resolveSentenceComposer(source,{pattern:'point-object',slots:{distance:'that',object:'dog',person:'teacher'}});
+  assert.equal(composeSegments(far.pattern.segments,source,far),'That is a dog.');
+  const sceneNear=renderActivity(source,{lessonId:'A1-7',index:0,e:String,en:String,i:()=>'',progress:{sentenceComposers:{}}});
+  const sceneFar=renderActivity(source,{lessonId:'A1-7',index:0,e:String,en:String,i:()=>'',progress:{sentenceComposers:{'A1-7:identification-composer':{slots:{distance:'that',object:'dog',person:'teacher'}}}}});
+  assert.match(sceneNear,/data-perspective-distance="this"/);
+  assert.match(sceneNear,/data-perspective-object="cat"/);
+  assert.match(sceneNear,/data-composer-slot="distance"/);
+  assert.match(sceneNear,/data-composer-slot="object"/);
+  assert.match(sceneNear,/marker-end="url\(#perspective-/);
+  assert.match(sceneFar,/data-perspective-distance="that"/);
+  assert.match(sceneFar,/data-perspective-object="dog"/);
+  assert.match(sceneFar,/That<\/button>/);
+  const next=cycleComposerSlot(source,{slots:{distance:'this',object:'cat',person:'teacher'}},'distance');
+  assert.equal(next.slots.distance,'that');
+  const noun=cycleComposerSlot(source,{slots:{distance:'that',object:'cat',person:'teacher'}},'object');
+  assert.equal(noun.slots.object,'dog');
+  const personView=foundation.activities.find(a=>a.id==='identify-models');
+  assert.equal(personView.patternId,'point-person');
+  const viewHtml=renderActivity(personView,{lessonId:'A1-7',index:0,e:String,en:String,i:()=>'',progress:{sentenceComposers:{}},activitiesById:Object.fromEntries(foundation.activities.map(a=>[a.id,a]))});
+  assert.match(viewHtml,/data-perspective-object="teacher"/);
+  assert.match(viewHtml,/data-composer-slot="distance"/);
   assert.ok(production.activities.find(a=>a.type==='guided-dialogue').turns.some(turn=>turn.example==='Who is that?'));
-  assert.ok(production.activities.find(a=>a.type==='free-write').assessment.required.some(req=>req.any.includes('what is this')));
   assert.match(readFileSync(join(projectRoot,'apps/learner-web/assets/scene-a1-7.svg'),'utf8'),/Near: this/);
   assert.deepEqual(auditLesson(lesson).errors,[]);
 });
+test('A1-8 names rooms and aligns a tap-to-change sentence with the highlighted home floor plan', () => {
+  const lesson=load('lessons/a1-8.json');
+  const [foundation,production]=lesson.sections;
+  assert.deepEqual(validateLessonFlow(lesson),[]);
+  assert.deepEqual([...new Set(foundation.activities.map(a=>a.phase))],LESSON_PHASES.foundation);
+  assert.deepEqual([...new Set(production.activities.map(a=>a.phase))],LESSON_PHASES.production);
+  const vocabulary=foundation.activities.find(a=>a.type==='vocabulary');
+  assert.ok(coreItems(vocabulary).length>=12);
+  assert.ok(supplementaryItems(vocabulary).length>=6);
+  for(const old of ['room','mother','father','sister','brother','book','in','where','this','table'])
+    assert.ok(!vocabulary.items.some(item=>item.en===old),'previous teaching should be used but not relisted: '+old);
+  assert.ok(vocabulary.items.every(item=>!/\\s/.test(item.en.trim())));
+  const comp=foundation.activities.find(a=>a.id==='rooms-composer');
+  assert.deepEqual(validateSentenceComposer(comp),[]);
+  const kitchen=resolveSentenceComposer(comp,{pattern:'location',slots:{person:'mother',room:'kitchen'}});
+  assert.equal(composeSegments(kitchen.pattern.segments,comp,kitchen),'My mother is in the kitchen.');
+  const balcony=resolveSentenceComposer(comp,{pattern:'location',slots:{person:'sister',room:'balcony'}});
+  assert.equal(composeSegments(balcony.pattern.segments,comp,balcony),'My sister is on the balcony.');
+  const scene=renderActivity(comp,{lessonId:'A1-8',index:0,e:String,en:String,i:()=>'',progress:{sentenceComposers:{'A1-8:rooms-composer':{slots:{room:'garden'}}}}});
+  assert.match(scene,/data-room-selected="garden"/);
+  assert.match(scene,/GARDEN/);
+  assert.match(scene,/data-composer-slot="room"/);
+  const roomView=foundation.activities.find(a=>a.id==='rooms-names');
+  assert.match(renderActivity(roomView,{lessonId:'A1-8',index:0,e:String,en:String,i:()=>'',progress:{sentenceComposers:{}},activitiesById:Object.fromEntries(foundation.activities.map(a=>[a.id,a]))}),/data-room-selected="kitchen"/);
+  assert.ok(foundation.activities.find(a=>a.type==='expression-study').items.some(item=>item.en==='living room'));
+  assert.ok(production.activities.find(a=>a.type==='free-write').prompt.includes('واقعی یا خیالی'));
+  assert.match(readFileSync(join(projectRoot,'apps/learner-web/assets/scene-a1-8.svg'),'utf8'),/KITCHEN/);
+  assert.deepEqual(auditLesson(lesson).errors,[]);
+});
+
 test('A1-1 staged practice increases variety without adding activity panels', () => {
   const lesson=load('lessons/a1-1.json');
   assert.equal(lesson.sections[0].activities.find(a=>a.id==='hello-intro-check').tasks.length,5);
@@ -1014,9 +1058,9 @@ test('A1-1 staged practice increases variety without adding activity panels', ()
   assert.ok(production.find(a=>a.id==='hello-guided-talk').turns.length>=5);
   assert.equal(production.filter(a=>a.type==='guided-dialogue').length,1);
 });
-test('all seven A1 lessons expose identical two-section navigation labels', () => {
+test('all eight A1 lessons expose identical two-section navigation labels', () => {
   const labels=['از کلمه تا جمله','از سؤال و جواب تا مکالمه'];
-  for (const id of ['a1-1','a1-2','a1-3','a1-4','a1-5','a1-6','a1-7']) {
+  for (const id of ['a1-1','a1-2','a1-3','a1-4','a1-5','a1-6','a1-7','a1-8']) {
     assert.deepEqual(load('lessons/'+id+'.json').sections.map(section=>section.label),labels,id);
   }
 });

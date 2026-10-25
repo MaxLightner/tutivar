@@ -1,6 +1,6 @@
 {
   "id": "A1-7",
-  "revision": 1,
+  "revision": 3,
   "status": "draft",
   "title": "این چیست؟ آن کیست؟",
   "goal": "بتوانی دربارهٔ چیزها و آدم‌های نزدیک و دور سؤال‌های مناسب What is this/that? و Who is this/that? بسازی، شخص و شیء را درست تشخیص بدهی و با جواب کوتاه یا کامل پاسخ دهی.",
@@ -19,7 +19,7 @@
       "مکان نزدیک و دور از درس چهارم",
       "اسامی اشیا و افراد از درس‌های قبلی"
     ],
-    "previously": "در درس‌های قبلی اشیا و خانواده را معرفی کردی و جای آن‌ها را گفتی. حالا نوع سؤال را بر اساس شخص یا شیء انتخاب می‌کنی و به فاصله هم توجه می‌کنی.",
+    "previously": "در درس‌های قبلی اشیا و خانواده را معرفی کردی و جای آن‌ها را گفتی. حالا نوع سؤال را بر اساس شخص یا شیء انتخاب می‌کنی و به فاصله هم توجه می‌کنی. واژه‌هایی که قبلاً در دیالوگ‌ها دیده‌ای (حتی اگر در بانک قدیم نبودند)، اینجا دوباره به‌عنوان کلمهٔ تازه معرفی نمی‌شوند.",
     "quickCheck": {
       "title": "اگر از قبل بلدی",
       "question": "وقتی به کتاب نزدیک و به معلم دورتر اشاره می‌کنی، دو سؤال متفاوت می‌سازی؟",
@@ -50,7 +50,7 @@
     {
       "id": "foundation",
       "label": "از کلمه تا جمله",
-      "intro": "اول چند سؤال کوتاه را سایه‌خوانی کن. بعد تفاوت Who برای انسان و What برای شیء را با اسم‌های تازه کشف کن.",
+      "intro": "فقط کلمات تازه را یاد بگیر؛ سپس در یک تصویر مشترک، اسم شیء یا شخص و this/that را روی خود جمله لمس کن. فلش و اندازهٔ شکل‌ها بلافاصله عوض می‌شوند.",
       "masteryActivityIds": [
         "identify-construction"
       ],
@@ -79,8 +79,8 @@
           "id": "identify-vocabulary",
           "type": "vocabulary",
           "phase": "words",
-          "title": "واژگان جدیدِ شناسایی اشیا و آدم‌ها",
-          "deckRevision": 1,
+          "title": "فقط واژه‌های تازهٔ افراد و چیزها",
+          "deckRevision": 2,
           "batchSize": 5,
           "items": [
             {
@@ -91,16 +91,6 @@
                 "That is a cat.",
                 "Who is that?",
                 "Is that your friend?"
-              ]
-            },
-            {
-              "en": "it",
-              "fa": "آن / این (برای چیز یا حیوان)",
-              "hint": "در پاسخ کوتاه دربارهٔ یک شیء به‌کار می‌رود.",
-              "examples": [
-                "It is a bag.",
-                "Is it a phone?",
-                "Yes, it is."
               ]
             },
             {
@@ -121,56 +111,6 @@
                 "That woman is a doctor.",
                 "Who is that woman?",
                 "She is a woman."
-              ]
-            },
-            {
-              "en": "boy",
-              "fa": "پسر (بچه)",
-              "hint": "برای معرفی یک پسر.",
-              "examples": [
-                "This boy is my friend.",
-                "Who is that boy?",
-                "He is a boy."
-              ]
-            },
-            {
-              "en": "girl",
-              "fa": "دختر (بچه)",
-              "hint": "برای معرفی یک دختر.",
-              "examples": [
-                "That girl is my sister.",
-                "Who is that girl?",
-                "She is a girl."
-              ]
-            },
-            {
-              "en": "teacher",
-              "fa": "معلم",
-              "hint": "شغل فردی که درس می‌دهد.",
-              "examples": [
-                "That is my teacher.",
-                "Who is that teacher?",
-                "She is a teacher."
-              ]
-            },
-            {
-              "en": "student",
-              "fa": "دانش‌آموز / دانشجو",
-              "hint": "کسی که درس می‌خواند.",
-              "examples": [
-                "This is a student.",
-                "That student is my friend.",
-                "He is a student."
-              ]
-            },
-            {
-              "en": "friend",
-              "fa": "دوست",
-              "hint": "برای معرفی آشنای نزدیک.",
-              "examples": [
-                "That is my friend.",
-                "This is my friend, Ali.",
-                "Who is your friend?"
               ]
             },
             {
@@ -244,71 +184,132 @@
               ]
             },
             {
-              "en": "picture",
-              "fa": "تصویر",
-              "hint": "برای معرفی شیء روی دیوار یا میز.",
-              "examples": [
-                "This is a picture.",
-                "That picture is on the wall.",
-                "Is it a picture?"
-              ]
-            },
-            {
-              "en": "yes",
-              "fa": "بله",
-              "hint": "پاسخ مثبت به سؤال بله/خیر.",
-              "examples": [
-                "Yes, it is.",
-                "Yes, he is.",
-                "Yes, that is a cat."
-              ]
-            },
-            {
-              "en": "no",
-              "fa": "نه",
-              "hint": "پاسخ منفی به سؤال بله/خیر.",
-              "examples": [
-                "No, it is not.",
-                "No, she is not.",
-                "No, that is a dog."
-              ]
-            },
-            {
               "en": "visitor",
               "fa": "مهمان / بازدیدکننده",
-              "role": "supplementary"
+              "hint": "این شخص را در یک تصویر شناسایی کن.",
+              "examples": [
+                "That is a visitor.",
+                "Who is that visitor?",
+                "This is my visitor."
+              ]
             },
             {
               "en": "driver",
               "fa": "راننده",
-              "role": "supplementary"
+              "hint": "این شخص را در یک تصویر شناسایی کن.",
+              "examples": [
+                "That is a driver.",
+                "Who is that driver?",
+                "This is my driver."
+              ]
             },
             {
               "en": "neighbor",
               "fa": "همسایه",
-              "role": "supplementary"
+              "hint": "این شخص را در یک تصویر شناسایی کن.",
+              "examples": [
+                "That is a neighbor.",
+                "Who is that neighbor?",
+                "This is my neighbor."
+              ]
             },
             {
               "en": "artist",
               "fa": "هنرمند",
+              "hint": "این شخص را در یک تصویر شناسایی کن.",
+              "examples": [
+                "That is a artist.",
+                "Who is that artist?",
+                "This is my artist."
+              ]
+            },
+            {
+              "en": "nurse",
+              "fa": "پرستار",
+              "hint": "واژهٔ جدید برای معرفی آدم‌ها یا حیوانات در تصویر.",
+              "examples": [
+                "That woman is a nurse.",
+                "Who is that nurse?",
+                "She is a nurse."
+              ]
+            },
+            {
+              "en": "pilot",
+              "fa": "خلبان",
+              "hint": "واژهٔ جدید برای معرفی آدم‌ها یا حیوانات در تصویر.",
+              "examples": [
+                "That person is a pilot.",
+                "Who is that pilot?",
+                "He is a pilot."
+              ]
+            },
+            {
+              "en": "chef",
+              "fa": "سرآشپز",
+              "hint": "واژهٔ جدید برای معرفی آدم‌ها یا حیوانات در تصویر.",
+              "examples": [
+                "That is a chef.",
+                "Who is that chef?",
+                "She is a chef."
+              ]
+            },
+            {
+              "en": "farmer",
+              "fa": "کشاورز",
+              "hint": "واژهٔ جدید برای معرفی آدم‌ها یا حیوانات در تصویر.",
+              "examples": [
+                "That person is a farmer.",
+                "Who is that farmer?",
+                "He is a farmer."
+              ]
+            },
+            {
+              "en": "painter",
+              "fa": "نقاش",
+              "hint": "واژهٔ جدید برای معرفی آدم‌ها یا حیوانات در تصویر.",
+              "examples": [
+                "That is a painter.",
+                "Who is that painter?",
+                "She is a painter."
+              ]
+            },
+            {
+              "en": "rabbit",
+              "fa": "خرگوش",
+              "hint": "واژهٔ جدید برای معرفی آدم‌ها یا حیوانات در تصویر.",
+              "examples": [
+                "This is a rabbit.",
+                "What is that? A rabbit.",
+                "Is that a rabbit?"
+              ]
+            },
+            {
+              "en": "cashier",
+              "fa": "صندوقدار",
               "role": "supplementary"
             },
             {
-              "en": "animal",
-              "fa": "حیوان",
+              "en": "mechanic",
+              "fa": "مکانیک",
               "role": "supplementary"
             },
             {
-              "en": "tree",
-              "fa": "درخت",
+              "en": "singer",
+              "fa": "خواننده",
               "role": "supplementary"
             },
             {
-              "en": "egg",
-              "fa": "تخم‌مرغ",
+              "en": "actor",
+              "fa": "بازیگر",
+              "role": "supplementary"
+            },
+            {
+              "en": "bicycle",
+              "fa": "دوچرخه",
               "role": "supplementary"
             }
-          ]
+          ],
+          "description": "واژه‌های قبلی مثل teacher، friend، yes و no همچنان در جمله‌ها مرور می‌شوند، نه در بانک واژگان جدید."
         },
         {
           "id": "identify-expressions",
@@ -345,17 +346,17 @@
           "id": "identify-phrases",
           "type": "composer-view",
           "phase": "phrases",
-          "title": "اسم را عوض کن؛ «این» و شیء باقی می‌مانند",
-          "description": "در یک جمله، فقط اسم شیء تغییر می‌کند. روی خود کلمه بزن.",
+          "title": "این چیست یا آن چیست؟ فلش را با اشاره عوض کن",
+          "description": "روی this/that در خود پرسش بزن تا فلش از شیء نزدیک به دور منتقل شود.",
           "sourceActivityId": "identification-composer",
-          "patternId": "this-object"
+          "patternId": "ask-object"
         },
         {
           "id": "identification-composer",
           "type": "sentence-composer",
           "phase": "sentence",
-          "title": "این چیست؟ آن کیست؟ کلمه را لمس کن",
-          "description": "اسم شیء یا فرد را در خود جمله لمس کن تا تغییر کند. برای شیء What و برای شخص Who می‌پرسیم؛ this نزدیک و that دورتر است.",
+          "title": "همان جمله؛ شیء و this/that را لمس کن",
+          "description": "کلمهٔ this/that و نام شیء هر دو قابل لمس‌اند. تصویر و فلش دقیقاً با همان کلمات تغییر می‌کنند.",
           "targetLanguage": "en",
           "wordSets": {
             "objects": [
@@ -457,6 +458,15 @@
                   "word": "apple",
                   "faWord": "سیب"
                 }
+              },
+              {
+                "id": "rabbit",
+                "label": "rabbit",
+                "translation": "خرگوش",
+                "forms": {
+                  "word": "rabbit",
+                  "faWord": "خرگوش"
+                }
               }
             ],
             "people": [
@@ -531,6 +541,109 @@
                   "word": "woman",
                   "faWord": "زن"
                 }
+              },
+              {
+                "id": "visitor",
+                "label": "visitor",
+                "translation": "بازدیدکننده",
+                "forms": {
+                  "word": "visitor",
+                  "faWord": "بازدیدکننده"
+                }
+              },
+              {
+                "id": "driver",
+                "label": "driver",
+                "translation": "راننده",
+                "forms": {
+                  "word": "driver",
+                  "faWord": "راننده"
+                }
+              },
+              {
+                "id": "neighbor",
+                "label": "neighbor",
+                "translation": "همسایه",
+                "forms": {
+                  "word": "neighbor",
+                  "faWord": "همسایه"
+                }
+              },
+              {
+                "id": "artist",
+                "label": "artist",
+                "translation": "هنرمند",
+                "forms": {
+                  "word": "artist",
+                  "faWord": "هنرمند"
+                }
+              },
+              {
+                "id": "nurse",
+                "label": "nurse",
+                "translation": "پرستار",
+                "forms": {
+                  "word": "nurse",
+                  "faWord": "پرستار"
+                }
+              },
+              {
+                "id": "pilot",
+                "label": "pilot",
+                "translation": "خلبان",
+                "forms": {
+                  "word": "pilot",
+                  "faWord": "خلبان"
+                }
+              },
+              {
+                "id": "chef",
+                "label": "chef",
+                "translation": "سرآشپز",
+                "forms": {
+                  "word": "chef",
+                  "faWord": "سرآشپز"
+                }
+              },
+              {
+                "id": "farmer",
+                "label": "farmer",
+                "translation": "کشاورز",
+                "forms": {
+                  "word": "farmer",
+                  "faWord": "کشاورز"
+                }
+              },
+              {
+                "id": "painter",
+                "label": "painter",
+                "translation": "نقاش",
+                "forms": {
+                  "word": "painter",
+                  "faWord": "نقاش"
+                }
+              }
+            ],
+            "distances": [
+              {
+                "id": "this",
+                "label": "This",
+                "translation": "این",
+                "forms": {
+                  "term": "This",
+                  "lower": "this",
+                  "fa": "این"
+                }
+              },
+              {
+                "id": "that",
+                "label": "That",
+                "translation": "آن",
+                "forms": {
+                  "term": "That",
+                  "lower": "that",
+                  "fa": "آن"
+                }
               }
             ]
           },
@@ -546,11 +659,17 @@
               "label": "شخص",
               "wordSet": "people",
               "default": "teacher"
+            },
+            {
+              "id": "distance",
+              "label": "این یا آن",
+              "wordSet": "distances",
+              "default": "this"
             }
           ],
           "derivedDefaults": {},
           "dependencies": [],
-          "defaultPattern": "this-object",
+          "defaultPattern": "point-object",
           "patterns": [
             {
               "id": "this-object",
@@ -747,8 +866,136 @@
                   "fixed": " است؟"
                 }
               ]
+            },
+            {
+              "id": "point-object",
+              "label": "این یا آن شیء",
+              "segments": [
+                {
+                  "slot": "distance",
+                  "form": "term"
+                },
+                {
+                  "fixed": " is a "
+                },
+                {
+                  "slot": "object",
+                  "form": "word"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "distance",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " یک "
+                },
+                {
+                  "slot": "object",
+                  "form": "faWord"
+                },
+                {
+                  "fixed": " است."
+                }
+              ]
+            },
+            {
+              "id": "point-person",
+              "label": "این یا آن شخص",
+              "segments": [
+                {
+                  "slot": "distance",
+                  "form": "term"
+                },
+                {
+                  "fixed": " is my "
+                },
+                {
+                  "slot": "person",
+                  "form": "word"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "distance",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "person",
+                  "form": "faWord"
+                },
+                {
+                  "fixed": " من است."
+                }
+              ]
+            },
+            {
+              "id": "ask-object",
+              "label": "این یا آن چیست؟",
+              "segments": [
+                {
+                  "fixed": "What is "
+                },
+                {
+                  "slot": "distance",
+                  "form": "lower"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "distance",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " چیست؟"
+                }
+              ]
+            },
+            {
+              "id": "ask-person",
+              "label": "این یا آن کیست؟",
+              "segments": [
+                {
+                  "fixed": "Who is "
+                },
+                {
+                  "slot": "distance",
+                  "form": "lower"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "distance",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " کیست؟"
+                }
+              ]
             }
-          ]
+          ],
+          "scene": {
+            "type": "perspective",
+            "distanceSlot": "distance",
+            "entitySlot": "object",
+            "entityKind": "object"
+          }
         },
         {
           "id": "identify-meaning",
@@ -799,16 +1046,16 @@
           "id": "identify-models",
           "type": "composer-view",
           "phase": "variants",
-          "title": "حالا فرد دورتر را معرفی کن",
-          "description": "روی اسم شخص در جمله بزن تا هویت تغییر کند؛ می‌توانی همان فرد را در عکس یا محیط پیدا کنی.",
+          "title": "این شخص یا آن شخص؛ لمس مستقیم کلمه",
+          "description": "با لمس this/that فلش جابه‌جا می‌شود؛ با لمس عنوان شخص، تصویر فرد عوض می‌شود.",
           "sourceActivityId": "identification-composer",
-          "patternIds": [
-            "that-person",
-            "this-person",
-            "that-object",
-            "what-that",
-            "who-that"
-          ]
+          "patternId": "point-person",
+          "scene": {
+            "type": "perspective",
+            "distanceSlot": "distance",
+            "entitySlot": "person",
+            "entityKind": "person"
+          }
         },
         {
           "id": "identify-puzzle",
@@ -816,7 +1063,7 @@
           "phase": "puzzle",
           "title": "جورچین: انسان یا شیء؟",
           "description": "کلمات درهم‌اند؛ What و Who را در جای مناسب بچین. واژهٔ نامعتبر کوتاه می‌لرزد و به بانک برمی‌گردد.",
-          "revision": 1,
+          "revision": 2,
           "reuseBank": true,
           "goalCount": 5,
           "sourceActivityId": "identification-composer",
@@ -827,7 +1074,11 @@
             "who-this",
             "what-this",
             "what-that",
-            "that-person"
+            "that-person",
+            "point-object",
+            "point-person",
+            "ask-object",
+            "ask-person"
           ],
           "sentences": [
             {

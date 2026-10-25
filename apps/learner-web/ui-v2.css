@@ -888,3 +888,11 @@ button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3p
 .count-math-equation>strong{font-size:20px}
 .count-math-caption{text-align:center;font-size:14px;line-height:1.8;padding:10px;background:#f7faf5;border-radius:12px}
 @media(max-width:600px){.count-math-equation{gap:5px}.count-math-equation>div{min-width:92px;flex-basis:94px}.count-math-equation .count-object-picture{width:31px;height:31px;flex-basis:31px}}
+
+/* Shared inline sentence + image scene: near/far and noun are derived from the same slots. */
+.perspective-visual{margin:12px 0 15px;background:#eff6f2;border:1px solid #d2e4d8;border-radius:20px;overflow:hidden}
+.perspective-picture{display:block;width:100%;height:auto;min-height:170px;max-height:310px}
+.perspective-visual figcaption{font-size:12px;line-height:1.7;color:#4c6d5a;text-align:center;padding:6px 10px 12px}
+.perspective-visual[data-perspective-distance="this"]{border-color:#81b39a}
+.perspective-visual[data-perspective-distance="that"]{border-color:#8ab3ba}
+@media(max-width:550px){.perspective-picture{min-height:160px}.perspective-visual figcaption{font-size:11px}}

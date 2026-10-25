@@ -112,6 +112,121 @@ function patternLab(a, c) {
   return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="phrase-composer pattern-lab-controls">${controls}</div>${result}`, a, c.index, c.e, 'module-pattern-lab');
 }
 
+
+/** A shared scene for interactive point-and-name grammar.
+ * Both near and far objects are drawn from the currently selected word;
+ * the pointer is tied to the very same distance slot as This/That.
+ */
+function perspectiveGlyph(word, person=false) {
+  const shapes={
+    cat:'<path d="M18 26L16 5L35 16Q53 13 68 16L85 5L81 29Q94 44 81 68Q67 87 49 87Q29 87 17 68Q6 44 18 26Z" fill="#d4ac84" stroke="#775945" stroke-width="4"/><ellipse cx="36" cy="49" rx="5" ry="7" fill="#3d594b"/><ellipse cx="65" cy="49" rx="5" ry="7" fill="#3d594b"/><path d="M45 66L50 71L55 66Z" fill="#ab7473"/><path d="M23 64L3 59M23 70L3 75M78 64L98 59M78 70L98 75" stroke="#775945" stroke-width="3"/>',
+    dog:'<ellipse cx="49" cy="58" rx="36" ry="30" fill="#bb8f6b" stroke="#805d45" stroke-width="4"/><path d="M20 35Q-1 25 8 62L25 63M80 35Q104 26 93 62L76 63" fill="#8b624a" stroke="#805d45" stroke-width="4"/><circle cx="35" cy="56" r="5" fill="#342e2b"/><circle cx="65" cy="56" r="5" fill="#342e2b"/><ellipse cx="50" cy="72" rx="10" ry="7" fill="#4c3930"/>',
+    book:'<path d="M6 18L48 13L48 83L6 88Z" fill="#a6c5be" stroke="#42786c" stroke-width="4"/><path d="M49 13L94 18V88L49 83Z" fill="#d7e5e0" stroke="#42786c" stroke-width="4"/><path d="M49 13V85M16 34L37 32M16 46L37 43M60 32L84 34M60 45L84 47" stroke="#7c9e95" stroke-width="3"/>',
+    bag:'<rect x="12" y="32" width="76" height="56" rx="12" fill="#8aa8bf" stroke="#476f88" stroke-width="5"/><path d="M30 35V24A20 20 0 0 1 70 24V35" fill="none" stroke="#476f88" stroke-width="7"/><path d="M15 60H85" stroke="#d2e3ed" stroke-width="4"/>',
+    phone:'<rect x="27" y="4" width="48" height="92" rx="11" fill="#3e5364" stroke="#243d4d" stroke-width="5"/><rect x="34" y="17" width="34" height="63" rx="3" fill="#b5d8d2"/><circle cx="51" cy="88" r="4" fill="#e4efed"/>',
+    computer:'<rect x="4" y="12" width="92" height="58" rx="6" fill="#617f8e" stroke="#3e5967" stroke-width="5"/><rect x="13" y="21" width="74" height="39" rx="2" fill="#b9dad7"/><path d="M50 71V88M25 90H76" stroke="#516a76" stroke-width="8" stroke-linecap="round"/>',
+    flower:'<path d="M49 49V97M49 75Q24 55 17 80Q33 93 49 75M50 79Q71 51 90 72Q76 88 50 79" fill="#7eaa80" stroke="#497b58" stroke-width="4"/><circle cx="50" cy="33" r="13" fill="#edbe58"/><circle cx="50" cy="13" r="16" fill="#de92ac"/><circle cx="70" cy="30" r="16" fill="#de92ac"/><circle cx="61" cy="52" r="16" fill="#de92ac"/><circle cx="38" cy="52" r="16" fill="#de92ac"/><circle cx="31" cy="30" r="16" fill="#de92ac"/>',
+    car:'<path d="M14 60L25 32Q50 20 77 32L89 61V81H10V61Z" fill="#9aadc1" stroke="#5a7893" stroke-width="5"/><path d="M30 36H70L79 56H20Z" fill="#dceef0" stroke="#5a7893" stroke-width="3"/><circle cx="26" cy="80" r="11" fill="#354653"/><circle cx="75" cy="80" r="11" fill="#354653"/>',
+    picture:'<rect x="10" y="11" width="80" height="79" rx="6" fill="#dfb589" stroke="#9c764b" stroke-width="6"/><rect x="21" y="22" width="58" height="57" fill="#b3d6d5"/><circle cx="62" cy="39" r="9" fill="#f4d18a"/><path d="M21 74L44 49L55 62L70 43L80 58V79H21Z" fill="#789d85"/>',
+    bird:'<path d="M12 62Q23 32 49 40Q78 35 83 64Q68 88 44 81Q20 86 12 62Z" fill="#8dafbf" stroke="#537a90" stroke-width="4"/><path d="M43 58Q35 29 75 19Q89 46 63 62Z" fill="#b6d0d8"/><circle cx="25" cy="56" r="4" fill="#304752"/><path d="M12 62L0 69L12 74M72 79L88 91" fill="#e4b168" stroke="#8f6b45" stroke-width="3"/>',
+    rabbit:'<path d="M27 39L19 3Q28 -2 39 5L46 36M60 37L67 3Q83 0 82 11L74 48" fill="#d5b4a5" stroke="#906f66" stroke-width="5"/><ellipse cx="50" cy="66" rx="35" ry="29" fill="#e6d3c4" stroke="#9c7c70" stroke-width="5"/><circle cx="38" cy="63" r="5" fill="#4d514c"/><circle cx="62" cy="63" r="5" fill="#4d514c"/><path d="M46 77L50 81L54 77" fill="#c99496" stroke="#9c7c70" stroke-width="2"/>',
+    apple:'<path d="M49 27Q19 10 13 37Q8 71 31 88Q43 91 49 83Q59 93 70 87Q93 71 88 37Q81 11 50 27Z" fill="#d87962" stroke="#994c43" stroke-width="4"/><path d="M49 27Q47 13 57 7M55 13Q76 3 83 16Q70 24 55 13Z" fill="#62916d" stroke="#497e58" stroke-width="4"/>',
+    ball:'<circle cx="50" cy="50" r="40" fill="#d9a06c" stroke="#a76f48" stroke-width="5"/><path d="M18 24Q69 41 81 78M20 77Q45 31 79 23" fill="none" stroke="#f5d7a9" stroke-width="4"/>',
+    lamp:'<path d="M50 60V85M27 88H74M27 48L39 11H62L75 48Z" fill="#d1b681" stroke="#8e7853" stroke-width="5"/><circle cx="51" cy="54" r="9" fill="#e8d19c"/>',
+    table:'<path d="M8 47H92V59H8ZM22 59V96M78 59V96" fill="#ba9369" stroke="#826141" stroke-width="6"/>',
+    chair:'<path d="M24 14V70H83V79H16V20M25 72V96M75 78V96" fill="none" stroke="#9b7859" stroke-width="10" stroke-linecap="round"/>',
+    bedroom:'<path d="M10 57H91V78H10Z" fill="#b8cad0" stroke="#5b7d8a" stroke-width="5"/><rect x="15" y="39" width="72" height="23" rx="9" fill="#e6ccbf"/><path d="M18 76V93M83 76V93M12 38V76" stroke="#5b7d8a" stroke-width="6"/>',
+    kitchen:'<rect x="13" y="30" width="75" height="58" rx="6" fill="#d2e0de" stroke="#668d87" stroke-width="5"/><path d="M13 45H88M51 45V88M25 60H43M61 60H79" stroke="#729994" stroke-width="4"/><path d="M26 30V15H75V30" fill="#98bec0" stroke="#668d87" stroke-width="4"/>',
+    bathroom:'<path d="M13 49H88V65Q83 91 62 91H36Q17 91 13 65Z" fill="#c6e3e7" stroke="#6995a2" stroke-width="5"/><path d="M18 48V20Q18 13 28 13H46V25M16 92H27M78 92H88" fill="none" stroke="#6995a2" stroke-width="5"/>',
+    garage:'<path d="M9 40L50 9L91 40V91H9Z" fill="#c2ccd6" stroke="#6b8295" stroke-width="5"/><path d="M25 50H76V91H25Z" fill="#89a0ae" stroke="#547083" stroke-width="4"/><path d="M25 63H76M25 76H76" stroke="#d6e5ea" stroke-width="3"/>'
+  };
+  if(person){
+    const dress=word==='doctor'||word==='nurse'?'#f0ece3':word==='teacher'||word==='student'?'#86a6b6':'#a2b595';
+    const accessory=word==='doctor'||word==='nurse'?'<path d="M50 61V85M38 73H62" stroke="#d66e63" stroke-width="7"/>':
+      word==='teacher'?'<path d="M13 76H35V93H13Z" fill="#e8cb87" stroke="#8c6c43" stroke-width="3"/>':
+      word==='chef'?'<path d="M18 13Q10 -6 31 2Q49 -13 64 2Q91 -4 83 13Z" fill="#f5f4e8" stroke="#9ca7a0" stroke-width="3"/>':
+      word==='pilot'?'<path d="M26 16Q49 -2 75 16L72 23H28Z" fill="#4c6173" stroke="#35495b" stroke-width="3"/><circle cx="49" cy="12" r="4" fill="#e4c079"/>':
+      word==='artist'||word==='painter'?'<ellipse cx="77" cy="81" rx="17" ry="13" fill="#d4b594"/><circle cx="73" cy="77" r="4" fill="#d56b66"/><circle cx="85" cy="79" r="4" fill="#709cb4"/><circle cx="78" cy="89" r="4" fill="#e3bd54"/>':
+      word==='driver'?'<circle cx="78" cy="76" r="16" stroke="#576974" fill="none" stroke-width="6"/>':'';
+    return '<svg viewBox="0 0 100 100" width="100" height="100" aria-hidden="true"><circle cx="50" cy="25" r="18" fill="#d8ac8d" stroke="#916c57" stroke-width="3"/><path d="M32 25Q28 -1 52 5Q70 5 69 25Q53 13 32 25Z" fill="#59493c"/><path d="M23 91L28 48Q51 38 72 48L77 91Z" fill="'+dress+'" stroke="#658375" stroke-width="4"/><path d="M31 89V99M69 89V99" stroke="#596c69" stroke-width="8"/>'+accessory+'</svg>';
+  }
+  return '<svg viewBox="0 0 100 100" width="100" height="100" aria-hidden="true">'+(shapes[word]||shapes.book)+'</svg>';
+}
+function roomMapScene(source, view, resolved, key, e) {
+  const scene=view.scene||source.scene;
+  const selected=resolved.state.slots?.[scene.entitySlot||'room']||'kitchen';
+  const rooms=[
+    {id:'kitchen',label:'KITCHEN',detail:'stove'},
+    {id:'bedroom',label:'BEDROOM',detail:'bed'},
+    {id:'bathroom',label:'BATHROOM',detail:'bath'},
+    {id:'living-room',label:'LIVING ROOM',detail:'sofa'},
+    {id:'dining-room',label:'DINING ROOM',detail:'dining'},
+    {id:'hallway',label:'HALLWAY',detail:'hall'},
+    {id:'garage',label:'GARAGE',detail:'car'},
+    {id:'balcony',label:'BALCONY',detail:'balcony'},
+    {id:'garden',label:'GARDEN',detail:'garden'}
+  ];
+  const icons={
+    stove:'<rect x="16" y="23" width="62" height="46" rx="6" fill="#b7cbd0" stroke="#688995" stroke-width="4"/><circle cx="34" cy="38" r="9" fill="#7d9ca5"/><circle cx="59" cy="38" r="9" fill="#7d9ca5"/><path d="M20 56H75" stroke="#7d9ca5" stroke-width="3"/>',
+    bed:'<rect x="8" y="31" width="80" height="47" rx="7" fill="#e2b9ad" stroke="#ae8176" stroke-width="4"/><rect x="14" y="31" width="28" height="18" rx="7" fill="#f4e9df"/><path d="M9 76V87M87 76V87" stroke="#947363" stroke-width="5"/>',
+    bath:'<path d="M8 42H87V60Q80 81 53 81H41Q15 81 8 60Z" fill="#c0e1e4" stroke="#6997a1" stroke-width="4"/><path d="M14 43V23H41" fill="none" stroke="#6997a1" stroke-width="5"/>',
+    sofa:'<rect x="10" y="41" width="76" height="31" rx="9" fill="#96b5a0" stroke="#668d73" stroke-width="4"/><path d="M16 49V24Q49 12 81 24V49M15 73V82M80 73V82" stroke="#668d73" fill="none" stroke-width="5"/>',
+    dining:'<ellipse cx="48" cy="44" rx="32" ry="19" fill="#caa17b" stroke="#8f704f" stroke-width="4"/><path d="M48 62V85M10 41H17M79 41H90" stroke="#8f704f" stroke-width="6"/>',
+    hall:'<path d="M22 82V15H78V82M36 80V30H65V80" stroke="#a18f76" stroke-width="7" fill="none"/><circle cx="58" cy="58" r="4" fill="#c29a65"/>',
+    car:'<path d="M13 58L25 35H73L86 58V73H12Z" fill="#a0b6cc" stroke="#62809d" stroke-width="4"/><circle cx="27" cy="75" r="9" fill="#3e5966"/><circle cx="73" cy="75" r="9" fill="#3e5966"/>',
+    balcony:'<path d="M12 36H86V82H12Z" stroke="#8b9aa4" stroke-width="5" fill="none"/><path d="M25 37V82M44 37V82M64 37V82M80 37V82" stroke="#8b9aa4" stroke-width="4"/><path d="M48 36V16" stroke="#579267" stroke-width="5"/><circle cx="49" cy="16" r="12" fill="#8db58a"/>',
+    garden:'<path d="M48 80V31M48 63Q28 43 18 57M48 58Q68 38 79 52" fill="none" stroke="#608f67" stroke-width="6"/><circle cx="48" cy="27" r="14" fill="#e5acb6"/><circle cx="48" cy="27" r="5" fill="#e4c66f"/><path d="M8 84H89" stroke="#80ab7e" stroke-width="6"/>'
+  };
+  const tiles=rooms.map((room,i)=>{
+    const x=15+(i%3)*215,y=17+Math.floor(i/3)*148;
+    const active=room.id===selected;
+    return '<g transform="translate('+x+' '+y+')">'+
+      '<rect width="207" height="137" rx="13" fill="'+(active?'#d0eee0':'#f2f6f2')+'" stroke="'+(active?'#247855':'#9eb8aa')+'" stroke-width="'+(active?'5':'2')+'"/>'+
+      '<g transform="translate(55 8) scale(.86)">'+icons[room.detail]+'</g>'+
+      '<text x="104" y="122" font-family="Arial,sans-serif" font-size="16" text-anchor="middle" font-weight="'+(active?'bold':'normal')+'" fill="'+(active?'#246746':'#4d6957')+'">'+room.label+'</text>'+
+      (active?'<circle cx="189" cy="17" r="9" fill="#247855"/>':'')+'</g>';
+  }).join('');
+  return '<figure class="perspective-visual room-map-visual" data-room-selected="'+e(selected)+'">'+
+     '<svg class="perspective-picture room-map-picture" viewBox="0 0 680 472" role="img" aria-label="نقشهٔ خانه، اتاق انتخاب‌شده: '+e(selected)+'"><rect width="680" height="472" rx="20" fill="#e9f2ea"/>'+tiles+'</svg>'+
+     '<figcaption>روی نام اتاق در جمله بزن؛ همان اتاق روی نقشه روشن می‌شود.</figcaption></figure>';
+}
+function perspectiveScene(source, view, resolved, key, e) {
+  const scene = view.scene || source.scene;
+  if(scene?.type==='rooms')return roomMapScene(source,view,resolved,key,e);
+  if(!scene || scene.type!=='perspective')return '';
+  const distanceSlot=scene.distanceSlot||'distance';
+  const entitySlot=scene.entitySlot||'object';
+  const wordId=resolved.state.slots?.[entitySlot];
+  const distance=resolved.state.slots?.[distanceSlot]||'this';
+  const near=distance==='this';
+  const label=String(wordId||'book').replace(/[^a-z-]/gi,'');
+  const symbol=perspectiveGlyph(label,scene.entityKind==='person');
+  const staticNear=perspectiveGlyph('book');
+  const staticFar=perspectiveGlyph('lamp');
+  const uid='perspective-'+key.replace(/[^a-z0-9]+/gi,'-');
+  const arrow=near?'M190 43Q192 68 206 102':'M500 43Q515 75 538 117';
+  const svg='<svg class="perspective-picture" viewBox="0 0 760 320" role="img" aria-label="'+e(near?'اشاره به '+label+' نزدیک':'اشاره به '+label+' دور')+'">'+
+    '<defs><marker id="'+uid+'-head" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#28765b"/></marker></defs>'+
+    '<rect x="2" y="2" width="756" height="315" rx="22" fill="#eff6f2"/><path d="M3 195L758 145V318H3Z" fill="#dce8d9"/>'+
+    '<path d="M395 5L395 317" stroke="#b6cbbd" stroke-width="3" stroke-dasharray="8 8"/>'+
+    '<path d="M410 175L748 95V135L410 213Z" fill="#d0dfd7"/>'+
+    '<path d="M35 276L352 276L378 304L16 304Z" fill="#b4c8b4"/>'+
+    '<g transform="translate(38 208) scale(.7)">'+staticNear+'</g>'+
+    '<g transform="translate(288 235) scale(.47)">'+perspectiveGlyph('ball')+'</g>'+
+    '<g transform="translate(648 139) scale(.55)">'+staticFar+'</g>'+
+    '<g transform="translate(442 178) scale(.35)">'+perspectiveGlyph('flower')+'</g>'+
+    '<g transform="translate(142 112) scale(1.35)">'+symbol+'</g>'+
+    '<g transform="translate(526 145) scale(.68)">'+symbol+'</g>'+
+    '<text x="210" y="264" text-anchor="middle" font-size="18" fill="#365b4d">'+e(label)+'</text>'+
+    '<text x="560" y="228" text-anchor="middle" font-size="15" fill="#365b4d">'+e(label)+'</text>'+
+    '<rect x="24" y="19" width="140" height="36" rx="18" fill="'+(near?'#d1e8dd':'#fff')+'"/><text x="94" y="43" text-anchor="middle" font-size="19" font-weight="700" fill="#2b6d51">THIS · near</text>'+
+    '<rect x="597" y="19" width="140" height="36" rx="18" fill="'+(!near?'#d1e8dd':'#fff')+'"/><text x="667" y="43" text-anchor="middle" font-size="19" font-weight="700" fill="#2b6d51">THAT · far</text>'+
+    '<path d="'+arrow+'" stroke="#28765b" stroke-width="7" fill="none" stroke-linecap="round" marker-end="url(#'+uid+'-head)"/>'+
+    '</svg>';
+  return '<figure class="perspective-visual" data-perspective-distance="'+e(distance)+'" data-perspective-object="'+e(label)+'">'+
+    svg+'<figcaption>این: نزدیک به دوربین · آن: دورتر از دوربین. فلش به نمونهٔ انتخاب‌شده اشاره می‌کند.</figcaption></figure>';
+}
+
 function sentenceComposer(a, c) {
   const source = a.type === 'composer-view' ? c.activitiesById?.[a.sourceActivityId] : a;
   if (!source || source.type !== 'sentence-composer') throw new Error('Missing sentence composer source: ' + a.sourceActivityId);
@@ -138,7 +253,8 @@ function sentenceComposer(a, c) {
     ? `<p class="composer-translation" dir="rtl">${renderSegments(pattern.translationSegments)}</p>` : '';
   const note = a.showNote && pattern.note ? `<p class="composer-note">${c.e(pattern.note)}</p>` : '';
   const english = composeSegments(pattern.segments, source, resolved);
-  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p>${patterns}<div class="composer-stage"><div class="composer-sentence" lang="${c.e(source.targetLanguage || 'en')}" dir="ltr">${renderSegments(pattern.segments, true)}${soundButton(english, c.e, c.i)}</div>${translation}</div>${note}`, a, c.index, c.e, 'module-sentence-composer');
+  const scene = perspectiveScene(source, a, resolved, key, c.e);
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p>${patterns}${scene}<div class="composer-stage"><div class="composer-sentence" lang="${c.e(source.targetLanguage || 'en')}" dir="ltr">${renderSegments(pattern.segments, true)}${soundButton(english, c.e, c.i)}</div>${translation}</div>${note}`, a, c.index, c.e, 'module-sentence-composer');
 }
 
 function sentenceLab(a, c) {

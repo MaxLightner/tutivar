@@ -150,6 +150,9 @@
         "phrases",
         "variants"
       ]
+    },
+    "scene": {
+      "type": "object"
     }
   }
 }
