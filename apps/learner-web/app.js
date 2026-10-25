@@ -484,10 +484,17 @@ function onClick(event) {
   if (el.dataset.attributeKey) {
     const key=el.dataset.attributeKey,field=el.dataset.attributeField;
     const activity=lessonActivity(key);
-    if(activity?.type!=='tap-attributes-lab'||!activity.options?.[field]?.length)return;
+    if(!['tap-attributes-lab','tap-ownership-lab'].includes(activity?.type)||!activity.options?.[field]?.length)return;
     progress.attributeChoices ||= {};
     const values=progress.attributeChoices[key]||{};
-    progress.attributeChoices[key]={...values,[field]:((Number(values[field])||0)+1)%activity.options[field].length};
+    let next=((Number(values[field])||0)+1)%activity.options[field].length;
+    if(activity.mode==='progressive-features'&&['shape','material'].includes(field)){
+      const object=activity.options.object?.[Number(values.object)||0];
+      const allowed=new Set(object?.[field==='shape'?'shapes':'materials']||[]);
+      const valid=activity.options[field].map((entry,index)=>allowed.has(entry.id)?index:-1).filter(index=>index>=0);
+      if(valid.length){const current=valid.indexOf(Number(values[field])||0);next=valid[(current+1)%valid.length];}
+    }
+    progress.attributeChoices[key]={...values,[field]:next};
     persist(); updateInline(); return;
   }
   if (el.dataset.countMathKey) {

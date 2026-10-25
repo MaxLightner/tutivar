@@ -15,7 +15,7 @@ const active=load('curriculum.a1.json').stages.flatMap(s=>s.chapters).flatMap(c=
   .filter(x=>x?.status==='sample');
 test('canonical A1 live curriculum stops at the first six approved outcomes',()=>{
  assert.deepEqual(active.map(x=>x.id),['A1-1','A1-2','A1-3','A1-4','A1-5','A1-6']);
- assert.equal(active[5].file,'lessons/a1-6-v2.json');
+ assert.deepEqual(active.slice(2).map(x=>x.file),['lessons/a1-3-v2.json','lessons/a1-4-v2.json','lessons/a1-5-v2.json','lessons/a1-6-v3.json']);
  assert.equal(active[5].title,'توصیف ویژگی‌های اشیا');
  assert.deepEqual(inspectVocabularyContinuity(active.map(x=>load(x.file))),[]);
 });
@@ -78,4 +78,73 @@ test('old A1-6..9 progress is archived and never credited to replacement A1-6',(
  assert.equal(migrated.leitnerAdded[0].front,'hello');
  assert.deepEqual(migrateLegacyProgress(migrated),migrated);
  assert.deepEqual(before.completed,['A1-1','A1-6','A1-8']);
+});
+
+test('new A1-3 teaches numbers before possession, reusing sister and brother without relisting them',()=>{
+ const lesson=load('lessons/a1-3-v2.json');
+ const activities=lesson.sections.flatMap(x=>x.activities);
+ const bank=activities.find(x=>x.type==='vocabulary').items.map(x=>x.en);
+ for(const number of ['one','two','three','eleven','twelve'])assert.ok(bank.includes(number));
+ assert.ok(!bank.includes('brother')&&!bank.includes('sister'),'family words belong to A1-2');
+ assert.ok(!bank.includes('red')&&!bank.includes('blue'),'colors belong to A1-6');
+ const exchange=JSON.stringify(activities);
+ for(const sample of ['There are three brothers.','There are two sisters.','How many sisters are there?'])assert.ok(exchange.includes(sample),sample);
+ assert.deepEqual(validateLessonFlow(lesson),[]);
+ assert.deepEqual(auditLesson(lesson).errors,[]);
+});
+
+test('new A1-4 reuses family and count in possession, negation and questions',()=>{
+ const lesson=load('lessons/a1-4-v2.json');
+ const activities=lesson.sections.flatMap(x=>x.activities);
+ const whole=JSON.stringify(activities);
+ for(const sample of ['I have three brothers.','You have two sisters.',"I don't have a sister.",'Do you have two brothers?','This is my bag.','I have a bag.'])assert.ok(whole.includes(sample),sample);
+ const lab=activities.find(x=>x.id==='ownership-compare-tap');
+ const ctx={lessonId:lesson.id,index:0,e:String,en:String,i:()=>'',progress:{}};
+ const initial=renderActivity(lab,ctx);
+ const swapped=renderActivity(lab,{...ctx,progress:{attributeChoices:{'A1-4:ownership-compare-tap':{count:2,noun:1}}}});
+ assert.match(initial,/I have a book/);
+ assert.match(swapped,/I have three brothers/);
+ assert.deepEqual(validateLessonFlow(lesson),[]);
+ assert.deepEqual(auditLesson(lesson).errors,[]);
+});
+
+test('new A1-5 combines location with prior family, numbers and ownership',()=>{
+ const lesson=load('lessons/a1-5-v2.json');
+ const all=JSON.stringify(lesson.sections);
+ for(const sample of ['My brother is near the door.','My two books are on the table.','My three books are in my bag.'])assert.ok(all.includes(sample),sample);
+ assert.deepEqual(validateLessonFlow(lesson),[]);
+ assert.deepEqual(auditLesson(lesson).errors,[]);
+});
+
+test('new A1-6 grows from one adjective to two and full descriptions with noun-synced visual',()=>{
+ const lesson=load('lessons/a1-6-v3.json');
+ const activities=lesson.sections[0].activities;
+ const labs=activities.filter(x=>x.mode==='progressive-features');
+ assert.deepEqual(labs.map(x=>x.stage),['one','two','full']);
+ const words=activities.find(x=>x.type==='vocabulary').items.map(x=>x.en);
+ for(const color of ['red','blue','green','yellow','black','white'])assert.ok(words.includes(color));
+ const ctx={lessonId:lesson.id,index:0,e:String,en:String,i:()=>'',progress:{}};
+ const one=renderActivity(labs[0],ctx);
+ const changed=renderActivity(labs[0],{...ctx,progress:{attributeChoices:{'A1-6:a1-6-one-adjective':{object:1,color:1}}}});
+ const two=renderActivity(labs[1],ctx);
+ const full=renderActivity(labs[2],ctx);
+ assert.match(one,/This is a.*red.*ball/);
+ assert.match(changed,/This is a.*blue.*book/);
+ assert.match(changed,/aria-label="کتاب آبی"/);
+ assert.match(two,/This is a.*small.*red.*ball/);
+ assert.match(full,/data-attribute-field="object"/);
+ assert.match(full,/wooden.*box/);
+ assert.deepEqual(validateLessonFlow(lesson),[]);
+ assert.deepEqual(auditLesson(lesson).errors,[]);
+});
+
+test('past A1-3..6 completions are archived on the owner-approved reorder',()=>{
+ const old={curriculumRevision:'a1-canonical-six-2026-10',completed:['A1-1','A1-3','A1-4','A1-5','A1-6'],
+  sentenceComposers:{'A1-4:places-composer':{pattern:'where'},'A1-1:hello-composer':{pattern:'intro'}},leitnerAdded:[{lessonId:'A1-3',front:'book'},{lessonId:'A1-2',front:'mother'}]};
+ const saved=migrateLegacyProgress(old);
+ assert.deepEqual(saved.completed,['A1-1']);
+ assert.deepEqual(saved.legacyCurriculum['oct-2026-canonical-before-reorder'].completed,['A1-3','A1-4','A1-5','A1-6']);
+ assert.ok(saved.legacyCurriculum['oct-2026-canonical-before-reorder'].fields.sentenceComposers['A1-4:places-composer']);
+ assert.deepEqual(saved.leitnerAdded,[{lessonId:'A1-2',front:'mother'}]);
+ assert.deepEqual(migrateLegacyProgress(saved),saved);
 });

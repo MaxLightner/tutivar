@@ -1,0 +1,2239 @@
+{
+  "id": "A1-3",
+  "revision": "2026-10-25-owner-cumulative-a1",
+  "status": "draft",
+  "title": "شمارش و جمع اشیا",
+  "goal": "تا دوازده بشمار؛ اسم مفرد و جمع بساز؛ تعداد اعضای خانواده و وسایل را بیان کن.",
+  "duration": "حدود ۲۰ تا ۲۵ دقیقه",
+  "feature": "شمارش و جمله‌سازی",
+  "archetype": "counting-objects",
+  "teachingModel": {
+    "primary": "K1",
+    "support": "K2"
+  },
+  "orientation": {
+    "goal": "از شمارش ساده به پرسش و پاسخ دربارهٔ تعداد اشیای واقعی برسی.",
+    "prerequisites": [
+      "آشنایی با اسم اشیای شخصی و وسایل اطراف",
+      "آشنایی مقدماتی با is و are"
+    ],
+    "previously": "در درس سوم مالکیت وسایل را گفتی و در درس چهارم مکان اشیا را توصیف کردی. حالا همان اشیا را می‌شماری و دربارهٔ تعدادشان سؤال می‌سازی.",
+    "quickCheck": {
+      "title": "اگر از قبل بلدی",
+      "question": "می‌توانی تعداد چند کتاب را بپرسی و جواب بدهی?",
+      "example": "How many books are there? There are three books.",
+      "explanation": "اگر این الگو را بلدی، باز هم می‌توانی شکل مفرد و جمع اسم‌ها و پاسخ‌های مختلف را با اشیای تازه تمرین کنی.",
+      "allowSkip": true
+    }
+  },
+  "visual": {
+    "src": null,
+    "alt": "تصویر یک میز با سه کتاب، دو خودکار، چهار سیب، یک کیف و پنج مداد.",
+    "caption": "از روی تصویر تعداد اشیا را پیدا کن و با جملهٔ انگلیسی بگو."
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "one",
+      "two",
+      "three",
+      "How many",
+      "brothers",
+      "sisters",
+      "There are three books."
+    ],
+    "specificIndependentExpressions": [
+      "How many"
+    ],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": true
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "از کلمه تا جمله",
+      "intro": "اول مفرد و جمع را با لمس مستقیم اسم در تصویر ببین، سپس با جمع و تفریق ساده تمرین کن و تفاوت a و an را با دو جملهٔ زنده یاد بگیر.",
+      "masteryActivityIds": [
+        "counting-construction"
+      ],
+      "activities": [
+        {
+          "id": "a1-5-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "شنیدن و سایه‌خوانی",
+          "description": "فقط گوش بده و هم‌زمان یا با فاصله‌ای کوتاه تکرار کن؛ لازم نیست معنی جمله‌ها را بفهمی.",
+          "audioSrc": null,
+          "rate": 0.7,
+          "pauseMs": 500,
+          "lines": [
+            "One book. Two books.",
+            "One brother. Three brothers.",
+            "One sister. Two sisters.",
+            "How many books are there?",
+            "There are five books."
+          ]
+        },
+        {
+          "id": "counting-words",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "عددهای ۱ تا ۱۲ و اسم‌های مورد نیاز برای شمارش",
+          "batchSize": 5,
+          "deckRevision": 6,
+          "items": [
+            {
+              "en": "one",
+              "fa": "یک",
+              "hint": "برای یک شیء؛ اسم بعد از آن مفرد می‌ماند.",
+              "examples": [
+                "One book.",
+                "There is one bag.",
+                "I see one apple."
+              ]
+            },
+            {
+              "en": "two",
+              "fa": "دو",
+              "hint": "برای دو شیء؛ اسم معمولاً s می‌گیرد.",
+              "examples": [
+                "Two books.",
+                "There are two pens.",
+                "I see two apples."
+              ]
+            },
+            {
+              "en": "three",
+              "fa": "سه",
+              "hint": "برای سه شیء؛ اسم معمولاً s می‌گیرد.",
+              "examples": [
+                "Three books.",
+                "There are three books.",
+                "I see three cups."
+              ]
+            },
+            {
+              "en": "four",
+              "fa": "چهار",
+              "hint": "برای چهار شیء؛ اسم معمولاً s می‌گیرد.",
+              "examples": [
+                "Four apples.",
+                "There are four apples.",
+                "I see four balls."
+              ]
+            },
+            {
+              "en": "five",
+              "fa": "پنج",
+              "hint": "برای پنج شیء؛ اسم معمولاً s می‌گیرد.",
+              "examples": [
+                "Five pencils.",
+                "There are five pencils.",
+                "I see five books."
+              ]
+            },
+            {
+              "en": "six",
+              "fa": "شش",
+              "hint": "برای شش شیء؛ اسم معمولاً s می‌گیرد.",
+              "examples": [
+                "Six books.",
+                "There are six books.",
+                "I see six pens."
+              ]
+            },
+            {
+              "en": "seven",
+              "fa": "هفت",
+              "hint": "برای هفت شیء؛ اسم معمولاً s می‌گیرد.",
+              "examples": [
+                "Seven pens.",
+                "There are seven pens.",
+                "I see seven apples."
+              ]
+            },
+            {
+              "en": "eight",
+              "fa": "هشت",
+              "hint": "برای هشت شیء؛ اسم معمولاً s می‌گیرد.",
+              "examples": [
+                "Eight apples.",
+                "There are eight apples.",
+                "I see eight books."
+              ]
+            },
+            {
+              "en": "nine",
+              "fa": "نه",
+              "hint": "برای نه شیء؛ اسم معمولاً s می‌گیرد.",
+              "examples": [
+                "Nine books.",
+                "There are nine books.",
+                "I see nine pencils."
+              ]
+            },
+            {
+              "en": "ten",
+              "fa": "ده",
+              "hint": "برای ده شیء؛ اسم معمولاً s می‌گیرد.",
+              "examples": [
+                "Ten pens.",
+                "There are ten pens.",
+                "I see ten apples."
+              ]
+            },
+            {
+              "en": "apple",
+              "fa": "سیب",
+              "hint": "یک میوهٔ قابل شمارش",
+              "examples": [
+                "One apple.",
+                "There are four apples.",
+                "How many apples are there?"
+              ]
+            },
+            {
+              "en": "many",
+              "fa": "چند / تعداد زیاد",
+              "hint": "در این درس همراه How برای پرسیدن تعداد می‌آید.",
+              "examples": [
+                "How many books are there?",
+                "How many pens are there?",
+                "How many apples are there?"
+              ]
+            },
+            {
+              "en": "orange",
+              "fa": "پرتقال",
+              "hint": "میوه‌ای که با an می‌آید.",
+              "examples": [
+                "One orange.",
+                "An orange.",
+                "There are two oranges."
+              ]
+            },
+            {
+              "en": "fish",
+              "fa": "ماهی",
+              "hint": "جمع fish نیز fish است.",
+              "examples": [
+                "One fish.",
+                "Two fish.",
+                "I can see two fish."
+              ]
+            },
+            {
+              "en": "sheep",
+              "fa": "گوسفند",
+              "hint": "مفرد و جمع sheep یکسان است.",
+              "examples": [
+                "One sheep.",
+                "Two sheep.",
+                "There are two sheep."
+              ]
+            },
+            {
+              "en": "person",
+              "fa": "نفر / شخص",
+              "hint": "جمع نامنظم آن people است.",
+              "examples": [
+                "One person.",
+                "Two people.",
+                "There are three people."
+              ]
+            },
+            {
+              "en": "bus",
+              "fa": "اتوبوس",
+              "hint": "جمع آن buses است.",
+              "examples": [
+                "One bus.",
+                "Two buses.",
+                "There are two buses."
+              ]
+            },
+            {
+              "en": "mouse",
+              "fa": "موش",
+              "hint": "جمع نامنظم آن mice است.",
+              "examples": [
+                "One mouse.",
+                "Two mice.",
+                "There are two mice."
+              ]
+            },
+            {
+              "en": "plus",
+              "fa": "به‌علاوه",
+              "hint": "واژهٔ تازهٔ جمع و تفریق در جمله‌های همین درس.",
+              "examples": [
+                "One plus one equals two.",
+                "One apple plus one apple equals two apples.",
+                "Two plus one equals three."
+              ]
+            },
+            {
+              "en": "minus",
+              "fa": "منهای",
+              "hint": "واژهٔ تازهٔ جمع و تفریق در جمله‌های همین درس.",
+              "examples": [
+                "Two minus one equals one.",
+                "Two apples minus one apple equals one apple.",
+                "Three minus one equals two."
+              ]
+            },
+            {
+              "en": "equals",
+              "fa": "مساوی است با",
+              "hint": "واژهٔ تازهٔ جمع و تفریق در جمله‌های همین درس.",
+              "examples": [
+                "One plus one equals two.",
+                "Two minus one equals one.",
+                "One apple plus one apple equals two apples."
+              ]
+            },
+            {
+              "en": "eleven",
+              "fa": "یازده",
+              "examples": [
+                "Eleven books.",
+                "There are eleven books.",
+                "I see eleven balls."
+              ]
+            },
+            {
+              "en": "twelve",
+              "fa": "دوازده",
+              "examples": [
+                "Twelve books.",
+                "There are twelve books.",
+                "I see twelve balls."
+              ]
+            },
+            {
+              "en": "book",
+              "fa": "کتاب",
+              "hint": "یک وسیله",
+              "examples": [
+                "One book.",
+                "There are three books.",
+                "How many books are there?"
+              ]
+            },
+            {
+              "en": "bag",
+              "fa": "کیف",
+              "hint": "یک وسیله",
+              "examples": [
+                "One bag.",
+                "There are three bags.",
+                "How many bags are there?"
+              ]
+            },
+            {
+              "en": "phone",
+              "fa": "تلفن",
+              "hint": "یک وسیله",
+              "examples": [
+                "One phone.",
+                "There are three phones.",
+                "How many phones are there?"
+              ]
+            },
+            {
+              "en": "pen",
+              "fa": "خودکار",
+              "hint": "یک وسیله",
+              "examples": [
+                "One pen.",
+                "There are three pens.",
+                "How many pens are there?"
+              ]
+            },
+            {
+              "en": "notebook",
+              "fa": "دفتر",
+              "hint": "وسیله‌ای برای نوشتن",
+              "examples": [
+                "One notebook.",
+                "There are three notebooks.",
+                "How many notebooks are there?"
+              ]
+            },
+            {
+              "en": "pencil",
+              "fa": "مداد",
+              "hint": "وسیله‌ای برای نوشتن",
+              "examples": [
+                "One pencil.",
+                "There are three pencils.",
+                "How many pencils are there?"
+              ]
+            },
+            {
+              "en": "ball",
+              "fa": "توپ",
+              "examples": [
+                "This is one ball.",
+                "There are two balls.",
+                "How many balls are there?"
+              ]
+            },
+            {
+              "en": "box",
+              "fa": "جعبه",
+              "examples": [
+                "This is one box.",
+                "There are two boxes.",
+                "How many boxes are there?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "counting-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "ترکیب پرسیدن تعداد",
+          "description": "عبارت How many را در مکالمه و جمله‌سازی همین درس به کار ببر.",
+          "items": [
+            {
+              "en": "How many",
+              "fa": "چند تا / چند عدد",
+              "kind": "fixed",
+              "hint": "آغازِ پرسش دربارهٔ تعداد؛ جملهٔ کامل نیست.",
+              "examples": [
+                "How many books are there?",
+                "How many pens are there?",
+                "How many apples are there?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "counting-plural-pairs",
+          "type": "plural-pair-lab",
+          "phase": "phrases",
+          "title": "یک یا دو شیء؛ فقط اسم را لمس کن",
+          "description": "عدد one و two ثابت است؛ روی خود اسم در یکی از جمله‌ها بزن تا هر دو تصویر و شکل جمع عوض شوند.",
+          "items": [
+            {
+              "shape": "fish",
+              "singular": "fish",
+              "plural": "fish",
+              "note": "fish شکل جمع معمولاً یکسان دارد: one fish / two fish."
+            },
+            {
+              "shape": "book",
+              "singular": "book",
+              "plural": "books",
+              "note": "بیشتر اسم‌ها با افزودن s جمع می‌شوند."
+            },
+            {
+              "shape": "apple",
+              "singular": "apple",
+              "plural": "apples",
+              "note": "بعد از two اسم جمع به کار می‌رود."
+            },
+            {
+              "shape": "box",
+              "singular": "box",
+              "plural": "boxes",
+              "note": "box با es جمع بسته می‌شود: one box / two boxes."
+            },
+            {
+              "shape": "sheep",
+              "singular": "sheep",
+              "plural": "sheep",
+              "note": "sheep در مفرد و جمع یکسان می‌ماند."
+            },
+            {
+              "shape": "person",
+              "singular": "person",
+              "plural": "people",
+              "note": "person به people تبدیل می‌شود؛ فقط s اضافه نمی‌کنیم."
+            },
+            {
+              "shape": "child",
+              "singular": "child",
+              "plural": "children",
+              "note": "child شکل جمع بی‌قاعدهٔ children دارد؛ این اسم را در تمرین مرور می‌کنی."
+            },
+            {
+              "shape": "bus",
+              "singular": "bus",
+              "plural": "buses",
+              "note": "bus به buses تبدیل می‌شود."
+            },
+            {
+              "shape": "mouse",
+              "singular": "mouse",
+              "plural": "mice",
+              "note": "mouse شکل جمع نامنظم mice دارد."
+            }
+          ]
+        },
+        {
+          "id": "counting-math",
+          "type": "count-math-lab",
+          "phase": "phrases",
+          "title": "جمع و تفریق تصویری",
+          "description": "One apple plus one apple equals two apples. با لمس اسم، شکل‌ها تغییر می‌کنند؛ با لمس علامت، جمع به تفریق تبدیل می‌شود.",
+          "items": [
+            {
+              "shape": "apple",
+              "singular": "apple",
+              "plural": "apples"
+            },
+            {
+              "shape": "book",
+              "singular": "book",
+              "plural": "books"
+            },
+            {
+              "shape": "fish",
+              "singular": "fish",
+              "plural": "fish"
+            },
+            {
+              "shape": "pencil",
+              "singular": "pencil",
+              "plural": "pencils"
+            },
+            {
+              "shape": "pen",
+              "singular": "pen",
+              "plural": "pens"
+            },
+            {
+              "shape": "box",
+              "singular": "box",
+              "plural": "boxes"
+            },
+            {
+              "shape": "orange",
+              "singular": "orange",
+              "plural": "oranges"
+            }
+          ]
+        },
+        {
+          "id": "counting-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "پرسیدن تعداد؛ اسم را عوض کن",
+          "description": "فقط نام شیء را در سؤال عوض کن. با How many سؤال تعداد را می‌سازی؛ پاسخ‌های There is و There are را در تمرین‌های بعدی تولید می‌کنی.",
+          "targetLanguage": "en",
+          "wordSets": {
+            "objects": [
+              {
+                "id": "book",
+                "label": "book",
+                "translation": "کتاب",
+                "role": "core",
+                "features": {
+                  "number": "singular"
+                },
+                "forms": {
+                  "singular": "book",
+                  "plural": "books",
+                  "faSingular": "کتاب",
+                  "faPlural": "کتاب"
+                }
+              },
+              {
+                "id": "pen",
+                "label": "pen",
+                "translation": "خودکار",
+                "role": "core",
+                "features": {
+                  "number": "singular"
+                },
+                "forms": {
+                  "singular": "pen",
+                  "plural": "pens",
+                  "faSingular": "خودکار",
+                  "faPlural": "خودکار"
+                }
+              },
+              {
+                "id": "pencil",
+                "label": "pencil",
+                "translation": "مداد",
+                "role": "core",
+                "features": {
+                  "number": "singular"
+                },
+                "forms": {
+                  "singular": "pencil",
+                  "plural": "pencils",
+                  "faSingular": "مداد",
+                  "faPlural": "مداد"
+                }
+              },
+              {
+                "id": "bag",
+                "label": "bag",
+                "translation": "کیف",
+                "role": "core",
+                "features": {
+                  "number": "singular"
+                },
+                "forms": {
+                  "singular": "bag",
+                  "plural": "bags",
+                  "faSingular": "کیف",
+                  "faPlural": "کیف"
+                }
+              },
+              {
+                "id": "phone",
+                "label": "phone",
+                "translation": "تلفن",
+                "role": "core",
+                "features": {
+                  "number": "singular"
+                },
+                "forms": {
+                  "singular": "phone",
+                  "plural": "phones",
+                  "faSingular": "تلفن",
+                  "faPlural": "تلفن"
+                }
+              },
+              {
+                "id": "apple",
+                "label": "apple",
+                "translation": "سیب",
+                "role": "core",
+                "features": {
+                  "number": "singular"
+                },
+                "forms": {
+                  "singular": "apple",
+                  "plural": "apples",
+                  "faSingular": "سیب",
+                  "faPlural": "سیب"
+                }
+              },
+              {
+                "id": "ball",
+                "label": "ball",
+                "translation": "توپ",
+                "role": "core",
+                "features": {
+                  "number": "singular"
+                },
+                "forms": {
+                  "singular": "ball",
+                  "plural": "balls",
+                  "faSingular": "توپ",
+                  "faPlural": "توپ"
+                }
+              },
+              {
+                "id": "brother",
+                "label": "brother",
+                "translation": "برادر",
+                "forms": {
+                  "singular": "brother",
+                  "plural": "brothers",
+                  "faSingular": "برادر",
+                  "faPlural": "برادر"
+                }
+              },
+              {
+                "id": "sister",
+                "label": "sister",
+                "translation": "خواهر",
+                "forms": {
+                  "singular": "sister",
+                  "plural": "sisters",
+                  "faSingular": "خواهر",
+                  "faPlural": "خواهر"
+                }
+              }
+            ],
+            "counts": [
+              {
+                "id": "two",
+                "label": "two",
+                "translation": "دو",
+                "role": "core",
+                "features": {
+                  "number": "plural"
+                },
+                "forms": {
+                  "word": "two",
+                  "faWord": "دو"
+                }
+              },
+              {
+                "id": "three",
+                "label": "three",
+                "translation": "سه",
+                "role": "core",
+                "features": {
+                  "number": "plural"
+                },
+                "forms": {
+                  "word": "three",
+                  "faWord": "سه"
+                }
+              },
+              {
+                "id": "four",
+                "label": "four",
+                "translation": "چهار",
+                "role": "core",
+                "features": {
+                  "number": "plural"
+                },
+                "forms": {
+                  "word": "four",
+                  "faWord": "چهار"
+                }
+              },
+              {
+                "id": "five",
+                "label": "five",
+                "translation": "پنج",
+                "role": "core",
+                "features": {
+                  "number": "plural"
+                },
+                "forms": {
+                  "word": "five",
+                  "faWord": "پنج"
+                }
+              },
+              {
+                "id": "six",
+                "label": "six",
+                "translation": "شش",
+                "role": "core",
+                "features": {
+                  "number": "plural"
+                },
+                "forms": {
+                  "word": "six",
+                  "faWord": "شش"
+                }
+              },
+              {
+                "id": "seven",
+                "label": "seven",
+                "translation": "هفت",
+                "role": "core",
+                "features": {
+                  "number": "plural"
+                },
+                "forms": {
+                  "word": "seven",
+                  "faWord": "هفت"
+                }
+              },
+              {
+                "id": "eight",
+                "label": "eight",
+                "translation": "هشت",
+                "role": "core",
+                "features": {
+                  "number": "plural"
+                },
+                "forms": {
+                  "word": "eight",
+                  "faWord": "هشت"
+                }
+              },
+              {
+                "id": "nine",
+                "label": "nine",
+                "translation": "نه",
+                "role": "core",
+                "features": {
+                  "number": "plural"
+                },
+                "forms": {
+                  "word": "nine",
+                  "faWord": "نه"
+                }
+              },
+              {
+                "id": "ten",
+                "label": "ten",
+                "translation": "ده",
+                "role": "core",
+                "features": {
+                  "number": "plural"
+                },
+                "forms": {
+                  "word": "ten",
+                  "faWord": "ده"
+                }
+              },
+              {
+                "id": "eleven",
+                "label": "eleven",
+                "translation": "یازده",
+                "role": "core",
+                "features": {
+                  "number": "plural"
+                },
+                "forms": {
+                  "word": "eleven",
+                  "faWord": "یازده"
+                }
+              },
+              {
+                "id": "twelve",
+                "label": "twelve",
+                "translation": "دوازده",
+                "role": "core",
+                "features": {
+                  "number": "plural"
+                },
+                "forms": {
+                  "word": "twelve",
+                  "faWord": "دوازده"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "object",
+              "label": "شیء",
+              "wordSet": "objects",
+              "default": "book",
+              "includeRoles": [
+                "core"
+              ]
+            },
+            {
+              "id": "count",
+              "label": "تعداد",
+              "wordSet": "counts",
+              "default": "three",
+              "includeRoles": [
+                "core"
+              ]
+            }
+          ],
+          "derivedDefaults": {},
+          "dependencies": [],
+          "patterns": [
+            {
+              "id": "one-object",
+              "label": "یک شیء",
+              "note": "برای یک شیء از one و اسم مفرد استفاده کن.",
+              "segments": [
+                {
+                  "fixed": "one "
+                },
+                {
+                  "slot": "object",
+                  "form": "singular"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "یک "
+                },
+                {
+                  "slot": "object",
+                  "form": "faSingular"
+                },
+                {
+                  "fixed": "."
+                }
+              ]
+            },
+            {
+              "id": "plural-phrase",
+              "label": "چند شیء",
+              "note": "برای دو تا ده، اسم معمولاً s می‌گیرد.",
+              "segments": [
+                {
+                  "slot": "count",
+                  "form": "word"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "plural"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "count",
+                  "form": "faWord"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "faPlural"
+                },
+                {
+                  "fixed": "."
+                }
+              ]
+            },
+            {
+              "id": "how-many",
+              "label": "پرسیدن تعداد",
+              "segments": [
+                {
+                  "fixed": "How many "
+                },
+                {
+                  "slot": "object",
+                  "form": "plural"
+                },
+                {
+                  "fixed": " are there?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "چند "
+                },
+                {
+                  "slot": "object",
+                  "form": "faPlural"
+                },
+                {
+                  "fixed": " وجود دارد؟"
+                }
+              ]
+            },
+            {
+              "id": "there-is-one",
+              "label": "وجود یک شیء",
+              "note": "There is با یک شیء می‌آید.",
+              "segments": [
+                {
+                  "fixed": "There is one "
+                },
+                {
+                  "slot": "object",
+                  "form": "singular"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "یک "
+                },
+                {
+                  "slot": "object",
+                  "form": "faSingular"
+                },
+                {
+                  "fixed": " وجود دارد."
+                }
+              ]
+            },
+            {
+              "id": "there-are",
+              "label": "وجود چند شیء",
+              "note": "There are با تعداد بیشتر از یک می‌آید.",
+              "segments": [
+                {
+                  "fixed": "There are "
+                },
+                {
+                  "slot": "count",
+                  "form": "word"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "plural"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "count",
+                  "form": "faWord"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "faPlural"
+                },
+                {
+                  "fixed": " وجود دارد."
+                }
+              ]
+            },
+            {
+              "id": "are-there",
+              "label": "پرسش بله/خیر",
+              "segments": [
+                {
+                  "fixed": "Are there "
+                },
+                {
+                  "slot": "count",
+                  "form": "word"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "plural"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "آیا "
+                },
+                {
+                  "slot": "count",
+                  "form": "faWord"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "faPlural"
+                },
+                {
+                  "fixed": " وجود دارد؟"
+                }
+              ]
+            }
+          ],
+          "defaultPattern": "how-many",
+          "completion": "عدد، اسم مفرد یا جمع و پرسش تعداد را با هم ترکیب کردی."
+        },
+        {
+          "id": "counting-article-composer",
+          "type": "sentence-composer",
+          "phase": "variants",
+          "title": "یک مفهوم، چند بیان: a",
+          "description": "این فقط یک جملهٔ زنده است؛ روی اسم سبز بزن. a/an برای اسم مفرد نامعین هستند، ولی one بر تعداد دقیق یک تأکید می‌کند.",
+          "targetLanguage": "en",
+          "wordSets": {
+            "aNouns": [
+              {
+                "id": "book",
+                "label": "book",
+                "translation": "کتاب",
+                "forms": {
+                  "en": "book",
+                  "fa": "کتاب"
+                }
+              },
+              {
+                "id": "pen",
+                "label": "pen",
+                "translation": "خودکار",
+                "forms": {
+                  "en": "pen",
+                  "fa": "خودکار"
+                }
+              },
+              {
+                "id": "bag",
+                "label": "bag",
+                "translation": "کیف",
+                "forms": {
+                  "en": "bag",
+                  "fa": "کیف"
+                }
+              },
+              {
+                "id": "phone",
+                "label": "phone",
+                "translation": "تلفن",
+                "forms": {
+                  "en": "phone",
+                  "fa": "تلفن"
+                }
+              },
+              {
+                "id": "pencil",
+                "label": "pencil",
+                "translation": "مداد",
+                "forms": {
+                  "en": "pencil",
+                  "fa": "مداد"
+                }
+              }
+            ],
+            "anNouns": [
+              {
+                "id": "apple",
+                "label": "apple",
+                "translation": "سیب",
+                "forms": {
+                  "en": "apple",
+                  "fa": "سیب"
+                }
+              },
+              {
+                "id": "orange",
+                "label": "orange",
+                "translation": "پرتقال",
+                "forms": {
+                  "en": "orange",
+                  "fa": "پرتقال"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "aNoun",
+              "label": "اسم بعد از a",
+              "wordSet": "aNouns",
+              "default": "book"
+            },
+            {
+              "id": "anNoun",
+              "label": "اسم بعد از an",
+              "wordSet": "anNouns",
+              "default": "apple"
+            }
+          ],
+          "derivedDefaults": {},
+          "dependencies": [],
+          "defaultPattern": "a",
+          "patterns": [
+            {
+              "id": "a",
+              "label": "a",
+              "segments": [
+                {
+                  "fixed": "This is a "
+                },
+                {
+                  "slot": "aNoun",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "این یک "
+                },
+                {
+                  "slot": "aNoun",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " است."
+                }
+              ]
+            },
+            {
+              "id": "an",
+              "label": "an",
+              "segments": [
+                {
+                  "fixed": "This is an "
+                },
+                {
+                  "slot": "anNoun",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "این یک "
+                },
+                {
+                  "slot": "anNoun",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " است."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "counting-article-an",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "همان مفهوم در یک جمله با an",
+          "description": "فقط روی خود اسم بزن تا چند مثال متفاوت از an را در یک جمله ببینی.",
+          "sourceActivityId": "counting-article-composer",
+          "patternId": "an"
+        },
+        {
+          "id": "counting-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "از بانک درهم‌ریخته جمله بساز",
+          "description": "پنج جملهٔ شمارشی را از یک بانک مشترک پیدا کن. هر جمله را بررسی کن و بعد با همان واژه‌ها جملهٔ بعدی را بساز.",
+          "revision": 1,
+          "reuseBank": true,
+          "goalCount": 5,
+          "sourceActivityId": "counting-composer",
+          "patternIds": [
+            "there-is-one",
+            "there-are",
+            "how-many",
+            "are-there"
+          ],
+          "sentences": [
+            {
+              "id": "one-book",
+              "words": [
+                "There",
+                "is",
+                "one",
+                "book."
+              ]
+            },
+            {
+              "id": "two-pens",
+              "words": [
+                "There",
+                "are",
+                "two",
+                "pens."
+              ]
+            },
+            {
+              "id": "how-many-books",
+              "words": [
+                "How",
+                "many",
+                "books",
+                "are",
+                "there?"
+              ]
+            },
+            {
+              "id": "four-apples",
+              "words": [
+                "There",
+                "are",
+                "four",
+                "apples."
+              ]
+            },
+            {
+              "id": "three-cups-question",
+              "words": [
+                "Are",
+                "there",
+                "three",
+                "cups?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "counting-construction",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "بدون گزینه، جمله بساز",
+          "practiceRevision": 2,
+          "description": "تعداد را به جمله تبدیل کن؛ در سؤال و جواب، عدد و شکل اسم را درست به کار ببر.",
+          "completion": "توانستی تعداد را در جملهٔ خبری و پرسشی بیان کنی.",
+          "tasks": [
+            {
+              "task": "بگو سه کتاب وجود دارد.",
+              "hint": "There are three books.",
+              "example": "There are three books.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are three books"
+                    ],
+                    "feedback": "برای سه کتاب از There are three books استفاده کن."
+                  }
+                ],
+                "success": "تعداد و اسم جمع را درست گفتی."
+              }
+            },
+            {
+              "task": "بپرس چند خودکار وجود دارد.",
+              "hint": "How many pens are there?",
+              "example": "How many pens are there?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "how many pens are there"
+                    ],
+                    "feedback": "پرسش تعداد با How many آغاز می‌شود."
+                  }
+                ],
+                "success": "سؤال تعداد را ساختی."
+              }
+            },
+            {
+              "task": "بگو یک کیف وجود دارد.",
+              "hint": "There is one bag.",
+              "example": "There is one bag.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there is one bag"
+                    ],
+                    "feedback": "برای یک کیف از There is one bag استفاده کن."
+                  }
+                ],
+                "success": "مفرد و There is را درست به کار بردی."
+              }
+            },
+            {
+              "task": "بپرس آیا چهار سیب وجود دارد؟",
+              "hint": "Are there four apples?",
+              "example": "Are there four apples?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "are there four apples"
+                    ],
+                    "feedback": "در پرسش بله/خیر، Are there را به ابتدای جمله بیاور."
+                  }
+                ],
+                "success": "پرسش بله/خیر را ساختی."
+              }
+            },
+            {
+              "task": "بگو پنج مداد وجود دارد.",
+              "hint": "There are five pencils.",
+              "example": "There are five pencils.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are five pencils"
+                    ],
+                    "feedback": "بعد از five از شکل جمع pencils استفاده کن."
+                  }
+                ],
+                "success": "عدد و اسم جمع را درست ترکیب کردی."
+              }
+            },
+            {
+              "task": "بگو یک سیب به‌علاوهٔ یک سیب می‌شود دو سیب.",
+              "hint": "One apple plus one apple equals two apples.",
+              "example": "One apple plus one apple equals two apples.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "one apple plus one apple equals two apples"
+                    ],
+                    "feedback": "از plus یا minus و equals برای توضیح جمع یا تفریق استفاده کن."
+                  }
+                ],
+                "success": "جملهٔ حسابی را با اسم درست ساختی."
+              }
+            },
+            {
+              "task": "بگو دو سیب منهای یک سیب می‌شود یک سیب.",
+              "hint": "Two apples minus one apple equals one apple.",
+              "example": "Two apples minus one apple equals one apple.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "two apples minus one apple equals one apple"
+                    ],
+                    "feedback": "از plus یا minus و equals برای توضیح جمع یا تفریق استفاده کن."
+                  }
+                ],
+                "success": "جملهٔ حسابی را با اسم درست ساختی."
+              }
+            },
+            {
+              "task": "بگو یک ماهی به‌علاوهٔ یک ماهی می‌شود دو ماهی.",
+              "hint": "One fish plus one fish equals two fish.",
+              "example": "One fish plus one fish equals two fish.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "one fish plus one fish equals two fish"
+                    ],
+                    "feedback": "از plus یا minus و equals برای توضیح جمع یا تفریق استفاده کن."
+                  }
+                ],
+                "success": "جملهٔ حسابی را با اسم درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "count-family-transfer",
+          "type": "response-practice",
+          "phase": "construction",
+          "practiceRevision": 1,
+          "title": "تعداد اعضای خانواده را از واژه‌های قبلی بساز",
+          "description": "کلمات درس‌های قبل را این بار در ساختار جدید به کار ببر؛ پاسخ را خودت بنویس.",
+          "completion": "توانستی از چند درس برای ساخت یک جملهٔ تازه استفاده کنی.",
+          "tasks": [
+            {
+              "task": "بگو سه برادر وجود دارند.",
+              "hint": "There are three brothers.",
+              "example": "There are three brothers.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are three brothers"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            },
+            {
+              "task": "بگو دو خواهر وجود دارند.",
+              "hint": "There are two sisters.",
+              "example": "There are two sisters.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are two sisters"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            },
+            {
+              "task": "بپرس چند خواهر وجود دارند؟",
+              "hint": "How many sisters are there?",
+              "example": "How many sisters are there?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "how many sisters are there"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            },
+            {
+              "task": "بگو یک برادر وجود دارد.",
+              "hint": "There is one brother.",
+              "example": "There is one brother.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there is one brother"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "از سؤال و جواب تا مکالمه",
+      "intro": "حالا تعداد اشیا را در گفت‌وگو و تصویر پیدا کن و همان الگوها را به وسایل واقعی اطرافت منتقل کن.",
+      "masteryActivityIds": [
+        "counting-guided-talk",
+        "counting-independent"
+      ],
+      "activities": [
+        {
+          "id": "counting-exchanges",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "یک سؤال، چند پاسخ",
+          "description": "پرسش تعداد را با عددهای مختلف جواب بده؛ شکل اسم در پاسخ هم جمع می‌ماند.",
+          "pairs": [
+            {
+              "question": "How many books are there?",
+              "questionFa": "چند کتاب وجود دارد؟",
+              "variants": [
+                {
+                  "label": "سه کتاب",
+                  "en": "There are three books.",
+                  "fa": "سه کتاب وجود دارد.",
+                  "note": "عدد سه با books می‌آید."
+                },
+                {
+                  "label": "پنج کتاب",
+                  "en": "There are five books.",
+                  "fa": "پنج کتاب وجود دارد.",
+                  "note": "عدد تغییر می‌کند، اسم جمع می‌ماند."
+                }
+              ]
+            },
+            {
+              "question": "How many pens are there?",
+              "questionFa": "چند خودکار وجود دارد؟",
+              "variants": [
+                {
+                  "label": "دو خودکار",
+                  "en": "There are two pens.",
+                  "fa": "دو خودکار وجود دارد.",
+                  "note": "بعد از two از pens استفاده کن."
+                },
+                {
+                  "label": "چهار خودکار",
+                  "en": "There are four pens.",
+                  "fa": "چهار خودکار وجود دارد.",
+                  "note": "عدد و اسم را با هم عوض کن."
+                }
+              ]
+            },
+            {
+              "question": "How many bags are there?",
+              "questionFa": "چند کیف وجود دارد؟",
+              "variants": [
+                {
+                  "label": "یک کیف",
+                  "en": "There is one bag.",
+                  "fa": "یک کیف وجود دارد.",
+                  "note": "اگر فقط یکی است، پاسخ مفرد می‌شود."
+                },
+                {
+                  "label": "سه کیف",
+                  "en": "There are three bags.",
+                  "fa": "سه کیف وجود دارد.",
+                  "note": "برای بیشتر از یک از There are استفاده کن."
+                }
+              ]
+            },
+            {
+              "question": "Are there three apples?",
+              "questionFa": "آیا سه سیب وجود دارد؟",
+              "variants": [
+                {
+                  "label": "بله؛ سه سیب",
+                  "en": "Yes, there are three apples.",
+                  "fa": "بله، سه سیب وجود دارد.",
+                  "note": "پاسخ مثبت، تعداد را هم روشن می‌کند."
+                },
+                {
+                  "label": "نه؛ چهار سیب",
+                  "en": "No, there are four apples.",
+                  "fa": "نه، چهار سیب وجود دارد.",
+                  "note": "اگر حدس اشتباه است، تعداد درست را بگو."
+                }
+              ]
+            },
+            {
+              "question": "How many keys are there?",
+              "questionFa": "چند کلید وجود دارد؟",
+              "variants": [
+                {
+                  "label": "دو کلید",
+                  "en": "There are two keys.",
+                  "fa": "دو کلید وجود دارد.",
+                  "note": "کلیدها از وسایل درس‌های قبل‌اند."
+                },
+                {
+                  "label": "شش کلید",
+                  "en": "There are six keys.",
+                  "fa": "شش کلید وجود دارد.",
+                  "note": "با عدد تازه پاسخ بساز."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "counting-exchange-practice",
+          "type": "response-practice",
+          "phase": "correspondence",
+          "title": "این بار خودت جواب را بنویس",
+          "practiceRevision": 1,
+          "description": "به جای انتخاب پاسخ آماده، جواب را خودت تایپ کن.",
+          "completion": "پرسش تعداد را به پاسخ کامل تبدیل کردی.",
+          "tasks": [
+            {
+              "incoming": "How many books are there?",
+              "task": "سه کتاب وجود دارد.",
+              "hint": "There are three books.",
+              "example": "There are three books.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are three books"
+                    ],
+                    "feedback": "تعداد سه را با اسم جمع books بگو."
+                  }
+                ],
+                "success": "پرسش را درست پاسخ دادی."
+              }
+            },
+            {
+              "incoming": "How many pens are there?",
+              "task": "دو خودکار وجود دارد.",
+              "hint": "There are two pens.",
+              "example": "There are two pens.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are two pens"
+                    ],
+                    "feedback": "برای دو خودکار از There are two pens استفاده کن."
+                  }
+                ],
+                "success": "عدد و اسم را درست ترکیب کردی."
+              }
+            },
+            {
+              "incoming": "How many bags are there?",
+              "task": "یک کیف وجود دارد.",
+              "hint": "There is one bag.",
+              "example": "There is one bag.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there is one bag"
+                    ],
+                    "feedback": "برای یک کیف از There is one bag استفاده کن."
+                  }
+                ],
+                "success": "پاسخ مفرد را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "counting-dialogue-one",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "مکالمهٔ اول: روی میز چند تاست؟",
+          "description": "میا و نوآ تعداد اشیا را می‌شمارند و وقتی حدس اشتباه است، تعداد درست را می‌گویند.",
+          "lines": [
+            {
+              "speaker": "Mia",
+              "en": "How many books are there?",
+              "fa": "چند کتاب هست؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "There are three books.",
+              "fa": "سه کتاب هست."
+            },
+            {
+              "speaker": "Mia",
+              "en": "How many pens are there?",
+              "fa": "چند خودکار هست؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "There are two pens.",
+              "fa": "دو خودکار هست."
+            },
+            {
+              "speaker": "Mia",
+              "en": "Are there four pens?",
+              "fa": "چهار خودکار هست؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "No, there are two pens.",
+              "fa": "نه، دو خودکار هست."
+            },
+            {
+              "speaker": "Mia",
+              "en": "Is there one bag?",
+              "fa": "یک کیف هست؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "Yes, there is one bag.",
+              "fa": "بله، یک کیف هست."
+            }
+          ]
+        },
+        {
+          "id": "counting-dialogue-one-recall",
+          "type": "response-practice",
+          "phase": "context",
+          "title": "مکالمه را با جواب خودت ادامه بده",
+          "practiceRevision": 1,
+          "description": "به پرسش‌های مکالمه پاسخ بده؛ جواب را از حفظِ ترتیب جمله‌ها نساز، تعداد را در نظر بگیر.",
+          "completion": "به پرسش تعداد در مکالمه پاسخ دادی.",
+          "tasks": [
+            {
+              "incoming": "How many books are there?",
+              "task": "بگو سه کتاب وجود دارد.",
+              "hint": "There are three books.",
+              "example": "There are three books.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are three books"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            },
+            {
+              "incoming": "Are there four pens?",
+              "task": "بگو نه، دو خودکار وجود دارد.",
+              "hint": "No, there are two pens.",
+              "example": "No, there are two pens.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no, there are two pens"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            },
+            {
+              "incoming": "Is there one bag?",
+              "task": "بگو بله، یک کیف وجود دارد.",
+              "hint": "Yes, there is one bag.",
+              "example": "Yes, there is one bag.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "yes, there is one bag"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "counting-dialogue-two",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "مکالمهٔ دوم: وسایل داخل کیف",
+          "description": "این بار اعضای خانواده را مثل وسایل می‌شماریم؛ هنوز مالکیت درس بعد را لازم نداریم.",
+          "lines": [
+            {
+              "speaker": "Sara",
+              "en": "How many brothers are there in your family?",
+              "fa": "در خانوادهٔ تو چند برادر هست؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "There are three brothers in my family.",
+              "fa": "سه برادر در خانوادهٔ من هستند."
+            },
+            {
+              "speaker": "Sara",
+              "en": "How many sisters are there?",
+              "fa": "چند خواهر هستند؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "There are two sisters.",
+              "fa": "دو خواهر هستند."
+            },
+            {
+              "speaker": "Sara",
+              "en": "And how many books are there?",
+              "fa": "و چند کتاب هست؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "There are four books.",
+              "fa": "چهار کتاب هست."
+            }
+          ]
+        },
+        {
+          "id": "counting-dialogue-two-recall",
+          "type": "response-practice",
+          "phase": "context",
+          "title": "جزئیات مکالمه را به خاطر بسپار و جواب بده",
+          "practiceRevision": 1,
+          "description": "با توجه به جمله‌ای که شنیدی، عدد و مکان درست را بگو.",
+          "completion": "شمارش را در موقعیت واقعی‌تر به کار بردی.",
+          "tasks": [
+            {
+              "incoming": "How many brothers are there in your family?",
+              "task": "بگو سه برادر در خانوادهٔ من هستند.",
+              "hint": "There are three brothers in my family.",
+              "example": "There are three brothers in my family.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are three brothers in my family"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            },
+            {
+              "incoming": "How many sisters are there?",
+              "task": "بگو دو خواهر وجود دارد.",
+              "hint": "There are two sisters.",
+              "example": "There are two sisters.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are two sisters"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            },
+            {
+              "incoming": "How many books are there?",
+              "task": "بگو چهار کتاب وجود دارد.",
+              "hint": "There are four books.",
+              "example": "There are four books.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are four books"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "counting-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "practiceRevision": 1,
+          "title": "از روی تصویر: چند تا می‌بینی؟",
+          "description": "از روی تصویر اشیا را بشمار؛ همین الگوی شمارش برای brother و sister از درس خانواده هم کار می‌کند.",
+          "image": "./assets/scene-a1-5.svg",
+          "imageAlt": "سه کتاب، دو خودکار، چهار سیب، یک کیف و پنج مداد روی میز.",
+          "caption": "تصویر شمارش · کتاب‌ها، خودکارها، سیب‌ها، کیف و مدادها",
+          "tasks": [
+            {
+              "task": "کتاب‌ها را بشمار و تعدادشان را بگو.",
+              "hint": "There are three books.",
+              "example": "There are three books.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are three books"
+                    ],
+                    "feedback": "سه کتاب روی میز است؛ اسم را به صورت books بگو."
+                  }
+                ],
+                "success": "تعداد کتاب‌ها را از تصویر پیدا کردی."
+              }
+            },
+            {
+              "task": "چند خودکار می‌بینی؟",
+              "hint": "There are two pens.",
+              "example": "There are two pens.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are two pens"
+                    ],
+                    "feedback": "دو خودکار را بشمار و از pens استفاده کن."
+                  }
+                ],
+                "success": "تعداد خودکارها را درست گفتی."
+              }
+            },
+            {
+              "task": "تعداد سیب‌ها را بگو.",
+              "hint": "There are four apples.",
+              "example": "There are four apples.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are four apples"
+                    ],
+                    "feedback": "چهار سیب در تصویر است."
+                  }
+                ],
+                "success": "تعداد سیب‌ها را درست گفتی."
+              }
+            },
+            {
+              "task": "بگو چند کیف روی میز است.",
+              "hint": "There is one bag.",
+              "example": "There is one bag.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there is one bag"
+                    ],
+                    "feedback": "فقط یک کیف هست؛ از There is one استفاده کن."
+                  }
+                ],
+                "success": "پاسخ مفرد را درست گفتی."
+              }
+            },
+            {
+              "task": "تعداد مدادها را بگو.",
+              "hint": "There are five pencils.",
+              "example": "There are five pencils.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are five pencils"
+                    ],
+                    "feedback": "پنج مداد را با اسم جمع pencils بیان کن."
+                  }
+                ],
+                "success": "تعداد مدادها را درست گفتی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "counting-guided-talk",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "practiceRevision": 1,
+          "title": "نوبت تو؛ شمارش را در مکالمه به کار ببر",
+          "description": "به حرف طرف مقابل پاسخ بده. لازم نیست همان جملهٔ نمونه را عیناً حفظ کنی؛ عدد و اسم درست را در پاسخ بیاور.",
+          "completion": "عدد، اسم مفرد و جمع و نسبت‌های خانواده را در گفت‌وگو ترکیب کردی.",
+          "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "How many books are there?",
+              "task": "بگو سه کتاب وجود دارد.",
+              "hint": "There are three books.",
+              "example": "There are three books.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are three books"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "There are three brothers.",
+              "task": "بپرس چند برادر وجود دارد.",
+              "hint": "How many brothers are there?",
+              "example": "How many brothers are there?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "how many brothers are there"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "How many sisters are there?",
+              "task": "بگو دو خواهر وجود دارد.",
+              "hint": "There are two sisters.",
+              "example": "There are two sisters.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are two sisters"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Are there three apples?",
+              "task": "بگو نه، چهار سیب وجود دارد.",
+              "hint": "No, there are four apples.",
+              "example": "No, there are four apples.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no, there are four apples"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "counting-transfer",
+          "type": "dialogue-transfer",
+          "phase": "guided",
+          "practiceRevision": 1,
+          "title": "موقعیت تازه: وسایل واقعی اطرافت",
+          "sceneTitle": "شمارش کتاب‌ها و اعضای خانواده",
+          "description": "عدد و اسم را تغییر بده؛ از همان ساختاری استفاده کن که برای اعضای خانواده هم آموختی.",
+          "completion": "شمارش را به اعضای خانواده و اشیای تازه منتقل کردی.",
+          "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "How many books are there?",
+              "task": "بگو سه کتاب وجود دارد.",
+              "hint": "There are three books.",
+              "example": "There are three books.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are three books"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "How many brothers are there?",
+              "task": "بگو دو برادر وجود دارند.",
+              "hint": "There are two brothers.",
+              "example": "There are two brothers.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are two brothers"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "How many sisters are there?",
+              "task": "بگو یک خواهر وجود دارد.",
+              "hint": "There is one sister.",
+              "example": "There is one sister.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there is one sister"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Are there four pens?",
+              "task": "بگو نه، سه خودکار وجود دارد.",
+              "hint": "No, there are three pens.",
+              "example": "No, there are three pens.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no, there are three pens"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "counting-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "تمرین واقعی: اطرافت را بشمار و گزارش بده",
+          "prompt": "اشیا و اعضای خانواده را بشمار. یک جمله با There is one و دو جمله با There are ... بنویس. سپس سؤال How many ... are there? را پاسخ بده؛ یک جمله دربارهٔ تعداد برادر و یک جمله دربارهٔ تعداد خواهر بنویس. برای عدد یازده و دوازده هم یک مثال بزن. در این درس هنوز از رنگ، مالکیت یا موقعیت مکانی سؤال نمی‌کنیم.",
+          "placeholder": "There are three books.\nThere are two sisters.\nThere are three brothers.\nHow many sisters are there?",
+          "hint": "عددها باید با اشیایی که خودت انتخاب کرده‌ای هماهنگ باشند. تعداد سه کتاب یا یک کیف اجباری نیست.",
+          "kind": "free-text",
+          "minWords": 15,
+          "assessment": {
+            "revision": 3,
+            "required": [
+              {
+                "any": [
+                  "there is one",
+                  "one book",
+                  "one bag",
+                  "one phone",
+                  "one pen",
+                  "one pencil",
+                  "one cup"
+                ],
+                "feedback": "یک مورد مفرد را با one یا There is one ... توصیف کن."
+              },
+              {
+                "any": [
+                  "there are two",
+                  "there are three",
+                  "there are four",
+                  "there are five",
+                  "there are six",
+                  "there are seven",
+                  "there are eight",
+                  "there are nine",
+                  "there are ten"
+                ],
+                "feedback": "یک یا چند جملهٔ There are ... برای تعداد بیشتر از یک بساز."
+              },
+              {
+                "any": [
+                  "how many books are there",
+                  "how many pens are there",
+                  "how many pencils are there",
+                  "how many apples are there",
+                  "how many keys are there",
+                  "how many cups are there",
+                  "how many phones are there",
+                  "how many bags are there"
+                ],
+                "feedback": "دربارهٔ تعداد یکی از اشیای آشنا سؤال How many ... are there? بساز."
+              },
+              {
+                "any": [
+                  "there are two books",
+                  "there are three books",
+                  "there are four books",
+                  "there are five books",
+                  "there are two pens",
+                  "there are three pens",
+                  "there are four pens",
+                  "there are two pencils",
+                  "there are five pencils",
+                  "there is one book",
+                  "there is one pen",
+                  "there is one bag"
+                ],
+                "feedback": "حداقل یک پاسخ با عدد مشخص به سؤال شمارش بده."
+              },
+              {
+                "any": [
+                  "eleven"
+                ],
+                "feedback": "یک جمله با عدد eleven اضافه کن."
+              },
+              {
+                "any": [
+                  "twelve"
+                ],
+                "feedback": "یک جمله با عدد twelve اضافه کن."
+              },
+              {
+                "any": [
+                  "brothers"
+                ],
+                "feedback": "تعداد برادرها را با brothers بیان کن."
+              },
+              {
+                "any": [
+                  "sisters"
+                ],
+                "feedback": "تعداد خواهرها را با sisters بیان کن."
+              }
+            ],
+            "success": "شمارش، پرسش و پاسخ و یکی از الگوهای قبلی را در یک گزارش واقعی به کار بردی."
+          }
+        },
+        {
+          "id": "a1-5-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "سایه‌خوانی دوباره",
+          "description": "همان جمله‌های ابتدای درس را دوباره گوش بده و با فاصلهٔ کوتاه تکرار کن؛ لازم نیست معنی آن‌ها را امتحان کنی.",
+          "sourceActivityId": "a1-5-shadowing",
+          "lines": [
+            "One brother. Three brothers.",
+            "One sister. Two sisters.",
+            "How many books are there?",
+            "There are twelve books."
+          ]
+        }
+      ]
+    }
+  ],
+  "roadmapRef": {
+    "id": "A1-3",
+    "revision": "2026-10-25-owner-cumulative-a1",
+    "communicativeOutcome": "تا ۱۲ می‌شمارد؛ تعداد اشیا و اعضای خانوادهٔ آموخته‌شده را می‌پرسد و می‌گوید؛ مفرد و جمع را در ترکیب عدد با نام درست به کار می‌برد."
+  }
+}

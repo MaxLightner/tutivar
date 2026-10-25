@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "revision": "2026-10-02-rewrite-1",
+  "revision": "2026-10-25-owner-cumulative-a1",
   "sourcePath": "docs/curriculum/01-universal-learning-path.md",
-  "sourceGitBlobSha": "bec805e498841b30ddf51f1223f4b118db32e200",
+  "sourceGitBlobSha": "20949575655d8e4d9af2e3485c526f2f9e09f808",
   "policy": "User-approved explicit amendments take precedence; otherwise lesson order, objectives and prerequisites are fixed by this manifest. Pair-specific realization may add bounded language bridges, not reorder the path.",
   "totals": {
     "total": 126,
@@ -50,15 +50,15 @@
       "id": "A1-3",
       "level": "A1",
       "order": 3,
-      "title": "مالکیت و داشتن اشیا",
+      "title": "شمارش و جمع اشیا",
       "axis": "ساختار/مفهوم‌محور",
-      "communicativeOutcome": "وسایلش را نام می‌برد؛ می‌گوید چه دارد و چه ندارد؛ می‌پرسد چیزی مال چه‌کسی است و جواب می‌دهد؛ برای «نه داشتن» جمله‌ی درست می‌سازد.",
+      "communicativeOutcome": "تا ۱۲ می‌شمارد؛ تعداد اشیا و اعضای خانوادهٔ آموخته‌شده را می‌پرسد و می‌گوید؛ مفرد و جمع را در ترکیب عدد با نام درست به کار می‌برد.",
       "prerequisiteBridge": "A1-2",
       "prerequisiteIds": [
         "A1-2"
       ],
-      "globalConcept": "داشتن، مالکیت و نفی",
-      "scopeBoundary": "گسترش تعلق به اشیا؛ پرسش مالک و پاسخ/نفی متناسب هدف.",
+      "globalConcept": "عدد پایه، تعداد و جمع",
+      "scopeBoundary": "شمارش پایه تا ۱۲ و ترکیب با واژه‌های خانواده؛ رنگ و مالکیت در درس‌های بعد آموزش داده می‌شوند.",
       "archetypes": [
         "K1",
         "K2"
@@ -68,15 +68,16 @@
       "id": "A1-4",
       "level": "A1",
       "order": 4,
-      "title": "بیان موقعیت مکانی",
+      "title": "مالکیت و داشتن و نداشتن",
       "axis": "ساختار/مفهوم‌محور",
-      "communicativeOutcome": "جای اشیاء و مکان‌ها را می‌پرسد و می‌گوید؛ موقعیت چیزی را نسبت به چیز دیگر (روی، زیر، کنار) بیان می‌کند.",
-      "prerequisiteBridge": "A1-3",
+      "communicativeOutcome": "تعلق و داشتن را از هم تمیز می‌دهد («این کیف من است» در برابر «من کیف دارم»)؛ داشتن، نداشتن و پرسش را با وسایل، عددها و اعضای خانواده ترکیب می‌کند.",
+      "prerequisiteBridge": "A1-3، A1-2",
       "prerequisiteIds": [
-        "A1-3"
+        "A1-3",
+        "A1-2"
       ],
-      "globalConcept": "مکان و رابطهٔ فضایی",
-      "scopeBoundary": "مکان ثابت؛ حرکت و مسیر هنوز هدف تولید آزاد نیست.",
+      "globalConcept": "مالکیت، داشتن، نفی و ترکیب با تعداد",
+      "scopeBoundary": "this is my، have / don't have / do you have و جمع عدددار؛ مکان موضوع درس بعد است.",
       "archetypes": [
         "K1",
         "K2"
@@ -86,15 +87,16 @@
       "id": "A1-5",
       "level": "A1",
       "order": 5,
-      "title": "تعداد و شمارش اشیا",
+      "title": "بیان موقعیت مکانی",
       "axis": "ساختار/مفهوم‌محور",
-      "communicativeOutcome": "تا ۱۲ می‌شمارد؛ رنگ و تعداد اشیاء را می‌پرسد و می‌گوید؛ جمع اشیاء را درست به کار می‌برد.",
-      "prerequisiteBridge": "A1-3",
+      "communicativeOutcome": "جای اشیا و اشخاص را نسبت به هم می‌پرسد و می‌گوید؛ مکان را با واژه‌های قبلیِ خانواده، تعداد و مالکیت در جمله‌های تازه ترکیب می‌کند.",
+      "prerequisiteBridge": "A1-4، A1-3",
       "prerequisiteIds": [
+        "A1-4",
         "A1-3"
       ],
-      "globalConcept": "عدد پایه، تعداد و جمع",
-      "scopeBoundary": "شمارش پایه تا ۱۲؛ تعمیم جمع فقط در صورت‌های آموزش‌داده‌شده.",
+      "globalConcept": "مکان و رابطهٔ فضایی",
+      "scopeBoundary": "مکان ثابت (روی، زیر، کنار، داخل و مانند آن)؛ حرکت و مسیر هنوز هدف تولید آزاد نیست.",
       "archetypes": [
         "K1",
         "K2"
@@ -106,14 +108,15 @@
       "order": 6,
       "title": "توصیف ویژگی‌های اشیا",
       "axis": "ساختار/مفهوم‌محور",
-      "communicativeOutcome": "اندازه و شکل و جنس یک شیء را توصیف می‌کند؛ صفت را در جای درست جمله می‌نشاند و از توصیف پرسش می‌گیرد.",
-      "prerequisiteBridge": "A1-4، A1-5",
+      "communicativeOutcome": "اشیای مختلف را ابتدا با یک صفت، سپس دو صفت و بعد رنگ، اندازه، شکل و جنس توصیف می‌کند؛ صفت و اسم و تصویر را هماهنگ تغییر می‌دهد و با خانواده، تعداد و مالکیت ترکیب می‌کند.",
+      "prerequisiteBridge": "A1-5، A1-4، A1-3",
       "prerequisiteIds": [
+        "A1-5",
         "A1-4",
-        "A1-5"
+        "A1-3"
       ],
       "globalConcept": "ویژگی، وصف و پرسش ویژگی",
-      "scopeBoundary": "رنگ/اندازه/شکل/جنس در دامنهٔ لازم؛ کل دستگاه صفت یک زبان تحمیل نشود.",
+      "scopeBoundary": "رنگ‌های پایه در همین درس معرفی می‌شوند؛ ترتیب صفت‌ها فقط در دامنهٔ آموخته‌شده تمرین می‌شود.",
       "archetypes": [
         "K1",
         "K2"

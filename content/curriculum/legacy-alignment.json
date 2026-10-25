@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "policy": "Historical published A1-6..9 files are immutable and recoverable. The active curriculum is the canonical six-lesson prefix; retired IDs carry versioned progress records.",
+  "policy": "Original A1-6..9 and former A1-3..6 publications remain recoverable; cumulative active lessons have versioned files and distinct progress history.",
   "legacyPublished": [
     "A1-1",
     "A1-2",
@@ -76,5 +76,39 @@
       "file": "lessons/a1-6-v2.json"
     },
     "recovery": "All historical JSON files and learner progress remain available under their original IDs with a legacy revision namespace."
+  },
+  "cumulativeReorder": {
+    "revision": "2026-10-25-owner-cumulative-a1",
+    "progressRevision": "a1-cumulative-owner-2026-10",
+    "archiveNamespace": "oct-2026-canonical-before-reorder",
+    "preserveProgress": true,
+    "previousActive": [
+      {
+        "id": "A1-3",
+        "file": "lessons/a1-3.json",
+        "gitBlobSha": "86238d7e4b09bb03843fb91c6bf661112c9eeb15"
+      },
+      {
+        "id": "A1-4",
+        "file": "lessons/a1-4.json",
+        "gitBlobSha": "3ba752e37d8a084bd8951f4f2a43eca87c8ffe2d"
+      },
+      {
+        "id": "A1-5",
+        "file": "lessons/a1-5.json",
+        "gitBlobSha": "90794e6e777b9b458b80181bb44c6312c289b59e"
+      },
+      {
+        "id": "A1-6",
+        "file": "lessons/a1-6-v2.json",
+        "gitBlobSha": "a29dfd879292f7f933046a22896e9077ef465b6a"
+      }
+    ],
+    "replacements": {
+      "A1-3": "lessons/a1-3-v2.json",
+      "A1-4": "lessons/a1-4-v2.json",
+      "A1-5": "lessons/a1-5-v2.json",
+      "A1-6": "lessons/a1-6-v3.json"
+    }
   }
 }
