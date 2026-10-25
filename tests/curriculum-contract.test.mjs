@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { auditCurriculum, gitBlobSha, parseCanonicalSource, validateCanonicalManifest, validatePublishedCatalog } from '../tools/curriculum-contract.mjs';
+import { auditCurriculum, gitBlobSha, parseCanonicalSource, validateCanonicalManifest, validatePublishedCatalog, validateFutureLevelCatalog } from '../tools/curriculum-contract.mjs';
 import { projectRoot } from '../tools/validate.mjs';
 
 const json = path => JSON.parse(readFileSync(join(projectRoot, path),'utf8'));
@@ -61,4 +61,29 @@ test('cannot publish A1-10 while migrated A1-6..9 are still missing',()=>{
   }});
   assert.ok(errors.some(x=>x.includes('Cannot publish another new')));
   assert.ok(errors.some(x=>x.includes('roadmapRef')));
+});
+
+
+test('future A2/B1/B2 courses and new language pairs cannot invent an order or lesson outcome',()=>{
+  const canonical=manifest.lessons.find(x=>x.id==='A2-1');
+  const ref={id:canonical.id,revision:manifest.revision,communicativeOutcome:canonical.communicativeOutcome};
+  const course={level:'A2',stages:[{chapters:[{lessons:[
+    {id:'A2-1',title:canonical.title,status:'sample',file:'lessons/a2-1.json'}
+  ]}]}]};
+  const read=()=>JSON.stringify({id:'A2-1',roadmapRef:ref});
+  assert.deepEqual(validateFutureLevelCatalog({manifest,course,readLesson:read}),[]);
+  const badTitle=structuredClone(course);
+  badTitle.stages[0].chapters[0].lessons[0].title='Whatever seems cool today';
+  assert.ok(validateFutureLevelCatalog({manifest,course:badTitle,readLesson:read})
+    .some(x=>x.includes('title')));
+  const missing=structuredClone(course);
+  missing.stages[0].chapters[0].lessons[0].id='A2-2';
+  assert.ok(validateFutureLevelCatalog({manifest,course:missing,readLesson:read})
+    .some(x=>x.includes('out of order')));
+  assert.ok(validateFutureLevelCatalog({manifest,course,readLesson:()=>JSON.stringify({id:'A2-1'})})
+    .some(x=>x.includes('roadmapRef')));
+  const placeholder=structuredClone(course);
+  placeholder.stages[0].chapters[0].lessons.push(['Untracked lesson','book']);
+  assert.ok(validateFutureLevelCatalog({manifest,course:placeholder,readLesson:read})
+    .some(x=>x.includes('title-only')));
 });
