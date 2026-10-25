@@ -1,6 +1,6 @@
 {
   "id": "A1-5",
-  "revision": 2,
+  "revision": 3,
   "status": "draft",
   "title": "تعداد و شمارش اشیا",
   "goal": "بتوانی عددهای یک تا ده را به کار ببری، تفاوت اسم مفرد و جمع را ببینی، تعداد اشیا را با How many ... are there? بپرسی و با There is one ... / There are ... پاسخ بدهی.",
@@ -79,7 +79,7 @@
           "phase": "words",
           "title": "واژگان شمارش و اشیای آشنا",
           "batchSize": 5,
-          "deckRevision": 2,
+          "deckRevision": 3,
           "items": [
             {
               "en": "one",
@@ -182,86 +182,6 @@
               ]
             },
             {
-              "en": "book",
-              "fa": "کتاب",
-              "hint": "یک وسیلهٔ آشنا از درس‌های قبل",
-              "examples": [
-                "One book.",
-                "There are three books.",
-                "How many books are there?"
-              ]
-            },
-            {
-              "en": "pen",
-              "fa": "خودکار",
-              "hint": "وسیله‌ای برای نوشتن",
-              "examples": [
-                "One pen.",
-                "There are two pens.",
-                "How many pens are there?"
-              ]
-            },
-            {
-              "en": "pencil",
-              "fa": "مداد",
-              "hint": "وسیله‌ای برای نوشتن یا طراحی",
-              "examples": [
-                "One pencil.",
-                "There are five pencils.",
-                "How many pencils are there?"
-              ]
-            },
-            {
-              "en": "bag",
-              "fa": "کیف",
-              "hint": "وسیله‌ای برای حمل وسایل",
-              "examples": [
-                "One bag.",
-                "There is one bag.",
-                "How many bags are there?"
-              ]
-            },
-            {
-              "en": "phone",
-              "fa": "تلفن",
-              "hint": "وسیلهٔ شخصی آشنا",
-              "examples": [
-                "One phone.",
-                "There is one phone.",
-                "How many phones are there?"
-              ]
-            },
-            {
-              "en": "key",
-              "fa": "کلید",
-              "hint": "برای باز کردن قفل",
-              "examples": [
-                "One key.",
-                "There are three keys.",
-                "How many keys are there?"
-              ]
-            },
-            {
-              "en": "chair",
-              "fa": "صندلی",
-              "hint": "وسیله‌ای برای نشستن",
-              "examples": [
-                "One chair.",
-                "There are four chairs.",
-                "How many chairs are there?"
-              ]
-            },
-            {
-              "en": "cup",
-              "fa": "فنجان",
-              "hint": "ظرفی برای نوشیدنی",
-              "examples": [
-                "One cup.",
-                "There are three cups.",
-                "How many cups are there?"
-              ]
-            },
-            {
               "en": "apple",
               "fa": "سیب",
               "hint": "یک میوهٔ قابل شمارش",
@@ -269,46 +189,6 @@
                 "One apple.",
                 "There are four apples.",
                 "How many apples are there?"
-              ]
-            },
-            {
-              "en": "ball",
-              "fa": "توپ",
-              "hint": "یک شیء قابل شمارش از درس قبل",
-              "examples": [
-                "One ball.",
-                "There are two balls.",
-                "How many balls are there?"
-              ]
-            },
-            {
-              "en": "bottle",
-              "fa": "بطری",
-              "hint": "ظرفی برای مایعات",
-              "examples": [
-                "One bottle.",
-                "There are six bottles.",
-                "How many bottles are there?"
-              ]
-            },
-            {
-              "en": "notebook",
-              "fa": "دفتر",
-              "hint": "وسیله‌ای برای نوشتن",
-              "examples": [
-                "One notebook.",
-                "There are two notebooks.",
-                "How many notebooks are there?"
-              ]
-            },
-            {
-              "en": "table",
-              "fa": "میز",
-              "hint": "سطحی برای گذاشتن اشیا",
-              "examples": [
-                "One table.",
-                "There are two tables.",
-                "How many tables are there?"
               ]
             },
             {
@@ -322,16 +202,6 @@
               ]
             },
             {
-              "en": "how",
-              "fa": "چطور / چه‌قدر",
-              "hint": "در پرسش‌ها برای گرفتن اطلاعات به کار می‌رود.",
-              "examples": [
-                "How many books are there?",
-                "How many pens are there?",
-                "How many apples are there?"
-              ]
-            },
-            {
               "en": "many",
               "fa": "چند / تعداد زیاد",
               "hint": "در این درس همراه How برای پرسیدن تعداد می‌آید.",
@@ -340,61 +210,6 @@
                 "How many pens are there?",
                 "How many apples are there?"
               ]
-            },
-            {
-              "en": "there",
-              "fa": "وجود / آنجا",
-              "hint": "در ساختار There is / There are به کار می‌رود.",
-              "examples": [
-                "There are three books.",
-                "There is one bag.",
-                "How many books are there?"
-              ]
-            },
-            {
-              "en": "are",
-              "fa": "هستند / هستند؟",
-              "hint": "با اسم جمع در الگوهای این درس می‌آید.",
-              "examples": [
-                "There are two pens.",
-                "Are there four apples?",
-                "How many books are there?"
-              ]
-            },
-            {
-              "en": "is",
-              "fa": "است / هست",
-              "hint": "با یک شیء در الگوی There is one ... می‌آید.",
-              "examples": [
-                "There is one bag.",
-                "There is one phone.",
-                "Is there one cup?"
-              ]
-            },
-            {
-              "en": "see",
-              "fa": "دیدن",
-              "hint": "از واژه‌های قبلی؛ برای توصیف چیزی که می‌بینی.",
-              "examples": [
-                "I see one book.",
-                "I see three apples.",
-                "I see five pencils."
-              ]
-            },
-            {
-              "en": "box",
-              "fa": "جعبه",
-              "role": "supplementary"
-            },
-            {
-              "en": "desk",
-              "fa": "میز تحریر",
-              "role": "supplementary"
-            },
-            {
-              "en": "shelf",
-              "fa": "قفسه",
-              "role": "supplementary"
             },
             {
               "en": "orange",
