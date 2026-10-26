@@ -26,9 +26,9 @@ export const LESSON_PHASE_LABELS = Object.freeze({
 const TYPE_FOR_PHASE = {
   shadowing: ['shadowing'],
   words: ['vocabulary'],
-  phrases: ['question-explorer', 'daily-choice-lab', 'expression-study', 'composer-view', 'sentence-composer', 'response-practice', 'family-tree', 'family-lab', 'spatial-lab', 'count-visual', 'plural-pair-lab', 'count-math-lab', 'tap-attributes-lab', 'count-scene-lab', 'feature-hunt', 'cumulative-scene-lab', 'cumulative-visual-quest', 'cumulative-number-lab'],
+  phrases: ['meaning-cluster', 'question-explorer', 'daily-choice-lab', 'expression-study', 'composer-view', 'sentence-composer', 'response-practice', 'family-tree', 'family-lab', 'spatial-lab', 'count-visual', 'plural-pair-lab', 'count-math-lab', 'tap-attributes-lab', 'count-scene-lab', 'feature-hunt', 'cumulative-scene-lab', 'cumulative-visual-quest', 'cumulative-number-lab'],
   sentence: ['sentence-composer'],
-  variants: ['quiz-set', 'composer-view', 'sentence-transform', 'meaning-cluster', 'plural-pair-lab', 'sentence-composer', 'tap-attributes-lab', 'tap-ownership-lab', 'count-scene-lab', 'feature-hunt', 'cumulative-scene-lab', 'cumulative-visual-quest'],
+  variants: ['daily-choice-lab', 'quiz-set', 'composer-view', 'sentence-transform', 'meaning-cluster', 'plural-pair-lab', 'sentence-composer', 'tap-attributes-lab', 'tap-ownership-lab', 'count-scene-lab', 'feature-hunt', 'cumulative-scene-lab', 'cumulative-visual-quest'],
   puzzle: ['sentence-builder'],
   construction: ['response-practice'],
   correspondence: ['exchange-lab', 'daily-choice-lab', 'response-practice'],

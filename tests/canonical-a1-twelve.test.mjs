@@ -5,7 +5,7 @@ import {join} from 'node:path';
 import {projectRoot} from '../tools/validate.mjs';
 import {renderActivity} from '../apps/learner-web/lesson-modules.js';
 import {validateLessonFlow} from '../apps/learner-web/lesson-flow.js';
-import {validateSentenceComposer,resolveSentenceComposer,composeSegments} from '../apps/learner-web/sentence-composer.js';
+import {validateSentenceComposer,resolveSentenceComposer,composeSegments,cycleComposerSlot} from '../apps/learner-web/sentence-composer.js';
 import {auditLesson} from '../tools/audit-lessons.mjs';
 import {inspectVocabularyContinuity} from '../tools/audit-vocabulary.mjs';
 
@@ -49,7 +49,7 @@ test('A1-11 action verbs change naturally with person, negative and question for
  const sentence=(slots,pattern='statement')=>composeSegments(composer.patterns.find(x=>x.id===pattern).segments,composer,resolveSentenceComposer(composer,{slots,pattern}));
  assert.equal(sentence({subject:'i',verb:'eat'}),'I eat rice.');
  assert.equal(sentence({subject:'she',verb:'eat'}),'My sister eats rice.');
- assert.equal(sentence({subject:'he',verb:'cook'}),'My father cooks soup.');
+ assert.equal(sentence({subject:'he',verb:'cook',object:'soup'}),'My father cooks soup.');
  assert.equal(sentence({subject:'she',verb:'drink'},'negative'),"My sister doesn't drink water.");
  assert.equal(sentence({subject:'she',verb:'drink'},'question'),'Does my sister drink water?');
  const lab=activity(lesson11,'a1-11-verbs');
@@ -65,6 +65,64 @@ test('A1-11 action verbs change naturally with person, negative and question for
  assert.match(renderActivity(lab,context(lesson11)),/I eat rice/);
  assert.match(renderActivity(lab,context(lesson11,{cumulativeLabStates:{'A1-11:a1-11-verbs':{subject:2,verb:1,form:2}}})),/Does my sister drink water/);
  for(const word of ['cook','want','pot','pan','oven'])assert.ok(activity(lesson11,'a1-11-vocabulary').items.some(x=>x.en===word));
+});
+
+test('foundations 11 and 12 follow shadowing → words → deck → meaning → composer → forms → activity → construction',()=>{
+ for(const [lesson,labId] of [[lesson11,'a1-11-verbs'],[lesson12,'a1-12-meal-lab']]){
+  const items=lesson.sections[0].activities;
+  const index=id=>items.findIndex(x=>x.id===id);
+  assert.deepEqual(items.slice(0,2).map(x=>x.type),['shadowing','vocabulary']);
+  assert.ok(index(`${lesson.id.toLowerCase()}-expressions`)<index(`${lesson.id.toLowerCase()}-meaning`));
+  assert.ok(index(`${lesson.id.toLowerCase()}-meaning`)<index(`${lesson.id.toLowerCase()}-composer`));
+  assert.ok(index(`${lesson.id.toLowerCase()}-composer`)<index(labId));
+  assert.ok(index(labId)<index(`${lesson.id.toLowerCase()}-build`));
+  const expressions=items.find(x=>x.type==='expression-study');
+  assert.equal(expressions.presentation,'deck');
+  const initial=renderActivity(expressions,context(lesson));
+  assert.match(initial,/data-expression-key/);
+  assert.match(initial,/عبارت بعدی/);
+  const last=renderActivity(expressions,context(lesson,{expressionIndexes:{[`${lesson.id}:${expressions.id}`]:expressions.items.length-1}}));
+  assert.match(last,/عبارت قبلی/);
+  assert.ok(expressions.items.every(item=>item.examples?.length>=3));
+  const meaning=items.find(x=>x.type==='meaning-cluster');
+  assert.ok(meaning.concepts.length>=3);
+  assert.ok(meaning.concepts.every(x=>x.forms.length>=2));
+ }
+});
+
+test('lesson 11 independently changes subject, verb and meaningful compatible objects',()=>{
+ const composer=activity(lesson11,'a1-11-composer');
+ const sentence=(slots,pattern='statement')=>composeSegments(composer.patterns.find(x=>x.id===pattern).segments,composer,resolveSentenceComposer(composer,{slots,pattern}));
+ assert.equal(sentence({subject:'she',verb:'cook',object:'chicken'}),'My sister cooks chicken.');
+ assert.equal(sentence({subject:'i',verb:'drink',object:'tea'}),'I drink tea.');
+ assert.equal(sentence({subject:'she',verb:'drink',object:'chicken'}),'My sister drinks water.','drinking must not produce a chicken sentence');
+ assert.equal(sentence({subject:'we',verb:'want',object:'pizza'},'negative'),"We don't want pizza.");
+ const next=cycleComposerSlot(composer,{slots:{subject:'he',verb:'cook',object:'soup'}},'object');
+ assert.equal(next.slots.object,'pizza','a new food option is available without changing the verb');
+ assert.ok(activity(lesson11,'a1-11-meaning').concepts.some(x=>x.id==='hunger'));
+});
+
+test('lesson 12 teaches and/with/without, flavors and actual drink/eat conjugations',()=>{
+ const composer=activity(lesson12,'a1-12-composer');
+ assert.deepEqual(validateSentenceComposer(composer),[]);
+ const sentence=(slots,pattern='eat')=>composeSegments(composer.patterns.find(x=>x.id===pattern).segments,composer,resolveSentenceComposer(composer,{slots,pattern}));
+ assert.equal(sentence({person:'i',food:'eggs-and-cheese',meal:'breakfast'}),'I eat eggs and cheese for breakfast.');
+ assert.equal(sentence({person:'i',food:'eggs-with-cheese',meal:'breakfast'}),'I eat eggs with cheese for breakfast.');
+ assert.equal(sentence({person:'sister',food:'coffee-with-sugar',meal:'breakfast'}),'My sister drinks coffee with sugar for breakfast.');
+ assert.equal(sentence({person:'sister',food:'coffee-without-sugar',meal:'breakfast'},'negative'),"My sister doesn't drink coffee without sugar for breakfast.");
+ assert.equal(sentence({person:'you',food:'coffee-with-sugar',meal:'breakfast'},'question'),'Do you drink coffee with sugar for breakfast?');
+ const lab=activity(lesson12,'a1-12-meal-lab');
+ const render=state=>renderActivity(lab,context(lesson12,{cumulativeLabStates:{'A1-12:a1-12-meal-lab':state}}));
+ assert.match(render({item:0,food:0,connector:1}),/I eat eggs and cheese for breakfast/);
+ assert.match(render({item:0,food:0,connector:2}),/I eat eggs with cheese for breakfast/);
+ assert.match(render({item:0,food:1,connector:1,subject:2}),/My sister drinks coffee with sugar for breakfast/);
+ assert.match(render({item:1,food:1,connector:1,subject:4,form:2}),/Do you eat kebab with soda for lunch/);
+ for(const word of ['full','sweet','salty','spicy','sour','kebab','soda'])assert.ok(activity(lesson12,'a1-12-vocabulary').items.some(x=>x.en===word));
+ const prompts=activity(lesson12,'a1-12-warmup').tasks.map(x=>x.hint).join(' ');
+ assert.match(prompts,/Do you eat kebab with soda/);
+ assert.match(prompts,/Do you drink coffee with sugar/);
+ assert.match(prompts,/eggs and cheese/);
+ assert.match(prompts,/eggs with cheese/);
 });
 
 test('A1-11 menu and A1-12 meals are interactive and use earlier number/family knowledge',()=>{

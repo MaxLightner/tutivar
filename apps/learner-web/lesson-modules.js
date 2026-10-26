@@ -332,7 +332,8 @@ function sentenceComposer(a, c) {
   const note = a.showNote && pattern.note ? `<p class="composer-note">${c.e(pattern.note)}</p>` : '';
   const english = composeSegments(pattern.segments, source, resolved);
   const scene = perspectiveScene(source, a, resolved, key, c.e);
-  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p>${patterns}${scene}<div class="composer-stage"><div class="composer-sentence" lang="${c.e(source.targetLanguage || 'en')}" dir="ltr">${renderSegments(pattern.segments, true)}${soundButton(english, c.e, c.i)}</div>${translation}</div>${note}`, a, c.index, c.e, 'module-sentence-composer');
+  const examples = a.examples?.length ? `<div class="composer-more-examples"><h4>چند جملهٔ متفاوت</h4>${a.examples.map((example) => `<div class="composer-example"><span>${c.en(example.en)}${soundButton(example.en,c.e,c.i)}</span><small>${c.e(example.fa)}</small></div>`).join('')}</div>` : '';
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p>${patterns}${scene}<div class="composer-stage"><div class="composer-sentence" lang="${c.e(source.targetLanguage || 'en')}" dir="ltr">${renderSegments(pattern.segments, true)}${soundButton(english, c.e, c.i)}</div>${translation}</div>${note}${examples}`, a, c.index, c.e, 'module-sentence-composer');
 }
 
 function sentenceLab(a, c) {
@@ -610,11 +611,20 @@ function roleplay(a, c) {
 }
 function expressionStudy(a, c) {
   const labels = { fixed: 'عبارت کاربردی', collocation: 'ترکیب رایج', preposition: 'عبارت مکانی' };
+  if(a.presentation==='deck') {
+    const key=`${c.lessonId}:${a.id}`,total=a.items.length;
+    const page=Math.max(0,Math.min(total-1,Number(c.progress.expressionIndexes?.[key])||0));
+    const item=a.items[page];
+    const examples=(item.examples||[]).map((line,index)=>`<li><span><small>مثال ${index+1}</small>${c.en(line)}</span>${soundButton(line,c.e,c.i)}</li>`).join('');
+    const change=(delta,label,disabled)=>`<button type="button" class="expression-deck-button" data-expression-key="${c.e(key)}" data-expression-delta="${delta}" ${disabled?'disabled':''}>${label}</button>`;
+    return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><section class="expression-deck"><div class="expression-deck-top"><span>${c.e(labels[item.kind]||'عبارت کاربردی')}</span><strong>${page+1} / ${total}</strong></div><div class="expression-deck-core"><div class="expression-main">${c.en(item.en)}${soundButton(item.en,c.e,c.i)}</div><p>${c.e(item.fa)}</p></div><ol class="expression-deck-examples">${examples}</ol><div class="expression-deck-nav">${change(-1,'عبارت قبلی',page===0)}<div class="expression-deck-dots" aria-hidden="true">${a.items.map((_,i)=>`<i class="${i===page?'active':''}"></i>`).join('')}</div>${change(1,'عبارت بعدی',page===total-1)}</div></section>`,a,c.index,c.e,'module-expression-study module-expression-deck');
+  }
   const cards = (a.items || []).map((item) => {
-    const examples = item.examples?.length
-      ? `<details class="expression-examples"><summary>نمونه‌ها</summary><ul>${item.examples.map((line) => `<li>${c.en(line)}</li>`).join('')}</ul></details>`
+    const preview=item.examples?.[0]?`<div class="expression-preview">${c.en(item.examples[0])}${soundButton(item.examples[0],c.e,c.i)}</div>`:'';
+    const examples = item.examples?.length>1
+      ? `<details class="expression-examples"><summary>مثال‌های بیشتر</summary><ul>${item.examples.slice(1).map((line) => `<li>${c.en(line)}${soundButton(line,c.e,c.i)}</li>`).join('')}</ul></details>`
       : '';
-    return `<article class="expression-card"><span class="expression-kind">${c.e(labels[item.kind] || 'عبارت')}</span><div class="expression-main">${c.en(item.en)}${soundButton(item.en, c.e, c.i)}</div><p>${c.e(item.fa)}</p>${examples}</article>`;
+    return `<article class="expression-card"><span class="expression-kind">${c.e(labels[item.kind] || 'عبارت')}</span><div class="expression-main">${c.en(item.en)}${soundButton(item.en, c.e, c.i)}</div><p>${c.e(item.fa)}</p>${preview}${examples}</article>`;
   }).join('');
   return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="expression-grid">${cards}</div>`, a, c.index, c.e, 'module-expression-study');
 }
@@ -958,10 +968,19 @@ function dailyChoiceLab(a,c) {
     return wrapper(`<p class="module-description">${e(a.description||'')}</p><div class="daily-choice-lab"><div class="daily-hero"><div class="daily-emoji" aria-hidden="true">${item.emoji.repeat(quantity)}</div><div><span class="daily-eyebrow">YOUR ORDER · سفارش تو</span><div class="daily-live-sentence" lang="en" dir="ltr">${c.en(order)}${soundButton(order,e,c.i)}</div><p>قیمت واحد $${item.price} · جمع ${price}</p></div></div><div class="daily-option-group" role="group" aria-label="انتخاب غذا">${a.options.map((x,i)=>chip('item',i,`${x.emoji} ${x.fa} · $${x.price}`,selected===i)).join('')}</div><div class="daily-number-row" role="group" aria-label="تعداد غذا">${[1,2,3].map(n=>chip('quantity',n,`${n} عدد`,quantity===n)).join('')}</div><p class="daily-price" dir="ltr">${price}</p></div>`,a,c.index,e,'module-daily-choice');
   }
   if(a.mode==='meal') {
-    const selected=Math.max(0,Math.min(a.options.length-1,Number(state.item)||0)),subject=Math.max(0,Math.min(3,Number(state.subject)||0));
-    const subjects=[{en:'I',fa:'من',verb:'eat'},{en:'We',fa:'ما',verb:'eat'},{en:'My sister',fa:'خواهرم',verb:'eats'},{en:'My brother',fa:'برادرم',verb:'eats'}],meal=a.options[selected],who=subjects[subject];
-    const phrase=`${who.en} ${who.verb} ${meal.food} for ${meal.meal}.`;
-    return wrapper(`<p class="module-description">${e(a.description||'')}</p><div class="daily-choice-lab"><div class="daily-hero"><div class="daily-emoji" aria-hidden="true">${meal.emoji}</div><div><span class="daily-eyebrow">${e(meal.fa)} · ${e(who.fa)}</span><div class="daily-live-sentence" lang="en" dir="ltr">${c.en(phrase)}${soundButton(phrase,e,c.i)}</div><p>همین فاعل می‌تواند ${e(meal.other)} را هم برای ${e(meal.fa)} بخورد.</p></div></div><div class="daily-option-group" role="group" aria-label="انتخاب وعده">${a.options.map((x,i)=>chip('item',i,`${x.emoji} ${x.fa}`,selected===i)).join('')}</div><div class="daily-number-row" role="group" aria-label="انتخاب فاعل">${subjects.map((x,i)=>chip('subject',i,x.fa,subject===i)).join('')}</div></div>`,a,c.index,e,'module-daily-choice');
+    const selected=Math.max(0,Math.min(a.options.length-1,Number(state.item)||0));
+    const meal=a.options[selected],pairs=meal.pairs?.length?meal.pairs:[{food:meal.food,fa:meal.food,emoji:meal.emoji,verb:'eat',connectors:['plain']}];
+    const foodIndex=Math.max(0,Math.min(pairs.length-1,Number(state.food)||0)),food=pairs[foodIndex];
+    const connectors=food.connectors||['plain'],connectorIndex=Math.max(0,Math.min(connectors.length-1,Number(state.connector)||0)),connector=connectors[connectorIndex];
+    const subjects=[{en:'I',query:'I',fa:'من',third:false},{en:'We',query:'we',fa:'ما',third:false},{en:'My sister',query:'my sister',fa:'خواهرم',third:true},{en:'My brother',query:'my brother',fa:'برادرم',third:true},{en:'You',query:'you',fa:'تو',third:false},{en:'They',query:'they',fa:'آن‌ها',third:false}];
+    const subject=Math.max(0,Math.min(subjects.length-1,Number(state.subject)||0)),who=subjects[subject];
+    const form=Math.max(0,Math.min(2,Number(state.form)||0)),plain=food.verb||'eat',conjugated=who.third?`${plain}s`:plain;
+    const namedFood=`${food.food}${connector==='plain'?'':` ${connector} ${food.companion}`}`;
+    const phrase=[`${who.en} ${conjugated} ${namedFood} for ${meal.meal}.`,`${who.en} ${who.third?"doesn't":"don't"} ${plain} ${namedFood} for ${meal.meal}.`,`${who.third?'Does':'Do'} ${who.query} ${plain} ${namedFood} for ${meal.meal}?`][form];
+    const nuances={plain:'فعلاً فقط خوراک اصلی را نام می‌بریم.',and:'and دو خوراک را کنار هم فهرست می‌کند.',with:'with همراه‌بودن خوراک دوم را بیان می‌کند.',without:'without یعنی خوراک دوم در این وعده وجود ندارد.'};
+    const connectorsFa={plain:'فقط خوراک اصلی',and:'و',with:'با',without:'بدون'};
+    const emoji=`${food.emoji}${connector==='plain'?'':` ${food.companionEmoji||''}`}`;
+    return wrapper(`<p class="module-description">${e(a.description||'')}</p><div class="daily-choice-lab"><div class="daily-hero"><div class="daily-emoji" aria-hidden="true">${emoji}</div><div><span class="daily-eyebrow">${e(meal.fa)} · ${e(who.fa)} · ${e(plain)}</span><div class="daily-live-sentence" lang="en" dir="ltr">${c.en(phrase)}${soundButton(phrase,e,c.i)}</div><p>${e(nuances[connector])} ${connector==='plain'?'':`(${e(food.fa)} ${e(connectorsFa[connector])} ${e(food.companionFa)})`}</p></div></div><p class="daily-option-label">۱. وعده</p><div class="daily-option-group" role="group" aria-label="انتخاب وعده">${a.options.map((x,i)=>chip('item',i,`${x.emoji} ${x.fa}`,selected===i)).join('')}</div><p class="daily-option-label">۲. خوراک یا نوشیدنی</p><div class="daily-option-group" role="group" aria-label="انتخاب خوراک">${pairs.map((x,i)=>chip('food',i,`${x.emoji} ${x.fa}`,foodIndex===i)).join('')}</div><p class="daily-option-label">۳. رابطهٔ دو خوراک</p><div class="daily-option-group" role="group" aria-label="نحوهٔ همراهی">${connectors.map((x,i)=>chip('connector',i,connectorsFa[x],connectorIndex===i)).join('')}</div><p class="daily-option-label">۴. فاعل</p><div class="daily-option-group" role="group" aria-label="انتخاب فاعل">${subjects.map((x,i)=>chip('subject',i,x.fa,subject===i)).join('')}</div><p class="daily-option-label">۵. شکل جمله</p><div class="daily-number-row" role="group" aria-label="انتخاب شکل جمله">${['خبری +','منفی −','پرسشی ؟'].map((x,i)=>chip('form',i,x,form===i)).join('')}</div></div>`,a,c.index,e,'module-daily-choice');
   }
   return wrapper('',a,c.index,e);
 }
