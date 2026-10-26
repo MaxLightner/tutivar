@@ -28,7 +28,8 @@ function selectedItem(activity, state, slotId) {
   const slot = activity.slots?.find((entry) => entry.id === slotId);
   if (!slot) return null;
   const items = activity.wordSets?.[slot.wordSet] || [];
-  return items.find((entry) => entry.id === state.slots?.[slotId]) || items[0] || null;
+  const available = items.filter((entry) => !entry.availableWhen || matchesCondition(entry.availableWhen, activity, state));
+  return available.find((entry) => entry.id === state.slots?.[slotId]) || available[0] || null;
 }
 
 function matchesCondition(condition, activity, state) {
@@ -39,7 +40,8 @@ function matchesCondition(condition, activity, state) {
   if (condition.slot) {
     const item = selectedItem(activity, state, condition.slot);
     const actual = condition.feature ? item?.features?.[condition.feature] : state.slots[condition.slot];
-    if (actual !== condition.equals) return false;
+    if (condition.in && !condition.in.includes(actual)) return false;
+    if (Object.hasOwn(condition, 'equals') && actual !== condition.equals) return false;
   }
   return true;
 }
@@ -86,9 +88,11 @@ export function cycleComposerSlot(activity, saved, slotId) {
   const slot = (activity.slots || []).find((item) => item.id === slotId);
   if (!slot) return state;
   const options = (activity.wordSets?.[slot.wordSet] || []).filter((item) =>
-    !slot.includeRoles?.length || slot.includeRoles.includes(item.role || 'core'));
+    (!slot.includeRoles?.length || slot.includeRoles.includes(item.role || 'core')) &&
+    (!item.availableWhen || matchesCondition(item.availableWhen, activity, state)));
   if (!options.length) return state;
-  const index = options.findIndex((item) => item.id === state.slots[slotId]);
+  const current = selectedItem(activity, state, slotId);
+  const index = options.findIndex((item) => item.id === current?.id);
   state.slots[slotId] = options[(index + 1) % options.length].id;
   return { ...state, activeSlot: null };
 }
