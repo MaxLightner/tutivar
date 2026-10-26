@@ -431,6 +431,31 @@ function spatialLab(a, c) {
     ${spatialBallSVG('front', position)}
   </svg><div class="spatial-caption" aria-live="polite"><strong class="spatial-English" lang="en" dir="ltr">${c.e(position.en)}</strong><p class="spatial-Persian" dir="rtl">${c.e(position.faSentence)}</p>${soundButton(position.en,c.e,c.i)}</div><div class="spatial-controls" role="group" aria-label="موقعیت توپ نسبت به جعبه">${options}</div></div>`, a, c.index, c.e, 'module-spatial-lab');
 }
+function spatialCompareLab(a,c) {
+  const key=`${c.lessonId}:${a.id}`;
+  const saved=c.progress.spatialChoices?.[key]||{};
+  const choices=a.positions||[];
+  const subjects=[{id:'ball',en:'ball',fa:'توپ',color:'#ed8b58'},{id:'apple',en:'apple',fa:'سیب',color:'#cb5f57'}];
+  const locations={
+    in:[123,125,'middle'],inside:[123,125,'middle'],on:[123,83,'front'],above:[123,45,'front'],
+    under:[123,181,'front'],behind:[123,93,'behind'],'in-front-of':[123,138,'front'],
+    'next-to':[204,137,'front'],outside:[204,137,'front']
+  };
+  const object=(thing,x,y)=>thing.id==='apple'
+    ? `<g transform="translate(${x} ${y})"><path d="M0-16C-10-24-23-15-19 2C-17 19-5 19 0 15C7 19 18 17 21 0C24-17 9-23 0-16Z" fill="${thing.color}" stroke="#8e403d" stroke-width="2"/><path d="M0-17Q-2-25 5-29" stroke="#58895b" stroke-width="3" fill="none"/></g>`
+    : `<circle cx="${x}" cy="${y}" r="21" fill="${thing.color}" stroke="#b34c2c" stroke-width="2"/>`;
+  const renderSide=(thing,side,defaultPos)=>{
+    const selected=choices.find(x=>x.id===(saved[side]||defaultPos))||choices[0];
+    const [x,y,layer]=locations[selected.id]||locations.on;
+    const backdrop='<rect x="67" y="103" width="112" height="62" rx="6" fill="#d4ad7a" stroke="#956842" stroke-width="3"/><path d="M67 103L90 88H202L179 103Z" fill="#edc899" stroke="#956842" stroke-width="3"/>';
+    const shape=object(thing,x,y);
+    const art=layer==='behind'?shape+backdrop:layer==='middle'?backdrop+shape+'<rect x="67" y="103" width="112" height="62" rx="6" fill="#d4ad7a" opacity=".28"/>':backdrop+shape;
+    const preposition=selected.id==='in-front-of'?'in front of':selected.id==='next-to'?'next to':selected.id;
+    const sentence=`The ${thing.en} is ${preposition} the box.`;
+    return `<div class="spatial-comparison-panel"><span class="spatial-comparison-tag">${c.e(thing.fa)} · ${side==='left'?'تصویر اول':'تصویر دوم'}</span><svg viewBox="0 0 255 215" role="img" aria-label="${c.e(thing.fa+' '+selected.fa+' جعبه')}"><rect width="255" height="215" rx="16" fill="#f0f5ee"/>${art}</svg><div class="spatial-comparison-sentence" dir="ltr" lang="en">The ${thing.en} is <button class="tap-word" type="button" data-spatial-key="${c.e(key)}" data-spatial-side="${side}" data-spatial-position="${c.e(choices[(choices.indexOf(selected)+1)%choices.length].id)}" aria-label="تغییر قید مکان ${thing.fa}">${c.e(preposition)}</button> the box.${soundButton(sentence,c.e,c.i)}</div><p class="spatial-comparison-translation">${c.e(thing.fa+' '+selected.fa+' جعبه است.')}</p></div>`;
+  };
+  return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><div class="spatial-comparison-grid">${renderSide(subjects[0],'left','on')}${renderSide(subjects[1],'right','above')}</div><p class="live-hint">روی قید مکان داخل هر جمله بزن. هر تصویر مستقل تغییر می‌کند؛ تفاوت «روی/بالا»، «داخل/بیرون» و «پشت/جلو» را کنار هم ببین.</p>`,a,c.index,c.e,'module-spatial-lab');
+}
 function agreementLab(a, c) {
   const key = `${c.lessonId}:${a.id}`;
   const saved = c.progress.agreementChoices?.[key] || {};
@@ -862,6 +887,16 @@ function cumulativeVisualQuest(a,c){
 function cumulativeNumberLab(a,c){
   const key=`${c.lessonId}:${a.id}`,state=c.progress.cumulativeLabStates?.[key]||{};
   const current=Math.max(0,Math.min(a.numbers.length-1,Number(state.index)||0));
+  if(a.mode==='quantities') {
+    const selected=Math.max(0,Math.min((a.objects||[]).length-1,Number(state.subject)||0));
+    const count=a.numbers[current],object=a.objects[selected];
+    const subjectOptions=(a.objects||[]).map((entry,i)=>`<button type="button" class="cumulative-subject-chip ${i===selected?'active':''}" aria-pressed="${i===selected}" data-cumulative-number-key="${c.e(key)}" data-cumulative-number-subject-index="${i}">${c.e(entry.fa)}</button>`).join('');
+    const numberOptions=a.numbers.map((entry,i)=>`<button type="button" class="cumulative-number-chip ${i===current?'active':''}" aria-pressed="${i===current}" data-cumulative-number-key="${c.e(key)}" data-cumulative-number-index="${i}">${entry.number}</button>`).join('');
+    const sentence=`I have ${count.en} ${object.plural}.`;
+    const clusters=Array.from({length:Math.floor(count.number/10)},()=>'<span class="number-ten-stick" aria-label="دسته ده‌تایی">▮</span>').join('');
+    const units=Array.from({length:count.number%10},()=>'<span class="number-unit-dot" aria-label="یک واحد">●</span>').join('');
+    return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><div class="cumulative-number-board"><div class="cumulative-number-display"><span>${count.number}</span><strong lang="en" dir="ltr">${c.e(count.en)}${soundButton(count.en,c.e,c.i)}</strong></div><div class="number-quantity-visual" aria-label="${count.number} واحد در دسته‌های ده‌تایی">${clusters}${units}</div><p class="tap-live-sentence" dir="ltr" lang="en">${c.en(sentence)}${soundButton(sentence,c.e,c.i)}</p><span class="cumulative-board-label">کدام شیء یا عضو خانواده؟</span><div class="cumulative-subject-grid">${subjectOptions}</div><span class="cumulative-board-label">چه تعداد؟</span><div class="cumulative-number-chip-grid">${numberOptions}</div><p class="live-hint">هر خط بزرگ یک دستهٔ ده‌تایی است. عدد و اسم را عوض کن تا معنی جمله واقعاً تغییر کند؛ نام وسایل از درس‌های قبل است.</p></div>`,a,c.index,c.e,'module-cumulative-numbers');
+  }
   const number=a.numbers[current],subject=a.subjects[(Number(state.subject)||0)%a.subjects.length];
   const sentence=`${subject.en} ${subject.be} ${number.en} years old.`;
   const cards=a.numbers.map((entry,i)=>`<button type="button" class="cumulative-number-chip ${i===current?'active':''}" aria-pressed="${i===current}" data-cumulative-number-key="${c.e(key)}" data-cumulative-number-index="${i}">${entry.number}</button>`).join('');
@@ -954,13 +989,13 @@ function tapOwnershipLab(a,c){
 function dailyChoiceLab(a,c) {
   const key=`${c.lessonId}:${a.id}`,state=c.progress.cumulativeLabStates?.[key]||{},e=c.e;
   const chip=(field,index,label,active)=>`<button type="button" class="daily-chip ${active?'is-active':''}" data-daily-choice-key="${e(key)}" data-daily-choice-field="${field}" data-daily-choice-index="${index}" aria-pressed="${active}">${e(label)}</button>`;
-  if(a.mode==='kitchen') {
+  if(a.mode==='kitchen'||a.mode==='school') {
     const subjects=[{name:'I',query:'I',fa:'من',third:false},{name:'You',query:'you',fa:'تو',third:false},{name:'My sister',query:'my sister',fa:'خواهرم',third:true},{name:'My father',query:'my father',fa:'پدرم',third:true},{name:'We',query:'we',fa:'ما',third:false},{name:'They',query:'they',fa:'آن‌ها',third:false}];
     const s=Math.max(0,Math.min(subjects.length-1,Number(state.subject)||0)),v=Math.max(0,Math.min(a.options.length-1,Number(state.verb)||0)),f=Math.max(0,Math.min(2,Number(state.form)||0));
     const subject=subjects[s],action=a.options[v],o=Math.max(0,Math.min(action.objects.length-1,Number(state.object)||0)),food=action.objects[o];
     const plain=action.en,third=action.third||`${plain}s`;
     const forms=[`${subject.name} ${subject.third?third:plain} ${food.en}.`,`${subject.name} ${subject.third?"doesn't":"don't"} ${plain} ${food.en}.`,`${subject.third?'Does':'Do'} ${subject.query} ${plain} ${food.en}?`],sentence=forms[f];
-    return wrapper(`<p class="module-description">${e(a.description||'')}</p><div class="daily-choice-lab"><div class="daily-hero"><div class="daily-emoji" aria-hidden="true">${action.emoji} ${food.emoji}</div><div><span class="daily-eyebrow">فاعل + فعل + خوراکی</span><div class="daily-live-sentence" dir="ltr" lang="en">${c.en(sentence)}${soundButton(sentence,e,c.i)}</div><p>با خواهر یا پدر: ${e(third)}؛ در منفی و سؤال، بعد از does از ${e(plain)} استفاده می‌شود.</p></div></div><div class="daily-option-group" role="group" aria-label="فاعل">${subjects.map((x,i)=>chip('subject',i,x.fa,s===i)).join('')}</div><div class="daily-option-group" role="group" aria-label="فعل">${a.options.map((x,i)=>chip('verb',i,x.fa,v===i)).join('')}</div><div class="daily-option-group" role="group" aria-label="خوراکی">${action.objects.map((x,i)=>chip('object',i,`${x.emoji} ${x.fa}`,o===i)).join('')}</div><div class="daily-number-row" role="group" aria-label="نوع جمله">${['خبری +','منفی −','پرسشی ؟'].map((x,i)=>chip('form',i,x,f===i)).join('')}</div></div>`,a,c.index,e,'module-daily-choice');
+    return wrapper(`<p class="module-description">${e(a.description||'')}</p><div class="daily-choice-lab"><div class="daily-hero"><div class="daily-emoji" aria-hidden="true">${action.emoji} ${food.emoji}</div><div><span class="daily-eyebrow">${a.mode==='school'?'چه کسی + چه کاری + کجا یا چه چیزی':'فاعل + فعل + خوراکی'}</span><div class="daily-live-sentence" dir="ltr" lang="en">${c.en(sentence)}${soundButton(sentence,e,c.i)}</div><p>با خواهر یا پدر: ${e(third)}؛ در منفی و سؤال، بعد از does از ${e(plain)} استفاده می‌شود.</p></div></div><div class="daily-option-group" role="group" aria-label="فاعل">${subjects.map((x,i)=>chip('subject',i,x.fa,s===i)).join('')}</div><div class="daily-option-group" role="group" aria-label="فعل">${a.options.map((x,i)=>chip('verb',i,x.fa,v===i)).join('')}</div><div class="daily-option-group" role="group" aria-label="${a.mode==='school'?'شیء یا محل':'خوراکی'}">${action.objects.map((x,i)=>chip('object',i,`${x.emoji} ${x.fa}`,o===i)).join('')}</div><div class="daily-number-row" role="group" aria-label="نوع جمله">${['خبری +','منفی −','پرسشی ؟'].map((x,i)=>chip('form',i,x,f===i)).join('')}</div></div>`,a,c.index,e,'module-daily-choice');
   }
   if(a.mode==='menu') {
     const selected=Math.max(0,Math.min(a.options.length-1,Number(state.item)||0)),quantity=Math.max(1,Math.min(3,Number(state.quantity)||1));
@@ -993,7 +1028,7 @@ const renderers = {
   'exchange-lab': exchangeLab, 'question-explorer': questionExplorer, 'daily-choice-lab': dailyChoiceLab, 'expression-study': expressionStudy, 'count-visual': countVisual, 'plural-pair-lab': pluralPairLab, 'count-math-lab': countMathLab,
   shadowing, 'shadowing-review': shadowing, 'picture-description': pictureDescription,
   'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer,
-  'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer, 'tap-attributes-lab': tapAttributesLab, 'tap-ownership-lab': tapOwnershipLab, 'count-scene-lab':countSceneLab, 'feature-hunt':featureHunt, 'cumulative-scene-lab':cumulativeSceneLab, 'cumulative-visual-quest':cumulativeVisualQuest, 'cumulative-number-lab':cumulativeNumberLab
+  'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'spatial-compare-lab': spatialCompareLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer, 'tap-attributes-lab': tapAttributesLab, 'tap-ownership-lab': tapOwnershipLab, 'count-scene-lab':countSceneLab, 'feature-hunt':featureHunt, 'cumulative-scene-lab':cumulativeSceneLab, 'cumulative-visual-quest':cumulativeVisualQuest, 'cumulative-number-lab':cumulativeNumberLab
 };
 export function renderActivity(activity, context) {
   const renderer = renderers[activity.type];

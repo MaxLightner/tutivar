@@ -64,9 +64,9 @@ test('every sample path node references a real content file with two teaching se
     assert.ok(!ids.has(lesson.id));
     ids.add(lesson.id);
   }
-  assert.equal(ids.size, 12);
-  assert.deepEqual([...ids],Array.from({length:12},(_,i)=>`A1-${i+1}`));
-  assert.deepEqual([...new Set([...ids].map((id) => load(lessons.find((entry) => entry.id === id).file).archetype))].sort(), ['K1/K2','K2','K4/K12','K4/K2','conversation','counting-objects','family','ownership','spatial-location']);
+  assert.equal(ids.size, 14);
+  assert.deepEqual([...ids],Array.from({length:14},(_,i)=>`A1-${i+1}`));
+  assert.deepEqual([...new Set([...ids].map((id) => load(lessons.find((entry) => entry.id === id).file).archetype))].sort(), ['K1/K2','K2','K4/K12','K4/K2','conversation','counting-objects','cumulative','family','ownership','spatial-location']);
 });
 
 test('not-yet-produced nodes cannot be launched as content', () => {
@@ -75,12 +75,12 @@ test('not-yet-produced nodes cannot be launched as content', () => {
   assert.ok(manifest.levels.A2.chapters.length === 0);
 });
 
-test('A1 shows three owner-defined stages: twelve, eight and fourteen lessons', () => {
+test('A1 shows three owner-defined stages of twelve lessons each', () => {
   assert.deepEqual(curriculum.stages.map((stage) => stage.id), ['A1.1', 'A1.2', 'A1.3']);
-  assert.equal(curriculum.stages.reduce((sum, stage) => sum + stage.chapters.length, 0), 8);
+  assert.equal(curriculum.stages.reduce((sum, stage) => sum + stage.chapters.length, 0), 9);
   assert.ok(curriculum.stages.every((stage) => stage.chapters.every((chapter) => chapter.lessons.length >= 1)));
   assert.ok(curriculum.stages.every((stage) => stage.chapters.every((chapter) => chapter.lessons.every((entry) => Array.isArray(entry) ? entry.length >= 2 : entry.icon))));
-  assert.deepEqual(curriculum.stages.map(stage=>stage.chapters.flatMap(ch=>ch.lessons).filter(x=>/^A1-\d+$/.test(x.id)).length),[12,8,14]);
+  assert.deepEqual(curriculum.stages.map(stage=>stage.chapters.flatMap(ch=>ch.lessons).filter(x=>/^A1-\d+$/.test(x.id)).length),[12,12,12]);
   assert.deepEqual(curriculum.stages[0].chapters[2].lessons.slice(0,3).map(x=>x.id),['A1-10','A1-11','A1-12']);
   assert.equal(manifest.levels.A1.curriculumFile, 'curriculum.a1.json');
 });
@@ -265,7 +265,7 @@ test('puzzle grading ignores capitalization and terminal punctuation, while givi
 test('archived location lesson has intact two-stage activities after reordering', () => {
   const lesson=load('lessons/a1-4.json');
   const catalog=lessons.find(entry=>entry.id===lesson.id);
-  assert.equal(catalog.file,'lessons/a1-4-v3.json');
+  assert.equal(catalog.file,'lessons/a1-4-v4.json');
   assert.equal(catalog.status,'sample');
   assert.deepEqual(validateLessonFlow(lesson),[]);
   assert.equal(lesson.sections.length,2);

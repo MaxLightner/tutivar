@@ -659,6 +659,15 @@ function onClick(event) {
   if (el.dataset.spatialKey) {
     const key = el.dataset.spatialKey;
     const activity = lessonActivity(key);
+    if (activity?.type === 'spatial-compare-lab') {
+      const side=el.dataset.spatialSide;
+      const position=activity.positions.find(item=>item.id===el.dataset.spatialPosition);
+      if (!position || !['left','right'].includes(side)) return;
+      progress.spatialChoices ||= {};
+      const saved=progress.spatialChoices[key];
+      progress.spatialChoices[key]={...(typeof saved==='object'&&saved? saved:{}),[side]:position.id};
+      persist();updateInline();return;
+    }
     if (activity?.type !== 'spatial-lab') return;
     const position = activity.positions.find((item) => item.id === el.dataset.spatialPosition);
     if (!position) return;

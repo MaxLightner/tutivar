@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img" aria-labelledby="schoolTitle schoolDesc">
+  <title id="schoolTitle">کلاس درس و مطالعه</title>
+  <desc id="schoolDesc">تخته با یک جمله، میز مطالعه با کتاب باز، آموزگار در حال نوشتن و یک دانش‌آموز کنار میز</desc>
+  <rect width="720" height="430" rx="32" fill="#f1f5f1"/>
+  <rect y="310" width="720" height="120" fill="#e5ddcf"/>
+  <rect x="58" y="54" width="440" height="222" rx="14" fill="#365f57" stroke="#b48b62" stroke-width="16"/>
+  <text x="277" y="123" font-size="28" fill="#e0eee3" font-family="sans-serif" text-anchor="middle">I read a book.</text>
+  <text x="277" y="168" font-size="26" fill="#d8e8db" font-family="sans-serif" text-anchor="middle">She writes.</text>
+  <path d="M137 201H415" stroke="#96bbae" stroke-width="3" stroke-dasharray="12 10"/>
+  <g><circle cx="563" cy="123" r="30" fill="#d8ab8f"/><path d="M530 112Q561 70 596 111L584 96Q559 85 542 108" fill="#4c3a38"/><path d="M529 167L599 167L617 289H508Z" fill="#86a4c8"/><path d="M540 185L475 228" fill="none" stroke="#d8ab8f" stroke-width="19" stroke-linecap="round"/><path d="M482 224L493 201" stroke="#fff" stroke-width="7"/></g>
+  <g><rect x="104" y="302" width="459" height="31" rx="11" fill="#bd8b62"/><path d="M128 330V405M534 330V405" stroke="#85603f" stroke-width="18" stroke-linecap="round"/>
+  <path d="M221 273L308 253L392 273L308 295Z" fill="#fcfcf6" stroke="#8da5a0" stroke-width="4"/><path d="M308 253V295" stroke="#b9c9c1" stroke-width="3"/><path d="M220 274L259 287M394 274L351 288" stroke="#98aaa3" stroke-width="2"/>
+  <path d="M447 274L499 270" stroke="#dc9145" stroke-width="8" stroke-linecap="round"/></g>
+  <g><circle cx="62" cy="352" r="26" fill="#d0a38a"/><path d="M32 344Q51 312 88 339L76 330L41 341" fill="#413735"/><path d="M34 384Q62 365 91 384L105 430H19Z" fill="#69a58c"/></g>
+</svg>

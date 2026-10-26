@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "approvedRevision": "2026-10-25-owner-kitchen-verbs-a1",
+  "approvedRevision": "2026-10-26-owner-a1-twelve-per-stage",
   "sourcePath": "docs/curriculum/01-universal-learning-path.md",
-  "sourceGitBlobSha": "50d51f0bbd4275447a27541a1a8198b2e5af27af",
+  "sourceGitBlobSha": "2fbe4a92b6a16bc5671f7c3318e79aaae905ce36",
   "manifestPath": "content/curriculum/universal-path.v1.json",
-  "manifestGitBlobSha": "d267774ffea263b1846ef6a7ad0d67de71f3eaf5",
+  "manifestGitBlobSha": "5d6ca1312f5135410ffdfd188ac2173d3ab04aaa",
   "approvedChanges": [
     {
       "revision": "2026-10-25-owner-cumulative-a1",
@@ -69,9 +69,32 @@
     {
       "revision": "2026-10-25-owner-kitchen-verbs-a1",
       "authorizedBy": "product-owner",
-      "affectedIds": ["A1-11", "A1-12"],
+      "affectedIds": [
+        "A1-11",
+        "A1-12"
+      ],
       "decisionReference": "Tutivar project conversation, 2026-10-25: owner explicitly corrected A1-11 to foods and kitchen as the first systematic action-verb lesson and defined A1-12 as main meals and table conversation; owner required every corrected title to update the GitHub-stored canonical table.",
       "rationale": "Food and kitchen action verbs must precede talking about breakfast, lunch, dinner and practical table dialogue. The menu and price bridge remain a final transfer exercise in A1-11, not its subject. A1 stage grouping is display-only: 1–12, 13–20, 21–34."
+    },
+    {
+      "revision": "2026-10-26-owner-a1-twelve-per-stage",
+      "authorizedBy": "product-owner",
+      "affectedIds": [
+        "A1-1",
+        "A1-2",
+        "A1-3",
+        "A1-4",
+        "A1-8",
+        "A1-9",
+        "A1-10",
+        "A1-11",
+        "A1-12",
+        "A1-13",
+        "A1-14",
+        "A1-15–36"
+      ],
+      "decisionReference": "Tutivar project conversation, 2026-10-26: owner ordered A1-1 as short tourist/greeting phrases; A1-2 as gender, family and pronouns without have; personal possessions plus have in A1-3; count in A1-4; extended numbers before profile; school and action verbs before food; food moves to A1 part two; three 12-lesson stages.",
+      "rationale": "A prerequisite-first, cumulative teaching sequence with core vocabulary used downstream; preserve archived old content and progress by versioned remapping."
     }
   ],
   "authorization": "Baseline from owner's supplied document. Future amendments require an explicit owner instruction and a matching decision entry and lock update."

@@ -8,7 +8,7 @@ An extensible, language-pair-independent learning platform. Content and app rend
 - **Active pilot: Persian (`fa`) → English (`en`)**. Earlier `fa-de` stays as an unpopulated future pair.
 - Mobile-first PWA learner preview: `apps/learner-web` (draft UI)
 - Nine runnable **pilot** A1 lesson files exist. A1-6 through A1-9 currently have historical topics that do **not** match the owner's approved universal order; they are locked for safe migration, not a precedent for future topics.
-- The author's **126-lesson roadmap** is now repository-native and mandatory. See `AGENTS.md` and `content/curriculum/universal-path.v1.json`.
+- The author's **128-lesson roadmap** is now repository-native and mandatory (A1: 36 lessons in three stages of 12). See `AGENTS.md` and `content/curriculum/universal-path.v1.json`.
 - No production course, placement exam, backend, social account, AI coach, or real Leitner scheduling yet.
 - Files in `examples/` are illustrative fixtures, **not published educational content**.
 
@@ -52,7 +52,7 @@ npm run curriculum:plan -- A1-10
 npm run curriculum:check
 ```
 
-The machine-readable `content/curriculum/universal-path.v1.json` preserves all 126 owner-approved lessons and their full objectives, prerequisite bridges, limits and archetypes. Its source and manifest hashes are pinned by `roadmap.lock.json`; `npm test` and the production build reject unauthorized edits, wrong lesson order and premature publication after the existing A1-6..9 mismatch. Only an explicit owner amendment may revise the planned order (with documented decision and safe progress migration). See `docs/curriculum/WORKFLOW.md`. `AGENTS.md` makes the same check mandatory for future AI-assisted work.
+The machine-readable `content/curriculum/universal-path.v1.json` preserves all 128 owner-approved lessons and their full objectives, prerequisite bridges, limits and archetypes. Its source and manifest hashes are pinned by `roadmap.lock.json`; `npm test` and the production build reject unauthorized edits, wrong lesson order and undocumented publication changes. Only an explicit owner amendment may revise the planned order (with documented decision and safe progress migration). See `docs/curriculum/WORKFLOW.md`. `AGENTS.md` makes the same check mandatory for future AI-assisted work.
 
 **GitHub setting:** To require owner review of curriculum edits, enable branch protection/ruleset for `main` with required status checks and **Require review from Code Owners**; `.github/CODEOWNERS` already nominates `@MaxLightner`. No repository file alone can turn that setting on.
 

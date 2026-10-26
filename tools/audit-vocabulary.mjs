@@ -37,6 +37,29 @@ export function inspectVocabularyContinuity(lessons) {
   }
   return errors;
 }
+/** Core vocabulary must surface again in manipulable sentences or production tasks. */
+export function inspectCorePracticeCoverage(lessons) {
+  const errors=[];
+  const passive=new Set(['vocabulary','shadowing','shadowing-review','expression-study','meaning-cluster','composer-view']);
+  for(const lesson of lessons){
+    const activities=(lesson.sections||[]).flatMap(section=>section.activities||[]);
+    const vocabulary=activities.find(activity=>activity.type==='vocabulary');
+    if(!vocabulary)continue;
+    const trainingText=JSON.stringify(activities.filter(activity=>!passive.has(activity.type)).map(activity=>{
+      const {id,type,phase,title,description,sourceActivityId,...practice}=activity;
+      return practice;
+    })).toLowerCase().replace(/[’‘]/g,"'");
+    for(const item of vocabulary.items||[]){
+      if(item.role==='supplementary')continue;
+      const word=vocabularyKey(item.en);
+      if(!word)continue;
+      const safe=word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+      const matcher=new RegExp(`\\b${safe}(?:s|es|ed|ing)?\\b`,'i');
+      if(!matcher.test(trainingText))errors.push(`${lesson.id}: core word "${item.en}" never appears in interactive or production practice`);
+    }
+  }
+  return errors;
+}
 export function loadA1Lessons() {
   const directory = join(root, 'content/language-pairs/fa-en/lessons');
   const course=JSON.parse(readFileSync(join(root,'content/language-pairs/fa-en/curriculum.a1.json'),'utf8'));
@@ -46,7 +69,7 @@ export function loadA1Lessons() {
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const lessons = loadA1Lessons();
-  const errors = inspectVocabularyContinuity(lessons);
+  const errors = [...inspectVocabularyContinuity(lessons),...inspectCorePracticeCoverage(lessons)];
   if (errors.length) { errors.forEach(error => console.error('FAIL: ' + error)); process.exitCode = 1; }
-  else console.log('PASS: ' + lessons.length + ' A1 lessons; vocabulary introduced once (core + supplementary; inflections matched)');
+  else console.log('PASS: ' + lessons.length + ' A1 lessons; vocabulary introduced once and each core word reused in exercises');
 }

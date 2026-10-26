@@ -17,12 +17,13 @@ const lesson11=read('lessons/a1-11-v1.json'),lesson12=read('lessons/a1-12-v1.jso
 const activity=(lesson,id)=>lesson.sections.flatMap(s=>s.activities).find(a=>a.id===id);
 const context=(lesson,progress={})=>({lessonId:lesson.id,index:0,e:String,en:String,i:()=>'',progress});
 
-test('the official 34-slot A1 plan is grouped 1-12, 13-20, 21-34 without duplicated or missing IDs',()=>{
- assert.deepEqual(entries.map(x=>x.id),Array.from({length:34},(_,i)=>`A1-${i+1}`));
- assert.deepEqual(course.stages.map(s=>s.chapters.flatMap(ch=>ch.lessons).filter(x=>/^A1-\d+$/.test(x.id)).length),[12,8,14]);
- assert.equal(entries.filter(x=>x.status==='sample').length,12);
- assert.equal(entries.find(x=>x.id==='A1-11').title,'خوراکی‌ها و آشپزخانه');
- assert.equal(entries.find(x=>x.id==='A1-12').title,'وعده‌های اصلی و گفت‌وگو سر میز');
+test('the official 36-slot A1 plan has three 12-lesson stages and food starts stage two',()=>{
+ assert.deepEqual(entries.map(x=>x.id),Array.from({length:36},(_,i)=>`A1-${i+1}`));
+ assert.deepEqual(course.stages.map(s=>s.chapters.flatMap(ch=>ch.lessons).filter(x=>/^A1-\d+$/.test(x.id)).length),[12,12,12]);
+ assert.equal(entries.filter(x=>x.status==='sample').length,14);
+ assert.equal(entries.find(x=>x.id==='A1-12').title,'مدرسه، مطالعه و فعالیت‌های ساده');
+ assert.equal(entries.find(x=>x.id==='A1-13').title,'خوراکی‌ها و آشپزخانه');
+ assert.equal(entries.find(x=>x.id==='A1-14').title,'وعده‌های اصلی و گفت‌وگو سر میز');
 });
 
 test('A1-11 and A1-12 obey the same two-section teaching and vocabulary contracts',()=>{

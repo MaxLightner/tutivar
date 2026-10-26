@@ -1,0 +1,1527 @@
+{
+  "id": "A1-8",
+  "revision": 1,
+  "status": "draft",
+  "title": "اعداد در زندگی روزمره",
+  "goal": "اعداد سیزده تا صد را در شمارش و جمله‌های مالکیت و وجود به کار ببر و از عددهای درس چهارم به اینجا پل بزن.",
+  "duration": "حدود ۲۵ تا ۳۵ دقیقه",
+  "feature": "اعداد پویا در دسته‌های ده‌تایی",
+  "archetype": "cumulative",
+  "roadmapRef": {
+    "id": "A1-8",
+    "revision": "2026-10-26-owner-a1-twelve-per-stage",
+    "communicativeOutcome": "اعداد ۱۳ تا ۱۰۰ را می‌خواند، می‌نویسد و از هم تشخیص می‌دهد؛ با آن‌ها تعداد اشیا و افراد، مالکیت و موقعیت‌های ساده را بیان می‌کند و ارقام چندبخشی را برای ورود به سن و شماره تماس آماده می‌سازد."
+  },
+  "teachingModel": {
+    "primary": "K2",
+    "support": "K4"
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "اعداد سیزده تا صد را در شمارش و جمله‌های مالکیت و وجود به کار ببر و از عددهای درس چهارم به اینجا پل بزن.",
+    "prerequisites": [
+      "شمارش تا دوازده",
+      "داشتن و نداشتن",
+      "جمع اسامی اشیا"
+    ],
+    "previously": "لغات و ساختارهای قبلی در این درس دوباره در جمله‌های تازه استفاده می‌شوند.",
+    "quickCheck": {
+      "title": "خودت را امتحان کن",
+      "question": "می‌توانی بدون دیدن متن نمونه یک جملهٔ مربوط به این درس بسازی؟",
+      "example": "There are one hundred books.",
+      "explanation": "اگر هنوز روان نیست، مسیر یادگیری را از ابتدا برو.",
+      "allowSkip": true
+    }
+  },
+  "learningAudit": {
+    "focusExpressions": [],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": true
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "از صدا تا ساخت جمله",
+      "intro": "شدوینگ، کلمه، عبارت ترکیبی، اختلاف معنا، تغییر جمله و تمرین مستقل.",
+      "masteryActivityIds": [
+        "a1-8-build"
+      ],
+      "activities": [
+        {
+          "id": "a1-8-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "سایه‌خوانی موقعیتی",
+          "description": "گوش بده و در فاصله‌ای کوتاه جمله را تکرار کن. صدای ضبط‌شده بعداً جایگزین صدای مرورگر می‌شود.",
+          "audioSrc": null,
+          "rate": 0.72,
+          "pauseMs": 550,
+          "lines": [
+            "I have thirteen books.",
+            "My sister has twenty pencils.",
+            "How many pens do you have?",
+            "There are thirty books.",
+            "I have forty notebooks.",
+            "There are fifty balls.",
+            "I have sixty pencils.",
+            "There are one hundred books."
+          ]
+        },
+        {
+          "id": "a1-8-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "واژگان اصلی و تکمیلی",
+          "batchSize": 4,
+          "deckRevision": 1,
+          "items": [
+            {
+              "en": "thirteen",
+              "fa": "سیزده",
+              "examples": [
+                "I have thirteen books.",
+                "There are thirteen pencils.",
+                "How many books do you have?"
+              ]
+            },
+            {
+              "en": "fourteen",
+              "fa": "چهارده",
+              "examples": [
+                "I have fourteen books.",
+                "There are fourteen pencils.",
+                "How many books do you have?"
+              ]
+            },
+            {
+              "en": "fifteen",
+              "fa": "پانزده",
+              "examples": [
+                "I have fifteen books.",
+                "There are fifteen pencils.",
+                "How many books do you have?"
+              ]
+            },
+            {
+              "en": "sixteen",
+              "fa": "شانزده",
+              "examples": [
+                "I have sixteen books.",
+                "There are sixteen pencils.",
+                "How many books do you have?"
+              ]
+            },
+            {
+              "en": "seventeen",
+              "fa": "هفده",
+              "examples": [
+                "I have seventeen books.",
+                "There are seventeen pencils.",
+                "How many books do you have?"
+              ]
+            },
+            {
+              "en": "eighteen",
+              "fa": "هجده",
+              "examples": [
+                "I have eighteen books.",
+                "There are eighteen pencils.",
+                "How many books do you have?"
+              ]
+            },
+            {
+              "en": "nineteen",
+              "fa": "نوزده",
+              "examples": [
+                "I have nineteen books.",
+                "There are nineteen pencils.",
+                "How many books do you have?"
+              ]
+            },
+            {
+              "en": "twenty",
+              "fa": "بیست",
+              "examples": [
+                "I have twenty books.",
+                "There are twenty pencils.",
+                "How many books do you have?"
+              ]
+            },
+            {
+              "en": "thirty",
+              "fa": "سی",
+              "examples": [
+                "I have thirty books.",
+                "There are thirty pencils.",
+                "How many books do you have?"
+              ]
+            },
+            {
+              "en": "forty",
+              "fa": "چهل",
+              "examples": [
+                "I have forty books.",
+                "There are forty pencils.",
+                "How many books do you have?"
+              ]
+            },
+            {
+              "en": "fifty",
+              "fa": "پنجاه",
+              "examples": [
+                "I have fifty books.",
+                "There are fifty pencils.",
+                "How many books do you have?"
+              ]
+            },
+            {
+              "en": "sixty",
+              "fa": "شصت",
+              "examples": [
+                "I have sixty books.",
+                "There are sixty pencils.",
+                "How many books do you have?"
+              ]
+            },
+            {
+              "en": "seventy",
+              "fa": "هفتاد",
+              "examples": [
+                "I have seventy books.",
+                "There are seventy pencils.",
+                "How many books do you have?"
+              ]
+            },
+            {
+              "en": "eighty",
+              "fa": "هشتاد",
+              "examples": [
+                "I have eighty books.",
+                "There are eighty pencils.",
+                "How many books do you have?"
+              ]
+            },
+            {
+              "en": "ninety",
+              "fa": "نود",
+              "examples": [
+                "I have ninety books.",
+                "There are ninety pencils.",
+                "How many books do you have?"
+              ]
+            },
+            {
+              "en": "hundred",
+              "fa": "صد",
+              "examples": [
+                "I have one hundred books.",
+                "There are one hundred pencils.",
+                "How many books do you have?"
+              ]
+            },
+            {
+              "en": "digit",
+              "fa": "رقم",
+              "role": "supplementary",
+              "examples": [
+                "This number has two digits."
+              ]
+            },
+            {
+              "en": "total",
+              "fa": "مجموع",
+              "role": "supplementary",
+              "examples": [
+                "The total is thirty."
+              ]
+            },
+            {
+              "en": "dozen",
+              "fa": "دوجین",
+              "role": "supplementary",
+              "examples": [
+                "A dozen is twelve."
+              ]
+            },
+            {
+              "en": "pair",
+              "fa": "جفت",
+              "role": "supplementary",
+              "examples": [
+                "A pair has two things."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-8-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "presentation": "deck",
+          "title": "عبارت‌های ترکیبی قابل مرور",
+          "description": "عبارت‌ها را بشنو و معنی واقعی هر ترکیب را در مثال‌های متفاوت بررسی کن.",
+          "items": [
+            {
+              "en": "thirteen books",
+              "fa": "سیزده کتاب",
+              "kind": "fixed",
+              "examples": [
+                "I have thirteen books.",
+                "There are thirteen books.",
+                "Do you have thirteen books?"
+              ]
+            },
+            {
+              "en": "twenty pencils",
+              "fa": "بیست مداد",
+              "kind": "fixed",
+              "examples": [
+                "I have twenty pencils.",
+                "She has twenty pencils.",
+                "We don't have twenty pencils."
+              ]
+            },
+            {
+              "en": "thirty-five",
+              "fa": "سی‌وپنج",
+              "kind": "fixed",
+              "examples": [
+                "I have thirty-five books.",
+                "There are thirty-five pencils.",
+                "Does your sister have thirty-five books?"
+              ]
+            },
+            {
+              "en": "one hundred",
+              "fa": "صد",
+              "kind": "fixed",
+              "examples": [
+                "One hundred is ten groups of ten.",
+                "I have one hundred pencils.",
+                "Do you have one hundred books?"
+              ]
+            },
+            {
+              "en": "How many books?",
+              "fa": "چند کتاب؟",
+              "kind": "fixed",
+              "examples": [
+                "How many books do you have?",
+                "How many books are there?",
+                "How many books does your father have?"
+              ]
+            },
+            {
+              "en": "fifty pens",
+              "fa": "پنجاه خودکار",
+              "kind": "fixed",
+              "examples": [
+                "I have fifty pens.",
+                "My sister has fifty pens.",
+                "Does your brother have fifty pens?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-8-meaning",
+          "type": "meaning-cluster",
+          "phase": "phrases",
+          "title": "مفهوم‌های نزدیک، جمله‌های متفاوت",
+          "description": "تشخیص بده آیا جمله‌ها یک معنا دارند یا دربارهٔ کار و موقعیت متفاوتی حرف می‌زنند.",
+          "concepts": [
+            {
+              "id": "quantity",
+              "fa": "یک عدد، دو موقعیت",
+              "forms": [
+                {
+                  "en": "I have twenty books.",
+                  "fa": "من بیست کتاب دارم.",
+                  "relation": "equivalent",
+                  "note": "داشتن."
+                },
+                {
+                  "en": "There are twenty books.",
+                  "fa": "بیست کتاب وجود دارد.",
+                  "relation": "related",
+                  "note": "وجود داشتن؛ صاحب مشخص نیست."
+                },
+                {
+                  "en": "Do you have twenty books?",
+                  "fa": "آیا بیست کتاب داری؟",
+                  "relation": "related",
+                  "note": "همان تعداد را می‌پرسیم."
+                }
+              ]
+            },
+            {
+              "id": "compare",
+              "fa": "عدد عوض شده و نتیجه هم تغییر می‌کند.",
+              "forms": [
+                {
+                  "en": "I have thirteen pens.",
+                  "fa": "سیزده خودکار دارم.",
+                  "relation": "equivalent",
+                  "note": "سیزده."
+                },
+                {
+                  "en": "I have thirty pens.",
+                  "fa": "سی خودکار دارم.",
+                  "relation": "related",
+                  "note": "دهگان متفاوت است."
+                },
+                {
+                  "en": "I have thirty-three pens.",
+                  "fa": "سی‌وسه خودکار دارم.",
+                  "relation": "related",
+                  "note": "دهگان و یکان با هم."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-8-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "تعداد را تغییر بده و داشتن را با عدد بساز",
+          "description": "تعداد و شیء را تغییر بده؛ یک جمله دربارهٔ داشتن یا وجود چند چیز می‌سازی.",
+          "targetLanguage": "en",
+          "wordSets": {
+            "objects": [
+              {
+                "id": "book",
+                "label": "book",
+                "translation": "کتاب",
+                "role": "core",
+                "features": {
+                  "number": "singular"
+                },
+                "forms": {
+                  "singular": "book",
+                  "plural": "books",
+                  "faSingular": "کتاب",
+                  "faPlural": "کتاب"
+                }
+              },
+              {
+                "id": "pen",
+                "label": "pen",
+                "translation": "خودکار",
+                "role": "core",
+                "features": {
+                  "number": "singular"
+                },
+                "forms": {
+                  "singular": "pen",
+                  "plural": "pens",
+                  "faSingular": "خودکار",
+                  "faPlural": "خودکار"
+                }
+              },
+              {
+                "id": "pencil",
+                "label": "pencil",
+                "translation": "مداد",
+                "role": "core",
+                "features": {
+                  "number": "singular"
+                },
+                "forms": {
+                  "singular": "pencil",
+                  "plural": "pencils",
+                  "faSingular": "مداد",
+                  "faPlural": "مداد"
+                }
+              },
+              {
+                "id": "bag",
+                "label": "bag",
+                "translation": "کیف",
+                "role": "core",
+                "features": {
+                  "number": "singular"
+                },
+                "forms": {
+                  "singular": "bag",
+                  "plural": "bags",
+                  "faSingular": "کیف",
+                  "faPlural": "کیف"
+                }
+              },
+              {
+                "id": "phone",
+                "label": "phone",
+                "translation": "تلفن",
+                "role": "core",
+                "features": {
+                  "number": "singular"
+                },
+                "forms": {
+                  "singular": "phone",
+                  "plural": "phones",
+                  "faSingular": "تلفن",
+                  "faPlural": "تلفن"
+                }
+              },
+              {
+                "id": "apple",
+                "label": "apple",
+                "translation": "سیب",
+                "role": "core",
+                "features": {
+                  "number": "singular"
+                },
+                "forms": {
+                  "singular": "apple",
+                  "plural": "apples",
+                  "faSingular": "سیب",
+                  "faPlural": "سیب"
+                }
+              },
+              {
+                "id": "ball",
+                "label": "ball",
+                "translation": "توپ",
+                "role": "core",
+                "features": {
+                  "number": "singular"
+                },
+                "forms": {
+                  "singular": "ball",
+                  "plural": "balls",
+                  "faSingular": "توپ",
+                  "faPlural": "توپ"
+                }
+              },
+              {
+                "id": "brother",
+                "label": "brother",
+                "translation": "برادر",
+                "forms": {
+                  "singular": "brother",
+                  "plural": "brothers",
+                  "faSingular": "برادر",
+                  "faPlural": "برادر"
+                }
+              },
+              {
+                "id": "sister",
+                "label": "sister",
+                "translation": "خواهر",
+                "forms": {
+                  "singular": "sister",
+                  "plural": "sisters",
+                  "faSingular": "خواهر",
+                  "faPlural": "خواهر"
+                }
+              }
+            ],
+            "counts": [
+              {
+                "id": "thirteen",
+                "label": "thirteen",
+                "translation": "13",
+                "forms": {
+                  "word": "thirteen",
+                  "faWord": "13"
+                }
+              },
+              {
+                "id": "fourteen",
+                "label": "fourteen",
+                "translation": "14",
+                "forms": {
+                  "word": "fourteen",
+                  "faWord": "14"
+                }
+              },
+              {
+                "id": "fifteen",
+                "label": "fifteen",
+                "translation": "15",
+                "forms": {
+                  "word": "fifteen",
+                  "faWord": "15"
+                }
+              },
+              {
+                "id": "sixteen",
+                "label": "sixteen",
+                "translation": "16",
+                "forms": {
+                  "word": "sixteen",
+                  "faWord": "16"
+                }
+              },
+              {
+                "id": "seventeen",
+                "label": "seventeen",
+                "translation": "17",
+                "forms": {
+                  "word": "seventeen",
+                  "faWord": "17"
+                }
+              },
+              {
+                "id": "eighteen",
+                "label": "eighteen",
+                "translation": "18",
+                "forms": {
+                  "word": "eighteen",
+                  "faWord": "18"
+                }
+              },
+              {
+                "id": "nineteen",
+                "label": "nineteen",
+                "translation": "19",
+                "forms": {
+                  "word": "nineteen",
+                  "faWord": "19"
+                }
+              },
+              {
+                "id": "twenty",
+                "label": "twenty",
+                "translation": "20",
+                "forms": {
+                  "word": "twenty",
+                  "faWord": "20"
+                }
+              },
+              {
+                "id": "thirty",
+                "label": "thirty",
+                "translation": "30",
+                "forms": {
+                  "word": "thirty",
+                  "faWord": "30"
+                }
+              },
+              {
+                "id": "forty",
+                "label": "forty",
+                "translation": "40",
+                "forms": {
+                  "word": "forty",
+                  "faWord": "40"
+                }
+              },
+              {
+                "id": "fifty",
+                "label": "fifty",
+                "translation": "50",
+                "forms": {
+                  "word": "fifty",
+                  "faWord": "50"
+                }
+              },
+              {
+                "id": "sixty",
+                "label": "sixty",
+                "translation": "60",
+                "forms": {
+                  "word": "sixty",
+                  "faWord": "60"
+                }
+              },
+              {
+                "id": "seventy",
+                "label": "seventy",
+                "translation": "70",
+                "forms": {
+                  "word": "seventy",
+                  "faWord": "70"
+                }
+              },
+              {
+                "id": "eighty",
+                "label": "eighty",
+                "translation": "80",
+                "forms": {
+                  "word": "eighty",
+                  "faWord": "80"
+                }
+              },
+              {
+                "id": "ninety",
+                "label": "ninety",
+                "translation": "90",
+                "forms": {
+                  "word": "ninety",
+                  "faWord": "90"
+                }
+              },
+              {
+                "id": "one-hundred",
+                "label": "one hundred",
+                "translation": "100",
+                "forms": {
+                  "word": "one hundred",
+                  "faWord": "100"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "object",
+              "label": "شیء",
+              "wordSet": "objects",
+              "default": "book",
+              "includeRoles": [
+                "core"
+              ]
+            },
+            {
+              "id": "count",
+              "label": "تعداد",
+              "wordSet": "counts",
+              "default": "twenty",
+              "includeRoles": [
+                "core"
+              ]
+            }
+          ],
+          "derivedDefaults": {},
+          "dependencies": [],
+          "patterns": [
+            {
+              "id": "i-have",
+              "label": "من دارم",
+              "segments": [
+                {
+                  "fixed": "I have "
+                },
+                {
+                  "slot": "count",
+                  "form": "word"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "plural"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "من/او "
+                },
+                {
+                  "slot": "count",
+                  "form": "faWord"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "faPlural"
+                },
+                {
+                  "fixed": " دارم/دارد."
+                }
+              ]
+            },
+            {
+              "id": "she-has",
+              "label": "او دارد",
+              "segments": [
+                {
+                  "fixed": "My sister has "
+                },
+                {
+                  "slot": "count",
+                  "form": "word"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "plural"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "من/او "
+                },
+                {
+                  "slot": "count",
+                  "form": "faWord"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "faPlural"
+                },
+                {
+                  "fixed": " دارم/دارد."
+                }
+              ]
+            },
+            {
+              "id": "how-many",
+              "label": "پرسیدن تعداد",
+              "segments": [
+                {
+                  "fixed": "How many "
+                },
+                {
+                  "slot": "object",
+                  "form": "plural"
+                },
+                {
+                  "fixed": " are there?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "چند "
+                },
+                {
+                  "slot": "object",
+                  "form": "faPlural"
+                },
+                {
+                  "fixed": " وجود دارد؟"
+                }
+              ]
+            },
+            {
+              "id": "there-are",
+              "label": "وجود چند شیء",
+              "note": "There are با تعداد بیشتر از یک می‌آید.",
+              "segments": [
+                {
+                  "fixed": "There are "
+                },
+                {
+                  "slot": "count",
+                  "form": "word"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "plural"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "count",
+                  "form": "faWord"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "faPlural"
+                },
+                {
+                  "fixed": " وجود دارد."
+                }
+              ]
+            },
+            {
+              "id": "are-there",
+              "label": "پرسش بله/خیر",
+              "segments": [
+                {
+                  "fixed": "Are there "
+                },
+                {
+                  "slot": "count",
+                  "form": "word"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "plural"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "آیا "
+                },
+                {
+                  "slot": "count",
+                  "form": "faWord"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "faPlural"
+                },
+                {
+                  "fixed": " وجود دارد؟"
+                }
+              ]
+            }
+          ],
+          "defaultPattern": "i-have",
+          "completion": "عدد، اسم مفرد یا جمع و پرسش تعداد را با هم ترکیب کردی."
+        },
+        {
+          "id": "a1-8-forms",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "همان جمله، چند حالت مختلف",
+          "description": "فاعل، معنی و حالت خبری/منفی/سؤالی را جابه‌جا کن.",
+          "sourceActivityId": "a1-8-composer",
+          "patternIds": [
+            "i-have",
+            "she-has",
+            "how-many"
+          ]
+        },
+        {
+          "id": "a1-8-quantities",
+          "type": "cumulative-number-lab",
+          "phase": "variants",
+          "title": "عدد بزرگ و تعداد واقعی در یک تصویر",
+          "description": "عدد و شیء را تغییر بده؛ دهگان‌ها به‌صورت دسته دیده می‌شوند و جمله هم عوض می‌شود.",
+          "mode": "quantities",
+          "numbers": [
+            {
+              "number": 13,
+              "en": "thirteen"
+            },
+            {
+              "number": 14,
+              "en": "fourteen"
+            },
+            {
+              "number": 15,
+              "en": "fifteen"
+            },
+            {
+              "number": 16,
+              "en": "sixteen"
+            },
+            {
+              "number": 17,
+              "en": "seventeen"
+            },
+            {
+              "number": 18,
+              "en": "eighteen"
+            },
+            {
+              "number": 19,
+              "en": "nineteen"
+            },
+            {
+              "number": 20,
+              "en": "twenty"
+            },
+            {
+              "number": 30,
+              "en": "thirty"
+            },
+            {
+              "number": 40,
+              "en": "forty"
+            },
+            {
+              "number": 50,
+              "en": "fifty"
+            },
+            {
+              "number": 60,
+              "en": "sixty"
+            },
+            {
+              "number": 70,
+              "en": "seventy"
+            },
+            {
+              "number": 80,
+              "en": "eighty"
+            },
+            {
+              "number": 90,
+              "en": "ninety"
+            },
+            {
+              "number": 100,
+              "en": "one hundred"
+            }
+          ],
+          "objects": [
+            {
+              "fa": "کتاب",
+              "plural": "books"
+            },
+            {
+              "fa": "خودکار",
+              "plural": "pens"
+            },
+            {
+              "fa": "مداد",
+              "plural": "pencils"
+            },
+            {
+              "fa": "خواهر",
+              "plural": "sisters"
+            },
+            {
+              "fa": "توپ",
+              "plural": "balls"
+            }
+          ]
+        },
+        {
+          "id": "a1-8-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "از یک بانک مشترک پنج جمله بساز",
+          "description": "درست‌بودن معنی و دستور مهم‌تر از حدس ترتیب است.",
+          "revision": 1,
+          "reuseBank": true,
+          "goalCount": 5,
+          "sentences": [
+            {
+              "id": "sentence-1",
+              "words": [
+                "I",
+                "have",
+                "thirteen",
+                "pens."
+              ]
+            },
+            {
+              "id": "sentence-2",
+              "words": [
+                "My",
+                "sister",
+                "has",
+                "twenty",
+                "books."
+              ]
+            },
+            {
+              "id": "sentence-3",
+              "words": [
+                "There",
+                "are",
+                "thirty",
+                "pencils."
+              ]
+            },
+            {
+              "id": "sentence-4",
+              "words": [
+                "Do",
+                "you",
+                "have",
+                "forty",
+                "books?"
+              ]
+            },
+            {
+              "id": "sentence-5",
+              "words": [
+                "There",
+                "are",
+                "fifty",
+                "balls."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-8-build",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "این بار بدون پاسخ آماده بساز",
+          "practiceRevision": 1,
+          "description": "از معنی فارسی جمله بساز و بعد نمونه را مقایسه کن.",
+          "tasks": [
+            {
+              "task": "بگو من سیزده کتاب دارم.",
+              "hint": "I have thirteen books.",
+              "example": "I have thirteen books.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i have thirteen books"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            },
+            {
+              "task": "بگو خواهرم بیست مداد دارد.",
+              "hint": "My sister has twenty pencils.",
+              "example": "My sister has twenty pencils.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my sister has twenty pencils"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            },
+            {
+              "task": "بپرس چند خودکار داری.",
+              "hint": "How many pens do you have?",
+              "example": "How many pens do you have?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "how many pens do you have"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            },
+            {
+              "task": "بگو سی کتاب در اتاق وجود دارد.",
+              "hint": "There are thirty books.",
+              "example": "There are thirty books.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are thirty books"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            },
+            {
+              "task": "بگو من چهل خودکار دارم.",
+              "hint": "I have forty pens.",
+              "example": "I have forty pens.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i have forty pens"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            },
+            {
+              "task": "بگو صد مداد وجود دارد.",
+              "hint": "There are one hundred pencils.",
+              "example": "There are one hundred pencils.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are one hundred pencils"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "کاربرد در موقعیت",
+      "intro": "پرسش و پاسخ، گفت‌وگو و جمله‌سازی آزاد بر اساس موقعیت.",
+      "masteryActivityIds": [
+        "a1-8-guided",
+        "a1-8-independent"
+      ],
+      "activities": [
+        {
+          "id": "a1-8-exchange",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "پرسش‌های موقعیتی با چهار پاسخ معنی‌دار",
+          "description": "هر پاسخ یک موقعیت متفاوت را روشن می‌کند؛ بعد خودت بدون دیدن پاسخ آماده جمله بساز.",
+          "pairs": [
+            {
+              "question": "How many books do you have?",
+              "questionFa": "چند کتاب داری؟",
+              "variants": [
+                {
+                  "label": "13",
+                  "en": "I have thirteen books.",
+                  "fa": "13 کتاب دارم."
+                },
+                {
+                  "label": "20",
+                  "en": "I have twenty books.",
+                  "fa": "20 کتاب دارم."
+                },
+                {
+                  "label": "35",
+                  "en": "I have thirty-five books.",
+                  "fa": "35 کتاب دارم."
+                },
+                {
+                  "label": "40",
+                  "en": "I have forty books.",
+                  "fa": "40 کتاب دارم."
+                }
+              ]
+            },
+            {
+              "question": "How many pencils do you have?",
+              "questionFa": "چند مداد داری؟",
+              "variants": [
+                {
+                  "label": "13",
+                  "en": "I have thirteen pencils.",
+                  "fa": "13 مداد دارم."
+                },
+                {
+                  "label": "20",
+                  "en": "I have twenty pencils.",
+                  "fa": "20 مداد دارم."
+                },
+                {
+                  "label": "35",
+                  "en": "I have thirty-five pencils.",
+                  "fa": "35 مداد دارم."
+                },
+                {
+                  "label": "40",
+                  "en": "I have forty pencils.",
+                  "fa": "40 مداد دارم."
+                }
+              ]
+            },
+            {
+              "question": "How many pens do you have?",
+              "questionFa": "چند خودکار داری؟",
+              "variants": [
+                {
+                  "label": "13",
+                  "en": "I have thirteen pens.",
+                  "fa": "13 خودکار دارم."
+                },
+                {
+                  "label": "20",
+                  "en": "I have twenty pens.",
+                  "fa": "20 خودکار دارم."
+                },
+                {
+                  "label": "35",
+                  "en": "I have thirty-five pens.",
+                  "fa": "35 خودکار دارم."
+                },
+                {
+                  "label": "40",
+                  "en": "I have forty pens.",
+                  "fa": "40 خودکار دارم."
+                }
+              ]
+            },
+            {
+              "question": "How many sisters do you have?",
+              "questionFa": "چند خواهر داری؟",
+              "variants": [
+                {
+                  "label": "13",
+                  "en": "I have thirteen sisters.",
+                  "fa": "13 خواهر دارم."
+                },
+                {
+                  "label": "20",
+                  "en": "I have twenty sisters.",
+                  "fa": "20 خواهر دارم."
+                },
+                {
+                  "label": "35",
+                  "en": "I have thirty-five sisters.",
+                  "fa": "35 خواهر دارم."
+                },
+                {
+                  "label": "40",
+                  "en": "I have forty sisters.",
+                  "fa": "40 خواهر دارم."
+                }
+              ]
+            },
+            {
+              "question": "How many balls do you have?",
+              "questionFa": "چند توپ داری؟",
+              "variants": [
+                {
+                  "label": "13",
+                  "en": "I have thirteen balls.",
+                  "fa": "13 توپ دارم."
+                },
+                {
+                  "label": "20",
+                  "en": "I have twenty balls.",
+                  "fa": "20 توپ دارم."
+                },
+                {
+                  "label": "35",
+                  "en": "I have thirty-five balls.",
+                  "fa": "35 توپ دارم."
+                },
+                {
+                  "label": "40",
+                  "en": "I have forty balls.",
+                  "fa": "40 توپ دارم."
+                }
+              ]
+            },
+            {
+              "question": "Are there fifty books in the room?",
+              "questionFa": "آیا در اتاق پنجاه کتاب هست؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, there are fifty books.",
+                  "fa": "بله، پنجاه کتاب هست."
+                },
+                {
+                  "label": "فقط چهل",
+                  "en": "No, there are forty books.",
+                  "fa": "نه، چهل کتاب هست."
+                },
+                {
+                  "label": "کمتر",
+                  "en": "No, there are twenty books.",
+                  "fa": "نه، بیست کتاب هست."
+                },
+                {
+                  "label": "متفاوت",
+                  "en": "There are thirty-five books.",
+                  "fa": "سی‌وپنج کتاب هست."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-8-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "گفت‌وگوی کوتاه در موقعیت واقعی",
+          "description": "نقش دو نفر را عوض کن؛ اول بشنو و بعد با صدای خودت پاسخ بده.",
+          "lines": [
+            {
+              "speaker": "Sara",
+              "en": "How many books do you have?",
+              "fa": "چند کتاب داری؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "I have twenty books.",
+              "fa": "بیست کتاب دارم."
+            },
+            {
+              "speaker": "Sara",
+              "en": "Does your sister have books?",
+              "fa": "خواهرت کتاب دارد؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "Yes. She has thirteen books.",
+              "fa": "بله، سیزده کتاب دارد."
+            },
+            {
+              "speaker": "Sara",
+              "en": "How many pencils are there?",
+              "fa": "چند مداد وجود دارد؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "There are thirty-five pencils.",
+              "fa": "سی‌وپنج مداد وجود دارد."
+            }
+          ]
+        },
+        {
+          "id": "a1-8-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "title": "از تصویر به جمله برس",
+          "description": "عدد یا عمل درست را از تصویر بفهم و بعد خودت توصیف کن.",
+          "image": "./assets/scene-a1-8-numbers.svg",
+          "imageAlt": "دو دسته ده‌تایی و چهار واحد برای تشخیص عدد بیست‌وچهار",
+          "caption": "جزئیات تصویر مبنای جمله‌اند؛ صرفاً کلمات را تصادفی تغییر نده.",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "از تصویر بگو بیست‌وچهار خودکار وجود دارد.",
+              "hint": "There are twenty-four pens.",
+              "example": "There are twenty-four pens.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are twenty-four pens"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            },
+            {
+              "task": "بگو من بیست‌وچهار خودکار دارم.",
+              "hint": "I have twenty-four pens.",
+              "example": "I have twenty-four pens.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i have twenty-four pens"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-8-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "title": "وقتی موقعیت عوض می‌شود جواب هم عوض می‌شود",
+          "description": "پاسخ را متناسب با حرف نفر اول بساز.",
+          "practiceRevision": 1,
+          "turns": [
+            {
+              "speaker": "دوست",
+              "incoming": "How many pens do you have?",
+              "task": "بگو سیزده خودکار داری.",
+              "hint": "I have thirteen pens.",
+              "example": "I have thirteen pens.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i have thirteen pens"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            },
+            {
+              "speaker": "دوست",
+              "incoming": "Are there thirty books?",
+              "task": "بگو نه، بیست کتاب وجود دارد.",
+              "hint": "No, there are twenty books.",
+              "example": "No, there are twenty books.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no, there are twenty books"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            },
+            {
+              "speaker": "دوست",
+              "incoming": "Does your sister have pencils?",
+              "task": "بگو بله، خواهرم چهل مداد دارد.",
+              "hint": "Yes, my sister has forty pencils.",
+              "example": "Yes, my sister has forty pencils.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "yes, my sister has forty pencils"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-8-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "به زبان خودت بساز",
+          "prompt": "دو موقعیت خیالی بساز: دربارهٔ تعداد وسیله‌های خودت و خواهرت حرف بزن، سپس بگو چند شیء در یک اتاق وجود دارد. دست‌کم یکی از اعداد سیزده تا صد را به کار ببر.",
+          "placeholder": "I have twenty books.\nMy sister has thirteen pencils.\nThere are thirty pens in the room.",
+          "hint": "جواب‌ها می‌توانند دربارهٔ شخصیت و اشیای فرضی باشند.",
+          "kind": "free-text",
+          "minWords": 16,
+          "assessment": {
+            "revision": 1,
+            "required": [
+              {
+                "any": [
+                  "i have"
+                ],
+                "feedback": "عبارت i have را در یک جملهٔ کامل به کار ببر."
+              },
+              {
+                "any": [
+                  "there are"
+                ],
+                "feedback": "عبارت there are را در یک جملهٔ کامل به کار ببر."
+              }
+            ],
+            "success": "ساختار آموخته‌شده را در متن خودت به کار بردی."
+          }
+        },
+        {
+          "id": "a1-8-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "دوباره گوش بده و شدوینگ کن",
+          "sourceActivityId": "a1-8-shadowing"
+        }
+      ]
+    }
+  ]
+}

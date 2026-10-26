@@ -111,6 +111,29 @@
       "A1-6": "lessons/a1-6-v4.json"
     }
   },
+  "twelvePerStage": {
+    "revision": "2026-10-26-owner-a1-twelve-per-stage",
+    "progressRevision": "a1-owner-twelve-per-stage-2026-10-26",
+    "preserveProgress": true,
+    "archiveNamespace": "oct-2026-before-twelve-per-stage",
+    "explanation": "A1-3/4 swap content, A1-8 and A1-12 are added, former 8–10 become 9–11 and former 11/12 become 13/14. Prior active JSON is retained by file version; lesson-keyed progress moves by semantic ID with a full archived snapshot.",
+    "replacement": {
+      "A1-1": "lessons/a1-1-v2.json",
+      "A1-2": "lessons/a1-2-v2.json",
+      "A1-3": "lessons/a1-3-v4.json",
+      "A1-4": "lessons/a1-4-v4.json",
+      "A1-5": "lessons/a1-5-v3.json",
+      "A1-6": "lessons/a1-6-v4.json",
+      "A1-7": "lessons/a1-7-v2.json",
+      "A1-8": "lessons/a1-8-v3.json",
+      "A1-9": "lessons/a1-9-v3.json",
+      "A1-10": "lessons/a1-10-v3.json",
+      "A1-11": "lessons/a1-11-v2.json",
+      "A1-12": "lessons/a1-12-v2.json",
+      "A1-13": "lessons/a1-13-v1.json",
+      "A1-14": "lessons/a1-14-v1.json"
+    }
+  },
   "additiveEnhancement": {
     "revision": "2026-10-25-a1-more-practice",
     "reason": "Add independent 1–12 counting, full-number possession, counted location and visual attribute selection without removing any existing lesson activity or affecting saved completion.",

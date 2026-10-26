@@ -20,9 +20,9 @@ test('live click dispatcher reaches every cumulative visual practice control',()
  for(const key of ['attribute-key','count-scene-key','feature-hunt-key','count-math-key','plural-lab-key','cumulative-lab-key','cumulative-quest-key','cumulative-number-key'])
    assert.ok(selector.includes(`button[data-${key}]`),`click dispatcher omitted data-${key}`);
 });
-test('canonical A1 live curriculum follows approved outcomes through lesson twelve',()=>{
- assert.deepEqual(active.map(x=>x.id),Array.from({length:12},(_,i)=>`A1-${i+1}`));
- assert.deepEqual(active.slice(2,6).map(x=>x.file),['lessons/a1-3-v3.json','lessons/a1-4-v3.json','lessons/a1-5-v3.json','lessons/a1-6-v4.json']);
+test('canonical A1 live curriculum follows approved outcomes through two food lessons in stage two',()=>{
+ assert.deepEqual(active.map(x=>x.id),Array.from({length:14},(_,i)=>`A1-${i+1}`));
+ assert.deepEqual(active.slice(2,6).map(x=>x.file),['lessons/a1-3-v4.json','lessons/a1-4-v4.json','lessons/a1-5-v3.json','lessons/a1-6-v4.json']);
  assert.equal(active[5].title,'توصیف ویژگی‌های اشیا');
  assert.deepEqual(inspectVocabularyContinuity(active.map(x=>load(x.file))),[]);
 });

@@ -5,7 +5,7 @@ import { resolve, join } from 'node:path';
 
 const root = resolve(fileURLToPath(import.meta.url), '../..');
 const read = (path, base = root) => JSON.parse(readFileSync(join(base, path), 'utf8'));
-export const LEVELS = Object.freeze({ A1: 34, A2: 30, B1: 29, B2: 33 });
+export const LEVELS = Object.freeze({ A1: 36, A2: 30, B1: 29, B2: 33 });
 const levelOrder = Object.keys(LEVELS);
 
 export function gitBlobSha(content) {
@@ -37,10 +37,10 @@ export function validateCanonicalManifest({ source, manifest, lock }) {
     errors.push('Universal source was changed without updating owner-authorized curriculum lock');
   if (lock.manifestGitBlobSha !== gitBlobSha(JSON.stringify(manifest, null, 2) + '\n'))
     errors.push('Universal lesson table was changed without updating owner-authorized curriculum lock');
-  if (manifest.schemaVersion !== 1 || manifest.totals?.total !== 126) errors.push('Unexpected curriculum schema or size');
+  if (manifest.schemaVersion !== 1 || manifest.totals?.total !== 128) errors.push('Unexpected curriculum schema or size');
   if (!Array.isArray(manifest.lessons)) return [...errors, 'Missing canonical lessons'];
   const expected = parseCanonicalSource(source);
-  if (expected.length !== 126 || manifest.lessons.length !== 126) errors.push('Curriculum must have 126 lessons');
+  if (expected.length !== 128 || manifest.lessons.length !== 128) errors.push('Curriculum must have 128 lessons');
   if (JSON.stringify(expected) !== JSON.stringify(manifest.lessons)) errors.push('Manifest and user-provided roadmap rows differ');
   const byId = new Map();
   for (const level of levelOrder) {
@@ -85,7 +85,7 @@ export function validatePublishedCatalog({ manifest, runtimeCourse, legacy, read
   if (new Set(ids).size !== ids.length) errors.push('A1 runtime course repeats a lesson ID');
   const numbers = ids.map(x => Number(x.split('-')[1]));
   if (numbers.some((n, i) => n !== i + 1))
-    errors.push('Published A1 order differs from the 126-lesson owner roadmap (must be a contiguous prefix)');
+    errors.push('Published A1 order differs from the 128-lesson owner roadmap (must be a contiguous prefix)');
   const frozen = new Map((legacy.lockedMismatches||[]).map(x => [x.id, x]));
   const originallyPublished = new Set(legacy.legacyPublished);
   const metadataGrandfathered = new Set(['A1-1', 'A1-2']);
@@ -151,7 +151,8 @@ export function validatePublishedCatalog({ manifest, runtimeCourse, legacy, read
       if(!previous.gitBlobSha||!raw||gitBlobSha(raw)!==previous.gitBlobSha)
         errors.push(previous.id+': earlier active lesson body was not preserved');
       const replacement=legacy.cumulativeReorder.replacements?.[previous.id];
-      if(!replacement||entries.find(x=>x.id===previous.id)?.file!==replacement||replacement===previous.file)
+      if(!replacement||replacement===previous.file ||
+        (manifest.revision==='2026-10-25-owner-kitchen-verbs-a1' && entries.find(x=>x.id===previous.id)?.file!==replacement))
         errors.push(previous.id+': reordered lesson lacks a versioned replacement');
     }
   }
@@ -164,15 +165,27 @@ export function validatePublishedCatalog({ manifest, runtimeCourse, legacy, read
       if(!previous.gitBlobSha||!raw||gitBlobSha(raw)!==previous.gitBlobSha)
         errors.push(previous.id+': pre-enhancement lesson was changed or lost');
       const replacement=enhancement.replacement?.[previous.id];
-      if(!replacement||entries.find(x=>x.id===previous.id)?.file!==replacement||replacement===previous.file)
+      if(!replacement||replacement===previous.file ||
+        (manifest.revision==='2026-10-25-owner-kitchen-verbs-a1' && entries.find(x=>x.id===previous.id)?.file!==replacement))
         errors.push(previous.id+': additive practice requires a distinct versioned file');
     }
+  }
+  if(manifest.revision==='2026-10-26-owner-a1-twelve-per-stage') {
+    const amendment=legacy.twelvePerStage;
+    if(!amendment||amendment.progressRevision!=='a1-owner-twelve-per-stage-2026-10-26'||!amendment.preserveProgress)
+      errors.push('A1 twelve-per-stage amendment must preserve revisioned learner progress');
+    for(const [id,file] of Object.entries(amendment?.replacement||{})) {
+      if(entries.find(x=>x.id===id)?.file!==file||!/-v\d+\.json$/.test(file))
+        errors.push(id+': latest owner amendment must use the approved versioned lesson file');
+    }
+    if(runtimeCourse.stages?.length!==3||runtimeCourse.stages.some(s=>s.chapters.flatMap(c=>c.lessons).filter(x=>/^A1-\d+$/.test(x.id)).length!==12))
+      errors.push('A1 must contain three stages of twelve lessons after owner amendment');
   }
   return errors;
 }
 
 /**
- * All future pair/level catalogs use the same 126-slot path; unlike the frozen
+ * All future pair/level catalogs use the same 128-slot path; unlike the frozen
  * fa-en A1 preview, they have no legacy exception. Indexes and objectives
  * are always checked, even when the pair has not been deployed yet.
  */
@@ -256,14 +269,14 @@ function cli() {
       authoringRule:'Use existing interaction modules; trace every target through introduction, practice, independent production and spaced review.'
     },null,2));
   } else if (mode === '--status') {
-    console.log('Canonical path: 126 lessons; A1=34, A2=30, B1=29, B2=33');
+    console.log('Canonical path: 128 lessons; A1=36, A2=30, B1=29, B2=33');
     console.log('Live baseline: ' + legacy.legacyPublished.join(', '));
     console.log('Frozen out-of-plan content: ' + (legacy.lockedMismatches||[]).map(x=>x.id+' → '+x.canonicalTarget).join('; '));
     console.log('Archived legacy lessons: '+(legacy.archivedMismatches||[]).map(x=>x.id).join(', '));
     console.log('Known content gaps: ' + legacy.contentGaps.map(x=>x.id).join(', '));
     console.log((legacy.lockedMismatches||[]).length?'New publications blocked until existing A1-6..9 are safely migrated.':'Legacy content versioned and retired from the active path.');
   } else if (mode === '--validate') {
-    console.log('PASS: canonical 126-lesson sequence, owner lock, prerequisites and published path');
+    console.log('PASS: canonical 128-lesson sequence, owner lock, prerequisites and published path');
   } else {
     console.error('Usage: node tools/curriculum-contract.mjs --validate | --status | --plan A1-10');
     process.exitCode = 1;

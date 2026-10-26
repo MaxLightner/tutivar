@@ -1,6 +1,6 @@
 # Tutivar curriculum contract — mandatory for every lesson author
 
-The canonical authoring authority is **`content/curriculum/universal-path.v1.json`**, generated from the owner's complete 126-lesson plan. **Do not choose lesson order, topic, communicative objective, prerequisites, or archetype from the current website headings, memory, recent chat summaries, or the old lesson JSON files.** Those are historical implementations and can differ from the approved roadmap.
+The canonical authoring authority is **`content/curriculum/universal-path.v1.json`**, generated from the owner's current 128-lesson plan (A1: 36 lessons). **Do not choose lesson order, topic, communicative objective, prerequisites, or archetype from the current website headings, memory, recent chat summaries, or the old lesson JSON files.** Those are historical implementations and can differ from the approved roadmap.
 
 ## Required procedure, before producing or editing any lesson
 
@@ -17,14 +17,8 @@ A user who is the product owner **may explicitly change the roadmap**; that more
 
 ## Live-site migration warning
 
-The old published A1-6, A1-7, A1-8 and A1-9 are **not** aligned to the now-approved objective at those IDs. Their blob versions are frozen in `content/curriculum/legacy-alignment.json`. Do not edit these historical lessons or extend the wrong sequence; first carry out a safe versioned migration to the approved topics:
+The October 26 owner amendment puts greetings, family/gender, possessions, counting 1–12, positions, object properties, appearance, numbers 13–100, personal information, feelings, home, and school/action verbs in **A1-1 through A1-12**. The two former food lessons are **A1-13 and A1-14**, the first two samples in A1.2 (lessons 13–24). A1.3 comprises lessons 25–36.
 
-- A1-6: *features of objects*, not numbers/age.
-- A1-7: *appearance of people*, not this/that identification.
-- A1-8: *personal information*, using numerical age from old A1-6 after a number bridge.
-- A1-9: *everyday states and feelings*, not room furnishing.
-- A1-10: *home and amenities*, reusing appropriate parts of old A1-8 and A1-9.
-
-The guard intentionally **blocks publishing A1-10 and beyond** while old IDs 6–9 are unresolved. Original user-facing lessons and local progress are preserved until migration is explicitly implemented; this is not an authorization to ignore the gaps.
+The old A1-3 and A1-4 were reordered; former A1-8–12 lessons shifted. Historical versions remain recoverable and `apps/learner-web/progress-migration.js` transfers saved progress keys. Consult `content/curriculum/legacy-alignment.json` when changing IDs; never use archived files as live lessons. The prior A1-6–9 compatibility problem was addressed through versioned content and archival migration.
 
 The former `docs/curriculum/01-universal-learning-path.md` is retained only as an auditable source, not a document the author needs to consult each time.

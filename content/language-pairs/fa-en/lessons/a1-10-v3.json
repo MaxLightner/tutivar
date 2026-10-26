@@ -1,0 +1,1655 @@
+{
+  "id": "A1-10",
+  "revision": "2026-10-25-cumulative-a1-7-10",
+  "status": "draft",
+  "title": "بیان وضعیت و احساسات روزمره",
+  "goal": "احوال کسی را بپرس؛ از حال، گرسنگی، تشنگی، خستگی و دما بگو و پاسخ همدلانه بده.",
+  "duration": 23,
+  "feature": "چهره‌های احساسی همراه با همدلی",
+  "archetype": "K4/K2",
+  "roadmapRef": {
+    "id": "A1-10",
+    "revision": "2026-10-26-owner-a1-twelve-per-stage",
+    "communicativeOutcome": "حال کسی را می‌پرسد و حال خودش را می‌گوید؛ سرما/گرما و گرسنگی/تشنگی را بیان می‌کند؛ همدردی ساده می‌کند."
+  },
+  "teachingModel": {
+    "type": "discovery-production",
+    "sections": 2
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "احوال کسی را بپرس؛ از حال، گرسنگی، تشنگی، خستگی و دما بگو و پاسخ همدلانه بده.",
+    "prerequisites": [
+      "A1-1: How are you?",
+      "A1-2: خانواده و ضمیر",
+      "A1-3: شمارش",
+      "A1-5: داخل و بیرون"
+    ],
+    "previously": "قبلاً How are you? و I am fine را یاد گرفتی؛ حالا پاسخ‌های دقیق‌تر و مناسب برای خواهر و برادر را هم می‌سازی.",
+    "quickCheck": {
+      "title": "یک سؤال قبل از شروع",
+      "question": "چطور می‌گویی خواهرم خسته است و من تشنه‌ام؟",
+      "example": "My sister is tired. I am thirsty.",
+      "explanation": "با I فعل am، با she/is و با they/are می‌آید.",
+      "allowSkip": false
+    }
+  },
+  "visual": {
+    "src": "./assets/scene-a1-9-feelings.svg",
+    "alt": "چهار چهره که شادی، خستگی، تشنگی و ناراحتی را نشان می‌دهند",
+    "caption": "چهار حالت روزمره؛ احساس را با تصویر و جمله پیدا کن"
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "I am thirsty",
+      "She is tired",
+      "How are you"
+    ],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": true
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "کشف و ساخت جمله",
+      "intro": "از همان How are you? قبلی به پاسخ‌های دقیق‌تر برو؛ با لمس کلمات چهره را تغییر بده.",
+      "masteryActivityIds": [
+        "a1-9-build"
+      ],
+      "activities": [
+        {
+          "id": "a1-9-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "اول گوش بده و در همان ریتم تکرار کن",
+          "description": "در اولین دور، لازم نیست همهٔ کلمه‌ها را بلد باشی.",
+          "audioSrc": null,
+          "rate": 0.76,
+          "pauseMs": 520,
+          "lines": [
+            "How are you today?",
+            "I am happy.",
+            "My sister is tired.",
+            "Are you hungry?",
+            "I am thirsty.",
+            "Have some water.",
+            "I hope you feel better."
+          ]
+        },
+        {
+          "id": "a1-9-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "حالت‌های جدید؛ فعل am/is/are را از قبل داریم",
+          "batchSize": 4,
+          "deckRevision": 1,
+          "items": [
+            {
+              "en": "happy",
+              "fa": "خوشحال",
+              "examples": [
+                "I am happy.",
+                "My sister is happy.",
+                "Are they happy?"
+              ]
+            },
+            {
+              "en": "sad",
+              "fa": "ناراحت / غمگین",
+              "examples": [
+                "I am sad.",
+                "He is sad today.",
+                "Is your sister sad?"
+              ]
+            },
+            {
+              "en": "tired",
+              "fa": "خسته",
+              "examples": [
+                "I am tired.",
+                "My sister is tired.",
+                "My two brothers are tired."
+              ]
+            },
+            {
+              "en": "hungry",
+              "fa": "گرسنه",
+              "examples": [
+                "I am hungry.",
+                "My brother is hungry.",
+                "Are you hungry?"
+              ]
+            },
+            {
+              "en": "thirsty",
+              "fa": "تشنه",
+              "examples": [
+                "I am thirsty.",
+                "Are you thirsty?",
+                "My sister is thirsty."
+              ]
+            },
+            {
+              "en": "cold",
+              "fa": "سرد / سردم است",
+              "examples": [
+                "I am cold.",
+                "Are you cold?",
+                "My two sisters are cold."
+              ]
+            },
+            {
+              "en": "hot",
+              "fa": "گرم / گرمم است",
+              "examples": [
+                "I am hot.",
+                "My sister is hot.",
+                "Are you hot?"
+              ]
+            },
+            {
+              "en": "sick",
+              "fa": "بیمار",
+              "examples": [
+                "He is sick.",
+                "I am sick today.",
+                "Is your brother sick?"
+              ]
+            },
+            {
+              "en": "better",
+              "fa": "بهتر",
+              "examples": [
+                "I feel better.",
+                "I hope you feel better.",
+                "Are you better?"
+              ]
+            },
+            {
+              "en": "water",
+              "fa": "آب",
+              "examples": [
+                "Have some water.",
+                "I need water.",
+                "The water is cold."
+              ]
+            },
+            {
+              "en": "rest",
+              "fa": "استراحت کردن",
+              "examples": [
+                "Please rest.",
+                "I need rest.",
+                "Rest here."
+              ]
+            },
+            {
+              "en": "drink",
+              "fa": "نوشیدن",
+              "examples": [
+                "I drink water.",
+                "Please drink water.",
+                "Do you drink water?"
+              ]
+            },
+            {
+              "en": "eat",
+              "fa": "خوردن",
+              "examples": [
+                "Let us eat.",
+                "I eat an apple.",
+                "Do you want to eat?"
+              ]
+            },
+            {
+              "en": "today",
+              "fa": "امروز",
+              "examples": [
+                "How are you today?",
+                "I am tired today.",
+                "My sister is happy today."
+              ]
+            },
+            {
+              "en": "feel",
+              "fa": "احساس کردن",
+              "examples": [
+                "I feel better.",
+                "How do you feel?",
+                "Do you feel cold?"
+              ]
+            },
+            {
+              "en": "need",
+              "fa": "نیاز داشتن",
+              "examples": [
+                "I need water.",
+                "Do you need water?",
+                "My brother needs rest."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-9-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "پرسیدن حال و پاسخ همدلانه",
+          "description": "این جمله‌های کوتاه را یک واحدِ معنی‌دار ببین و با واژه‌های قبلی جابه‌جا کن.",
+          "items": [
+            {
+              "en": "How are you",
+              "fa": "حالت چطور است؟",
+              "kind": "fixed",
+              "examples": [
+                "How are you?",
+                "How are you today?",
+                "How is your sister?"
+              ]
+            },
+            {
+              "en": "I am thirsty",
+              "fa": "من تشنه‌ام",
+              "kind": "fixed",
+              "examples": [
+                "I am thirsty.",
+                "My sister is thirsty.",
+                "Are you thirsty?"
+              ]
+            },
+            {
+              "en": "She is tired",
+              "fa": "او خسته است",
+              "kind": "fixed",
+              "examples": [
+                "She is tired.",
+                "My sister is tired.",
+                "They are tired."
+              ]
+            },
+            {
+              "en": "I am hungry",
+              "fa": "من گرسنه‌ام",
+              "kind": "fixed",
+              "examples": [
+                "I am hungry.",
+                "Are you hungry?",
+                "My brother is hungry."
+              ]
+            },
+            {
+              "en": "I hope you feel better",
+              "fa": "امیدوارم حالت بهتر شود",
+              "kind": "fixed",
+              "examples": [
+                "I hope you feel better.",
+                "I am sorry. I hope you feel better.",
+                "Do you feel better?"
+              ]
+            },
+            {
+              "en": "Have some water",
+              "fa": "کمی آب بخور",
+              "kind": "fixed",
+              "examples": [
+                "Have some water.",
+                "Are you thirsty? Have some water.",
+                "Drink some water."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-9-live",
+          "type": "cumulative-scene-lab",
+          "phase": "phrases",
+          "title": "چهرهٔ زنده: چه کسی چه احساسی دارد؟",
+          "description": "روی فاعل یا حس در جمله بزن تا am/is/are و حالت چهره تغییر کند؛ پاسخ همدلانه را هم بشنو.",
+          "mode": "feelings",
+          "options": {
+            "subject": [
+              {
+                "id": "i",
+                "en": "I",
+                "fa": "من",
+                "verb": "am"
+              },
+              {
+                "id": "she",
+                "en": "My sister",
+                "fa": "خواهرم",
+                "verb": "is"
+              },
+              {
+                "id": "he",
+                "en": "My brother",
+                "fa": "برادرم",
+                "verb": "is"
+              },
+              {
+                "id": "they",
+                "en": "My two sisters",
+                "fa": "دو خواهرم",
+                "verb": "are"
+              }
+            ],
+            "feeling": [
+              {
+                "id": "happy",
+                "en": "happy",
+                "fa": "خوشحال است",
+                "reply": "That is great!",
+                "replyFa": "چه عالی!"
+              },
+              {
+                "id": "sad",
+                "en": "sad",
+                "fa": "ناراحت است",
+                "reply": "I am sorry.",
+                "replyFa": "متأسفم."
+              },
+              {
+                "id": "tired",
+                "en": "tired",
+                "fa": "خسته است",
+                "reply": "Please rest.",
+                "replyFa": "لطفاً استراحت کن."
+              },
+              {
+                "id": "hungry",
+                "en": "hungry",
+                "fa": "گرسنه است",
+                "reply": "Let us eat.",
+                "replyFa": "بیا غذا بخوریم."
+              },
+              {
+                "id": "thirsty",
+                "en": "thirsty",
+                "fa": "تشنه است",
+                "reply": "Have some water.",
+                "replyFa": "کمی آب بخور."
+              },
+              {
+                "id": "cold",
+                "en": "cold",
+                "fa": "سردش است",
+                "reply": "Come inside.",
+                "replyFa": "بیا داخل."
+              },
+              {
+                "id": "hot",
+                "en": "hot",
+                "fa": "گرمش است",
+                "reply": "Have some water.",
+                "replyFa": "کمی آب بخور."
+              },
+              {
+                "id": "sick",
+                "en": "sick",
+                "fa": "بیمار است",
+                "reply": "I hope you feel better.",
+                "replyFa": "امیدوارم بهتر شوی."
+              },
+              {
+                "id": "okay",
+                "en": "okay",
+                "fa": "حالش خوب است",
+                "reply": "That is good.",
+                "replyFa": "خوب است."
+              }
+            ]
+          }
+        },
+        {
+          "id": "a1-9-warmup",
+          "type": "response-practice",
+          "phase": "phrases",
+          "title": "حس را به نیاز و کمک تبدیل کن",
+          "practiceRevision": 1,
+          "description": "برای هر احساس یک کنش واقعی تمرین کن: نوشیدن آب، استراحت یا غذا خوردن.",
+          "tasks": [
+            {
+              "task": "بگو من به آب نیاز دارم.",
+              "hint": "I need water.",
+              "example": "I need water.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i need water"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو لطفاً استراحت کن.",
+              "hint": "Please rest.",
+              "example": "Please rest.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "please rest"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو من آب می‌نوشم.",
+              "hint": "I drink water.",
+              "example": "I drink water.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i drink water"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو بیا غذا بخوریم.",
+              "hint": "Let us eat.",
+              "example": "Let us eat.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "let us eat"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو برادرم امروز ناراحت است.",
+              "hint": "My brother is sad today.",
+              "example": "My brother is sad today.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my brother is sad today"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو مادرم گرمش است.",
+              "hint": "My mother is hot.",
+              "example": "My mother is hot.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my mother is hot"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-9-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "am / is / are را با آدم و احساس درست کن",
+          "description": "من، خواهر و دو برادر را با همان احساس مقایسه کن. با تغییر ضمیر فعل هم هماهنگ می‌شود.",
+          "targetLanguage": "en",
+          "wordSets": {
+            "subjects": [
+              {
+                "id": "i",
+                "label": "I",
+                "translation": "من",
+                "forms": {
+                  "en": "I",
+                  "fa": "من"
+                }
+              },
+              {
+                "id": "sister",
+                "label": "My sister",
+                "translation": "خواهرم",
+                "forms": {
+                  "en": "My sister",
+                  "fa": "خواهرم"
+                }
+              },
+              {
+                "id": "brothers",
+                "label": "My two brothers",
+                "translation": "دو برادرم",
+                "forms": {
+                  "en": "My two brothers",
+                  "fa": "دو برادرم"
+                }
+              }
+            ],
+            "feelings": [
+              {
+                "id": "thirsty",
+                "label": "thirsty",
+                "translation": "تشنه",
+                "forms": {
+                  "en": "thirsty",
+                  "fa": "تشنه"
+                }
+              },
+              {
+                "id": "tired",
+                "label": "tired",
+                "translation": "خسته",
+                "forms": {
+                  "en": "tired",
+                  "fa": "خسته"
+                }
+              },
+              {
+                "id": "hungry",
+                "label": "hungry",
+                "translation": "گرسنه",
+                "forms": {
+                  "en": "hungry",
+                  "fa": "گرسنه"
+                }
+              },
+              {
+                "id": "happy",
+                "label": "happy",
+                "translation": "خوشحال",
+                "forms": {
+                  "en": "happy",
+                  "fa": "خوشحال"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "subject",
+              "label": "شخص",
+              "wordSet": "subjects",
+              "default": "i"
+            },
+            {
+              "id": "feeling",
+              "label": "حال",
+              "wordSet": "feelings",
+              "default": "thirsty"
+            }
+          ],
+          "derivedDefaults": {
+            "be": "am"
+          },
+          "dependencies": [
+            {
+              "id": "sister",
+              "when": {
+                "slot": "subject",
+                "equals": "sister"
+              },
+              "set": {
+                "be": "is"
+              }
+            },
+            {
+              "id": "brothers",
+              "when": {
+                "slot": "subject",
+                "equals": "brothers"
+              },
+              "set": {
+                "be": "are"
+              }
+            }
+          ],
+          "defaultPattern": "statement",
+          "patterns": [
+            {
+              "id": "statement",
+              "label": "حالِ شخص",
+              "segments": [
+                {
+                  "slot": "subject",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "be"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "feeling",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": []
+            },
+            {
+              "id": "negative",
+              "label": "حال منفی",
+              "segments": [
+                {
+                  "slot": "subject",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "be"
+                },
+                {
+                  "fixed": " not "
+                },
+                {
+                  "slot": "feeling",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": []
+            },
+            {
+              "id": "question",
+              "label": "پرسش مستقیم",
+              "segments": [
+                {
+                  "fixed": "Are you "
+                },
+                {
+                  "slot": "feeling",
+                  "form": "en"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": []
+            }
+          ]
+        },
+        {
+          "id": "a1-9-forms",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "یک معنا، چند جمله و سؤال",
+          "description": "روی واژه‌های جمله بزن و ساختارهای خبری، پرسشی و ترکیبی را مقایسه کن.",
+          "sourceActivityId": "a1-9-composer",
+          "patternIds": [
+            "statement",
+            "negative",
+            "question"
+          ]
+        },
+        {
+          "id": "a1-9-quest",
+          "type": "cumulative-visual-quest",
+          "phase": "variants",
+          "title": "مأموریت چهره‌ها: حالت را تشخیص بده",
+          "description": "جمله را گوش بده و تصویر درست را انتخاب کن. در هر مرحله بیش از یک ویژگی را بررسی کن.",
+          "mode": "feelings",
+          "rounds": [
+            {
+              "prompt": "My sister is happy.",
+              "correct": 0,
+              "choices": [
+                {
+                  "description": "happy",
+                  "state": "happy",
+                  "label": "happy"
+                },
+                {
+                  "description": "tired",
+                  "state": "tired",
+                  "label": "tired"
+                },
+                {
+                  "description": "sad",
+                  "state": "sad",
+                  "label": "sad"
+                }
+              ]
+            },
+            {
+              "prompt": "My brother is thirsty.",
+              "correct": 2,
+              "choices": [
+                {
+                  "description": "tired",
+                  "state": "tired",
+                  "label": "tired"
+                },
+                {
+                  "description": "cold",
+                  "state": "cold",
+                  "label": "cold"
+                },
+                {
+                  "description": "thirsty",
+                  "state": "thirsty",
+                  "label": "thirsty"
+                }
+              ]
+            },
+            {
+              "prompt": "I am cold. Please come inside.",
+              "correct": 1,
+              "choices": [
+                {
+                  "description": "hot",
+                  "state": "hot",
+                  "label": "hot"
+                },
+                {
+                  "description": "cold",
+                  "state": "cold",
+                  "label": "cold"
+                },
+                {
+                  "description": "hungry",
+                  "state": "hungry",
+                  "label": "hungry"
+                }
+              ]
+            },
+            {
+              "prompt": "I am sick. I hope to feel better.",
+              "correct": 0,
+              "choices": [
+                {
+                  "description": "sick",
+                  "state": "sick",
+                  "label": "sick"
+                },
+                {
+                  "description": "happy",
+                  "state": "happy",
+                  "label": "happy"
+                },
+                {
+                  "description": "hot",
+                  "state": "hot",
+                  "label": "hot"
+                }
+              ]
+            }
+          ],
+          "completion": "حالا از روی جمله می‌توانی چند ویژگی را با هم در تصویر پیدا کنی."
+        },
+        {
+          "id": "a1-9-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "پنج جمله بساز، نه پنج پاسخ حفظی",
+          "description": "واژه‌های یک بانک مشترک را کنار هم قرار بده و به پنج جملهٔ متفاوت برس.",
+          "revision": 1,
+          "reuseBank": true,
+          "goalCount": 5,
+          "sentences": [
+            {
+              "id": "sentence-1",
+              "words": [
+                "How",
+                "are",
+                "you",
+                "today?"
+              ]
+            },
+            {
+              "id": "sentence-2",
+              "words": [
+                "I",
+                "am",
+                "thirsty."
+              ]
+            },
+            {
+              "id": "sentence-3",
+              "words": [
+                "My",
+                "sister",
+                "is",
+                "tired."
+              ]
+            },
+            {
+              "id": "sentence-4",
+              "words": [
+                "Are",
+                "you",
+                "hungry?"
+              ]
+            },
+            {
+              "id": "sentence-5",
+              "words": [
+                "My",
+                "two",
+                "brothers",
+                "are",
+                "cold."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-9-build",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "خودت بگو: چه کسی چه احساسی دارد؟",
+          "practiceRevision": 1,
+          "description": "با خانواده، شمارش، مالکیت، مکان و صفت‌های قبلی جمله‌های جدید بنویس.",
+          "tasks": [
+            {
+              "task": "بگو من تشنه هستم.",
+              "hint": "I am thirsty.",
+              "example": "I am thirsty.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i am thirsty"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو خواهرم خسته است.",
+              "hint": "My sister is tired.",
+              "example": "My sister is tired.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my sister is tired"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو من گرسنه هستم.",
+              "hint": "I am hungry.",
+              "example": "I am hungry.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i am hungry"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "حال طرف مقابل را بپرس.",
+              "hint": "How are you?",
+              "example": "How are you?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "how are you"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو دو برادرم سردشان است.",
+              "hint": "My two brothers are cold.",
+              "example": "My two brothers are cold.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my two brothers are cold"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "از کسی بخواه کمی آب بخورد.",
+              "hint": "Have some water.",
+              "example": "Have some water.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "have some water"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "گفت‌وگو و انتقال",
+      "intro": "حال خودت یا افراد خانواده را بگو، دربارهٔ حال بپرس و همدلی کن.",
+      "masteryActivityIds": [
+        "a1-9-independent"
+      ],
+      "activities": [
+        {
+          "id": "a1-9-exchange",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "۱۲ پرسش دربارهٔ حال و احساس، با ۴ پاسخ",
+          "description": "حال خودت، اعضای خانواده و یک گروه را در موقعیت‌های تازه بگو؛ پاسخ همدلانه و am / is / are را مرور کن.",
+          "pairs": [
+            {
+              "question": "How are you today?",
+              "questionFa": "امروز حالت چطور است؟",
+              "variants": [
+                {
+                  "label": "خوب",
+                  "en": "I am happy.",
+                  "fa": "خوشحالم.",
+                  "note": "پاسخ مثبت."
+                },
+                {
+                  "label": "خسته",
+                  "en": "I am tired.",
+                  "fa": "خسته‌ام.",
+                  "note": "حال دقیق‌تر."
+                },
+                {
+                  "label": "ناراحت",
+                  "en": "I am sad today.",
+                  "fa": "امروز ناراحتم."
+                },
+                {
+                  "label": "خوب اما گرسنه",
+                  "en": "I am okay, but I am hungry.",
+                  "fa": "خوبم، اما گرسنه‌ام."
+                }
+              ]
+            },
+            {
+              "question": "Are you thirsty?",
+              "questionFa": "تشنه‌ای؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, I am thirsty.",
+                  "fa": "بله، تشنه‌ام.",
+                  "note": "می‌توانی آب پیشنهاد بدهی."
+                },
+                {
+                  "label": "نه",
+                  "en": "No, I am not thirsty.",
+                  "fa": "نه، تشنه نیستم.",
+                  "note": "جواب منفی."
+                },
+                {
+                  "label": "خیلی",
+                  "en": "Yes, I am very thirsty.",
+                  "fa": "بله، خیلی تشنه‌ام."
+                },
+                {
+                  "label": "گرسنه‌ام",
+                  "en": "No, but I am hungry.",
+                  "fa": "نه، اما گرسنه‌ام."
+                }
+              ]
+            },
+            {
+              "question": "How is your brother?",
+              "questionFa": "حال برادرت چطور است؟",
+              "variants": [
+                {
+                  "label": "خسته",
+                  "en": "He is tired.",
+                  "fa": "خسته است.",
+                  "note": "دربارهٔ او."
+                },
+                {
+                  "label": "خوشحال",
+                  "en": "He is happy.",
+                  "fa": "خوشحال است.",
+                  "note": "تغییر حالت."
+                },
+                {
+                  "label": "بیمار",
+                  "en": "He is sick today.",
+                  "fa": "امروز بیمار است."
+                },
+                {
+                  "label": "بهتر",
+                  "en": "He is better now.",
+                  "fa": "الان حالش بهتر است."
+                }
+              ]
+            },
+            {
+              "question": "Is your sister hungry?",
+              "questionFa": "خواهرت گرسنه است؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, she is hungry.",
+                  "fa": "بله، گرسنه است."
+                },
+                {
+                  "label": "نه",
+                  "en": "No, she is not hungry.",
+                  "fa": "نه، گرسنه نیست."
+                },
+                {
+                  "label": "تشنه هم هست",
+                  "en": "Yes, she is hungry and thirsty.",
+                  "fa": "بله، گرسنه و تشنه است."
+                },
+                {
+                  "label": "خسته است",
+                  "en": "No, but she is tired.",
+                  "fa": "نه، اما خسته است."
+                }
+              ]
+            },
+            {
+              "question": "Are you cold?",
+              "questionFa": "سردت است؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, I am cold.",
+                  "fa": "بله، سردم است."
+                },
+                {
+                  "label": "نه، گرمم است",
+                  "en": "No, I am hot.",
+                  "fa": "نه، گرمم است."
+                },
+                {
+                  "label": "کمی",
+                  "en": "Yes, I am a little cold.",
+                  "fa": "بله، کمی سردم است."
+                },
+                {
+                  "label": "خوبم",
+                  "en": "No, I am okay.",
+                  "fa": "نه، خوبم."
+                }
+              ]
+            },
+            {
+              "question": "How are your two sisters?",
+              "questionFa": "دو خواهرت چه حال دارند؟",
+              "variants": [
+                {
+                  "label": "خوشحال",
+                  "en": "They are happy.",
+                  "fa": "خوشحال‌اند."
+                },
+                {
+                  "label": "خسته",
+                  "en": "They are tired.",
+                  "fa": "خسته‌اند."
+                },
+                {
+                  "label": "یکی بیمار",
+                  "en": "One is sick. The other is fine.",
+                  "fa": "یکی بیمار است و دیگری خوب است."
+                },
+                {
+                  "label": "هر دو تشنه",
+                  "en": "They are both thirsty.",
+                  "fa": "هر دو تشنه‌اند."
+                }
+              ]
+            },
+            {
+              "question": "What do you need?",
+              "questionFa": "به چه چیزی نیاز داری؟",
+              "variants": [
+                {
+                  "label": "آب",
+                  "en": "I need water.",
+                  "fa": "آب می‌خواهم."
+                },
+                {
+                  "label": "غذا",
+                  "en": "I need food.",
+                  "fa": "غذا می‌خواهم."
+                },
+                {
+                  "label": "استراحت",
+                  "en": "I need to rest.",
+                  "fa": "به استراحت نیاز دارم."
+                },
+                {
+                  "label": "کمک",
+                  "en": "I need some help.",
+                  "fa": "کمی کمک لازم دارم."
+                }
+              ]
+            },
+            {
+              "question": "Are you tired after work?",
+              "questionFa": "بعد از کار خسته‌ای؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, I am tired.",
+                  "fa": "بله، خسته‌ام."
+                },
+                {
+                  "label": "خیلی",
+                  "en": "Yes, I am very tired.",
+                  "fa": "بله، خیلی خسته‌ام."
+                },
+                {
+                  "label": "نه",
+                  "en": "No, I am fine.",
+                  "fa": "نه، حالم خوب است."
+                },
+                {
+                  "label": "گرسنه‌ام",
+                  "en": "No, but I am hungry.",
+                  "fa": "نه، اما گرسنه‌ام."
+                }
+              ]
+            },
+            {
+              "question": "How is your mother today?",
+              "questionFa": "امروز مادرت چه حال دارد؟",
+              "variants": [
+                {
+                  "label": "خوب",
+                  "en": "She is fine today.",
+                  "fa": "امروز خوب است."
+                },
+                {
+                  "label": "خوشحال",
+                  "en": "My mother is happy.",
+                  "fa": "مادرم خوشحال است."
+                },
+                {
+                  "label": "بیمار",
+                  "en": "She is sick.",
+                  "fa": "بیمار است."
+                },
+                {
+                  "label": "بهتر",
+                  "en": "She feels better today.",
+                  "fa": "امروز حالش بهتر است."
+                }
+              ]
+            },
+            {
+              "question": "Is the child sick?",
+              "questionFa": "بچه بیمار است؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, the child is sick.",
+                  "fa": "بله، بچه بیمار است."
+                },
+                {
+                  "label": "نه",
+                  "en": "No, the child is fine.",
+                  "fa": "نه، بچه خوب است."
+                },
+                {
+                  "label": "فقط خسته",
+                  "en": "No, the child is just tired.",
+                  "fa": "نه، فقط خسته است."
+                },
+                {
+                  "label": "بهتر شده",
+                  "en": "The child is better now.",
+                  "fa": "الان حال بچه بهتر است."
+                }
+              ]
+            },
+            {
+              "question": "How do you feel now?",
+              "questionFa": "الان چه احساسی داری؟",
+              "variants": [
+                {
+                  "label": "شاد",
+                  "en": "I feel happy.",
+                  "fa": "خوشحالم."
+                },
+                {
+                  "label": "ناراحت",
+                  "en": "I feel sad.",
+                  "fa": "ناراحتم."
+                },
+                {
+                  "label": "تشنه",
+                  "en": "I feel thirsty.",
+                  "fa": "تشنه‌ام."
+                },
+                {
+                  "label": "بهتر",
+                  "en": "I feel better now.",
+                  "fa": "حالم بهتر شده."
+                }
+              ]
+            },
+            {
+              "question": "What can you say to a sad friend?",
+              "questionFa": "به دوستی که ناراحت است چه می‌گویی؟",
+              "variants": [
+                {
+                  "label": "متأسفم",
+                  "en": "I am sorry.",
+                  "fa": "متأسفم."
+                },
+                {
+                  "label": "کنارت هستم",
+                  "en": "I am here for you.",
+                  "fa": "کنارت هستم."
+                },
+                {
+                  "label": "کمک می‌خواهی؟",
+                  "en": "Do you need help?",
+                  "fa": "کمک می‌خواهی؟"
+                },
+                {
+                  "label": "استراحت کن",
+                  "en": "Please rest.",
+                  "fa": "لطفاً استراحت کن."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-9-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "گفت‌وگو: خواهرم حال خوبی ندارد",
+          "description": "گفت‌وگوی کوتاه و واقعی؛ هر نوبت را جدا گوش بده و تکرار کن.",
+          "lines": [
+            {
+              "speaker": "Mina",
+              "en": "Hello! How are you today?",
+              "fa": "سلام! امروز حالت چطور است؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "I am fine, but my sister is tired.",
+              "fa": "خوبم اما خواهرم خسته است."
+            },
+            {
+              "speaker": "Mina",
+              "en": "Is she sick?",
+              "fa": "بیمار است؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "No, she is tired and thirsty.",
+              "fa": "نه، خسته و تشنه است."
+            },
+            {
+              "speaker": "Mina",
+              "en": "Have some water.",
+              "fa": "کمی آب بخور."
+            },
+            {
+              "speaker": "Sara",
+              "en": "Thank you. She has a bottle of water.",
+              "fa": "ممنون. یک بطری آب دارد."
+            },
+            {
+              "speaker": "Mina",
+              "en": "I hope she feels better.",
+              "fa": "امیدوارم حالش بهتر شود."
+            },
+            {
+              "speaker": "Sara",
+              "en": "Thanks. How are your brothers?",
+              "fa": "ممنون. برادرانت چطورند؟"
+            }
+          ]
+        },
+        {
+          "id": "a1-9-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "title": "از چهره به جمله و از جمله به کمک",
+          "description": "ابتدا تصویر را نگاه کن، سپس بدون انتخاب گزینه جمله بساز.",
+          "image": "./assets/scene-a1-9-feelings.svg",
+          "imageAlt": "چهار چهره که شادی، خستگی، تشنگی و ناراحتی را نشان می‌دهند",
+          "caption": "چهار حالت روزمره؛ احساس را با تصویر و جمله پیدا کن",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "دربارهٔ چهرهٔ شاد یک جمله بساز.",
+              "hint": "She is happy.",
+              "example": "She is happy.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "she is happy"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "دربارهٔ چهرهٔ خسته بگو او خسته است.",
+              "hint": "He is tired.",
+              "example": "He is tired.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "he is tired"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "برای فرد تشنه یک پیشنهاد کوتاه بنویس.",
+              "hint": "Have some water.",
+              "example": "Have some water.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "have some water"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-9-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "title": "نوبت توست: جملهٔ بعدی را بساز",
+          "description": "دوستت حرف می‌زند؛ تو باید با دانسته‌های چند درس پاسخ بدهی.",
+          "practiceRevision": 1,
+          "completion": "توانستی واژه‌های جدید و قبلی را در گفت‌وگو کنار هم بگذاری.",
+          "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "How are you today?",
+              "task": "بگو من تشنه‌ام.",
+              "hint": "I am thirsty.",
+              "example": "I am thirsty.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i am thirsty"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "How is your sister?",
+              "task": "بگو او خسته است.",
+              "hint": "She is tired.",
+              "example": "She is tired.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "she is tired"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "How are you?",
+              "task": "بگو گرسنه‌ای.",
+              "hint": "I am hungry.",
+              "example": "I am hungry.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i am hungry"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "I am sick.",
+              "task": "یک پاسخ همدلانه بده.",
+              "hint": "I hope you feel better.",
+              "example": "I hope you feel better.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i hope you feel better"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Is your brother hot?",
+              "task": "بگو برادرم سردش است.",
+              "hint": "My brother is cold.",
+              "example": "My brother is cold.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my brother is cold"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-9-transfer",
+          "type": "response-practice",
+          "phase": "guided",
+          "title": "افراد قبلی را با حالت جدید ترکیب کن",
+          "practiceRevision": 1,
+          "description": "موقعیت عوض شده است؛ همان الگوی جمله را با آدم، شیء یا تعداد تازه به کار ببر.",
+          "tasks": [
+            {
+              "task": "به جای خودت از دو خواهرت بگو که گرسنه‌اند.",
+              "hint": "My two sisters are hungry.",
+              "example": "My two sisters are hungry.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my two sisters are hungry"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو برادرم تشنه است و آب می‌خواهد.",
+              "hint": "My brother is thirsty. He needs water.",
+              "example": "My brother is thirsty. He needs water.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my brother is thirsty. he needs water"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو مادرم امروز خوشحال است.",
+              "hint": "My mother is happy today.",
+              "example": "My mother is happy today.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my mother is happy today"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بپرس حالت چطور است.",
+              "hint": "How are you?",
+              "example": "How are you?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "how are you"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            },
+            {
+              "task": "بگو آب داخل کیف من است.",
+              "hint": "The water is in my bag.",
+              "example": "The water is in my bag.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the water is in my bag"
+                    ],
+                    "feedback": "ترتیب کلمات و فعل را یک بار دیگر بررسی کن."
+                  }
+                ],
+                "success": "جمله را در این موقعیت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-9-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "گزارش کوتاهِ حال یک خانواده",
+          "prompt": "یک گفت‌وگوی کوتاه دربارهٔ خودت و دو عضو فرضی خانواده بنویس. حتماً How are you و I am thirsty و She is tired را به کار ببر. یک جمله با شمارش یا موقعیت مکانی و یک پیشنهاد همدلانه هم اضافه کن.",
+          "placeholder": "How are you?\nI am thirsty.\nMy sister is tired. She is tired today.\nHave some water.",
+          "hint": "I am ... / She is ... / They are ... ؛ پاسخ همدلانه می‌تواند Have some water باشد.",
+          "kind": "free-text",
+          "minWords": 18,
+          "assessment": {
+            "revision": 1,
+            "required": [
+              {
+                "any": [
+                  "i am thirsty"
+                ],
+                "feedback": "عبارت I am thirsty را در یک جملهٔ کامل به کار ببر."
+              },
+              {
+                "any": [
+                  "she is tired"
+                ],
+                "feedback": "عبارت She is tired را در یک جملهٔ کامل به کار ببر."
+              },
+              {
+                "any": [
+                  "how are you"
+                ],
+                "feedback": "عبارت How are you را در یک جملهٔ کامل به کار ببر."
+              }
+            ],
+            "success": "چند الگوی تازه را با اطلاعات و واژه‌های قبلی خودت ترکیب کردی."
+          }
+        },
+        {
+          "id": "a1-9-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "دوباره گوش بده؛ حالا معنای جمله‌ها را می‌سازی",
+          "description": "همان جمله‌های شروع درس را با فهم تازه دوباره تکرار کن.",
+          "sourceActivityId": "a1-9-shadowing"
+        }
+      ]
+    }
+  ]
+}

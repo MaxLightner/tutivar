@@ -1,0 +1,2448 @@
+{
+  "id": "A1-2",
+  "revision": 12,
+  "status": "draft",
+  "title": "خانواده، جنسیت و ضمایر",
+  "goal": "جنسیت، ضمایر و نقش‌های خانوادگی را معرفی کن و سلام‌ها و نام گفتن درس اول را در مکالمهٔ خانوادگی دوباره به کار ببر.",
+  "duration": "حدود ۲۵ تا ۳۵ دقیقه با تمرین‌های گفت‌وگویی",
+  "feature": "درخت خانوادهٔ تعاملی",
+  "archetype": "family",
+  "teachingModel": {
+    "primary": "K4",
+    "support": "K3"
+  },
+  "orientation": {
+    "goal": "من مرد/زن هستم، من پدر/مادر هستم و این مادر من است را با she/he و my/his/her بساز؛ بدون معرفی فعل داشتن.",
+    "prerequisites": [
+      "سلام‌کردن، معرفی خود و پرسیدن نام"
+    ],
+    "previously": "در درس اول با Hello، What's your name? و My name is ... آشنا شدی.",
+    "quickCheck": {
+      "title": "اگر از قبل بلدی",
+      "question": "می‌توانی بپرسی «این برادر توست؟» و هم جواب مثبت و هم جواب منفی بدهی؟",
+      "example": "Is this your brother? No, he's my father.",
+      "explanation": "آیا این برادرت است؟ نه، او پدر من است. این درس برای تغییر جمله با نسبت و جنسیت‌های مختلف تمرین دارد.",
+      "allowSkip": true
+    }
+  },
+  "visual": {
+    "src": null,
+    "alt": "شش عضو خانواده با فلش اشارهٔ تعاملی",
+    "caption": "در بخش عبارت‌ها، روی افراد تصویر بزن تا فلش و جملهٔ معرفی تغییر کنند."
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "sister",
+      "brother",
+      "son",
+      "daughter",
+      "Who's this?",
+      "Is this your brother?",
+      "Please."
+    ],
+    "specificIndependentExpressions": [
+      "Please."
+    ],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": true
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "از کلمه تا جمله",
+      "intro": "واژگان خانواده را مرور کن؛ عبارت و جمله را با لمس مستقیم تغییر بده. بعد شکل‌های جمله، جورچین و ساخت مستقل را تمرین کن.",
+      "masteryActivityIds": [
+        "family-intro-check",
+        "family-transform"
+      ],
+      "activities": [
+        {
+          "id": "a1-2-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "شنیدن و سایه‌خوانی",
+          "description": "فقط گوش بده و هم‌زمان یا با فاصله‌ای کوتاه تکرار کن؛ لازم نیست معنی جمله‌ها را بفهمی.",
+          "audioSrc": null,
+          "rate": 0.72,
+          "pauseMs": 500,
+          "lines": [
+            "This is my mother.",
+            "This is my father.",
+            "Who's this?",
+            "She is my sister.",
+            "He is my brother.",
+            "Her name is Anna.",
+            "I'm a man.",
+            "I'm a woman.",
+            "I'm a mother.",
+            "I'm a father."
+          ]
+        },
+        {
+          "id": "family-words",
+          "type": "vocabulary",
+          "title": "واژگان اصلی خانواده",
+          "batchSize": 4,
+          "deckRevision": 4,
+          "items": [
+            {
+              "en": "mother",
+              "fa": "مادر",
+              "hint": "I'm a mother = من مادر هستم؛ my mother = مادرم",
+              "examples": [
+                "This is my mother.",
+                "I'm a mother.",
+                "This is my mother, Nora."
+              ]
+            },
+            {
+              "en": "father",
+              "fa": "پدر",
+              "hint": "I'm a father = من پدر هستم؛ my father = پدرم",
+              "examples": [
+                "This is my father.",
+                "I'm a father.",
+                "He's my father."
+              ]
+            },
+            {
+              "en": "sister",
+              "fa": "خواهر",
+              "hint": "یک نسبت خانوادگی",
+              "examples": [
+                "This is my sister, Anna.",
+                "I'm a sister.",
+                "This is my sister."
+              ]
+            },
+            {
+              "en": "brother",
+              "fa": "برادر",
+              "hint": "یک نسبت خانوادگی",
+              "examples": [
+                "This is my brother, Sam.",
+                "I'm a brother.",
+                "Is this your brother?"
+              ]
+            },
+            {
+              "en": "son",
+              "fa": "پسرِ کسی / فرزند پسر",
+              "hint": "با boy («پسر بچه») فرق دارد؛ son نسبت خانوادگی است",
+              "examples": [
+                "I'm her son.",
+                "This is my son.",
+                "Is he your son?"
+              ]
+            },
+            {
+              "en": "daughter",
+              "fa": "دخترِ کسی / فرزند دختر",
+              "hint": "با girl («دختر») فرق دارد؛ daughter نسبت خانوادگی است",
+              "examples": [
+                "I'm his daughter.",
+                "This is my daughter.",
+                "Is she your daughter?"
+              ]
+            },
+            {
+              "en": "family",
+              "fa": "خانواده",
+              "examples": [
+                "This is my family.",
+                "My family is here.",
+                "I love my family."
+              ]
+            },
+            {
+              "en": "photo",
+              "fa": "عکس",
+              "examples": [
+                "Please, look at this photo.",
+                "Look at this photo.",
+                "This is a family photo."
+              ]
+            },
+            {
+              "en": "his",
+              "fa": "ـش / مال او، مذکر",
+              "examples": [
+                "His name is David.",
+                "His name is Sam.",
+                "I'm his daughter."
+              ]
+            },
+            {
+              "en": "her",
+              "fa": "ـش / مال او، مؤنث",
+              "examples": [
+                "Her name is Nora.",
+                "Her name is Anna.",
+                "I'm her son."
+              ]
+            },
+            {
+              "en": "he",
+              "fa": "او، مذکر",
+              "examples": [
+                "Is he your son?",
+                "He's my father.",
+                "Yes, he is. This is my brother, Sam."
+              ]
+            },
+            {
+              "en": "she",
+              "fa": "او، مؤنث",
+              "examples": [
+                "Is she your daughter?",
+                "She's my sister.",
+                "Yes, she is."
+              ]
+            },
+            {
+              "en": "this",
+              "fa": "این",
+              "examples": [
+                "This is my mother.",
+                "This is my father.",
+                "This is my sister, Anna."
+              ]
+            },
+            {
+              "en": "who",
+              "fa": "چه کسی / کی",
+              "examples": [
+                "Who's this?",
+                "Hello! Who's this?",
+                "Who's this, Anna?"
+              ]
+            },
+            {
+              "en": "a",
+              "fa": "یک؛ حرف تعریف",
+              "examples": [
+                "I'm a mother.",
+                "I'm a father.",
+                "I'm a sister."
+              ]
+            },
+            {
+              "en": "look",
+              "fa": "نگاه کردن",
+              "examples": [
+                "Please, look at this photo.",
+                "Look at this photo.",
+                "Please look at my family photo."
+              ]
+            },
+            {
+              "en": "at",
+              "fa": "به",
+              "examples": [
+                "Please, look at this photo.",
+                "Look at this photo.",
+                "Please look at my family photo."
+              ]
+            },
+            {
+              "en": "come",
+              "fa": "آمدن",
+              "examples": [
+                "Please, come in.",
+                "Please come in.",
+                "Come in, please."
+              ]
+            },
+            {
+              "en": "in",
+              "fa": "داخل / به داخل",
+              "examples": [
+                "Please, come in.",
+                "Please come in.",
+                "The ball is in the box."
+              ]
+            },
+            {
+              "en": "grandmother",
+              "fa": "مادربزرگ",
+              "role": "supplementary"
+            },
+            {
+              "en": "grandfather",
+              "fa": "پدربزرگ",
+              "role": "supplementary"
+            },
+            {
+              "en": "parents",
+              "fa": "والدین / پدر و مادر",
+              "role": "supplementary"
+            },
+            {
+              "en": "aunt",
+              "fa": "عمه / خاله",
+              "role": "supplementary"
+            },
+            {
+              "en": "uncle",
+              "fa": "عمو / دایی",
+              "role": "supplementary"
+            },
+            {
+              "en": "cousin",
+              "fa": "فرزند عمو، عمه، دایی یا خاله",
+              "role": "supplementary"
+            },
+            {
+              "en": "baby",
+              "fa": "نوزاد",
+              "role": "supplementary"
+            },
+            {
+              "en": "children",
+              "fa": "بچه‌ها / فرزندان",
+              "role": "supplementary"
+            },
+            {
+              "en": "husband",
+              "fa": "شوهر",
+              "role": "supplementary"
+            },
+            {
+              "en": "wife",
+              "fa": "همسر / زن",
+              "role": "supplementary"
+            },
+            {
+              "en": "grandparents",
+              "fa": "پدربزرگ و مادربزرگ",
+              "role": "supplementary"
+            },
+            {
+              "en": "man",
+              "fa": "مرد",
+              "examples": [
+                "I'm a man.",
+                "He is a man.",
+                "This man is my father."
+              ]
+            },
+            {
+              "en": "woman",
+              "fa": "زن",
+              "examples": [
+                "I'm a woman.",
+                "She is a woman.",
+                "This woman is my mother."
+              ]
+            }
+          ],
+          "phase": "words"
+        },
+        {
+          "id": "family-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "عبارت‌های کاربردی و ترکیب‌های خاص",
+          "description": "این واحدها عبارت یا ترکیب‌اند، نه واژهٔ منفرد؛ آن‌ها را در موقعیت و جمله یاد بگیر.",
+          "items": [
+            {
+              "en": "family photo",
+              "fa": "عکس خانوادگی",
+              "kind": "collocation",
+              "examples": [
+                "This is a family photo.",
+                "Look at this photo.",
+                "The photo is here."
+              ]
+            },
+            {
+              "en": "look at",
+              "fa": "نگاه کردن به",
+              "kind": "collocation",
+              "examples": [
+                "Look at this photo.",
+                "Please look at my family photo.",
+                "Look at her."
+              ]
+            },
+            {
+              "en": "come in",
+              "fa": "داخل آمدن / بفرمایید داخل",
+              "kind": "collocation",
+              "examples": [
+                "Please come in.",
+                "Come in, please.",
+                "Can I come in?"
+              ]
+            },
+            {
+              "en": "family tree",
+              "fa": "درخت خانواده",
+              "kind": "collocation",
+              "examples": [
+                "This is my family tree.",
+                "Look at the family tree.",
+                "The family tree is here."
+              ]
+            },
+            {
+              "en": "I'm a man",
+              "fa": "من مرد هستم",
+              "kind": "fixed",
+              "examples": [
+                "I'm a man.",
+                "He is a man."
+              ]
+            },
+            {
+              "en": "I'm a woman",
+              "fa": "من زن هستم",
+              "kind": "fixed",
+              "examples": [
+                "I'm a woman.",
+                "She is a woman."
+              ]
+            },
+            {
+              "en": "I'm a father",
+              "fa": "من پدر هستم",
+              "kind": "fixed",
+              "examples": [
+                "I'm a father.",
+                "This is my daughter."
+              ]
+            },
+            {
+              "en": "I'm a mother",
+              "fa": "من مادر هستم",
+              "kind": "fixed",
+              "examples": [
+                "I'm a mother.",
+                "This is my son."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "family-inline-phrases",
+          "type": "composer-view",
+          "title": "ترکیب‌های خانواده؛ واژه‌های داخل عبارت را لمس کن",
+          "description": "روی my یا mother بزن تا عبارت به شکل جدید تغییر کند.",
+          "sourceActivityId": "family-composer",
+          "patternId": "phrase",
+          "phase": "phrases"
+        },
+        {
+          "id": "family-tree",
+          "type": "family-lab",
+          "title": "خانوادهٔ تصویری؛ اشاره کن و معرفی کن",
+          "description": "روی هر فرد در تصویر بزن؛ فلش به همان عضو خانواده اشاره می‌کند و جملهٔ معرفی و ضمیر مرتبط تغییر می‌کند.",
+          "people": [
+            {
+              "name": "Nora",
+              "fa": "مادر",
+              "initial": "N",
+              "sentence": "This is my mother, Nora.",
+              "followup": "Her name is Nora.",
+              "explanation": "mother زن است؛ برای نامش her می‌گوییم.",
+              "scene": {
+                "x": 110,
+                "y": 140,
+                "shirt": "#c778a4",
+                "skin": "#eac1a0",
+                "hair": "#6c453a"
+              }
+            },
+            {
+              "name": "David",
+              "fa": "پدر",
+              "initial": "D",
+              "sentence": "This is my father, David.",
+              "followup": "His name is David.",
+              "explanation": "father مرد است؛ برای نامش his می‌گوییم.",
+              "scene": {
+                "x": 330,
+                "y": 140,
+                "shirt": "#567fba",
+                "skin": "#d4a17f",
+                "hair": "#543d31"
+              }
+            },
+            {
+              "name": "Anna",
+              "fa": "خواهر",
+              "initial": "A",
+              "sentence": "This is my sister, Anna.",
+              "followup": "Her name is Anna.",
+              "explanation": "sister دختر یا زن است؛ برای نامش her می‌گوییم.",
+              "scene": {
+                "x": 550,
+                "y": 140,
+                "shirt": "#7eb0a2",
+                "skin": "#e7b590",
+                "hair": "#5c453e"
+              }
+            },
+            {
+              "name": "Sam",
+              "fa": "برادر",
+              "initial": "S",
+              "sentence": "This is my brother, Sam.",
+              "followup": "His name is Sam.",
+              "explanation": "brother پسر یا مرد است؛ برای نامش his می‌گوییم.",
+              "scene": {
+                "x": 110,
+                "y": 355,
+                "shirt": "#d6a35b",
+                "skin": "#d5a786",
+                "hair": "#5a4635"
+              }
+            },
+            {
+              "name": "Ava",
+              "fa": "دختر",
+              "initial": "A",
+              "sentence": "This is my daughter, Ava.",
+              "followup": "Her name is Ava.",
+              "explanation": "daughter دخترِ من است؛ برای اشاره به او her می‌گوییم.",
+              "scene": {
+                "x": 330,
+                "y": 355,
+                "shirt": "#b79ac8",
+                "skin": "#e2b394",
+                "hair": "#5c453e"
+              }
+            },
+            {
+              "name": "Leo",
+              "fa": "پسر",
+              "initial": "L",
+              "sentence": "This is my son, Leo.",
+              "followup": "His name is Leo.",
+              "explanation": "son پسرِ من است؛ برای اشاره به او his می‌گوییم.",
+              "scene": {
+                "x": 550,
+                "y": 355,
+                "shirt": "#79a6cd",
+                "skin": "#d7ab8b",
+                "hair": "#5e4538"
+              }
+            }
+          ],
+          "phase": "phrases",
+          "typeLabel": "خانوادهٔ تصویری",
+          "scene": {
+            "width": 660,
+            "height": 500
+          }
+        },
+        {
+          "id": "family-composer",
+          "type": "sentence-composer",
+          "title": "یک جمله؛ کلمات و وابستگی‌ها با هم تغییر می‌کنند",
+          "description": "روی هر کلمهٔ سبز بزن تا مستقیماً عوض شود. با تغییر brother به sister، ضمیر جمله هم خودکار تغییر می‌کند.",
+          "targetLanguage": "en",
+          "wordSets": {
+            "owners": [
+              {
+                "id": "me",
+                "label": "my",
+                "translation": "من",
+                "role": "core",
+                "forms": {
+                  "determiner": "my",
+                  "faPossessive": "من"
+                }
+              },
+              {
+                "id": "you",
+                "label": "your",
+                "translation": "تو",
+                "role": "core",
+                "forms": {
+                  "determiner": "your",
+                  "faPossessive": "تو"
+                }
+              },
+              {
+                "id": "he",
+                "label": "his",
+                "translation": "او (مذکر)",
+                "role": "core",
+                "forms": {
+                  "determiner": "his",
+                  "faPossessive": "او"
+                }
+              },
+              {
+                "id": "she",
+                "label": "her",
+                "translation": "او (مؤنث)",
+                "role": "core",
+                "forms": {
+                  "determiner": "her",
+                  "faPossessive": "او"
+                }
+              }
+            ],
+            "family": [
+              {
+                "id": "mother",
+                "label": "mother",
+                "translation": "مادر",
+                "role": "core",
+                "features": {
+                  "gender": "feminine"
+                },
+                "forms": {
+                  "noun": "mother",
+                  "translation": "مادر"
+                }
+              },
+              {
+                "id": "father",
+                "label": "father",
+                "translation": "پدر",
+                "role": "core",
+                "features": {
+                  "gender": "masculine"
+                },
+                "forms": {
+                  "noun": "father",
+                  "translation": "پدر"
+                }
+              },
+              {
+                "id": "sister",
+                "label": "sister",
+                "translation": "خواهر",
+                "role": "core",
+                "features": {
+                  "gender": "feminine"
+                },
+                "forms": {
+                  "noun": "sister",
+                  "translation": "خواهر"
+                }
+              },
+              {
+                "id": "brother",
+                "label": "brother",
+                "translation": "برادر",
+                "role": "core",
+                "features": {
+                  "gender": "masculine"
+                },
+                "forms": {
+                  "noun": "brother",
+                  "translation": "برادر"
+                }
+              },
+              {
+                "id": "son",
+                "label": "son",
+                "translation": "پسر",
+                "role": "core",
+                "features": {
+                  "gender": "masculine"
+                },
+                "forms": {
+                  "noun": "son",
+                  "translation": "پسر"
+                }
+              },
+              {
+                "id": "daughter",
+                "label": "daughter",
+                "translation": "دختر",
+                "role": "core",
+                "features": {
+                  "gender": "feminine"
+                },
+                "forms": {
+                  "noun": "daughter",
+                  "translation": "دختر"
+                }
+              }
+            ],
+            "perspectives": [
+              {
+                "id": "third",
+                "label": "He / She",
+                "translation": "او",
+                "role": "core",
+                "forms": {
+                  "view": "third"
+                }
+              },
+              {
+                "id": "you",
+                "label": "You",
+                "translation": "تو",
+                "role": "core",
+                "forms": {
+                  "view": "you"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "owner",
+              "label": "مالکیت",
+              "wordSet": "owners",
+              "default": "me"
+            },
+            {
+              "id": "member",
+              "label": "عضو خانواده",
+              "wordSet": "family",
+              "default": "mother"
+            },
+            {
+              "id": "perspective",
+              "label": "ضمیر",
+              "wordSet": "perspectives",
+              "default": "third"
+            }
+          ],
+          "defaultPattern": "statement",
+          "derivedDefaults": {
+            "subjectPronoun": "He",
+            "be": "is",
+            "subjectFa": "او"
+          },
+          "dependencies": [
+            {
+              "id": "female-member",
+              "when": {
+                "slot": "member",
+                "feature": "gender",
+                "equals": "feminine"
+              },
+              "set": {
+                "subjectPronoun": "She",
+                "be": "is",
+                "subjectFa": "او"
+              }
+            },
+            {
+              "id": "direct-address",
+              "when": {
+                "slot": "perspective",
+                "equals": "you"
+              },
+              "set": {
+                "subjectPronoun": "You",
+                "be": "are",
+                "subjectFa": "تو"
+              }
+            }
+          ],
+          "patterns": [
+            {
+              "id": "phrase",
+              "label": "عبارت",
+              "segments": [
+                {
+                  "slot": "owner",
+                  "form": "determiner"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "member",
+                  "form": "noun"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "member",
+                  "form": "translation"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "owner",
+                  "form": "faPossessive"
+                }
+              ]
+            },
+            {
+              "id": "statement",
+              "label": "خبری",
+              "segments": [
+                {
+                  "fixed": "This is "
+                },
+                {
+                  "slot": "owner",
+                  "form": "determiner"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "member",
+                  "form": "noun"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "این "
+                },
+                {
+                  "slot": "member",
+                  "form": "translation"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "owner",
+                  "form": "faPossessive"
+                },
+                {
+                  "fixed": " است."
+                }
+              ]
+            },
+            {
+              "id": "negative",
+              "label": "منفی",
+              "segments": [
+                {
+                  "fixed": "This is not "
+                },
+                {
+                  "slot": "owner",
+                  "form": "determiner"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "member",
+                  "form": "noun"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "این "
+                },
+                {
+                  "slot": "member",
+                  "form": "translation"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "owner",
+                  "form": "faPossessive"
+                },
+                {
+                  "fixed": " نیست."
+                }
+              ]
+            },
+            {
+              "id": "question",
+              "label": "پرسشی",
+              "segments": [
+                {
+                  "fixed": "Is this "
+                },
+                {
+                  "slot": "owner",
+                  "form": "determiner"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "member",
+                  "form": "noun"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "آیا این "
+                },
+                {
+                  "slot": "member",
+                  "form": "translation"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "owner",
+                  "form": "faPossessive"
+                },
+                {
+                  "fixed": " است؟"
+                }
+              ]
+            },
+            {
+              "id": "role",
+              "label": "ضمیر و فعل",
+              "segments": [
+                {
+                  "derived": "subjectPronoun",
+                  "cycleSlot": "perspective"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "be"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "owner",
+                  "form": "determiner"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "member",
+                  "form": "noun"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "derived": "subjectFa"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "member",
+                  "form": "translation"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "owner",
+                  "form": "faPossessive"
+                },
+                {
+                  "fixed": " است."
+                }
+              ]
+            }
+          ],
+          "phase": "sentence"
+        },
+        {
+          "id": "a1-2-meaning-variations",
+          "type": "meaning-cluster",
+          "phase": "variants",
+          "title": "یک نسبت خانوادگی، چند شیوهٔ معرفی",
+          "description": "یک معنا را با بیان‌های مختلف مقایسه کن؛ بیان بعدی را بزن. اگر معنا کمی تغییر کند، تفاوتش مشخص است.",
+          "concepts": [
+            {
+              "id": "sister",
+              "fa": "این خواهر من است.",
+              "forms": [
+                {
+                  "en": "This is my sister.",
+                  "fa": "این خواهر من است.",
+                  "relation": "equivalent",
+                  "note": "وقتی به شخص موردنظر اشاره می‌کنی."
+                },
+                {
+                  "en": "She's my sister.",
+                  "fa": "او خواهر من است.",
+                  "relation": "equivalent",
+                  "note": "وقتی مشخص است دربارهٔ چه کسی حرف می‌زنی."
+                }
+              ]
+            },
+            {
+              "id": "father",
+              "fa": "این پدر من است.",
+              "forms": [
+                {
+                  "en": "This is my father.",
+                  "fa": "این پدر من است.",
+                  "relation": "equivalent",
+                  "note": "برای معرفی و اشاره به شخص."
+                },
+                {
+                  "en": "He's my father.",
+                  "fa": "او پدر من است.",
+                  "relation": "equivalent",
+                  "note": "وقتی مرجع «او» در گفتگو مشخص است."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "family-models",
+          "type": "composer-view",
+          "title": "خبر، نفی، پرسش و ضمیر",
+          "description": "در این مرحله شکل جمله را تغییر بده؛ با لمس عضو خانواده، He و She متناسب با آن تغییر می‌کنند. برای You، ضمیر ابتدای جمله را لمس کن.",
+          "sourceActivityId": "family-composer",
+          "patternIds": [
+            "statement",
+            "negative",
+            "question",
+            "role"
+          ],
+          "phase": "variants"
+        },
+        {
+          "id": "family-self-role",
+          "type": "sentence-transform",
+          "practiceRevision": 1,
+          "title": "من چه نسبتی دارم؟ یا این شخص کیست؟",
+          "description": "جمله دربارهٔ خودت با I'm شروع می‌شود؛ معرفی شخص دیگر با This is my. فرقِ a father و my father را ببین؛ پسرِ خانواده son است و دخترِ خانواده daughter.",
+          "practiceTitle": "این بار نقش خودت را بگو",
+          "practiceIntro": "بر اساس موقعیت، دربارهٔ خودت یا شخص دیگری جمله بساز.",
+          "completion": "توانستی میان I'm a ... / I'm her ... و This is my ... فرق بگذاری.",
+          "forms": [
+            {
+              "label": "من مادرم",
+              "en": "I'm a mother.",
+              "fa": "من مادر هستم.",
+              "rule": "I'm کوتاه‌شدهٔ I am است. پیش از mother وقتی نقش خودت را می‌گویی a لازم است."
+            },
+            {
+              "label": "من پدرم",
+              "en": "I'm a father.",
+              "fa": "من پدر هستم.",
+              "rule": "برای گفتن نقش خودت از I'm a father استفاده کن، نه I'm father."
+            },
+            {
+              "label": "من پسرشم",
+              "en": "I'm her son.",
+              "fa": "من پسرِ او هستم (او زن است).",
+              "rule": "son یعنی فرزند پسر؛ her نشان می‌دهد پسرِ چه کسی هستی. I'm a son هم درست است ولی معمولاً نسبت را کامل‌تر می‌گوییم."
+            },
+            {
+              "label": "من دخترشم",
+              "en": "I'm his daughter.",
+              "fa": "من دخترِ او هستم (او مرد است).",
+              "rule": "daughter یعنی فرزند دختر؛ his نشان می‌دهد دخترِ چه کسی هستی."
+            },
+            {
+              "label": "این پسرمه",
+              "en": "This is my son.",
+              "fa": "این پسر من است.",
+              "rule": "در این جمله خودت را معرفی نمی‌کنی؛ دربارهٔ فرزندت حرف می‌زنی."
+            },
+            {
+              "label": "این دخترمه",
+              "en": "This is my daughter.",
+              "fa": "این دختر من است.",
+              "rule": "This is my daughter با I'm his daughter فرق دارد؛ اولی دربارهٔ فرزند توست، دومی دربارهٔ خود تو."
+            },
+            {
+              "label": "من پدر نیستم",
+              "en": "I'm not a father.",
+              "fa": "من پدر نیستم.",
+              "rule": "not بعد از am می‌آید؛ a پیش از father باقی می‌ماند."
+            },
+            {
+              "label": "تو پدری؟",
+              "en": "Are you a father?",
+              "fa": "تو پدر هستی؟",
+              "rule": "برای سؤال دربارهٔ مخاطب، Are را اول جمله می‌آوریم."
+            }
+          ],
+          "tasks": [
+            {
+              "source": "I'm a mother.",
+              "task": "از زبان یک پدر بگو: «من پدر هستم». برای نقش خودت a را فراموش نکن.",
+              "hint": "I'm a father.",
+              "example": "I'm a father.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i'm a father",
+                      "i am a father"
+                    ],
+                    "feedback": "برای نقش خودت بگو I'm a father؛ قبل از father باید a باشد."
+                  }
+                ],
+                "success": "نقش خودت را با I'm a ... گفتی."
+              }
+            },
+            {
+              "source": "I'm a father.",
+              "task": "حالا از زبان یک مادر بگو: «من مادر هستم».",
+              "hint": "I'm a mother.",
+              "example": "I'm a mother.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i'm a mother",
+                      "i am a mother"
+                    ],
+                    "feedback": "از I'm a mother استفاده کن."
+                  }
+                ],
+                "success": "با mother هم نقش خودت را بیان کردی."
+              }
+            },
+            {
+              "source": "This is my son.",
+              "task": "این بار خودت فرزند یک زن هستی. بگو: «من پسر او هستم».",
+              "hint": "I'm her son.",
+              "example": "I'm her son.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i'm her son",
+                      "i am her son"
+                    ],
+                    "feedback": "برای فرزند پسرِ یک زن بگو I'm her son."
+                  }
+                ],
+                "success": "به‌جای معرفی فرزندت، نسبت خودت را گفتی."
+              }
+            },
+            {
+              "source": "This is my daughter.",
+              "task": "خودت فرزند یک مرد هستی. بگو: «من دختر او هستم».",
+              "hint": "I'm his daughter.",
+              "example": "I'm his daughter.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i'm his daughter",
+                      "i am his daughter"
+                    ],
+                    "feedback": "برای فرزند دخترِ یک مرد بگو I'm his daughter."
+                  }
+                ],
+                "success": "تفاوت son و daughter و his و her را به کار بردی."
+              }
+            },
+            {
+              "source": "I'm his daughter.",
+              "task": "از زبان یک پدر این بار دختر خودت را معرفی کن: «این دختر من است».",
+              "hint": "This is my daughter.",
+              "example": "This is my daughter.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is my daughter"
+                    ],
+                    "feedback": "وقتی دربارهٔ دختر خودت حرف می‌زنی بگو This is my daughter."
+                  }
+                ],
+                "success": "نقش خودت و معرفی شخص دیگر را جدا کردی."
+              }
+            }
+          ],
+          "phase": "variants"
+        },
+        {
+          "id": "family-transform",
+          "type": "sentence-transform",
+          "practiceRevision": 1,
+          "title": "جملهٔ مثبت، منفی و پرسشی",
+          "description": "با یک نسبت آشنا، خبری را منفی یا سؤالی کن؛ بعد کوتاه جواب بده.",
+          "practiceTitle": "خودت جمله را تغییر بده",
+          "practiceIntro": "هر بار فقط تغییری را که خواسته شده بنویس.",
+          "completion": "پرسش، تأیید و رد کردن نسبت را بدون الگو تمرین کردی.",
+          "forms": [
+            {
+              "label": "معرفی خواهر",
+              "en": "This is my sister.",
+              "fa": "این خواهر من است.",
+              "rule": "my نشان می‌دهد این فرد چه نسبتی با تو دارد."
+            },
+            {
+              "label": "ردِ نسبت",
+              "en": "This is not my sister.",
+              "fa": "این خواهر من نیست.",
+              "rule": "برای منفی کردن، not بعد از is می‌آید."
+            },
+            {
+              "label": "پرسش",
+              "en": "Is this your sister?",
+              "fa": "این خواهر توست؟",
+              "rule": "Is را به ابتدای جمله می‌بریم و my به your تبدیل می‌شود."
+            },
+            {
+              "label": "تأیید",
+              "en": "Yes, she is.",
+              "fa": "بله، هست.",
+              "rule": "به سؤال دربارهٔ خواهر می‌توانی کوتاه جواب مثبت بدهی."
+            },
+            {
+              "label": "رد",
+              "en": "No, she isn't.",
+              "fa": "نه، نیست.",
+              "rule": "isn't کوتاه‌شدهٔ is not است."
+            },
+            {
+              "label": "معرفی برادر",
+              "en": "This is my brother.",
+              "fa": "این برادر من است.",
+              "rule": "همان ساختار را با brother به کار ببر."
+            },
+            {
+              "label": "نام او",
+              "en": "His name is Sam.",
+              "fa": "اسم او سام است.",
+              "rule": "his برای برادر، پدر یا فرد مذکر است."
+            }
+          ],
+          "tasks": [
+            {
+              "source": "This is my sister.",
+              "task": "این جمله را منفی کن.",
+              "hint": "not را بعد از is بگذار.",
+              "example": "This is not my sister.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is not my sister",
+                      "this isn't my sister"
+                    ],
+                    "feedback": "با not یا isn't نسبت را رد کن."
+                  }
+                ],
+                "success": "منفی درست ساخته شد."
+              }
+            },
+            {
+              "source": "This is my brother.",
+              "task": "از طرف مقابل بپرس: «این برادر توست؟»",
+              "hint": "Is + this + your + brother?",
+              "example": "Is this your brother?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "is this your brother"
+                    ],
+                    "feedback": "برای سؤال Is را به اول جمله ببر و your را به کار ببر."
+                  }
+                ],
+                "pitfalls": [
+                  {
+                    "any": [
+                      "this is your brother"
+                    ],
+                    "feedback": "این جمله خبری است؛ سؤال را با Is شروع کن."
+                  }
+                ],
+                "success": "سؤال دربارهٔ برادر درست شد."
+              }
+            },
+            {
+              "source": "Is this your sister?",
+              "task": "جواب مثبت کوتاه بده.",
+              "hint": "Yes, she is.",
+              "example": "Yes, she is.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "yes she is"
+                    ],
+                    "feedback": "پاسخ مثبت کوتاه Yes, she is. است."
+                  }
+                ],
+                "success": "پاسخ مثبت را ساختی."
+              }
+            },
+            {
+              "source": "Is this your sister?",
+              "task": "این بار جواب منفی کوتاه بده.",
+              "hint": "No, she isn't.",
+              "example": "No, she isn't.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no she isn't",
+                      "no she is not"
+                    ],
+                    "feedback": "پاسخ منفی No, she isn't. است."
+                  }
+                ],
+                "success": "پاسخ منفی را از مثبت جدا کردی."
+              }
+            }
+          ],
+          "phase": "variants"
+        },
+        {
+          "id": "family-puzzle",
+          "type": "sentence-builder",
+          "title": "از یک بانک کلمه، چند جملهٔ خانوادگی بساز",
+          "description": "کلمات چند جمله در یک بانک قاطی هستند. هر ترکیب دستوری درست را بساز و ثبت کن؛ سپس جملهٔ متفاوتی بساز. بزرگی حروف و نقطه باعث غلط‌شدن پاسخ نمی‌شوند.",
+          "phase": "puzzle",
+          "revision": 3,
+          "sentences": [
+            {
+              "id": "sister",
+              "words": [
+                "This",
+                "is",
+                "my",
+                "sister."
+              ]
+            },
+            {
+              "id": "brother",
+              "words": [
+                "He",
+                "is",
+                "my",
+                "brother."
+              ]
+            },
+            {
+              "id": "mother",
+              "words": [
+                "She",
+                "is",
+                "my",
+                "mother."
+              ]
+            },
+            {
+              "id": "father-question",
+              "words": [
+                "Is",
+                "this",
+                "your",
+                "father?"
+              ]
+            }
+          ],
+          "reuseBank": true,
+          "goalCount": 4,
+          "sourceActivityId": "family-composer",
+          "patternIds": [
+            "statement",
+            "negative",
+            "question",
+            "role"
+          ]
+        },
+        {
+          "id": "family-intro-check",
+          "type": "response-practice",
+          "practiceRevision": 1,
+          "title": "از واژه تا معرفی واقعی",
+          "description": "با نسبت و نام مشخص، خودت جمله بساز و در پایان سؤال هویت را بپرس. اگر مشکل داشتی راهنما را باز کن.",
+          "completion": "توانستی مادر، خواهر و برادر را معرفی کنی و سؤال هویت را بپرسی.",
+          "tasks": [
+            {
+              "task": "این مادر تو، نوراست. نسبت و نام او را در یک جمله معرفی کن.",
+              "hint": "This is my mother, Nora.",
+              "example": "This is my mother, Nora.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is my mother"
+                    ],
+                    "feedback": "برای معرفی مادر بگو This is my mother."
+                  },
+                  {
+                    "any": [
+                      "nora"
+                    ],
+                    "feedback": "نام Nora را هم اضافه کن."
+                  }
+                ],
+                "success": "مادر و اسمش را معرفی کردی."
+              }
+            },
+            {
+              "task": "آنا خواهرت است. او را معرفی کن و در جملهٔ دوم نامش را با Her name is بگو.",
+              "hint": "This is my sister. Her name is Anna.",
+              "example": "This is my sister. Her name is Anna.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is my sister"
+                    ],
+                    "feedback": "اول نسبت خواهر را با This is my sister. معرفی کن."
+                  },
+                  {
+                    "any": [
+                      "her name is anna"
+                    ],
+                    "feedback": "برای نام خواهر بگو Her name is Anna."
+                  }
+                ],
+                "success": "دربارهٔ خواهر از her استفاده کردی."
+              }
+            },
+            {
+              "task": "سام برادر توست. نسبت او را بگو و این بار نامش را با His name is اضافه کن.",
+              "hint": "This is my brother. His name is Sam.",
+              "example": "This is my brother. His name is Sam.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is my brother"
+                    ],
+                    "feedback": "نسبت برادر را بگو."
+                  },
+                  {
+                    "any": [
+                      "his name is sam"
+                    ],
+                    "feedback": "برای پسر از his استفاده کن: His name is Sam."
+                  }
+                ],
+                "pitfalls": [
+                  {
+                    "any": [
+                      "her name is sam"
+                    ],
+                    "feedback": "اینجا سام پسر است؛ his را به کار ببر."
+                  }
+                ],
+                "success": "تفاوت his و her را در معرفی استفاده کردی."
+              }
+            },
+            {
+              "task": "عکسی با یک نفر ناشناس می‌بینی؛ از دوستت بپرس: «این کیه؟»",
+              "hint": "Who's this?",
+              "example": "Who's this?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "who's this",
+                      "who is this"
+                    ],
+                    "feedback": "برای پرسیدن هویت می‌گویی Who's this?"
+                  }
+                ],
+                "success": "این بار سؤال را خودت ساختی، نه پاسخ آن را."
+              }
+            },
+            {
+              "task": "بگو من زن هستم.",
+              "hint": "I'm a woman.",
+              "example": "I'm a woman.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i'm a woman"
+                    ],
+                    "feedback": "ترتیب فاعل، فعل و کلمات را بررسی کن."
+                  }
+                ],
+                "success": "جمله درست است."
+              }
+            },
+            {
+              "task": "بگو من مرد هستم.",
+              "hint": "I'm a man.",
+              "example": "I'm a man.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i'm a man"
+                    ],
+                    "feedback": "ترتیب فاعل، فعل و کلمات را بررسی کن."
+                  }
+                ],
+                "success": "جمله درست است."
+              }
+            },
+            {
+              "task": "بگو من مادر هستم.",
+              "hint": "I'm a mother.",
+              "example": "I'm a mother.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i'm a mother"
+                    ],
+                    "feedback": "ترتیب فاعل، فعل و کلمات را بررسی کن."
+                  }
+                ],
+                "success": "جمله درست است."
+              }
+            },
+            {
+              "task": "بگو من پدر هستم.",
+              "hint": "I'm a father.",
+              "example": "I'm a father.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i'm a father"
+                    ],
+                    "feedback": "ترتیب فاعل، فعل و کلمات را بررسی کن."
+                  }
+                ],
+                "success": "جمله درست است."
+              }
+            },
+            {
+              "task": "به عکس اشاره کن و بگو «به این عکس نگاه کن. این مادر من است».",
+              "hint": "Look at this photo. This is my mother.",
+              "example": "Look at this photo. This is my mother.",
+              "assessment": {
+                "required": [
+                  "look",
+                  "photo",
+                  "mother"
+                ],
+                "success": "این واژه را در یک جملهٔ واقعی به کار بردی."
+              }
+            }
+          ],
+          "phase": "construction"
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "از سؤال و جواب تا مکالمه",
+      "intro": "هر سؤال یک پاسخ و گاهی یک اصلاح دارد. اول معرفی و حدس را دوطرفه ببین، بعد با نام‌ها و نسبت‌های تازه جواب خودت را بساز.",
+      "masteryActivityIds": [
+        "family-exchange-practice",
+        "family-guided-talk",
+        "family-transfer",
+        "family-write"
+      ],
+      "activities": [
+        {
+          "id": "family-exchanges",
+          "type": "exchange-lab",
+          "title": "حدس بزن، جواب بده، اصلاح کن",
+          "description": "سؤال را انتخاب کن و بین پاسخ‌های مثبت و منفی یا دو نسبت متفاوت جابه‌جا شو.",
+          "pairs": [
+            {
+              "question": "Who's this?",
+              "questionFa": "این کیه؟",
+              "variants": [
+                {
+                  "label": "معرفی خواهر",
+                  "en": "This is my sister, Anna.",
+                  "fa": "این خواهر من، آناست.",
+                  "note": "بعد از Who's this? نسبت و نام را با هم می‌گویی."
+                },
+                {
+                  "label": "معرفی برادر",
+                  "en": "This is my brother, Sam.",
+                  "fa": "این برادر من، سام است.",
+                  "note": "ساختار همان است؛ فقط نسبت و نام عوض شدند."
+                }
+              ]
+            },
+            {
+              "question": "Is this your brother?",
+              "questionFa": "این برادر توست؟",
+              "variants": [
+                {
+                  "label": "جواب مثبت",
+                  "en": "Yes, he is. This is my brother, Sam.",
+                  "fa": "بله، هست. این برادرم سام است.",
+                  "note": "اول حدس را تأیید می‌کنی و بعد فرد را معرفی می‌کنی."
+                },
+                {
+                  "label": "جواب منفی",
+                  "en": "No, he isn't. This is my father.",
+                  "fa": "نه، نیست. این پدر من است.",
+                  "note": "به حدس اشتباه فقط نه نگو؛ نسبت درست را اضافه کن."
+                }
+              ]
+            },
+            {
+              "question": "What's her name?",
+              "questionFa": "اسم او چیه؟ (زن یا دختر)",
+              "variants": [
+                {
+                  "label": "نام خواهر",
+                  "en": "Her name is Anna.",
+                  "fa": "اسمش آناست.",
+                  "note": "her برای دختر یا زن است."
+                },
+                {
+                  "label": "نام مادر",
+                  "en": "Her name is Nora.",
+                  "fa": "اسمش نوراست.",
+                  "note": "برای مادر هم her به کار می‌رود."
+                }
+              ]
+            },
+            {
+              "question": "What's his name?",
+              "questionFa": "اسم او چیه؟ (مرد یا پسر)",
+              "variants": [
+                {
+                  "label": "نام برادر",
+                  "en": "His name is Sam.",
+                  "fa": "اسمش سام است.",
+                  "note": "his برای پسر یا مرد است."
+                },
+                {
+                  "label": "نام پدر",
+                  "en": "His name is David.",
+                  "fa": "اسمش دیوید است.",
+                  "note": "برای پدر هم his می‌گوییم."
+                }
+              ]
+            },
+            {
+              "question": "Who's this?",
+              "questionFa": "این کیه؟ (از نگاه پدر یا مادر)",
+              "variants": [
+                {
+                  "label": "پسر من",
+                  "en": "This is my son.",
+                  "fa": "این پسر من است.",
+                  "note": "son فرزند پسرِ گوینده است؛ با brother اشتباه نکن."
+                },
+                {
+                  "label": "دختر من",
+                  "en": "This is my daughter.",
+                  "fa": "این دختر من است.",
+                  "note": "daughter فرزند دخترِ گوینده است. I'm his daughter دربارهٔ خودِ دختر است."
+                }
+              ]
+            },
+            {
+              "question": "Who are you in this family?",
+              "questionFa": "نقشت در خانواده چیست؟",
+              "variants": [
+                {
+                  "label": "مادر",
+                  "en": "I'm a mother.",
+                  "fa": "من مادر هستم."
+                },
+                {
+                  "label": "پدر",
+                  "en": "I'm a father.",
+                  "fa": "من پدر هستم."
+                },
+                {
+                  "label": "خواهر",
+                  "en": "I'm a sister.",
+                  "fa": "من خواهر هستم."
+                },
+                {
+                  "label": "برادر",
+                  "en": "I'm a brother.",
+                  "fa": "من برادر هستم."
+                }
+              ]
+            }
+          ],
+          "phase": "correspondence"
+        },
+        {
+          "id": "family-exchange-practice",
+          "type": "response-practice",
+          "practiceRevision": 1,
+          "title": "جواب بده؛ اگر لازم است اصلاح کن",
+          "description": "به جای انتخاب بین دو پاسخ، این بار بدون گزینه جواب بساز.",
+          "completion": "چهار پاسخ دربارهٔ نسبت، نام و رد یک حدس ساختی.",
+          "tasks": [
+            {
+              "incoming": "Who's this?",
+              "speaker": "Emma",
+              "task": "آنا خواهر توست. نسبت و نامش را بگو.",
+              "hint": "This is my sister, Anna.",
+              "example": "This is my sister, Anna.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is my sister"
+                    ],
+                    "feedback": "نسبت خواهر را معرفی کن."
+                  },
+                  {
+                    "any": [
+                      "anna"
+                    ],
+                    "feedback": "نام آنا را هم بیاور."
+                  }
+                ],
+                "success": "به سؤال هویت پاسخ دادی."
+              }
+            },
+            {
+              "incoming": "Is this your brother?",
+              "speaker": "Emma",
+              "task": "بله، سام برادر توست. اول بله بگو، بعد معرفی‌اش کن.",
+              "hint": "Yes, he is. This is my brother, Sam.",
+              "example": "Yes, he is. This is my brother, Sam.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "yes"
+                    ],
+                    "feedback": "اول حدس را تأیید کن."
+                  },
+                  {
+                    "any": [
+                      "my brother"
+                    ],
+                    "feedback": "نسبت برادر را بگو."
+                  },
+                  {
+                    "any": [
+                      "sam"
+                    ],
+                    "feedback": "اسم سام را هم اضافه کن."
+                  }
+                ],
+                "success": "تأیید و معرفی را با هم گفتی."
+              }
+            },
+            {
+              "incoming": "Is this your brother?",
+              "speaker": "Emma",
+              "task": "نه، این فرد پدر توست. حدس اشتباه را رد و نسبت درست را معرفی کن.",
+              "hint": "No, he isn't. This is my father.",
+              "example": "No, he isn't. This is my father.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no"
+                    ],
+                    "feedback": "ابتدا حدس را با No رد کن."
+                  },
+                  {
+                    "any": [
+                      "my father"
+                    ],
+                    "feedback": "نسبت درست father است."
+                  }
+                ],
+                "pitfalls": [
+                  {
+                    "any": [
+                      "my brother"
+                    ],
+                    "feedback": "در این موقعیت فرد پدر توست، نه برادرت."
+                  }
+                ],
+                "success": "حدس اشتباه را اصلاح کردی."
+              }
+            },
+            {
+              "incoming": "What's her name?",
+              "speaker": "Emma",
+              "task": "اسم خواهرت آناست. با her جملهٔ کامل بگو.",
+              "hint": "Her name is Anna.",
+              "example": "Her name is Anna.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "her name is anna"
+                    ],
+                    "feedback": "برای خواهر جملهٔ Her name is Anna. را به کار ببر."
+                  }
+                ],
+                "pitfalls": [
+                  {
+                    "any": [
+                      "his name"
+                    ],
+                    "feedback": "اینجا دربارهٔ خواهر می‌گوییم، نه برادر."
+                  }
+                ],
+                "success": "نام خواهر را درست گفتی."
+              }
+            }
+          ],
+          "phase": "correspondence"
+        },
+        {
+          "id": "family-dialogue",
+          "type": "dialogue",
+          "title": "مکالمهٔ اول: عکس خانوادگی",
+          "description": "هر بار دو جمله می‌بینی. نوار را جلو ببر تا گفت‌وگو آرام از پایین به بالا حرکت کند.",
+          "lines": [
+            {
+              "speaker": "Emma",
+              "en": "Good morning, Daniel!",
+              "fa": "صبح بخیر دنیل!"
+            },
+            {
+              "speaker": "Daniel",
+              "en": "Good morning, Emma!",
+              "fa": "صبح بخیر اِما!"
+            },
+            {
+              "speaker": "Emma",
+              "en": "Please, come in.",
+              "fa": "بفرما داخل."
+            },
+            {
+              "speaker": "Daniel",
+              "en": "Thank you!",
+              "fa": "ممنون!"
+            },
+            {
+              "speaker": "Emma",
+              "en": "Who's this?",
+              "fa": "این کیه؟"
+            },
+            {
+              "speaker": "Daniel",
+              "en": "This is my sister, Anna.",
+              "fa": "این خواهرم آناست."
+            },
+            {
+              "speaker": "Emma",
+              "en": "Nice to meet you, Anna!",
+              "fa": "از آشنایی خوشوقتم، آنا!"
+            },
+            {
+              "speaker": "Anna",
+              "en": "Nice to meet you, too!",
+              "fa": "من هم خوشوقتم!"
+            },
+            {
+              "speaker": "Emma",
+              "en": "Is this your brother?",
+              "fa": "این برادر توست؟"
+            },
+            {
+              "speaker": "Daniel",
+              "en": "Yes, he is. This is my brother, Sam.",
+              "fa": "بله، هست. این برادرم سام است."
+            }
+          ],
+          "phase": "context"
+        },
+        {
+          "id": "family-dialogue-recall",
+          "type": "response-practice",
+          "practiceRevision": 1,
+          "title": "مکالمه را از حافظه ادامه بده",
+          "description": "بعد از دیدن عکس خانوادگی، پاسخ شخص بعدی را بدون کپی‌کردن بساز.",
+          "completion": "سه پاسخ کلیدی از مکالمهٔ نخست را بازسازی کردی.",
+          "tasks": [
+            {
+              "incoming": "Who's this?",
+              "speaker": "Emma",
+              "task": "آنا خواهر دنیل است. از طرف دنیل جواب بده.",
+              "hint": "This is my sister, Anna.",
+              "example": "This is my sister, Anna.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is my sister"
+                    ],
+                    "feedback": "نسبت خواهر را به صورت کامل بگو."
+                  },
+                  {
+                    "any": [
+                      "anna"
+                    ],
+                    "feedback": "نام آنا را اضافه کن."
+                  }
+                ],
+                "success": "پاسخ مکالمهٔ اول را ساختی."
+              }
+            },
+            {
+              "incoming": "Is this your brother?",
+              "speaker": "Emma",
+              "task": "سام برادر دنیل است. پاسخ مثبت بده و او را معرفی کن.",
+              "hint": "Yes, he is. This is my brother, Sam.",
+              "example": "Yes, he is. This is my brother, Sam.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "yes"
+                    ],
+                    "feedback": "این بار حدس درست است."
+                  },
+                  {
+                    "any": [
+                      "my brother"
+                    ],
+                    "feedback": "نسبت برادر را بگو."
+                  },
+                  {
+                    "any": [
+                      "sam"
+                    ],
+                    "feedback": "اسمش سام است."
+                  }
+                ],
+                "success": "تأیید و معرفی را به هم وصل کردی."
+              }
+            },
+            {
+              "incoming": "Nice to meet you, Anna!",
+              "speaker": "Emma",
+              "task": "از طرف آنا به خوشوقتی جواب بده.",
+              "hint": "Nice to meet you, too!",
+              "example": "Nice to meet you, too!",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "nice to meet you"
+                    ],
+                    "feedback": "به خوشوقتی با Nice to meet you پاسخ بده."
+                  }
+                ],
+                "success": "یک عبارت درس قبل را در موضوع جدید استفاده کردی."
+              }
+            }
+          ],
+          "phase": "context"
+        },
+        {
+          "id": "family-dialogue-contrast",
+          "type": "dialogue",
+          "title": "مکالمهٔ دوم: حدس اشتباه",
+          "description": "این‌بار سؤال دربارهٔ برادر است ولی پاسخ منفی می‌شود. نام مرد و زن را هم مقایسه کن.",
+          "lines": [
+            {
+              "speaker": "Lily",
+              "en": "Hello! Is this your brother?",
+              "fa": "سلام! این برادر توست؟"
+            },
+            {
+              "speaker": "Daniel",
+              "en": "No, he isn't. This is my father.",
+              "fa": "نه، نیست. این پدرم است."
+            },
+            {
+              "speaker": "Lily",
+              "en": "What's his name?",
+              "fa": "اسمش چیه؟ (مرد)"
+            },
+            {
+              "speaker": "Daniel",
+              "en": "His name is David.",
+              "fa": "اسمش دیوید است."
+            },
+            {
+              "speaker": "Lily",
+              "en": "Who's this?",
+              "fa": "این کیه؟"
+            },
+            {
+              "speaker": "Daniel",
+              "en": "This is my mother, Nora.",
+              "fa": "این مادرم نوراست."
+            },
+            {
+              "speaker": "Lily",
+              "en": "What's her name?",
+              "fa": "اسمش چیه؟ (زن)"
+            },
+            {
+              "speaker": "Daniel",
+              "en": "Her name is Nora.",
+              "fa": "اسمش نوراست."
+            }
+          ],
+          "phase": "context"
+        },
+        {
+          "id": "family-contrast-practice",
+          "type": "response-practice",
+          "practiceRevision": 1,
+          "title": "مقایسه کن؛ نسبت و ضمیر را تغییر بده",
+          "description": "در هر سؤال فقط یک داده عوض شده است. به همان تغییر دقت کن.",
+          "completion": "منفی، his و her را در سه موقعیت درست انتخاب کردی.",
+          "tasks": [
+            {
+              "incoming": "Is this your brother?",
+              "speaker": "Lily",
+              "task": "این پدر توست؛ نه بگو و نسبت درست را اصلاح کن.",
+              "hint": "No, he isn't. This is my father.",
+              "example": "No, he isn't. This is my father.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no"
+                    ],
+                    "feedback": "حدس را رد کن."
+                  },
+                  {
+                    "any": [
+                      "my father"
+                    ],
+                    "feedback": "نسبت درست پدر است."
+                  }
+                ],
+                "success": "اصلاح نسبت را انجام دادی."
+              }
+            },
+            {
+              "incoming": "What's his name?",
+              "speaker": "Lily",
+              "task": "دیوید نام پدر توست؛ با His name is جواب بده.",
+              "hint": "His name is David.",
+              "example": "His name is David.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "his name is david"
+                    ],
+                    "feedback": "دربارهٔ مرد می‌گویی His name is David."
+                  }
+                ],
+                "pitfalls": [
+                  {
+                    "any": [
+                      "her name"
+                    ],
+                    "feedback": "برای پدر از his استفاده کن."
+                  }
+                ],
+                "success": "اسم پدر را با his گفتی."
+              }
+            },
+            {
+              "incoming": "What's her name?",
+              "speaker": "Lily",
+              "task": "نورا نام مادر توست؛ این بار جواب را با Her name is بده.",
+              "hint": "Her name is Nora.",
+              "example": "Her name is Nora.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "her name is nora"
+                    ],
+                    "feedback": "دربارهٔ زن می‌گویی Her name is Nora."
+                  }
+                ],
+                "pitfalls": [
+                  {
+                    "any": [
+                      "his name"
+                    ],
+                    "feedback": "برای مادر از her استفاده کن."
+                  }
+                ],
+                "success": "اسم مادر را با her گفتی."
+              }
+            }
+          ],
+          "phase": "context"
+        },
+        {
+          "id": "family-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "practiceRevision": 1,
+          "title": "از روی تصویر: این‌ها چه کسانی‌اند؟",
+          "description": "این عکس چهار نفر از یک خانواده است؛ اسم‌ها در پایین تصویر دیده می‌شوند. به شخص اشاره‌شده در سؤال دقت کن و نسبت، ضمیر و نام را بساز.",
+          "image": "./assets/scene-a1-2.svg",
+          "imageAlt": "چهار عضو خانواده به‌ترتیب نورا، دیوید، آنا و سام با اسم‌های واضح.",
+          "caption": "تصویر ۲ · نورا، دیوید، آنا و سام",
+          "tasks": [
+            {
+              "task": "به نورا نگاه کن؛ فرض کن مادر توست. او را به یک دوست معرفی کن.",
+              "hint": "This is my mother. Her name is Nora.",
+              "example": "This is my mother. Her name is Nora.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my mother"
+                    ],
+                    "feedback": "نورا را با mother معرفی کن."
+                  },
+                  {
+                    "any": [
+                      "her name is nora"
+                    ],
+                    "feedback": "اسم زن را با Her name is بیان کن."
+                  }
+                ],
+                "success": "با کمک تصویر، جمله را خودت درست ساختی."
+              }
+            },
+            {
+              "task": "دیوید در این تصویر پدر توست. او را همراه با اسمش معرفی کن.",
+              "hint": "This is my father. His name is David.",
+              "example": "This is my father. His name is David.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my father"
+                    ],
+                    "feedback": "از father استفاده کن."
+                  },
+                  {
+                    "any": [
+                      "his name is david"
+                    ],
+                    "feedback": "اسم پدر را با his بگو."
+                  }
+                ],
+                "success": "با کمک تصویر، جمله را خودت درست ساختی."
+              }
+            },
+            {
+              "task": "دوستت به سام اشاره می‌کند. بپرس آیا او برادر توست.",
+              "hint": "Is this your brother?",
+              "example": "Is this your brother?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "is this your brother"
+                    ],
+                    "feedback": "پرسش دربارهٔ برادر را بساز."
+                  }
+                ],
+                "success": "با کمک تصویر، جمله را خودت درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "family-guided-talk",
+          "type": "guided-dialogue",
+          "practiceRevision": 2,
+          "title": "نوبت تو؛ به یک دوست جواب بده",
+          "description": "اول فقط سؤال او را بشنو، بعد گفت‌وگو را با معرفی و تصحیح حدس پیش ببر.",
+          "completion": "سه نوبت مکالمه دربارهٔ خانواده را خودت پیش بردی.",
+          "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "Hello! Who's this?",
+              "sourceMode": "audio",
+              "task": "پاسخ سلام را بده و خواهر خودت، آنا، را معرفی کن.",
+              "hint": "Hello! This is my sister, Anna.",
+              "example": "Hello! This is my sister, Anna.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "hello",
+                      "hi"
+                    ],
+                    "feedback": "اول جواب سلام بده."
+                  },
+                  {
+                    "any": [
+                      "my sister"
+                    ],
+                    "feedback": "نسبت خواهر را معرفی کن."
+                  },
+                  {
+                    "any": [
+                      "anna"
+                    ],
+                    "feedback": "اسم او آناست."
+                  }
+                ],
+                "success": "در پاسخ به سؤال شنیداری، یک معرفی کامل ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Is this your brother?",
+              "task": "نه، این پدر تو، دیوید است. حدس اشتباه را اصلاح کن.",
+              "hint": "No, he isn't. This is my father, David.",
+              "example": "No, he isn't. This is my father, David.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no"
+                    ],
+                    "feedback": "ابتدا نه بگو."
+                  },
+                  {
+                    "any": [
+                      "my father"
+                    ],
+                    "feedback": "نسبت درست پدر است."
+                  },
+                  {
+                    "any": [
+                      "david"
+                    ],
+                    "feedback": "اسم دیوید را اضافه کن."
+                  }
+                ],
+                "success": "خطای طرف مقابل را مؤدبانه اصلاح کردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "What's her name?",
+              "task": "نام خواهرت آناست؛ بگو Her name is Anna و خداحافظی کن.",
+              "hint": "Her name is Anna. Bye!",
+              "example": "Her name is Anna. Bye!",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "her name is anna"
+                    ],
+                    "feedback": "دربارهٔ خواهر از her استفاده کن."
+                  },
+                  {
+                    "any": [
+                      "bye",
+                      "goodbye"
+                    ],
+                    "feedback": "در پایان خداحافظی کن."
+                  }
+                ],
+                "success": "معرفی و خداحافظی را کامل کردی."
+              }
+            },
+            {
+              "id": "family-please-intro",
+              "speaker": "دوستت",
+              "incoming": "Who's this?",
+              "task": "خواهرت را معرفی کن و مؤدبانه از دوستت بخواه با او آشنا شود.",
+              "hint": "This is my sister, Anna. Please, meet her.",
+              "example": "This is my sister, Anna. Please, meet her.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is my sister"
+                    ],
+                    "feedback": "اول خواهرت را با This is my sister معرفی کن."
+                  },
+                  {
+                    "any": [
+                      "please"
+                    ],
+                    "feedback": "برای مؤدبانه کردن درخواست از Please استفاده کن."
+                  },
+                  {
+                    "any": [
+                      "meet her",
+                      "meet my sister"
+                    ],
+                    "feedback": "از دوستت بخواه با خواهرت آشنا شود."
+                  }
+                ],
+                "success": "عبارت Please را در یک موقعیت واقعی به کار بردی."
+              }
+            }
+          ],
+          "phase": "guided"
+        },
+        {
+          "id": "family-transfer",
+          "type": "dialogue-transfer",
+          "practiceRevision": 1,
+          "title": "موقعیت تازه: این عکس خانوادهٔ تو نیست",
+          "sceneTitle": "شخص مقابل اشتباه حدس زده",
+          "description": "وقتی کسی نسبت را اشتباه می‌گوید، فقط جواب منفی نده؛ اطلاعات درست را هم بساز.",
+          "completion": "در یک موقعیت متفاوت، حدس را رد کردی و از نسبت و نام درست گفتی.",
+          "turns": [
+            {
+              "speaker": "Emma",
+              "incoming": "Is this your brother?",
+              "task": "نه، این پدر تو، دیوید است. پاسخ منفی و معرفی درست بده.",
+              "hint": "No, he isn't. This is my father, David.",
+              "example": "No, he isn't. This is my father, David.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no"
+                    ],
+                    "feedback": "حدس اشتباه را با No رد کن."
+                  },
+                  {
+                    "any": [
+                      "my father"
+                    ],
+                    "feedback": "این فرد پدر توست."
+                  },
+                  {
+                    "any": [
+                      "david"
+                    ],
+                    "feedback": "نام او را اضافه کن."
+                  }
+                ],
+                "success": "صرفاً به حفظ دیالوگ تکیه نکردی."
+              }
+            },
+            {
+              "speaker": "Emma",
+              "incoming": "And who's this?",
+              "task": "این فرد مادرت نوراست. نسبت و نامش را بگو و نام او را با Her name is تکرار کن.",
+              "hint": "This is my mother. Her name is Nora.",
+              "example": "This is my mother. Her name is Nora.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my mother"
+                    ],
+                    "feedback": "این فرد مادر توست."
+                  },
+                  {
+                    "any": [
+                      "her name is nora"
+                    ],
+                    "feedback": "برای مادر از her استفاده کن و نامش را بگو."
+                  }
+                ],
+                "success": "در معرفی مستقل، نسبت و ضمیر را درست انتخاب کردی."
+              }
+            }
+          ],
+          "phase": "guided"
+        },
+        {
+          "id": "family-write",
+          "type": "free-write",
+          "title": "عکس واقعی خانواده‌ات را باز کن و معرفی کن",
+          "prompt": "یک عکس خانوادگی از گوشی یا آلبوم باز کن و جلوی خودت بگذار؛ لازم نیست عکست را اینجا آپلود کنی. اگر عکس نداری، سه نفر از خانواده‌ات را در ذهن بیاور. با Hello شروع کن؛ دربارهٔ حداقل سه نفر بگو چه نسبتی با تو دارند، اسم یکی از مردها را با his و یکی از زن‌ها را با her بگو، یک سؤال Who's this? و یک سؤال Is this your ...? بساز، با Yes یا No جواب بده و یک درخواست مودبانه با Please اضافه کن. در پایان Bye بگو. نام‌ها و نسبت‌ها را از خانوادهٔ خودت انتخاب کن.",
+          "placeholder": "You: Hello! Please, look at this photo.\nFriend: Who's this?\nYou: This is my mother. Her name is ...\n...",
+          "hint": "عکس روی گوشی خودت می‌ماند؛ فقط جمله‌هایی را که از روی آن ساخته‌ای اینجا بنویس. اگر کسی در عکس نیست، یک نفر دیگر از خانواده‌ات را توصیف کن.",
+          "kind": "free-text",
+          "minWords": 20,
+          "assessment": {
+            "revision": 3,
+            "required": [
+              {
+                "any": [
+                  "hello",
+                  "hi"
+                ],
+                "feedback": "گفت‌وگو را با Hello یا Hi شروع کن."
+              },
+              {
+                "any": [
+                  "please"
+                ],
+                "feedback": "یک درخواست مؤدبانه با Please بگو."
+              },
+              {
+                "any": [
+                  "who's this",
+                  "who is this"
+                ],
+                "feedback": "سؤال Who's this? را اضافه کن."
+              },
+              {
+                "any": [
+                  "this is my mother",
+                  "this is my father",
+                  "this is my brother",
+                  "this is my sister",
+                  "this is my son",
+                  "this is my daughter"
+                ],
+                "feedback": "حداقل یک نفر را با نسبت واقعی معرفی کن."
+              },
+              {
+                "any": [
+                  "is this your brother",
+                  "is this your sister",
+                  "is this your mother",
+                  "is this your father",
+                  "is this your son",
+                  "is this your daughter"
+                ],
+                "feedback": "سؤالی با Is this your ...? دربارهٔ یکی از اعضای خانواده بساز."
+              },
+              {
+                "any": [
+                  "yes",
+                  "no"
+                ],
+                "feedback": "به سؤال با Yes یا No جواب بده."
+              },
+              {
+                "any": [
+                  "his name is"
+                ],
+                "feedback": "برای نام یک مرد از His name is استفاده کن."
+              },
+              {
+                "any": [
+                  "her name is"
+                ],
+                "feedback": "برای نام یک زن از Her name is استفاده کن."
+              },
+              {
+                "any": [
+                  "bye",
+                  "goodbye"
+                ],
+                "feedback": "با خداحافظی تمام کن."
+              }
+            ],
+            "success": "از یک موقعیت واقعی یا شخصی برای ساخت جمله استفاده کردی؛ حالا می‌توانی اشیا، نام‌ها و رابطه‌ها را عوض کنی."
+          },
+          "phase": "independent"
+        },
+        {
+          "id": "a1-2-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "سایه‌خوانی دوباره",
+          "description": "همان محتوای شنیداری ابتدای درس را دوباره گوش بده و همراه صدا تکرار کن.",
+          "sourceActivityId": "a1-2-shadowing"
+        }
+      ]
+    }
+  ],
+  "lessonTemplate": "discovery-production-v1",
+  "roadmapRef": {
+    "id": "A1-2",
+    "revision": "2026-10-26-owner-a1-twelve-per-stage",
+    "communicativeOutcome": "اعضای خانواده را نام می‌برد و با my/his/her معرفی می‌کند؛ نقش خود را با I am a mother/father/sister/brother و جنسیت بزرگسال را با I am a man/woman می‌گوید؛ he/she و ضمایر پایه را به کار می‌برد و عبارت‌های سلام و معرفی درس اول را تمرین می‌کند."
+  }
+}

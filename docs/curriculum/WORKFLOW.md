@@ -1,9 +1,9 @@
 # Locked universal learning path and editorial workflow
 
-**Source of truth:** `content/curriculum/universal-path.v1.json` contains the approved **126** full communicative outcomes:
-A1 (34), A2 (30), B1 (29), B2 (33). Every entry includes title, dominant axis, full can-do outcome, prerequisite/bridge text, prerequisite IDs, global concept, scope boundary and proposed activity archetypes.
+**Source of truth:** `content/curriculum/universal-path.v1.json` contains the approved **128** full communicative outcomes after the owner's 2026-10-26 amendment:
+A1 (36), A2 (30), B1 (29), B2 (33). A1 is divided into three 12-lesson stages: 1–12, 13–24, 25–36. Every entry includes title, dominant axis, full can-do outcome, prerequisite/bridge text, prerequisite IDs, global concept, scope boundary and proposed activity archetypes.
 
-The owner's original 2 October 2026 rewrite is preserved byte-for-byte for audit in `01-universal-learning-path.md`. The Git blob checksums of that file and the machine-readable derived table are pinned in `content/curriculum/roadmap.lock.json`. This is a **default educational contract** across language pairs; an explicit new owner amendment overrides it.
+The owner's original 2 October 2026 rewrite and later explicit amendments are recorded in `01-universal-learning-path.md`. The Git blob checksums of that file and the machine-readable derived table are pinned in `content/curriculum/roadmap.lock.json`. This is a **default educational contract** across language pairs; an explicit new owner amendment overrides it.
 
 ## New lesson
 Run:
