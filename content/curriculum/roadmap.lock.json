@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "approvedRevision": "2026-10-26-owner-a1-twelve-per-stage",
+  "approvedRevision": "2026-10-27-owner-a1-stage2-practical-sequence",
   "sourcePath": "docs/curriculum/01-universal-learning-path.md",
-  "sourceGitBlobSha": "2fbe4a92b6a16bc5671f7c3318e79aaae905ce36",
+  "sourceGitBlobSha": "c52f504c317331221e1b1fe1684bdd3d940a93a8",
   "manifestPath": "content/curriculum/universal-path.v1.json",
-  "manifestGitBlobSha": "5d6ca1312f5135410ffdfd188ac2173d3ab04aaa",
+  "manifestGitBlobSha": "3859686d5ab8335cb075af233306ea3d167d7036",
   "approvedChanges": [
     {
       "revision": "2026-10-25-owner-cumulative-a1",
@@ -95,6 +95,42 @@
       ],
       "decisionReference": "Tutivar project conversation, 2026-10-26: owner ordered A1-1 as short tourist/greeting phrases; A1-2 as gender, family and pronouns without have; personal possessions plus have in A1-3; count in A1-4; extended numbers before profile; school and action verbs before food; food moves to A1 part two; three 12-lesson stages.",
       "rationale": "A prerequisite-first, cumulative teaching sequence with core vocabulary used downstream; preserve archived old content and progress by versioned remapping."
+    },
+    {
+      "revision": "2026-10-26-owner-home-school-feelings-realworld",
+      "authorizedBy": "product-owner",
+      "affectedIds": [
+        "A1-1",
+        "A1-6",
+        "A1-7",
+        "A1-8",
+        "A1-9",
+        "A1-10",
+        "A1-11",
+        "A1-12",
+        "A1-13",
+        "A1-14"
+      ],
+      "decisionReference": "Tutivar project conversation, 2026-10-26: owner approved moving some greeting words to supplementary; contrasting adjective pictures; hiding number-test answers; refining all independent real-world production; and explicitly reordered A1-10 home, A1-11 school, A1-12 feelings before food.",
+      "rationale": "Reorder by prerequisites and real-life motivation, make independent practice test actual responses, preserve versioned course content and learner progress."
+    },
+    {
+      "revision": "2026-10-27-owner-a1-stage2-practical-sequence",
+      "authorizedBy": "product-owner",
+      "affectedIds": [
+        "A1-15",
+        "A1-16",
+        "A1-17",
+        "A1-18",
+        "A1-19",
+        "A1-20",
+        "A1-21",
+        "A1-22",
+        "A1-23",
+        "A1-24"
+      ],
+      "decisionReference": "Tutivar project conversation, 2026-10-26/27: owner explicitly specified stage-2 order: food, meals, comparison, clothing, body, illness/help, simple jobs, shopping, payment/receipt, city, addresses/directions, transportation; owner explicitly forbade touching stage 3.",
+      "rationale": "Teach realistic interactions in prerequisite order; split clothing and body, focus illness on simple help rather than hospital visits; move daily routine and habits out of A1.2 while leaving all A1.3 files unchanged."
     }
   ],
   "authorization": "Baseline from owner's supplied document. Future amendments require an explicit owner instruction and a matching decision entry and lock update."

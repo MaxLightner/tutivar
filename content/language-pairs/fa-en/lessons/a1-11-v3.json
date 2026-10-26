@@ -1,0 +1,2064 @@
+{
+  "id": "A1-11",
+  "revision": "2026-10-26-owner-home-school-feelings-realworld",
+  "status": "draft",
+  "title": "مدرسه، مطالعه و فعالیت‌های ساده",
+  "goal": "واژه‌های مدرسه را با read/write/go/walk/sit/open/close در خبری، منفی و پرسشی ترکیب کن؛ ضمایر و وسایل آموخته‌شده را دوباره به کار ببر.",
+  "duration": "حدود ۲۵ تا ۳۵ دقیقه",
+  "feature": "کلاس و افعال قابل تغییر",
+  "archetype": "cumulative",
+  "roadmapRef": {
+    "id": "A1-11",
+    "revision": "2026-10-26-owner-home-school-feelings-realworld",
+    "communicativeOutcome": "با وسایل شخصی آموخته‌شده و واژگان مدرسه، می‌گوید چه کسی چه کاری می‌کند؛ read/write/study/go/walk/sit را در جملهٔ خبری، منفی و پرسشی با فاعل‌های متفاوت به کار می‌برد و یک موقعیت کوتاه کلاسی را توضیح می‌دهد."
+  },
+  "teachingModel": {
+    "primary": "K2",
+    "support": "K4"
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "واژه‌های مدرسه را با read/write/go/walk/sit/open/close در خبری، منفی و پرسشی ترکیب کن؛ ضمایر و وسایل آموخته‌شده را دوباره به کار ببر.",
+    "prerequisites": [
+      "لوازم شخصی درس سوم",
+      "موقعیت مکانی درس پنجم",
+      "تحصیل ساده در درس نهم"
+    ],
+    "previously": "لغات و ساختارهای قبلی در این درس دوباره در جمله‌های تازه استفاده می‌شوند.",
+    "quickCheck": {
+      "title": "خودت را امتحان کن",
+      "question": "می‌توانی بدون دیدن متن نمونه یک جملهٔ مربوط به این درس بسازی؟",
+      "example": "Close the book, please.",
+      "explanation": "اگر هنوز روان نیست، مسیر یادگیری را از ابتدا برو.",
+      "allowSkip": true
+    }
+  },
+  "learningAudit": {
+    "focusExpressions": [],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": true
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "از صدا تا ساخت جمله",
+      "intro": "شدوینگ، کلمه، عبارت ترکیبی، اختلاف معنا، تغییر جمله و تمرین مستقل.",
+      "masteryActivityIds": [
+        "a1-12-build"
+      ],
+      "activities": [
+        {
+          "id": "a1-12-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "سایه‌خوانی موقعیتی",
+          "description": "گوش بده و در فاصله‌ای کوتاه جمله را تکرار کن. صدای ضبط‌شده بعداً جایگزین صدای مرورگر می‌شود.",
+          "audioSrc": null,
+          "rate": 0.72,
+          "pauseMs": 550,
+          "lines": [
+            "I read a book.",
+            "My sister reads a book.",
+            "The teacher writes on the board.",
+            "I go to school.",
+            "My brother walks to school.",
+            "I sit at a desk.",
+            "Do you read books?",
+            "She does not write a sentence.",
+            "Open the book, please.",
+            "Close the book, please."
+          ]
+        },
+        {
+          "id": "a1-12-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "واژگان اصلی و تکمیلی",
+          "batchSize": 4,
+          "deckRevision": 1,
+          "items": [
+            {
+              "en": "school",
+              "fa": "مدرسه",
+              "examples": [
+                "I go to school.",
+                "She walks to school.",
+                "The school is near my house."
+              ]
+            },
+            {
+              "en": "classroom",
+              "fa": "کلاس درس",
+              "examples": [
+                "I sit in the classroom.",
+                "The classroom is big.",
+                "I walk to the classroom."
+              ]
+            },
+            {
+              "en": "teacher",
+              "fa": "معلم",
+              "examples": [
+                "The teacher reads a book.",
+                "My teacher writes a sentence.",
+                "The teacher is in the classroom."
+              ]
+            },
+            {
+              "en": "board",
+              "fa": "تخته",
+              "examples": [
+                "The teacher writes on the board.",
+                "The board is big.",
+                "The board is in the classroom."
+              ]
+            },
+            {
+              "en": "homework",
+              "fa": "تکلیف",
+              "examples": [
+                "I have homework.",
+                "My homework is in my bag.",
+                "I do my homework."
+              ]
+            },
+            {
+              "en": "read",
+              "fa": "خواندن",
+              "examples": [
+                "I read a book.",
+                "My sister reads a book.",
+                "Do you read a book?"
+              ]
+            },
+            {
+              "en": "write",
+              "fa": "نوشتن",
+              "examples": [
+                "I write a note.",
+                "My sister writes a note.",
+                "Do you write a note?"
+              ]
+            },
+            {
+              "en": "go",
+              "fa": "رفتن",
+              "examples": [
+                "I go to school.",
+                "My sister goes to school.",
+                "Do you go to school?"
+              ]
+            },
+            {
+              "en": "walk",
+              "fa": "پیاده رفتن",
+              "examples": [
+                "I walk to school.",
+                "My sister walks to school.",
+                "Do you walk to school?"
+              ]
+            },
+            {
+              "en": "sit",
+              "fa": "نشستن",
+              "examples": [
+                "I sit at a desk.",
+                "My sister sits at a desk.",
+                "Do you sit at a desk?"
+              ]
+            },
+            {
+              "en": "open",
+              "fa": "باز کردن",
+              "examples": [
+                "I open the book.",
+                "My sister opens the book.",
+                "Do you open the book?"
+              ]
+            },
+            {
+              "en": "close",
+              "fa": "بستن",
+              "examples": [
+                "I close the book.",
+                "My sister closes the book.",
+                "Do you close the book?"
+              ]
+            },
+            {
+              "en": "library",
+              "fa": "کتابخانه",
+              "role": "supplementary",
+              "examples": [
+                "The library is near the school."
+              ]
+            },
+            {
+              "en": "eraser",
+              "fa": "پاک‌کن",
+              "role": "supplementary",
+              "examples": [
+                "The eraser is on the desk."
+              ]
+            },
+            {
+              "en": "marker",
+              "fa": "ماژیک",
+              "role": "supplementary",
+              "examples": [
+                "The teacher has a marker."
+              ]
+            },
+            {
+              "en": "exam",
+              "fa": "امتحان",
+              "role": "supplementary",
+              "examples": [
+                "I have an exam."
+              ]
+            },
+            {
+              "en": "uniform",
+              "fa": "لباس فرم",
+              "role": "supplementary",
+              "examples": [
+                "The uniform is blue."
+              ]
+            },
+            {
+              "en": "playground",
+              "fa": "حیاط بازی",
+              "role": "supplementary",
+              "examples": [
+                "We walk to the playground."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-12-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "presentation": "deck",
+          "title": "عبارت‌های ترکیبی قابل مرور",
+          "description": "عبارت‌ها را بشنو و معنی واقعی هر ترکیب را در مثال‌های متفاوت بررسی کن.",
+          "items": [
+            {
+              "en": "read a book",
+              "fa": "کتاب خواندن",
+              "kind": "fixed",
+              "examples": [
+                "I read a book.",
+                "My sister reads a book.",
+                "Do you read a book at school?"
+              ]
+            },
+            {
+              "en": "write a sentence",
+              "fa": "نوشتن جمله",
+              "kind": "fixed",
+              "examples": [
+                "I write a sentence.",
+                "The teacher writes a sentence.",
+                "Does your brother write a sentence?"
+              ]
+            },
+            {
+              "en": "go to school",
+              "fa": "به مدرسه رفتن",
+              "kind": "fixed",
+              "examples": [
+                "I go to school.",
+                "He goes to school.",
+                "We don't go to school today."
+              ]
+            },
+            {
+              "en": "walk to school",
+              "fa": "پیاده به مدرسه رفتن",
+              "kind": "fixed",
+              "examples": [
+                "I walk to school.",
+                "She walks to school.",
+                "Do you walk to school?"
+              ]
+            },
+            {
+              "en": "at a desk",
+              "fa": "پشت میز",
+              "kind": "fixed",
+              "examples": [
+                "I sit at a desk.",
+                "My brother sits at a desk.",
+                "Does your sister sit at a desk?"
+              ]
+            },
+            {
+              "en": "in the classroom",
+              "fa": "در کلاس",
+              "kind": "fixed",
+              "examples": [
+                "I study in the classroom.",
+                "The teacher is in the classroom.",
+                "Do you study in the classroom?"
+              ]
+            },
+            {
+              "en": "open the book",
+              "fa": "کتاب را باز کردن",
+              "kind": "fixed",
+              "examples": [
+                "I open the book.",
+                "Do you open the book?",
+                "My father opens the book."
+              ]
+            },
+            {
+              "en": "close the book",
+              "fa": "کتاب را بستن",
+              "kind": "fixed",
+              "examples": [
+                "I close the book.",
+                "She closes the book.",
+                "Do you close the book?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-12-meaning",
+          "type": "meaning-cluster",
+          "phase": "phrases",
+          "title": "مفهوم‌های نزدیک، جمله‌های متفاوت",
+          "description": "تشخیص بده آیا جمله‌ها یک معنا دارند یا دربارهٔ کار و موقعیت متفاوتی حرف می‌زنند.",
+          "concepts": [
+            {
+              "id": "go-walk",
+              "fa": "راه‌رفتن روش خاصی از رفتن است.",
+              "forms": [
+                {
+                  "en": "I go to school.",
+                  "fa": "به مدرسه می‌روم.",
+                  "relation": "equivalent",
+                  "note": "فقط رفتن را بیان می‌کند."
+                },
+                {
+                  "en": "I walk to school.",
+                  "fa": "پیاده به مدرسه می‌روم.",
+                  "relation": "related",
+                  "note": "روش رفتن را مشخص می‌کند."
+                },
+                {
+                  "en": "Does your sister walk to school?",
+                  "fa": "آیا خواهرت پیاده می‌رود؟",
+                  "relation": "related",
+                  "note": "همان عمل را سؤال می‌کنیم."
+                }
+              ]
+            },
+            {
+              "id": "read-write",
+              "fa": "خواندن با نوشتن فرق دارد.",
+              "forms": [
+                {
+                  "en": "I read a book.",
+                  "fa": "کتاب می‌خوانم.",
+                  "relation": "equivalent",
+                  "note": "اطلاعات را می‌خوانی."
+                },
+                {
+                  "en": "I write a sentence.",
+                  "fa": "جمله می‌نویسم.",
+                  "relation": "related",
+                  "note": "یک عمل متفاوت است."
+                },
+                {
+                  "en": "My sister reads a book.",
+                  "fa": "خواهرم کتاب می‌خواند.",
+                  "relation": "related",
+                  "note": "فاعل و شکل فعل عوض شد."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-12-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "چه کسی چه کاری می‌کند؟",
+          "description": "I / You / He / She / It و ضمایر جمع را جداگانه جایگزین کن؛ فعل و شکل خبری/سؤالی همراه با فاعل تغییر می‌کنند. نمونه‌های خانوادگی را در تمرین بعد مستقل بساز.",
+          "targetLanguage": "en",
+          "grammar": "simple-present-actions",
+          "wordSets": {
+            "subjects": [
+              {
+                "id": "i",
+                "label": "I",
+                "translation": "من",
+                "forms": {
+                  "en": "I",
+                  "question": "I",
+                  "fa": "من"
+                },
+                "features": {
+                  "thirdPerson": false
+                }
+              },
+              {
+                "id": "you",
+                "label": "You",
+                "translation": "تو",
+                "forms": {
+                  "en": "You",
+                  "question": "you",
+                  "fa": "تو"
+                },
+                "features": {
+                  "thirdPerson": false
+                }
+              },
+              {
+                "id": "we",
+                "label": "We",
+                "translation": "ما",
+                "forms": {
+                  "en": "We",
+                  "question": "we",
+                  "fa": "ما"
+                },
+                "features": {
+                  "thirdPerson": false
+                }
+              },
+              {
+                "id": "they",
+                "label": "They",
+                "translation": "آن‌ها",
+                "forms": {
+                  "en": "They",
+                  "question": "they",
+                  "fa": "آن‌ها"
+                },
+                "features": {
+                  "thirdPerson": false
+                }
+              },
+              {
+                "id": "she",
+                "label": "She",
+                "translation": "او (مونث)",
+                "forms": {
+                  "en": "She",
+                  "question": "she",
+                  "fa": "او"
+                },
+                "features": {
+                  "thirdPerson": true
+                }
+              },
+              {
+                "id": "he",
+                "label": "He",
+                "translation": "او (مذکر)",
+                "forms": {
+                  "en": "He",
+                  "question": "he",
+                  "fa": "او"
+                },
+                "features": {
+                  "thirdPerson": true
+                }
+              },
+              {
+                "id": "it",
+                "label": "It",
+                "translation": "آن (حیوان/وسیله)",
+                "forms": {
+                  "en": "It",
+                  "question": "it",
+                  "fa": "آن"
+                },
+                "features": {
+                  "thirdPerson": true
+                }
+              }
+            ],
+            "verbs": [
+              {
+                "id": "read",
+                "label": "read",
+                "translation": "خواندن",
+                "forms": {
+                  "en": "read",
+                  "fa": "خواندن"
+                }
+              },
+              {
+                "id": "write",
+                "label": "write",
+                "translation": "نوشتن",
+                "forms": {
+                  "en": "write",
+                  "fa": "نوشتن"
+                }
+              },
+              {
+                "id": "study",
+                "label": "study",
+                "translation": "درس خواندن",
+                "forms": {
+                  "en": "study",
+                  "fa": "درس خواندن"
+                }
+              },
+              {
+                "id": "go",
+                "label": "go",
+                "translation": "رفتن",
+                "forms": {
+                  "en": "go",
+                  "fa": "رفتن"
+                }
+              },
+              {
+                "id": "walk",
+                "label": "walk",
+                "translation": "پیاده رفتن",
+                "forms": {
+                  "en": "walk",
+                  "fa": "پیاده رفتن"
+                }
+              },
+              {
+                "id": "sit",
+                "label": "sit",
+                "translation": "نشستن",
+                "forms": {
+                  "en": "sit",
+                  "fa": "نشستن"
+                }
+              },
+              {
+                "id": "open",
+                "label": "open",
+                "translation": "باز کردن",
+                "forms": {
+                  "en": "open",
+                  "fa": "باز کردن"
+                }
+              },
+              {
+                "id": "close",
+                "label": "close",
+                "translation": "بستن",
+                "forms": {
+                  "en": "close",
+                  "fa": "بستن"
+                }
+              }
+            ],
+            "objects": [
+              {
+                "id": "read-a-book",
+                "label": "a book",
+                "translation": "یک کتاب",
+                "forms": {
+                  "en": "a book"
+                },
+                "availableWhen": {
+                  "slot": "verb",
+                  "in": [
+                    "read"
+                  ]
+                }
+              },
+              {
+                "id": "read-a-story",
+                "label": "a story",
+                "translation": "یک داستان",
+                "forms": {
+                  "en": "a story"
+                },
+                "availableWhen": {
+                  "slot": "verb",
+                  "in": [
+                    "read"
+                  ]
+                }
+              },
+              {
+                "id": "write-a-note",
+                "label": "a note",
+                "translation": "یک یادداشت",
+                "forms": {
+                  "en": "a note"
+                },
+                "availableWhen": {
+                  "slot": "verb",
+                  "in": [
+                    "write"
+                  ]
+                }
+              },
+              {
+                "id": "write-a-sentence",
+                "label": "a sentence",
+                "translation": "یک جمله",
+                "forms": {
+                  "en": "a sentence"
+                },
+                "availableWhen": {
+                  "slot": "verb",
+                  "in": [
+                    "write"
+                  ]
+                }
+              },
+              {
+                "id": "study-English",
+                "label": "English",
+                "translation": "انگلیسی",
+                "forms": {
+                  "en": "English"
+                },
+                "availableWhen": {
+                  "slot": "verb",
+                  "in": [
+                    "study"
+                  ]
+                }
+              },
+              {
+                "id": "study-at-school",
+                "label": "at school",
+                "translation": "در مدرسه",
+                "forms": {
+                  "en": "at school"
+                },
+                "availableWhen": {
+                  "slot": "verb",
+                  "in": [
+                    "study"
+                  ]
+                }
+              },
+              {
+                "id": "go-to-school",
+                "label": "to school",
+                "translation": "به مدرسه",
+                "forms": {
+                  "en": "to school"
+                },
+                "availableWhen": {
+                  "slot": "verb",
+                  "in": [
+                    "go"
+                  ]
+                }
+              },
+              {
+                "id": "go-to-class",
+                "label": "to class",
+                "translation": "به کلاس",
+                "forms": {
+                  "en": "to class"
+                },
+                "availableWhen": {
+                  "slot": "verb",
+                  "in": [
+                    "go"
+                  ]
+                }
+              },
+              {
+                "id": "walk-to-school",
+                "label": "to school",
+                "translation": "به مدرسه",
+                "forms": {
+                  "en": "to school"
+                },
+                "availableWhen": {
+                  "slot": "verb",
+                  "in": [
+                    "walk"
+                  ]
+                }
+              },
+              {
+                "id": "walk-to-the-classroom",
+                "label": "to the classroom",
+                "translation": "به کلاس",
+                "forms": {
+                  "en": "to the classroom"
+                },
+                "availableWhen": {
+                  "slot": "verb",
+                  "in": [
+                    "walk"
+                  ]
+                }
+              },
+              {
+                "id": "sit-at-a-desk",
+                "label": "at a desk",
+                "translation": "پشت میز",
+                "forms": {
+                  "en": "at a desk"
+                },
+                "availableWhen": {
+                  "slot": "verb",
+                  "in": [
+                    "sit"
+                  ]
+                }
+              },
+              {
+                "id": "sit-in-the-classroom",
+                "label": "in the classroom",
+                "translation": "در کلاس",
+                "forms": {
+                  "en": "in the classroom"
+                },
+                "availableWhen": {
+                  "slot": "verb",
+                  "in": [
+                    "sit"
+                  ]
+                }
+              },
+              {
+                "id": "open-the-book",
+                "label": "the book",
+                "translation": "کتاب را",
+                "forms": {
+                  "en": "the book"
+                },
+                "availableWhen": {
+                  "slot": "verb",
+                  "in": [
+                    "open"
+                  ]
+                }
+              },
+              {
+                "id": "open-the-door",
+                "label": "the door",
+                "translation": "در را",
+                "forms": {
+                  "en": "the door"
+                },
+                "availableWhen": {
+                  "slot": "verb",
+                  "in": [
+                    "open"
+                  ]
+                }
+              },
+              {
+                "id": "close-the-book",
+                "label": "the book",
+                "translation": "کتاب را",
+                "forms": {
+                  "en": "the book"
+                },
+                "availableWhen": {
+                  "slot": "verb",
+                  "in": [
+                    "close"
+                  ]
+                }
+              },
+              {
+                "id": "close-the-door",
+                "label": "the door",
+                "translation": "در را",
+                "forms": {
+                  "en": "the door"
+                },
+                "availableWhen": {
+                  "slot": "verb",
+                  "in": [
+                    "close"
+                  ]
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "subject",
+              "label": "فاعل",
+              "wordSet": "subjects",
+              "default": "i"
+            },
+            {
+              "id": "verb",
+              "label": "فعل",
+              "wordSet": "verbs",
+              "default": "read"
+            },
+            {
+              "id": "object",
+              "label": "شیء یا مقصد",
+              "wordSet": "objects",
+              "default": "read-a-book"
+            }
+          ],
+          "defaultPattern": "statement",
+          "patterns": [
+            {
+              "id": "statement",
+              "label": "خبری",
+              "segments": [
+                {
+                  "slot": "subject",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "verb"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": []
+            },
+            {
+              "id": "negative",
+              "label": "منفی",
+              "segments": [
+                {
+                  "slot": "subject",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "derived": "not"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "verb",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": []
+            },
+            {
+              "id": "question",
+              "label": "سؤالی",
+              "segments": [
+                {
+                  "derived": "does"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "subject",
+                  "form": "question"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "verb",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "en"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": []
+            }
+          ],
+          "derivedDefaults": {
+            "verb": "read",
+            "object": "read-a-book",
+            "does": "Do",
+            "not": "don't"
+          },
+          "dependencies": [
+            {
+              "id": "action-read",
+              "when": {
+                "slot": "verb",
+                "equals": "read"
+              },
+              "set": {
+                "verb": "read",
+                "object": "read-a-book"
+              }
+            },
+            {
+              "id": "action-write",
+              "when": {
+                "slot": "verb",
+                "equals": "write"
+              },
+              "set": {
+                "verb": "write",
+                "object": "write-a-note"
+              }
+            },
+            {
+              "id": "action-study",
+              "when": {
+                "slot": "verb",
+                "equals": "study"
+              },
+              "set": {
+                "verb": "study",
+                "object": "study-English"
+              }
+            },
+            {
+              "id": "action-go",
+              "when": {
+                "slot": "verb",
+                "equals": "go"
+              },
+              "set": {
+                "verb": "go",
+                "object": "go-to-school"
+              }
+            },
+            {
+              "id": "action-walk",
+              "when": {
+                "slot": "verb",
+                "equals": "walk"
+              },
+              "set": {
+                "verb": "walk",
+                "object": "walk-to-school"
+              }
+            },
+            {
+              "id": "action-sit",
+              "when": {
+                "slot": "verb",
+                "equals": "sit"
+              },
+              "set": {
+                "verb": "sit",
+                "object": "sit-at-a-desk"
+              }
+            },
+            {
+              "id": "action-open",
+              "when": {
+                "slot": "verb",
+                "equals": "open"
+              },
+              "set": {
+                "verb": "open",
+                "object": "open-the-book"
+              }
+            },
+            {
+              "id": "action-close",
+              "when": {
+                "slot": "verb",
+                "equals": "close"
+              },
+              "set": {
+                "verb": "close",
+                "object": "close-the-book"
+              }
+            },
+            {
+              "id": "third-she",
+              "when": {
+                "slot": "subject",
+                "equals": "she"
+              },
+              "set": {
+                "does": "Does",
+                "not": "doesn't"
+              }
+            },
+            {
+              "id": "third-he",
+              "when": {
+                "slot": "subject",
+                "equals": "he"
+              },
+              "set": {
+                "does": "Does",
+                "not": "doesn't"
+              }
+            },
+            {
+              "id": "read-she",
+              "when": {
+                "all": [
+                  {
+                    "slot": "verb",
+                    "equals": "read"
+                  },
+                  {
+                    "slot": "subject",
+                    "equals": "she"
+                  }
+                ]
+              },
+              "set": {
+                "verb": "reads"
+              }
+            },
+            {
+              "id": "read-he",
+              "when": {
+                "all": [
+                  {
+                    "slot": "verb",
+                    "equals": "read"
+                  },
+                  {
+                    "slot": "subject",
+                    "equals": "he"
+                  }
+                ]
+              },
+              "set": {
+                "verb": "reads"
+              }
+            },
+            {
+              "id": "write-she",
+              "when": {
+                "all": [
+                  {
+                    "slot": "verb",
+                    "equals": "write"
+                  },
+                  {
+                    "slot": "subject",
+                    "equals": "she"
+                  }
+                ]
+              },
+              "set": {
+                "verb": "writes"
+              }
+            },
+            {
+              "id": "write-he",
+              "when": {
+                "all": [
+                  {
+                    "slot": "verb",
+                    "equals": "write"
+                  },
+                  {
+                    "slot": "subject",
+                    "equals": "he"
+                  }
+                ]
+              },
+              "set": {
+                "verb": "writes"
+              }
+            },
+            {
+              "id": "study-she",
+              "when": {
+                "all": [
+                  {
+                    "slot": "verb",
+                    "equals": "study"
+                  },
+                  {
+                    "slot": "subject",
+                    "equals": "she"
+                  }
+                ]
+              },
+              "set": {
+                "verb": "studies"
+              }
+            },
+            {
+              "id": "study-he",
+              "when": {
+                "all": [
+                  {
+                    "slot": "verb",
+                    "equals": "study"
+                  },
+                  {
+                    "slot": "subject",
+                    "equals": "he"
+                  }
+                ]
+              },
+              "set": {
+                "verb": "studies"
+              }
+            },
+            {
+              "id": "go-she",
+              "when": {
+                "all": [
+                  {
+                    "slot": "verb",
+                    "equals": "go"
+                  },
+                  {
+                    "slot": "subject",
+                    "equals": "she"
+                  }
+                ]
+              },
+              "set": {
+                "verb": "goes"
+              }
+            },
+            {
+              "id": "go-he",
+              "when": {
+                "all": [
+                  {
+                    "slot": "verb",
+                    "equals": "go"
+                  },
+                  {
+                    "slot": "subject",
+                    "equals": "he"
+                  }
+                ]
+              },
+              "set": {
+                "verb": "goes"
+              }
+            },
+            {
+              "id": "walk-she",
+              "when": {
+                "all": [
+                  {
+                    "slot": "verb",
+                    "equals": "walk"
+                  },
+                  {
+                    "slot": "subject",
+                    "equals": "she"
+                  }
+                ]
+              },
+              "set": {
+                "verb": "walks"
+              }
+            },
+            {
+              "id": "walk-he",
+              "when": {
+                "all": [
+                  {
+                    "slot": "verb",
+                    "equals": "walk"
+                  },
+                  {
+                    "slot": "subject",
+                    "equals": "he"
+                  }
+                ]
+              },
+              "set": {
+                "verb": "walks"
+              }
+            },
+            {
+              "id": "sit-she",
+              "when": {
+                "all": [
+                  {
+                    "slot": "verb",
+                    "equals": "sit"
+                  },
+                  {
+                    "slot": "subject",
+                    "equals": "she"
+                  }
+                ]
+              },
+              "set": {
+                "verb": "sits"
+              }
+            },
+            {
+              "id": "sit-he",
+              "when": {
+                "all": [
+                  {
+                    "slot": "verb",
+                    "equals": "sit"
+                  },
+                  {
+                    "slot": "subject",
+                    "equals": "he"
+                  }
+                ]
+              },
+              "set": {
+                "verb": "sits"
+              }
+            },
+            {
+              "id": "open-she",
+              "when": {
+                "all": [
+                  {
+                    "slot": "verb",
+                    "equals": "open"
+                  },
+                  {
+                    "slot": "subject",
+                    "equals": "she"
+                  }
+                ]
+              },
+              "set": {
+                "verb": "opens"
+              }
+            },
+            {
+              "id": "open-he",
+              "when": {
+                "all": [
+                  {
+                    "slot": "verb",
+                    "equals": "open"
+                  },
+                  {
+                    "slot": "subject",
+                    "equals": "he"
+                  }
+                ]
+              },
+              "set": {
+                "verb": "opens"
+              }
+            },
+            {
+              "id": "close-she",
+              "when": {
+                "all": [
+                  {
+                    "slot": "verb",
+                    "equals": "close"
+                  },
+                  {
+                    "slot": "subject",
+                    "equals": "she"
+                  }
+                ]
+              },
+              "set": {
+                "verb": "closes"
+              }
+            },
+            {
+              "id": "close-he",
+              "when": {
+                "all": [
+                  {
+                    "slot": "verb",
+                    "equals": "close"
+                  },
+                  {
+                    "slot": "subject",
+                    "equals": "he"
+                  }
+                ]
+              },
+              "set": {
+                "verb": "closes"
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-12-forms",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "همان جمله، چند حالت مختلف",
+          "description": "فاعل، معنی و حالت خبری/منفی/سؤالی را جابه‌جا کن.",
+          "sourceActivityId": "a1-12-composer",
+          "patternIds": [
+            "statement",
+            "negative",
+            "question"
+          ]
+        },
+        {
+          "id": "a1-12-action-lab",
+          "type": "daily-choice-lab",
+          "phase": "variants",
+          "title": "فاعل، فعل و شیء را معنا‌دار تغییر بده",
+          "description": "اول تمام ضمایر مفرد را در جملهٔ اصلی تمرین کن. بعد در جملهٔ جداگانه صاحب نسبت (my / your / his / her) و عضو خانواده را عوض کن؛ فعل‌های کلاس و سه حالت جمله در هر دو به‌روز می‌شوند.",
+          "mode": "school",
+          "options": [
+            {
+              "en": "read",
+              "third": "reads",
+              "fa": "خواندن",
+              "emoji": "📖",
+              "objects": [
+                {
+                  "en": "a book",
+                  "fa": "یک کتاب",
+                  "emoji": "📖"
+                },
+                {
+                  "en": "a story",
+                  "fa": "یک داستان",
+                  "emoji": "📗"
+                }
+              ]
+            },
+            {
+              "en": "write",
+              "third": "writes",
+              "fa": "نوشتن",
+              "emoji": "✍️",
+              "objects": [
+                {
+                  "en": "a note",
+                  "fa": "یک یادداشت",
+                  "emoji": "📝"
+                },
+                {
+                  "en": "a sentence",
+                  "fa": "یک جمله",
+                  "emoji": "✏️"
+                }
+              ]
+            },
+            {
+              "en": "study",
+              "third": "studies",
+              "fa": "درس خواندن",
+              "emoji": "📚",
+              "objects": [
+                {
+                  "en": "English",
+                  "fa": "انگلیسی",
+                  "emoji": "📘"
+                },
+                {
+                  "en": "at school",
+                  "fa": "در مدرسه",
+                  "emoji": "🏫"
+                }
+              ]
+            },
+            {
+              "en": "go",
+              "third": "goes",
+              "fa": "رفتن",
+              "emoji": "🏫",
+              "objects": [
+                {
+                  "en": "to school",
+                  "fa": "به مدرسه",
+                  "emoji": "🏫"
+                },
+                {
+                  "en": "to class",
+                  "fa": "به کلاس",
+                  "emoji": "🚪"
+                }
+              ]
+            },
+            {
+              "en": "walk",
+              "third": "walks",
+              "fa": "پیاده رفتن",
+              "emoji": "🚶",
+              "objects": [
+                {
+                  "en": "to school",
+                  "fa": "به مدرسه",
+                  "emoji": "🚶"
+                },
+                {
+                  "en": "to the classroom",
+                  "fa": "به کلاس",
+                  "emoji": "🚪"
+                }
+              ]
+            },
+            {
+              "en": "sit",
+              "third": "sits",
+              "fa": "نشستن",
+              "emoji": "🪑",
+              "objects": [
+                {
+                  "en": "at a desk",
+                  "fa": "پشت میز",
+                  "emoji": "🪑"
+                },
+                {
+                  "en": "in the classroom",
+                  "fa": "در کلاس",
+                  "emoji": "🏫"
+                }
+              ]
+            },
+            {
+              "en": "open",
+              "third": "opens",
+              "fa": "باز کردن",
+              "emoji": "📖",
+              "objects": [
+                {
+                  "en": "the book",
+                  "fa": "کتاب را",
+                  "emoji": "📖"
+                },
+                {
+                  "en": "the door",
+                  "fa": "در را",
+                  "emoji": "🚪"
+                }
+              ]
+            },
+            {
+              "en": "close",
+              "third": "closes",
+              "fa": "بستن",
+              "emoji": "📕",
+              "objects": [
+                {
+                  "en": "the book",
+                  "fa": "کتاب را",
+                  "emoji": "📕"
+                },
+                {
+                  "en": "the door",
+                  "fa": "در را",
+                  "emoji": "🚪"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-12-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "از یک بانک مشترک پنج جمله بساز",
+          "description": "درست‌بودن معنی و دستور مهم‌تر از حدس ترتیب است.",
+          "revision": 1,
+          "reuseBank": true,
+          "goalCount": 5,
+          "sentences": [
+            {
+              "id": "sentence-1",
+              "words": [
+                "I",
+                "read",
+                "a",
+                "book."
+              ]
+            },
+            {
+              "id": "sentence-2",
+              "words": [
+                "My",
+                "sister",
+                "writes",
+                "a",
+                "sentence."
+              ]
+            },
+            {
+              "id": "sentence-3",
+              "words": [
+                "Do",
+                "you",
+                "walk",
+                "to",
+                "school?"
+              ]
+            },
+            {
+              "id": "sentence-4",
+              "words": [
+                "He",
+                "does",
+                "not",
+                "read",
+                "a",
+                "book."
+              ]
+            },
+            {
+              "id": "sentence-5",
+              "words": [
+                "The",
+                "teacher",
+                "writes",
+                "on",
+                "the",
+                "board."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-12-build",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "این بار بدون پاسخ آماده بساز",
+          "practiceRevision": 1,
+          "description": "از معنی فارسی جمله بساز و بعد نمونه را مقایسه کن.",
+          "tasks": [
+            {
+              "task": "بگو من کتاب می‌خوانم.",
+              "hint": "I read a book.",
+              "example": "I read a book.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i read a book"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            },
+            {
+              "task": "بگو خواهرم یک جمله می‌نویسد.",
+              "hint": "My sister writes a sentence.",
+              "example": "My sister writes a sentence.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my sister writes a sentence"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            },
+            {
+              "task": "بگو من پیاده به مدرسه می‌روم.",
+              "hint": "I walk to school.",
+              "example": "I walk to school.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i walk to school"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            },
+            {
+              "task": "بگو پدرم کتاب را باز می‌کند.",
+              "hint": "My father opens the book.",
+              "example": "My father opens the book.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my father opens the book"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            },
+            {
+              "task": "بگو خواهرم کتاب نمی‌خواند.",
+              "hint": "My sister doesn't read a book.",
+              "example": "My sister doesn't read a book.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my sister doesn't read a book"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            },
+            {
+              "task": "بپرس آیا برادرت به مدرسه می‌رود؟",
+              "hint": "Does your brother go to school?",
+              "example": "Does your brother go to school?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "does your brother go to school"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            },
+            {
+              "task": "بگو من تکلیف مدرسه دارم.",
+              "hint": "I have homework.",
+              "example": "I have homework.",
+              "assessment": {
+                "required": [
+                  "have",
+                  "homework"
+                ],
+                "success": "این واژه را در یک جملهٔ واقعی به کار بردی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "کاربرد در موقعیت",
+      "intro": "پرسش و پاسخ، گفت‌وگو و جمله‌سازی آزاد بر اساس موقعیت.",
+      "masteryActivityIds": [
+        "a1-12-guided",
+        "a1-12-independent"
+      ],
+      "activities": [
+        {
+          "id": "a1-12-exchange",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "پرسش‌های موقعیتی با چهار پاسخ معنی‌دار",
+          "description": "هر پاسخ یک موقعیت متفاوت را روشن می‌کند؛ بعد خودت بدون دیدن پاسخ آماده جمله بساز.",
+          "pairs": [
+            {
+              "question": "What do you read at school?",
+              "questionFa": "در مدرسه چه می‌خوانی؟",
+              "variants": [
+                {
+                  "label": "کتاب",
+                  "en": "I read a book.",
+                  "fa": "کتاب می‌خوانم."
+                },
+                {
+                  "label": "داستان",
+                  "en": "I read a story.",
+                  "fa": "داستان می‌خوانم."
+                },
+                {
+                  "label": "درس",
+                  "en": "I study English.",
+                  "fa": "انگلیسی می‌خوانم."
+                },
+                {
+                  "label": "معلم",
+                  "en": "My teacher reads a book.",
+                  "fa": "معلمم کتاب می‌خواند."
+                }
+              ]
+            },
+            {
+              "question": "Do you walk to school?",
+              "questionFa": "پیاده به مدرسه می‌روی؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, I walk to school.",
+                  "fa": "بله، پیاده می‌روم."
+                },
+                {
+                  "label": "نه",
+                  "en": "No, I don't walk to school.",
+                  "fa": "نه، پیاده نمی‌روم."
+                },
+                {
+                  "label": "خواهرم",
+                  "en": "My sister walks to school.",
+                  "fa": "خواهرم پیاده می‌رود."
+                },
+                {
+                  "label": "می‌روم",
+                  "en": "I go to school every day.",
+                  "fa": "هر روز به مدرسه می‌روم."
+                }
+              ]
+            },
+            {
+              "question": "Does your sister write a sentence?",
+              "questionFa": "خواهرت یک جمله می‌نویسد؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, she writes a sentence.",
+                  "fa": "بله، یک جمله می‌نویسد."
+                },
+                {
+                  "label": "نه",
+                  "en": "No, she doesn't write a sentence.",
+                  "fa": "نه، جمله نمی‌نویسد."
+                },
+                {
+                  "label": "می‌خواند",
+                  "en": "No, she reads a book.",
+                  "fa": "نه، کتاب می‌خواند."
+                },
+                {
+                  "label": "من",
+                  "en": "I write a sentence.",
+                  "fa": "من یک جمله می‌نویسم."
+                }
+              ]
+            },
+            {
+              "question": "Where is your book?",
+              "questionFa": "کتابت کجاست؟",
+              "variants": [
+                {
+                  "label": "روی میز",
+                  "en": "My book is on the desk.",
+                  "fa": "کتابم روی میز است."
+                },
+                {
+                  "label": "در کیف",
+                  "en": "My book is in my bag.",
+                  "fa": "کتابم در کیف است."
+                },
+                {
+                  "label": "پدر",
+                  "en": "My father has my book.",
+                  "fa": "پدرم کتابم را دارد."
+                },
+                {
+                  "label": "خواهر",
+                  "en": "My sister reads my book.",
+                  "fa": "خواهرم کتاب مرا می‌خواند."
+                }
+              ]
+            },
+            {
+              "question": "What does the teacher do?",
+              "questionFa": "معلم چه کاری می‌کند؟",
+              "variants": [
+                {
+                  "label": "می‌نویسد",
+                  "en": "The teacher writes on the board.",
+                  "fa": "روی تخته می‌نویسد."
+                },
+                {
+                  "label": "می‌خواند",
+                  "en": "The teacher reads a book.",
+                  "fa": "کتاب می‌خواند."
+                },
+                {
+                  "label": "در را باز می‌کند",
+                  "en": "The teacher opens the door.",
+                  "fa": "در را باز می‌کند."
+                },
+                {
+                  "label": "کتاب را می‌بندد",
+                  "en": "The teacher closes the book.",
+                  "fa": "کتاب را می‌بندد."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-12-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "گفت‌وگوی کوتاه در موقعیت واقعی",
+          "description": "نقش دو نفر را عوض کن؛ اول بشنو و بعد با صدای خودت پاسخ بده.",
+          "lines": [
+            {
+              "speaker": "Teacher",
+              "en": "Good morning! Open your books, please.",
+              "fa": "صبح بخیر! لطفاً کتاب‌ها را باز کنید."
+            },
+            {
+              "speaker": "Sara",
+              "en": "Good morning! I have my book.",
+              "fa": "صبح بخیر! کتابم را دارم."
+            },
+            {
+              "speaker": "Teacher",
+              "en": "Do you read English?",
+              "fa": "انگلیسی می‌خوانی؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "Yes, I read English at school.",
+              "fa": "بله، در مدرسه انگلیسی می‌خوانم."
+            },
+            {
+              "speaker": "Teacher",
+              "en": "Does your brother walk to school?",
+              "fa": "برادرت پیاده به مدرسه می‌رود؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "No, he does not walk to school.",
+              "fa": "نه، پیاده به مدرسه نمی‌رود."
+            },
+            {
+              "speaker": "Teacher",
+              "en": "Please write a sentence on the board.",
+              "fa": "لطفاً یک جمله روی تخته بنویس."
+            },
+            {
+              "speaker": "Sara",
+              "en": "Yes. I write a sentence.",
+              "fa": "بله، یک جمله می‌نویسم."
+            }
+          ]
+        },
+        {
+          "id": "a1-12-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "title": "از تصویر به جمله برس",
+          "description": "عدد یا عمل درست را از تصویر بفهم و بعد خودت توصیف کن.",
+          "image": "./assets/scene-a1-12-school.svg",
+          "imageAlt": "کلاس درس با میز، تخته، کتاب باز و دو دانش‌آموز",
+          "caption": "جزئیات تصویر مبنای جمله‌اند؛ صرفاً کلمات را تصادفی تغییر نده.",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "بگو یک کتاب روی میز است.",
+              "hint": "There is a book on the desk.",
+              "example": "There is a book on the desk.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there is a book on the desk"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            },
+            {
+              "task": "بگو معلم روی تخته می‌نویسد.",
+              "hint": "The teacher writes on the board.",
+              "example": "The teacher writes on the board.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the teacher writes on the board"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            },
+            {
+              "task": "بگو من در کلاس کتاب می‌خوانم.",
+              "hint": "I read a book in the classroom.",
+              "example": "I read a book in the classroom.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i read a book in the classroom"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-12-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "title": "وقتی موقعیت عوض می‌شود جواب هم عوض می‌شود",
+          "description": "پاسخ را متناسب با حرف نفر اول بساز.",
+          "practiceRevision": 1,
+          "turns": [
+            {
+              "speaker": "معلم",
+              "incoming": "Do you read books?",
+              "task": "بگو بله، کتاب می‌خوانم.",
+              "hint": "Yes, I read books.",
+              "example": "Yes, I read books.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "yes, i read books"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            },
+            {
+              "speaker": "دوست",
+              "incoming": "Does your sister walk to school?",
+              "task": "بگو بله، خواهرم پیاده به مدرسه می‌رود.",
+              "hint": "Yes, my sister walks to school.",
+              "example": "Yes, my sister walks to school.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "yes, my sister walks to school"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            },
+            {
+              "speaker": "معلم",
+              "incoming": "What does your brother do?",
+              "task": "بگو برادرم انگلیسی می‌خواند.",
+              "hint": "My brother studies English.",
+              "example": "My brother studies English.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my brother studies english"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            },
+            {
+              "speaker": "معلم",
+              "incoming": "Do you write on the board?",
+              "task": "بگو نه، در دفتر جمله می‌نویسم.",
+              "hint": "No, I write a sentence in my notebook.",
+              "example": "No, I write a sentence in my notebook.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "no, i write a sentence in my notebook"
+                    ],
+                    "feedback": "فاعل، فعل و ترتیب جمله را بررسی کن."
+                  }
+                ],
+                "success": "این جمله را درست ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-12-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "به زبان خودت بساز",
+          "prompt": "فعالیت یک روز مدرسهٔ خیالی را توصیف کن: چه کسی می‌خواند، می‌نویسد و می‌رود؛ یک سؤال واقعی با Do/Does بپرس.",
+          "placeholder": "I go to school.\nI read a book.\nMy sister writes a sentence.\nDo you walk to school?",
+          "hint": "جواب‌ها می‌توانند دربارهٔ شخصیت و اشیای فرضی باشند.",
+          "kind": "free-text",
+          "minWords": 16,
+          "assessment": {
+            "revision": 2,
+            "required": [
+              {
+                "any": [
+                  "read"
+                ],
+                "patterns": [
+                  "\\bread(?:s)?\\b"
+                ],
+                "feedback": "عبارت read را در یک جملهٔ کامل به کار ببر."
+              },
+              {
+                "any": [
+                  "write"
+                ],
+                "patterns": [
+                  "\\bwrit(?:e|es)\\b"
+                ],
+                "feedback": "عبارت write را در یک جملهٔ کامل به کار ببر."
+              },
+              {
+                "any": [
+                  "school"
+                ],
+                "feedback": "عبارت school را در یک جملهٔ کامل به کار ببر."
+              }
+            ],
+            "success": "ساختار آموخته‌شده را در متن خودت به کار بردی.",
+            "productionProof": {
+              "minWords": 8,
+              "minClauses": 2
+            }
+          },
+          "realWorldMission": {
+            "cue": "وقتی سر میز مطالعه یا در کلاس هستی",
+            "reflection": "هنگام دیدن کتاب و قلم، عمل جاری خودت یا یکی دیگر را در ذهنت توصیف کن."
+          }
+        },
+        {
+          "id": "a1-12-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "دوباره گوش بده و شدوینگ کن",
+          "sourceActivityId": "a1-12-shadowing"
+        }
+      ]
+    }
+  ]
+}

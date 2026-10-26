@@ -73,3 +73,9 @@ for (const [number, sample] of [
     assert.ok(evaluateResponse(activity.assessment, sample).ok);
   });
 }
+
+test('independent production rejects unordered keyword fragments', () => {
+  const lesson = JSON.parse(readFileSync(join(root, 'content/language-pairs/fa-en/lessons/a1-8-v4.json'), 'utf8'));
+  const task = lesson.sections[1].activities.find(activity => activity.type === 'free-write');
+  assert.equal(evaluateResponse(task.assessment, 'i have there are').ok, false);
+});

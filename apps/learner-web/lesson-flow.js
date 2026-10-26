@@ -28,7 +28,7 @@ const TYPE_FOR_PHASE = {
   words: ['vocabulary'],
   phrases: ['meaning-cluster', 'question-explorer', 'daily-choice-lab', 'expression-study', 'composer-view', 'sentence-composer', 'response-practice', 'family-tree', 'family-lab', 'spatial-lab', 'spatial-compare-lab', 'count-visual', 'plural-pair-lab', 'count-math-lab', 'tap-attributes-lab', 'count-scene-lab', 'feature-hunt', 'cumulative-scene-lab', 'cumulative-visual-quest', 'cumulative-number-lab'],
   sentence: ['sentence-composer'],
-  variants: ['daily-choice-lab', 'cumulative-number-lab', 'place-value-lab', 'quiz-set', 'composer-view', 'sentence-transform', 'meaning-cluster', 'plural-pair-lab', 'sentence-composer', 'tap-attributes-lab', 'tap-ownership-lab', 'count-scene-lab', 'feature-hunt', 'cumulative-scene-lab', 'cumulative-visual-quest'],
+  variants: ['daily-choice-lab', 'cumulative-number-lab', 'place-value-lab', 'antonym-pair-lab', 'quiz-set', 'composer-view', 'sentence-transform', 'meaning-cluster', 'plural-pair-lab', 'sentence-composer', 'tap-attributes-lab', 'tap-ownership-lab', 'count-scene-lab', 'feature-hunt', 'cumulative-scene-lab', 'cumulative-visual-quest'],
   puzzle: ['sentence-builder'],
   construction: ['response-practice'],
   correspondence: ['exchange-lab', 'daily-choice-lab', 'response-practice'],

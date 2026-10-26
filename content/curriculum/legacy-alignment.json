@@ -165,5 +165,389 @@
       "A1-5": "lessons/a1-5-v3.json",
       "A1-6": "lessons/a1-6-v4.json"
     }
+  },
+  "homeSchoolFeelings": {
+    "revision": "2026-10-26-owner-home-school-feelings-realworld",
+    "progressRevision": "a1-owner-home-school-feelings-2026-10-26",
+    "preserveProgress": true,
+    "archiveNamespace": "oct-2026-before-home-school-feelings",
+    "remap": {
+      "A1-10": "A1-12",
+      "A1-11": "A1-10",
+      "A1-12": "A1-11"
+    },
+    "oldVersions": {
+      "A1-1": {
+        "sourceId": "A1-1",
+        "sourceFile": "lessons/a1-1-v2.json",
+        "sourceGitBlobSha": "f49638179929514e365b998c9df18f48edb24b47"
+      },
+      "A1-2": {
+        "sourceId": "A1-2",
+        "sourceFile": "lessons/a1-2-v2.json",
+        "sourceGitBlobSha": "4e8b5fb5fdba0f659922c46fbb0ae270a8d30690"
+      },
+      "A1-3": {
+        "sourceId": "A1-3",
+        "sourceFile": "lessons/a1-3-v4.json",
+        "sourceGitBlobSha": "638d870a25cc9b8ce64eb8acce78b7508d4fd367"
+      },
+      "A1-4": {
+        "sourceId": "A1-4",
+        "sourceFile": "lessons/a1-4-v4.json",
+        "sourceGitBlobSha": "18f260e3a3946ae425b7bc3781f923781d57238f"
+      },
+      "A1-5": {
+        "sourceId": "A1-5",
+        "sourceFile": "lessons/a1-5-v3.json",
+        "sourceGitBlobSha": "ed800aa3151956ff4155992cc4e2b5ac2616911f"
+      },
+      "A1-6": {
+        "sourceId": "A1-6",
+        "sourceFile": "lessons/a1-6-v4.json",
+        "sourceGitBlobSha": "d64eae611c02df18e13b77ed5a26a6b359891e87"
+      },
+      "A1-7": {
+        "sourceId": "A1-7",
+        "sourceFile": "lessons/a1-7-v2.json",
+        "sourceGitBlobSha": "1c00ef8b800d91f16d5089d1cb9dec6b0672edc4"
+      },
+      "A1-8": {
+        "sourceId": "A1-8",
+        "sourceFile": "lessons/a1-8-v3.json",
+        "sourceGitBlobSha": "a8496a9e6297319e07e215769f173085a733c1ba"
+      },
+      "A1-9": {
+        "sourceId": "A1-9",
+        "sourceFile": "lessons/a1-9-v3.json",
+        "sourceGitBlobSha": "3b516132a96f200276c341c13797d4236babb310"
+      },
+      "A1-10": {
+        "sourceId": "A1-11",
+        "sourceFile": "lessons/a1-11-v2.json",
+        "sourceGitBlobSha": "651555aec10c4f770649d50e7187d505a4f23d1e"
+      },
+      "A1-11": {
+        "sourceId": "A1-12",
+        "sourceFile": "lessons/a1-12-v2.json",
+        "sourceGitBlobSha": "9592675e745273384311a4ba5c7a4e840abea207"
+      },
+      "A1-12": {
+        "sourceId": "A1-10",
+        "sourceFile": "lessons/a1-10-v3.json",
+        "sourceGitBlobSha": "cfca1dcdce38e22e2de16ea71ee026bf2c28470b"
+      },
+      "A1-13": {
+        "sourceId": "A1-13",
+        "sourceFile": "lessons/a1-13-v1.json",
+        "sourceGitBlobSha": "6b7ea2c70b7e590e1d93f4e78790e51003bcf3c0"
+      },
+      "A1-14": {
+        "sourceId": "A1-14",
+        "sourceFile": "lessons/a1-14-v1.json",
+        "sourceGitBlobSha": "b8a82187ac5ca3407e0fca6acb1aebfd57801a95"
+      }
+    },
+    "replacement": {
+      "A1-1": "lessons/a1-1-v3.json",
+      "A1-2": "lessons/a1-2-v3.json",
+      "A1-3": "lessons/a1-3-v5.json",
+      "A1-4": "lessons/a1-4-v5.json",
+      "A1-5": "lessons/a1-5-v4.json",
+      "A1-6": "lessons/a1-6-v5.json",
+      "A1-7": "lessons/a1-7-v3.json",
+      "A1-8": "lessons/a1-8-v4.json",
+      "A1-9": "lessons/a1-9-v4.json",
+      "A1-10": "lessons/a1-10-v4.json",
+      "A1-11": "lessons/a1-11-v3.json",
+      "A1-12": "lessons/a1-12-v3.json",
+      "A1-13": "lessons/a1-13-v2.json",
+      "A1-14": "lessons/a1-14-v2.json"
+    }
+  },
+  "stage2PracticalSequence": {
+    "revision": "2026-10-27-owner-a1-stage2-practical-sequence",
+    "preserveProgress": true,
+    "statusBefore": "planned",
+    "statusAfter": "sample",
+    "oldRows": [
+      {
+        "id": "A1-15",
+        "level": "A1",
+        "order": 15,
+        "title": "معرفی اعضای بدن و پوشاک",
+        "axis": "موضوع/مأموریت‌محور",
+        "communicativeOutcome": "اعضای بدن را نام می‌برد؛ لباس‌ها را نام می‌برد و توصیف ساده می‌کند؛ می‌گوید چه می‌پوشد.",
+        "prerequisiteBridge": "A1-5، A1-6",
+        "prerequisiteIds": [
+          "A1-5",
+          "A1-6"
+        ],
+        "globalConcept": "نام، جمع و پوشیدن",
+        "scopeBoundary": "بدن و پوشاک مرتبط؛ اگر بار زیاد شد بخش‌بندی با حفظ هدف، نه حذف بی‌ثبت.",
+        "archetypes": [
+          "K2"
+        ]
+      },
+      {
+        "id": "A1-16",
+        "level": "A1",
+        "order": 16,
+        "title": "بیان علائم بیماری و درخواست کمک",
+        "axis": "تلفیقی",
+        "communicativeOutcome": "درد و نشانه‌هایش را می‌گوید؛ در موقعیت بحرانی کمک می‌خواهد؛ با محترمانه‌خواهی با پزشک/داروخانه حرف می‌زند.",
+        "prerequisiteBridge": "A1-12، A1-15",
+        "prerequisiteIds": [
+          "A1-12",
+          "A1-15"
+        ],
+        "globalConcept": "علامت و درخواست کمک محدود",
+        "scopeBoundary": "بیان درد و کمک؛ نصیحت و الزام پیچیده به A2؛ قالب مؤدبانه می‌تواند محدود باشد.",
+        "archetypes": [
+          "K5",
+          "K4"
+        ]
+      },
+      {
+        "id": "A1-17",
+        "level": "A1",
+        "order": 17,
+        "title": "خرید ساده و پرسیدن قیمت",
+        "axis": "تلفیقی",
+        "communicativeOutcome": "قیمت می‌پرسد؛ یک خرید ساده را انجام می‌دهد؛ اندازه می‌پرسد؛ انتخاب می‌کند و تشکر می‌کند.",
+        "prerequisiteBridge": "A1-5، A1-13، A1-15",
+        "prerequisiteIds": [
+          "A1-5",
+          "A1-13",
+          "A1-15"
+        ],
+        "globalConcept": "قیمت، اندازه و انتخاب",
+        "scopeBoundary": "خرید ساده؛ پل عدد/قیمت کافی لازم است؛ تعویض و شکایت به A2.",
+        "archetypes": [
+          "K5",
+          "K4"
+        ]
+      },
+      {
+        "id": "A1-18",
+        "level": "A1",
+        "order": 18,
+        "title": "شناخت مکان‌های شهر",
+        "axis": "موضوع/مأموریت‌محور",
+        "communicativeOutcome": "مکان‌های شهر را نام می‌برد؛ می‌پرسد نزدیکِ این‌جا چه هست و جواب می‌دهد.",
+        "prerequisiteBridge": "A1-3، A1-10",
+        "prerequisiteIds": [
+          "A1-3",
+          "A1-10"
+        ],
+        "globalConcept": "وجود و نزدیکی",
+        "scopeBoundary": "شناخت مکان‌های شهر پیش از مسیر؛ فهرست نام بدون رابطه کافی نیست.",
+        "archetypes": [
+          "K2"
+        ]
+      },
+      {
+        "id": "A1-19",
+        "level": "A1",
+        "order": 19,
+        "title": "مشاغل و محل کار",
+        "axis": "موضوع/مأموریت‌محور",
+        "communicativeOutcome": "محل کار آدم‌ها را می‌گوید؛ دکان‌ها و مشاغل را نام می‌برد و به هم وصل می‌کند («اینجا نانوا کار می‌کند»).",
+        "prerequisiteBridge": "A1-9، A1-18",
+        "prerequisiteIds": [
+          "A1-9",
+          "A1-18"
+        ],
+        "globalConcept": "شغل و محل فعالیت",
+        "scopeBoundary": "رابطهٔ شغل و محل؛ سابقه و مصاحبه هدف نیست.",
+        "archetypes": [
+          "K2"
+        ]
+      },
+      {
+        "id": "A1-20",
+        "level": "A1",
+        "order": 20,
+        "title": "پرسیدن و توضیح مسیر",
+        "axis": "تلفیقی",
+        "communicativeOutcome": "مسیر کوتاه را می‌پرسد و مرحله‌به‌مرحله توضیح می‌دهد؛ راهنمای شفاهی تازه را دنبال می‌کند و مسیر یا مقصد را روی نقشه نشان می‌دهد.",
+        "prerequisiteBridge": "A1-3، A1-18؛ پل دستور محدود",
+        "prerequisiteIds": [
+          "A1-3",
+          "A1-18"
+        ],
+        "globalConcept": "جهت، حرکت و توالی کوتاه",
+        "scopeBoundary": "مسیر قابل اجرا؛ فرق مکان ثابت و مقصد روشن، نه تمام قواعد جهت.",
+        "archetypes": [
+          "K6",
+          "K3"
+        ]
+      },
+      {
+        "id": "A1-21",
+        "level": "A1",
+        "order": 21,
+        "title": "مبلغ، پرداخت و رسید",
+        "axis": "ساختار/مفهوم‌محور",
+        "communicativeOutcome": "قیمت را می‌خواند و می‌گوید؛ مبلغ‌ها را بیان می‌کند؛ پرداخت را انجام می‌دهد و رسید می‌فهمد.",
+        "prerequisiteBridge": "A1-5، A1-17",
+        "prerequisiteIds": [
+          "A1-5",
+          "A1-17"
+        ],
+        "globalConcept": "مبلغ، مقدار و عمل پرداخت",
+        "scopeBoundary": "عددهای پولی و رسید؛ بازاستفاده از خرید با تمرکز روی پرداخت.",
+        "archetypes": [
+          "K5",
+          "K3"
+        ]
+      },
+      {
+        "id": "A1-22",
+        "level": "A1",
+        "order": 22,
+        "title": "مقایسه ساده مقدار و ویژگی",
+        "axis": "ساختار/مفهوم‌محور",
+        "communicativeOutcome": "کمی/زیادی را بیان می‌کند؛ دو چیز را ساده مقایسه می‌کند؛ اولین نظر ساده‌اش را می‌گوید («به نظرم...»).",
+        "prerequisiteBridge": "A1-6، A1-21",
+        "prerequisiteIds": [
+          "A1-6",
+          "A1-21"
+        ],
+        "globalConcept": "مقدار و مقایسهٔ محدود",
+        "scopeBoundary": "انتخاب ساده با کم/زیاد یا ویژگی آشنا؛ نظام کامل مقایسه به A2.",
+        "archetypes": [
+          "K8",
+          "K1"
+        ]
+      },
+      {
+        "id": "A1-23",
+        "level": "A1",
+        "order": 23,
+        "title": "شرح برنامه روزانه",
+        "axis": "تلفیقی",
+        "communicativeOutcome": "روتین روزانه‌اش را به‌ترتیب تعریف می‌کند؛ ساعت را می‌گوید و می‌پرسد؛ توالی روز را با واژه‌های ترتیب می‌بندد.",
+        "prerequisiteBridge": "A1-9؛ پل ساعت و ترتیب در آغاز",
+        "prerequisiteIds": [
+          "A1-9"
+        ],
+        "globalConcept": "زمان روز و توالی",
+        "scopeBoundary": "برنامهٔ قابل پیگیری؛ تقویم کامل و تاریخ به A1-26.",
+        "archetypes": [
+          "K6"
+        ]
+      },
+      {
+        "id": "A1-24",
+        "level": "A1",
+        "order": 24,
+        "title": "بیان عادت و میزان تکرار",
+        "axis": "ساختار/مفهوم‌محور",
+        "communicativeOutcome": "می‌گوید کاری را معمولاً، گاهی یا هرگز انجام می‌دهد و چگونه انجامش می‌دهد؛ تغییر بسامد را در جمله‌های تازه درست منعکس می‌کند و درباره عادت دیگران می‌پرسد.",
+        "prerequisiteBridge": "A1-23",
+        "prerequisiteIds": [
+          "A1-23"
+        ],
+        "globalConcept": "بسامد، عادت و چگونگی",
+        "scopeBoundary": "اثر تغییر همیشه/گاهی/هرگز بر معنا؛ تولید مستقل، نه حفظ چند قید.",
+        "archetypes": [
+          "K1",
+          "K2"
+        ]
+      }
+    ],
+    "newFiles": {
+      "A1-15": "lessons/a1-15-v1.json",
+      "A1-16": "lessons/a1-16-v1.json",
+      "A1-17": "lessons/a1-17-v1.json",
+      "A1-18": "lessons/a1-18-v1.json",
+      "A1-19": "lessons/a1-19-v1.json",
+      "A1-20": "lessons/a1-20-v1.json",
+      "A1-21": "lessons/a1-21-v1.json",
+      "A1-22": "lessons/a1-22-v1.json",
+      "A1-23": "lessons/a1-23-v1.json",
+      "A1-24": "lessons/a1-24-v1.json"
+    },
+    "displacedGoals": [
+      {
+        "oldId": "A1-23",
+        "title": "شرح برنامهٔ روزانه",
+        "destination": "pending owner-approved placement in stage 3; not amended"
+      },
+      {
+        "oldId": "A1-24",
+        "title": "بیان عادت و میزان تکرار",
+        "destination": "pending owner-approved placement in stage 3; not amended"
+      }
+    ],
+    "knownDeferredDependency": "A1.3 uses old A1-23 as a time-sequencing prerequisite; no stage-3 edits authorized yet.",
+    "previousRevision": "2026-10-26-owner-home-school-feelings-realworld",
+    "preservedLessonRefs": {
+      "A1-3": {
+        "file": "lessons/a1-3-v5.json",
+        "gitBlobSha": "54175e35abe5f7cc821d690dd48ac96fb6668e93",
+        "revision": "2026-10-26-owner-home-school-feelings-realworld"
+      },
+      "A1-4": {
+        "file": "lessons/a1-4-v5.json",
+        "gitBlobSha": "1d1b18bde2a6d34085f0585e5e3255cea89baa6b",
+        "revision": "2026-10-26-owner-home-school-feelings-realworld"
+      },
+      "A1-5": {
+        "file": "lessons/a1-5-v4.json",
+        "gitBlobSha": "ad8966f657c7ef5656b18c7bb62932d88e03e59e",
+        "revision": "2026-10-26-owner-home-school-feelings-realworld"
+      },
+      "A1-6": {
+        "file": "lessons/a1-6-v5.json",
+        "gitBlobSha": "78d5045f3a4ba8c326e185b6649664325a702fd2",
+        "revision": "2026-10-26-owner-home-school-feelings-realworld"
+      },
+      "A1-7": {
+        "file": "lessons/a1-7-v3.json",
+        "gitBlobSha": "5cf9b1a5f0042285589e1ad7857e14e2cd265864",
+        "revision": "2026-10-26-owner-home-school-feelings-realworld"
+      },
+      "A1-8": {
+        "file": "lessons/a1-8-v4.json",
+        "gitBlobSha": "36928cb449a6a3d35f46fa238821d9435fdfc965",
+        "revision": "2026-10-26-owner-home-school-feelings-realworld"
+      },
+      "A1-9": {
+        "file": "lessons/a1-9-v4.json",
+        "gitBlobSha": "99602f53c1f4bfb0b3808b4aa1755b8e220a1657",
+        "revision": "2026-10-26-owner-home-school-feelings-realworld"
+      },
+      "A1-10": {
+        "file": "lessons/a1-10-v4.json",
+        "gitBlobSha": "d918d0f71bfaa5037682500cebea8fa19dc27d39",
+        "revision": "2026-10-26-owner-home-school-feelings-realworld"
+      },
+      "A1-11": {
+        "file": "lessons/a1-11-v3.json",
+        "gitBlobSha": "8641d7a94326be518d8990ffb30e34c125f3d630",
+        "revision": "2026-10-26-owner-home-school-feelings-realworld"
+      },
+      "A1-12": {
+        "file": "lessons/a1-12-v3.json",
+        "gitBlobSha": "88a84f60fd70763d1279c52d080d2092c8c90fc9",
+        "revision": "2026-10-26-owner-home-school-feelings-realworld"
+      },
+      "A1-13": {
+        "file": "lessons/a1-13-v2.json",
+        "gitBlobSha": "eb2e7ad17295272128a1ffff2802b45e17a99a58",
+        "revision": "2026-10-26-owner-home-school-feelings-realworld"
+      },
+      "A1-14": {
+        "file": "lessons/a1-14-v2.json",
+        "gitBlobSha": "680d8407350bf910191d8b500d8ba5348d6dbea3",
+        "revision": "2026-10-26-owner-home-school-feelings-realworld"
+      }
+    },
+    "stage3Fingerprint": {
+      "rows": "87b270580cf16092cfac393973c3266d6e1b087f",
+      "catalog": "a10237de1bf02b5b55a6632bddf54735c909a5d8"
+    }
   }
 }

@@ -1,0 +1,912 @@
+{
+  "id": "A1-15",
+  "revision": "2026-10-27-owner-a1-stage2-practical-sequence",
+  "status": "draft",
+  "title": "مقایسهٔ سادهٔ چیزها",
+  "goal": "بین دو خوراک، وسیله یا لباس تفاوت اندازه، مقدار یا قیمت را بگو و انتخابت را با یک دلیل ساده توضیح بده.",
+  "duration": 24,
+  "feature": "انتخاب با دلیل و مقایسهٔ واقعی",
+  "archetype": "K8",
+  "roadmapRef": {
+    "id": "A1-15",
+    "revision": "2026-10-27-owner-a1-stage2-practical-sequence",
+    "communicativeOutcome": "دو چیز آشنا را از نظر بزرگی، کوچکی، گرانی، ارزانی یا مقدار مقایسه می‌کند؛ با صفت و عدد واقعی انتخاب ساده‌ای را توضیح می‌دهد و نظر کوتاه خود را بیان می‌کند."
+  },
+  "teachingModel": {
+    "type": "discovery-production",
+    "sections": 2
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "بین دو خوراک، وسیله یا لباس تفاوت اندازه، مقدار یا قیمت را بگو و انتخابت را با یک دلیل ساده توضیح بده.",
+    "prerequisites": [
+      "A1-6",
+      "A1-8",
+      "A1-13",
+      "A1-14"
+    ],
+    "previously": "دانسته‌های بخش اول و درس‌های پیشین را در این موقعیت تازه دوباره به کار می‌بریم.",
+    "quickCheck": {
+      "title": "مرور آغازین",
+      "question": "Which bag is bigger?",
+      "example": "The blue bag is bigger.",
+      "explanation": "اگر این پاسخ تازه است، در مسیر واژه تا تولید آن را خواهی ساخت.",
+      "allowSkip": false
+    }
+  },
+  "visual": {
+    "src": "./assets/scene-a1-15-stage2.svg",
+    "alt": "دو فروشگاه و دو خوراک",
+    "caption": "دو فروشگاه و دو خوراک"
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "bigger than"
+    ],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": false
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "بخش اول · کشف و تمرین",
+      "intro": "واژه → عبارت → جملهٔ زنده → سنجش → ساختن",
+      "masteryActivityIds": [
+        "a1-15-puzzle",
+        "a1-15-build"
+      ],
+      "activities": [
+        {
+          "id": "a1-15-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "ابتدا نمونهٔ موقعیت را گوش کن",
+          "description": "با این چند جمله آشنا شو؛ هنوز لازم نیست همه را بی‌کمک بسازی.",
+          "audioSrc": null,
+          "rate": 0.8,
+          "pauseMs": 500,
+          "lines": [
+            "This bag is bigger than that bag.",
+            "Which bag is bigger?",
+            "The blue bag is bigger.",
+            "The soup is cheaper than the pizza.",
+            "I want less rice.",
+            "Which meal is cheaper?"
+          ]
+        },
+        {
+          "id": "a1-15-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "واژگان تازهٔ این مأموریت",
+          "deckRevision": 1,
+          "batchSize": 4,
+          "items": [
+            {
+              "en": "bigger",
+              "fa": "بزرگ‌تر",
+              "examples": [
+                "This bag is bigger than that bag."
+              ]
+            },
+            {
+              "en": "smaller",
+              "fa": "کوچک‌تر",
+              "examples": [
+                "This cup is smaller than that cup."
+              ]
+            },
+            {
+              "en": "cheaper",
+              "fa": "ارزان‌تر",
+              "examples": [
+                "The apple is cheaper than the sandwich."
+              ]
+            },
+            {
+              "en": "than",
+              "fa": "از (در مقایسه)",
+              "examples": [
+                "This book is bigger than that one."
+              ]
+            },
+            {
+              "en": "faster",
+              "fa": "سریع‌تر",
+              "examples": [
+                "The bus is faster than walking."
+              ]
+            },
+            {
+              "en": "slower",
+              "fa": "کندتر",
+              "examples": [
+                "This bus is slower than that one."
+              ]
+            },
+            {
+              "en": "less",
+              "fa": "کمتر",
+              "examples": [
+                "This meal has less sugar."
+              ]
+            },
+            {
+              "en": "compare",
+              "fa": "مقایسه کردن",
+              "examples": [
+                "Compare the two bags."
+              ],
+              "role": "supplementary"
+            }
+          ]
+        },
+        {
+          "id": "a1-15-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "عبارت‌های آماده برای موقعیت واقعی",
+          "description": "ترکیب‌ها را در جمله ببین؛ جملهٔ کامل را به‌جای جداکردن تک‌تک واژه‌ها به یاد بیاور.",
+          "presentation": "deck",
+          "items": [
+            {
+              "en": "bigger than",
+              "fa": "بزرگ‌تر از",
+              "kind": "fixed",
+              "examples": [
+                "This bag is bigger than that bag."
+              ]
+            },
+            {
+              "en": "cheaper than",
+              "fa": "ارزان‌تر از",
+              "kind": "fixed",
+              "examples": [
+                "The soup is cheaper than the pizza.",
+                "The soup is cheaper than the pizza."
+              ]
+            },
+            {
+              "en": "I think",
+              "fa": "فکر می‌کنم",
+              "kind": "fixed",
+              "examples": []
+            },
+            {
+              "en": "Which one",
+              "fa": "کدام‌یک",
+              "kind": "fixed",
+              "examples": [
+                "Which one is smaller?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-15-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "جمله را با تغییر معنی بساز",
+          "description": "روی واژه‌های جمله بزن و فاعل، کالا، مقصد یا ویژگی را تغییر بده. بعد ساختار دیگر را امتحان کن؛ به مفهوم جمله دقت کن.",
+          "targetLanguage": "en",
+          "derivedDefaults": {},
+          "wordSets": {
+            "first": [
+              {
+                "id": "option-0",
+                "label": "This bag",
+                "translation": "این کیف",
+                "forms": {
+                  "en": "This bag"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "This book",
+                "translation": "این کتاب",
+                "forms": {
+                  "en": "This book"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "This cup",
+                "translation": "این فنجان",
+                "forms": {
+                  "en": "This cup"
+                }
+              }
+            ],
+            "second": [
+              {
+                "id": "option-0",
+                "label": "that bag",
+                "translation": "آن کیف",
+                "forms": {
+                  "en": "that bag"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "that book",
+                "translation": "آن کتاب",
+                "forms": {
+                  "en": "that book"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "that cup",
+                "translation": "آن فنجان",
+                "forms": {
+                  "en": "that cup"
+                }
+              }
+            ],
+            "feature": [
+              {
+                "id": "option-0",
+                "label": "bigger than",
+                "translation": "بزرگ‌تر از",
+                "forms": {
+                  "en": "bigger than"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "smaller than",
+                "translation": "کوچک‌تر از",
+                "forms": {
+                  "en": "smaller than"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "cheaper than",
+                "translation": "ارزان‌تر از",
+                "forms": {
+                  "en": "cheaper than"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "first",
+              "label": "first",
+              "wordSet": "first",
+              "default": "option-0"
+            },
+            {
+              "id": "second",
+              "label": "second",
+              "wordSet": "second",
+              "default": "option-0"
+            },
+            {
+              "id": "feature",
+              "label": "feature",
+              "wordSet": "feature",
+              "default": "option-0"
+            }
+          ],
+          "defaultPattern": "compare",
+          "patterns": [
+            {
+              "id": "compare",
+              "label": "مقایسه کن",
+              "segments": [
+                {
+                  "slot": "first",
+                  "form": "en"
+                },
+                {
+                  "fixed": " is "
+                },
+                {
+                  "slot": "feature",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "second",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": []
+            },
+            {
+              "id": "opinion",
+              "label": "نظر بده",
+              "segments": [
+                {
+                  "fixed": "I think "
+                },
+                {
+                  "slot": "first",
+                  "form": "en"
+                },
+                {
+                  "fixed": " is "
+                },
+                {
+                  "slot": "feature",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "second",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": []
+            }
+          ]
+        },
+        {
+          "id": "a1-15-variants",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "یک جمله با دو هدف ارتباطی",
+          "description": "ساختار را عوض کن؛ یک‌بار گزارش بده، یک‌بار سؤال بپرس یا نظر بده.",
+          "sourceActivityId": "a1-15-composer",
+          "patternIds": [
+            "compare",
+            "opinion"
+          ],
+          "examples": [
+            {
+              "en": "This bag is bigger than that bag.",
+              "fa": "بگو این کیف از آن کیف بزرگ‌تر است."
+            },
+            {
+              "en": "The soup is cheaper than the pizza.",
+              "fa": "بگو سوپ از پیتزا ارزان‌تر است."
+            },
+            {
+              "en": "I want less rice.",
+              "fa": "بگو من برنج کمتری می‌خواهم."
+            }
+          ]
+        },
+        {
+          "id": "a1-15-decision",
+          "type": "quiz-set",
+          "phase": "variants",
+          "title": "در موقعیت چه واکنشی مناسب است؟",
+          "questions": [
+            {
+              "question": "با قیمت‌های ۴ و ۸ دلار، جملهٔ درست کدام است؟",
+              "choices": [
+                "The four-dollar meal is cheaper.",
+                "The eight-dollar meal is cheaper.",
+                "Both meals cost ten dollars."
+              ],
+              "answer": 0,
+              "feedback": "از معنی و موقعیت استفاده کن؛ فقط شکل واژه را حفظ نکن."
+            },
+            {
+              "question": "«این کیف کوچک‌تر است» کدام است؟",
+              "choices": [
+                "This bag is bigger.",
+                "This bag is smaller.",
+                "This bag is faster."
+              ],
+              "answer": 1,
+              "feedback": "از معنی و موقعیت استفاده کن؛ فقط شکل واژه را حفظ نکن."
+            },
+            {
+              "question": "جای درست than در جمله؟",
+              "choices": [
+                "This is cheaper than that.",
+                "This is than cheaper that.",
+                "This than is cheaper that."
+              ],
+              "answer": 0,
+              "feedback": "از معنی و موقعیت استفاده کن؛ فقط شکل واژه را حفظ نکن."
+            }
+          ]
+        },
+        {
+          "id": "a1-15-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "چند جمله با بانک کلمات مشترک بساز",
+          "description": "هر بار جملهٔ متفاوتی پیدا کن؛ واژه‌های مشترک را به‌موقع استفاده کن.",
+          "revision": 1,
+          "goalCount": 5,
+          "reuseBank": true,
+          "sentences": [
+            {
+              "id": "sentence-1",
+              "words": [
+                "This",
+                "bag",
+                "is",
+                "bigger",
+                "than",
+                "that",
+                "bag."
+              ]
+            },
+            {
+              "id": "sentence-2",
+              "words": [
+                "The",
+                "soup",
+                "is",
+                "cheaper",
+                "than",
+                "the",
+                "pizza."
+              ]
+            },
+            {
+              "id": "sentence-3",
+              "words": [
+                "I",
+                "want",
+                "less",
+                "rice."
+              ]
+            },
+            {
+              "id": "sentence-4",
+              "words": [
+                "The",
+                "red",
+                "bag",
+                "is",
+                "bigger."
+              ]
+            },
+            {
+              "id": "sentence-5",
+              "words": [
+                "The",
+                "pizza",
+                "is",
+                "cheaper",
+                "today."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-15-build",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "از فارسی به یک پاسخ دقیق برس",
+          "description": "چند جمله و سؤال متفاوت بنویس؛ راهنمایی تنها وقتی لازم بود باز کن.",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "بگو این کیف از آن کیف بزرگ‌تر است.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "This bag is bigger than that bag.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "This bag is bigger than that bag."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو سوپ از پیتزا ارزان‌تر است.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "The soup is cheaper than the pizza.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The soup is cheaper than the pizza."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو من برنج کمتری می‌خواهم.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I want less rice.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I want less rice."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بپرس کدام‌یک کوچک‌تر است.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Which one is smaller?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Which one is smaller?"
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "مقایسه کن: اتوبوس از پیاده‌روی سریع‌تر است.",
+              "hint": "فعل و فاعل را دقیق انتخاب کن. نمونهٔ پاسخ بعد از دو تلاش می‌آید.",
+              "example": "The bus is faster than walking.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The bus is faster than walking."
+                    ],
+                    "feedback": "یک جملهٔ کامل با همین معنی بنویس."
+                  }
+                ],
+                "success": "پاسخ را با جملهٔ کامل ساختی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "بخش دوم · کاربرد و تولید",
+      "intro": "پرسش‌وپاسخ → گفت‌وگو → توصیف → تولید مستقل",
+      "masteryActivityIds": [
+        "a1-15-guided",
+        "a1-15-independent"
+      ],
+      "activities": [
+        {
+          "id": "a1-15-exchange",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "گفت‌وگو با انتخاب‌های معنی‌دار",
+          "description": "چهار موقعیت را ببین. برای هر سؤال سه پاسخ متفاوت ولی درست بررسی کن؛ در پایان پاسخ خودت را مستقل بساز.",
+          "pairs": [
+            {
+              "question": "Which bag is bigger?",
+              "questionFa": "کدام کیف بزرگ‌تر است؟",
+              "variants": [
+                {
+                  "label": "آبی",
+                  "en": "The blue bag is bigger.",
+                  "fa": "آبی"
+                },
+                {
+                  "label": "قرمز",
+                  "en": "The red bag is bigger.",
+                  "fa": "قرمز"
+                },
+                {
+                  "label": "هم‌اندازه",
+                  "en": "They are the same size.",
+                  "fa": "هم‌اندازه"
+                }
+              ]
+            },
+            {
+              "question": "Which meal is cheaper?",
+              "questionFa": "کدام غذا ارزان‌تر است؟",
+              "variants": [
+                {
+                  "label": "سوپ",
+                  "en": "The soup is cheaper than the pizza.",
+                  "fa": "سوپ"
+                },
+                {
+                  "label": "پیتزا",
+                  "en": "The pizza is cheaper today.",
+                  "fa": "پیتزا"
+                },
+                {
+                  "label": "برابر",
+                  "en": "They have the same price.",
+                  "fa": "برابر"
+                }
+              ]
+            },
+            {
+              "question": "Do you want more rice?",
+              "questionFa": "برنج بیشتری می‌خواهی؟",
+              "variants": [
+                {
+                  "label": "بیشتر",
+                  "en": "Yes, I want more rice.",
+                  "fa": "بیشتر"
+                },
+                {
+                  "label": "کمتر",
+                  "en": "No, I want less rice.",
+                  "fa": "کمتر"
+                },
+                {
+                  "label": "کافی",
+                  "en": "No, this is enough.",
+                  "fa": "کافی"
+                }
+              ]
+            },
+            {
+              "question": "Which bus is faster?",
+              "questionFa": "کدام اتوبوس سریع‌تر است؟",
+              "variants": [
+                {
+                  "label": "اولی",
+                  "en": "The first bus is faster.",
+                  "fa": "اولی"
+                },
+                {
+                  "label": "دومی",
+                  "en": "The second bus is faster.",
+                  "fa": "دومی"
+                },
+                {
+                  "label": "کند",
+                  "en": "This bus is slower.",
+                  "fa": "کند"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-15-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "یک گفت‌وگوی واقعی دربارهٔ مقایسهٔ سادهٔ چیزها",
+          "description": "پاسخ بعدی را قبل از آشکارشدنش حدس بزن؛ سپس جای نقش‌ها را عوض کن.",
+          "lines": [
+            {
+              "speaker": "Sara",
+              "en": "Which bag do you want?",
+              "fa": "کدام کیف را می‌خواهی؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "The blue bag is bigger.",
+              "fa": "کیف آبی بزرگ‌تر است."
+            },
+            {
+              "speaker": "Sara",
+              "en": "But the red bag is cheaper.",
+              "fa": "اما کیف قرمز ارزان‌تر است."
+            },
+            {
+              "speaker": "Ali",
+              "en": "I think the red bag is better for me.",
+              "fa": "فکر می‌کنم کیف قرمز برای من بهتر است."
+            },
+            {
+              "speaker": "Sara",
+              "en": "Do you want the small one?",
+              "fa": "کوچک را می‌خواهی؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "Yes. The small one is enough.",
+              "fa": "بله. کیف کوچک کافی است."
+            }
+          ]
+        },
+        {
+          "id": "a1-15-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "title": "سه موقعیت را از کارت مرور کن",
+          "description": "در هر کارت معنای پرسش فرق می‌کند؛ به جای حفظ جمله، پاسخ مناسب را تولید کن.",
+          "image": "./assets/scene-a1-15-stage2.svg",
+          "imageAlt": "دو فروشگاه و دو خوراک",
+          "caption": "دو فروشگاه و دو خوراک",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "به کارت تصویر مربوط به «کدام کیف بزرگ‌تر است؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "The blue bag is bigger.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The blue bag is bigger."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «کدام غذا ارزان‌تر است؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "The soup is cheaper than the pizza.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The soup is cheaper than the pizza."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «برنج بیشتری می‌خواهی؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Yes, I want more rice.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Yes, I want more rice."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-15-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "title": "این بار خودت در مکالمه پاسخ بده",
+          "description": "۴ نوبت با پرسش‌ها و نقش‌های متفاوت. متن نمونه از اول نمایش داده نمی‌شود.",
+          "practiceRevision": 1,
+          "completion": "حالا بدون راهنمایی در موقعیت تازه پاسخ بساز.",
+          "turns": [
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "Which bag is bigger?",
+              "task": "برای «کدام کیف بزرگ‌تر است؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "They are the same size.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "They are the same size."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Which meal is cheaper?",
+              "task": "برای «کدام غذا ارزان‌تر است؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "They have the same price.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "They have the same price."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "Do you want more rice?",
+              "task": "برای «برنج بیشتری می‌خواهی؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "No, this is enough.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "No, this is enough."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Which bus is faster?",
+              "task": "برای «کدام اتوبوس سریع‌تر است؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "This bus is slower.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "This bus is slower."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-15-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "مأموریت واقعی و ساختن بدون الگو",
+          "prompt": "در یک فروشگاه فرضی، دو کالا با دو قیمت یا اندازه را مقایسه کن، یکی را انتخاب کن و دلیل بیاور.",
+          "placeholder": "دو یا سه جملهٔ انگلیسی خودت را اینجا بنویس؛ اطلاعات فرضی کافی است.",
+          "hint": "از جمله‌های درس الهام بگیر ولی فاعل، شیء، مکان یا تصمیم را خودت عوض کن.",
+          "kind": "free-text",
+          "minWords": 14,
+          "assessment": {
+            "revision": 1,
+            "required": [
+              {
+                "patterns": [
+                  "\\b(?:bigger|smaller|cheaper|faster|slower)\\s+than\\b"
+                ],
+                "feedback": "واژگان اصلی موقعیت را داخل جملهٔ کامل به کار ببر."
+              },
+              {
+                "patterns": [
+                  "\\b(?:i think|i want|i like)\\b"
+                ],
+                "feedback": "یک کار، سؤال یا دلیل مرتبط هم بنویس."
+              }
+            ],
+            "productionProof": {
+              "minWords": 10,
+              "minClauses": 2
+            },
+            "success": "دو جملهٔ مستقل با هدف درس ساختی؛ حالا سرنخ زندگی واقعی را هم امتحان کن."
+          },
+          "realWorldMission": {
+            "cue": "وقتی در فروشگاه میان دو چیز انتخاب می‌کنی",
+            "reflection": "دو چیز واقعی را کنار هم بگذار؛ در ذهنت بگو کدام بزرگ‌تر یا ارزان‌تر است و چرا."
+          }
+        },
+        {
+          "id": "a1-15-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "حالا همان جمله‌های آغاز درس را بازبگو",
+          "description": "متن شروع را بازشنوی کن و فاصلهٔ یادگیری خودت را بسنج.",
+          "sourceActivityId": "a1-15-shadowing"
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,11 @@
 # Locked universal learning path and editorial workflow
 
-**Source of truth:** `content/curriculum/universal-path.v1.json` contains the approved **128** full communicative outcomes after the owner's 2026-10-26 amendment:
+**Source of truth:** `content/curriculum/universal-path.v1.json` contains the approved **128** full communicative outcomes after the owner's 2026-10-27 stage-two amendment:
 A1 (36), A2 (30), B1 (29), B2 (33). A1 is divided into three 12-lesson stages: 1–12, 13–24, 25–36. Every entry includes title, dominant axis, full can-do outcome, prerequisite/bridge text, prerequisite IDs, global concept, scope boundary and proposed activity archetypes.
+
+**A1.2 implemented sequence:** A1-13 خوراکی و آشپزخانه؛ 14 وعده‌ها؛ 15 مقایسهٔ ساده؛ 16 پوشاک؛ 17 اعضای بدن؛ 18 بیماری و کمک‌خواستن (بدون مراجعهٔ درمانی مفصل)؛ 19 مشاغل ساده؛ 20 خرید؛ 21 صورت‌حساب و رسید؛ 22 مکان‌های شهر؛ 23 آدرس و مسیر کوتاه؛ 24 حمل‌ونقل. Each has two authored sections and independent real-world production. Existing A1-1..14 content files and learner progress remain intact.
+
+**Deferred, not silently moved:** the earlier A1-23 daily-routine and A1-24 habit/frequency objectives were displaced by the owner's new stage-two sequence. Their exact former rows are archived in `legacy-alignment.json`. The owner instructed that stage three remain untouched. Consequently A1-25/26 and related future rows may still refer to the former A1-23 time-sequencing prerequisite; resolve that bridge only after explicit authorization to edit stage three. Passing CI does not mean this pedagogical bridge is resolved.
 
 The owner's original 2 October 2026 rewrite and later explicit amendments are recorded in `01-universal-learning-path.md`. The Git blob checksums of that file and the machine-readable derived table are pinned in `content/curriculum/roadmap.lock.json`. This is a **default educational contract** across language pairs; an explicit new owner amendment overrides it.
 

@@ -1150,3 +1150,20 @@ button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3p
 .spatial-comparison-sentence button { font-size: inherit; }
 .spatial-comparison-translation { color: var(--text-muted, #648077); font-size: 14px; }
 @media (max-width: 480px) { .spatial-comparison-grid { gap: 7px; } .spatial-comparison-panel { padding: 8px 5px; border-radius: 14px; } }
+
+/* Opposite adjectives: two comparable pictures, one changing concept. */
+.antonym-comparison { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin:14px 0; }
+.antonym-card { min-width:0; margin:0; padding:13px; border-radius:18px; background:#f7faf8; border:1px solid #d8e5df; text-align:center; }
+.antonym-portrait { width:100%; max-width:210px; height:auto; display:block; margin:auto; }
+.antonym-card figcaption { display:flex; flex-direction:column; gap:3px; margin-top:7px; }
+.antonym-card strong { font-size:clamp(19px,3vw,24px); color:#24533f; }
+.antonym-card span { font-size:14px; color:#566e64; }
+.antonym-card small { font-size:13px; color:#52675d; }
+.antonym-choices { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+.antonym-choices button { border:1px solid #c6ded0; background:#fff; border-radius:11px; padding:10px 13px; color:#365e4e; font-weight:700; font-size:14px; }
+.antonym-choices button.active { background:#2b7055; color:#fff; border-color:#2b7055; }
+.real-world-mission { background:#f1f7f0; border:1px solid #cfdfd2; border-inline-start:4px solid #438269; border-radius:14px; padding:15px 18px; margin-bottom:19px; }
+.real-world-mission strong { color:#235c45; font-size:15px; }
+.real-world-mission p { color:#435d51; margin:8px 0 0; line-height:1.7; }
+.real-world-mission .real-world-recall { border-top:1px dashed #bed6c6; margin-top:10px; padding-top:10px; font-weight:650; }
+@media(max-width:480px){.antonym-comparison{gap:7px}.antonym-card{padding:7px}.antonym-card small{font-size:12px}}

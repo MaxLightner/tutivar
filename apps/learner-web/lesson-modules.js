@@ -25,7 +25,8 @@ const MODULE_LABELS = {
   'count-visual': 'یک یا چند شیء', 'plural-pair-lab': 'مفرد و جمع تصویری',
   'agreement-lab': 'جمله‌ساز وابسته', 'sentence-composer': 'جمله‌ساز تعاملی', 'composer-view': 'کشف و تغییر جمله',
   'tap-attributes-lab': 'تغییر ویژگی در تصویر و جمله',
-  'daily-choice-lab': 'انتخاب غذا و وعده'
+  'daily-choice-lab': 'انتخاب غذا و وعده',
+  'antonym-pair-lab': 'تصویر صفت‌های متضاد'
 };
 function wrapper(body, activity, idx, e, extra = '') {
   return `<div class="lesson-block module-block ${extra}" data-module="${e(activity.type)}"><div class="block-top"><div><span class="block-label">${String(idx + 1).padStart(2, '0')} / ${e(activity.typeLabel || LESSON_PHASE_LABELS[activity.phase] || MODULE_LABELS[activity.type] || 'فعالیت')}</span><h3>${e(activity.title || '')}</h3></div></div>${body}</div>`;
@@ -677,7 +678,46 @@ function freeWrite(a, c) {
   const key = `${c.lessonId}:${a.id}`;
   const feedback = c.progress.assessments?.[key];
   const status = feedback ? `<div class="practice-feedback ${feedback.passed ? 'success' : 'error'}" role="status"><strong>${c.e(feedback.feedback)}</strong>${feedback.repair ? `<p>${c.e(feedback.repair)}</p>` : ''}${feedback.passed ? '<span>✓ نشانهٔ یادگیری این بخش ثبت شد.</span>' : '<span>متنت باقی می‌ماند؛ می‌توانی همان را اصلاح کنی.</span>'}</div>` : '';
-  return wrapper(`<label class="input-label" for="free-response">${c.e(a.prompt)}</label><textarea class="free-input" id="free-response" lang="en" dir="ltr" placeholder="${c.e(a.placeholder)}" rows="3">${c.e(stored)}</textarea><p class="hint">${c.e(a.hint)}</p><button class="secondary-btn" data-action="save-production">${a.assessment ? 'بررسی گفت‌وگوی من' : 'ذخیره پاسخ'} ${c.i('check')}</button>${status}${a.assessment ? '<p class="practice-caveat">بازخورد بر اساس ساختارهای مشخص همین درس است؛ تصحیح آزادِ همهٔ جمله‌های انگلیسی نیست.</p>' : ''}`, a, c.index, c.e);
+  const mission = a.realWorldMission
+    ? `<aside class="real-world-mission"><strong>این درس بیرون از برنامه کجا به کارت می‌آید؟</strong><p>${c.e(a.realWorldMission.cue)}</p><p class="real-world-recall">${c.e(a.realWorldMission.reflection)}</p></aside>`
+    : '';
+  const placeholder = a.assessment?.productionProof ? 'Write your own sentences here...' : a.placeholder;
+  const help = a.assessment?.productionProof
+    ? `<p class="hint">هر جمله را در یک خط یا با نقطه و علامت سؤال جدا کن.</p><details class="independent-hint"><summary>اگر گیر کردی، راهنمای ساختار را ببین</summary><p>${c.e(a.hint || '')}</p></details>`
+    : `<p class="hint">${c.e(a.hint || '')}</p>`;
+  return wrapper(`${mission}<label class="input-label" for="free-response">${c.e(a.prompt)}</label><textarea class="free-input" id="free-response" lang="en" dir="ltr" placeholder="${c.e(placeholder)}" rows="3">${c.e(stored)}</textarea>${help}<button class="secondary-btn" data-action="save-production">${a.assessment ? 'بررسی گفت‌وگوی من' : 'ذخیره پاسخ'} ${c.i('check')}</button>${status}${a.assessment ? '<p class="practice-caveat">این بررسی، ساختارهای پایه و کامل‌بودن جمله‌ها را می‌سنجد؛ هنوز تصحیح معناییِ آزاد و انسانی نیست.</p>' : ''}`, a, c.index, c.e);
+}
+
+function antonymPersonPicture(trait, opposite, label, e) {
+  const tall = trait === 'height' && !opposite;
+  const small = trait === 'height' && opposite;
+  const old = trait === 'age' && opposite;
+  const curly = trait === 'hair' && !opposite;
+  const long = trait === 'length' && !opposite;
+  const broad = trait === 'build' && opposite;
+  const faceY = tall ? 31 : small ? 61 : 44;
+  const torsoY = faceY + 25, torsoBottom = tall ? 136 : small ? 119 : 130;
+  const torsoWidth = broad ? 39 : 28;
+  const hair = curly
+    ? `<path d="M62 ${faceY - 7}q-17 -19 5 -22q11 -17 27 -4q18 -12 29 8q10 11 -1 22" fill="none" stroke="#4b3033" stroke-width="13" stroke-linecap="round"/>`
+    : `<path d="M61 ${faceY - 8}q19 -26 43 -9q12 6 12 16" fill="none" stroke="${old ? '#afafb8' : '#583b32'}" stroke-width="11" stroke-linecap="round"/>`;
+  const hairLength = long ? `<path d="M65 ${faceY - 14}q-11 24 -5 60M113 ${faceY - 14}q11 24 5 60" fill="none" stroke="#583b32" stroke-width="12" stroke-linecap="round"/>` : '';
+  const wrinkles = old ? `<path d="M66 ${faceY + 5}h10M103 ${faceY + 5}h10M80 ${faceY + 18}q10 5 20 0" stroke="#aa7b6c" stroke-width="2" fill="none"/>` : '';
+  const top = Math.max(1,torsoY), bottom=torsoBottom;
+  return `<svg viewBox="0 0 180 156" class="antonym-portrait" role="img" aria-label="${e(label)}"><rect x="4" y="4" width="172" height="148" rx="14" fill="#f4efe8"/><ellipse cx="90" cy="141" rx="53" ry="6" fill="#d6d0c6"/>${hairLength}<path d="M${90-torsoWidth} ${top} Q90 ${top-7} ${90+torsoWidth} ${top}L${90+torsoWidth+7} ${bottom}H${90-torsoWidth-7}Z" fill="#6c96b2" stroke="#4a708d" stroke-width="2"/><circle cx="90" cy="${faceY}" r="24" fill="#deb18d" stroke="#a77a5e" stroke-width="2"/>${hair}<circle cx="82" cy="${faceY+2}" r="2" fill="#3c3433"/><circle cx="99" cy="${faceY+2}" r="2" fill="#3c3433"/><path d="M82 ${faceY+12}q8 7 17 0" stroke="#8c5b53" fill="none" stroke-width="2"/>${wrinkles}</svg>`;
+}
+
+function antonymPairLab(a, c) {
+  const key = `${c.lessonId}:${a.id}`;
+  const selected = Math.max(0, Math.min(a.pairs.length - 1, Number(c.progress.oppositeChoices?.[key]) || 0));
+  const pair = a.pairs[selected];
+  const statement = (word) => pair.trait === 'hair' || pair.trait === 'length'
+    ? `She has ${word} hair.` : `She is ${word}.`;
+  const cards = [[pair.left, pair.leftFa, false], [pair.right, pair.rightFa, true]].map(([word, fa, opposite]) =>
+    `<figure class="antonym-card">${antonymPersonPicture(pair.trait, opposite, fa, c.e)}<figcaption><strong lang="en" dir="ltr">${c.e(word)}</strong><span>${c.e(fa)}</span><small lang="en" dir="ltr">${c.e(statement(word))}</small></figcaption></figure>`).join('');
+  const selectors = a.pairs.map((item, index) =>
+    `<button type="button" data-opposite-key="${c.e(key)}" data-opposite-index="${index}" class="${index === selected ? 'active' : ''}" aria-pressed="${index === selected}"><span lang="en" dir="ltr">${c.e(item.left)} ↔ ${c.e(item.right)}</span></button>`).join('');
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p><div class="antonym-comparison">${cards}</div><div class="antonym-choices" role="group" aria-label="انتخاب صفت و مخالف آن">${selectors}</div><p class="practice-caveat">${c.e(a.note || '')}</p>`, a, c.index, c.e, 'module-antonym-pairs');
 }
 
 /* Shared visual grammar blocks; scenes and lexical contrasts are authored by lesson JSON. */
@@ -939,7 +979,10 @@ function placeValueLab(a,c) {
   const challenge=(a.challenges||[])[Math.max(0,Math.min((a.challenges||[]).length-1,Number(saved.challenge)||0))];
   const answer=Number.isInteger(saved.answer)?saved.answer:null,solved=challenge&&answer===challenge.correct;
   const questions=digits===4&&challenge?`<div class="place-challenge"><span class="place-eyebrow">خودت بخوان · ${Math.max(0,Math.min(a.challenges.length-1,Number(saved.challenge)||0))+1} از ${a.challenges.length}</span><h4>به نظرت عدد <b dir="ltr">${challenge.number}</b> چطور خوانده می‌شود؟</h4><div class="place-answers" role="group" aria-label="انتخاب تلفظ چهاررقمی">${challenge.options.map((option,i)=>`<button lang="en" dir="ltr" class="${answer===i?(i===challenge.correct?'correct':'incorrect'):''}" data-place-key="${e(key)}" data-place-action="answer" data-place-value="${i}" aria-pressed="${answer===i}">${e(option)}</button>`).join('')}</div>${answer!==null?`<p role="status" class="place-feedback ${solved?'correct':''}">${solved?'درست است؛ هزارگان، صدگان و بقیهٔ عدد را جدا تشخیص دادی.':'یک بار ارزش هر رقم را جدا بخوان و دوباره انتخاب کن.'}</p>`:''}${solved?`${action('next-question','','','عدد چهاررقمی بعدی')}عدد چهاررقمی بعدی</button>`:''}</div>`:'';
-  return wrapper(`<p class="module-description">${e(a.description||'')}</p><div class="place-lab"><div class="place-tabs" role="group" aria-label="تعداد رقم‌های عدد">${tabs}</div><div class="place-track"><span class="place-eyebrow">${e(stages.find(s=>s.digits===digits).hint)}</span><div class="place-step-controls">${prevButton}<output class="place-number" aria-live="polite" dir="ltr">${value}</output>${nextButton}</div><div class="place-spoken" lang="en" dir="ltr">${e(english)}${soundButton(english,e,c.i)}</div>${milestones}</div><div class="place-digits" role="group" aria-label="عددسازی با فلش‌های مستقل ارزش مکانی">${digitControls}</div><p class="place-equation" dir="ltr">${e(partition)} = <strong>${value}</strong></p><p class="place-live-sentence" lang="en" dir="ltr">I have ${e(english)} books.${soundButton(`I have ${english} books.`,e,c.i)}</p><p class="place-note">${digits===2?'با «عدد بعدی» از ۱۳، ۱۴، ۱۵… به ترتیب جلو برو؛ با فلش هر رقم ببین تغییر یکان با دهگان چه فرقی دارد.':digits===3?'اینجا صدگان را هم مستقل تغییر بده؛ هدف اصلی این درس همچنان اعداد تا ۱۰۰ است.':'این بخش آشنایی اولیه است؛ هزارگان را تغییر بده و پایین خواندن عددهای چهاررقمی را حدس بزن.'}</p>${questions}</div>`,a,c.index,e,'module-place-value');
+  const hideAnswer = digits === 4 && !!challenge && !solved;
+  const readable = hideAnswer ? '<em>پاسخ این بخش تا پایان آزمون پنهان است.</em>' : `${e(english)}${soundButton(english,e,c.i)}`;
+  const sentence = hideAnswer ? '<p class="place-live-sentence">پس از انتخاب پاسخ درست، جملهٔ کامل آشکار می‌شود.</p>' : `<p class="place-live-sentence" lang="en" dir="ltr">I have ${e(english)} books.${soundButton(`I have ${english} books.`,e,c.i)}</p>`;
+  return wrapper(`<p class="module-description">${e(a.description||'')}</p><div class="place-lab"><div class="place-tabs" role="group" aria-label="تعداد رقم‌های عدد">${tabs}</div><div class="place-track"><span class="place-eyebrow">${e(stages.find(s=>s.digits===digits).hint)}</span><div class="place-step-controls">${prevButton}<output class="place-number" aria-live="polite" dir="ltr">${value}</output>${nextButton}</div><div class="place-spoken" lang="en" dir="ltr">${readable}</div>${milestones}</div><div class="place-digits" role="group" aria-label="عددسازی با فلش‌های مستقل ارزش مکانی">${digitControls}</div><p class="place-equation" dir="ltr">${e(partition)} = <strong>${value}</strong></p>${sentence}<p class="place-note">${digits===2?'با «عدد بعدی» از ۱۳، ۱۴، ۱۵… به ترتیب جلو برو؛ با فلش هر رقم ببین تغییر یکان با دهگان چه فرقی دارد.':digits===3?'اینجا صدگان را هم مستقل تغییر بده؛ هدف اصلی این درس همچنان اعداد تا ۱۰۰ است.':'این بخش آشنایی اولیه است؛ هزارگان را تغییر بده و پایین خواندن عددهای چهاررقمی را حدس بزن.'}</p>${questions}</div>`,a,c.index,e,'module-place-value');
 }
 
 function tapAttributesLab(a,c) {
@@ -1074,7 +1117,7 @@ const renderers = {
   'exchange-lab': exchangeLab, 'question-explorer': questionExplorer, 'daily-choice-lab': dailyChoiceLab, 'expression-study': expressionStudy, 'count-visual': countVisual, 'plural-pair-lab': pluralPairLab, 'count-math-lab': countMathLab,
   shadowing, 'shadowing-review': shadowing, 'picture-description': pictureDescription,
   'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer,
-  'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'spatial-compare-lab': spatialCompareLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer, 'tap-attributes-lab': tapAttributesLab, 'tap-ownership-lab': tapOwnershipLab, 'count-scene-lab':countSceneLab, 'feature-hunt':featureHunt, 'cumulative-scene-lab':cumulativeSceneLab, 'cumulative-visual-quest':cumulativeVisualQuest, 'cumulative-number-lab':cumulativeNumberLab, 'place-value-lab':placeValueLab
+  'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'spatial-compare-lab': spatialCompareLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer, 'tap-attributes-lab': tapAttributesLab, 'tap-ownership-lab': tapOwnershipLab, 'count-scene-lab':countSceneLab, 'feature-hunt':featureHunt, 'cumulative-scene-lab':cumulativeSceneLab, 'cumulative-visual-quest':cumulativeVisualQuest, 'cumulative-number-lab':cumulativeNumberLab, 'place-value-lab':placeValueLab, 'antonym-pair-lab': antonymPairLab
 };
 export function renderActivity(activity, context) {
   const renderer = renderers[activity.type];

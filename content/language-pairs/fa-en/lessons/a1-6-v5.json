@@ -1,0 +1,2296 @@
+{
+  "id": "A1-6",
+  "revision": "2026-10-26-owner-home-school-feelings-realworld",
+  "status": "draft",
+  "title": "توصیف ویژگی‌های اشیا",
+  "goal": "رنگ، اندازه، شکل و جنس اشیای گوناگون را در توصیف‌های یک‌صفتی، دوصفتی و پیشرفته به کار ببر.",
+  "duration": 20,
+  "feature": "مقایسهٔ تصویری با لمس صفت",
+  "archetype": "K1/K2",
+  "roadmapRef": {
+    "id": "A1-6",
+    "revision": "2026-10-26-owner-home-school-feelings-realworld",
+    "communicativeOutcome": "اشیای مختلف را ابتدا با یک صفت، سپس دو صفت و بعد رنگ، اندازه، شکل و جنس توصیف می‌کند؛ صفت و اسم و تصویر را هماهنگ تغییر می‌دهد و با خانواده، تعداد و مالکیت ترکیب می‌کند."
+  },
+  "teachingModel": {
+    "type": "discovery-production",
+    "sections": 2
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "توصیف اندازه، شکل و جنس اشیای آشنا و پرسیدن دربارهٔ ویژگی‌ها",
+    "prerequisites": [
+      "A1-4: مکان اشیا",
+      "A1-5: شمارش و رنگ اشیا"
+    ],
+    "previously": "می‌توانی بگویی چند وسیله داری و کجا هستند؛ حالا می‌گویی چه ویژگی‌هایی دارند.",
+    "quickCheck": {
+      "title": "آیا این توصیف را بلدی؟",
+      "question": "چطور می‌گویی این جعبه کوچک و چوبی است؟",
+      "example": "This is a small wooden box.",
+      "explanation": "small و wooden پیش از box قرار می‌گیرند.",
+      "allowSkip": false
+    }
+  },
+  "visual": {
+    "src": "./assets/scene-a1-6-v2.svg",
+    "alt": "مقایسهٔ جعبهٔ چوبی بزرگ با جعبهٔ فلزی کوچک",
+    "caption": "مقایسهٔ اندازه و جنس دو جعبه"
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "red",
+      "blue",
+      "big",
+      "small",
+      "a red ball",
+      "a small blue bag",
+      "round",
+      "wooden",
+      "What shape"
+    ],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": false
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "از واژه تا توصیف",
+      "intro": "صفت را در یک تصویر واقعی تغییر بده، سپس ساخت جملهٔ خبری و پرسشی را امتحان کن.",
+      "masteryActivityIds": [
+        "a1-6-describe-check"
+      ],
+      "activities": [
+        {
+          "id": "a1-6-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "سایه‌خوانی توصیف‌های کوتاه",
+          "description": "اول فقط گوش بده و تکرار کن.",
+          "audioSrc": null,
+          "rate": 0.72,
+          "pauseMs": 500,
+          "lines": [
+            "A red ball.",
+            "A blue book.",
+            "A small red bag.",
+            "A big blue box.",
+            "This is a small wooden box.",
+            "My sister has a red bag.",
+            "I have two blue books."
+          ]
+        },
+        {
+          "id": "a1-6-words",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "رنگ‌های پایه و ویژگی‌های تازه (اسم‌ها از درس‌های قبل)",
+          "batchSize": 4,
+          "deckRevision": 2,
+          "items": [
+            {
+              "en": "red",
+              "fa": "قرمز",
+              "examples": [
+                "This is a red ball.",
+                "I have a red ball.",
+                "Is it red?"
+              ]
+            },
+            {
+              "en": "blue",
+              "fa": "آبی",
+              "examples": [
+                "This is a blue book.",
+                "I have a blue book.",
+                "Is it blue?"
+              ]
+            },
+            {
+              "en": "green",
+              "fa": "سبز",
+              "examples": [
+                "This is a green bag.",
+                "I have a green bag.",
+                "Is it green?"
+              ]
+            },
+            {
+              "en": "yellow",
+              "fa": "زرد",
+              "examples": [
+                "This is a yellow ball.",
+                "I have a yellow ball.",
+                "Is it yellow?"
+              ]
+            },
+            {
+              "en": "black",
+              "fa": "سیاه",
+              "examples": [
+                "This is a black box.",
+                "I have a black box.",
+                "Is it black?"
+              ]
+            },
+            {
+              "en": "white",
+              "fa": "سفید",
+              "examples": [
+                "This is a white book.",
+                "I have a white book.",
+                "Is it white?"
+              ]
+            },
+            {
+              "en": "big",
+              "fa": "بزرگ",
+              "examples": [
+                "This is a big box.",
+                "The bag is big.",
+                "Is it big?"
+              ]
+            },
+            {
+              "en": "small",
+              "fa": "کوچک",
+              "examples": [
+                "This is a small box.",
+                "The cup is small.",
+                "Is it small?"
+              ]
+            },
+            {
+              "en": "round",
+              "fa": "گرد",
+              "examples": [
+                "It is a round box.",
+                "The ball is round.",
+                "Is the box round?"
+              ]
+            },
+            {
+              "en": "square",
+              "fa": "مربعی",
+              "examples": [
+                "This is a square box.",
+                "The box is square.",
+                "Is it square?"
+              ]
+            },
+            {
+              "en": "rectangular",
+              "fa": "مستطیلی",
+              "examples": [
+                "This is a rectangular box.",
+                "The table is rectangular.",
+                "Is it rectangular?"
+              ]
+            },
+            {
+              "en": "wooden",
+              "fa": "چوبی",
+              "examples": [
+                "This is a wooden box.",
+                "The chair is wooden.",
+                "Is it wooden?"
+              ]
+            },
+            {
+              "en": "metal",
+              "fa": "فلزی",
+              "examples": [
+                "This is a metal box.",
+                "The table is metal.",
+                "Is it metal?"
+              ]
+            },
+            {
+              "en": "plastic",
+              "fa": "پلاستیکی",
+              "examples": [
+                "This is a plastic box.",
+                "The bottle is plastic.",
+                "Is it plastic?"
+              ]
+            },
+            {
+              "en": "long",
+              "fa": "بلند / طویل",
+              "examples": [
+                "This is a long table.",
+                "The ruler is long.",
+                "Is it long?"
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "short",
+              "fa": "کوتاه",
+              "examples": [
+                "This is a short ruler.",
+                "The table is short.",
+                "Is it short?"
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "heavy",
+              "fa": "سنگین",
+              "examples": [
+                "This box is heavy.",
+                "Is the bag heavy?",
+                "The box is heavy."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "light",
+              "fa": "سبک",
+              "examples": [
+                "This bag is light.",
+                "Is the box light?",
+                "The bag is light."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "shape",
+              "fa": "شکل",
+              "examples": [
+                "What shape is it?",
+                "The shape is round.",
+                "Is its shape square?"
+              ]
+            },
+            {
+              "en": "size",
+              "fa": "اندازه",
+              "examples": [
+                "What size is it?",
+                "The size is small.",
+                "Is the size big?"
+              ]
+            },
+            {
+              "en": "material",
+              "fa": "جنس / ماده",
+              "examples": [
+                "What material is it?",
+                "The material is metal.",
+                "The material is plastic."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-6-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "پرسیدن ویژگی و بیان جنس",
+          "description": "عبارت‌ها را به صورت جمله و در موقعیت یاد بگیر.",
+          "items": [
+            {
+              "en": "a red ball",
+              "fa": "یک توپ قرمز",
+              "kind": "fixed",
+              "examples": [
+                "a red ball",
+                "a blue book",
+                "a green bag"
+              ]
+            },
+            {
+              "en": "a small red ball",
+              "fa": "یک توپ کوچک قرمز",
+              "kind": "fixed",
+              "examples": [
+                "a small red ball",
+                "a big blue box",
+                "a small green bag"
+              ]
+            },
+            {
+              "en": "What shape",
+              "fa": "چه شکلی؟",
+              "kind": "fixed",
+              "examples": [
+                "What shape is it?",
+                "What shape is this box?",
+                "What shape is the table?"
+              ]
+            },
+            {
+              "en": "What size",
+              "fa": "چه اندازه‌ای؟",
+              "kind": "fixed",
+              "examples": [
+                "What size is it?",
+                "What size is this box?",
+                "What size is your bag?"
+              ]
+            },
+            {
+              "en": "made of",
+              "fa": "ساخته شده از",
+              "kind": "collocation",
+              "examples": [
+                "What is it made of?",
+                "It is made of wood.",
+                "This box is made of metal."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-6-one-adjective",
+          "type": "tap-attributes-lab",
+          "phase": "phrases",
+          "title": "مرحلهٔ ۱: فقط رنگ و اسم",
+          "description": "یک رنگ را با اسم از درس‌های قبل ترکیب کن. هم رنگ و هم اسم و تصویر قابل تغییر است.",
+          "mode": "progressive-features",
+          "stage": "one",
+          "options": {
+            "object": [
+              {
+                "id": "ball",
+                "en": "ball",
+                "fa": "توپ",
+                "shapes": [
+                  "round"
+                ],
+                "materials": [
+                  "plastic"
+                ]
+              },
+              {
+                "id": "book",
+                "en": "book",
+                "fa": "کتاب",
+                "shapes": [
+                  "rectangular"
+                ],
+                "materials": [
+                  "paper"
+                ]
+              },
+              {
+                "id": "bag",
+                "en": "bag",
+                "fa": "کیف",
+                "shapes": [
+                  "rectangular"
+                ],
+                "materials": [
+                  "plastic"
+                ]
+              },
+              {
+                "id": "box",
+                "en": "box",
+                "fa": "جعبه",
+                "shapes": [
+                  "square",
+                  "rectangular",
+                  "round"
+                ],
+                "materials": [
+                  "wooden",
+                  "metal",
+                  "plastic"
+                ]
+              },
+              {
+                "id": "bottle",
+                "en": "bottle",
+                "fa": "بطری",
+                "shapes": [
+                  "round"
+                ],
+                "materials": [
+                  "metal",
+                  "plastic"
+                ]
+              }
+            ],
+            "color": [
+              {
+                "id": "red",
+                "en": "red",
+                "fa": "قرمز",
+                "hex": "#e94c4c"
+              },
+              {
+                "id": "blue",
+                "en": "blue",
+                "fa": "آبی",
+                "hex": "#438de0"
+              },
+              {
+                "id": "green",
+                "en": "green",
+                "fa": "سبز",
+                "hex": "#3aab75"
+              },
+              {
+                "id": "yellow",
+                "en": "yellow",
+                "fa": "زرد",
+                "hex": "#e8bd45"
+              },
+              {
+                "id": "black",
+                "en": "black",
+                "fa": "سیاه",
+                "hex": "#3b4453"
+              },
+              {
+                "id": "white",
+                "en": "white",
+                "fa": "سفید",
+                "hex": "#f4f5f2"
+              }
+            ],
+            "size": [
+              {
+                "id": "small",
+                "en": "small",
+                "fa": "کوچک"
+              },
+              {
+                "id": "big",
+                "en": "big",
+                "fa": "بزرگ"
+              }
+            ],
+            "shape": [
+              {
+                "id": "round",
+                "en": "round",
+                "fa": "گرد"
+              },
+              {
+                "id": "square",
+                "en": "square",
+                "fa": "مربعی"
+              },
+              {
+                "id": "rectangular",
+                "en": "rectangular",
+                "fa": "مستطیلی"
+              }
+            ],
+            "material": [
+              {
+                "id": "wooden",
+                "en": "wooden",
+                "fa": "چوبی"
+              },
+              {
+                "id": "metal",
+                "en": "metal",
+                "fa": "فلزی"
+              },
+              {
+                "id": "plastic",
+                "en": "plastic",
+                "fa": "پلاستیکی"
+              },
+              {
+                "id": "paper",
+                "en": "paper",
+                "fa": "کاغذی"
+              }
+            ]
+          }
+        },
+        {
+          "id": "a1-6-two-adjectives",
+          "type": "tap-attributes-lab",
+          "phase": "phrases",
+          "title": "مرحلهٔ ۲: اندازه + رنگ + اسم",
+          "description": "اکنون دو صفت را باهم بیاور: a small red ball. با هر لمس، جمله و تصویر باهم عوض می‌شوند.",
+          "mode": "progressive-features",
+          "stage": "two",
+          "options": {
+            "object": [
+              {
+                "id": "ball",
+                "en": "ball",
+                "fa": "توپ",
+                "shapes": [
+                  "round"
+                ],
+                "materials": [
+                  "plastic"
+                ]
+              },
+              {
+                "id": "book",
+                "en": "book",
+                "fa": "کتاب",
+                "shapes": [
+                  "rectangular"
+                ],
+                "materials": [
+                  "paper"
+                ]
+              },
+              {
+                "id": "bag",
+                "en": "bag",
+                "fa": "کیف",
+                "shapes": [
+                  "rectangular"
+                ],
+                "materials": [
+                  "plastic"
+                ]
+              },
+              {
+                "id": "box",
+                "en": "box",
+                "fa": "جعبه",
+                "shapes": [
+                  "square",
+                  "rectangular",
+                  "round"
+                ],
+                "materials": [
+                  "wooden",
+                  "metal",
+                  "plastic"
+                ]
+              },
+              {
+                "id": "bottle",
+                "en": "bottle",
+                "fa": "بطری",
+                "shapes": [
+                  "round"
+                ],
+                "materials": [
+                  "metal",
+                  "plastic"
+                ]
+              }
+            ],
+            "color": [
+              {
+                "id": "red",
+                "en": "red",
+                "fa": "قرمز",
+                "hex": "#e94c4c"
+              },
+              {
+                "id": "blue",
+                "en": "blue",
+                "fa": "آبی",
+                "hex": "#438de0"
+              },
+              {
+                "id": "green",
+                "en": "green",
+                "fa": "سبز",
+                "hex": "#3aab75"
+              },
+              {
+                "id": "yellow",
+                "en": "yellow",
+                "fa": "زرد",
+                "hex": "#e8bd45"
+              },
+              {
+                "id": "black",
+                "en": "black",
+                "fa": "سیاه",
+                "hex": "#3b4453"
+              },
+              {
+                "id": "white",
+                "en": "white",
+                "fa": "سفید",
+                "hex": "#f4f5f2"
+              }
+            ],
+            "size": [
+              {
+                "id": "small",
+                "en": "small",
+                "fa": "کوچک"
+              },
+              {
+                "id": "big",
+                "en": "big",
+                "fa": "بزرگ"
+              }
+            ],
+            "shape": [
+              {
+                "id": "round",
+                "en": "round",
+                "fa": "گرد"
+              },
+              {
+                "id": "square",
+                "en": "square",
+                "fa": "مربعی"
+              },
+              {
+                "id": "rectangular",
+                "en": "rectangular",
+                "fa": "مستطیلی"
+              }
+            ],
+            "material": [
+              {
+                "id": "wooden",
+                "en": "wooden",
+                "fa": "چوبی"
+              },
+              {
+                "id": "metal",
+                "en": "metal",
+                "fa": "فلزی"
+              },
+              {
+                "id": "plastic",
+                "en": "plastic",
+                "fa": "پلاستیکی"
+              },
+              {
+                "id": "paper",
+                "en": "paper",
+                "fa": "کاغذی"
+              }
+            ]
+          }
+        },
+        {
+          "id": "a1-6-property-tap",
+          "type": "tap-attributes-lab",
+          "phase": "phrases",
+          "title": "مرحلهٔ ۳: جنس و شکل را هم اضافه کن",
+          "description": "اسم و صفت‌ها را در خود جمله لمس کن. شکل و جنس هر شیء با واقعیت آن سازگار می‌ماند.",
+          "mode": "progressive-features",
+          "options": {
+            "object": [
+              {
+                "id": "box",
+                "en": "box",
+                "fa": "جعبه",
+                "shapes": [
+                  "square",
+                  "rectangular",
+                  "round"
+                ],
+                "materials": [
+                  "wooden",
+                  "metal",
+                  "plastic"
+                ]
+              },
+              {
+                "id": "bottle",
+                "en": "bottle",
+                "fa": "بطری",
+                "shapes": [
+                  "round"
+                ],
+                "materials": [
+                  "metal",
+                  "plastic"
+                ]
+              },
+              {
+                "id": "ball",
+                "en": "ball",
+                "fa": "توپ",
+                "shapes": [
+                  "round"
+                ],
+                "materials": [
+                  "plastic"
+                ]
+              },
+              {
+                "id": "book",
+                "en": "book",
+                "fa": "کتاب",
+                "shapes": [
+                  "rectangular"
+                ],
+                "materials": [
+                  "paper"
+                ]
+              },
+              {
+                "id": "bag",
+                "en": "bag",
+                "fa": "کیف",
+                "shapes": [
+                  "rectangular"
+                ],
+                "materials": [
+                  "plastic"
+                ]
+              }
+            ],
+            "color": [
+              {
+                "id": "red",
+                "en": "red",
+                "fa": "قرمز",
+                "hex": "#e94c4c"
+              },
+              {
+                "id": "blue",
+                "en": "blue",
+                "fa": "آبی",
+                "hex": "#438de0"
+              },
+              {
+                "id": "green",
+                "en": "green",
+                "fa": "سبز",
+                "hex": "#3aab75"
+              },
+              {
+                "id": "yellow",
+                "en": "yellow",
+                "fa": "زرد",
+                "hex": "#e8bd45"
+              },
+              {
+                "id": "black",
+                "en": "black",
+                "fa": "سیاه",
+                "hex": "#3b4453"
+              },
+              {
+                "id": "white",
+                "en": "white",
+                "fa": "سفید",
+                "hex": "#f4f5f2"
+              }
+            ],
+            "size": [
+              {
+                "id": "small",
+                "en": "small",
+                "fa": "کوچک"
+              },
+              {
+                "id": "big",
+                "en": "big",
+                "fa": "بزرگ"
+              }
+            ],
+            "shape": [
+              {
+                "id": "round",
+                "en": "round",
+                "fa": "گرد"
+              },
+              {
+                "id": "square",
+                "en": "square",
+                "fa": "مربعی"
+              },
+              {
+                "id": "rectangular",
+                "en": "rectangular",
+                "fa": "مستطیلی"
+              }
+            ],
+            "material": [
+              {
+                "id": "wooden",
+                "en": "wooden",
+                "fa": "چوبی"
+              },
+              {
+                "id": "metal",
+                "en": "metal",
+                "fa": "فلزی"
+              },
+              {
+                "id": "plastic",
+                "en": "plastic",
+                "fa": "پلاستیکی"
+              },
+              {
+                "id": "paper",
+                "en": "paper",
+                "fa": "کاغذی"
+              }
+            ]
+          },
+          "stage": "full"
+        },
+        {
+          "id": "a1-6-feature-hunt",
+          "type": "feature-hunt",
+          "phase": "phrases",
+          "title": "مأموریت: توصیف را بشنو، شیء درست را پیدا کن",
+          "description": "این بار فقط صفت‌ها را لمس نمی‌کنی؛ باید از میان تصویرهای متفاوت، شیئی را که توصیف شده پیدا کنی. از یک صفت شروع می‌کنیم و به عدد + اندازه + رنگ + اسم می‌رسیم.",
+          "rounds": [
+            {
+              "prompt": "Find the red ball.",
+              "correct": 0,
+              "choices": [
+                {
+                  "object": "ball",
+                  "size": "big",
+                  "color": "red",
+                  "hex": "#e34e50",
+                  "count": 1,
+                  "description": "1 big red ball"
+                },
+                {
+                  "object": "ball",
+                  "size": "big",
+                  "color": "blue",
+                  "hex": "#4f8cda",
+                  "count": 1,
+                  "description": "1 big blue ball"
+                },
+                {
+                  "object": "bag",
+                  "size": "big",
+                  "color": "green",
+                  "hex": "#49aa83",
+                  "count": 1,
+                  "description": "1 big green bag"
+                }
+              ]
+            },
+            {
+              "prompt": "Find the small blue bag.",
+              "correct": 2,
+              "choices": [
+                {
+                  "object": "bag",
+                  "size": "small",
+                  "color": "red",
+                  "hex": "#e34e50",
+                  "count": 1,
+                  "description": "1 small red bag"
+                },
+                {
+                  "object": "bag",
+                  "size": "big",
+                  "color": "blue",
+                  "hex": "#4f8cda",
+                  "count": 1,
+                  "description": "1 big blue bag"
+                },
+                {
+                  "object": "bag",
+                  "size": "small",
+                  "color": "blue",
+                  "hex": "#4f8cda",
+                  "count": 1,
+                  "description": "1 small blue bag"
+                }
+              ]
+            },
+            {
+              "prompt": "Find the big green book.",
+              "correct": 1,
+              "choices": [
+                {
+                  "object": "book",
+                  "size": "small",
+                  "color": "green",
+                  "hex": "#49aa83",
+                  "count": 1,
+                  "description": "1 small green book"
+                },
+                {
+                  "object": "book",
+                  "size": "big",
+                  "color": "green",
+                  "hex": "#49aa83",
+                  "count": 1,
+                  "description": "1 big green book"
+                },
+                {
+                  "object": "book",
+                  "size": "big",
+                  "color": "red",
+                  "hex": "#e34e50",
+                  "count": 1,
+                  "description": "1 big red book"
+                }
+              ]
+            },
+            {
+              "prompt": "Find two small red books.",
+              "correct": 2,
+              "choices": [
+                {
+                  "object": "book",
+                  "size": "small",
+                  "color": "red",
+                  "hex": "#e34e50",
+                  "count": 1,
+                  "description": "1 small red book"
+                },
+                {
+                  "object": "book",
+                  "size": "small",
+                  "color": "blue",
+                  "hex": "#4f8cda",
+                  "count": 2,
+                  "description": "2 small blue books"
+                },
+                {
+                  "object": "book",
+                  "size": "small",
+                  "color": "red",
+                  "hex": "#e34e50",
+                  "count": 2,
+                  "description": "2 small red books"
+                }
+              ]
+            },
+            {
+              "prompt": "Find the big black box.",
+              "correct": 1,
+              "choices": [
+                {
+                  "object": "box",
+                  "size": "big",
+                  "color": "blue",
+                  "hex": "#4f8cda",
+                  "count": 1,
+                  "description": "1 big blue box"
+                },
+                {
+                  "object": "box",
+                  "size": "big",
+                  "color": "black",
+                  "hex": "#343e4c",
+                  "count": 1,
+                  "description": "1 big black box"
+                },
+                {
+                  "object": "box",
+                  "size": "small",
+                  "color": "black",
+                  "hex": "#343e4c",
+                  "count": 1,
+                  "description": "1 small black box"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-6-property-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "با لمس صفت، جملهٔ تازه بساز",
+          "description": "جمله را با تغییر صفت و اسم بساز؛ برای دیدن تصویرِ همان ترکیب، از مرحله‌های تصویری بالا استفاده کن.",
+          "targetLanguage": "en",
+          "wordSets": {
+            "sizes": [
+              {
+                "id": "big",
+                "label": "big",
+                "translation": "بزرگ",
+                "role": "core",
+                "forms": {
+                  "en": "big",
+                  "fa": "بزرگ"
+                }
+              },
+              {
+                "id": "small",
+                "label": "small",
+                "translation": "کوچک",
+                "role": "core",
+                "forms": {
+                  "en": "small",
+                  "fa": "کوچک"
+                }
+              }
+            ],
+            "shapes": [
+              {
+                "id": "round",
+                "label": "round",
+                "translation": "گرد",
+                "role": "core",
+                "forms": {
+                  "en": "round",
+                  "fa": "گرد"
+                }
+              },
+              {
+                "id": "square",
+                "label": "square",
+                "translation": "مربعی",
+                "role": "core",
+                "forms": {
+                  "en": "square",
+                  "fa": "مربعی"
+                }
+              },
+              {
+                "id": "rectangular",
+                "label": "rectangular",
+                "translation": "مستطیلی",
+                "role": "core",
+                "forms": {
+                  "en": "rectangular",
+                  "fa": "مستطیلی"
+                }
+              }
+            ],
+            "materials": [
+              {
+                "id": "wooden",
+                "label": "wooden",
+                "translation": "چوبی",
+                "role": "core",
+                "forms": {
+                  "en": "wooden",
+                  "fa": "چوبی"
+                }
+              },
+              {
+                "id": "metal",
+                "label": "metal",
+                "translation": "فلزی",
+                "role": "core",
+                "forms": {
+                  "en": "metal",
+                  "fa": "فلزی"
+                }
+              },
+              {
+                "id": "plastic",
+                "label": "plastic",
+                "translation": "پلاستیکی",
+                "role": "core",
+                "forms": {
+                  "en": "plastic",
+                  "fa": "پلاستیکی"
+                }
+              }
+            ],
+            "objects": [
+              {
+                "id": "box",
+                "label": "box",
+                "translation": "جعبه",
+                "forms": {
+                  "en": "box",
+                  "fa": "جعبه"
+                }
+              },
+              {
+                "id": "bottle",
+                "label": "bottle",
+                "translation": "بطری",
+                "forms": {
+                  "en": "bottle",
+                  "fa": "بطری"
+                }
+              },
+              {
+                "id": "bag",
+                "label": "bag",
+                "translation": "کیف",
+                "forms": {
+                  "en": "bag",
+                  "fa": "کیف"
+                }
+              },
+              {
+                "id": "book",
+                "label": "book",
+                "translation": "کتاب",
+                "forms": {
+                  "en": "book",
+                  "fa": "کتاب"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "size",
+              "label": "اندازه",
+              "wordSet": "sizes",
+              "default": "big",
+              "includeRoles": [
+                "core"
+              ]
+            },
+            {
+              "id": "shape",
+              "label": "شکل",
+              "wordSet": "shapes",
+              "default": "round",
+              "includeRoles": [
+                "core"
+              ]
+            },
+            {
+              "id": "material",
+              "label": "جنس",
+              "wordSet": "materials",
+              "default": "wooden",
+              "includeRoles": [
+                "core"
+              ]
+            },
+            {
+              "id": "object",
+              "label": "اسم شیء",
+              "wordSet": "objects",
+              "default": "box"
+            }
+          ],
+          "derivedDefaults": {},
+          "dependencies": [],
+          "defaultPattern": "description",
+          "patterns": [
+            {
+              "id": "description",
+              "label": "توصیف سه‌ویژگی",
+              "segments": [
+                {
+                  "fixed": "This is a "
+                },
+                {
+                  "slot": "size",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "shape",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "material",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "object",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "این یک شیءٔ "
+                },
+                {
+                  "slot": "size",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "shape",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "material",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " است."
+                }
+              ]
+            },
+            {
+              "id": "size-question",
+              "label": "پرسش دربارهٔ اندازه",
+              "segments": [
+                {
+                  "fixed": "Is this "
+                },
+                {
+                  "slot": "object",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "size",
+                  "form": "en"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "آیا این شیء "
+                },
+                {
+                  "slot": "size",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " است؟"
+                }
+              ]
+            },
+            {
+              "id": "shape-question",
+              "label": "پرسش دربارهٔ شکل",
+              "segments": [
+                {
+                  "fixed": "Is this "
+                },
+                {
+                  "slot": "object",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "shape",
+                  "form": "en"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "آیا این شیء "
+                },
+                {
+                  "slot": "shape",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " است؟"
+                }
+              ]
+            },
+            {
+              "id": "material-question",
+              "label": "پرسش دربارهٔ جنس",
+              "segments": [
+                {
+                  "fixed": "Is this "
+                },
+                {
+                  "slot": "object",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "material",
+                  "form": "en"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "آیا این شیء "
+                },
+                {
+                  "slot": "material",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " است؟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-6-forms",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "صفت در جمله و پرسش",
+          "description": "ابتدا گزاره را ببین، سپس با لمس همان واژه‌ها پرسش دربارهٔ ویژگی را بساز.",
+          "sourceActivityId": "a1-6-property-composer",
+          "patternIds": [
+            "description",
+            "size-question",
+            "shape-question",
+            "material-question"
+          ]
+        },
+        {
+          "id": "a1-6-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "پنج توصیف و پرسش از یک بانک واژه",
+          "description": "کلمات را کنار هم بچین و هر بار جملهٔ درست بساز.",
+          "revision": 1,
+          "reuseBank": true,
+          "goalCount": 5,
+          "sourceActivityId": "a1-6-property-composer",
+          "patternIds": [
+            "description",
+            "size-question",
+            "shape-question",
+            "material-question"
+          ],
+          "sentences": [
+            {
+              "id": "big-wooden",
+              "words": [
+                "This",
+                "is",
+                "a",
+                "big",
+                "wooden",
+                "box."
+              ]
+            },
+            {
+              "id": "small-metal",
+              "words": [
+                "This",
+                "is",
+                "a",
+                "small",
+                "metal",
+                "box."
+              ]
+            },
+            {
+              "id": "is-round",
+              "words": [
+                "Is",
+                "the",
+                "box",
+                "round?"
+              ]
+            },
+            {
+              "id": "shape",
+              "words": [
+                "What",
+                "shape",
+                "is",
+                "it?"
+              ]
+            },
+            {
+              "id": "square-plastic",
+              "words": [
+                "This",
+                "is",
+                "a",
+                "square",
+                "plastic",
+                "box."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-6-describe-check",
+          "type": "response-practice",
+          "phase": "construction",
+          "practiceRevision": 1,
+          "title": "حالا خودت یک شیء را توصیف کن",
+          "description": "این بار پاسخ را خودت بساز؛ گزینهٔ آماده‌ای وجود ندارد.",
+          "tasks": [
+            {
+              "task": "بگو این یک جعبهٔ بزرگ است.",
+              "hint": "This is a big box.",
+              "example": "This is a big box.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is a big box"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            },
+            {
+              "task": "بگو این یک جعبهٔ گرد است.",
+              "hint": "This is a round box.",
+              "example": "This is a round box.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is a round box"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            },
+            {
+              "task": "بگو این یک جعبهٔ چوبی است.",
+              "hint": "This is a wooden box.",
+              "example": "This is a wooden box.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is a wooden box"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            },
+            {
+              "task": "بپرس این جعبه گرد است یا نه.",
+              "hint": "Is this box round?",
+              "example": "Is this box round?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "is this box round"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            },
+            {
+              "task": "دربارهٔ شکل شیء سؤال کن.",
+              "hint": "What shape is it?",
+              "example": "What shape is it?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "what shape is it"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            },
+            {
+              "task": "دو صفت را در یک جمله بگو.",
+              "hint": "This is a small wooden box.",
+              "example": "This is a small wooden box.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is a small wooden box"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-6-cumulative-attributes",
+          "type": "response-practice",
+          "phase": "construction",
+          "practiceRevision": 1,
+          "title": "از خانواده، شمارش، مالکیت و رنگ جمله بساز",
+          "description": "کلمات درس‌های قبل را این بار در ساختار جدید به کار ببر؛ پاسخ را خودت بنویس.",
+          "completion": "توانستی از چند درس برای ساخت یک جملهٔ تازه استفاده کنی.",
+          "tasks": [
+            {
+              "task": "این یک توپ قرمز است.",
+              "hint": "This is a red ball.",
+              "example": "This is a red ball.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is a red ball"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            },
+            {
+              "task": "این یک کیف کوچک آبی است.",
+              "hint": "This is a small blue bag.",
+              "example": "This is a small blue bag.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is a small blue bag"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            },
+            {
+              "task": "بگو من دو کتاب آبی دارم.",
+              "hint": "I have two blue books.",
+              "example": "I have two blue books.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i have two blue books"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            },
+            {
+              "task": "بگو خواهرم یک کیف قرمز دارد.",
+              "hint": "My sister has a red bag.",
+              "example": "My sister has a red bag.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my sister has a red bag"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            },
+            {
+              "task": "بگو توپ سبز کوچک است.",
+              "hint": "The green ball is small.",
+              "example": "The green ball is small.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the green ball is small"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            },
+            {
+              "task": "بگو سه جعبهٔ کوچک روی میز هستند.",
+              "hint": "There are three small boxes on the table.",
+              "example": "There are three small boxes on the table.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are three small boxes on the table"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-6-feature-application",
+          "type": "response-practice",
+          "phase": "construction",
+          "practiceRevision": 1,
+          "title": "ویژگی‌ها را روی اشیا و آدم‌های قبلی به کار ببر",
+          "description": "از ساختاری که در صحنهٔ تعاملی تمرین کردی یک جملهٔ تازه بساز؛ نمونه را فقط در صورت نیاز ببین.",
+          "tasks": [
+            {
+              "task": "بگو من چهار کتاب کوچک قرمز دارم.",
+              "hint": "I have four small red books.",
+              "example": "I have four small red books.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i have four small red books"
+                    ],
+                    "feedback": "عدد، اسم و ساختار جمله را با هم کنترل کن."
+                  }
+                ],
+                "success": "جمله را با ترکیب دانسته‌های قبلی درست ساختی."
+              }
+            },
+            {
+              "task": "بگو سه جعبهٔ آبی روی میز هستند.",
+              "hint": "There are three blue boxes on the table.",
+              "example": "There are three blue boxes on the table.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "there are three blue boxes on the table"
+                    ],
+                    "feedback": "عدد، اسم و ساختار جمله را با هم کنترل کن."
+                  }
+                ],
+                "success": "جمله را با ترکیب دانسته‌های قبلی درست ساختی."
+              }
+            },
+            {
+              "task": "بگو خواهرم دو کیف سبز دارد.",
+              "hint": "My sister has two green bags.",
+              "example": "My sister has two green bags.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my sister has two green bags"
+                    ],
+                    "feedback": "عدد، اسم و ساختار جمله را با هم کنترل کن."
+                  }
+                ],
+                "success": "جمله را با ترکیب دانسته‌های قبلی درست ساختی."
+              }
+            },
+            {
+              "task": "بپرس یک جعبهٔ کوچک قرمز داخل اتاق هست؟",
+              "hint": "Is there a small red box in the room?",
+              "example": "Is there a small red box in the room?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "is there a small red box in the room"
+                    ],
+                    "feedback": "عدد، اسم و ساختار جمله را با هم کنترل کن."
+                  }
+                ],
+                "success": "جمله را با ترکیب دانسته‌های قبلی درست ساختی."
+              }
+            }
+          ],
+          "completion": "تمرین ترکیبی این مرحله را انجام دادی."
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "توصیف و گفت‌وگو",
+      "intro": "از دو جعبه شروع کن، بعد یک وسیلهٔ واقعی اطرافت را بدون تکیه بر نمونه‌ها معرفی کن.",
+      "masteryActivityIds": [
+        "a1-6-independent"
+      ],
+      "activities": [
+        {
+          "id": "a1-6-exchanges",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "یک سؤال، چند توصیف",
+          "description": "پاسخ را تغییر بده؛ معنی جمله و انتخاب ویژگی را مقایسه کن.",
+          "pairs": [
+            {
+              "question": "What shape is it?",
+              "questionFa": "چه شکلی است؟",
+              "variants": [
+                {
+                  "label": "گرد",
+                  "en": "It is round.",
+                  "fa": "گرد است.",
+                  "note": "round شکل را بیان می‌کند."
+                },
+                {
+                  "label": "مربعی",
+                  "en": "It is square.",
+                  "fa": "مربعی است.",
+                  "note": "square شکل را عوض می‌کند."
+                }
+              ]
+            },
+            {
+              "question": "Is it wooden?",
+              "questionFa": "چوبی است؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, it is wooden.",
+                  "fa": "بله، چوبی است.",
+                  "note": "جنس را تأیید کردی."
+                },
+                {
+                  "label": "نه، فلزی",
+                  "en": "No, it is metal.",
+                  "fa": "نه، فلزی است.",
+                  "note": "جنس درست را گفتی."
+                }
+              ]
+            },
+            {
+              "question": "Is it big?",
+              "questionFa": "بزرگ است؟",
+              "variants": [
+                {
+                  "label": "بزرگ",
+                  "en": "Yes, it is big.",
+                  "fa": "بله، بزرگ است.",
+                  "note": "اندازه را تأیید کردی."
+                },
+                {
+                  "label": "کوچک",
+                  "en": "No, it is small.",
+                  "fa": "نه، کوچک است.",
+                  "note": "اندازه را اصلاح کردی."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-6-exchange-practice",
+          "type": "response-practice",
+          "phase": "correspondence",
+          "practiceRevision": 1,
+          "title": "پرسش را خودت جواب بده",
+          "description": "این بار پاسخ را خودت بساز؛ گزینهٔ آماده‌ای وجود ندارد.",
+          "tasks": [
+            {
+              "incoming": "What shape is it?",
+              "task": "جواب بده که شیء گرد است.",
+              "hint": "It is round.",
+              "example": "It is round.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "it is round"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            },
+            {
+              "incoming": "What is it made of?",
+              "task": "بگو جعبه فلزی است.",
+              "hint": "It is metal.",
+              "example": "It is metal.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "it is metal"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            },
+            {
+              "incoming": "It is a big box.",
+              "task": "بپرس جعبه بزرگ است؟",
+              "hint": "Is the box big?",
+              "example": "Is the box big?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "is the box big"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-6-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "مکالمه: دو جعبه روی میز",
+          "description": "دو نفر اندازه، شکل و جنس جعبه‌ها را با هم مقایسه می‌کنند.",
+          "lines": [
+            {
+              "speaker": "Mia",
+              "en": "Look at these two boxes.",
+              "fa": "به این دو جعبه نگاه کن."
+            },
+            {
+              "speaker": "Noah",
+              "en": "This is a big wooden box.",
+              "fa": "این یک جعبهٔ چوبی بزرگ است."
+            },
+            {
+              "speaker": "Mia",
+              "en": "What shape is it?",
+              "fa": "چه شکلی است؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "It is square.",
+              "fa": "مربعی است."
+            },
+            {
+              "speaker": "Mia",
+              "en": "And the small box?",
+              "fa": "و جعبهٔ کوچک؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "It is round and metal.",
+              "fa": "گرد و فلزی است."
+            },
+            {
+              "speaker": "Mia",
+              "en": "Is the wooden box heavy?",
+              "fa": "جعبهٔ چوبی سنگین است؟"
+            },
+            {
+              "speaker": "Noah",
+              "en": "Yes, it is heavy.",
+              "fa": "بله، سنگین است."
+            },
+            {
+              "speaker": "Mia",
+              "en": "My brother has two blue books.",
+              "fa": "برادرم دو کتاب آبی دارد."
+            },
+            {
+              "speaker": "Noah",
+              "en": "And my sister has a small red bag.",
+              "fa": "و خواهرم یک کیف کوچک قرمز دارد."
+            }
+          ]
+        },
+        {
+          "id": "a1-6-dialogue-recall",
+          "type": "response-practice",
+          "phase": "context",
+          "practiceRevision": 1,
+          "title": "توصیف مکالمه را به خاطر بیاور",
+          "description": "این بار پاسخ را خودت بساز؛ گزینهٔ آماده‌ای وجود ندارد.",
+          "tasks": [
+            {
+              "task": "جعبهٔ بزرگ را از نظر جنس و اندازه معرفی کن.",
+              "hint": "This is a big wooden box.",
+              "example": "This is a big wooden box.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is a big wooden box"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            },
+            {
+              "task": "دربارهٔ شکل جعبه سؤال کن.",
+              "hint": "What shape is it?",
+              "example": "What shape is it?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "what shape is it"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            },
+            {
+              "task": "بگو جعبهٔ کوچک گرد است.",
+              "hint": "The small box is round.",
+              "example": "The small box is round.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the small box is round"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-6-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "title": "تصویر دو جعبه را توصیف کن",
+          "description": "جعبهٔ سمت چپ بزرگ و چوبی است؛ جعبهٔ سمت راست کوچک و فلزی. از روی تصویر جمله بساز.",
+          "image": "./assets/scene-a1-6-v2.svg",
+          "imageAlt": "جعبهٔ چوبی بزرگ مربعی سمت چپ؛ جعبهٔ فلزی کوچک گرد سمت راست",
+          "caption": "دو جعبه با اندازه، شکل و جنس متفاوت",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "جعبهٔ بزرگ را با دو صفت توصیف کن.",
+              "hint": "This is a big wooden box.",
+              "example": "This is a big wooden box.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is a big wooden box"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            },
+            {
+              "task": "شکل جعبهٔ چوبی را بگو.",
+              "hint": "It is square.",
+              "example": "It is square.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "it is square"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            },
+            {
+              "task": "جعبهٔ کوچک را با دو صفت توصیف کن.",
+              "hint": "This is a small metal box.",
+              "example": "This is a small metal box.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is a small metal box"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            },
+            {
+              "task": "شکل جعبهٔ فلزی را بگو.",
+              "hint": "It is round.",
+              "example": "It is round.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "it is round"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-6-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "title": "مکالمه‌ای دربارهٔ ویژگی وسایل",
+          "practiceRevision": 1,
+          "description": "حالا جای دوستت پاسخ بده یا پرسش را از دید او بساز.",
+          "completion": "اندازه، شکل و جنس را در مکالمه به کار بردی.",
+          "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "What is this?",
+              "task": "بگو یک جعبهٔ چوبی بزرگ است.",
+              "hint": "This is a big wooden box.",
+              "example": "This is a big wooden box.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is a big wooden box"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "It is a wooden box.",
+              "task": "دربارهٔ شکل شیء بپرس.",
+              "hint": "What shape is it?",
+              "example": "What shape is it?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "what shape is it"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Is the small box plastic?",
+              "task": "بگو جعبهٔ کوچک فلزی است.",
+              "hint": "The small box is metal.",
+              "example": "The small box is metal.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "the small box is metal"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "This is a big box.",
+              "task": "بپرس جعبه سنگین است؟",
+              "hint": "Is the box heavy?",
+              "example": "Is the box heavy?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "is the box heavy"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-6-transfer",
+          "type": "dialogue-transfer",
+          "phase": "guided",
+          "title": "انتقال به وسایل خودت",
+          "sceneTitle": "وسایل روی میز یا داخل کیف",
+          "practiceRevision": 1,
+          "description": "با یک جعبه، کیف یا وسیلهٔ واقعی، ویژگی‌های تازه را تمرین کن.",
+          "completion": "صفت را به شیء و موقعیت جدید منتقل کردی.",
+          "turns": [
+            {
+              "speaker": "دوستت",
+              "incoming": "What is this?",
+              "task": "یک کیف کوچک را معرفی کن.",
+              "hint": "This is a small bag.",
+              "example": "This is a small bag.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is a small bag"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "This is my box.",
+              "task": "دربارهٔ اندازهٔ جعبه بپرس.",
+              "hint": "What size is the box?",
+              "example": "What size is the box?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "what size is the box"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Is it wooden?",
+              "task": "جنس جعبه را با صفت توصیف کن.",
+              "hint": "This is a plastic box.",
+              "example": "This is a plastic box.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "this is a plastic box"
+                    ],
+                    "feedback": "به شکل صحیح صفت و جای آن در جمله دقت کن."
+                  }
+                ],
+                "success": "ویژگی شیء را در جملهٔ کامل بیان کردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-6-cumulative-production",
+          "type": "response-practice",
+          "phase": "guided",
+          "practiceRevision": 1,
+          "title": "ترکیب مستقل ویژگی‌ها با ساختارهای قدیمی",
+          "description": "کلمات درس‌های قبل را این بار در ساختار جدید به کار ببر؛ پاسخ را خودت بنویس.",
+          "completion": "توانستی از چند درس برای ساخت یک جملهٔ تازه استفاده کنی.",
+          "tasks": [
+            {
+              "task": "بگو من سه توپ قرمز دارم.",
+              "hint": "I have three red balls.",
+              "example": "I have three red balls.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "i have three red balls"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            },
+            {
+              "task": "بگو دو کتاب آبی من روی میز هستند.",
+              "hint": "My two blue books are on the table.",
+              "example": "My two blue books are on the table.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my two blue books are on the table"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            },
+            {
+              "task": "بگو برادرم یک کیف بزرگ دارد.",
+              "hint": "My brother has a big bag.",
+              "example": "My brother has a big bag.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "my brother has a big bag"
+                    ],
+                    "feedback": "از کلمات آموخته‌شده و ترتیب جمله کمک بگیر."
+                  }
+                ],
+                "success": "واژه‌های قبلی را در ساختار تازه به کار بردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-6-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "توصیف مستقل دو شیء واقعی",
+          "prompt": "دو شیء شبیه به هم را با رنگ، اندازه و در صورت نیاز شکل یا جنس متمایز کن؛ یک سؤال دربارهٔ ویژگی بپرس.",
+          "placeholder": "This is a red ball.\nThis is a small blue bag.\nI have two blue books.\nWhat shape is the box?",
+          "hint": "از adjective + noun استفاده کن: a small box. برای سؤال بگو: What shape is it? / Is it wooden?",
+          "kind": "free-text",
+          "minWords": 18,
+          "assessment": {
+            "revision": 2,
+            "required": [
+              {
+                "patterns": [
+                  "\\b(?:red|blue|green|yellow|black|white)\\b"
+                ],
+                "feedback": "رنگ یکی از دو شیء را در یک جملهٔ کامل بگو."
+              },
+              {
+                "patterns": [
+                  "\\b(?:big|small|long|short|round|square|rectangular)\\b"
+                ],
+                "feedback": "اندازه یا شکل یکی از اشیا را مشخص کن."
+              },
+              {
+                "patterns": [
+                  "\\b(?:wooden|metal|plastic)\\b|\\b(?:what shape|is it|is this)\\b"
+                ],
+                "feedback": "دربارهٔ جنس یا شکل یکی از اشیا سؤال یا جملهٔ تازه بساز."
+              }
+            ],
+            "success": "دو شیء را مستقل توصیف کردی و از ویژگی آن‌ها پرسش ساختی.",
+            "productionProof": {
+              "minWords": 8,
+              "minClauses": 2
+            }
+          },
+          "realWorldMission": {
+            "cue": "وقتی می‌خواهی وسیله‌ای را برای شخص دیگری مشخص کنی",
+            "reflection": "به دو وسیلهٔ اطرافت نگاه کن و تفاوتشان را با دو صفت بگو."
+          }
+        },
+        {
+          "id": "a1-6-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "یک بار دیگر گوش بده",
+          "description": "همان جمله‌های آغاز درس را این بار با درک ویژگی‌ها تکرار کن.",
+          "sourceActivityId": "a1-6-shadowing"
+        }
+      ]
+    }
+  ]
+}

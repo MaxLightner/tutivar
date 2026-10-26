@@ -1,0 +1,892 @@
+{
+  "id": "A1-17",
+  "revision": "2026-10-27-owner-a1-stage2-practical-sequence",
+  "status": "draft",
+  "title": "اعضای بدن و جای آن‌ها",
+  "goal": "نام و جای اعضای معمول بدن را بفهم و بگو؛ اعضایی را که از درس ظاهر می‌شناسی در جمله‌های تازه دوباره به کار ببر.",
+  "duration": 24,
+  "feature": "نشان‌دادن، نام‌بردن و توصیف بدن",
+  "archetype": "K2",
+  "roadmapRef": {
+    "id": "A1-17",
+    "revision": "2026-10-27-owner-a1-stage2-practical-sequence",
+    "communicativeOutcome": "اعضای اصلی بدن را نام می‌برد و روی تصویر یا شخص خیالی مشخص می‌کند؛ جای سادهٔ عضو را شرح می‌دهد و میان مفرد و جمع رایج مانند foot/feet تمایز می‌گذارد."
+  },
+  "teachingModel": {
+    "type": "discovery-production",
+    "sections": 2
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "نام و جای اعضای معمول بدن را بفهم و بگو؛ اعضایی را که از درس ظاهر می‌شناسی در جمله‌های تازه دوباره به کار ببر.",
+    "prerequisites": [
+      "A1-2",
+      "A1-5",
+      "A1-7",
+      "A1-16"
+    ],
+    "previously": "دانسته‌های بخش اول و درس‌های پیشین را در این موقعیت تازه دوباره به کار می‌بریم.",
+    "quickCheck": {
+      "title": "مرور آغازین",
+      "question": "Where is your neck?",
+      "example": "My neck is under my head.",
+      "explanation": "اگر این پاسخ تازه است، در مسیر واژه تا تولید آن را خواهی ساخت.",
+      "allowSkip": false
+    }
+  },
+  "visual": {
+    "src": "./assets/scene-a1-17-stage2.svg",
+    "alt": "بدن از سر تا پا",
+    "caption": "بدن از سر تا پا"
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "two feet"
+    ],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": false
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "بخش اول · کشف و تمرین",
+      "intro": "واژه → عبارت → جملهٔ زنده → سنجش → ساختن",
+      "masteryActivityIds": [
+        "a1-17-puzzle",
+        "a1-17-build"
+      ],
+      "activities": [
+        {
+          "id": "a1-17-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "ابتدا نمونهٔ موقعیت را گوش کن",
+          "description": "با این چند جمله آشنا شو؛ هنوز لازم نیست همه را بی‌کمک بسازی.",
+          "audioSrc": null,
+          "rate": 0.8,
+          "pauseMs": 500,
+          "lines": [
+            "I have two legs.",
+            "Where is your neck?",
+            "My neck is under my head.",
+            "My neck is under my head.",
+            "My knee is on my leg.",
+            "How many legs do you have?"
+          ]
+        },
+        {
+          "id": "a1-17-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "واژگان تازهٔ این مأموریت",
+          "deckRevision": 1,
+          "batchSize": 4,
+          "items": [
+            {
+              "en": "head",
+              "fa": "سر",
+              "examples": [
+                "My head is above my shoulders."
+              ]
+            },
+            {
+              "en": "leg",
+              "fa": "پا (از ران تا مچ)",
+              "examples": [
+                "I have two legs."
+              ]
+            },
+            {
+              "en": "foot",
+              "fa": "پا (مچ به پایین)",
+              "examples": [
+                "This is my left foot."
+              ]
+            },
+            {
+              "en": "stomach",
+              "fa": "شکم",
+              "examples": [
+                "My stomach is below my chest."
+              ]
+            },
+            {
+              "en": "back",
+              "fa": "پشت",
+              "examples": [
+                "This is my back."
+              ]
+            },
+            {
+              "en": "neck",
+              "fa": "گردن",
+              "examples": [
+                "My neck is under my head."
+              ]
+            },
+            {
+              "en": "knee",
+              "fa": "زانو",
+              "examples": [
+                "My knee is on my leg."
+              ]
+            },
+            {
+              "en": "shoulder",
+              "fa": "شانه",
+              "examples": [
+                "My shoulder is next to my neck."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-17-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "عبارت‌های آماده برای موقعیت واقعی",
+          "description": "ترکیب‌ها را در جمله ببین؛ جملهٔ کامل را به‌جای جداکردن تک‌تک واژه‌ها به یاد بیاور.",
+          "presentation": "deck",
+          "items": [
+            {
+              "en": "two feet",
+              "fa": "دو پا",
+              "kind": "fixed",
+              "examples": []
+            },
+            {
+              "en": "left hand",
+              "fa": "دست چپ",
+              "kind": "fixed",
+              "examples": []
+            },
+            {
+              "en": "right leg",
+              "fa": "پای راست",
+              "kind": "fixed",
+              "examples": []
+            },
+            {
+              "en": "above the knee",
+              "fa": "بالای زانو",
+              "kind": "fixed",
+              "examples": []
+            }
+          ]
+        },
+        {
+          "id": "a1-17-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "جمله را با تغییر معنی بساز",
+          "description": "روی واژه‌های جمله بزن و فاعل، کالا، مقصد یا ویژگی را تغییر بده. بعد ساختار دیگر را امتحان کن؛ به مفهوم جمله دقت کن.",
+          "targetLanguage": "en",
+          "derivedDefaults": {},
+          "wordSets": {
+            "owner": [
+              {
+                "id": "option-0",
+                "label": "my",
+                "translation": "مال من",
+                "forms": {
+                  "en": "my"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "your",
+                "translation": "مال تو",
+                "forms": {
+                  "en": "your"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "his",
+                "translation": "مال او (مذکر)",
+                "forms": {
+                  "en": "his"
+                }
+              },
+              {
+                "id": "option-3",
+                "label": "her",
+                "translation": "مال او (مونث)",
+                "forms": {
+                  "en": "her"
+                }
+              }
+            ],
+            "part": [
+              {
+                "id": "option-0",
+                "label": "head",
+                "translation": "سر",
+                "forms": {
+                  "en": "head"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "neck",
+                "translation": "گردن",
+                "forms": {
+                  "en": "neck"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "shoulder",
+                "translation": "شانه",
+                "forms": {
+                  "en": "shoulder"
+                }
+              },
+              {
+                "id": "option-3",
+                "label": "knee",
+                "translation": "زانو",
+                "forms": {
+                  "en": "knee"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "owner",
+              "label": "owner",
+              "wordSet": "owner",
+              "default": "option-0"
+            },
+            {
+              "id": "part",
+              "label": "part",
+              "wordSet": "part",
+              "default": "option-0"
+            }
+          ],
+          "defaultPattern": "identify",
+          "patterns": [
+            {
+              "id": "identify",
+              "label": "نشان بده",
+              "segments": [
+                {
+                  "fixed": "This is "
+                },
+                {
+                  "slot": "owner",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "part",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": []
+            },
+            {
+              "id": "question",
+              "label": "بپرس",
+              "segments": [
+                {
+                  "fixed": "Where is "
+                },
+                {
+                  "slot": "owner",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "part",
+                  "form": "en"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": []
+            }
+          ]
+        },
+        {
+          "id": "a1-17-variants",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "یک جمله با دو هدف ارتباطی",
+          "description": "ساختار را عوض کن؛ یک‌بار گزارش بده، یک‌بار سؤال بپرس یا نظر بده.",
+          "sourceActivityId": "a1-17-composer",
+          "patternIds": [
+            "identify",
+            "question"
+          ],
+          "examples": [
+            {
+              "en": "I have two legs.",
+              "fa": "بگو من دو پا دارم."
+            },
+            {
+              "en": "My neck is under my head.",
+              "fa": "بگو گردنم زیر سرم است."
+            },
+            {
+              "en": "My knee is on my leg.",
+              "fa": "بگو زانوی من روی پایم است."
+            }
+          ]
+        },
+        {
+          "id": "a1-17-decision",
+          "type": "quiz-set",
+          "phase": "variants",
+          "title": "در موقعیت چه واکنشی مناسب است؟",
+          "questions": [
+            {
+              "question": "جمع foot چیست؟",
+              "choices": [
+                "feet",
+                "foots",
+                "footies"
+              ],
+              "answer": 0,
+              "feedback": "از معنی و موقعیت استفاده کن؛ فقط شکل واژه را حفظ نکن."
+            },
+            {
+              "question": "کدام عضو بالای گردن است؟",
+              "choices": [
+                "head",
+                "foot",
+                "knee"
+              ],
+              "answer": 0,
+              "feedback": "از معنی و موقعیت استفاده کن؛ فقط شکل واژه را حفظ نکن."
+            },
+            {
+              "question": "درست کدام است؟",
+              "choices": [
+                "I have two legs.",
+                "I has two leg.",
+                "I have two leg."
+              ],
+              "answer": 0,
+              "feedback": "از معنی و موقعیت استفاده کن؛ فقط شکل واژه را حفظ نکن."
+            }
+          ]
+        },
+        {
+          "id": "a1-17-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "چند جمله با بانک کلمات مشترک بساز",
+          "description": "هر بار جملهٔ متفاوتی پیدا کن؛ واژه‌های مشترک را به‌موقع استفاده کن.",
+          "revision": 1,
+          "goalCount": 5,
+          "reuseBank": true,
+          "sentences": [
+            {
+              "id": "sentence-1",
+              "words": [
+                "I",
+                "have",
+                "two",
+                "legs."
+              ]
+            },
+            {
+              "id": "sentence-2",
+              "words": [
+                "My",
+                "neck",
+                "is",
+                "under",
+                "my",
+                "head."
+              ]
+            },
+            {
+              "id": "sentence-3",
+              "words": [
+                "My",
+                "knee",
+                "is",
+                "on",
+                "my",
+                "leg."
+              ]
+            },
+            {
+              "id": "sentence-4",
+              "words": [
+                "My",
+                "neck",
+                "is",
+                "above",
+                "my",
+                "shoulders."
+              ]
+            },
+            {
+              "id": "sentence-5",
+              "words": [
+                "This",
+                "picture",
+                "has",
+                "one",
+                "leg."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-17-build",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "از فارسی به یک پاسخ دقیق برس",
+          "description": "چند جمله و سؤال متفاوت بنویس؛ راهنمایی تنها وقتی لازم بود باز کن.",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "بگو من دو پا دارم.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I have two legs.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I have two legs."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو گردنم زیر سرم است.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "My neck is under my head.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My neck is under my head."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو زانوی من روی پایم است.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "My knee is on my leg.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My knee is on my leg."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بپرس شانهٔ تو کجاست.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Where is your shoulder?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Where is your shoulder?"
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو شکمم پایین‌تر از سرم است.",
+              "hint": "فعل و فاعل را دقیق انتخاب کن. نمونهٔ پاسخ بعد از دو تلاش می‌آید.",
+              "example": "My stomach is below my head.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My stomach is below my head."
+                    ],
+                    "feedback": "یک جملهٔ کامل با همین معنی بنویس."
+                  }
+                ],
+                "success": "پاسخ را با جملهٔ کامل ساختی."
+              }
+            },
+            {
+              "task": "بگو من دو پا دارم (جمع نامنظمِ foot).",
+              "hint": "فعل و فاعل را دقیق انتخاب کن. نمونهٔ پاسخ بعد از دو تلاش می‌آید.",
+              "example": "I have two feet.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I have two feet."
+                    ],
+                    "feedback": "یک جملهٔ کامل با همین معنی بنویس."
+                  }
+                ],
+                "success": "پاسخ را با جملهٔ کامل ساختی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "بخش دوم · کاربرد و تولید",
+      "intro": "پرسش‌وپاسخ → گفت‌وگو → توصیف → تولید مستقل",
+      "masteryActivityIds": [
+        "a1-17-guided",
+        "a1-17-independent"
+      ],
+      "activities": [
+        {
+          "id": "a1-17-exchange",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "گفت‌وگو با انتخاب‌های معنی‌دار",
+          "description": "چهار موقعیت را ببین. برای هر سؤال سه پاسخ متفاوت ولی درست بررسی کن؛ در پایان پاسخ خودت را مستقل بساز.",
+          "pairs": [
+            {
+              "question": "Where is your neck?",
+              "questionFa": "گردنت کجاست؟",
+              "variants": [
+                {
+                  "label": "زیر سر",
+                  "en": "My neck is under my head.",
+                  "fa": "زیر سر"
+                },
+                {
+                  "label": "بالای شانه",
+                  "en": "My neck is above my shoulders.",
+                  "fa": "بالای شانه"
+                },
+                {
+                  "label": "همین‌جا",
+                  "en": "Here is my neck.",
+                  "fa": "همین‌جا"
+                }
+              ]
+            },
+            {
+              "question": "How many legs do you have?",
+              "questionFa": "چند پا داری؟",
+              "variants": [
+                {
+                  "label": "دو",
+                  "en": "I have two legs.",
+                  "fa": "دو"
+                },
+                {
+                  "label": "یک (خیالی)",
+                  "en": "This picture has one leg.",
+                  "fa": "یک (خیالی)"
+                },
+                {
+                  "label": "پای من",
+                  "en": "These are my legs.",
+                  "fa": "پای من"
+                }
+              ]
+            },
+            {
+              "question": "What is below your knee?",
+              "questionFa": "زیر زانو چیست؟",
+              "variants": [
+                {
+                  "label": "پا",
+                  "en": "My foot is below my knee.",
+                  "fa": "پا"
+                },
+                {
+                  "label": "دو پا",
+                  "en": "My feet are below my knees.",
+                  "fa": "دو پا"
+                },
+                {
+                  "label": "مچ",
+                  "en": "My ankle is below my knee.",
+                  "fa": "مچ"
+                }
+              ]
+            },
+            {
+              "question": "Where is your back?",
+              "questionFa": "پشتت کجاست؟",
+              "variants": [
+                {
+                  "label": "پشت بدن",
+                  "en": "My back is behind my stomach.",
+                  "fa": "پشت بدن"
+                },
+                {
+                  "label": "اینجاست",
+                  "en": "Here is my back.",
+                  "fa": "اینجاست"
+                },
+                {
+                  "label": "درد نیست",
+                  "en": "This is my back.",
+                  "fa": "درد نیست"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-17-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "یک گفت‌وگوی واقعی دربارهٔ اعضای بدن و جای آن‌ها",
+          "description": "پاسخ بعدی را قبل از آشکارشدنش حدس بزن؛ سپس جای نقش‌ها را عوض کن.",
+          "lines": [
+            {
+              "speaker": "Teacher",
+              "en": "Point to your head.",
+              "fa": "به سرت اشاره کن."
+            },
+            {
+              "speaker": "Student",
+              "en": "This is my head.",
+              "fa": "این سر من است."
+            },
+            {
+              "speaker": "Teacher",
+              "en": "Where is your neck?",
+              "fa": "گردنت کجاست؟"
+            },
+            {
+              "speaker": "Student",
+              "en": "It is under my head.",
+              "fa": "زیر سرم است."
+            },
+            {
+              "speaker": "Teacher",
+              "en": "How many feet do you have?",
+              "fa": "چند پا داری؟"
+            },
+            {
+              "speaker": "Student",
+              "en": "I have two feet.",
+              "fa": "دو پا دارم."
+            }
+          ]
+        },
+        {
+          "id": "a1-17-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "title": "سه موقعیت را از کارت مرور کن",
+          "description": "در هر کارت معنای پرسش فرق می‌کند؛ به جای حفظ جمله، پاسخ مناسب را تولید کن.",
+          "image": "./assets/scene-a1-17-stage2.svg",
+          "imageAlt": "بدن از سر تا پا",
+          "caption": "بدن از سر تا پا",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "به کارت تصویر مربوط به «گردنت کجاست؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "My neck is under my head.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My neck is under my head."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «چند پا داری؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I have two legs.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I have two legs."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «زیر زانو چیست؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "My foot is below my knee.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My foot is below my knee."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-17-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "title": "این بار خودت در مکالمه پاسخ بده",
+          "description": "۴ نوبت با پرسش‌ها و نقش‌های متفاوت. متن نمونه از اول نمایش داده نمی‌شود.",
+          "practiceRevision": 1,
+          "completion": "حالا بدون راهنمایی در موقعیت تازه پاسخ بساز.",
+          "turns": [
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "Where is your neck?",
+              "task": "برای «گردنت کجاست؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Here is my neck.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Here is my neck."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "How many legs do you have?",
+              "task": "برای «چند پا داری؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "These are my legs.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "These are my legs."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "What is below your knee?",
+              "task": "برای «زیر زانو چیست؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "My ankle is below my knee.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My ankle is below my knee."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is your back?",
+              "task": "برای «پشتت کجاست؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "This is my back.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "This is my back."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-17-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "مأموریت واقعی و ساختن بدون الگو",
+          "prompt": "در تصویر یک آدم فرضی، شش عضو بدن را پیدا کن؛ سه جمله دربارهٔ جای اعضا و یک سؤال دربارهٔ دست یا پا بساز.",
+          "placeholder": "دو یا سه جملهٔ انگلیسی خودت را اینجا بنویس؛ اطلاعات فرضی کافی است.",
+          "hint": "از جمله‌های درس الهام بگیر ولی فاعل، شیء، مکان یا تصمیم را خودت عوض کن.",
+          "kind": "free-text",
+          "minWords": 14,
+          "assessment": {
+            "revision": 1,
+            "required": [
+              {
+                "patterns": [
+                  "\\b(?:head|neck|shoulder|knee|foot|feet|leg|stomach|back)\\b"
+                ],
+                "feedback": "واژگان اصلی موقعیت را داخل جملهٔ کامل به کار ببر."
+              },
+              {
+                "patterns": [
+                  "\\b(?:is|are|have)\\b"
+                ],
+                "feedback": "یک کار، سؤال یا دلیل مرتبط هم بنویس."
+              }
+            ],
+            "productionProof": {
+              "minWords": 10,
+              "minClauses": 2
+            },
+            "success": "دو جملهٔ مستقل با هدف درس ساختی؛ حالا سرنخ زندگی واقعی را هم امتحان کن."
+          },
+          "realWorldMission": {
+            "cue": "وقتی دست و پا و صورتت را در آینه می‌بینی",
+            "reflection": "با نام‌بردن بخش‌های بدنت به انگلیسی، بالا و پایین بدن را توصیف کن."
+          }
+        },
+        {
+          "id": "a1-17-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "حالا همان جمله‌های آغاز درس را بازبگو",
+          "description": "متن شروع را بازشنوی کن و فاصلهٔ یادگیری خودت را بسنج.",
+          "sourceActivityId": "a1-17-shadowing"
+        }
+      ]
+    }
+  ]
+}

@@ -14,7 +14,7 @@ const load=(relative)=>JSON.parse(readFileSync(join(pairRoot,relative),'utf8'));
 const curriculum=load('curriculum.a1.json');
 const active=curriculum.stages.flatMap(stage=>stage.chapters).flatMap(chapter=>chapter.lessons).filter(entry=>entry?.status==='sample');
 const lessons=active.map(entry=>load(entry.file));
-const newer=[lessons[6],lessons[8],lessons[9],lessons[10]];
+const newer=[lessons[6],lessons[8],lessons[11],lessons[9]];
 const context=(lesson,progress={})=>({lessonId:lesson.id,index:0,e:String,en:String,i:()=>'',progress});
 const activity=(lesson,id)=>lesson.sections.flatMap(s=>s.activities).find(a=>a.id===id);
 
@@ -24,7 +24,7 @@ test('A1-7..11 follow the canon and preserve workshop after 9, before the home c
  const third=curriculum.stages[0].chapters[2].lessons;
  assert.deepEqual(second.slice(2,6).map(x=>x.id),['A1-7','A1-8','A1-9','A1-W1']);
  assert.deepEqual(third.map(x=>x.id),['A1-10','A1-11','A1-12','A1-W2']);
- assert.deepEqual(active.map(x=>x.id),Array.from({length:14},(_,i)=>`A1-${i+1}`));
+ assert.deepEqual(active.map(x=>x.id),Array.from({length:24},(_,i)=>`A1-${i+1}`));
  assert.ok(first.every(x=>x.status==='sample'));
  for(const number of [7,8,9])assert.ok(existsSync(join(pairRoot,`lessons/a1-${number}.json`)),`archived original A1-${number} must remain`);
 });
@@ -34,7 +34,7 @@ test('four complete two-section courses pass the same production and content con
  for(const lesson of newer){
   assert.deepEqual(validateLessonFlow(lesson),[],`${lesson.id}: lesson flow`);
   assert.deepEqual(auditLesson(lesson).errors,[],`${lesson.id}: expression practice audit`);
-  assert.equal(lesson.roadmapRef.revision,'2026-10-26-owner-a1-twelve-per-stage');
+  assert.equal(lesson.roadmapRef.revision,'2026-10-26-owner-home-school-feelings-realworld');
   assert.ok(lesson.sections[0].activities.some(a=>a.type==='cumulative-scene-lab'));
   assert.ok(lesson.sections[0].activities.some(a=>a.type==='cumulative-visual-quest'));
   assert.ok(lesson.sections[0].activities.some(a=>a.type==='sentence-builder'&&a.goalCount>=5));
@@ -83,10 +83,10 @@ test('personal-info lesson (now A1-9) practices numeric ages, profile fields, la
  for(const phrase of ['I study architecture.','I am a student.','My sister is nineteen years old.'])assert.ok(JSON.stringify(l.sections).includes(phrase));
 });
 
-test('feelings lesson (now A1-10) shows agreement and empathy',()=>{
+test('feelings lesson (now A1-12) shows agreement and empathy',()=>{
  const l=newer[2],lab=activity(l,'a1-9-live');
  assert.match(renderActivity(lab,context(l)),/I.*am.*happy/);
- const changed=renderActivity(lab,context(l,{cumulativeLabStates:{'A1-10:a1-9-live':{subject:3,feeling:4}}}));
+ const changed=renderActivity(lab,context(l,{cumulativeLabStates:{'A1-12:a1-9-live':{subject:3,feeling:4}}}));
  assert.match(changed,/My two sisters.*are.*thirsty/);
  assert.match(changed,/Have some water/);
  assert.match(changed,/aria-label="تشنه است"/);
@@ -94,17 +94,17 @@ test('feelings lesson (now A1-10) shows agreement and empathy',()=>{
  assert.match(JSON.stringify(l.sections),/I hope you feel better/);
 });
 
-test('home lesson (now A1-11) keeps furniture, count, color and room synchronized and handles zero',()=>{
+test('home lesson (now A1-10) keeps furniture, count, color and room synchronized and handles zero',()=>{
  const l=newer[3],lab=activity(l,'a1-10-live'),defaultMarkup=renderActivity(lab,context(l));
  assert.match(defaultMarkup,/There are.*three.*blue.*chairs.*living room/);
  assert.match(defaultMarkup,/My house has.*two.*rooms/);
- const empty=renderActivity(lab,context(l,{cumulativeLabStates:{'A1-11:a1-10-live':{count:3}}}));
+ const empty=renderActivity(lab,context(l,{cumulativeLabStates:{'A1-10:a1-10-live':{count:3}}}));
  assert.match(empty,/There are.*no.*blue.*chairs.*living room/);
- const one=renderActivity(lab,context(l,{cumulativeLabStates:{'A1-11:a1-10-live':{count:1,room:1,item:4,color:2,roomsCount:1}}}));
+ const one=renderActivity(lab,context(l,{cumulativeLabStates:{'A1-10:a1-10-live':{count:1,room:1,item:4,color:2,roomsCount:1}}}));
  assert.match(one,/There is.*one.*green.*bed.*bedroom/);
  assert.match(one,/My house has.*three.*rooms/);
  assert.match(one,/aria-label="1 bed در bedroom"/);
- const three=renderActivity(lab,context(l,{cumulativeLabStates:{'A1-11:a1-10-live':{count:0,room:0,item:0,color:0}}}));
+ const three=renderActivity(lab,context(l,{cumulativeLabStates:{'A1-10:a1-10-live':{count:0,room:0,item:0,color:0}}}));
  assert.match(three,/There are.*three.*blue.*chairs.*living room/);
  const composer=activity(l,'a1-10-composer');
  const resolved=resolveSentenceComposer(composer,{slots:{count:'one',object:'chair',color:'blue',room:'living'},pattern:'count-place'});

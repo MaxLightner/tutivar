@@ -21,8 +21,8 @@ test('live click dispatcher reaches every cumulative visual practice control',()
    assert.ok(selector.includes(`button[data-${key}]`),`click dispatcher omitted data-${key}`);
 });
 test('canonical A1 live curriculum follows approved outcomes through two food lessons in stage two',()=>{
- assert.deepEqual(active.map(x=>x.id),Array.from({length:14},(_,i)=>`A1-${i+1}`));
- assert.deepEqual(active.slice(2,6).map(x=>x.file),['lessons/a1-3-v4.json','lessons/a1-4-v4.json','lessons/a1-5-v3.json','lessons/a1-6-v4.json']);
+ assert.deepEqual(active.map(x=>x.id),Array.from({length:24},(_,i)=>`A1-${i+1}`));
+ assert.deepEqual(active.slice(2,6).map(x=>x.file),['lessons/a1-3-v5.json','lessons/a1-4-v5.json','lessons/a1-5-v4.json','lessons/a1-6-v5.json']);
  assert.equal(active[5].title,'توصیف ویژگی‌های اشیا');
  assert.deepEqual(inspectVocabularyContinuity(active.map(x=>load(x.file))),[]);
 });

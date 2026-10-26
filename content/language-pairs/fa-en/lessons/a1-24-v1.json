@@ -1,0 +1,898 @@
+{
+  "id": "A1-24",
+  "revision": "2026-10-27-owner-a1-stage2-practical-sequence",
+  "status": "draft",
+  "title": "حمل‌ونقل و رسیدن به مقصد",
+  "goal": "وسیلهٔ رسیدن به مقصد را انتخاب کن؛ ایستگاه و بلیت را بپرس و یک گفت‌وگوی کوتاه در تاکسی یا اتوبوس انجام بده.",
+  "duration": 24,
+  "feature": "انتخاب وسیله و گفت‌وگوی ایستگاه",
+  "archetype": "K5",
+  "roadmapRef": {
+    "id": "A1-24",
+    "revision": "2026-10-27-owner-a1-stage2-practical-sequence",
+    "communicativeOutcome": "می‌گوید با اتوبوس، تاکسی یا قطار به مقصد آشنا می‌رود؛ ایستگاه، بلیت و مقصد را می‌پرسد و در مکالمهٔ کوتاه رفت‌وآمد پاسخ می‌دهد."
+  },
+  "teachingModel": {
+    "type": "discovery-production",
+    "sections": 2
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "وسیلهٔ رسیدن به مقصد را انتخاب کن؛ ایستگاه و بلیت را بپرس و یک گفت‌وگوی کوتاه در تاکسی یا اتوبوس انجام بده.",
+    "prerequisites": [
+      "A1-8",
+      "A1-20",
+      "A1-22",
+      "A1-23"
+    ],
+    "previously": "دانسته‌های بخش اول و درس‌های پیشین را در این موقعیت تازه دوباره به کار می‌بریم.",
+    "quickCheck": {
+      "title": "مرور آغازین",
+      "question": "How do you go to school?",
+      "example": "I go by bus.",
+      "explanation": "اگر این پاسخ تازه است، در مسیر واژه تا تولید آن را خواهی ساخت.",
+      "allowSkip": false
+    }
+  },
+  "visual": {
+    "src": "./assets/scene-a1-24-stage2.svg",
+    "alt": "ایستگاه، تاکسی و اتوبوس",
+    "caption": "ایستگاه، تاکسی و اتوبوس"
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "by taxi"
+    ],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": false
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "بخش اول · کشف و تمرین",
+      "intro": "واژه → عبارت → جملهٔ زنده → سنجش → ساختن",
+      "masteryActivityIds": [
+        "a1-24-puzzle",
+        "a1-24-build"
+      ],
+      "activities": [
+        {
+          "id": "a1-24-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "ابتدا نمونهٔ موقعیت را گوش کن",
+          "description": "با این چند جمله آشنا شو؛ هنوز لازم نیست همه را بی‌کمک بسازی.",
+          "audioSrc": null,
+          "rate": 0.8,
+          "pauseMs": 500,
+          "lines": [
+            "I go to school by taxi.",
+            "How do you go to school?",
+            "I go by bus.",
+            "Where is the bus stop?",
+            "One ticket, please.",
+            "Where is the bus stop?"
+          ]
+        },
+        {
+          "id": "a1-24-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "واژگان تازهٔ این مأموریت",
+          "deckRevision": 1,
+          "batchSize": 4,
+          "items": [
+            {
+              "en": "taxi",
+              "fa": "تاکسی",
+              "examples": [
+                "I go home by taxi."
+              ]
+            },
+            {
+              "en": "train",
+              "fa": "قطار",
+              "examples": [
+                "This train goes to the city."
+              ]
+            },
+            {
+              "en": "ticket",
+              "fa": "بلیت",
+              "examples": [
+                "I need one ticket."
+              ]
+            },
+            {
+              "en": "stop",
+              "fa": "ایستگاه / توقف",
+              "examples": [
+                "Where is the bus stop?"
+              ]
+            },
+            {
+              "en": "ride",
+              "fa": "سوارشدن / سفر کوتاه",
+              "examples": [
+                "I ride the bus."
+              ]
+            },
+            {
+              "en": "travel",
+              "fa": "سفر کردن",
+              "examples": [
+                "We travel by train."
+              ]
+            },
+            {
+              "en": "subway",
+              "fa": "مترو",
+              "examples": [
+                "The subway station is near here."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "destination",
+              "fa": "مقصد",
+              "examples": [
+                "The park is my destination."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "platform",
+              "fa": "سکو",
+              "examples": [
+                "The train is at platform two."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-24-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "عبارت‌های آماده برای موقعیت واقعی",
+          "description": "ترکیب‌ها را در جمله ببین؛ جملهٔ کامل را به‌جای جداکردن تک‌تک واژه‌ها به یاد بیاور.",
+          "presentation": "deck",
+          "items": [
+            {
+              "en": "by bus",
+              "fa": "با اتوبوس",
+              "kind": "fixed",
+              "examples": [
+                "I go by bus."
+              ]
+            },
+            {
+              "en": "by taxi",
+              "fa": "با تاکسی",
+              "kind": "fixed",
+              "examples": [
+                "I go to school by taxi.",
+                "I go by taxi."
+              ]
+            },
+            {
+              "en": "a ticket to",
+              "fa": "بلیت به مقصد",
+              "kind": "fixed",
+              "examples": [
+                "I need a ticket to the city."
+              ]
+            },
+            {
+              "en": "Where is the bus stop?",
+              "fa": "ایستگاه اتوبوس کجاست؟",
+              "kind": "fixed",
+              "examples": [
+                "Where is the bus stop?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-24-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "جمله را با تغییر معنی بساز",
+          "description": "روی واژه‌های جمله بزن و فاعل، کالا، مقصد یا ویژگی را تغییر بده. بعد ساختار دیگر را امتحان کن؛ به مفهوم جمله دقت کن.",
+          "targetLanguage": "en",
+          "derivedDefaults": {},
+          "wordSets": {
+            "destination": [
+              {
+                "id": "option-0",
+                "label": "the park",
+                "translation": "پارک",
+                "forms": {
+                  "en": "the park"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "the school",
+                "translation": "مدرسه",
+                "forms": {
+                  "en": "the school"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "the market",
+                "translation": "بازار",
+                "forms": {
+                  "en": "the market"
+                }
+              },
+              {
+                "id": "option-3",
+                "label": "the library",
+                "translation": "کتابخانه",
+                "forms": {
+                  "en": "the library"
+                }
+              }
+            ],
+            "vehicle": [
+              {
+                "id": "option-0",
+                "label": "by bus",
+                "translation": "با اتوبوس",
+                "forms": {
+                  "en": "by bus"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "by taxi",
+                "translation": "با تاکسی",
+                "forms": {
+                  "en": "by taxi"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "by train",
+                "translation": "با قطار",
+                "forms": {
+                  "en": "by train"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "destination",
+              "label": "destination",
+              "wordSet": "destination",
+              "default": "option-0"
+            },
+            {
+              "id": "vehicle",
+              "label": "vehicle",
+              "wordSet": "vehicle",
+              "default": "option-0"
+            }
+          ],
+          "defaultPattern": "travel",
+          "patterns": [
+            {
+              "id": "travel",
+              "label": "وسیله و مقصد",
+              "segments": [
+                {
+                  "fixed": "I go to "
+                },
+                {
+                  "slot": "destination",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "vehicle",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": []
+            },
+            {
+              "id": "question",
+              "label": "دربارهٔ رسیدن بپرس",
+              "segments": [
+                {
+                  "fixed": "Do you go to "
+                },
+                {
+                  "slot": "destination",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "vehicle",
+                  "form": "en"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": []
+            }
+          ]
+        },
+        {
+          "id": "a1-24-variants",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "یک جمله با دو هدف ارتباطی",
+          "description": "ساختار را عوض کن؛ یک‌بار گزارش بده، یک‌بار سؤال بپرس یا نظر بده.",
+          "sourceActivityId": "a1-24-composer",
+          "patternIds": [
+            "travel",
+            "question"
+          ],
+          "examples": [
+            {
+              "en": "I go to school by taxi.",
+              "fa": "بگو با تاکسی به مدرسه می‌روم."
+            },
+            {
+              "en": "Where is the bus stop?",
+              "fa": "ایستگاه اتوبوس را بپرس."
+            },
+            {
+              "en": "One ticket, please.",
+              "fa": "یک بلیت بخواه."
+            }
+          ]
+        },
+        {
+          "id": "a1-24-decision",
+          "type": "quiz-set",
+          "phase": "variants",
+          "title": "در موقعیت چه واکنشی مناسب است؟",
+          "questions": [
+            {
+              "question": "برای رفتن با وسیلهٔ نقلیه کدام عبارت رایج است؟",
+              "choices": [
+                "by bus",
+                "on bus by",
+                "with the bus of"
+              ],
+              "answer": 0,
+              "feedback": "از معنی و موقعیت استفاده کن؛ فقط شکل واژه را حفظ نکن."
+            },
+            {
+              "question": "ticket یعنی؟",
+              "choices": [
+                "بلیت",
+                "رسید خرید",
+                "کت"
+              ],
+              "answer": 0,
+              "feedback": "از معنی و موقعیت استفاده کن؛ فقط شکل واژه را حفظ نکن."
+            },
+            {
+              "question": "برای پیدا کردن ایستگاه چه می‌پرسی؟",
+              "choices": [
+                "Where is the bus stop?",
+                "Where is my jacket?",
+                "Where is breakfast?"
+              ],
+              "answer": 0,
+              "feedback": "از معنی و موقعیت استفاده کن؛ فقط شکل واژه را حفظ نکن."
+            }
+          ]
+        },
+        {
+          "id": "a1-24-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "چند جمله با بانک کلمات مشترک بساز",
+          "description": "هر بار جملهٔ متفاوتی پیدا کن؛ واژه‌های مشترک را به‌موقع استفاده کن.",
+          "revision": 1,
+          "goalCount": 5,
+          "reuseBank": true,
+          "sentences": [
+            {
+              "id": "sentence-1",
+              "words": [
+                "I",
+                "go",
+                "to",
+                "school",
+                "by",
+                "taxi."
+              ]
+            },
+            {
+              "id": "sentence-2",
+              "words": [
+                "Where",
+                "is",
+                "the",
+                "bus",
+                "stop?"
+              ]
+            },
+            {
+              "id": "sentence-3",
+              "words": [
+                "One",
+                "ticket,",
+                "please."
+              ]
+            },
+            {
+              "id": "sentence-4",
+              "words": [
+                "I",
+                "go",
+                "by",
+                "taxi."
+              ]
+            },
+            {
+              "id": "sentence-5",
+              "words": [
+                "It",
+                "is",
+                "on",
+                "the",
+                "corner."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-24-build",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "از فارسی به یک پاسخ دقیق برس",
+          "description": "چند جمله و سؤال متفاوت بنویس؛ راهنمایی تنها وقتی لازم بود باز کن.",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "بگو با تاکسی به مدرسه می‌روم.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I go to school by taxi.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I go to school by taxi."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "ایستگاه اتوبوس را بپرس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Where is the bus stop?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Where is the bus stop?"
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "یک بلیت بخواه.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "One ticket, please.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "One ticket, please."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بپرس این قطار به شهر می‌رود؟",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Does this train go to the city?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Does this train go to the city?"
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو ما با قطار سفر می‌کنیم.",
+              "hint": "فعل و فاعل را دقیق انتخاب کن. نمونهٔ پاسخ بعد از دو تلاش می‌آید.",
+              "example": "We travel by train.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "We travel by train."
+                    ],
+                    "feedback": "یک جملهٔ کامل با همین معنی بنویس."
+                  }
+                ],
+                "success": "پاسخ را با جملهٔ کامل ساختی."
+              }
+            },
+            {
+              "task": "بگو من سوار اتوبوس می‌شوم.",
+              "hint": "فعل و فاعل را دقیق انتخاب کن. نمونهٔ پاسخ بعد از دو تلاش می‌آید.",
+              "example": "I ride the bus.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I ride the bus."
+                    ],
+                    "feedback": "یک جملهٔ کامل با همین معنی بنویس."
+                  }
+                ],
+                "success": "پاسخ را با جملهٔ کامل ساختی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "بخش دوم · کاربرد و تولید",
+      "intro": "پرسش‌وپاسخ → گفت‌وگو → توصیف → تولید مستقل",
+      "masteryActivityIds": [
+        "a1-24-guided",
+        "a1-24-independent"
+      ],
+      "activities": [
+        {
+          "id": "a1-24-exchange",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "گفت‌وگو با انتخاب‌های معنی‌دار",
+          "description": "چهار موقعیت را ببین. برای هر سؤال سه پاسخ متفاوت ولی درست بررسی کن؛ در پایان پاسخ خودت را مستقل بساز.",
+          "pairs": [
+            {
+              "question": "How do you go to school?",
+              "questionFa": "چطور به مدرسه می‌روی؟",
+              "variants": [
+                {
+                  "label": "اتوبوس",
+                  "en": "I go by bus.",
+                  "fa": "اتوبوس"
+                },
+                {
+                  "label": "تاکسی",
+                  "en": "I go by taxi.",
+                  "fa": "تاکسی"
+                },
+                {
+                  "label": "پیاده",
+                  "en": "I walk to school.",
+                  "fa": "پیاده"
+                }
+              ]
+            },
+            {
+              "question": "Where is the bus stop?",
+              "questionFa": "ایستگاه اتوبوس کجاست؟",
+              "variants": [
+                {
+                  "label": "نزدیک پارک",
+                  "en": "The bus stop is near the park.",
+                  "fa": "نزدیک پارک"
+                },
+                {
+                  "label": "نبش",
+                  "en": "It is on the corner.",
+                  "fa": "نبش"
+                },
+                {
+                  "label": "روبه‌رو",
+                  "en": "It is opposite the bank.",
+                  "fa": "روبه‌رو"
+                }
+              ]
+            },
+            {
+              "question": "How many tickets do you need?",
+              "questionFa": "چند بلیت می‌خواهی؟",
+              "variants": [
+                {
+                  "label": "یک",
+                  "en": "One ticket, please.",
+                  "fa": "یک"
+                },
+                {
+                  "label": "دو",
+                  "en": "Two tickets, please.",
+                  "fa": "دو"
+                },
+                {
+                  "label": "رفت",
+                  "en": "I need a ticket to the city.",
+                  "fa": "رفت"
+                }
+              ]
+            },
+            {
+              "question": "Does this train go to the city?",
+              "questionFa": "این قطار به شهر می‌رود؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, it goes to the city.",
+                  "fa": "بله"
+                },
+                {
+                  "label": "نه",
+                  "en": "No, take the other train.",
+                  "fa": "نه"
+                },
+                {
+                  "label": "سکو",
+                  "en": "The train is at platform two.",
+                  "fa": "سکو"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-24-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "یک گفت‌وگوی واقعی دربارهٔ حمل‌ونقل و رسیدن به مقصد",
+          "description": "پاسخ بعدی را قبل از آشکارشدنش حدس بزن؛ سپس جای نقش‌ها را عوض کن.",
+          "lines": [
+            {
+              "speaker": "Passenger",
+              "en": "Excuse me. Where is the bus stop?",
+              "fa": "ببخشید. ایستگاه اتوبوس کجاست؟"
+            },
+            {
+              "speaker": "Local",
+              "en": "It is near the park.",
+              "fa": "نزدیک پارک است."
+            },
+            {
+              "speaker": "Passenger",
+              "en": "Does this bus go to the school?",
+              "fa": "این اتوبوس به مدرسه می‌رود؟"
+            },
+            {
+              "speaker": "Driver",
+              "en": "Yes. One ticket?",
+              "fa": "بله. یک بلیت؟"
+            },
+            {
+              "speaker": "Passenger",
+              "en": "Yes, one ticket, please.",
+              "fa": "بله، یک بلیت لطفاً."
+            },
+            {
+              "speaker": "Driver",
+              "en": "Here you are.",
+              "fa": "بفرمایید."
+            }
+          ]
+        },
+        {
+          "id": "a1-24-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "title": "سه موقعیت را از کارت مرور کن",
+          "description": "در هر کارت معنای پرسش فرق می‌کند؛ به جای حفظ جمله، پاسخ مناسب را تولید کن.",
+          "image": "./assets/scene-a1-24-stage2.svg",
+          "imageAlt": "ایستگاه، تاکسی و اتوبوس",
+          "caption": "ایستگاه، تاکسی و اتوبوس",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "به کارت تصویر مربوط به «چطور به مدرسه می‌روی؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I go by bus.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I go by bus."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «ایستگاه اتوبوس کجاست؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "The bus stop is near the park.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The bus stop is near the park."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «چند بلیت می‌خواهی؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "One ticket, please.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "One ticket, please."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-24-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "title": "این بار خودت در مکالمه پاسخ بده",
+          "description": "۴ نوبت با پرسش‌ها و نقش‌های متفاوت. متن نمونه از اول نمایش داده نمی‌شود.",
+          "practiceRevision": 1,
+          "completion": "حالا بدون راهنمایی در موقعیت تازه پاسخ بساز.",
+          "turns": [
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "How do you go to school?",
+              "task": "برای «چطور به مدرسه می‌روی؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I walk to school.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I walk to school."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is the bus stop?",
+              "task": "برای «ایستگاه اتوبوس کجاست؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "It is opposite the bank.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "It is opposite the bank."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "How many tickets do you need?",
+              "task": "برای «چند بلیت می‌خواهی؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I need a ticket to the city.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I need a ticket to the city."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Does this train go to the city?",
+              "task": "برای «این قطار به شهر می‌رود؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "The train is at platform two.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The train is at platform two."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-24-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "مأموریت واقعی و ساختن بدون الگو",
+          "prompt": "برای رفتن از خانهٔ خیالی به مدرسه یا پارک وسیلهٔ مناسب انتخاب کن؛ از کسی جای ایستگاه و قیمت بلیت را بپرس، بعد مقصد را تأیید کن.",
+          "placeholder": "دو یا سه جملهٔ انگلیسی خودت را اینجا بنویس؛ اطلاعات فرضی کافی است.",
+          "hint": "از جمله‌های درس الهام بگیر ولی فاعل، شیء، مکان یا تصمیم را خودت عوض کن.",
+          "kind": "free-text",
+          "minWords": 14,
+          "assessment": {
+            "revision": 1,
+            "required": [
+              {
+                "patterns": [
+                  "\\b(?:bus|taxi|train|subway|ticket|stop)\\b"
+                ],
+                "feedback": "واژگان اصلی موقعیت را داخل جملهٔ کامل به کار ببر."
+              },
+              {
+                "patterns": [
+                  "\\b(?:go|take|need|ride|travel)\\b"
+                ],
+                "feedback": "یک کار، سؤال یا دلیل مرتبط هم بنویس."
+              }
+            ],
+            "productionProof": {
+              "minWords": 10,
+              "minClauses": 2
+            },
+            "success": "دو جملهٔ مستقل با هدف درس ساختی؛ حالا سرنخ زندگی واقعی را هم امتحان کن."
+          },
+          "realWorldMission": {
+            "cue": "وقتی منتظر اتوبوس یا تاکسی هستی",
+            "reflection": "در مسیر امروزت وسیلهٔ رفت‌وآمدت را به انگلیسی نام ببر و یک سؤال دربارهٔ مقصد بساز."
+          }
+        },
+        {
+          "id": "a1-24-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "حالا همان جمله‌های آغاز درس را بازبگو",
+          "description": "متن شروع را بازشنوی کن و فاصلهٔ یادگیری خودت را بسنج.",
+          "sourceActivityId": "a1-24-shadowing"
+        }
+      ]
+    }
+  ]
+}

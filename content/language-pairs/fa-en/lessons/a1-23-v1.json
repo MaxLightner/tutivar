@@ -1,0 +1,887 @@
+{
+  "id": "A1-23",
+  "revision": "2026-10-27-owner-a1-stage2-practical-sequence",
+  "status": "draft",
+  "title": "آدرس و راهنمایی مسیر کوتاه",
+  "goal": "مقصد کوتاه را بپرس؛ دستورهای ساده را به ترتیب بده و بین «اینجا کجاست» و «چطور بروم» تفاوت بگذار.",
+  "duration": 24,
+  "feature": "اجرای چند دستور روی نقشه",
+  "archetype": "K6",
+  "roadmapRef": {
+    "id": "A1-23",
+    "revision": "2026-10-27-owner-a1-stage2-practical-sequence",
+    "communicativeOutcome": "مسیر کوتاه و قابل‌اجرا را می‌پرسد و با go straight، turn left/right و نشان‌دادن مقصد روی نقشه راهنمایی می‌کند؛ برای یک مقصد تازه حداقل دو مرحله را به ترتیب می‌گوید."
+  },
+  "teachingModel": {
+    "type": "discovery-production",
+    "sections": 2
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "مقصد کوتاه را بپرس؛ دستورهای ساده را به ترتیب بده و بین «اینجا کجاست» و «چطور بروم» تفاوت بگذار.",
+    "prerequisites": [
+      "A1-5",
+      "A1-22"
+    ],
+    "previously": "دانسته‌های بخش اول و درس‌های پیشین را در این موقعیت تازه دوباره به کار می‌بریم.",
+    "quickCheck": {
+      "title": "مرور آغازین",
+      "question": "How do I get to the park?",
+      "example": "Go straight and turn left.",
+      "explanation": "اگر این پاسخ تازه است، در مسیر واژه تا تولید آن را خواهی ساخت.",
+      "allowSkip": false
+    }
+  },
+  "visual": {
+    "src": "./assets/scene-a1-23-stage2.svg",
+    "alt": "مسیر از پارک تا کتابخانه",
+    "caption": "مسیر از پارک تا کتابخانه"
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "Turn left"
+    ],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": false
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "بخش اول · کشف و تمرین",
+      "intro": "واژه → عبارت → جملهٔ زنده → سنجش → ساختن",
+      "masteryActivityIds": [
+        "a1-23-puzzle",
+        "a1-23-build"
+      ],
+      "activities": [
+        {
+          "id": "a1-23-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "ابتدا نمونهٔ موقعیت را گوش کن",
+          "description": "با این چند جمله آشنا شو؛ هنوز لازم نیست همه را بی‌کمک بسازی.",
+          "audioSrc": null,
+          "rate": 0.8,
+          "pauseMs": 500,
+          "lines": [
+            "Go straight and turn left.",
+            "How do I get to the park?",
+            "Go straight and turn left.",
+            "Turn right at the intersection.",
+            "The bank is opposite the cafe.",
+            "Where do I turn?"
+          ]
+        },
+        {
+          "id": "a1-23-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "واژگان تازهٔ این مأموریت",
+          "deckRevision": 1,
+          "batchSize": 4,
+          "items": [
+            {
+              "en": "left",
+              "fa": "چپ",
+              "examples": [
+                "Turn left at the bank."
+              ]
+            },
+            {
+              "en": "right",
+              "fa": "راست",
+              "examples": [
+                "Turn right at the park."
+              ]
+            },
+            {
+              "en": "turn",
+              "fa": "پیچیدن",
+              "examples": [
+                "Turn left here."
+              ]
+            },
+            {
+              "en": "cross",
+              "fa": "عبور کردن",
+              "examples": [
+                "Cross the street."
+              ]
+            },
+            {
+              "en": "opposite",
+              "fa": "روبرو",
+              "examples": [
+                "The bank is opposite the cafe."
+              ]
+            },
+            {
+              "en": "block",
+              "fa": "بلوک / یک خیابان فرعی",
+              "examples": [
+                "Go one block."
+              ]
+            },
+            {
+              "en": "traffic",
+              "fa": "ترافیک / آمدوشد",
+              "examples": [
+                "Stop at the traffic light."
+              ]
+            },
+            {
+              "en": "intersection",
+              "fa": "تقاطع",
+              "examples": [
+                "Turn right at the intersection."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-23-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "عبارت‌های آماده برای موقعیت واقعی",
+          "description": "ترکیب‌ها را در جمله ببین؛ جملهٔ کامل را به‌جای جداکردن تک‌تک واژه‌ها به یاد بیاور.",
+          "presentation": "deck",
+          "items": [
+            {
+              "en": "Go straight",
+              "fa": "مستقیم برو",
+              "kind": "fixed",
+              "examples": [
+                "Go straight and turn left.",
+                "Go straight and turn left.",
+                "Go straight, then turn right."
+              ]
+            },
+            {
+              "en": "Turn left",
+              "fa": "به چپ بپیچ",
+              "kind": "fixed",
+              "examples": [
+                "Go straight and turn left.",
+                "Go straight and turn left.",
+                "Turn left at the intersection."
+              ]
+            },
+            {
+              "en": "Turn right",
+              "fa": "به راست بپیچ",
+              "kind": "fixed",
+              "examples": [
+                "Turn right at the intersection.",
+                "Go straight, then turn right.",
+                "Turn right at the bank."
+              ]
+            },
+            {
+              "en": "How do I get to...?",
+              "fa": "چطور به ... برسم؟",
+              "kind": "fixed",
+              "examples": []
+            }
+          ]
+        },
+        {
+          "id": "a1-23-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "جمله را با تغییر معنی بساز",
+          "description": "روی واژه‌های جمله بزن و فاعل، کالا، مقصد یا ویژگی را تغییر بده. بعد ساختار دیگر را امتحان کن؛ به مفهوم جمله دقت کن.",
+          "targetLanguage": "en",
+          "derivedDefaults": {},
+          "wordSets": {
+            "movement": [
+              {
+                "id": "option-0",
+                "label": "Go straight",
+                "translation": "مستقیم برو",
+                "forms": {
+                  "en": "Go straight"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "Turn left",
+                "translation": "چپ بپیچ",
+                "forms": {
+                  "en": "Turn left"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "Turn right",
+                "translation": "راست بپیچ",
+                "forms": {
+                  "en": "Turn right"
+                }
+              },
+              {
+                "id": "option-3",
+                "label": "Cross the street",
+                "translation": "از خیابان رد شو",
+                "forms": {
+                  "en": "Cross the street"
+                }
+              }
+            ],
+            "landmark": [
+              {
+                "id": "option-0",
+                "label": "at the park",
+                "translation": "در پارک",
+                "forms": {
+                  "en": "at the park"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "at the bank",
+                "translation": "نزدیک بانک",
+                "forms": {
+                  "en": "at the bank"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "at the intersection",
+                "translation": "در تقاطع",
+                "forms": {
+                  "en": "at the intersection"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "movement",
+              "label": "movement",
+              "wordSet": "movement",
+              "default": "option-0"
+            },
+            {
+              "id": "landmark",
+              "label": "landmark",
+              "wordSet": "landmark",
+              "default": "option-0"
+            }
+          ],
+          "defaultPattern": "step",
+          "patterns": [
+            {
+              "id": "step",
+              "label": "دستور بده",
+              "segments": [
+                {
+                  "slot": "movement",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "landmark",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": []
+            },
+            {
+              "id": "two",
+              "label": "مرحلهٔ دوم",
+              "segments": [
+                {
+                  "slot": "movement",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "landmark",
+                  "form": "en"
+                },
+                {
+                  "fixed": ". This is the way to the park."
+                }
+              ],
+              "translationSegments": []
+            }
+          ]
+        },
+        {
+          "id": "a1-23-variants",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "یک جمله با دو هدف ارتباطی",
+          "description": "ساختار را عوض کن؛ یک‌بار گزارش بده، یک‌بار سؤال بپرس یا نظر بده.",
+          "sourceActivityId": "a1-23-composer",
+          "patternIds": [
+            "step",
+            "two"
+          ],
+          "examples": [
+            {
+              "en": "Go straight and turn left.",
+              "fa": "بگو مستقیم برو و به چپ بپیچ."
+            },
+            {
+              "en": "Turn right at the intersection.",
+              "fa": "بگو سر تقاطع به راست بپیچ."
+            },
+            {
+              "en": "The bank is opposite the cafe.",
+              "fa": "بگو بانک روبه‌روی کافه است."
+            }
+          ]
+        },
+        {
+          "id": "a1-23-decision",
+          "type": "quiz-set",
+          "phase": "variants",
+          "title": "در موقعیت چه واکنشی مناسب است؟",
+          "questions": [
+            {
+              "question": "بعد از Go straight, turn left کدام حرکت است؟",
+              "choices": [
+                "مستقیم، سپس چپ",
+                "چپ، سپس راست",
+                "راست، سپس مستقیم"
+              ],
+              "answer": 0,
+              "feedback": "از معنی و موقعیت استفاده کن؛ فقط شکل واژه را حفظ نکن."
+            },
+            {
+              "question": "opposite یعنی؟",
+              "choices": [
+                "روبه‌رو",
+                "زیر",
+                "داخل"
+              ],
+              "answer": 0,
+              "feedback": "از معنی و موقعیت استفاده کن؛ فقط شکل واژه را حفظ نکن."
+            },
+            {
+              "question": "برای رفتن به پارک کدام سؤال درست است؟",
+              "choices": [
+                "How do I get to the park?",
+                "What is your park?",
+                "Do I park?"
+              ],
+              "answer": 0,
+              "feedback": "از معنی و موقعیت استفاده کن؛ فقط شکل واژه را حفظ نکن."
+            }
+          ]
+        },
+        {
+          "id": "a1-23-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "چند جمله با بانک کلمات مشترک بساز",
+          "description": "هر بار جملهٔ متفاوتی پیدا کن؛ واژه‌های مشترک را به‌موقع استفاده کن.",
+          "revision": 1,
+          "goalCount": 5,
+          "reuseBank": true,
+          "sentences": [
+            {
+              "id": "sentence-1",
+              "words": [
+                "Go",
+                "straight",
+                "and",
+                "turn",
+                "left."
+              ]
+            },
+            {
+              "id": "sentence-2",
+              "words": [
+                "Turn",
+                "right",
+                "at",
+                "the",
+                "intersection."
+              ]
+            },
+            {
+              "id": "sentence-3",
+              "words": [
+                "The",
+                "bank",
+                "is",
+                "opposite",
+                "the",
+                "cafe."
+              ]
+            },
+            {
+              "id": "sentence-4",
+              "words": [
+                "Go",
+                "straight,",
+                "then",
+                "turn",
+                "right."
+              ]
+            },
+            {
+              "id": "sentence-5",
+              "words": [
+                "Turn",
+                "left",
+                "at",
+                "the",
+                "park."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-23-build",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "از فارسی به یک پاسخ دقیق برس",
+          "description": "چند جمله و سؤال متفاوت بنویس؛ راهنمایی تنها وقتی لازم بود باز کن.",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "بگو مستقیم برو و به چپ بپیچ.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Go straight and turn left.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Go straight and turn left."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو سر تقاطع به راست بپیچ.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Turn right at the intersection.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Turn right at the intersection."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو بانک روبه‌روی کافه است.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "The bank is opposite the cafe.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The bank is opposite the cafe."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بپرس چطور به پارک بروم؟",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "How do I get to the park?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "How do I get to the park?"
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو یک بلوک مستقیم برو.",
+              "hint": "فعل و فاعل را دقیق انتخاب کن. نمونهٔ پاسخ بعد از دو تلاش می‌آید.",
+              "example": "Go straight for one block.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Go straight for one block."
+                    ],
+                    "feedback": "یک جملهٔ کامل با همین معنی بنویس."
+                  }
+                ],
+                "success": "پاسخ را با جملهٔ کامل ساختی."
+              }
+            },
+            {
+              "task": "بگو از خیابان عبور کن.",
+              "hint": "فعل و فاعل را دقیق انتخاب کن. نمونهٔ پاسخ بعد از دو تلاش می‌آید.",
+              "example": "Cross the street.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Cross the street."
+                    ],
+                    "feedback": "یک جملهٔ کامل با همین معنی بنویس."
+                  }
+                ],
+                "success": "پاسخ را با جملهٔ کامل ساختی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "بخش دوم · کاربرد و تولید",
+      "intro": "پرسش‌وپاسخ → گفت‌وگو → توصیف → تولید مستقل",
+      "masteryActivityIds": [
+        "a1-23-guided",
+        "a1-23-independent"
+      ],
+      "activities": [
+        {
+          "id": "a1-23-exchange",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "گفت‌وگو با انتخاب‌های معنی‌دار",
+          "description": "چهار موقعیت را ببین. برای هر سؤال سه پاسخ متفاوت ولی درست بررسی کن؛ در پایان پاسخ خودت را مستقل بساز.",
+          "pairs": [
+            {
+              "question": "How do I get to the park?",
+              "questionFa": "چطور به پارک بروم؟",
+              "variants": [
+                {
+                  "label": "مستقیم",
+                  "en": "Go straight and turn left.",
+                  "fa": "مستقیم"
+                },
+                {
+                  "label": "راست",
+                  "en": "Go straight, then turn right.",
+                  "fa": "راست"
+                },
+                {
+                  "label": "تقاطع",
+                  "en": "Turn left at the intersection.",
+                  "fa": "تقاطع"
+                }
+              ]
+            },
+            {
+              "question": "Where do I turn?",
+              "questionFa": "کجا بپیچم؟",
+              "variants": [
+                {
+                  "label": "بانک",
+                  "en": "Turn right at the bank.",
+                  "fa": "بانک"
+                },
+                {
+                  "label": "پارک",
+                  "en": "Turn left at the park.",
+                  "fa": "پارک"
+                },
+                {
+                  "label": "تقاطع",
+                  "en": "Turn right at the intersection.",
+                  "fa": "تقاطع"
+                }
+              ]
+            },
+            {
+              "question": "Is the cafe opposite the bank?",
+              "questionFa": "کافه روبه‌روی بانک است؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, it is opposite the bank.",
+                  "fa": "بله"
+                },
+                {
+                  "label": "نه",
+                  "en": "No, it is next to the bank.",
+                  "fa": "نه"
+                },
+                {
+                  "label": "خیابان",
+                  "en": "No, it is across the street.",
+                  "fa": "خیابان"
+                }
+              ]
+            },
+            {
+              "question": "What do I do at the street?",
+              "questionFa": "در خیابان چه کنم؟",
+              "variants": [
+                {
+                  "label": "عبور",
+                  "en": "Cross the street.",
+                  "fa": "عبور"
+                },
+                {
+                  "label": "مستقیم",
+                  "en": "Go straight.",
+                  "fa": "مستقیم"
+                },
+                {
+                  "label": "صبر",
+                  "en": "Stop at the traffic light.",
+                  "fa": "صبر"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-23-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "یک گفت‌وگوی واقعی دربارهٔ آدرس و راهنمایی مسیر کوتاه",
+          "description": "پاسخ بعدی را قبل از آشکارشدنش حدس بزن؛ سپس جای نقش‌ها را عوض کن.",
+          "lines": [
+            {
+              "speaker": "Tourist",
+              "en": "Excuse me. How do I get to the park?",
+              "fa": "ببخشید. چطور به پارک بروم؟"
+            },
+            {
+              "speaker": "Local",
+              "en": "Go straight for one block.",
+              "fa": "یک بلوک مستقیم برو."
+            },
+            {
+              "speaker": "Tourist",
+              "en": "Then what?",
+              "fa": "بعد چه کنم؟"
+            },
+            {
+              "speaker": "Local",
+              "en": "Turn left at the bank.",
+              "fa": "سر بانک به چپ بپیچ."
+            },
+            {
+              "speaker": "Tourist",
+              "en": "Is the park far?",
+              "fa": "پارک دور است؟"
+            },
+            {
+              "speaker": "Local",
+              "en": "No. It is opposite the cafe.",
+              "fa": "نه. روبه‌روی کافه است."
+            }
+          ]
+        },
+        {
+          "id": "a1-23-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "title": "سه موقعیت را از کارت مرور کن",
+          "description": "در هر کارت معنای پرسش فرق می‌کند؛ به جای حفظ جمله، پاسخ مناسب را تولید کن.",
+          "image": "./assets/scene-a1-23-stage2.svg",
+          "imageAlt": "مسیر از پارک تا کتابخانه",
+          "caption": "مسیر از پارک تا کتابخانه",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "به کارت تصویر مربوط به «چطور به پارک بروم؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Go straight and turn left.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Go straight and turn left."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «کجا بپیچم؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Turn right at the bank.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Turn right at the bank."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «کافه روبه‌روی بانک است؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Yes, it is opposite the bank.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Yes, it is opposite the bank."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-23-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "title": "این بار خودت در مکالمه پاسخ بده",
+          "description": "۴ نوبت با پرسش‌ها و نقش‌های متفاوت. متن نمونه از اول نمایش داده نمی‌شود.",
+          "practiceRevision": 1,
+          "completion": "حالا بدون راهنمایی در موقعیت تازه پاسخ بساز.",
+          "turns": [
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "How do I get to the park?",
+              "task": "برای «چطور به پارک بروم؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Turn left at the intersection.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Turn left at the intersection."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where do I turn?",
+              "task": "برای «کجا بپیچم؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Turn right at the intersection.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Turn right at the intersection."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "Is the cafe opposite the bank?",
+              "task": "برای «کافه روبه‌روی بانک است؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "No, it is across the street.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "No, it is across the street."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "What do I do at the street?",
+              "task": "برای «در خیابان چه کنم؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Stop at the traffic light.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Stop at the traffic light."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-23-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "مأموریت واقعی و ساختن بدون الگو",
+          "prompt": "به گردشگری خیالی راه از کافه تا پارک را در دو یا سه دستور کوتاه بده؛ سپس مقصد دیگری را بپرس و یک مسیر متفاوت بساز.",
+          "placeholder": "دو یا سه جملهٔ انگلیسی خودت را اینجا بنویس؛ اطلاعات فرضی کافی است.",
+          "hint": "از جمله‌های درس الهام بگیر ولی فاعل، شیء، مکان یا تصمیم را خودت عوض کن.",
+          "kind": "free-text",
+          "minWords": 14,
+          "assessment": {
+            "revision": 1,
+            "required": [
+              {
+                "patterns": [
+                  "\\b(?:go straight|turn left|turn right|cross)\\b"
+                ],
+                "feedback": "واژگان اصلی موقعیت را داخل جملهٔ کامل به کار ببر."
+              },
+              {
+                "patterns": [
+                  "\\b(?:then|first|at the|opposite|next to)\\b"
+                ],
+                "feedback": "یک کار، سؤال یا دلیل مرتبط هم بنویس."
+              }
+            ],
+            "productionProof": {
+              "minWords": 10,
+              "minClauses": 2
+            },
+            "success": "دو جملهٔ مستقل با هدف درس ساختی؛ حالا سرنخ زندگی واقعی را هم امتحان کن."
+          },
+          "realWorldMission": {
+            "cue": "وقتی کسی از تو مسیر می‌پرسد",
+            "reflection": "راه ساده‌ای را که هر روز می‌روی تصور کن و با «مستقیم، چپ، راست» توضیح بده."
+          }
+        },
+        {
+          "id": "a1-23-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "حالا همان جمله‌های آغاز درس را بازبگو",
+          "description": "متن شروع را بازشنوی کن و فاصلهٔ یادگیری خودت را بسنج.",
+          "sourceActivityId": "a1-23-shadowing"
+        }
+      ]
+    }
+  ]
+}

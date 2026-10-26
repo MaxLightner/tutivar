@@ -17,7 +17,7 @@ A user who is the product owner **may explicitly change the roadmap**; that more
 
 ## Live-site migration warning
 
-The October 26 owner amendment puts greetings, family/gender, possessions, counting 1–12, positions, object properties, appearance, numbers 13–100, personal information, feelings, home, and school/action verbs in **A1-1 through A1-12**. The two former food lessons are **A1-13 and A1-14**, the first two samples in A1.2 (lessons 13–24). A1.3 comprises lessons 25–36.
+The October 26 owner amendment puts greetings, family/gender, possessions, counting 1–12, positions, object properties, appearance, numbers 13–100, personal information, feelings, home, and school/action verbs in **A1-1 through A1-12**. The October 27 owner amendment completes A1.2 **A1-13..24** as food, meals, comparison, clothing, body, illness/help, jobs, shopping, payment, city, directions, transportation. A1.3 comprises lessons 25–36 and **must not be modified** as part of this stage-two amendment. Daily routine and frequency/habits are deferred to a separately authorized future stage-three placement. See `legacy-alignment.json → stage2PracticalSequence` for the unchanged stage-three fingerprint and prerequisite warning.
 
 The old A1-3 and A1-4 were reordered; former A1-8–12 lessons shifted. Historical versions remain recoverable and `apps/learner-web/progress-migration.js` transfers saved progress keys. Consult `content/curriculum/legacy-alignment.json` when changing IDs; never use archived files as live lessons. The prior A1-6–9 compatibility problem was addressed through versioned content and archival migration.
 

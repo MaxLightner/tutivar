@@ -17,11 +17,13 @@ const lessons=new Map(entries.map(e=>[e.id,read(e.file)]));
 const activity=(id,activityId)=>lessons.get(id).sections.flatMap(s=>s.activities).find(a=>a.id===activityId);
 const context=(id,progress={})=>({lessonId:id,index:0,e:String,en:String,i:()=>'',progress});
 
-test('owner sequence ends stage one with study and begins stage two with two food lessons',()=>{
-  assert.deepEqual(entries.map(x=>x.id),Array.from({length:14},(_,i)=>`A1-${i+1}`));
-  assert.equal(entries.find(x=>x.id==='A1-12').file,'lessons/a1-12-v2.json');
-  assert.equal(entries.find(x=>x.id==='A1-13').file,'lessons/a1-13-v1.json');
-  assert.equal(entries.find(x=>x.id==='A1-14').file,'lessons/a1-14-v1.json');
+test('owner sequence ends stage one with feelings after home and school; stage two starts with food',()=>{
+  assert.deepEqual(entries.map(x=>x.id),Array.from({length:24},(_,i)=>`A1-${i+1}`));
+  assert.equal(entries.find(x=>x.id==='A1-10').title,'معرفی خانه و امکانات آن');
+  assert.equal(entries.find(x=>x.id==='A1-11').title,'مدرسه، مطالعه و فعالیت‌های ساده');
+  assert.equal(entries.find(x=>x.id==='A1-12').file,'lessons/a1-12-v3.json');
+  assert.equal(entries.find(x=>x.id==='A1-13').file,'lessons/a1-13-v2.json');
+  assert.equal(entries.find(x=>x.id==='A1-14').file,'lessons/a1-14-v2.json');
   assert.equal(course.stages[0].chapters.flatMap(c=>c.lessons).filter(x=>x.id==='A1-13').length,0);
   assert.deepEqual(course.stages[1].chapters.flatMap(c=>c.lessons).slice(0,2).map(x=>x.id),['A1-13','A1-14']);
   for(const lesson of lessons.values())assert.deepEqual(validateLessonFlow(lesson),[],lesson.id);
@@ -29,7 +31,7 @@ test('owner sequence ends stage one with study and begins stage two with two foo
 });
 
 test('foundation introduces, combines and applies usable language in the new bridge lessons',()=>{
-  for(const id of ['A1-8','A1-12']){
+  for(const id of ['A1-8','A1-11']){
     const [shadow,words,expressions,meanings]=lessons.get(id).sections[0].activities;
     assert.deepEqual([shadow.type,words.type,expressions.type,meanings.type],['shadowing','vocabulary','expression-study','meaning-cluster']);
     assert.equal(expressions.presentation,'deck');
@@ -53,7 +55,7 @@ test('A1-5 compares independent ball and apple prepositions side by side',()=>{
   assert.match(changed,/The apple is.*behind.*the box/);
 });
 
-test('A1-8 teaches place values and four-digit reading; A1-12 separates pronouns and family ownership',()=>{
+test('A1-8 hides four-digit answers until solved; A1-11 separates pronouns and family ownership',()=>{
   const numbers=activity('A1-8','a1-8-place-values');
   assert.equal(numbers.type,'place-value-lab');
   assert.equal(numbers.challenges.length,4);
@@ -65,14 +67,15 @@ test('A1-8 teaches place values and four-digit reading; A1-12 separates pronouns
   assert.match(changed,/I have thirty-six/);
   assert.notEqual(before,changed);
   const extended=renderActivity(numbers,context('A1-8',{placeValueStates:{'A1-8:a1-8-place-values':{digits:4,value:2407}}}));
-  assert.match(extended,/two thousand four hundred seven/);
+  assert.match(extended,/پاسخ این بخش تا پایان آزمون پنهان است/);
+  assert.doesNotMatch(extended,/I have two thousand four hundred seven books/);
   assert.match(extended,/به نظرت عدد/);
-  const school=activity('A1-12','a1-12-action-lab');
+  const school=activity('A1-11','a1-12-action-lab');
   assert.equal(school.mode,'school');
-  assert.match(renderActivity(school,context('A1-12')),/I read/);
-  const question=renderActivity(school,context('A1-12',{cumulativeLabStates:{'A1-12:a1-12-action-lab':{subject:2,verb:1,form:2}}}));
+  assert.match(renderActivity(school,context('A1-11')),/I read/);
+  const question=renderActivity(school,context('A1-11',{cumulativeLabStates:{'A1-11:a1-12-action-lab':{subject:2,verb:1,form:2}}}));
   assert.match(question,/Does he write/);
-  const owner=renderActivity(school,context('A1-12',{cumulativeLabStates:{'A1-12:a1-12-action-lab':{subject:3,owner:1,relative:0}}}));
+  const owner=renderActivity(school,context('A1-11',{cumulativeLabStates:{'A1-11:a1-12-action-lab':{subject:3,owner:1,relative:0}}}));
   assert.match(owner,/She reads/);
   assert.match(owner,/Your sister reads/);
   assert.match(owner,/data-daily-choice-field="owner"/);
@@ -94,7 +97,7 @@ test('place-value lab reads every transition, exact tens, hundreds, thousands an
 });
 
 test('school sentence grammar conjugates singular pronouns and separates pronoun actor from family names',()=>{
-  const source=activity('A1-12','a1-12-composer');
+  const source=activity('A1-11','a1-12-composer');
   const say=(subject,verb,pattern='statement')=>{
     const resolved=resolveSentenceComposer(source,{slots:{subject,verb},pattern});
     return composeSegments(resolved.pattern.segments,source,resolved);
@@ -106,7 +109,7 @@ test('school sentence grammar conjugates singular pronouns and separates pronoun
   assert.equal(say('it','go'),'It goes to school.');
   assert.equal(say('she','write','negative'),"She doesn't write a note.");
   assert.equal(say('he','go','question'),'Does he go to school?');
-  const family=renderActivity(activity('A1-12','a1-12-action-lab'),context('A1-12',{cumulativeLabStates:{'A1-12:a1-12-action-lab':{subject:4,owner:2,relative:1,verb:1,form:2}}}));
+  const family=renderActivity(activity('A1-11','a1-12-action-lab'),context('A1-11',{cumulativeLabStates:{'A1-11:a1-12-action-lab':{subject:4,owner:2,relative:1,verb:1,form:2}}}));
   assert.match(family,/Does it write a note/);
   assert.match(family,/Does his brother write a note/);
 });

@@ -64,9 +64,10 @@ test('every sample path node references a real content file with two teaching se
     assert.ok(!ids.has(lesson.id));
     ids.add(lesson.id);
   }
-  assert.equal(ids.size, 14);
-  assert.deepEqual([...ids],Array.from({length:14},(_,i)=>`A1-${i+1}`));
-  assert.deepEqual([...new Set([...ids].map((id) => load(lessons.find((entry) => entry.id === id).file).archetype))].sort(), ['K1/K2','K2','K4/K12','K4/K2','conversation','counting-objects','cumulative','family','ownership','spatial-location']);
+  assert.equal(ids.size, 24);
+  assert.deepEqual([...ids],Array.from({length:24},(_,i)=>`A1-${i+1}`));
+  const archetypes = new Set([...ids].map((id) => load(lessons.find((entry) => entry.id === id).file).archetype));
+  for (const archetype of ['family', 'ownership', 'spatial-location', 'K2', 'K8', 'K5']) assert.ok(archetypes.has(archetype));
 });
 
 test('not-yet-produced nodes cannot be launched as content', () => {
@@ -265,7 +266,7 @@ test('puzzle grading ignores capitalization and terminal punctuation, while givi
 test('archived location lesson has intact two-stage activities after reordering', () => {
   const lesson=load('lessons/a1-4.json');
   const catalog=lessons.find(entry=>entry.id===lesson.id);
-  assert.equal(catalog.file,'lessons/a1-4-v4.json');
+  assert.equal(catalog.file,'lessons/a1-4-v5.json');
   assert.equal(catalog.status,'sample');
   assert.deepEqual(validateLessonFlow(lesson),[]);
   assert.equal(lesson.sections.length,2);

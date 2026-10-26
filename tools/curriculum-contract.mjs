@@ -114,7 +114,10 @@ export function validatePublishedCatalog({ manifest, runtimeCourse, legacy, read
     if (lesson.id !== entry.id) errors.push(entry.id + ': file lesson identifier mismatch');
     if (!metadataGrandfathered.has(entry.id)) {
       const ref = lesson.roadmapRef;
-      if (!ref || ref.id !== entry.id || ref.revision !== manifest.revision ||
+      const unchanged = legacy.stage2PracticalSequence?.preservedLessonRefs?.[entry.id];
+      const pinnedEarlierRevision = unchanged && unchanged.file === entry.file &&
+        unchanged.gitBlobSha === gitBlobSha(raw) && unchanged.revision === ref?.revision;
+      if (!ref || ref.id !== entry.id || (!pinnedEarlierRevision && ref.revision !== manifest.revision) ||
           ref.communicativeOutcome !== canonical.communicativeOutcome)
         errors.push(entry.id + ': new lesson must embed the canonical roadmapRef (id, revision, exact outcome)');
     }
@@ -180,6 +183,36 @@ export function validatePublishedCatalog({ manifest, runtimeCourse, legacy, read
     }
     if(runtimeCourse.stages?.length!==3||runtimeCourse.stages.some(s=>s.chapters.flatMap(c=>c.lessons).filter(x=>/^A1-\d+$/.test(x.id)).length!==12))
       errors.push('A1 must contain three stages of twelve lessons after owner amendment');
+  }
+  if(manifest.revision==='2026-10-26-owner-home-school-feelings-realworld') {
+    const amendment=legacy.homeSchoolFeelings;
+    if(!amendment||!amendment.preserveProgress||amendment.progressRevision!=='a1-owner-home-school-feelings-2026-10-26')
+      errors.push('A1 home/school/feelings reordering must preserve progress by a new revision');
+    for(const [id,file] of Object.entries(amendment?.replacement||{})) {
+      if(entries.find(x=>x.id===id)?.file!==file||!/-v\d+\.json$/.test(file))
+        errors.push(id+': new independent-production content requires its versioned lesson');
+    }
+    for(const [id,previous] of Object.entries(amendment?.oldVersions||{})) {
+      const source=readLesson?.(previous.sourceFile);
+      if(!source||gitBlobSha(source)!==previous.sourceGitBlobSha)
+        errors.push(id+': pre-amendment lesson archive was modified');
+    }
+  }
+  if(manifest.revision==='2026-10-27-owner-a1-stage2-practical-sequence') {
+    const amendment=legacy.stage2PracticalSequence;
+    if (!amendment?.preserveProgress || amendment.statusBefore!=='planned' || !amendment.stage3Fingerprint)
+      errors.push('Owner stage-two amendment is missing its prior state and stage-three preservation record');
+    const stage3Rows=manifest.lessons.filter(row=>row.level==='A1'&&row.order>=25);
+    const stage3Catalog=runtimeCourse.stages?.[2];
+    if (!amendment?.stage3Fingerprint ||
+      amendment.stage3Fingerprint.rows !== gitBlobSha(JSON.stringify(stage3Rows)) ||
+      amendment.stage3Fingerprint.catalog !== gitBlobSha(JSON.stringify(stage3Catalog)))
+      errors.push('A1 stage three changed during the stage-two-only amendment');
+    for(let n=15;n<=24;n++){
+      const id='A1-'+n,entry=entries.find(item=>item.id===id);
+      if (entry?.status!=='sample'||entry.file!==amendment?.newFiles?.[id])
+        errors.push(id+': owner-approved stage-two lesson file not active');
+    }
   }
   return errors;
 }

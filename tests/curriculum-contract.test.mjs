@@ -21,7 +21,7 @@ test('owner-locked manifest contains all 128 outcomes including approved A1 rest
   assert.equal(gitBlobSha(source),lock.sourceGitBlobSha);
   assert.equal(gitBlobSha(JSON.stringify(manifest,null,2)+'\n'),lock.manifestGitBlobSha);
   const ids=['A1-1','A1-2','A1-3','A1-4','A1-5','A1-6','A1-7','A1-8','A1-9','A1-10'];
-  const expectedTitles=['اولین برخورد و عبارت‌های روزمره','خانواده، جنسیت و ضمایر','لوازم شخصی، مالکیت و داشتن','اعداد، شمارش و تعداد اشیا و افراد','بیان موقعیت مکانی','توصیف ویژگی‌های اشیا','توصیف ظاهر افراد','اعداد در زندگی روزمره','تبادل اطلاعات شخصی','بیان وضعیت و احساسات روزمره'];
+  const expectedTitles=['اولین برخورد و عبارت‌های روزمره','خانواده، جنسیت و ضمایر','لوازم شخصی، مالکیت و داشتن','اعداد، شمارش و تعداد اشیا و افراد','بیان موقعیت مکانی','توصیف ویژگی‌های اشیا','توصیف ظاهر افراد','اعداد در زندگی روزمره','تبادل اطلاعات شخصی','معرفی خانه و امکانات آن'];
   assert.deepEqual(ids.map(id=>manifest.lessons.find(l=>l.id===id).title),expectedTitles);
 });
 test('changed roadmap target, order, or document cannot bypass the lock',()=>{

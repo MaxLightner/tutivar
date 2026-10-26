@@ -1,0 +1,923 @@
+{
+  "id": "A1-20",
+  "revision": "2026-10-27-owner-a1-stage2-practical-sequence",
+  "status": "draft",
+  "title": "خرید در سوپرمارکت و فروشگاه لباس",
+  "goal": "در یک فروشگاه مواد غذایی یا پوشاک، کالا بخواه، تعداد و اندازه را مشخص کن و قیمتش را بپرس؛ خرید را مؤدبانه تمام کن.",
+  "duration": 24,
+  "feature": "انتخاب کالا، اندازه و تعداد",
+  "archetype": "K5",
+  "roadmapRef": {
+    "id": "A1-20",
+    "revision": "2026-10-27-owner-a1-stage2-practical-sequence",
+    "communicativeOutcome": "در سوپرمارکت و لباس‌فروشی کالای مشخص می‌خواهد، قیمت و اندازه را می‌پرسد، انتخاب می‌کند و از فروشنده تشکر می‌کند؛ از واژگان غذا و پوشاک استفادهٔ دوباره می‌کند."
+  },
+  "teachingModel": {
+    "type": "discovery-production",
+    "sections": 2
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "در یک فروشگاه مواد غذایی یا پوشاک، کالا بخواه، تعداد و اندازه را مشخص کن و قیمتش را بپرس؛ خرید را مؤدبانه تمام کن.",
+    "prerequisites": [
+      "A1-8",
+      "A1-13",
+      "A1-15",
+      "A1-16",
+      "A1-19"
+    ],
+    "previously": "دانسته‌های بخش اول و درس‌های پیشین را در این موقعیت تازه دوباره به کار می‌بریم.",
+    "quickCheck": {
+      "title": "مرور آغازین",
+      "question": "What would you like?",
+      "example": "I would like two apples, please.",
+      "explanation": "اگر این پاسخ تازه است، در مسیر واژه تا تولید آن را خواهی ساخت.",
+      "allowSkip": false
+    }
+  },
+  "visual": {
+    "src": "./assets/scene-a1-20-stage2.svg",
+    "alt": "دو مغازه و سبد خرید",
+    "caption": "دو مغازه و سبد خرید"
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "I would like"
+    ],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": false
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "بخش اول · کشف و تمرین",
+      "intro": "واژه → عبارت → جملهٔ زنده → سنجش → ساختن",
+      "masteryActivityIds": [
+        "a1-20-puzzle",
+        "a1-20-build"
+      ],
+      "activities": [
+        {
+          "id": "a1-20-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "ابتدا نمونهٔ موقعیت را گوش کن",
+          "description": "با این چند جمله آشنا شو؛ هنوز لازم نیست همه را بی‌کمک بسازی.",
+          "audioSrc": null,
+          "rate": 0.8,
+          "pauseMs": 500,
+          "lines": [
+            "I would like two apples, please.",
+            "What would you like?",
+            "I would like two apples, please.",
+            "I need a medium shirt.",
+            "Can I try this jacket?",
+            "What size do you need?"
+          ]
+        },
+        {
+          "id": "a1-20-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "واژگان تازهٔ این مأموریت",
+          "deckRevision": 1,
+          "batchSize": 4,
+          "items": [
+            {
+              "en": "buy",
+              "fa": "خریدن",
+              "examples": [
+                "I want to buy two apples."
+              ]
+            },
+            {
+              "en": "shop",
+              "fa": "مغازه / خریدکردن",
+              "examples": [
+                "This shop has blue shirts."
+              ]
+            },
+            {
+              "en": "supermarket",
+              "fa": "سوپرمارکت",
+              "examples": [
+                "I buy milk at the supermarket."
+              ]
+            },
+            {
+              "en": "market",
+              "fa": "بازار",
+              "examples": [
+                "The market is near the park."
+              ]
+            },
+            {
+              "en": "fruit",
+              "fa": "میوه",
+              "examples": [
+                "I want some fruit."
+              ]
+            },
+            {
+              "en": "vegetable",
+              "fa": "سبزی / صیفی",
+              "examples": [
+                "We buy vegetables."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "try",
+              "fa": "امتحان کردن",
+              "examples": [
+                "Can I try this jacket?"
+              ]
+            },
+            {
+              "en": "fit",
+              "fa": "اندازه بودن",
+              "examples": [
+                "Does this shirt fit?"
+              ]
+            },
+            {
+              "en": "medium",
+              "fa": "سایز متوسط",
+              "examples": [
+                "I need a medium shirt."
+              ]
+            },
+            {
+              "en": "large",
+              "fa": "سایز بزرگ",
+              "examples": [
+                "Do you have a large jacket?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-20-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "عبارت‌های آماده برای موقعیت واقعی",
+          "description": "ترکیب‌ها را در جمله ببین؛ جملهٔ کامل را به‌جای جداکردن تک‌تک واژه‌ها به یاد بیاور.",
+          "presentation": "deck",
+          "items": [
+            {
+              "en": "How much is this?",
+              "fa": "قیمت این چقدر است؟",
+              "kind": "fixed",
+              "examples": []
+            },
+            {
+              "en": "Do you have a medium?",
+              "fa": "سایز متوسط دارید؟",
+              "kind": "fixed",
+              "examples": []
+            },
+            {
+              "en": "I would like",
+              "fa": "من ... می‌خواهم",
+              "kind": "fixed",
+              "examples": [
+                "I would like two apples, please.",
+                "I would like two apples, please.",
+                "I would like some milk, please."
+              ]
+            },
+            {
+              "en": "Can I try this on?",
+              "fa": "می‌توانم این را امتحان کنم؟",
+              "kind": "fixed",
+              "examples": []
+            }
+          ]
+        },
+        {
+          "id": "a1-20-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "جمله را با تغییر معنی بساز",
+          "description": "روی واژه‌های جمله بزن و فاعل، کالا، مقصد یا ویژگی را تغییر بده. بعد ساختار دیگر را امتحان کن؛ به مفهوم جمله دقت کن.",
+          "targetLanguage": "en",
+          "derivedDefaults": {},
+          "wordSets": {
+            "item": [
+              {
+                "id": "option-0",
+                "label": "two apples",
+                "translation": "دو سیب",
+                "forms": {
+                  "en": "two apples"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "some fruit",
+                "translation": "کمی میوه",
+                "forms": {
+                  "en": "some fruit"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "a medium shirt",
+                "translation": "یک پیراهن متوسط",
+                "forms": {
+                  "en": "a medium shirt"
+                }
+              },
+              {
+                "id": "option-3",
+                "label": "a blue jacket",
+                "translation": "یک کاپشن آبی",
+                "forms": {
+                  "en": "a blue jacket"
+                }
+              }
+            ],
+            "request": [
+              {
+                "id": "option-0",
+                "label": "I would like",
+                "translation": "می‌خواهم",
+                "forms": {
+                  "en": "I would like"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "I need",
+                "translation": "نیاز دارم",
+                "forms": {
+                  "en": "I need"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "item",
+              "label": "item",
+              "wordSet": "item",
+              "default": "option-0"
+            },
+            {
+              "id": "request",
+              "label": "request",
+              "wordSet": "request",
+              "default": "option-0"
+            }
+          ],
+          "defaultPattern": "request",
+          "patterns": [
+            {
+              "id": "request",
+              "label": "کالا بخواه",
+              "segments": [
+                {
+                  "slot": "request",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "item",
+                  "form": "en"
+                },
+                {
+                  "fixed": ", please."
+                }
+              ],
+              "translationSegments": []
+            },
+            {
+              "id": "confirm",
+              "label": "انتخاب کن",
+              "segments": [
+                {
+                  "fixed": "I want to buy "
+                },
+                {
+                  "slot": "item",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": []
+            }
+          ]
+        },
+        {
+          "id": "a1-20-variants",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "یک جمله با دو هدف ارتباطی",
+          "description": "ساختار را عوض کن؛ یک‌بار گزارش بده، یک‌بار سؤال بپرس یا نظر بده.",
+          "sourceActivityId": "a1-20-composer",
+          "patternIds": [
+            "request",
+            "confirm"
+          ],
+          "examples": [
+            {
+              "en": "I would like two apples, please.",
+              "fa": "دو سیب بخواه."
+            },
+            {
+              "en": "I need a medium shirt.",
+              "fa": "بگو یک پیراهن سایز متوسط لازم دارم."
+            },
+            {
+              "en": "Can I try this jacket?",
+              "fa": "برای امتحان‌کردن کاپشن اجازه بگیر."
+            }
+          ]
+        },
+        {
+          "id": "a1-20-decision",
+          "type": "quiz-set",
+          "phase": "variants",
+          "title": "در موقعیت چه واکنشی مناسب است؟",
+          "questions": [
+            {
+              "question": "در فروشگاه لباس، وقتی سایز نمی‌دانی چه می‌پرسی؟",
+              "choices": [
+                "What size is this?",
+                "Where is the rice?",
+                "Are you a driver?"
+              ],
+              "answer": 0,
+              "feedback": "از معنی و موقعیت استفاده کن؛ فقط شکل واژه را حفظ نکن."
+            },
+            {
+              "question": "کدام درخواست برای دو سیب درست است؟",
+              "choices": [
+                "I would like two apples.",
+                "I would like two apple.",
+                "I would two apples."
+              ],
+              "answer": 0,
+              "feedback": "از معنی و موقعیت استفاده کن؛ فقط شکل واژه را حفظ نکن."
+            },
+            {
+              "question": "try this on چه معنایی دارد؟",
+              "choices": [
+                "امتحان‌کردن لباس",
+                "پختن غذا",
+                "گرفتن رسید"
+              ],
+              "answer": 0,
+              "feedback": "از معنی و موقعیت استفاده کن؛ فقط شکل واژه را حفظ نکن."
+            }
+          ]
+        },
+        {
+          "id": "a1-20-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "چند جمله با بانک کلمات مشترک بساز",
+          "description": "هر بار جملهٔ متفاوتی پیدا کن؛ واژه‌های مشترک را به‌موقع استفاده کن.",
+          "revision": 1,
+          "goalCount": 5,
+          "reuseBank": true,
+          "sentences": [
+            {
+              "id": "sentence-1",
+              "words": [
+                "I",
+                "would",
+                "like",
+                "two",
+                "apples,",
+                "please."
+              ]
+            },
+            {
+              "id": "sentence-2",
+              "words": [
+                "I",
+                "need",
+                "a",
+                "medium",
+                "shirt."
+              ]
+            },
+            {
+              "id": "sentence-3",
+              "words": [
+                "Can",
+                "I",
+                "try",
+                "this",
+                "jacket?"
+              ]
+            },
+            {
+              "id": "sentence-4",
+              "words": [
+                "I",
+                "would",
+                "like",
+                "some",
+                "milk,",
+                "please."
+              ]
+            },
+            {
+              "id": "sentence-5",
+              "words": [
+                "I",
+                "need",
+                "a",
+                "large",
+                "jacket."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-20-build",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "از فارسی به یک پاسخ دقیق برس",
+          "description": "چند جمله و سؤال متفاوت بنویس؛ راهنمایی تنها وقتی لازم بود باز کن.",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "دو سیب بخواه.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I would like two apples, please.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I would like two apples, please."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو یک پیراهن سایز متوسط لازم دارم.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I need a medium shirt.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I need a medium shirt."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "برای امتحان‌کردن کاپشن اجازه بگیر.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Can I try this jacket?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Can I try this jacket?"
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "قیمت این لباس را بپرس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "How much is this shirt?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "How much is this shirt?"
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو شیر را از سوپرمارکت می‌خرم.",
+              "hint": "فعل و فاعل را دقیق انتخاب کن. نمونهٔ پاسخ بعد از دو تلاش می‌آید.",
+              "example": "I buy milk at the supermarket.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I buy milk at the supermarket."
+                    ],
+                    "feedback": "یک جملهٔ کامل با همین معنی بنویس."
+                  }
+                ],
+                "success": "پاسخ را با جملهٔ کامل ساختی."
+              }
+            },
+            {
+              "task": "بگو میوه را از بازار می‌خرم.",
+              "hint": "فعل و فاعل را دقیق انتخاب کن. نمونهٔ پاسخ بعد از دو تلاش می‌آید.",
+              "example": "I buy fruit at the market.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I buy fruit at the market."
+                    ],
+                    "feedback": "یک جملهٔ کامل با همین معنی بنویس."
+                  }
+                ],
+                "success": "پاسخ را با جملهٔ کامل ساختی."
+              }
+            },
+            {
+              "task": "بپرس آیا این پیراهن اندازه است؟",
+              "hint": "فعل و فاعل را دقیق انتخاب کن. نمونهٔ پاسخ بعد از دو تلاش می‌آید.",
+              "example": "Does this shirt fit?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Does this shirt fit?"
+                    ],
+                    "feedback": "یک جملهٔ کامل با همین معنی بنویس."
+                  }
+                ],
+                "success": "پاسخ را با جملهٔ کامل ساختی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "بخش دوم · کاربرد و تولید",
+      "intro": "پرسش‌وپاسخ → گفت‌وگو → توصیف → تولید مستقل",
+      "masteryActivityIds": [
+        "a1-20-guided",
+        "a1-20-independent"
+      ],
+      "activities": [
+        {
+          "id": "a1-20-exchange",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "گفت‌وگو با انتخاب‌های معنی‌دار",
+          "description": "پنج موقعیت متفاوت از سوپرمارکت و لباس‌فروشی را بررسی کن. انتخابِ مکان خرید هم معنی جواب را تغییر می‌دهد.",
+          "pairs": [
+            {
+              "question": "What would you like?",
+              "questionFa": "چه می‌خواهید؟",
+              "variants": [
+                {
+                  "label": "دو سیب",
+                  "en": "I would like two apples, please.",
+                  "fa": "دو سیب"
+                },
+                {
+                  "label": "شیر",
+                  "en": "I would like some milk, please.",
+                  "fa": "شیر"
+                },
+                {
+                  "label": "میوه",
+                  "en": "I would like some fruit, please.",
+                  "fa": "میوه"
+                }
+              ]
+            },
+            {
+              "question": "What size do you need?",
+              "questionFa": "چه سایزی می‌خواهی؟",
+              "variants": [
+                {
+                  "label": "متوسط",
+                  "en": "I need a medium shirt.",
+                  "fa": "متوسط"
+                },
+                {
+                  "label": "بزرگ",
+                  "en": "I need a large jacket.",
+                  "fa": "بزرگ"
+                },
+                {
+                  "label": "کوچک",
+                  "en": "I need a small shirt.",
+                  "fa": "کوچک"
+                }
+              ]
+            },
+            {
+              "question": "Can I help you?",
+              "questionFa": "می‌توانم کمکتان کنم؟",
+              "variants": [
+                {
+                  "label": "لباس",
+                  "en": "Yes, can I try this jacket?",
+                  "fa": "لباس"
+                },
+                {
+                  "label": "سبزی",
+                  "en": "Yes, I want some vegetables.",
+                  "fa": "سبزی"
+                },
+                {
+                  "label": "فقط نگاه",
+                  "en": "No, thank you. I am looking.",
+                  "fa": "فقط نگاه"
+                }
+              ]
+            },
+            {
+              "question": "How much is this shirt?",
+              "questionFa": "قیمت این پیراهن چقدر است؟",
+              "variants": [
+                {
+                  "label": "ده دلار",
+                  "en": "It is ten dollars.",
+                  "fa": "ده دلار"
+                },
+                {
+                  "label": "بیست دلار",
+                  "en": "It is twenty dollars.",
+                  "fa": "بیست دلار"
+                },
+                {
+                  "label": "ارزان‌تر",
+                  "en": "This shirt is cheaper.",
+                  "fa": "ارزان‌تر"
+                }
+              ]
+            },
+            {
+              "question": "Where can I buy these things?",
+              "questionFa": "این چیزها را از کجا می‌توانم بخرم؟",
+              "variants": [
+                {
+                  "label": "شیر در سوپرمارکت",
+                  "en": "I buy milk at the supermarket.",
+                  "fa": "شیر را از سوپرمارکت می‌خرم."
+                },
+                {
+                  "label": "میوه از بازار",
+                  "en": "I buy fruit at the market.",
+                  "fa": "میوه را از بازار می‌خرم."
+                },
+                {
+                  "label": "لباس از مغازه",
+                  "en": "I buy a shirt at this shop.",
+                  "fa": "پیراهن را از این مغازه می‌خرم."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-20-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "یک گفت‌وگوی واقعی دربارهٔ خرید در سوپرمارکت و فروشگاه لباس",
+          "description": "پاسخ بعدی را قبل از آشکارشدنش حدس بزن؛ سپس جای نقش‌ها را عوض کن.",
+          "lines": [
+            {
+              "speaker": "Seller",
+              "en": "Hello. Can I help you?",
+              "fa": "سلام. کمکی می‌خواهید؟"
+            },
+            {
+              "speaker": "Buyer",
+              "en": "Yes. I need a blue shirt.",
+              "fa": "بله. پیراهن آبی می‌خواهم."
+            },
+            {
+              "speaker": "Seller",
+              "en": "What size do you need?",
+              "fa": "چه سایزی می‌خواهید؟"
+            },
+            {
+              "speaker": "Buyer",
+              "en": "Medium, please. Can I try this on?",
+              "fa": "متوسط لطفاً. می‌توانم امتحانش کنم؟"
+            },
+            {
+              "speaker": "Seller",
+              "en": "Yes. Here you are.",
+              "fa": "بله، بفرمایید."
+            },
+            {
+              "speaker": "Buyer",
+              "en": "It fits. How much is it?",
+              "fa": "اندازه است. قیمتش چقدر است؟"
+            }
+          ]
+        },
+        {
+          "id": "a1-20-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "title": "سه موقعیت را از کارت مرور کن",
+          "description": "در هر کارت معنای پرسش فرق می‌کند؛ به جای حفظ جمله، پاسخ مناسب را تولید کن.",
+          "image": "./assets/scene-a1-20-stage2.svg",
+          "imageAlt": "دو مغازه و سبد خرید",
+          "caption": "دو مغازه و سبد خرید",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "به کارت تصویر مربوط به «چه می‌خواهید؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I would like two apples, please.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I would like two apples, please."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «چه سایزی می‌خواهی؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I need a medium shirt.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I need a medium shirt."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «می‌توانم کمکتان کنم؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Yes, can I try this jacket?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Yes, can I try this jacket?"
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-20-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "title": "این بار خودت در مکالمه پاسخ بده",
+          "description": "۴ نوبت با پرسش‌ها و نقش‌های متفاوت. متن نمونه از اول نمایش داده نمی‌شود.",
+          "practiceRevision": 1,
+          "completion": "حالا بدون راهنمایی در موقعیت تازه پاسخ بساز.",
+          "turns": [
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "What would you like?",
+              "task": "برای «چه می‌خواهید؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I would like some fruit, please.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I would like some fruit, please."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "What size do you need?",
+              "task": "برای «چه سایزی می‌خواهی؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I need a small shirt.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I need a small shirt."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "Can I help you?",
+              "task": "برای «می‌توانم کمکتان کنم؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "No, thank you. I am looking.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "No, thank you. I am looking."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "How much is this shirt?",
+              "task": "برای «قیمت این پیراهن چقدر است؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "This shirt is cheaper.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "This shirt is cheaper."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-20-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "مأموریت واقعی و ساختن بدون الگو",
+          "prompt": "در یک سوپرمارکت خیالی دو خوراکی و در لباس‌فروشی یک لباس بخواه، اندازه یا تعداد را مشخص کن و قیمت هرکدام را سؤال کن.",
+          "placeholder": "دو یا سه جملهٔ انگلیسی خودت را اینجا بنویس؛ اطلاعات فرضی کافی است.",
+          "hint": "از جمله‌های درس الهام بگیر ولی فاعل، شیء، مکان یا تصمیم را خودت عوض کن.",
+          "kind": "free-text",
+          "minWords": 14,
+          "assessment": {
+            "revision": 1,
+            "required": [
+              {
+                "patterns": [
+                  "\\b(?:buy|would like|need|do you have)\\b"
+                ],
+                "feedback": "واژگان اصلی موقعیت را داخل جملهٔ کامل به کار ببر."
+              },
+              {
+                "patterns": [
+                  "\\b(?:how much|size|medium|large|small|try)\\b"
+                ],
+                "feedback": "یک کار، سؤال یا دلیل مرتبط هم بنویس."
+              }
+            ],
+            "productionProof": {
+              "minWords": 10,
+              "minClauses": 2
+            },
+            "success": "دو جملهٔ مستقل با هدف درس ساختی؛ حالا سرنخ زندگی واقعی را هم امتحان کن."
+          },
+          "realWorldMission": {
+            "cue": "وقتی در سوپرمارکت یا لباس‌فروشی چیزی انتخاب می‌کنی",
+            "reflection": "لیست کوتاه خرید امروزت را با تعداد و اندازه به انگلیسی در ذهن بساز."
+          }
+        },
+        {
+          "id": "a1-20-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "حالا همان جمله‌های آغاز درس را بازبگو",
+          "description": "متن شروع را بازشنوی کن و فاصلهٔ یادگیری خودت را بسنج.",
+          "sourceActivityId": "a1-20-shadowing"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,892 @@
+{
+  "id": "A1-18",
+  "revision": "2026-10-27-owner-a1-stage2-practical-sequence",
+  "status": "draft",
+  "title": "بیماری، درد و درخواست کمک",
+  "goal": "درد و چند علامت ساده را بگو؛ وقتی کمک، استراحت یا دارو لازم داری با جمله‌ای کوتاه و واضح درخواست کن.",
+  "duration": 24,
+  "feature": "تشخیص موقعیت و درخواست روشن کمک",
+  "archetype": "K5",
+  "roadmapRef": {
+    "id": "A1-18",
+    "revision": "2026-10-27-owner-a1-stage2-practical-sequence",
+    "communicativeOutcome": "درد یا علامت رایج مانند تب، سرفه یا سردرد را با جملهٔ کوتاه توضیح می‌دهد؛ می‌تواند درخواست کمک یا دارو و یک سؤال روشن دربارهٔ حال دیگری مطرح کند."
+  },
+  "teachingModel": {
+    "type": "discovery-production",
+    "sections": 2
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "درد و چند علامت ساده را بگو؛ وقتی کمک، استراحت یا دارو لازم داری با جمله‌ای کوتاه و واضح درخواست کن.",
+    "prerequisites": [
+      "A1-12",
+      "A1-17"
+    ],
+    "previously": "دانسته‌های بخش اول و درس‌های پیشین را در این موقعیت تازه دوباره به کار می‌بریم.",
+    "quickCheck": {
+      "title": "مرور آغازین",
+      "question": "What is wrong?",
+      "example": "I have a headache.",
+      "explanation": "اگر این پاسخ تازه است، در مسیر واژه تا تولید آن را خواهی ساخت.",
+      "allowSkip": false
+    }
+  },
+  "visual": {
+    "src": "./assets/scene-a1-18-stage2.svg",
+    "alt": "دوست بیمار و درخواست کمک",
+    "caption": "دوست بیمار و درخواست کمک"
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "I have a headache"
+    ],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": false
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "بخش اول · کشف و تمرین",
+      "intro": "واژه → عبارت → جملهٔ زنده → سنجش → ساختن",
+      "masteryActivityIds": [
+        "a1-18-puzzle",
+        "a1-18-build"
+      ],
+      "activities": [
+        {
+          "id": "a1-18-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "ابتدا نمونهٔ موقعیت را گوش کن",
+          "description": "با این چند جمله آشنا شو؛ هنوز لازم نیست همه را بی‌کمک بسازی.",
+          "audioSrc": null,
+          "rate": 0.8,
+          "pauseMs": 500,
+          "lines": [
+            "I have a headache.",
+            "What is wrong?",
+            "I have a headache.",
+            "My stomach hurts.",
+            "She has a fever.",
+            "Can I help you?"
+          ]
+        },
+        {
+          "id": "a1-18-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "واژگان تازهٔ این مأموریت",
+          "deckRevision": 1,
+          "batchSize": 4,
+          "items": [
+            {
+              "en": "fever",
+              "fa": "تب",
+              "examples": [
+                "I have a fever."
+              ]
+            },
+            {
+              "en": "cough",
+              "fa": "سرفه",
+              "examples": [
+                "She has a cough."
+              ]
+            },
+            {
+              "en": "headache",
+              "fa": "سردرد",
+              "examples": [
+                "I have a headache."
+              ]
+            },
+            {
+              "en": "pain",
+              "fa": "درد",
+              "examples": [
+                "I have pain in my leg."
+              ]
+            },
+            {
+              "en": "medicine",
+              "fa": "دارو",
+              "examples": [
+                "I need medicine."
+              ]
+            },
+            {
+              "en": "help",
+              "fa": "کمک",
+              "examples": [
+                "Can you help me?"
+              ]
+            },
+            {
+              "en": "hurts",
+              "fa": "درد می‌کند",
+              "examples": [
+                "My stomach hurts."
+              ]
+            },
+            {
+              "en": "dizzy",
+              "fa": "سرگیجه‌دار",
+              "examples": [
+                "I feel dizzy."
+              ]
+            },
+            {
+              "en": "pharmacy",
+              "fa": "داروخانه",
+              "examples": [
+                "Where is the pharmacy?"
+              ],
+              "role": "supplementary"
+            }
+          ]
+        },
+        {
+          "id": "a1-18-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "عبارت‌های آماده برای موقعیت واقعی",
+          "description": "ترکیب‌ها را در جمله ببین؛ جملهٔ کامل را به‌جای جداکردن تک‌تک واژه‌ها به یاد بیاور.",
+          "presentation": "deck",
+          "items": [
+            {
+              "en": "I have a headache",
+              "fa": "سردرد دارم",
+              "kind": "fixed",
+              "examples": [
+                "I have a headache.",
+                "I have a headache."
+              ]
+            },
+            {
+              "en": "My stomach hurts",
+              "fa": "شکمم درد می‌کند",
+              "kind": "fixed",
+              "examples": [
+                "My stomach hurts.",
+                "My stomach hurts."
+              ]
+            },
+            {
+              "en": "Can you help me?",
+              "fa": "می‌توانی کمکم کنی؟",
+              "kind": "fixed",
+              "examples": []
+            },
+            {
+              "en": "I need medicine",
+              "fa": "دارو لازم دارم",
+              "kind": "fixed",
+              "examples": [
+                "I need medicine, please."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-18-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "جمله را با تغییر معنی بساز",
+          "description": "روی واژه‌های جمله بزن و فاعل، کالا، مقصد یا ویژگی را تغییر بده. بعد ساختار دیگر را امتحان کن؛ به مفهوم جمله دقت کن.",
+          "targetLanguage": "en",
+          "derivedDefaults": {},
+          "wordSets": {
+            "person": [
+              {
+                "id": "option-0",
+                "label": "I have",
+                "translation": "من دارم",
+                "forms": {
+                  "en": "I have"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "She has",
+                "translation": "او (مونث) دارد",
+                "forms": {
+                  "en": "She has"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "He has",
+                "translation": "او (مذکر) دارد",
+                "forms": {
+                  "en": "He has"
+                }
+              }
+            ],
+            "symptom": [
+              {
+                "id": "option-0",
+                "label": "a headache",
+                "translation": "سردرد",
+                "forms": {
+                  "en": "a headache"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "a fever",
+                "translation": "تب",
+                "forms": {
+                  "en": "a fever"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "a cough",
+                "translation": "سرفه",
+                "forms": {
+                  "en": "a cough"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "person",
+              "label": "person",
+              "wordSet": "person",
+              "default": "option-0"
+            },
+            {
+              "id": "symptom",
+              "label": "symptom",
+              "wordSet": "symptom",
+              "default": "option-0"
+            }
+          ],
+          "defaultPattern": "state",
+          "patterns": [
+            {
+              "id": "state",
+              "label": "علامت را بگو",
+              "segments": [
+                {
+                  "slot": "person",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "symptom",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": []
+            },
+            {
+              "id": "follow",
+              "label": "کمک بخواه",
+              "segments": [
+                {
+                  "slot": "person",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "symptom",
+                  "form": "en"
+                },
+                {
+                  "fixed": ". I need help."
+                }
+              ],
+              "translationSegments": []
+            }
+          ]
+        },
+        {
+          "id": "a1-18-variants",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "یک جمله با دو هدف ارتباطی",
+          "description": "ساختار را عوض کن؛ یک‌بار گزارش بده، یک‌بار سؤال بپرس یا نظر بده.",
+          "sourceActivityId": "a1-18-composer",
+          "patternIds": [
+            "state",
+            "follow"
+          ],
+          "examples": [
+            {
+              "en": "I have a headache.",
+              "fa": "بگو من سردرد دارم."
+            },
+            {
+              "en": "My stomach hurts.",
+              "fa": "بگو شکمم درد می‌کند."
+            },
+            {
+              "en": "She has a fever.",
+              "fa": "بگو او (خانم) تب دارد."
+            }
+          ]
+        },
+        {
+          "id": "a1-18-decision",
+          "type": "quiz-set",
+          "phase": "variants",
+          "title": "در موقعیت چه واکنشی مناسب است؟",
+          "questions": [
+            {
+              "question": "دوستت می‌گوید I feel dizzy. چه حالتی دارد؟",
+              "choices": [
+                "سرگیجه",
+                "گرسنگی",
+                "خوشحالی"
+              ],
+              "answer": 0,
+              "feedback": "از معنی و موقعیت استفاده کن؛ فقط شکل واژه را حفظ نکن."
+            },
+            {
+              "question": "برای کمک‌خواستن کدام جمله روشن است؟",
+              "choices": [
+                "Can you help me?",
+                "You headache?",
+                "I your help?"
+              ],
+              "answer": 0,
+              "feedback": "از معنی و موقعیت استفاده کن؛ فقط شکل واژه را حفظ نکن."
+            },
+            {
+              "question": "سؤال دربارهٔ داروخانه کدام است؟",
+              "choices": [
+                "Where is the pharmacy?",
+                "Where is your dinner?",
+                "Do you have a pencil?"
+              ],
+              "answer": 0,
+              "feedback": "از معنی و موقعیت استفاده کن؛ فقط شکل واژه را حفظ نکن."
+            }
+          ]
+        },
+        {
+          "id": "a1-18-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "چند جمله با بانک کلمات مشترک بساز",
+          "description": "هر بار جملهٔ متفاوتی پیدا کن؛ واژه‌های مشترک را به‌موقع استفاده کن.",
+          "revision": 1,
+          "goalCount": 5,
+          "reuseBank": true,
+          "sentences": [
+            {
+              "id": "sentence-1",
+              "words": [
+                "I",
+                "have",
+                "a",
+                "headache."
+              ]
+            },
+            {
+              "id": "sentence-2",
+              "words": [
+                "My",
+                "stomach",
+                "hurts."
+              ]
+            },
+            {
+              "id": "sentence-3",
+              "words": [
+                "She",
+                "has",
+                "a",
+                "fever."
+              ]
+            },
+            {
+              "id": "sentence-4",
+              "words": [
+                "I",
+                "feel",
+                "dizzy."
+              ]
+            },
+            {
+              "id": "sentence-5",
+              "words": [
+                "Yes,",
+                "I",
+                "need",
+                "some",
+                "water."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-18-build",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "از فارسی به یک پاسخ دقیق برس",
+          "description": "چند جمله و سؤال متفاوت بنویس؛ راهنمایی تنها وقتی لازم بود باز کن.",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "بگو من سردرد دارم.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I have a headache.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I have a headache."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو شکمم درد می‌کند.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "My stomach hurts.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My stomach hurts."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو او (خانم) تب دارد.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "She has a fever.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "She has a fever."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "مؤدبانه کمک بخواه.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Can you help me, please?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Can you help me, please?"
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو او (خانم) سرفه دارد.",
+              "hint": "فعل و فاعل را دقیق انتخاب کن. نمونهٔ پاسخ بعد از دو تلاش می‌آید.",
+              "example": "She has a cough.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "She has a cough."
+                    ],
+                    "feedback": "یک جملهٔ کامل با همین معنی بنویس."
+                  }
+                ],
+                "success": "پاسخ را با جملهٔ کامل ساختی."
+              }
+            },
+            {
+              "task": "بگو دارو لازم دارم.",
+              "hint": "فعل و فاعل را دقیق انتخاب کن. نمونهٔ پاسخ بعد از دو تلاش می‌آید.",
+              "example": "I need medicine.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I need medicine."
+                    ],
+                    "feedback": "یک جملهٔ کامل با همین معنی بنویس."
+                  }
+                ],
+                "success": "پاسخ را با جملهٔ کامل ساختی."
+              }
+            },
+            {
+              "task": "بگو در پایم درد دارم.",
+              "hint": "فعل و فاعل را دقیق انتخاب کن. نمونهٔ پاسخ بعد از دو تلاش می‌آید.",
+              "example": "I have pain in my leg.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I have pain in my leg."
+                    ],
+                    "feedback": "یک جملهٔ کامل با همین معنی بنویس."
+                  }
+                ],
+                "success": "پاسخ را با جملهٔ کامل ساختی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "بخش دوم · کاربرد و تولید",
+      "intro": "پرسش‌وپاسخ → گفت‌وگو → توصیف → تولید مستقل",
+      "masteryActivityIds": [
+        "a1-18-guided",
+        "a1-18-independent"
+      ],
+      "activities": [
+        {
+          "id": "a1-18-exchange",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "گفت‌وگو با انتخاب‌های معنی‌دار",
+          "description": "چهار موقعیت را ببین. برای هر سؤال سه پاسخ متفاوت ولی درست بررسی کن؛ در پایان پاسخ خودت را مستقل بساز.",
+          "pairs": [
+            {
+              "question": "What is wrong?",
+              "questionFa": "مشکلت چیست؟",
+              "variants": [
+                {
+                  "label": "سردرد",
+                  "en": "I have a headache.",
+                  "fa": "سردرد"
+                },
+                {
+                  "label": "شکم",
+                  "en": "My stomach hurts.",
+                  "fa": "شکم"
+                },
+                {
+                  "label": "سرگیجه",
+                  "en": "I feel dizzy.",
+                  "fa": "سرگیجه"
+                }
+              ]
+            },
+            {
+              "question": "Can I help you?",
+              "questionFa": "می‌توانم کمکت کنم؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, please help me.",
+                  "fa": "بله"
+                },
+                {
+                  "label": "آب",
+                  "en": "Yes, I need some water.",
+                  "fa": "آب"
+                },
+                {
+                  "label": "استراحت",
+                  "en": "Thank you. I need rest.",
+                  "fa": "استراحت"
+                }
+              ]
+            },
+            {
+              "question": "Does she have a fever?",
+              "questionFa": "او تب دارد؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, she has a fever.",
+                  "fa": "بله"
+                },
+                {
+                  "label": "سرفه",
+                  "en": "No, she has a cough.",
+                  "fa": "سرفه"
+                },
+                {
+                  "label": "نمی‌دانم",
+                  "en": "I do not know.",
+                  "fa": "نمی‌دانم"
+                }
+              ]
+            },
+            {
+              "question": "What do you need?",
+              "questionFa": "چه لازم داری؟",
+              "variants": [
+                {
+                  "label": "دارو",
+                  "en": "I need medicine, please.",
+                  "fa": "دارو"
+                },
+                {
+                  "label": "کمک",
+                  "en": "I need help.",
+                  "fa": "کمک"
+                },
+                {
+                  "label": "استراحت",
+                  "en": "I need rest.",
+                  "fa": "استراحت"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-18-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "یک گفت‌وگوی واقعی دربارهٔ بیماری، درد و درخواست کمک",
+          "description": "پاسخ بعدی را قبل از آشکارشدنش حدس بزن؛ سپس جای نقش‌ها را عوض کن.",
+          "lines": [
+            {
+              "speaker": "Omid",
+              "en": "Are you okay?",
+              "fa": "حالت خوب است؟"
+            },
+            {
+              "speaker": "Mina",
+              "en": "No. I have a headache.",
+              "fa": "نه. سردرد دارم."
+            },
+            {
+              "speaker": "Omid",
+              "en": "Can I help you?",
+              "fa": "می‌توانم کمکت کنم؟"
+            },
+            {
+              "speaker": "Mina",
+              "en": "Yes, please. I need some water.",
+              "fa": "بله لطفاً. کمی آب می‌خواهم."
+            },
+            {
+              "speaker": "Omid",
+              "en": "Do you need to rest?",
+              "fa": "لازم است استراحت کنی؟"
+            },
+            {
+              "speaker": "Mina",
+              "en": "Yes. Thank you for helping me.",
+              "fa": "بله. بابت کمکت ممنونم."
+            }
+          ]
+        },
+        {
+          "id": "a1-18-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "title": "سه موقعیت را از کارت مرور کن",
+          "description": "در هر کارت معنای پرسش فرق می‌کند؛ به جای حفظ جمله، پاسخ مناسب را تولید کن.",
+          "image": "./assets/scene-a1-18-stage2.svg",
+          "imageAlt": "دوست بیمار و درخواست کمک",
+          "caption": "دوست بیمار و درخواست کمک",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "به کارت تصویر مربوط به «مشکلت چیست؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I have a headache.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I have a headache."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «می‌توانم کمکت کنم؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Yes, please help me.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Yes, please help me."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «او تب دارد؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Yes, she has a fever.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Yes, she has a fever."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-18-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "title": "این بار خودت در مکالمه پاسخ بده",
+          "description": "۴ نوبت با پرسش‌ها و نقش‌های متفاوت. متن نمونه از اول نمایش داده نمی‌شود.",
+          "practiceRevision": 1,
+          "completion": "حالا بدون راهنمایی در موقعیت تازه پاسخ بساز.",
+          "turns": [
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "What is wrong?",
+              "task": "برای «مشکلت چیست؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I feel dizzy.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I feel dizzy."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Can I help you?",
+              "task": "برای «می‌توانم کمکت کنم؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Thank you. I need rest.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Thank you. I need rest."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "Does she have a fever?",
+              "task": "برای «او تب دارد؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I do not know.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I do not know."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "What do you need?",
+              "task": "برای «چه لازم داری؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I need rest.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I need rest."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-18-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "مأموریت واقعی و ساختن بدون الگو",
+          "prompt": "سه موقعیت خیالی را بررسی کن: سردرد، سرفه و سرگیجه. برای یکی حالت را بگو، کمک بخواه و به سؤال دوستت پاسخ بده؛ توصیهٔ پزشکی نده.",
+          "placeholder": "دو یا سه جملهٔ انگلیسی خودت را اینجا بنویس؛ اطلاعات فرضی کافی است.",
+          "hint": "از جمله‌های درس الهام بگیر ولی فاعل، شیء، مکان یا تصمیم را خودت عوض کن.",
+          "kind": "free-text",
+          "minWords": 14,
+          "assessment": {
+            "revision": 1,
+            "required": [
+              {
+                "patterns": [
+                  "\\b(?:headache|fever|cough|pain|hurts|dizzy)\\b"
+                ],
+                "feedback": "واژگان اصلی موقعیت را داخل جملهٔ کامل به کار ببر."
+              },
+              {
+                "patterns": [
+                  "\\b(?:need|help|please|can you)\\b"
+                ],
+                "feedback": "یک کار، سؤال یا دلیل مرتبط هم بنویس."
+              }
+            ],
+            "productionProof": {
+              "minWords": 10,
+              "minClauses": 2
+            },
+            "success": "دو جملهٔ مستقل با هدف درس ساختی؛ حالا سرنخ زندگی واقعی را هم امتحان کن."
+          },
+          "realWorldMission": {
+            "cue": "وقتی حال خودت یا کسی خوب نیست",
+            "reflection": "یک جمله برای گفتن درد و یک جمله برای کمک‌خواستن را از حفظ به یاد بیاور."
+          }
+        },
+        {
+          "id": "a1-18-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "حالا همان جمله‌های آغاز درس را بازبگو",
+          "description": "متن شروع را بازشنوی کن و فاصلهٔ یادگیری خودت را بسنج.",
+          "sourceActivityId": "a1-18-shadowing"
+        }
+      ]
+    }
+  ]
+}
