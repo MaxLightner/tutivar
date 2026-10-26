@@ -4,7 +4,8 @@ import {readFileSync} from 'node:fs';
 import {join} from 'node:path';
 import {projectRoot} from '../tools/validate.mjs';
 import {validateLessonFlow} from '../apps/learner-web/lesson-flow.js';
-import {renderActivity} from '../apps/learner-web/lesson-modules.js';
+import {renderActivity,numberToEnglish} from '../apps/learner-web/lesson-modules.js';
+import {resolveSentenceComposer,composeSegments} from '../apps/learner-web/sentence-composer.js';
 import {migrateLegacyProgress,TARGET_REVISION} from '../apps/learner-web/progress-migration.js';
 import {inspectCorePracticeCoverage} from '../tools/audit-vocabulary.mjs';
 
@@ -52,19 +53,62 @@ test('A1-5 compares independent ball and apple prepositions side by side',()=>{
   assert.match(changed,/The apple is.*behind.*the box/);
 });
 
-test('A1-8 changes both quantities and the counted object; A1-12 changes action and sentence form',()=>{
-  const numbers=activity('A1-8','a1-8-quantities');
-  assert.ok(numbers.numbers.some(x=>x.number===100));
+test('A1-8 teaches place values and four-digit reading; A1-12 separates pronouns and family ownership',()=>{
+  const numbers=activity('A1-8','a1-8-place-values');
+  assert.equal(numbers.type,'place-value-lab');
+  assert.equal(numbers.challenges.length,4);
   const before=renderActivity(numbers,context('A1-8'));
   assert.match(before,/I have thirteen/);
-  const changed=renderActivity(numbers,context('A1-8',{cumulativeLabStates:{'A1-8:a1-8-quantities':{index:numbers.numbers.findIndex(x=>x.number===30),subject:1}}}));
-  assert.match(changed,/I have thirty/);
+  assert.match(before,/data-place-action="increment"/);
+  assert.match(before,/data-place-action="step"/);
+  const changed=renderActivity(numbers,context('A1-8',{placeValueStates:{'A1-8:a1-8-place-values':{digits:2,value:36}}}));
+  assert.match(changed,/I have thirty-six/);
   assert.notEqual(before,changed);
+  const extended=renderActivity(numbers,context('A1-8',{placeValueStates:{'A1-8:a1-8-place-values':{digits:4,value:2407}}}));
+  assert.match(extended,/two thousand four hundred seven/);
+  assert.match(extended,/به نظرت عدد/);
   const school=activity('A1-12','a1-12-action-lab');
   assert.equal(school.mode,'school');
   assert.match(renderActivity(school,context('A1-12')),/I read/);
   const question=renderActivity(school,context('A1-12',{cumulativeLabStates:{'A1-12:a1-12-action-lab':{subject:2,verb:1,form:2}}}));
-  assert.match(question,/Does my sister/);
+  assert.match(question,/Does he write/);
+  const owner=renderActivity(school,context('A1-12',{cumulativeLabStates:{'A1-12:a1-12-action-lab':{subject:3,owner:1,relative:0}}}));
+  assert.match(owner,/She reads/);
+  assert.match(owner,/Your sister reads/);
+  assert.match(owner,/data-daily-choice-field="owner"/);
+  assert.match(owner,/data-daily-choice-field="relative"/);
+});
+
+test('place-value lab reads every transition, exact tens, hundreds, thousands and checks four-digit answers',()=>{
+  for(const [value,expected] of [[13,'thirteen'],[19,'nineteen'],[20,'twenty'],[21,'twenty-one'],[40,'forty'],[99,'ninety-nine'],[100,'one hundred'],[101,'one hundred one'],[146,'one hundred forty-six'],[1000,'one thousand'],[2407,'two thousand four hundred seven'],[9074,'nine thousand seventy-four']])
+    assert.equal(numberToEnglish(value),expected,String(value));
+  const activityId='a1-8-place-values',lab=activity('A1-8',activityId),key=`A1-8:${activityId}`;
+  const render=(state)=>renderActivity(lab,context('A1-8',{placeValueStates:{[key]:state}}));
+  assert.match(render({digits:2,value:19}),/nineteen/);
+  assert.match(render({digits:2,value:20}),/twenty/);
+  assert.match(render({digits:3,value:146}),/one hundred forty-six/);
+  const challenge=render({digits:4,value:2407,challenge:0,answer:0});
+  assert.match(challenge,/درست است/);
+  assert.match(challenge,/data-place-action="next-question"/);
+  assert.match(render({digits:4,value:2407,challenge:0,answer:1}),/دوباره انتخاب کن/);
+});
+
+test('school sentence grammar conjugates singular pronouns and separates pronoun actor from family names',()=>{
+  const source=activity('A1-12','a1-12-composer');
+  const say=(subject,verb,pattern='statement')=>{
+    const resolved=resolveSentenceComposer(source,{slots:{subject,verb},pattern});
+    return composeSegments(resolved.pattern.segments,source,resolved);
+  };
+  assert.equal(say('i','read'),'I read a book.');
+  assert.equal(say('you','read'),'You read a book.');
+  assert.equal(say('he','read'),'He reads a book.');
+  assert.equal(say('she','study'),'She studies English.');
+  assert.equal(say('it','go'),'It goes to school.');
+  assert.equal(say('she','write','negative'),"She doesn't write a note.");
+  assert.equal(say('he','go','question'),'Does he go to school?');
+  const family=renderActivity(activity('A1-12','a1-12-action-lab'),context('A1-12',{cumulativeLabStates:{'A1-12:a1-12-action-lab':{subject:4,owner:2,relative:1,verb:1,form:2}}}));
+  assert.match(family,/Does it write a note/);
+  assert.match(family,/Does his brother write a note/);
 });
 
 test('previous food study and user progress shift to A1-13/14 without losing saved answers',()=>{

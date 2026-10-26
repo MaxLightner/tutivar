@@ -454,7 +454,7 @@ function wordKeydown(event) {
   document.querySelector('[data-word-swipe]')?.focus({ preventScroll: true });
 }
 function onClick(event) {
-  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-meaning-key],button[data-expression-key],button[data-plural-lab-key],button[data-count-math-key],button[data-count-scene-key],button[data-feature-hunt-key],button[data-cumulative-lab-key],button[data-daily-choice-key],button[data-cumulative-quest-key],button[data-cumulative-number-key],button[data-question-explorer-key],button[data-attribute-key],button[data-spatial-key],button[data-family-key],button[data-agreement-key],button[data-finish-section],button[data-review],button[data-planned],button[data-shadowing-key],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-build-submit],button[data-build-undo],button[data-build-clear],button[data-roleplay],button[data-word-key],button[data-composer-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
+  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-meaning-key],button[data-expression-key],button[data-plural-lab-key],button[data-count-math-key],button[data-count-scene-key],button[data-feature-hunt-key],button[data-cumulative-lab-key],button[data-daily-choice-key],button[data-cumulative-quest-key],button[data-cumulative-number-key],button[data-place-key],button[data-question-explorer-key],button[data-attribute-key],button[data-spatial-key],button[data-family-key],button[data-agreement-key],button[data-finish-section],button[data-review],button[data-planned],button[data-shadowing-key],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-build-submit],button[data-build-undo],button[data-build-clear],button[data-roleplay],button[data-word-key],button[data-composer-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
   if (!el) return;
   if (el.dataset.nav) { modal = null; navigate(el.dataset.nav); return; }
   if (el.dataset.openLesson) { modal = null; activePerson = 0; ownerIdx = 0; objectIdx = 0; navigate('lesson', el.dataset.openLesson, el.dataset.startSection || null); return; }
@@ -619,6 +619,34 @@ function onClick(event) {
     }else return;
     progress.cumulativeQuestStates[key]=next;
     persist();updateInline();return;
+  }
+  if(el.dataset.placeKey){
+    const key=el.dataset.placeKey,activity=lessonActivity(key);
+    if(activity?.type!=='place-value-lab')return;
+    progress.placeValueStates ||= {};
+    const before=progress.placeValueStates[key]||{},next={...before};
+    const digits=[2,3,4].includes(before.digits)?before.digits:2;
+    const low=digits===2?13:10**(digits-1),high=digits===2?100:10**digits-1;
+    const value=Number.isInteger(before.value)&&before.value>=low&&before.value<=high?before.value:digits===2?13:digits===3?146:2407;
+    const action=el.dataset.placeAction,n=Number(el.dataset.placeValue);
+    if(action==='digits'){
+      if(![2,3,4].includes(n))return;
+      next.digits=n;next.value=n===2?13:n===3?146:2407;delete next.answer;
+    }else if(['step','increment','decrement','jump'].includes(action)){
+      if(!Number.isInteger(n))return;
+      const newValue=action==='jump'?n:value+(action==='step'?n:action==='increment'?n:-n);
+      if(newValue<low||newValue>high)return;
+      next.value=newValue;
+    }else if(action==='answer'){
+      const question=activity.challenges?.[Math.max(0,Math.min(activity.challenges.length-1,Number(before.challenge)||0))];
+      if(!question||!Number.isInteger(n)||n<0||n>=question.options.length||digits!==4)return;
+      next.answer=n;
+    }else if(action==='next-question'){
+      const index=Math.max(0,Math.min(activity.challenges.length-1,Number(before.challenge)||0));
+      if(before.answer!==activity.challenges[index].correct||digits!==4)return;
+      next.challenge=(index+1)%activity.challenges.length;delete next.answer;
+    }else return;
+    progress.placeValueStates[key]=next;persist();updateInline();return;
   }
   if(el.dataset.cumulativeNumberKey){
     const key=el.dataset.cumulativeNumberKey,activity=lessonActivity(key);

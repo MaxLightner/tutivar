@@ -1,6 +1,6 @@
 {
   "id": "A1-12",
-  "revision": 1,
+  "revision": 2,
   "status": "draft",
   "title": "مدرسه، مطالعه و فعالیت‌های ساده",
   "goal": "واژه‌های مدرسه را با read/write/go/walk/sit/open/close در خبری، منفی و پرسشی ترکیب کن؛ ضمایر و وسایل آموخته‌شده را دوباره به کار ببر.",
@@ -389,8 +389,9 @@
           "type": "sentence-composer",
           "phase": "sentence",
           "title": "چه کسی چه کاری می‌کند؟",
-          "description": "تفاوت read/write/go/walk/open/close را با انتخاب شیء یا مقصد مناسب ببین؛ فاعل و شکل جمله هم تغییر می‌کنند.",
+          "description": "I / You / He / She / It و ضمایر جمع را جداگانه جایگزین کن؛ فعل و شکل خبری/سؤالی همراه با فاعل تغییر می‌کنند. نمونه‌های خانوادگی را در تمرین بعد مستقل بساز.",
           "targetLanguage": "en",
+          "grammar": "simple-present-actions",
           "wordSets": {
             "subjects": [
               {
@@ -401,6 +402,22 @@
                   "en": "I",
                   "question": "I",
                   "fa": "من"
+                },
+                "features": {
+                  "thirdPerson": false
+                }
+              },
+              {
+                "id": "you",
+                "label": "You",
+                "translation": "تو",
+                "forms": {
+                  "en": "You",
+                  "question": "you",
+                  "fa": "تو"
+                },
+                "features": {
+                  "thirdPerson": false
                 }
               },
               {
@@ -411,26 +428,61 @@
                   "en": "We",
                   "question": "we",
                   "fa": "ما"
+                },
+                "features": {
+                  "thirdPerson": false
+                }
+              },
+              {
+                "id": "they",
+                "label": "They",
+                "translation": "آن‌ها",
+                "forms": {
+                  "en": "They",
+                  "question": "they",
+                  "fa": "آن‌ها"
+                },
+                "features": {
+                  "thirdPerson": false
                 }
               },
               {
                 "id": "she",
-                "label": "My sister",
-                "translation": "خواهرم",
+                "label": "She",
+                "translation": "او (مونث)",
                 "forms": {
-                  "en": "My sister",
-                  "question": "my sister",
-                  "fa": "خواهرم"
+                  "en": "She",
+                  "question": "she",
+                  "fa": "او"
+                },
+                "features": {
+                  "thirdPerson": true
                 }
               },
               {
                 "id": "he",
-                "label": "My father",
-                "translation": "پدرم",
+                "label": "He",
+                "translation": "او (مذکر)",
                 "forms": {
-                  "en": "My father",
-                  "question": "my father",
-                  "fa": "پدرم"
+                  "en": "He",
+                  "question": "he",
+                  "fa": "او"
+                },
+                "features": {
+                  "thirdPerson": true
+                }
+              },
+              {
+                "id": "it",
+                "label": "It",
+                "translation": "آن (حیوان/وسیله)",
+                "forms": {
+                  "en": "It",
+                  "question": "it",
+                  "fa": "آن"
+                },
+                "features": {
+                  "thirdPerson": true
                 }
               }
             ],
@@ -1278,7 +1330,7 @@
           "type": "daily-choice-lab",
           "phase": "variants",
           "title": "فاعل، فعل و شیء را معنا‌دار تغییر بده",
-          "description": "فعل‌های کلاس را با کتاب، جمله، تخته یا مقصد مناسب ترکیب کن؛ خبری و منفی و پرسشی را ببین.",
+          "description": "اول تمام ضمایر مفرد را در جملهٔ اصلی تمرین کن. بعد در جملهٔ جداگانه صاحب نسبت (my / your / his / her) و عضو خانواده را عوض کن؛ فعل‌های کلاس و سه حالت جمله در هر دو به‌روز می‌شوند.",
           "mode": "school",
           "options": [
             {

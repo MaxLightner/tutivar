@@ -34,6 +34,9 @@
     "targetLanguage": {
       "type": "string"
     },
+    "grammar": {
+      "enum": ["simple-present-actions"]
+    },
     "wordSets": {
       "type": "object"
     },

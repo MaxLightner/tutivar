@@ -904,6 +904,44 @@ function cumulativeNumberLab(a,c){
   return wrapper(`<p class="module-description">${c.e(a.description||'')}</p><div class="cumulative-number-board"><p>عدد و فاعل را انتخاب کن؛ فعل و تلفظ هم‌زمان تغییر می‌کنند.</p><div class="cumulative-number-display"><span aria-label="عدد ${number.number}">${number.number}</span><strong lang="en" dir="ltr">${c.e(number.en)} ${soundButton(number.en,c.e,c.i)}</strong></div><p class="tap-live-sentence" dir="ltr" lang="en"><button type="button" class="tap-word" data-cumulative-number-key="${c.e(key)}" data-cumulative-number-subject="cycle">${c.e(subject.en)}</button> ${c.e(subject.be+' '+number.en+' years old.')}${soundButton(sentence,c.e,c.i)}</p><span class="cumulative-board-label">چه کسی؟</span><div class="cumulative-subject-grid" role="group" aria-label="تغییر فاعل جمله">${subjects}</div><span class="cumulative-board-label">چند سال؟</span><div class="cumulative-number-chip-grid" aria-label="اعداد و سن‌های قابل انتخاب">${cards}</div><p class="live-hint">فاعل‌های I / you / he / she / we / they و اعضای خانواده، am / is / are را به‌درستی تغییر می‌دهند.</p></div>`,a,c.index,c.e,'module-cumulative-numbers');
 }
 
+export function numberToEnglish(value) {
+  if(!Number.isInteger(value)||value<0||value>9999)throw new RangeError('number must be 0–9999');
+  const units=['zero','one','two','three','four','five','six','seven','eight','nine'];
+  const teens=['ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+  const tens=['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+  if(value<10)return units[value];
+  if(value<20)return teens[value-10];
+  if(value<100)return tens[Math.floor(value/10)]+(value%10?'-'+units[value%10]:'');
+  if(value<1000)return units[Math.floor(value/100)]+' hundred'+(value%100?' '+numberToEnglish(value%100):'');
+  return units[Math.floor(value/1000)]+' thousand'+(value%1000?' '+numberToEnglish(value%1000):'');
+}
+function placeValueLab(a,c) {
+  const key=`${c.lessonId}:${a.id}`,saved=c.progress.placeValueStates?.[key]||{},e=c.e;
+  const digits=[2,3,4].includes(saved.digits)?saved.digits:2;
+  const lower=digits===2?13:10**(digits-1),upper=digits===2?100:10**digits-1;
+  const fallback=digits===2?13:digits===3?146:2407;
+  const value=Number.isInteger(saved.value)&&saved.value>=lower&&saved.value<=upper?saved.value:fallback;
+  const english=numberToEnglish(value);
+  const stages=[{digits:2,name:'۱۳ تا ۱۰۰',hint:'پایه؛ این بخش را به ترتیب تمرین کن.'},{digits:3,name:'سه‌رقمی',hint:'آشنایی تکمیلی با صدگان.'},{digits:4,name:'چهاررقمی',hint:'پیش‌نمایش هزارگان و آزمون خواندن.'}];
+  const action=(kind,details='',disabled=false,label='')=>`<button type="button" data-place-key="${e(key)}" data-place-action="${kind}" ${details} ${disabled?'disabled':''} aria-label="${e(label)}">`;
+  const tabs=stages.map(stage=>`<button class="place-stage ${digits===stage.digits?'active':''}" data-place-key="${e(key)}" data-place-action="digits" data-place-value="${stage.digits}" aria-pressed="${digits===stage.digits}">${e(stage.name)}</button>`).join('');
+  const places=[{power:1000,name:'هزارگان'},{power:100,name:'صدگان'},{power:10,name:'دهگان'},{power:1,name:'یکان'}].filter(p=>p.power<=10**(digits-1) || value===100&&p.power===100);
+  const digitControls=places.map(p=>{
+    const digit=Math.floor(value/p.power)%10;
+    const decrease=value-p.power>=lower;
+    const increase=value+p.power<=upper;
+    return `<div class="place-digit"><span class="place-digit-label">${p.name}</span>${action('decrement',`data-place-value="${p.power}"`,!decrease,`${p.name} را کم کن`)}−</button><strong dir="ltr">${digit}</strong>${action('increment',`data-place-value="${p.power}"`,!increase,`${p.name} را زیاد کن`)}+</button><small dir="ltr">${digit} × ${p.power}</small></div>`;
+  }).join('');
+  const partition=places.map(p=>`${Math.floor(value/p.power)%10} × ${p.power}`).join(' + ');
+  const nextButton=action('step','data-place-value="1"',value>=upper,'عدد بعدی')+'عدد بعدی ←</button>';
+  const prevButton=action('step','data-place-value="-1"',value<=lower,'عدد قبلی')+'→ عدد قبلی</button>';
+  const milestones=digits===2?`<div class="place-milestones" role="group" aria-label="شروع هر دهگان">${[13,20,30,40,50,60,70,80,90,100].map(n=>`<button class="${value===n?'active':''}" data-place-key="${e(key)}" data-place-action="jump" data-place-value="${n}" aria-pressed="${n===value}">${n}</button>`).join('')}</div>`:'';
+  const challenge=(a.challenges||[])[Math.max(0,Math.min((a.challenges||[]).length-1,Number(saved.challenge)||0))];
+  const answer=Number.isInteger(saved.answer)?saved.answer:null,solved=challenge&&answer===challenge.correct;
+  const questions=digits===4&&challenge?`<div class="place-challenge"><span class="place-eyebrow">خودت بخوان · ${Math.max(0,Math.min(a.challenges.length-1,Number(saved.challenge)||0))+1} از ${a.challenges.length}</span><h4>به نظرت عدد <b dir="ltr">${challenge.number}</b> چطور خوانده می‌شود؟</h4><div class="place-answers" role="group" aria-label="انتخاب تلفظ چهاررقمی">${challenge.options.map((option,i)=>`<button lang="en" dir="ltr" class="${answer===i?(i===challenge.correct?'correct':'incorrect'):''}" data-place-key="${e(key)}" data-place-action="answer" data-place-value="${i}" aria-pressed="${answer===i}">${e(option)}</button>`).join('')}</div>${answer!==null?`<p role="status" class="place-feedback ${solved?'correct':''}">${solved?'درست است؛ هزارگان، صدگان و بقیهٔ عدد را جدا تشخیص دادی.':'یک بار ارزش هر رقم را جدا بخوان و دوباره انتخاب کن.'}</p>`:''}${solved?`${action('next-question','','','عدد چهاررقمی بعدی')}عدد چهاررقمی بعدی</button>`:''}</div>`:'';
+  return wrapper(`<p class="module-description">${e(a.description||'')}</p><div class="place-lab"><div class="place-tabs" role="group" aria-label="تعداد رقم‌های عدد">${tabs}</div><div class="place-track"><span class="place-eyebrow">${e(stages.find(s=>s.digits===digits).hint)}</span><div class="place-step-controls">${prevButton}<output class="place-number" aria-live="polite" dir="ltr">${value}</output>${nextButton}</div><div class="place-spoken" lang="en" dir="ltr">${e(english)}${soundButton(english,e,c.i)}</div>${milestones}</div><div class="place-digits" role="group" aria-label="عددسازی با فلش‌های مستقل ارزش مکانی">${digitControls}</div><p class="place-equation" dir="ltr">${e(partition)} = <strong>${value}</strong></p><p class="place-live-sentence" lang="en" dir="ltr">I have ${e(english)} books.${soundButton(`I have ${english} books.`,e,c.i)}</p><p class="place-note">${digits===2?'با «عدد بعدی» از ۱۳، ۱۴، ۱۵… به ترتیب جلو برو؛ با فلش هر رقم ببین تغییر یکان با دهگان چه فرقی دارد.':digits===3?'اینجا صدگان را هم مستقل تغییر بده؛ هدف اصلی این درس همچنان اعداد تا ۱۰۰ است.':'این بخش آشنایی اولیه است؛ هزارگان را تغییر بده و پایین خواندن عددهای چهاررقمی را حدس بزن.'}</p>${questions}</div>`,a,c.index,e,'module-place-value');
+}
+
 function tapAttributesLab(a,c) {
   const key=`${c.lessonId}:${a.id}`;
   const selected=c.progress.attributeChoices?.[key] || {};
@@ -990,12 +1028,20 @@ function dailyChoiceLab(a,c) {
   const key=`${c.lessonId}:${a.id}`,state=c.progress.cumulativeLabStates?.[key]||{},e=c.e;
   const chip=(field,index,label,active)=>`<button type="button" class="daily-chip ${active?'is-active':''}" data-daily-choice-key="${e(key)}" data-daily-choice-field="${field}" data-daily-choice-index="${index}" aria-pressed="${active}">${e(label)}</button>`;
   if(a.mode==='kitchen'||a.mode==='school') {
-    const subjects=[{name:'I',query:'I',fa:'من',third:false},{name:'You',query:'you',fa:'تو',third:false},{name:'My sister',query:'my sister',fa:'خواهرم',third:true},{name:'My father',query:'my father',fa:'پدرم',third:true},{name:'We',query:'we',fa:'ما',third:false},{name:'They',query:'they',fa:'آن‌ها',third:false}];
+    const subjects=a.mode==='school'?
+      [{name:'I',query:'I',fa:'من',third:false},{name:'You',query:'you',fa:'تو',third:false},{name:'He',query:'he',fa:'او (مذکر)',third:true},{name:'She',query:'she',fa:'او (مونث)',third:true},{name:'It',query:'it',fa:'آن (غیرانسان)',third:true},{name:'We',query:'we',fa:'ما',third:false},{name:'They',query:'they',fa:'آن‌ها',third:false}]:
+      [{name:'I',query:'I',fa:'من',third:false},{name:'You',query:'you',fa:'تو',third:false},{name:'My sister',query:'my sister',fa:'خواهرم',third:true},{name:'My father',query:'my father',fa:'پدرم',third:true},{name:'We',query:'we',fa:'ما',third:false},{name:'They',query:'they',fa:'آن‌ها',third:false},{name:'He',query:'he',fa:'او (مذکر)',third:true},{name:'She',query:'she',fa:'او (مونث)',third:true},{name:'It',query:'it',fa:'آن (غیرانسان)',third:true}];
     const s=Math.max(0,Math.min(subjects.length-1,Number(state.subject)||0)),v=Math.max(0,Math.min(a.options.length-1,Number(state.verb)||0)),f=Math.max(0,Math.min(2,Number(state.form)||0));
     const subject=subjects[s],action=a.options[v],o=Math.max(0,Math.min(action.objects.length-1,Number(state.object)||0)),food=action.objects[o];
     const plain=action.en,third=action.third||`${plain}s`;
     const forms=[`${subject.name} ${subject.third?third:plain} ${food.en}.`,`${subject.name} ${subject.third?"doesn't":"don't"} ${plain} ${food.en}.`,`${subject.third?'Does':'Do'} ${subject.query} ${plain} ${food.en}?`],sentence=forms[f];
-    return wrapper(`<p class="module-description">${e(a.description||'')}</p><div class="daily-choice-lab"><div class="daily-hero"><div class="daily-emoji" aria-hidden="true">${action.emoji} ${food.emoji}</div><div><span class="daily-eyebrow">${a.mode==='school'?'چه کسی + چه کاری + کجا یا چه چیزی':'فاعل + فعل + خوراکی'}</span><div class="daily-live-sentence" dir="ltr" lang="en">${c.en(sentence)}${soundButton(sentence,e,c.i)}</div><p>با خواهر یا پدر: ${e(third)}؛ در منفی و سؤال، بعد از does از ${e(plain)} استفاده می‌شود.</p></div></div><div class="daily-option-group" role="group" aria-label="فاعل">${subjects.map((x,i)=>chip('subject',i,x.fa,s===i)).join('')}</div><div class="daily-option-group" role="group" aria-label="فعل">${a.options.map((x,i)=>chip('verb',i,x.fa,v===i)).join('')}</div><div class="daily-option-group" role="group" aria-label="${a.mode==='school'?'شیء یا محل':'خوراکی'}">${action.objects.map((x,i)=>chip('object',i,`${x.emoji} ${x.fa}`,o===i)).join('')}</div><div class="daily-number-row" role="group" aria-label="نوع جمله">${['خبری +','منفی −','پرسشی ؟'].map((x,i)=>chip('form',i,x,f===i)).join('')}</div></div>`,a,c.index,e,'module-daily-choice');
+    const owners=[{en:'My',fa:'من'},{en:'Your',fa:'تو'},{en:'His',fa:'او (مذکر)'},{en:'Her',fa:'او (مونث)'}];
+    const relations=[{en:'sister',fa:'خواهر'},{en:'brother',fa:'برادر'},{en:'mother',fa:'مادر'},{en:'father',fa:'پدر'}];
+    const ownerIndex=Math.max(0,Math.min(owners.length-1,Number(state.owner)||0)),relativeIndex=Math.max(0,Math.min(relations.length-1,Number(state.relative)||0));
+    const familyName=`${owners[ownerIndex].en} ${relations[relativeIndex].en}`,familyQuery=familyName.toLowerCase();
+    const family=[`${familyName} ${third} ${food.en}.`,`${familyName} doesn't ${plain} ${food.en}.`,`Does ${familyQuery} ${plain} ${food.en}?`][f];
+    const familyControls=`<div class="family-transfer"><span class="daily-eyebrow">جملهٔ جدا با عضو خانواده · مالکیت و نسبت را مستقل تغییر بده</span><div class="daily-live-sentence" lang="en" dir="ltr">${c.en(family)}${soundButton(family,e,c.i)}</div><p class="daily-option-label">خواهرِ چه کسی؟ / عضو کدام خانواده؟</p><div class="daily-option-group" role="group" aria-label="صاحب نسبت خانوادگی">${owners.map((x,i)=>chip('owner',i,`${x.en} · ${x.fa}`,ownerIndex===i)).join('')}</div><div class="daily-option-group" role="group" aria-label="نوع نسبت خانوادگی">${relations.map((x,i)=>chip('relative',i,x.fa,relativeIndex===i)).join('')}</div></div>`;
+    return wrapper(`<p class="module-description">${e(a.description||'')}</p><div class="daily-choice-lab"><div class="daily-hero"><div class="daily-emoji" aria-hidden="true">${action.emoji} ${food.emoji}</div><div><span class="daily-eyebrow">ضمیر + فعل + ${a.mode==='school'?'شیء یا مقصد':'خوراکی'}</span><div class="daily-live-sentence" dir="ltr" lang="en">${c.en(sentence)}${soundButton(sentence,e,c.i)}</div><p>برای he / she / it فعل ${e(third)} می‌شود؛ در سؤال و منفی بعد از does فعل سادهٔ ${e(plain)} می‌آید.</p></div></div><p class="daily-option-label">فاعل را تغییر بده</p><div class="daily-option-group" role="group" aria-label="فاعل و ضمیر">${subjects.map((x,i)=>chip('subject',i,`${x.name} · ${x.fa}`,s===i)).join('')}</div><p class="daily-option-label">عمل</p><div class="daily-option-group" role="group" aria-label="فعل">${a.options.map((x,i)=>chip('verb',i,x.fa,v===i)).join('')}</div><div class="daily-option-group" role="group" aria-label="${a.mode==='school'?'شیء یا محل':'خوراکی'}">${action.objects.map((x,i)=>chip('object',i,`${x.emoji} ${x.fa}`,o===i)).join('')}</div><div class="daily-number-row" role="group" aria-label="نوع جمله">${['خبری +','منفی −','پرسشی ؟'].map((x,i)=>chip('form',i,x,f===i)).join('')}</div>${familyControls}</div>`,a,c.index,e,'module-daily-choice');
   }
   if(a.mode==='menu') {
     const selected=Math.max(0,Math.min(a.options.length-1,Number(state.item)||0)),quantity=Math.max(1,Math.min(3,Number(state.quantity)||1));
@@ -1007,7 +1053,7 @@ function dailyChoiceLab(a,c) {
     const meal=a.options[selected],pairs=meal.pairs?.length?meal.pairs:[{food:meal.food,fa:meal.food,emoji:meal.emoji,verb:'eat',connectors:['plain']}];
     const foodIndex=Math.max(0,Math.min(pairs.length-1,Number(state.food)||0)),food=pairs[foodIndex];
     const connectors=food.connectors||['plain'],connectorIndex=Math.max(0,Math.min(connectors.length-1,Number(state.connector)||0)),connector=connectors[connectorIndex];
-    const subjects=[{en:'I',query:'I',fa:'من',third:false},{en:'We',query:'we',fa:'ما',third:false},{en:'My sister',query:'my sister',fa:'خواهرم',third:true},{en:'My brother',query:'my brother',fa:'برادرم',third:true},{en:'You',query:'you',fa:'تو',third:false},{en:'They',query:'they',fa:'آن‌ها',third:false}];
+    const subjects=[{en:'I',query:'I',fa:'من',third:false},{en:'We',query:'we',fa:'ما',third:false},{en:'My sister',query:'my sister',fa:'خواهرم',third:true},{en:'My brother',query:'my brother',fa:'برادرم',third:true},{en:'You',query:'you',fa:'تو',third:false},{en:'They',query:'they',fa:'آن‌ها',third:false},{en:'He',query:'he',fa:'او (مذکر)',third:true},{en:'She',query:'she',fa:'او (مونث)',third:true},{en:'It',query:'it',fa:'آن (غیرانسان)',third:true}];
     const subject=Math.max(0,Math.min(subjects.length-1,Number(state.subject)||0)),who=subjects[subject];
     const form=Math.max(0,Math.min(2,Number(state.form)||0)),plain=food.verb||'eat',conjugated=who.third?`${plain}s`:plain;
     const namedFood=`${food.food}${connector==='plain'?'':` ${connector} ${food.companion}`}`;
@@ -1028,7 +1074,7 @@ const renderers = {
   'exchange-lab': exchangeLab, 'question-explorer': questionExplorer, 'daily-choice-lab': dailyChoiceLab, 'expression-study': expressionStudy, 'count-visual': countVisual, 'plural-pair-lab': pluralPairLab, 'count-math-lab': countMathLab,
   shadowing, 'shadowing-review': shadowing, 'picture-description': pictureDescription,
   'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer,
-  'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'spatial-compare-lab': spatialCompareLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer, 'tap-attributes-lab': tapAttributesLab, 'tap-ownership-lab': tapOwnershipLab, 'count-scene-lab':countSceneLab, 'feature-hunt':featureHunt, 'cumulative-scene-lab':cumulativeSceneLab, 'cumulative-visual-quest':cumulativeVisualQuest, 'cumulative-number-lab':cumulativeNumberLab
+  'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'spatial-compare-lab': spatialCompareLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer, 'tap-attributes-lab': tapAttributesLab, 'tap-ownership-lab': tapOwnershipLab, 'count-scene-lab':countSceneLab, 'feature-hunt':featureHunt, 'cumulative-scene-lab':cumulativeSceneLab, 'cumulative-visual-quest':cumulativeVisualQuest, 'cumulative-number-lab':cumulativeNumberLab, 'place-value-lab':placeValueLab
 };
 export function renderActivity(activity, context) {
   const renderer = renderers[activity.type];

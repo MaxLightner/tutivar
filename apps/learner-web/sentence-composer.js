@@ -52,6 +52,17 @@ export function resolveSentenceComposer(activity, saved = {}) {
   for (const rule of activity.dependencies || []) {
     if (matchesCondition(rule.when, activity, state)) Object.assign(derived, rule.set || {});
   }
+  if (activity.grammar === 'simple-present-actions') {
+    const subject = selectedItem(activity, state, 'subject');
+    const action = selectedItem(activity, state, 'verb');
+    const third = subject?.features?.thirdPerson === true;
+    const base = String(action?.forms?.en || action?.label || '');
+    const conjugated = base.endsWith('y') && !/[aeiou]y$/.test(base)
+      ? base.slice(0,-1)+'ies' : /(?:s|sh|ch|x|z|o)$/.test(base) ? base+'es' : base+'s';
+    derived.verb = third ? conjugated : base;
+    derived.does = third ? 'Does' : 'Do';
+    derived.not = third ? "doesn't" : "don't";
+  }
   const pattern = activity.patterns?.find((entry) => entry.id === state.pattern)
     || activity.patterns?.find((entry) => entry.id === activity.defaultPattern)
     || activity.patterns?.[0]

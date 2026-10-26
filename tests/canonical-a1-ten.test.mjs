@@ -68,12 +68,11 @@ test('A1-7 changes a single family member to a plural group, hair and height wit
 });
 
 test('personal-info lesson (now A1-9) practices numeric ages, profile fields, language and study',()=>{
- const l=newer[1],wheel=activity(lessons[7],'a1-8-quantities');
- assert.ok(wheel.numbers.some(n=>n.number===13));
- assert.ok(wheel.numbers.some(n=>n.number===100));
+ const l=newer[1],wheel=activity(lessons[7],'a1-8-place-values');
+ assert.equal(wheel.type,'place-value-lab');
  const initial=renderActivity(wheel,context(lessons[7]));
  assert.match(initial,/thirteen/);
- assert.match(initial,/data-cumulative-number-index="/);
+ assert.match(initial,/data-place-action="step"/);
  const profile=activity(l,'a1-8-live');
  assert.match(renderActivity(profile,context(l)),/How old are you/);
  const changed=renderActivity(profile,context(l,{cumulativeLabStates:{'A1-9:a1-8-live':{topic:2,language:2,age:2}}}));

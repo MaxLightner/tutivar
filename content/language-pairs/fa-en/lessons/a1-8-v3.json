@@ -888,111 +888,47 @@
           "completion": "عدد، اسم مفرد یا جمع و پرسش تعداد را با هم ترکیب کردی."
         },
         {
-          "id": "a1-8-forms",
-          "type": "composer-view",
+          "id": "a1-8-place-values",
+          "type": "place-value-lab",
           "phase": "variants",
-          "title": "همان جمله، چند حالت مختلف",
-          "description": "فاعل، معنی و حالت خبری/منفی/سؤالی را جابه‌جا کن.",
-          "sourceActivityId": "a1-8-composer",
-          "patternIds": [
-            "i-have",
-            "she-has",
-            "how-many"
-          ]
-        },
-        {
-          "id": "a1-8-quantities",
-          "type": "cumulative-number-lab",
-          "phase": "variants",
-          "title": "عدد بزرگ و تعداد واقعی در یک تصویر",
-          "description": "عدد و شیء را تغییر بده؛ دهگان‌ها به‌صورت دسته دیده می‌شوند و جمله هم عوض می‌شود.",
-          "mode": "quantities",
-          "numbers": [
+          "title": "عدد را خودت بساز؛ یکان، دهگان، صدگان و هزارگان",
+          "description": "از ۱۳ به‌ترتیب جلو برو؛ با فلش هر رقم را جدا کم و زیاد کن و ببین چطور نوشته و خوانده می‌شود. در پایان، عددهای چهاررقمی را بدون دیدن پاسخ حدس بزن.",
+          "challenges": [
             {
-              "number": 13,
-              "en": "thirteen"
+              "number": 2407,
+              "options": [
+                "two thousand four hundred seven",
+                "two thousand forty-seven",
+                "four thousand two hundred seven"
+              ],
+              "correct": 0
             },
             {
-              "number": 14,
-              "en": "fourteen"
+              "number": 5186,
+              "options": [
+                "five hundred eighteen six",
+                "five thousand one hundred eighty-six",
+                "five thousand eight hundred sixteen"
+              ],
+              "correct": 1
             },
             {
-              "number": 15,
-              "en": "fifteen"
+              "number": 9074,
+              "options": [
+                "nine thousand seven hundred four",
+                "nine hundred seventy-four",
+                "nine thousand seventy-four"
+              ],
+              "correct": 2
             },
             {
-              "number": 16,
-              "en": "sixteen"
-            },
-            {
-              "number": 17,
-              "en": "seventeen"
-            },
-            {
-              "number": 18,
-              "en": "eighteen"
-            },
-            {
-              "number": 19,
-              "en": "nineteen"
-            },
-            {
-              "number": 20,
-              "en": "twenty"
-            },
-            {
-              "number": 30,
-              "en": "thirty"
-            },
-            {
-              "number": 40,
-              "en": "forty"
-            },
-            {
-              "number": 50,
-              "en": "fifty"
-            },
-            {
-              "number": 60,
-              "en": "sixty"
-            },
-            {
-              "number": 70,
-              "en": "seventy"
-            },
-            {
-              "number": 80,
-              "en": "eighty"
-            },
-            {
-              "number": 90,
-              "en": "ninety"
-            },
-            {
-              "number": 100,
-              "en": "one hundred"
-            }
-          ],
-          "objects": [
-            {
-              "fa": "کتاب",
-              "plural": "books"
-            },
-            {
-              "fa": "خودکار",
-              "plural": "pens"
-            },
-            {
-              "fa": "مداد",
-              "plural": "pencils"
-            },
-            {
-              "fa": "خواهر",
-              "plural": "sisters"
-            },
-            {
-              "fa": "توپ",
-              "plural": "balls"
+              "number": 3612,
+              "options": [
+                "three thousand six hundred twelve",
+                "thirty-six hundred twenty-one",
+                "three thousand sixty-two"
+              ],
+              "correct": 0
             }
           ]
         },
