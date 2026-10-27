@@ -6,8 +6,8 @@ An extensible, language-pair-independent learning platform. Content and app rend
 
 - Architecture baseline: `0.1.0` (draft)
 - **Active pilot: Persian (`fa`) → English (`en`)**. Earlier `fa-de` stays as an unpopulated future pair.
-- Mobile-first PWA learner preview: `apps/learner-web` (draft UI)
-- Nine runnable **pilot** A1 lesson files exist. A1-6 through A1-9 currently have historical topics that do **not** match the owner's approved universal order; they are locked for safe migration, not a precedent for future topics.
+- Mobile-first PWA learner preview: `apps/learner-web` (phase 1 learner contracts and phase 2 mobile home/catalog/lesson shell in progress)
+- **24 runnable pilot A1 lessons (A1-1 through A1-24)** are registered in the learner curriculum. Historical lesson revisions remain in the repository for progress migration and audit; A1-25 through A1-36 remain planned.
 - The author's **128-lesson roadmap** is now repository-native and mandatory (A1: 36 lessons in three stages of 12). See `AGENTS.md` and `content/curriculum/universal-path.v1.json`.
 - No production course, placement exam, backend, social account, AI coach, or real Leitner scheduling yet.
 - Files in `examples/` are illustrative fixtures, **not published educational content**.
@@ -42,7 +42,7 @@ Then open `http://localhost:8080`. The app must be served over HTTP; it will not
 
 `.github/workflows/deploy-pages.yml` validates the content, builds `dist/`, and deploys that folder on pushes to `main`. In repository **Settings → Pages → Build and deployment**, select **GitHub Actions** as the source. Once GitHub Pages is enabled and the workflow completes successfully, the learner preview is at `https://maxlightner.github.io/tutivar/`. The app uses relative paths to support this subdirectory. The site is publicly reachable even if GitHub permits the repository to remain private; do not put secrets into `content/`.
 
-The demo works without a backend. Completed lessons, review clicks, and written practice are saved only in this browser's `localStorage`. Review keys 1–7 **do not implement Leitner scheduling**. Chat, account sync, market and leaderboards are marked as upcoming.
+The learner works without a backend. Completed lessons, review clicks, and written practice are saved only in this browser's `localStorage`. The phase 1 contracts in `schemas/learner-domain.v1.schema.json` define future user/progress/card/history entities without a backend. The seven review keys **do not implement Leitner scheduling**. Chat, account sync, market and leaderboards are marked as upcoming.
 
 ### Locked curriculum — must use before authoring a lesson
 
