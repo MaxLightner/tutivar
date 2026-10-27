@@ -44,6 +44,7 @@ rewrite('app.js', [
   ["from './practice-engine.js'", `from './practice-engine.js?v=${revision}'`],
   ["from './sentence-puzzle.js'", `from './sentence-puzzle.js?v=${revision}'`],
   ["from './progress-migration.js'", `from './progress-migration.js?v=${revision}'`],
+  ["from './learning-contracts.js'", `from './learning-contracts.js?v=${revision}'`],
 ]);
 rewrite('lesson-modules.js', [
   ["from './word-review.js'", `from './word-review.js?v=${revision}'`],
@@ -69,7 +70,8 @@ rewrite('sw.js', [
   ["'./lesson-flow.js'", `'./lesson-flow.js?v=${revision}'`],
   ["'./sentence-puzzle.js'", `'./sentence-puzzle.js?v=${revision}'`],
   ["'./visual-learning.js'", `'./visual-learning.js?v=${revision}'`],
-  ["'./progress-migration.js'", `'./progress-migration.js?v=${revision}'`]
+  ["'./progress-migration.js'", `'./progress-migration.js?v=${revision}'`],
+  ["'./learning-contracts.js'", `'./learning-contracts.js?v=${revision}'`]
 ]);
 rewrite('lesson-flow.js', [
   ["from './sentence-puzzle.js'", `from './sentence-puzzle.js?v=${revision}'`],
