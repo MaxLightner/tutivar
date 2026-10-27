@@ -1167,3 +1167,45 @@ button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3p
 .real-world-mission p { color:#435d51; margin:8px 0 0; line-height:1.7; }
 .real-world-mission .real-world-recall { border-top:1px dashed #bed6c6; margin-top:10px; padding-top:10px; font-weight:650; }
 @media(max-width:480px){.antonym-comparison{gap:7px}.antonym-card{padding:7px}.antonym-card small{font-size:12px}}
+/* A1.2: meaning-first practical simulations, shared across ten real-life lessons. */
+.module-mission-lab{background:linear-gradient(145deg,#fcfffd,#f2f9f5);border:1px solid #c9e4d7}
+.mission-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:4px 0 16px;color:#375d54}
+.mission-top span{border-radius:30px;background:#d8eee3;padding:7px 12px;font-size:13px}
+.mission-top strong{font-size:17px}
+.mission-instruction{font-size:18px;line-height:1.9;color:#263f3c;margin:12px 0 18px}
+.mission-picture-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.mission-picture-choice{border:2px solid #d4e3dc;border-radius:20px;background:white;color:#263e38;display:flex;align-items:center;flex-direction:column;padding:16px 8px;gap:8px;cursor:pointer;min-height:160px;transition:transform .16s,border-color .16s}
+.mission-picture-choice:hover{transform:translateY(-2px);border-color:#318566}
+.mission-picture-choice:focus-visible,.city-map-cell:focus-visible,.route-arrow:focus-visible{outline:3px solid #286b56;outline-offset:3px}
+.mission-picture-choice .mission-visual{display:grid;place-items:center;font-size:clamp(40px,7vw,72px);width:100%;height:120px;border-radius:14px;background:var(--swatch,#edf5f0)}
+.mission-picture-choice strong{font-size:17px}.mission-picture-choice small{font-size:14px;color:#63756d}
+.mission-picture-choice.is-correct,.city-map-cell.is-correct{border-color:#199266;background:#e7f8ef}
+.mission-picture-choice.is-wrong,.city-map-cell.is-wrong{border-color:#c98766;background:#fff6ef}
+.mission-feedback{margin-top:16px;border-radius:12px;padding:12px 16px;background:#e7eee9;color:#40584a;font-size:15px}
+.mission-feedback.is-correct{background:#d8f4e5;color:#1c6946}.mission-feedback.is-wrong{background:#fff0e6;color:#8b4b2c}
+.mission-bilingual{margin-top:14px;border-right:3px solid #2b8366;padding:10px 18px;background:white;border-radius:12px}
+.mission-bilingual p:first-child{font-size:19px;font-weight:700;color:#17513e;margin:0 0 7px}.mission-bilingual p:last-child{color:#556e65;font-size:15px;margin:0}
+.mission-next{margin-top:15px;display:flex;justify-content:flex-end}.mission-finished{padding:12px;color:#24694a;font-size:15px}
+.builder-found-item small{display:block;margin:4px 0 0;color:#617b6b;font-size:13px;text-align:right}
+.exchange-await{background:#fffdf5!important;min-height:130px;display:flex;flex-direction:column;justify-content:center;gap:10px}
+.exchange-await p{font-size:15px;color:#566d62}
+.city-map{background:#d8e9e0;border:8px solid #e6f1e9;border-radius:22px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;padding:8px;direction:ltr;max-width:690px;margin:18px auto;box-shadow:inset 0 0 0 2px #c1d8c8}
+.city-map-cell{min-width:0;aspect-ratio:1.1;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px solid #d3e1d8;border-radius:11px;background:#f6fbf8;color:#30554a;cursor:default;text-align:center;padding:2px}
+button.city-map-cell{cursor:pointer}.city-map-cell.city-place{background:#eff4db;border-color:#b5d1ba}
+.city-map-cell .city-icon{font-size:clamp(21px,4vw,40px);line-height:1.15}.city-map-cell small{font-size:12px;line-height:1.3;font-weight:700;color:#305f51}
+.city-map-cell.city-current{background:#a2dbba!important;border-color:#33845c}.city-map-cell.city-visited{background:#d1edd9!important}.city-walker{font-size:35px}
+.city-cross{font-size:23px;color:#aec6b5}.city-start{background:#a2dbba!important}.city-goal{background:#f2d2a3!important}
+.route-controls{margin:18px 0;padding:18px;background:#fff;border-radius:16px}.route-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;direction:ltr}
+.route-arrow{border:1px solid #b7d4c5;background:#eaf5ee;color:#225a42;border-radius:12px;cursor:pointer;display:flex;flex-direction:column;gap:4px;align-items:center;padding:9px 2px}.route-arrow b{font-size:28px}.route-arrow small{font-size:11px}
+.basket-lab{display:grid;grid-template-columns:minmax(190px,1fr) minmax(0,2fr);gap:16px;align-items:start}
+.basket-shopping-list{background:#fff9e9;border:1px solid #e5d6a8;border-radius:16px;padding:16px;position:sticky;top:8px}
+.basket-shopping-list strong,.basket-receipt>strong{letter-spacing:.03em;font-size:16px;color:#72572d}.basket-shopping-list ul{margin:12px 0;padding:0;list-style:none}
+.basket-shopping-list li{display:flex;flex-direction:column;gap:2px;border-bottom:1px dashed #d6c6a3;padding:8px 0}.basket-shopping-list li span{font-size:13px;color:#897857}
+.basket-shelf{display:grid;gap:8px}.basket-product{display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:center;gap:9px;padding:12px;border-radius:14px;background:white;border:1px solid #d8e5dc}
+.basket-product>span{font-size:30px}.basket-product>div:nth-child(2){display:flex;flex-direction:column;gap:4px}.basket-product strong{font-size:15px}.basket-product small{font-size:13px;color:#697d72}
+.basket-quantity{display:flex;gap:8px;align-items:center}.basket-quantity b{min-width:15px;text-align:center}.basket-quantity .outline-btn{min-width:30px;padding:5px 7px;font-size:20px}
+.basket-summary{grid-column:1/-1;display:flex;gap:10px;align-items:center;justify-content:space-between;background:#e7f1eb;padding:14px 18px;border-radius:15px}
+.basket-receipt{max-width:470px;margin:17px auto;background:#fff;border:1px dashed #849c90;box-shadow:0 9px 24px #1c433013;padding:21px;border-radius:6px}
+.basket-receipt ol{padding:12px 18px}.basket-receipt li{display:flex;justify-content:space-between;padding:4px 0}.basket-receipt>p{border-top:1px dashed #9db4a6;padding-top:10px}
+.basket-method{display:flex;gap:10px}.basket-method .is-active{background:#27765b;color:white}
+@media(max-width:620px){.mission-picture-grid{gap:8px}.mission-picture-choice{min-height:140px;padding:9px 5px}.mission-picture-choice .mission-visual{height:91px}.basket-lab{grid-template-columns:1fr}.basket-shopping-list{position:static}.basket-summary{flex-wrap:wrap}.city-map{gap:4px;padding:5px;border-width:5px}.city-map-cell small{font-size:9px}.route-arrow small{font-size:9px}}

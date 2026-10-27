@@ -36,7 +36,7 @@ const validAnswers = new Map([
   [20,'I would like two apples, please. How much is this medium shirt today?'],
   [21,'Can I have the bill, please? I pay by card and need a receipt.'],
   [22,'There is a park near my home. The cafe is next to the park.'],
-  [23,'Go straight at the park. Turn right at the intersection near the bank.'],
+  [23,'Go straight to the park. Turn right at the intersection near the bank.'],
   [24,'I go to the school by bus. I need one ticket to the city.']
 ]);
 
@@ -65,7 +65,9 @@ test('each new lesson is a two-section course, with distinct retrieval, conversa
     assert.ok(content.find(a=>a.type==='exchange-lab')?.pairs.length>=4);
     assert.ok(content.find(a=>a.type==='guided-dialogue')?.turns.length>=4);
     assert.ok(content.find(a=>a.type==='free-write')?.realWorldMission?.reflection.length>10);
-    assert.ok(content.find(a=>a.type==='quiz-set')?.questions.length>=3);
+    assert.ok(content.find(a=>a.type==='mission-lab'),lesson.id+' needs an interactive real-world lab');
+    assert.equal(content.some(a=>a.type==='quiz-set'),false,lesson.id+' should not default to three-choice quizzes');
+    assert.ok(content.find(a=>a.type==='exchange-lab')?.pairs.length>=5,lesson.id+' needs at least five opening questions');
     const composer=content.find(a=>a.type==='sentence-composer');
     assert.deepEqual(validateSentenceComposer(composer),[],lesson.id);
     assert.ok(composer.patterns.length>=2 && composer.slots.length>=2);

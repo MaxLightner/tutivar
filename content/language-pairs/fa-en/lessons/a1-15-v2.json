@@ -1,0 +1,1514 @@
+{
+  "id": "A1-15",
+  "revision": "2026-10-27-owner-stage2-real-interactions-v2",
+  "status": "draft",
+  "title": "مقایسهٔ سادهٔ چیزها",
+  "goal": "بین دو خوراک، وسیله یا لباس تفاوت اندازه، مقدار یا قیمت را بگو و انتخابت را با یک دلیل ساده توضیح بده.",
+  "duration": 24,
+  "feature": "انتخاب با دلیل و مقایسهٔ واقعی",
+  "archetype": "K8",
+  "roadmapRef": {
+    "id": "A1-15",
+    "revision": "2026-10-27-owner-a1-stage2-practical-sequence",
+    "communicativeOutcome": "دو چیز آشنا را از نظر بزرگی، کوچکی، گرانی، ارزانی یا مقدار مقایسه می‌کند؛ با صفت و عدد واقعی انتخاب ساده‌ای را توضیح می‌دهد و نظر کوتاه خود را بیان می‌کند."
+  },
+  "teachingModel": {
+    "type": "discovery-production",
+    "sections": 2
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "بین دو خوراک، وسیله یا لباس تفاوت اندازه، مقدار یا قیمت را بگو و انتخابت را با یک دلیل ساده توضیح بده.",
+    "prerequisites": [
+      "A1-6",
+      "A1-8",
+      "A1-13",
+      "A1-14"
+    ],
+    "previously": "دانسته‌های بخش اول و درس‌های پیشین را در این موقعیت تازه دوباره به کار می‌بریم.",
+    "quickCheck": {
+      "title": "مرور آغازین",
+      "question": "Which bag is bigger?",
+      "example": "The blue bag is bigger.",
+      "explanation": "اگر این پاسخ تازه است، در مسیر واژه تا تولید آن را خواهی ساخت.",
+      "allowSkip": false
+    }
+  },
+  "visual": {
+    "src": "./assets/scene-a1-15-stage2.svg",
+    "alt": "دو فروشگاه و دو خوراک",
+    "caption": "دو فروشگاه و دو خوراک"
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "bigger than"
+    ],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": false
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "بخش اول · کشف و تمرین",
+      "intro": "واژه → عبارت → جملهٔ زنده → سنجش → ساختن",
+      "masteryActivityIds": [
+        "a1-15-puzzle",
+        "a1-15-build",
+        "a1-15-mission"
+      ],
+      "activities": [
+        {
+          "id": "a1-15-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "ابتدا نمونهٔ موقعیت را گوش کن",
+          "description": "با این چند جمله آشنا شو؛ هنوز لازم نیست همه را بی‌کمک بسازی.",
+          "audioSrc": null,
+          "rate": 0.8,
+          "pauseMs": 500,
+          "lines": [
+            "This red shirt is darker than that one.",
+            "That dress is beautiful, but this one is ugly.",
+            "This tea is sweeter than that tea.",
+            "The lemon is sour. The cake is sweet.",
+            "This soup is tasty, but that soup is bland.",
+            "The blue bag is bigger, but it is more expensive.",
+            "Which shirt do you like? I like the lighter one.",
+            "I want less sugar, please."
+          ]
+        },
+        {
+          "id": "a1-15-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "واژگان کلیدی و تکمیلی این موقعیت",
+          "deckRevision": 2,
+          "batchSize": 4,
+          "items": [
+            {
+              "en": "bigger",
+              "fa": "بزرگ‌تر",
+              "examples": [
+                "This bag is bigger than that bag."
+              ]
+            },
+            {
+              "en": "smaller",
+              "fa": "کوچک‌تر",
+              "examples": [
+                "This cup is smaller than that cup."
+              ]
+            },
+            {
+              "en": "cheaper",
+              "fa": "ارزان‌تر",
+              "examples": [
+                "The apple is cheaper than the sandwich."
+              ]
+            },
+            {
+              "en": "than",
+              "fa": "از (در مقایسه)",
+              "examples": [
+                "This book is bigger than that one."
+              ]
+            },
+            {
+              "en": "faster",
+              "fa": "سریع‌تر",
+              "examples": [
+                "The bus is faster than walking."
+              ]
+            },
+            {
+              "en": "slower",
+              "fa": "کندتر",
+              "examples": [
+                "This bus is slower than that one."
+              ]
+            },
+            {
+              "en": "less",
+              "fa": "کمتر",
+              "examples": [
+                "This meal has less sugar."
+              ]
+            },
+            {
+              "en": "compare",
+              "fa": "مقایسه کردن",
+              "examples": [
+                "Compare the two bags."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "darker",
+              "fa": "تیره‌تر",
+              "examples": [
+                "This shirt is darker than that one."
+              ]
+            },
+            {
+              "en": "lighter",
+              "fa": "روشن‌تر / کم‌رنگ‌تر",
+              "examples": [
+                "This blue is lighter than that blue."
+              ]
+            },
+            {
+              "en": "prettier",
+              "fa": "زیباتر",
+              "examples": [
+                "This dress is prettier than that one."
+              ]
+            },
+            {
+              "en": "tastier",
+              "fa": "خوشمزه‌تر",
+              "examples": [
+                "This soup is tastier than that soup."
+              ]
+            },
+            {
+              "en": "brighter",
+              "fa": "روشن‌تر / پرنورتر",
+              "examples": [
+                "This lamp is brighter than that lamp."
+              ]
+            },
+            {
+              "en": "bland",
+              "fa": "بی‌مزه",
+              "examples": [
+                "This soup is bland."
+              ]
+            },
+            {
+              "en": "tasteless",
+              "fa": "بی‌مزه / بی‌طعم",
+              "examples": [
+                "The soup is tasteless."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "colorful",
+              "fa": "رنگارنگ",
+              "examples": [
+                "This shirt is more colorful."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "pale",
+              "fa": "کم‌رنگ / رنگ‌پریده",
+              "examples": [
+                "The pale blue shirt is lighter."
+              ],
+              "role": "supplementary"
+            }
+          ]
+        },
+        {
+          "id": "a1-15-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "عبارت‌های آماده برای موقعیت واقعی",
+          "description": "عبارت‌ها را با ترجمه و نمونه ببین؛ سپس همان‌ها را در صحنهٔ تعاملی به کار ببر.",
+          "presentation": "deck",
+          "items": [
+            {
+              "en": "bigger than",
+              "fa": "بزرگ‌تر از",
+              "kind": "fixed",
+              "examples": [
+                "This bag is bigger than that bag."
+              ]
+            },
+            {
+              "en": "cheaper than",
+              "fa": "ارزان‌تر از",
+              "kind": "fixed",
+              "examples": [
+                "The soup is cheaper than the pizza.",
+                "The soup is cheaper than the pizza."
+              ]
+            },
+            {
+              "en": "I think",
+              "fa": "فکر می‌کنم",
+              "kind": "fixed",
+              "examples": []
+            },
+            {
+              "en": "Which one",
+              "fa": "کدام‌یک",
+              "kind": "fixed",
+              "examples": [
+                "Which one is smaller?"
+              ]
+            },
+            {
+              "en": "more beautiful than",
+              "fa": "زیباتر از",
+              "kind": "fixed",
+              "examples": [
+                "This dress is more beautiful than that dress."
+              ]
+            },
+            {
+              "en": "darker than",
+              "fa": "پررنگ‌تر از",
+              "kind": "fixed",
+              "examples": [
+                "This blue bag is darker than that bag."
+              ]
+            },
+            {
+              "en": "lighter than",
+              "fa": "کم‌رنگ‌تر از",
+              "kind": "fixed",
+              "examples": [
+                "This shirt is lighter than that shirt."
+              ]
+            },
+            {
+              "en": "sweeter than",
+              "fa": "شیرین‌تر از",
+              "kind": "fixed",
+              "examples": [
+                "This tea is sweeter than that tea."
+              ]
+            },
+            {
+              "en": "sour but good",
+              "fa": "ترش ولی خوب",
+              "kind": "fixed",
+              "examples": [
+                "The lemon is sour but good."
+              ]
+            },
+            {
+              "en": "tasty or bland?",
+              "fa": "خوشمزه یا بی‌مزه؟",
+              "kind": "fixed",
+              "examples": [
+                "Is the soup tasty or bland?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-15-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "جمله را با تغییر معنی بساز",
+          "description": "روی واژه‌های روشن جمله بزن؛ معنی فارسی هم‌زمان با تغییر فاعل، ویژگی یا شیء تغییر می‌کند.",
+          "targetLanguage": "en",
+          "derivedDefaults": {},
+          "wordSets": {
+            "first": [
+              {
+                "id": "option-0",
+                "label": "This bag",
+                "translation": "این کیف",
+                "forms": {
+                  "en": "This bag",
+                  "fa": "این کیف",
+                  "enWithin": "this bag"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "This book",
+                "translation": "این کتاب",
+                "forms": {
+                  "en": "This book",
+                  "fa": "این کتاب",
+                  "enWithin": "this book"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "This cup",
+                "translation": "این فنجان",
+                "forms": {
+                  "en": "This cup",
+                  "fa": "این فنجان",
+                  "enWithin": "this cup"
+                }
+              }
+            ],
+            "second": [
+              {
+                "id": "option-0",
+                "label": "that bag",
+                "translation": "آن کیف",
+                "forms": {
+                  "en": "that bag",
+                  "fa": "آن کیف"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "that book",
+                "translation": "آن کتاب",
+                "forms": {
+                  "en": "that book",
+                  "fa": "آن کتاب"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "that cup",
+                "translation": "آن فنجان",
+                "forms": {
+                  "en": "that cup",
+                  "fa": "آن فنجان"
+                }
+              }
+            ],
+            "feature": [
+              {
+                "id": "option-0",
+                "label": "bigger than",
+                "translation": "بزرگ‌تر از",
+                "forms": {
+                  "en": "bigger than",
+                  "fa": "بزرگ‌تر از",
+                  "faPredicate": "بزرگ‌تر"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "smaller than",
+                "translation": "کوچک‌تر از",
+                "forms": {
+                  "en": "smaller than",
+                  "fa": "کوچک‌تر از",
+                  "faPredicate": "کوچک‌تر"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "cheaper than",
+                "translation": "ارزان‌تر از",
+                "forms": {
+                  "en": "cheaper than",
+                  "fa": "ارزان‌تر از",
+                  "faPredicate": "ارزان‌تر"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "first",
+              "label": "first",
+              "wordSet": "first",
+              "default": "option-0"
+            },
+            {
+              "id": "second",
+              "label": "second",
+              "wordSet": "second",
+              "default": "option-0"
+            },
+            {
+              "id": "feature",
+              "label": "feature",
+              "wordSet": "feature",
+              "default": "option-0"
+            }
+          ],
+          "defaultPattern": "compare",
+          "patterns": [
+            {
+              "id": "compare",
+              "label": "مقایسه کن",
+              "segments": [
+                {
+                  "slot": "first",
+                  "form": "en"
+                },
+                {
+                  "fixed": " is "
+                },
+                {
+                  "slot": "feature",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "second",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "first",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " از "
+                },
+                {
+                  "slot": "second",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "feature",
+                  "form": "faPredicate"
+                },
+                {
+                  "fixed": " است."
+                }
+              ]
+            },
+            {
+              "id": "opinion",
+              "label": "نظر بده",
+              "segments": [
+                {
+                  "fixed": "I think "
+                },
+                {
+                  "slot": "first",
+                  "form": "enWithin"
+                },
+                {
+                  "fixed": " is "
+                },
+                {
+                  "slot": "feature",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "second",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "فکر می‌کنم "
+                },
+                {
+                  "slot": "first",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " از "
+                },
+                {
+                  "slot": "second",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "feature",
+                  "form": "faPredicate"
+                },
+                {
+                  "fixed": " است."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-15-variants",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "یک جمله با دو هدف ارتباطی",
+          "description": "یک ساختار را با معنی متفاوت بساز و ترجمهٔ هر تغییر را هم ببین.",
+          "sourceActivityId": "a1-15-composer",
+          "patternIds": [
+            "compare",
+            "opinion"
+          ],
+          "examples": [
+            {
+              "en": "This bag is bigger than that bag.",
+              "fa": "بگو این کیف از آن کیف بزرگ‌تر است."
+            },
+            {
+              "en": "The soup is cheaper than the pizza.",
+              "fa": "بگو سوپ از پیتزا ارزان‌تر است."
+            },
+            {
+              "en": "I want less rice.",
+              "fa": "بگو من برنج کمتری می‌خواهم."
+            }
+          ]
+        },
+        {
+          "mode": "comparison",
+          "title": "مقایسهٔ واقعی؛ رنگ، مزه، اندازه و انتخاب",
+          "description": "دو تصویر را ببین؛ پاسخ با اطلاعات تصویر تغییر می‌کند. روی تصویر درست بزن و جملهٔ مقایسه را بساز.",
+          "scenes": [
+            {
+              "topic": "رنگ پررنگ و کم‌رنگ",
+              "prompt": "کدام رنگ پررنگ‌تر است؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "dark blue",
+                  "fa": "آبی تیره",
+                  "emoji": "🟦",
+                  "color": "#254b9b"
+                },
+                {
+                  "id": "right",
+                  "en": "pale blue",
+                  "fa": "آبی روشن",
+                  "emoji": "🟦",
+                  "color": "#d0e8ff"
+                }
+              ],
+              "correct": "left",
+              "successEn": "The dark blue is darker than the light blue.",
+              "successFa": "آبی تیره از آبی روشن پررنگ‌تر است.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "زیبا و زشت",
+              "prompt": "برای مهمانی کدام لباس مرتب‌تر و زیباتر به نظر می‌رسد؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "clean and pretty dress",
+                  "fa": "پیراهن تمیز و مرتب",
+                  "emoji": "👗✨",
+                  "color": "#e8c8e8"
+                },
+                {
+                  "id": "right",
+                  "en": "old and torn shirt",
+                  "fa": "لباس کهنه و پاره",
+                  "emoji": "👕🩹",
+                  "color": "#93877e"
+                }
+              ],
+              "correct": "left",
+              "successEn": "The clean dress looks prettier than the torn shirt.",
+              "successFa": "در این تصویر لباس تمیز زیباتر از لباس پاره به نظر می‌رسد؛ beautiful یعنی زیبا و ugly یعنی زشت.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "شیرین و ترش",
+              "prompt": "کدام خوراک ترش است؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "cake",
+                  "fa": "کیک",
+                  "emoji": "🍰",
+                  "color": "#f5deb7"
+                },
+                {
+                  "id": "right",
+                  "en": "lemon",
+                  "fa": "لیمو",
+                  "emoji": "🍋",
+                  "color": "#f3efaa"
+                }
+              ],
+              "correct": "right",
+              "successEn": "The lemon is sour, but the cake is sweet.",
+              "successFa": "لیمو ترش است، ولی کیک شیرین است.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "خوشمزه و بی‌مزه",
+              "prompt": "کدام غذا ظاهر خوشمزه‌تری دارد؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "meal A",
+                  "fa": "غذای A",
+                  "emoji": "🍕",
+                  "color": "#f7d7a6"
+                },
+                {
+                  "id": "right",
+                  "en": "meal B",
+                  "fa": "غذای B",
+                  "emoji": "🥣",
+                  "color": "#d6e3e0"
+                }
+              ],
+              "correct": "left",
+              "successEn": "The pizza looks tastier than the plain soup.",
+              "successFa": "پیتزا خوشمزه‌تر به نظر می‌رسد؛ البته مزهٔ واقعی را باید بچشی.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "قیمت",
+              "prompt": "کدام کالا ارزان‌تر است؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "bag · $25",
+                  "fa": "کیف ۲۵ دلاری",
+                  "emoji": "🎒",
+                  "color": "#d9e5f1"
+                },
+                {
+                  "id": "right",
+                  "en": "bag · $10",
+                  "fa": "کیف ۱۰ دلاری",
+                  "emoji": "👜",
+                  "color": "#f0d0cf"
+                }
+              ],
+              "correct": "right",
+              "successEn": "The ten-dollar bag is cheaper than the other bag.",
+              "successFa": "کیف ده‌دلاری ارزان‌تر از کیف بیست‌وپنج‌دلاری است.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "اندازه",
+              "prompt": "کدام بزرگ‌تر است؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "large box",
+                  "fa": "جعبهٔ بزرگ",
+                  "emoji": "📦",
+                  "color": "#e3c397"
+                },
+                {
+                  "id": "right",
+                  "en": "small cup",
+                  "fa": "فنجان کوچک",
+                  "emoji": "☕",
+                  "color": "#dbe9e6"
+                }
+              ],
+              "correct": "left",
+              "successEn": "The box is bigger than the cup.",
+              "successFa": "جعبه از فنجان بزرگ‌تر است.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "مقدار",
+              "prompt": "کدام مقدار کمتر است؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "three apples",
+                  "fa": "سه سیب",
+                  "emoji": "🍎🍎🍎",
+                  "color": "#ffdfdb"
+                },
+                {
+                  "id": "right",
+                  "en": "one apple",
+                  "fa": "یک سیب",
+                  "emoji": "🍎",
+                  "color": "#f8d6d1"
+                }
+              ],
+              "correct": "right",
+              "successEn": "One apple is less than three apples.",
+              "successFa": "یک سیب کمتر از سه سیب است.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "دو ویژگی هم‌زمان",
+              "prompt": "کدام انتخاب هم کم‌رنگ‌تر است و هم ارزان‌تر؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "dark jacket · $30",
+                  "fa": "کاپشن تیره ۳۰ دلار",
+                  "emoji": "🧥",
+                  "color": "#415c85"
+                },
+                {
+                  "id": "right",
+                  "en": "light jacket · $18",
+                  "fa": "کاپشن روشن ۱۸ دلار",
+                  "emoji": "🧥",
+                  "color": "#d4e8ed"
+                }
+              ],
+              "correct": "right",
+              "successEn": "The light jacket is lighter and cheaper.",
+              "successFa": "کاپشن روشن، هم کم‌رنگ‌تر است و هم ارزان‌تر.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            }
+          ],
+          "id": "a1-15-mission",
+          "type": "mission-lab",
+          "phase": "variants"
+        },
+        {
+          "id": "a1-15-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "چند جمله با بانک کلمات مشترک بساز",
+          "description": "هر بار جملهٔ متفاوتی پیدا کن؛ واژه‌های مشترک را به‌موقع استفاده کن.",
+          "revision": 1,
+          "goalCount": 5,
+          "reuseBank": true,
+          "sentences": [
+            {
+              "id": "sentence-1",
+              "words": [
+                "This",
+                "bag",
+                "is",
+                "bigger",
+                "than",
+                "that",
+                "bag."
+              ],
+              "fa": "بگو این کیف از آن کیف بزرگ‌تر است."
+            },
+            {
+              "id": "sentence-2",
+              "words": [
+                "The",
+                "soup",
+                "is",
+                "cheaper",
+                "than",
+                "the",
+                "pizza."
+              ],
+              "fa": "بگو سوپ از پیتزا ارزان‌تر است."
+            },
+            {
+              "id": "sentence-3",
+              "words": [
+                "I",
+                "want",
+                "less",
+                "rice."
+              ],
+              "fa": "بگو من برنج کمتری می‌خواهم."
+            },
+            {
+              "id": "sentence-4",
+              "words": [
+                "The",
+                "red",
+                "bag",
+                "is",
+                "bigger."
+              ],
+              "fa": "بپرس کدام‌یک کوچک‌تر است."
+            },
+            {
+              "id": "sentence-5",
+              "words": [
+                "The",
+                "pizza",
+                "is",
+                "cheaper",
+                "today."
+              ],
+              "fa": "مقایسه کن: اتوبوس از پیاده‌روی سریع‌تر است."
+            }
+          ]
+        },
+        {
+          "id": "a1-15-build",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "از فارسی به یک پاسخ دقیق برس",
+          "description": "از حفظ‌کردن گزینه‌ها عبور کن؛ پاسخ را خودت به انگلیسی بنویس و بعد از هر تلاش بازخورد بگیر.",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "بگو این کیف از آن کیف بزرگ‌تر است.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "This bag is bigger than that bag.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "This bag is bigger than that bag."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو سوپ از پیتزا ارزان‌تر است.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "The soup is cheaper than the pizza.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The soup is cheaper than the pizza."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو من برنج کمتری می‌خواهم.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I want less rice.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I want less rice."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بپرس کدام‌یک کوچک‌تر است.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Which one is smaller?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Which one is smaller?"
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "مقایسه کن: اتوبوس از پیاده‌روی سریع‌تر است.",
+              "hint": "فعل و فاعل را دقیق انتخاب کن. نمونهٔ پاسخ بعد از دو تلاش می‌آید.",
+              "example": "The bus is faster than walking.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The bus is faster than walking."
+                    ],
+                    "feedback": "یک جملهٔ کامل با همین معنی بنویس."
+                  }
+                ],
+                "success": "پاسخ را با جملهٔ کامل ساختی."
+              }
+            },
+            {
+              "task": "بگو این پیراهن از آن پیراهن پررنگ‌تر است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "This shirt is darker than that shirt.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "This shirt is darker than that shirt."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو سوپ بی‌مزه است ولی ساندویچ خوشمزه است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "The soup is bland, but the sandwich is delicious.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The soup is bland, but the sandwich is delicious."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو کیک شیرین است و لیمو ترش است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "The cake is sweet and the lemon is sour.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The cake is sweet and the lemon is sour."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو این چراغ روشن‌تر از آن چراغ است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "This lamp is brighter than that lamp.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "This lamp is brighter than that lamp."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "بخش دوم · کاربرد و تولید",
+      "intro": "پرسش‌وپاسخ → گفت‌وگو → توصیف → تولید مستقل",
+      "masteryActivityIds": [
+        "a1-15-guided",
+        "a1-15-independent"
+      ],
+      "activities": [
+        {
+          "id": "a1-15-exchange",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "گفت‌وگو با انتخاب‌های معنی‌دار",
+          "description": "اول در ذهن جواب بده؛ سپس پاسخ نمونه را آشکار کن و شکل‌های دیگر پاسخ را بررسی کن.",
+          "pairs": [
+            {
+              "question": "Which bag is bigger?",
+              "questionFa": "کدام کیف بزرگ‌تر است؟",
+              "variants": [
+                {
+                  "label": "آبی",
+                  "en": "The blue bag is bigger.",
+                  "fa": "آبی"
+                },
+                {
+                  "label": "قرمز",
+                  "en": "The red bag is bigger.",
+                  "fa": "قرمز"
+                },
+                {
+                  "label": "هم‌اندازه",
+                  "en": "They are the same size.",
+                  "fa": "هم‌اندازه"
+                }
+              ]
+            },
+            {
+              "question": "Which meal is cheaper?",
+              "questionFa": "کدام غذا ارزان‌تر است؟",
+              "variants": [
+                {
+                  "label": "سوپ",
+                  "en": "The soup is cheaper than the pizza.",
+                  "fa": "سوپ"
+                },
+                {
+                  "label": "پیتزا",
+                  "en": "The pizza is cheaper today.",
+                  "fa": "پیتزا"
+                },
+                {
+                  "label": "برابر",
+                  "en": "They have the same price.",
+                  "fa": "برابر"
+                }
+              ]
+            },
+            {
+              "question": "Do you want more rice?",
+              "questionFa": "برنج بیشتری می‌خواهی؟",
+              "variants": [
+                {
+                  "label": "بیشتر",
+                  "en": "Yes, I want more rice.",
+                  "fa": "بیشتر"
+                },
+                {
+                  "label": "کمتر",
+                  "en": "No, I want less rice.",
+                  "fa": "کمتر"
+                },
+                {
+                  "label": "کافی",
+                  "en": "No, this is enough.",
+                  "fa": "کافی"
+                }
+              ]
+            },
+            {
+              "question": "Which bus is faster?",
+              "questionFa": "کدام اتوبوس سریع‌تر است؟",
+              "variants": [
+                {
+                  "label": "اولی",
+                  "en": "The first bus is faster.",
+                  "fa": "اولی"
+                },
+                {
+                  "label": "دومی",
+                  "en": "The second bus is faster.",
+                  "fa": "دومی"
+                },
+                {
+                  "label": "کند",
+                  "en": "This bus is slower.",
+                  "fa": "کند"
+                }
+              ]
+            },
+            {
+              "question": "Which shirt is darker?",
+              "questionFa": "کدام پیراهن پررنگ‌تر است؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "The dark blue shirt is darker.",
+                  "fa": "پیراهن آبیِ تیره پررنگ‌تر است."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "The dark red shirt is darker.",
+                  "fa": "پیراهن قرمز تیره پررنگ‌تر است."
+                }
+              ]
+            },
+            {
+              "question": "Which food tastes sweeter?",
+              "questionFa": "کدام خوراک شیرین‌تر است؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "The cake tastes sweeter than the lemon.",
+                  "fa": "کیک از لیمو شیرین‌تر است."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "The tea tastes sweeter than the coffee.",
+                  "fa": "چای از قهوه شیرین‌تر است."
+                }
+              ]
+            },
+            {
+              "question": "Is that soup tasty or bland?",
+              "questionFa": "آن سوپ خوشمزه است یا بی‌مزه؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "It is bland, but I like the bread.",
+                  "fa": "بی‌مزه است، اما نان را دوست دارم."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "It is tasty, especially with bread.",
+                  "fa": "خوشمزه است، به‌خصوص همراه نان."
+                }
+              ]
+            },
+            {
+              "question": "Do you want the prettier dress?",
+              "questionFa": "لباس زیباتر را می‌خواهی؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "Yes, but the other one is cheaper.",
+                  "fa": "بله، ولی لباس دیگر ارزان‌تر است."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "No, I want the cheaper dress.",
+                  "fa": "نه، لباس ارزان‌تر را می‌خواهم."
+                }
+              ]
+            }
+          ],
+          "requireRecall": true
+        },
+        {
+          "id": "a1-15-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "یک گفت‌وگوی واقعی دربارهٔ مقایسهٔ سادهٔ چیزها",
+          "description": "پاسخ بعدی را قبل از آشکارشدنش حدس بزن؛ سپس جای نقش‌ها را عوض کن.",
+          "lines": [
+            {
+              "speaker": "Sara",
+              "en": "Which bag do you want?",
+              "fa": "کدام کیف را می‌خواهی؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "The blue bag is bigger.",
+              "fa": "کیف آبی بزرگ‌تر است."
+            },
+            {
+              "speaker": "Sara",
+              "en": "But the red bag is cheaper.",
+              "fa": "اما کیف قرمز ارزان‌تر است."
+            },
+            {
+              "speaker": "Ali",
+              "en": "I think the red bag is better for me.",
+              "fa": "فکر می‌کنم کیف قرمز برای من بهتر است."
+            },
+            {
+              "speaker": "Sara",
+              "en": "Do you want the small one?",
+              "fa": "کوچک را می‌خواهی؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "Yes. The small one is enough.",
+              "fa": "بله. کیف کوچک کافی است."
+            },
+            {
+              "speaker": "Sara",
+              "en": "Which shirt is darker?",
+              "fa": "کدام پیراهن پررنگ‌تر است؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "The dark blue shirt is darker.",
+              "fa": "بگو این پیراهن از آن پیراهن پررنگ‌تر است."
+            },
+            {
+              "speaker": "Ali",
+              "en": "Which food tastes sweeter?",
+              "fa": "کدام خوراک شیرین‌تر است؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "The cake tastes sweeter than the lemon.",
+              "fa": "بگو سوپ بی‌مزه است ولی ساندویچ خوشمزه است."
+            }
+          ]
+        },
+        {
+          "id": "a1-15-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "title": "از صحنه به زبان؛ خودت توضیح بده",
+          "description": "از عبارت‌های ثابت تصویر فراتر برو؛ صحنهٔ جدید را با جزئیات نوشته‌شده توصیف کن.",
+          "image": "./assets/scene-a1-15-stage2.svg",
+          "imageAlt": "دو فروشگاه و دو خوراک",
+          "caption": "دو فروشگاه و دو خوراک",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "به کارت تصویر مربوط به «کدام کیف بزرگ‌تر است؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "The blue bag is bigger.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The blue bag is bigger."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «کدام غذا ارزان‌تر است؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "The soup is cheaper than the pizza.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The soup is cheaper than the pizza."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «برنج بیشتری می‌خواهی؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Yes, I want more rice.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Yes, I want more rice."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو این پیراهن از آن پیراهن پررنگ‌تر است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "This shirt is darker than that shirt.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "This shirt is darker than that shirt."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو سوپ بی‌مزه است ولی ساندویچ خوشمزه است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "The soup is bland, but the sandwich is delicious.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The soup is bland, but the sandwich is delicious."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-15-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "title": "این بار خودت در مکالمه پاسخ بده",
+          "description": "با حداقل هفت نوبت پاسخ مستقل؛ جواب را انتخاب نمی‌کنی، خودت می‌نویسی.",
+          "practiceRevision": 1,
+          "completion": "حالا بدون راهنمایی در موقعیت تازه پاسخ بساز.",
+          "turns": [
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "Which bag is bigger?",
+              "task": "برای «کدام کیف بزرگ‌تر است؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "They are the same size.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "They are the same size."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Which meal is cheaper?",
+              "task": "برای «کدام غذا ارزان‌تر است؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "They have the same price.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "They have the same price."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "Do you want more rice?",
+              "task": "برای «برنج بیشتری می‌خواهی؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "No, this is enough.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "No, this is enough."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Which bus is faster?",
+              "task": "برای «کدام اتوبوس سریع‌تر است؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "This bus is slower.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "This bus is slower."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "همراهت",
+              "incoming": "Which shirt is darker?",
+              "task": "بگو این پیراهن از آن پیراهن پررنگ‌تر است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "This shirt is darker than that shirt.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "This shirt is darker than that shirt."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "مشتری خیالی",
+              "incoming": "Which food tastes sweeter?",
+              "task": "بگو سوپ بی‌مزه است ولی ساندویچ خوشمزه است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "The soup is bland, but the sandwich is delicious.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The soup is bland, but the sandwich is delicious."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "همراهت",
+              "incoming": "Is that soup tasty or bland?",
+              "task": "بگو کیک شیرین است و لیمو ترش است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "The cake is sweet and the lemon is sour.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The cake is sweet and the lemon is sour."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "مشتری خیالی",
+              "incoming": "Do you want the prettier dress?",
+              "task": "بگو این چراغ روشن‌تر از آن چراغ است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "This lamp is brighter than that lamp.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "This lamp is brighter than that lamp."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-15-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "مأموریت واقعی و ساختن بدون الگو",
+          "prompt": "دو خوراک یا دو لباس واقعی را مقایسه کن. دربارهٔ رنگ یا مزه و قیمت یا اندازه دو جمله بنویس؛ در پایان بگو کدام را ترجیح می‌دهی و چرا.",
+          "placeholder": "دو یا سه جملهٔ انگلیسی خودت را اینجا بنویس؛ اطلاعات فرضی کافی است.",
+          "hint": "از جمله‌های درس الهام بگیر ولی فاعل، شیء، مکان یا تصمیم را خودت عوض کن.",
+          "kind": "free-text",
+          "minWords": 14,
+          "assessment": {
+            "revision": 2,
+            "required": [
+              {
+                "patterns": [
+                  "\\b(?:bigger|smaller|cheaper|faster|slower)\\s+than\\b",
+                  "\\b(?:darker|lighter|prettier|tastier|sweeter|more beautiful|more colorful)\\s+than\\b"
+                ],
+                "feedback": "واژگان اصلی موقعیت را داخل جملهٔ کامل به کار ببر."
+              },
+              {
+                "patterns": [
+                  "\\b(?:i think|i want|i like)\\b"
+                ],
+                "feedback": "یک کار، سؤال یا دلیل مرتبط هم بنویس."
+              }
+            ],
+            "productionProof": {
+              "minWords": 10,
+              "minClauses": 2
+            },
+            "success": "دو جملهٔ مستقل با هدف درس ساختی؛ حالا سرنخ زندگی واقعی را هم امتحان کن."
+          },
+          "realWorldMission": {
+            "cue": "وقتی در فروشگاه میان دو چیز انتخاب می‌کنی",
+            "reflection": "دو خوراک یا دو لباس واقعی را مقایسه کن. دربارهٔ رنگ یا مزه و قیمت یا اندازه دو جمله بنویس؛ در پایان بگو کدام را ترجیح می‌دهی و چرا."
+          }
+        },
+        {
+          "id": "a1-15-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "حالا همان جمله‌های آغاز درس را بازبگو",
+          "description": "متن شروع را بازشنوی کن و فاصلهٔ یادگیری خودت را بسنج.",
+          "sourceActivityId": "a1-15-shadowing"
+        }
+      ]
+    }
+  ]
+}

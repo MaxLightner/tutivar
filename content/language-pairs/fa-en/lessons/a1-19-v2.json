@@ -1,0 +1,1546 @@
+{
+  "id": "A1-19",
+  "revision": "2026-10-27-owner-stage2-real-interactions-v2",
+  "status": "draft",
+  "title": "مشاغل ساده و نقش افراد",
+  "goal": "نام شغل‌های ساده را بگو؛ شغل هر عضو خانواده یا شخصیت خیالی و محل کار یا فعالیتش را مشخص کن.",
+  "duration": 24,
+  "feature": "چه کسی چه کاری می‌کند و کجا؟",
+  "archetype": "K2",
+  "roadmapRef": {
+    "id": "A1-19",
+    "revision": "2026-10-27-owner-a1-stage2-practical-sequence",
+    "communicativeOutcome": "شغل‌های رایج مانند پزشک، معلم، دانشجو، راننده و فروشنده را معرفی می‌کند؛ با ضمیر یا اسم شخص می‌گوید چه کسی چه شغلی دارد و به‌طور ساده چه کاری انجام می‌دهد."
+  },
+  "teachingModel": {
+    "type": "discovery-production",
+    "sections": 2
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "نام شغل‌های ساده را بگو؛ شغل هر عضو خانواده یا شخصیت خیالی و محل کار یا فعالیتش را مشخص کن.",
+    "prerequisites": [
+      "A1-2",
+      "A1-9",
+      "A1-11",
+      "A1-18"
+    ],
+    "previously": "دانسته‌های بخش اول و درس‌های پیشین را در این موقعیت تازه دوباره به کار می‌بریم.",
+    "quickCheck": {
+      "title": "مرور آغازین",
+      "question": "What is your sister’s job?",
+      "example": "She is a doctor.",
+      "explanation": "اگر این پاسخ تازه است، در مسیر واژه تا تولید آن را خواهی ساخت.",
+      "allowSkip": false
+    }
+  },
+  "visual": {
+    "src": "./assets/scene-a1-19-stage2.svg",
+    "alt": "چهار فرد، چهار شغل",
+    "caption": "چهار فرد، چهار شغل"
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "What is your job?"
+    ],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": false
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "بخش اول · کشف و تمرین",
+      "intro": "واژه → عبارت → جملهٔ زنده → سنجش → ساختن",
+      "masteryActivityIds": [
+        "a1-19-puzzle",
+        "a1-19-build",
+        "a1-19-mission"
+      ],
+      "activities": [
+        {
+          "id": "a1-19-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "ابتدا نمونهٔ موقعیت را گوش کن",
+          "description": "با این چند جمله آشنا شو؛ هنوز لازم نیست همه را بی‌کمک بسازی.",
+          "audioSrc": null,
+          "rate": 0.8,
+          "pauseMs": 500,
+          "lines": [
+            "My father is a builder. He builds houses.",
+            "The teacher works at our school.",
+            "A doctor helps sick people.",
+            "The baker makes bread every morning.",
+            "The driver drives a taxi.",
+            "The mechanic fixes my car.",
+            "The waiter brings food in the restaurant.",
+            "The nurse works with the doctor."
+          ]
+        },
+        {
+          "id": "a1-19-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "واژگان کلیدی و تکمیلی این موقعیت",
+          "deckRevision": 2,
+          "batchSize": 4,
+          "items": [
+            {
+              "en": "doctor",
+              "fa": "پزشک",
+              "examples": [
+                "My sister is a doctor."
+              ]
+            },
+            {
+              "en": "driver",
+              "fa": "راننده",
+              "examples": [
+                "He is a bus driver."
+              ]
+            },
+            {
+              "en": "cashier",
+              "fa": "صندوقدار",
+              "examples": [
+                "The cashier works in a shop."
+              ]
+            },
+            {
+              "en": "nurse",
+              "fa": "پرستار",
+              "examples": [
+                "She is a nurse."
+              ]
+            },
+            {
+              "en": "chef",
+              "fa": "آشپز حرفه‌ای",
+              "examples": [
+                "The chef cooks dinner."
+              ]
+            },
+            {
+              "en": "farmer",
+              "fa": "کشاورز",
+              "examples": [
+                "My father is a farmer."
+              ]
+            },
+            {
+              "en": "worker",
+              "fa": "کارگر",
+              "examples": [
+                "He is a worker."
+              ]
+            },
+            {
+              "en": "job",
+              "fa": "شغل",
+              "examples": [
+                "What is your job?"
+              ]
+            },
+            {
+              "en": "builder",
+              "fa": "بنا / سازنده",
+              "examples": [
+                "The builder builds houses."
+              ]
+            },
+            {
+              "en": "mechanic",
+              "fa": "مکانیک",
+              "examples": [
+                "The mechanic fixes cars."
+              ]
+            },
+            {
+              "en": "dentist",
+              "fa": "دندان‌پزشک",
+              "examples": [
+                "The dentist helps people with their teeth."
+              ]
+            },
+            {
+              "en": "pilot",
+              "fa": "خلبان",
+              "examples": [
+                "The pilot flies a plane."
+              ]
+            },
+            {
+              "en": "baker",
+              "fa": "نانوا",
+              "examples": [
+                "The baker makes bread."
+              ]
+            },
+            {
+              "en": "waiter",
+              "fa": "پیشخدمت",
+              "examples": [
+                "The waiter brings food."
+              ]
+            },
+            {
+              "en": "cleaner",
+              "fa": "نظافتچی",
+              "examples": [
+                "The cleaner cleans rooms."
+              ]
+            },
+            {
+              "en": "artist",
+              "fa": "هنرمند",
+              "examples": [
+                "The artist draws pictures."
+              ]
+            },
+            {
+              "en": "fix",
+              "fa": "تعمیر کردن",
+              "examples": [
+                "The mechanic can fix a car."
+              ]
+            },
+            {
+              "en": "build",
+              "fa": "ساختن",
+              "examples": [
+                "The builder can build a house."
+              ]
+            },
+            {
+              "en": "shopkeeper",
+              "fa": "مغازه‌دار",
+              "examples": [
+                "The shopkeeper works in a store."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "firefighter",
+              "fa": "آتش‌نشان",
+              "examples": [
+                "A firefighter helps people."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "plumber",
+              "fa": "لوله‌کش",
+              "examples": [
+                "The plumber fixes the sink."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "carpenter",
+              "fa": "نجار",
+              "examples": [
+                "The carpenter makes a table."
+              ],
+              "role": "supplementary"
+            }
+          ]
+        },
+        {
+          "id": "a1-19-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "عبارت‌های آماده برای موقعیت واقعی",
+          "description": "عبارت‌ها را با ترجمه و نمونه ببین؛ سپس همان‌ها را در صحنهٔ تعاملی به کار ببر.",
+          "presentation": "deck",
+          "items": [
+            {
+              "en": "What is your job?",
+              "fa": "شغلت چیست؟",
+              "kind": "fixed",
+              "examples": [
+                "What is your job?"
+              ]
+            },
+            {
+              "en": "works in a shop",
+              "fa": "در مغازه کار می‌کند",
+              "kind": "fixed",
+              "examples": [
+                "A cashier works in a shop."
+              ]
+            },
+            {
+              "en": "bus driver",
+              "fa": "رانندهٔ اتوبوس",
+              "kind": "fixed",
+              "examples": []
+            },
+            {
+              "en": "is a teacher",
+              "fa": "معلم است",
+              "kind": "fixed",
+              "examples": [
+                "She is a teacher."
+              ]
+            },
+            {
+              "en": "builds houses",
+              "fa": "خانه می‌سازد",
+              "kind": "fixed",
+              "examples": [
+                "A builder builds houses."
+              ]
+            },
+            {
+              "en": "fixes cars",
+              "fa": "ماشین تعمیر می‌کند",
+              "kind": "fixed",
+              "examples": [
+                "A mechanic fixes cars."
+              ]
+            },
+            {
+              "en": "works at a school",
+              "fa": "در مدرسه کار می‌کند",
+              "kind": "fixed",
+              "examples": [
+                "A teacher works at a school."
+              ]
+            },
+            {
+              "en": "drives a taxi",
+              "fa": "تاکسی می‌راند",
+              "kind": "fixed",
+              "examples": [
+                "My brother drives a taxi."
+              ]
+            },
+            {
+              "en": "serves food",
+              "fa": "غذا سرو می‌کند",
+              "kind": "fixed",
+              "examples": [
+                "The waiter serves food."
+              ]
+            },
+            {
+              "en": "helps patients",
+              "fa": "به بیماران کمک می‌کند",
+              "kind": "fixed",
+              "examples": [
+                "The doctor helps patients."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-19-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "جمله را با تغییر معنی بساز",
+          "description": "روی واژه‌های روشن جمله بزن؛ معنی فارسی هم‌زمان با تغییر فاعل، ویژگی یا شیء تغییر می‌کند.",
+          "targetLanguage": "en",
+          "derivedDefaults": {},
+          "wordSets": {
+            "subject": [
+              {
+                "id": "option-0",
+                "label": "My sister",
+                "translation": "خواهرم",
+                "forms": {
+                  "en": "My sister",
+                  "fa": "خواهرم"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "My brother",
+                "translation": "برادرم",
+                "forms": {
+                  "en": "My brother",
+                  "fa": "برادرم"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "She",
+                "translation": "او (مونث)",
+                "forms": {
+                  "en": "She",
+                  "fa": "او (مونث)"
+                }
+              },
+              {
+                "id": "option-3",
+                "label": "He",
+                "translation": "او (مذکر)",
+                "forms": {
+                  "en": "He",
+                  "fa": "او (مذکر)"
+                }
+              },
+              {
+                "id": "option-4",
+                "label": "My friend",
+                "translation": "دوستم",
+                "forms": {
+                  "en": "My friend",
+                  "fa": "دوستم"
+                }
+              }
+            ],
+            "role": [
+              {
+                "id": "option-0",
+                "label": "a doctor",
+                "translation": "پزشک",
+                "forms": {
+                  "en": "a doctor",
+                  "fa": "پزشک"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "a driver",
+                "translation": "راننده",
+                "forms": {
+                  "en": "a driver",
+                  "fa": "راننده"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "a nurse",
+                "translation": "پرستار",
+                "forms": {
+                  "en": "a nurse",
+                  "fa": "پرستار"
+                }
+              },
+              {
+                "id": "option-3",
+                "label": "a chef",
+                "translation": "آشپز",
+                "forms": {
+                  "en": "a chef",
+                  "fa": "آشپز"
+                }
+              },
+              {
+                "id": "option-4",
+                "label": "a teacher",
+                "translation": "معلم",
+                "forms": {
+                  "en": "a teacher",
+                  "fa": "معلم"
+                }
+              },
+              {
+                "id": "option-5",
+                "label": "a student",
+                "translation": "دانشجو",
+                "forms": {
+                  "en": "a student",
+                  "fa": "دانشجو"
+                }
+              },
+              {
+                "id": "role-0",
+                "label": "a builder",
+                "translation": "بنا",
+                "forms": {
+                  "en": "a builder",
+                  "fa": "بنا"
+                }
+              },
+              {
+                "id": "role-1",
+                "label": "a mechanic",
+                "translation": "مکانیک",
+                "forms": {
+                  "en": "a mechanic",
+                  "fa": "مکانیک"
+                }
+              },
+              {
+                "id": "role-2",
+                "label": "a baker",
+                "translation": "نانوا",
+                "forms": {
+                  "en": "a baker",
+                  "fa": "نانوا"
+                }
+              },
+              {
+                "id": "role-3",
+                "label": "a waiter",
+                "translation": "پیشخدمت",
+                "forms": {
+                  "en": "a waiter",
+                  "fa": "پیشخدمت"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "subject",
+              "label": "subject",
+              "wordSet": "subject",
+              "default": "option-0"
+            },
+            {
+              "id": "role",
+              "label": "role",
+              "wordSet": "role",
+              "default": "option-0"
+            }
+          ],
+          "defaultPattern": "job",
+          "patterns": [
+            {
+              "id": "job",
+              "label": "شغل",
+              "segments": [
+                {
+                  "slot": "subject",
+                  "form": "en"
+                },
+                {
+                  "fixed": " is "
+                },
+                {
+                  "slot": "role",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "subject",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "role",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " است."
+                }
+              ]
+            },
+            {
+              "id": "question",
+              "label": "نقش فرد را نشان بده",
+              "segments": [
+                {
+                  "fixed": "Look! "
+                },
+                {
+                  "slot": "subject",
+                  "form": "en"
+                },
+                {
+                  "fixed": " is "
+                },
+                {
+                  "slot": "role",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "ببین! "
+                },
+                {
+                  "slot": "subject",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "role",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " است."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-19-variants",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "یک جمله با دو هدف ارتباطی",
+          "description": "یک ساختار را با معنی متفاوت بساز و ترجمهٔ هر تغییر را هم ببین.",
+          "sourceActivityId": "a1-19-composer",
+          "patternIds": [
+            "job",
+            "question"
+          ],
+          "examples": [
+            {
+              "en": "My sister is a doctor.",
+              "fa": "بگو خواهرم پزشک است."
+            },
+            {
+              "en": "He is a driver.",
+              "fa": "بگو او (مرد) راننده است."
+            },
+            {
+              "en": "The chef cooks dinner.",
+              "fa": "بگو آن آشپز شام می‌پزد."
+            }
+          ]
+        },
+        {
+          "mode": "roles",
+          "title": "شغل را از کاری که انجام می‌دهد پیدا کن",
+          "description": "شخص درست را از روی کاری که انجام می‌دهد، مکان کار و جملهٔ واقعی تشخیص بده.",
+          "scenes": [
+            {
+              "topic": "خانه‌سازی",
+              "prompt": "چه کسی خانه می‌سازد؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "builder",
+                  "fa": "بنا",
+                  "emoji": "👷",
+                  "color": "#f2dfa9"
+                },
+                {
+                  "id": "right",
+                  "en": "chef",
+                  "fa": "آشپز",
+                  "emoji": "👩‍🍳",
+                  "color": "#f2e4dd"
+                }
+              ],
+              "correct": "left",
+              "successEn": "This is a builder. He builds houses.",
+              "successFa": "این بنا است. او خانه می‌سازد.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "درمان",
+              "prompt": "چه کسی به بیمار کمک می‌کند؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "doctor",
+                  "fa": "پزشک",
+                  "emoji": "👩‍⚕️",
+                  "color": "#dcebed"
+                },
+                {
+                  "id": "right",
+                  "en": "driver",
+                  "fa": "راننده",
+                  "emoji": "🚕",
+                  "color": "#f5ebbf"
+                }
+              ],
+              "correct": "left",
+              "successEn": "The doctor helps sick people.",
+              "successFa": "پزشک به افراد بیمار کمک می‌کند.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "مدرسه",
+              "prompt": "چه کسی در مدرسه تدریس می‌کند؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "baker",
+                  "fa": "نانوا",
+                  "emoji": "👨‍🍳",
+                  "color": "#ead9bd"
+                },
+                {
+                  "id": "right",
+                  "en": "teacher",
+                  "fa": "معلم",
+                  "emoji": "👩‍🏫",
+                  "color": "#e0e9e4"
+                }
+              ],
+              "correct": "right",
+              "successEn": "The teacher works at our school.",
+              "successFa": "معلم در مدرسهٔ ما کار می‌کند.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "تعمیر ماشین",
+              "prompt": "ماشین خراب را چه کسی درست می‌کند؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "mechanic",
+                  "fa": "مکانیک",
+                  "emoji": "🧑‍🔧",
+                  "color": "#d7e5ee"
+                },
+                {
+                  "id": "right",
+                  "en": "artist",
+                  "fa": "هنرمند",
+                  "emoji": "🧑‍🎨",
+                  "color": "#e9d9ef"
+                }
+              ],
+              "correct": "left",
+              "successEn": "The mechanic fixes cars.",
+              "successFa": "مکانیک ماشین‌ها را تعمیر می‌کند.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "نان صبحانه",
+              "prompt": "چه کسی نان می‌پزد؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "pilot",
+                  "fa": "خلبان",
+                  "emoji": "🧑‍✈️",
+                  "color": "#e1e9f4"
+                },
+                {
+                  "id": "right",
+                  "en": "baker",
+                  "fa": "نانوا",
+                  "emoji": "🥖",
+                  "color": "#f6e4bf"
+                }
+              ],
+              "correct": "right",
+              "successEn": "The baker makes bread.",
+              "successFa": "نانوا نان می‌پزد.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "رستوران",
+              "prompt": "چه کسی غذا را برای مشتری می‌آورد؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "waiter",
+                  "fa": "پیشخدمت",
+                  "emoji": "🧑‍🍽️",
+                  "color": "#dfebd8"
+                },
+                {
+                  "id": "right",
+                  "en": "builder",
+                  "fa": "بنا",
+                  "emoji": "👷",
+                  "color": "#ead8b8"
+                }
+              ],
+              "correct": "left",
+              "successEn": "The waiter serves food.",
+              "successFa": "پیشخدمت غذا را سرو می‌کند.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "حمل‌ونقل",
+              "prompt": "چه کسی هواپیما هدایت می‌کند؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "driver",
+                  "fa": "راننده",
+                  "emoji": "🚗",
+                  "color": "#d4e2eb"
+                },
+                {
+                  "id": "right",
+                  "en": "pilot",
+                  "fa": "خلبان",
+                  "emoji": "✈️",
+                  "color": "#cdddec"
+                }
+              ],
+              "correct": "right",
+              "successEn": "The pilot flies a plane.",
+              "successFa": "خلبان هواپیما هدایت می‌کند.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "هنر",
+              "prompt": "چه کسی نقاشی می‌کشد؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "artist",
+                  "fa": "هنرمند",
+                  "emoji": "🎨",
+                  "color": "#e6d7ee"
+                },
+                {
+                  "id": "right",
+                  "en": "cashier",
+                  "fa": "صندوق‌دار",
+                  "emoji": "💵",
+                  "color": "#e4eddc"
+                }
+              ],
+              "correct": "left",
+              "successEn": "The artist draws pictures.",
+              "successFa": "هنرمند تصویر می‌کشد.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "نظافت",
+              "prompt": "چه کسی اتاق‌ها را تمیز می‌کند؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "cleaner",
+                  "fa": "نظافتچی",
+                  "emoji": "🧹",
+                  "color": "#d7e8e0"
+                },
+                {
+                  "id": "right",
+                  "en": "dentist",
+                  "fa": "دندان‌پزشک",
+                  "emoji": "🦷",
+                  "color": "#f0e7db"
+                }
+              ],
+              "correct": "left",
+              "successEn": "The cleaner cleans rooms.",
+              "successFa": "نظافتچی اتاق‌ها را تمیز می‌کند.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            }
+          ],
+          "id": "a1-19-mission",
+          "type": "mission-lab",
+          "phase": "variants"
+        },
+        {
+          "id": "a1-19-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "چند جمله با بانک کلمات مشترک بساز",
+          "description": "هر بار جملهٔ متفاوتی پیدا کن؛ واژه‌های مشترک را به‌موقع استفاده کن.",
+          "revision": 1,
+          "goalCount": 5,
+          "reuseBank": true,
+          "sentences": [
+            {
+              "id": "sentence-1",
+              "words": [
+                "My",
+                "sister",
+                "is",
+                "a",
+                "doctor."
+              ],
+              "fa": "بگو خواهرم پزشک است."
+            },
+            {
+              "id": "sentence-2",
+              "words": [
+                "He",
+                "is",
+                "a",
+                "driver."
+              ],
+              "fa": "بگو او (مرد) راننده است."
+            },
+            {
+              "id": "sentence-3",
+              "words": [
+                "The",
+                "chef",
+                "cooks",
+                "dinner."
+              ],
+              "fa": "بگو آن آشپز شام می‌پزد."
+            },
+            {
+              "id": "sentence-4",
+              "words": [
+                "She",
+                "is",
+                "a",
+                "teacher."
+              ],
+              "fa": "شغل مخاطبت را بپرس."
+            },
+            {
+              "id": "sentence-5",
+              "words": [
+                "A",
+                "chef",
+                "cooks",
+                "dinner."
+              ],
+              "fa": "بگو پدرم کارگر است."
+            }
+          ]
+        },
+        {
+          "id": "a1-19-build",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "از فارسی به یک پاسخ دقیق برس",
+          "description": "از حفظ‌کردن گزینه‌ها عبور کن؛ پاسخ را خودت به انگلیسی بنویس و بعد از هر تلاش بازخورد بگیر.",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "بگو خواهرم پزشک است.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "My sister is a doctor.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My sister is a doctor."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو او (مرد) راننده است.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "He is a driver.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "He is a driver."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو آن آشپز شام می‌پزد.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "The chef cooks dinner.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The chef cooks dinner."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "شغل مخاطبت را بپرس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "What is your job?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "What is your job?"
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو پدرم کارگر است.",
+              "hint": "فعل و فاعل را دقیق انتخاب کن. نمونهٔ پاسخ بعد از دو تلاش می‌آید.",
+              "example": "My father is a worker.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My father is a worker."
+                    ],
+                    "feedback": "یک جملهٔ کامل با همین معنی بنویس."
+                  }
+                ],
+                "success": "پاسخ را با جملهٔ کامل ساختی."
+              }
+            },
+            {
+              "task": "بگو این مرد بنا است و خانه می‌سازد.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "This man is a builder. He builds houses.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "This man is a builder. He builds houses.",
+                      "He is a builder and he builds houses."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو خواهرم دانشجو است و پدرم راننده است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "My sister is a student and my father is a driver.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My sister is a student and my father is a driver."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو مکانیک ماشین مرا تعمیر می‌کند.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "The mechanic fixes my car.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The mechanic fixes my car."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "بخش دوم · کاربرد و تولید",
+      "intro": "پرسش‌وپاسخ → گفت‌وگو → توصیف → تولید مستقل",
+      "masteryActivityIds": [
+        "a1-19-guided",
+        "a1-19-independent"
+      ],
+      "activities": [
+        {
+          "id": "a1-19-exchange",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "گفت‌وگو با انتخاب‌های معنی‌دار",
+          "description": "اول در ذهن جواب بده؛ سپس پاسخ نمونه را آشکار کن و شکل‌های دیگر پاسخ را بررسی کن.",
+          "pairs": [
+            {
+              "question": "What is your sister’s job?",
+              "questionFa": "شغل خواهرت چیست؟",
+              "variants": [
+                {
+                  "label": "پزشک",
+                  "en": "She is a doctor.",
+                  "fa": "پزشک"
+                },
+                {
+                  "label": "معلم",
+                  "en": "She is a teacher.",
+                  "fa": "معلم"
+                },
+                {
+                  "label": "پرستار",
+                  "en": "She is a nurse.",
+                  "fa": "پرستار"
+                }
+              ]
+            },
+            {
+              "question": "What does a chef do?",
+              "questionFa": "آشپز چه می‌کند؟",
+              "variants": [
+                {
+                  "label": "می‌پزد",
+                  "en": "A chef cooks food.",
+                  "fa": "می‌پزد"
+                },
+                {
+                  "label": "شام",
+                  "en": "A chef cooks dinner.",
+                  "fa": "شام"
+                },
+                {
+                  "label": "آشپزخانه",
+                  "en": "A chef works in a kitchen.",
+                  "fa": "آشپزخانه"
+                }
+              ]
+            },
+            {
+              "question": "Where does a cashier work?",
+              "questionFa": "صندوقدار کجا کار می‌کند؟",
+              "variants": [
+                {
+                  "label": "فروشگاه",
+                  "en": "A cashier works in a shop.",
+                  "fa": "فروشگاه"
+                },
+                {
+                  "label": "سوپرمارکت",
+                  "en": "A cashier works in a supermarket.",
+                  "fa": "سوپرمارکت"
+                },
+                {
+                  "label": "رستوران",
+                  "en": "A cashier works in a restaurant.",
+                  "fa": "رستوران"
+                }
+              ]
+            },
+            {
+              "question": "Is your brother a student?",
+              "questionFa": "برادرت دانشجو است؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, he is a student.",
+                  "fa": "بله"
+                },
+                {
+                  "label": "راننده",
+                  "en": "No, he is a driver.",
+                  "fa": "راننده"
+                },
+                {
+                  "label": "کشاورز",
+                  "en": "No, he is a farmer.",
+                  "fa": "کشاورز"
+                }
+              ]
+            },
+            {
+              "question": "What does your father do?",
+              "questionFa": "پدرت چه‌کاره است؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "My father is a builder.",
+                  "fa": "پدرم بنا است."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "My father drives a bus.",
+                  "fa": "پدرم رانندهٔ اتوبوس است."
+                }
+              ]
+            },
+            {
+              "question": "What does a builder do?",
+              "questionFa": "بنا چه کار می‌کند؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "A builder builds houses.",
+                  "fa": "بنا خانه می‌سازد."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "A builder works on houses.",
+                  "fa": "بنا روی ساخت خانه‌ها کار می‌کند."
+                }
+              ]
+            },
+            {
+              "question": "Does a mechanic cook food?",
+              "questionFa": "مکانیک غذا می‌پزد؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "No, a mechanic fixes cars.",
+                  "fa": "نه، مکانیک ماشین تعمیر می‌کند."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "No, a chef cooks food.",
+                  "fa": "نه، آشپز غذا می‌پزد."
+                }
+              ]
+            },
+            {
+              "question": "Where does a teacher work?",
+              "questionFa": "معلم کجا کار می‌کند؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "A teacher works at a school.",
+                  "fa": "معلم در مدرسه کار می‌کند."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "A teacher teaches students.",
+                  "fa": "معلم به دانش‌آموزان درس می‌دهد."
+                }
+              ]
+            }
+          ],
+          "requireRecall": true
+        },
+        {
+          "id": "a1-19-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "یک گفت‌وگوی واقعی دربارهٔ مشاغل ساده و نقش افراد",
+          "description": "پاسخ بعدی را قبل از آشکارشدنش حدس بزن؛ سپس جای نقش‌ها را عوض کن.",
+          "lines": [
+            {
+              "speaker": "Lina",
+              "en": "What is your mother’s job?",
+              "fa": "شغل مادرت چیست؟"
+            },
+            {
+              "speaker": "Nima",
+              "en": "She is a teacher.",
+              "fa": "او معلم است."
+            },
+            {
+              "speaker": "Lina",
+              "en": "What does your brother do?",
+              "fa": "برادرت چه کار می‌کند؟"
+            },
+            {
+              "speaker": "Nima",
+              "en": "He is a driver.",
+              "fa": "او راننده است."
+            },
+            {
+              "speaker": "Lina",
+              "en": "Is your sister a student?",
+              "fa": "خواهرت دانشجو است؟"
+            },
+            {
+              "speaker": "Nima",
+              "en": "Yes, she studies architecture.",
+              "fa": "بله. معماری می‌خواند."
+            },
+            {
+              "speaker": "Sara",
+              "en": "What does your father do?",
+              "fa": "پدرت چه‌کاره است؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "My father is a builder.",
+              "fa": "بگو این مرد بنا است و خانه می‌سازد."
+            },
+            {
+              "speaker": "Ali",
+              "en": "What does a builder do?",
+              "fa": "بنا چه کار می‌کند؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "A builder builds houses.",
+              "fa": "بگو خواهرم دانشجو است و پدرم راننده است."
+            }
+          ]
+        },
+        {
+          "id": "a1-19-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "title": "از صحنه به زبان؛ خودت توضیح بده",
+          "description": "از عبارت‌های ثابت تصویر فراتر برو؛ صحنهٔ جدید را با جزئیات نوشته‌شده توصیف کن.",
+          "image": "./assets/scene-a1-19-stage2.svg",
+          "imageAlt": "چهار فرد، چهار شغل",
+          "caption": "چهار فرد، چهار شغل",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "به کارت تصویر مربوط به «شغل خواهرت چیست؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "She is a doctor.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "She is a doctor."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «آشپز چه می‌کند؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "A chef cooks food.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "A chef cooks food."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «صندوقدار کجا کار می‌کند؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "A cashier works in a shop.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "A cashier works in a shop."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو این مرد بنا است و خانه می‌سازد.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "This man is a builder. He builds houses.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "This man is a builder. He builds houses.",
+                      "He is a builder and he builds houses."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو خواهرم دانشجو است و پدرم راننده است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "My sister is a student and my father is a driver.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My sister is a student and my father is a driver."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-19-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "title": "این بار خودت در مکالمه پاسخ بده",
+          "description": "با حداقل هفت نوبت پاسخ مستقل؛ جواب را انتخاب نمی‌کنی، خودت می‌نویسی.",
+          "practiceRevision": 1,
+          "completion": "حالا بدون راهنمایی در موقعیت تازه پاسخ بساز.",
+          "turns": [
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "What is your sister’s job?",
+              "task": "برای «شغل خواهرت چیست؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "She is a nurse.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "She is a nurse."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "What does a chef do?",
+              "task": "برای «آشپز چه می‌کند؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "A chef works in a kitchen.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "A chef works in a kitchen."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "Where does a cashier work?",
+              "task": "برای «صندوقدار کجا کار می‌کند؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "A cashier works in a restaurant.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "A cashier works in a restaurant."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Is your brother a student?",
+              "task": "برای «برادرت دانشجو است؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "No, he is a farmer.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "No, he is a farmer."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "همراهت",
+              "incoming": "What does your father do?",
+              "task": "بگو این مرد بنا است و خانه می‌سازد.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "This man is a builder. He builds houses.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "This man is a builder. He builds houses.",
+                      "He is a builder and he builds houses."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "مشتری خیالی",
+              "incoming": "What does a builder do?",
+              "task": "بگو خواهرم دانشجو است و پدرم راننده است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "My sister is a student and my father is a driver.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My sister is a student and my father is a driver."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "همراهت",
+              "incoming": "Does a mechanic cook food?",
+              "task": "بگو مکانیک ماشین مرا تعمیر می‌کند.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "The mechanic fixes my car.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The mechanic fixes my car."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-19-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "مأموریت واقعی و ساختن بدون الگو",
+          "prompt": "سه نفر آشنا یا خیالی را معرفی کن: شغل، محل کار و یک کار واقعی برای هر نفر. دست‌کم یک جمله را با he/she + فعل مناسب بساز.",
+          "placeholder": "دو یا سه جملهٔ انگلیسی خودت را اینجا بنویس؛ اطلاعات فرضی کافی است.",
+          "hint": "از جمله‌های درس الهام بگیر ولی فاعل، شیء، مکان یا تصمیم را خودت عوض کن.",
+          "kind": "free-text",
+          "minWords": 14,
+          "assessment": {
+            "revision": 2,
+            "required": [
+              {
+                "patterns": [
+                  "\\b(?:doctor|driver|nurse|chef|cashier|farmer|teacher|student|worker)\\b",
+                  "\\b(?:builder|mechanic|dentist|pilot|baker|waiter|cleaner|artist|carpenter|plumber)\\b"
+                ],
+                "feedback": "واژگان اصلی موقعیت را داخل جملهٔ کامل به کار ببر."
+              },
+              {
+                "patterns": [
+                  "\\b(?:is|work|works|cooks|drives|studies)\\b"
+                ],
+                "feedback": "یک کار، سؤال یا دلیل مرتبط هم بنویس."
+              }
+            ],
+            "productionProof": {
+              "minWords": 10,
+              "minClauses": 2
+            },
+            "success": "دو جملهٔ مستقل با هدف درس ساختی؛ حالا سرنخ زندگی واقعی را هم امتحان کن."
+          },
+          "realWorldMission": {
+            "cue": "وقتی کسی را با شغلش معرفی می‌کنی",
+            "reflection": "سه نفر آشنا یا خیالی را معرفی کن: شغل، محل کار و یک کار واقعی برای هر نفر. دست‌کم یک جمله را با he/she + فعل مناسب بساز."
+          }
+        },
+        {
+          "id": "a1-19-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "حالا همان جمله‌های آغاز درس را بازبگو",
+          "description": "متن شروع را بازشنوی کن و فاصلهٔ یادگیری خودت را بسنج.",
+          "sourceActivityId": "a1-19-shadowing"
+        }
+      ]
+    }
+  ]
+}

@@ -4,6 +4,7 @@ import { LESSON_PHASE_LABELS } from './lesson-flow.js';
 import { normalizePuzzleState, puzzleTokenBank, puzzleDisplayWord } from './sentence-puzzle.js';
 import { composeSegments, composerSegmentValue, composerSlotForm, resolveSentenceComposer } from './sentence-composer.js';
 import { resolveMeaningForm, selectedSpatialPosition } from './visual-learning.js';
+import { renderStage2Mission } from './stage2-missions.js';
 
 /*
  * Tutivar's teaching components. Lesson text, exercise items, answers and their
@@ -26,7 +27,10 @@ const MODULE_LABELS = {
   'agreement-lab': 'جمله‌ساز وابسته', 'sentence-composer': 'جمله‌ساز تعاملی', 'composer-view': 'کشف و تغییر جمله',
   'tap-attributes-lab': 'تغییر ویژگی در تصویر و جمله',
   'daily-choice-lab': 'انتخاب غذا و وعده',
-  'antonym-pair-lab': 'تصویر صفت‌های متضاد'
+  'antonym-pair-lab': 'تصویر صفت‌های متضاد',
+  'comparison-lab': 'آزمایشگاه مقایسه', 'shopping-list-lab': 'فهرست خرید تعاملی',
+  'city-map-lab': 'نقشهٔ تعاملی شهر', 'body-compare-lab': 'کشف و مقایسهٔ اعضای بدن',
+  'mission-lab': 'مأموریت تعاملی'
 };
 function wrapper(body, activity, idx, e, extra = '') {
   return `<div class="lesson-block module-block ${extra}" data-module="${e(activity.type)}"><div class="block-top"><div><span class="block-label">${String(idx + 1).padStart(2, '0')} / ${e(activity.typeLabel || LESSON_PHASE_LABELS[activity.phase] || MODULE_LABELS[activity.type] || 'فعالیت')}</span><h3>${e(activity.title || '')}</h3></div></div>${body}</div>`;
@@ -500,11 +504,13 @@ function exchangeLab(a, c) {
   const variantIndex = Math.max(0, Math.min(pair.variants.length - 1, Number(saved.variant) || 0));
   const variant = pair.variants[variantIndex];
   const question = `<div class="exchange-bubble question-bubble"><span class="exchange-speaker">نفر اول · سؤال</span><div class="exchange-spoken">${c.en(pair.question)}${soundButton(pair.question, c.e, c.i)}</div><small>${c.e(pair.questionFa)}</small></div>`;
-  const answer = `<div class="exchange-bubble answer-bubble"><span class="exchange-speaker">نفر دوم · پاسخ</span><div class="exchange-spoken">${c.en(variant.en)}${soundButton(variant.en, c.e, c.i)}</div><small>${c.e(variant.fa)}</small></div>`;
+  const revealed = a.requireRecall !== true || saved.revealed === true;
+  const answer = revealed ? `<div class="exchange-bubble answer-bubble"><span class="exchange-speaker">نفر دوم · پاسخ</span><div class="exchange-spoken">${c.en(variant.en)}${soundButton(variant.en, c.e, c.i)}</div><small>${c.e(variant.fa)}</small></div>`
+    : `<div class="exchange-bubble answer-bubble exchange-await"><span class="exchange-speaker">نفر دوم · نوبت تو</span><p>قبل از دیدن نمونه، پاسخت را با صدای بلند یا در ذهن به انگلیسی بساز.</p><button type="button" class="secondary-btn" data-exchange-key="${c.e(key)}" data-exchange-reveal="true">پاسخم را ساختم؛ نمونه را ببین</button></div>`;
   const progress = `<div class="exchange-progress" aria-label="پیشرفت سؤال‌ها"><span style="width:${(pairIndex + 1) / a.pairs.length * 100}%"></span></div>`;
   const pairNav = `<div class="exchange-navigation" role="group" aria-label="جابجایی میان سؤال‌ها"><button type="button" class="exchange-step" data-exchange-key="${c.e(key)}" data-exchange-pair="${pairIndex - 1}" ${pairIndex === 0 ? 'disabled' : ''}>سؤال قبل</button><strong>سؤال ${pairIndex + 1} <span>از ${a.pairs.length}</span></strong><button type="button" class="exchange-step exchange-next" data-exchange-key="${c.e(key)}" data-exchange-pair="${pairIndex + 1}" ${pairIndex === a.pairs.length - 1 ? 'disabled' : ''}>سؤال بعد ←</button></div>`;
-  const variants = `<div class="exchange-variants" role="group" aria-label="چهار پاسخ معتبر برای مقایسه">${pair.variants.map((entry, index) => `<button type="button" class="exchange-variant-btn ${index === variantIndex ? 'active' : ''}" aria-pressed="${index === variantIndex}" data-exchange-key="${c.e(key)}" data-exchange-variant="${index}"><small>${String(index + 1).padStart(2, '0')}</small><span>${c.e(entry.label)}</span></button>`).join('')}</div>`;
-  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p>${pairNav}${progress}<div class="exchange-stage">${question}${answer}</div><div class="exchange-choice-intro">پاسخ را تغییر بده؛ هر گزینه جملهٔ متفاوت و درستی می‌سازد.</div>${variants}${variant.note ? `<p class="exchange-note">${c.e(variant.note)}</p>` : ''}`, a, c.index, c.e, 'module-exchange-lab');
+  const variants = revealed ? `<div class="exchange-variants" role="group" aria-label="شکل‌های معتبر پاسخ">${pair.variants.map((entry, index) => `<button type="button" class="exchange-variant-btn ${index === variantIndex ? 'active' : ''}" aria-pressed="${index === variantIndex}" data-exchange-key="${c.e(key)}" data-exchange-variant="${index}"><small>${String(index + 1).padStart(2, '0')}</small><span>${c.e(entry.label)}</span></button>`).join('')}</div>` : '';
+  return wrapper(`<p class="module-description">${c.e(a.description || '')}</p>${pairNav}${progress}<div class="exchange-stage">${question}${answer}</div>${revealed?'<div class="exchange-choice-intro">حالا شکل دیگری از پاسخ را هم مرور کن.</div>':''}${variants}${revealed&&variant.note ? `<p class="exchange-note">${c.e(variant.note)}</p>` : ''}`, a, c.index, c.e, 'module-exchange-lab');
 }
 function questionExplorer(a, c) {
   const key = `${c.lessonId}:${a.id}`;
@@ -553,7 +559,7 @@ function sentenceBuilder(a, c) {
     const allDone = done === total;
     const solved = state.completed.map((entry) => {
       const original = a.sentences.find((sentence) => sentence.id === entry.id);
-      return `<li class="builder-found-item" dir="ltr" lang="en">${c.e(entry.text || original?.words.join(' ') || '')}</li>`;
+      return `<li class="builder-found-item"><span dir="ltr" lang="en">${c.e(entry.text || original?.words.join(' ') || '')}</span>${original?.fa ? `<small dir="rtl">${c.e(original.fa)}</small>` : ''}</li>`;
     }).join('');
     const tokens = bank.map(({ word }, idx) => {
       const disabled = used.has(idx) || state.current.includes(idx) || allDone;
@@ -1117,7 +1123,8 @@ const renderers = {
   'exchange-lab': exchangeLab, 'question-explorer': questionExplorer, 'daily-choice-lab': dailyChoiceLab, 'expression-study': expressionStudy, 'count-visual': countVisual, 'plural-pair-lab': pluralPairLab, 'count-math-lab': countMathLab,
   shadowing, 'shadowing-review': shadowing, 'picture-description': pictureDescription,
   'sentence-transform': sentenceTransform, 'dialogue-transfer': dialogueTransfer,
-  'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'spatial-compare-lab': spatialCompareLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer, 'tap-attributes-lab': tapAttributesLab, 'tap-ownership-lab': tapOwnershipLab, 'count-scene-lab':countSceneLab, 'feature-hunt':featureHunt, 'cumulative-scene-lab':cumulativeSceneLab, 'cumulative-visual-quest':cumulativeVisualQuest, 'cumulative-number-lab':cumulativeNumberLab, 'place-value-lab':placeValueLab, 'antonym-pair-lab': antonymPairLab
+  'family-tree': familyTree, 'family-lab': familyLab, 'spatial-lab': spatialLab, 'spatial-compare-lab': spatialCompareLab, 'meaning-cluster': meaningCluster, 'agreement-lab': agreementLab, 'sentence-composer': sentenceComposer, 'composer-view': sentenceComposer, 'tap-attributes-lab': tapAttributesLab, 'tap-ownership-lab': tapOwnershipLab, 'count-scene-lab':countSceneLab, 'feature-hunt':featureHunt, 'cumulative-scene-lab':cumulativeSceneLab, 'cumulative-visual-quest':cumulativeVisualQuest, 'cumulative-number-lab':cumulativeNumberLab, 'place-value-lab':placeValueLab, 'antonym-pair-lab': antonymPairLab,
+  'mission-lab': (activity, context) => wrapper(renderStage2Mission(activity, context),activity,context.index,context.e,'module-mission-lab')
 };
 export function renderActivity(activity, context) {
   const renderer = renderers[activity.type];

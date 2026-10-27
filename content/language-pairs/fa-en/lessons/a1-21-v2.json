@@ -1,0 +1,1469 @@
+{
+  "id": "A1-21",
+  "revision": "2026-10-27-owner-stage2-real-interactions-v2",
+  "status": "draft",
+  "title": "پرداخت، صورت‌حساب و رسید",
+  "goal": "در کافه، رستوران یا فروشگاه صورت‌حساب بخواه، رقم پرداختی را بفهم، روش پرداخت را بگو و رسید دریافت کن.",
+  "duration": 24,
+  "feature": "شبیه‌سازی حساب‌کردن سفارش",
+  "archetype": "K5",
+  "roadmapRef": {
+    "id": "A1-21",
+    "revision": "2026-10-27-owner-a1-stage2-practical-sequence",
+    "communicativeOutcome": "صورت‌حساب را درخواست و مبلغ ساده را می‌خواند؛ می‌گوید با پول نقد یا کارت پرداخت می‌کند و رسید و بقیهٔ پول را مؤدبانه می‌خواهد."
+  },
+  "teachingModel": {
+    "type": "discovery-production",
+    "sections": 2
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "در کافه، رستوران یا فروشگاه صورت‌حساب بخواه، رقم پرداختی را بفهم، روش پرداخت را بگو و رسید دریافت کن.",
+    "prerequisites": [
+      "A1-8",
+      "A1-13",
+      "A1-14",
+      "A1-20"
+    ],
+    "previously": "دانسته‌های بخش اول و درس‌های پیشین را در این موقعیت تازه دوباره به کار می‌بریم.",
+    "quickCheck": {
+      "title": "مرور آغازین",
+      "question": "How would you like to pay?",
+      "example": "I would like to pay by card.",
+      "explanation": "اگر این پاسخ تازه است، در مسیر واژه تا تولید آن را خواهی ساخت.",
+      "allowSkip": false
+    }
+  },
+  "visual": {
+    "src": "./assets/scene-a1-21-stage2.svg",
+    "alt": "میز کافه، فاکتور و کارت",
+    "caption": "میز کافه، فاکتور و کارت"
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "by card"
+    ],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": false
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "بخش اول · کشف و تمرین",
+      "intro": "واژه → عبارت → جملهٔ زنده → سنجش → ساختن",
+      "masteryActivityIds": [
+        "a1-21-puzzle",
+        "a1-21-build",
+        "a1-21-mission"
+      ],
+      "activities": [
+        {
+          "id": "a1-21-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "ابتدا نمونهٔ موقعیت را گوش کن",
+          "description": "با این چند جمله آشنا شو؛ هنوز لازم نیست همه را بی‌کمک بسازی.",
+          "audioSrc": null,
+          "rate": 0.8,
+          "pauseMs": 500,
+          "lines": [
+            "Can I have the bill, please?",
+            "Our table has two soups and one coffee.",
+            "The total is twelve dollars.",
+            "I want to pay by card.",
+            "Do you need a receipt? Yes, please.",
+            "I will pay ten dollars in cash.",
+            "Here is your change.",
+            "The receipt shows the food and the total."
+          ]
+        },
+        {
+          "id": "a1-21-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "واژگان کلیدی و تکمیلی این موقعیت",
+          "deckRevision": 2,
+          "batchSize": 4,
+          "items": [
+            {
+              "en": "pay",
+              "fa": "پرداخت کردن",
+              "examples": [
+                "I can pay by card."
+              ]
+            },
+            {
+              "en": "cash",
+              "fa": "پول نقد",
+              "examples": [
+                "I pay in cash."
+              ]
+            },
+            {
+              "en": "card",
+              "fa": "کارت",
+              "examples": [
+                "Can I pay by card?"
+              ]
+            },
+            {
+              "en": "bill",
+              "fa": "صورت‌حساب",
+              "examples": [
+                "The bill is twenty dollars."
+              ]
+            },
+            {
+              "en": "receipt",
+              "fa": "رسید",
+              "examples": [
+                "Can I have a receipt?"
+              ]
+            },
+            {
+              "en": "change",
+              "fa": "باقی‌پول",
+              "examples": [
+                "Here is your change."
+              ]
+            },
+            {
+              "en": "tip",
+              "fa": "انعام",
+              "role": "supplementary",
+              "examples": [
+                "The tip is optional."
+              ]
+            },
+            {
+              "en": "payment",
+              "fa": "پرداخت",
+              "role": "supplementary",
+              "examples": [
+                "The payment is complete."
+              ]
+            },
+            {
+              "en": "subtotal",
+              "fa": "جمع پیش از هزینه‌های اضافه",
+              "examples": [
+                "The subtotal is twelve dollars."
+              ]
+            },
+            {
+              "en": "amount",
+              "fa": "مبلغ",
+              "examples": [
+                "What is the total amount?"
+              ]
+            },
+            {
+              "en": "charge",
+              "fa": "هزینه / مبلغ گرفتن",
+              "examples": [
+                "There is no extra charge."
+              ]
+            },
+            {
+              "en": "split",
+              "fa": "تقسیم کردن",
+              "examples": [
+                "Can we split the bill?"
+              ]
+            },
+            {
+              "en": "tax",
+              "fa": "مالیات",
+              "examples": [
+                "The tax is one dollar."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "refund",
+              "fa": "بازپرداخت پول",
+              "examples": [
+                "I need a refund."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "paid",
+              "fa": "پرداخت‌شده",
+              "examples": [
+                "The bill is paid."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "contactless",
+              "fa": "بدون تماس",
+              "examples": [
+                "Can I pay contactless?"
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "balance",
+              "fa": "باقی‌مانده / مانده حساب",
+              "examples": [
+                "My balance is low."
+              ],
+              "role": "supplementary"
+            }
+          ]
+        },
+        {
+          "id": "a1-21-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "عبارت‌های آماده برای موقعیت واقعی",
+          "description": "عبارت‌ها را با ترجمه و نمونه ببین؛ سپس همان‌ها را در صحنهٔ تعاملی به کار ببر.",
+          "presentation": "deck",
+          "items": [
+            {
+              "en": "Can I have the bill?",
+              "fa": "می‌شود صورت‌حساب را بدهید؟",
+              "kind": "fixed",
+              "examples": []
+            },
+            {
+              "en": "by card",
+              "fa": "با کارت",
+              "kind": "fixed",
+              "examples": [
+                "Can I pay by card?",
+                "I would like to pay by card.",
+                "Can I pay by card?"
+              ]
+            },
+            {
+              "en": "in cash",
+              "fa": "نقدی",
+              "kind": "fixed",
+              "examples": [
+                "I pay in cash.",
+                "I will pay in cash."
+              ]
+            },
+            {
+              "en": "Can I have a receipt?",
+              "fa": "رسید می‌خواهم",
+              "kind": "fixed",
+              "examples": []
+            },
+            {
+              "en": "I will pay by card.",
+              "fa": "با کارت پرداخت می‌کنم.",
+              "kind": "fixed",
+              "examples": [
+                "I will pay by card."
+              ]
+            },
+            {
+              "en": "Here is your change.",
+              "fa": "این هم بقیهٔ پولتان.",
+              "kind": "fixed",
+              "examples": [
+                "Here is your change."
+              ]
+            },
+            {
+              "en": "The total is",
+              "fa": "جمع کل ... است",
+              "kind": "fixed",
+              "examples": [
+                "The total is twelve dollars."
+              ]
+            },
+            {
+              "en": "Let us split the bill.",
+              "fa": "بیایید صورت‌حساب را تقسیم کنیم.",
+              "kind": "fixed",
+              "examples": [
+                "Let us split the bill."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-21-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "جمله را با تغییر معنی بساز",
+          "description": "روی واژه‌های روشن جمله بزن؛ معنی فارسی هم‌زمان با تغییر فاعل، ویژگی یا شیء تغییر می‌کند.",
+          "targetLanguage": "en",
+          "derivedDefaults": {},
+          "wordSets": {
+            "method": [
+              {
+                "id": "option-0",
+                "label": "by card",
+                "translation": "با کارت",
+                "forms": {
+                  "en": "by card",
+                  "fa": "با کارت"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "in cash",
+                "translation": "نقدی",
+                "forms": {
+                  "en": "in cash",
+                  "fa": "نقدی"
+                }
+              }
+            ],
+            "document": [
+              {
+                "id": "option-0",
+                "label": "the bill",
+                "translation": "صورت‌حساب",
+                "forms": {
+                  "en": "the bill",
+                  "fa": "صورت‌حساب"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "a receipt",
+                "translation": "رسید",
+                "forms": {
+                  "en": "a receipt",
+                  "fa": "رسید"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "method",
+              "label": "method",
+              "wordSet": "method",
+              "default": "option-0"
+            },
+            {
+              "id": "document",
+              "label": "document",
+              "wordSet": "document",
+              "default": "option-0"
+            }
+          ],
+          "defaultPattern": "pay",
+          "patterns": [
+            {
+              "id": "pay",
+              "label": "پرداخت کن",
+              "segments": [
+                {
+                  "fixed": "Can I pay "
+                },
+                {
+                  "slot": "method",
+                  "form": "en"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "می‌توانم "
+                },
+                {
+                  "slot": "method",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " پرداخت کنم؟"
+                }
+              ]
+            },
+            {
+              "id": "ask",
+              "label": "مدرک بخواه",
+              "segments": [
+                {
+                  "fixed": "Can I have "
+                },
+                {
+                  "slot": "document",
+                  "form": "en"
+                },
+                {
+                  "fixed": ", please?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "می‌توانم "
+                },
+                {
+                  "slot": "document",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " بگیرم؟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-21-variants",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "یک جمله با دو هدف ارتباطی",
+          "description": "یک ساختار را با معنی متفاوت بساز و ترجمهٔ هر تغییر را هم ببین.",
+          "sourceActivityId": "a1-21-composer",
+          "patternIds": [
+            "pay",
+            "ask"
+          ],
+          "examples": [
+            {
+              "en": "Can I have the bill, please?",
+              "fa": "صورت‌حساب را مؤدبانه بخواه."
+            },
+            {
+              "en": "Can I pay by card?",
+              "fa": "بپرس می‌توانم با کارت پرداخت کنم؟"
+            },
+            {
+              "en": "I pay in cash.",
+              "fa": "بگو نقدی پرداخت می‌کنم."
+            }
+          ]
+        },
+        {
+          "mode": "basket",
+          "checkout": true,
+          "title": "از سفارش تا رسید واقعی",
+          "description": "صورت‌حساب را از سفارش می‌سازی، مبلغ جمع را می‌بینی، روش پرداخت را انتخاب می‌کنی و رسید می‌گیری.",
+          "scenes": [
+            {
+              "topic": "صورت‌حساب کافه",
+              "prompt": "مشتری دو قهوه و یک کیک سفارش داده؛ یک نوشیدنی اضافه هم در فهرست هست.",
+              "products": [
+                {
+                  "id": "coffee",
+                  "en": "coffee",
+                  "fa": "قهوه",
+                  "emoji": "☕",
+                  "price": 3,
+                  "need": 2
+                },
+                {
+                  "id": "cake",
+                  "en": "cake",
+                  "fa": "کیک",
+                  "emoji": "🍰",
+                  "price": 4,
+                  "need": 1
+                },
+                {
+                  "id": "tea",
+                  "en": "tea",
+                  "fa": "چای",
+                  "emoji": "🫖",
+                  "price": 2,
+                  "need": 0
+                },
+                {
+                  "id": "water",
+                  "en": "water",
+                  "fa": "آب",
+                  "emoji": "💧",
+                  "price": 1,
+                  "need": 0
+                }
+              ],
+              "successEn": "Two coffees and one cake: the total is ten dollars.",
+              "successFa": "دو قهوه و یک کیک، جمع ده دلار می‌شود.",
+              "tender": 20
+            },
+            {
+              "topic": "صورت‌حساب رستوران",
+              "prompt": "از روی لیست سفارش، اقلام درست را وارد صورت‌حساب کن.",
+              "products": [
+                {
+                  "id": "soup",
+                  "en": "soup",
+                  "fa": "سوپ",
+                  "emoji": "🥣",
+                  "price": 5,
+                  "need": 2
+                },
+                {
+                  "id": "salad",
+                  "en": "salad",
+                  "fa": "سالاد",
+                  "emoji": "🥗",
+                  "price": 4,
+                  "need": 1
+                },
+                {
+                  "id": "juice",
+                  "en": "juice",
+                  "fa": "آب‌میوه",
+                  "emoji": "🧃",
+                  "price": 3,
+                  "need": 2
+                },
+                {
+                  "id": "pizza",
+                  "en": "pizza",
+                  "fa": "پیتزا",
+                  "emoji": "🍕",
+                  "price": 9,
+                  "need": 0
+                }
+              ],
+              "successEn": "Two soups, one salad and two juices cost twenty dollars.",
+              "successFa": "دو سوپ، یک سالاد و دو آب‌میوه بیست دلار می‌شود.",
+              "tender": 30
+            },
+            {
+              "topic": "بقیهٔ پول",
+              "prompt": "این بار مشتری با اسکناس نقدی خرید می‌کند. پس از درست کردن رسید، بقیهٔ پول را بخوان.",
+              "products": [
+                {
+                  "id": "sandwich",
+                  "en": "sandwich",
+                  "fa": "ساندویچ",
+                  "emoji": "🥪",
+                  "price": 6,
+                  "need": 1
+                },
+                {
+                  "id": "tea",
+                  "en": "tea",
+                  "fa": "چای",
+                  "emoji": "🫖",
+                  "price": 2,
+                  "need": 2
+                },
+                {
+                  "id": "bread",
+                  "en": "bread",
+                  "fa": "نان",
+                  "emoji": "🍞",
+                  "price": 1,
+                  "need": 0
+                }
+              ],
+              "successEn": "I pay ten dollars for one sandwich and two teas.",
+              "successFa": "برای یک ساندویچ و دو چای ده دلار می‌دهم.",
+              "tender": 20
+            },
+            {
+              "topic": "رسید خرید لباس",
+              "prompt": "قیمت و تعداد لباس‌ها را روی رسید تنظیم کن.",
+              "products": [
+                {
+                  "id": "shirt",
+                  "en": "shirt",
+                  "fa": "پیراهن",
+                  "emoji": "👕",
+                  "price": 7,
+                  "need": 2
+                },
+                {
+                  "id": "hat",
+                  "en": "hat",
+                  "fa": "کلاه",
+                  "emoji": "🧢",
+                  "price": 4,
+                  "need": 1
+                },
+                {
+                  "id": "boots",
+                  "en": "boots",
+                  "fa": "چکمه",
+                  "emoji": "🥾",
+                  "price": 16,
+                  "need": 0
+                },
+                {
+                  "id": "socks",
+                  "en": "socks",
+                  "fa": "جوراب",
+                  "emoji": "🧦",
+                  "price": 2,
+                  "need": 1
+                }
+              ],
+              "successEn": "The receipt shows two shirts, one hat and one pair of socks.",
+              "successFa": "رسید دو پیراهن، یک کلاه و یک جفت جوراب را نشان می‌دهد.",
+              "tender": 30
+            }
+          ],
+          "id": "a1-21-mission",
+          "type": "mission-lab",
+          "phase": "variants"
+        },
+        {
+          "id": "a1-21-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "چند جمله با بانک کلمات مشترک بساز",
+          "description": "هر بار جملهٔ متفاوتی پیدا کن؛ واژه‌های مشترک را به‌موقع استفاده کن.",
+          "revision": 1,
+          "goalCount": 5,
+          "reuseBank": true,
+          "sentences": [
+            {
+              "id": "sentence-1",
+              "words": [
+                "Can",
+                "I",
+                "have",
+                "the",
+                "bill,",
+                "please?"
+              ],
+              "fa": "صورت‌حساب را مؤدبانه بخواه."
+            },
+            {
+              "id": "sentence-2",
+              "words": [
+                "Can",
+                "I",
+                "pay",
+                "by",
+                "card?"
+              ],
+              "fa": "بپرس می‌توانم با کارت پرداخت کنم؟"
+            },
+            {
+              "id": "sentence-3",
+              "words": [
+                "I",
+                "pay",
+                "in",
+                "cash."
+              ],
+              "fa": "بگو نقدی پرداخت می‌کنم."
+            },
+            {
+              "id": "sentence-4",
+              "words": [
+                "I",
+                "will",
+                "pay",
+                "in",
+                "cash."
+              ],
+              "fa": "رسید بخواه."
+            },
+            {
+              "id": "sentence-5",
+              "words": [
+                "No,",
+                "thank",
+                "you."
+              ],
+              "fa": "بگو این باقی پول شماست."
+            }
+          ]
+        },
+        {
+          "id": "a1-21-build",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "از فارسی به یک پاسخ دقیق برس",
+          "description": "از حفظ‌کردن گزینه‌ها عبور کن؛ پاسخ را خودت به انگلیسی بنویس و بعد از هر تلاش بازخورد بگیر.",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "صورت‌حساب را مؤدبانه بخواه.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Can I have the bill, please?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Can I have the bill, please?"
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بپرس می‌توانم با کارت پرداخت کنم؟",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Can I pay by card?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Can I pay by card?"
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو نقدی پرداخت می‌کنم.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I pay in cash.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I pay in cash."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "رسید بخواه.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Can I have a receipt, please?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Can I have a receipt, please?"
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو این باقی پول شماست.",
+              "hint": "فعل و فاعل را دقیق انتخاب کن. نمونهٔ پاسخ بعد از دو تلاش می‌آید.",
+              "example": "Here is your change.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Here is your change."
+                    ],
+                    "feedback": "یک جملهٔ کامل با همین معنی بنویس."
+                  }
+                ],
+                "success": "پاسخ را با جملهٔ کامل ساختی."
+              }
+            },
+            {
+              "task": "بگو جمع کل ده دلار است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "The total is ten dollars.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The total is ten dollars."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو با کارت پرداخت می‌کنم و رسید می‌خواهم.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "I will pay by card and I need a receipt.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I will pay by card and I need a receipt."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو این هم بقیهٔ پول شما.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "Here is your change.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Here is your change."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو جمع قبل از هزینهٔ اضافه دوازده دلار است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "The subtotal is twelve dollars.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The subtotal is twelve dollars."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "جمع مبلغ را بپرس.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "What is the total amount?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "What is the total amount?"
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو هزینهٔ اضافه وجود ندارد.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "There is no extra charge.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "There is no extra charge."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بپرس می‌توانیم صورت‌حساب را تقسیم کنیم؟",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "Can we split the bill?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Can we split the bill?"
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "بخش دوم · کاربرد و تولید",
+      "intro": "پرسش‌وپاسخ → گفت‌وگو → توصیف → تولید مستقل",
+      "masteryActivityIds": [
+        "a1-21-guided",
+        "a1-21-independent"
+      ],
+      "activities": [
+        {
+          "id": "a1-21-exchange",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "گفت‌وگو با انتخاب‌های معنی‌دار",
+          "description": "اول در ذهن جواب بده؛ سپس پاسخ نمونه را آشکار کن و شکل‌های دیگر پاسخ را بررسی کن.",
+          "pairs": [
+            {
+              "question": "How would you like to pay?",
+              "questionFa": "چطور پرداخت می‌کنی؟",
+              "variants": [
+                {
+                  "label": "کارت",
+                  "en": "I would like to pay by card.",
+                  "fa": "کارت"
+                },
+                {
+                  "label": "نقدی",
+                  "en": "I will pay in cash.",
+                  "fa": "نقدی"
+                },
+                {
+                  "label": "می‌توانم با کارت؟",
+                  "en": "Can I pay by card?",
+                  "fa": "می‌توانم با کارت؟"
+                }
+              ]
+            },
+            {
+              "question": "Would you like a receipt?",
+              "questionFa": "رسید می‌خواهی؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, a receipt, please.",
+                  "fa": "بله"
+                },
+                {
+                  "label": "نه",
+                  "en": "No, thank you.",
+                  "fa": "نه"
+                },
+                {
+                  "label": "لطفاً",
+                  "en": "Can I have a receipt, please?",
+                  "fa": "لطفاً"
+                }
+              ]
+            },
+            {
+              "question": "How much is the bill?",
+              "questionFa": "صورت‌حساب چقدر است؟",
+              "variants": [
+                {
+                  "label": "بیست دلار",
+                  "en": "The bill is twenty dollars.",
+                  "fa": "بیست دلار"
+                },
+                {
+                  "label": "سی دلار",
+                  "en": "It is thirty dollars.",
+                  "fa": "سی دلار"
+                },
+                {
+                  "label": "پنج دلار",
+                  "en": "It is five dollars.",
+                  "fa": "پنج دلار"
+                }
+              ]
+            },
+            {
+              "question": "Here is your change.",
+              "questionFa": "این هم بقیهٔ پولتان.",
+              "variants": [
+                {
+                  "label": "تشکر",
+                  "en": "Thank you.",
+                  "fa": "تشکر"
+                },
+                {
+                  "label": "رسید",
+                  "en": "And a receipt, please.",
+                  "fa": "رسید"
+                },
+                {
+                  "label": "کافی",
+                  "en": "That is enough. Thank you.",
+                  "fa": "کافی"
+                }
+              ]
+            },
+            {
+              "question": "May I have the bill, please?",
+              "questionFa": "می‌توانم صورت‌حساب را بگیرم؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "Yes, here is your bill.",
+                  "fa": "بله، این هم صورت‌حساب شما."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "Of course. Your bill is on the table.",
+                  "fa": "البته. صورت‌حساب شما روی میز است."
+                }
+              ]
+            },
+            {
+              "question": "How much is the total?",
+              "questionFa": "جمع کل چقدر است؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "The total is ten dollars.",
+                  "fa": "جمع کل ده دلار است."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "The total is fifteen dollars.",
+                  "fa": "جمع کل پانزده دلار است."
+                }
+              ]
+            },
+            {
+              "question": "Cash or card?",
+              "questionFa": "نقدی یا کارت؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "Card, please.",
+                  "fa": "کارت، لطفاً."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "Cash, please.",
+                  "fa": "نقدی، لطفاً."
+                }
+              ]
+            },
+            {
+              "question": "Would you like a receipt?",
+              "questionFa": "رسید می‌خواهید؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "Yes, I need a receipt, please.",
+                  "fa": "بله، لطفاً رسید می‌خواهم."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "No, thank you. I do not need a receipt.",
+                  "fa": "نه، ممنون. رسید لازم ندارم."
+                }
+              ]
+            },
+            {
+              "question": "How much change do I get?",
+              "questionFa": "چقدر بقیهٔ پول می‌گیرم؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "You get ten dollars in change.",
+                  "fa": "ده دلار بقیهٔ پول می‌گیرید."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "You get five dollars in change.",
+                  "fa": "پنج دلار بقیهٔ پول می‌گیرید."
+                }
+              ]
+            }
+          ],
+          "requireRecall": true
+        },
+        {
+          "id": "a1-21-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "یک گفت‌وگوی واقعی دربارهٔ پرداخت، صورت‌حساب و رسید",
+          "description": "پاسخ بعدی را قبل از آشکارشدنش حدس بزن؛ سپس جای نقش‌ها را عوض کن.",
+          "lines": [
+            {
+              "speaker": "Guest",
+              "en": "Can I have the bill, please?",
+              "fa": "می‌شود صورت‌حساب را بدهید؟"
+            },
+            {
+              "speaker": "Waiter",
+              "en": "Of course. It is twenty dollars.",
+              "fa": "البته. بیست دلار است."
+            },
+            {
+              "speaker": "Guest",
+              "en": "Can I pay by card?",
+              "fa": "می‌توانم با کارت پرداخت کنم؟"
+            },
+            {
+              "speaker": "Waiter",
+              "en": "Yes, you can.",
+              "fa": "بله می‌توانید."
+            },
+            {
+              "speaker": "Guest",
+              "en": "Can I have a receipt?",
+              "fa": "می‌شود رسید بدهید؟"
+            },
+            {
+              "speaker": "Waiter",
+              "en": "Of course. Here you are.",
+              "fa": "البته. بفرمایید."
+            },
+            {
+              "speaker": "Sara",
+              "en": "May I have the bill, please?",
+              "fa": "می‌توانم صورت‌حساب را بگیرم؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "Yes, here is your bill.",
+              "fa": "بگو جمع کل ده دلار است."
+            },
+            {
+              "speaker": "Ali",
+              "en": "How much is the total?",
+              "fa": "جمع کل چقدر است؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "The total is ten dollars.",
+              "fa": "بگو با کارت پرداخت می‌کنم و رسید می‌خواهم."
+            }
+          ]
+        },
+        {
+          "id": "a1-21-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "title": "از صحنه به زبان؛ خودت توضیح بده",
+          "description": "از عبارت‌های ثابت تصویر فراتر برو؛ صحنهٔ جدید را با جزئیات نوشته‌شده توصیف کن.",
+          "image": "./assets/scene-a1-21-stage2.svg",
+          "imageAlt": "میز کافه، فاکتور و کارت",
+          "caption": "میز کافه، فاکتور و کارت",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "به کارت تصویر مربوط به «چطور پرداخت می‌کنی؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I would like to pay by card.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I would like to pay by card."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «رسید می‌خواهی؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Yes, a receipt, please.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Yes, a receipt, please."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «صورت‌حساب چقدر است؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "The bill is twenty dollars.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The bill is twenty dollars."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو جمع کل ده دلار است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "The total is ten dollars.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The total is ten dollars."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو با کارت پرداخت می‌کنم و رسید می‌خواهم.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "I will pay by card and I need a receipt.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I will pay by card and I need a receipt."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-21-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "title": "این بار خودت در مکالمه پاسخ بده",
+          "description": "با حداقل هفت نوبت پاسخ مستقل؛ جواب را انتخاب نمی‌کنی، خودت می‌نویسی.",
+          "practiceRevision": 1,
+          "completion": "حالا بدون راهنمایی در موقعیت تازه پاسخ بساز.",
+          "turns": [
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "How would you like to pay?",
+              "task": "برای «چطور پرداخت می‌کنی؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Can I pay by card?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Can I pay by card?"
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Would you like a receipt?",
+              "task": "برای «رسید می‌خواهی؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Can I have a receipt, please?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Can I have a receipt, please?"
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "How much is the bill?",
+              "task": "برای «صورت‌حساب چقدر است؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "It is five dollars.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "It is five dollars."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Here is your change.",
+              "task": "برای «این هم بقیهٔ پولتان.» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "That is enough. Thank you.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "That is enough. Thank you."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "همراهت",
+              "incoming": "May I have the bill, please?",
+              "task": "بگو جمع کل ده دلار است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "The total is ten dollars.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The total is ten dollars."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "مشتری خیالی",
+              "incoming": "How much is the total?",
+              "task": "بگو با کارت پرداخت می‌کنم و رسید می‌خواهم.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "I will pay by card and I need a receipt.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I will pay by card and I need a receipt."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "همراهت",
+              "incoming": "Cash or card?",
+              "task": "بگو این هم بقیهٔ پول شما.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "Here is your change.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Here is your change."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "مشتری خیالی",
+              "incoming": "Would you like a receipt?",
+              "task": "بگو جمع قبل از هزینهٔ اضافه دوازده دلار است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "The subtotal is twelve dollars.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The subtotal is twelve dollars."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "همراهت",
+              "incoming": "How much change do I get?",
+              "task": "جمع مبلغ را بپرس.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "What is the total amount?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "What is the total amount?"
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "مشتری خیالی",
+              "incoming": "May I have the bill, please?",
+              "task": "بگو هزینهٔ اضافه وجود ندارد.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "There is no extra charge.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "There is no extra charge."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "همراهت",
+              "incoming": "How much is the total?",
+              "task": "بپرس می‌توانیم صورت‌حساب را تقسیم کنیم؟",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "Can we split the bill?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Can we split the bill?"
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-21-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "مأموریت واقعی و ساختن بدون الگو",
+          "prompt": "سفارش واقعی یا فرضی دو نفر را روی صورت‌حساب بنویس، تعدادها و جمع قیمت را حساب کن، روش پرداخت را مشخص کن و مؤدبانه رسید بخواه.",
+          "placeholder": "دو یا سه جملهٔ انگلیسی خودت را اینجا بنویس؛ اطلاعات فرضی کافی است.",
+          "hint": "از جمله‌های درس الهام بگیر ولی فاعل، شیء، مکان یا تصمیم را خودت عوض کن.",
+          "kind": "free-text",
+          "minWords": 14,
+          "assessment": {
+            "revision": 2,
+            "required": [
+              {
+                "patterns": [
+                  "\\b(?:bill|receipt)\\b"
+                ],
+                "feedback": "واژگان اصلی موقعیت را داخل جملهٔ کامل به کار ببر."
+              },
+              {
+                "patterns": [
+                  "\\b(?:pay|card|cash)\\b"
+                ],
+                "feedback": "یک کار، سؤال یا دلیل مرتبط هم بنویس."
+              }
+            ],
+            "productionProof": {
+              "minWords": 10,
+              "minClauses": 2
+            },
+            "success": "دو جملهٔ مستقل با هدف درس ساختی؛ حالا سرنخ زندگی واقعی را هم امتحان کن."
+          },
+          "realWorldMission": {
+            "cue": "وقتی در کافه یا رستوران حساب می‌کنی",
+            "reflection": "سفارش واقعی یا فرضی دو نفر را روی صورت‌حساب بنویس، تعدادها و جمع قیمت را حساب کن، روش پرداخت را مشخص کن و مؤدبانه رسید بخواه."
+          }
+        },
+        {
+          "id": "a1-21-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "حالا همان جمله‌های آغاز درس را بازبگو",
+          "description": "متن شروع را بازشنوی کن و فاصلهٔ یادگیری خودت را بسنج.",
+          "sourceActivityId": "a1-21-shadowing"
+        }
+      ]
+    }
+  ]
+}

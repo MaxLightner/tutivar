@@ -1,0 +1,1477 @@
+{
+  "id": "A1-16",
+  "revision": "2026-10-27-owner-stage2-real-interactions-v2",
+  "status": "draft",
+  "title": "پوشاک و آنچه می‌پوشیم",
+  "goal": "لباس‌های لازم را نام ببر؛ بگو خودت و دیگران چه لباسی پوشیده‌اند و آن لباس چه رنگ یا اندازه‌ای دارد.",
+  "duration": 24,
+  "feature": "توصیف پوشش با تغییر رنگ و فاعل",
+  "archetype": "K2",
+  "roadmapRef": {
+    "id": "A1-16",
+    "revision": "2026-10-27-owner-a1-stage2-practical-sequence",
+    "communicativeOutcome": "لباس‌های معمول را نام می‌برد و با رنگ و اندازهٔ آموخته‌شده توصیف می‌کند؛ دربارهٔ لباس خودش، او و دیگران با wear و شکل مناسب آن جمله و پرسش کوتاه می‌سازد."
+  },
+  "teachingModel": {
+    "type": "discovery-production",
+    "sections": 2
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "لباس‌های لازم را نام ببر؛ بگو خودت و دیگران چه لباسی پوشیده‌اند و آن لباس چه رنگ یا اندازه‌ای دارد.",
+    "prerequisites": [
+      "A1-2",
+      "A1-6",
+      "A1-7",
+      "A1-15"
+    ],
+    "previously": "دانسته‌های بخش اول و درس‌های پیشین را در این موقعیت تازه دوباره به کار می‌بریم.",
+    "quickCheck": {
+      "title": "مرور آغازین",
+      "question": "What are you wearing?",
+      "example": "I am wearing a blue shirt.",
+      "explanation": "اگر این پاسخ تازه است، در مسیر واژه تا تولید آن را خواهی ساخت.",
+      "allowSkip": false
+    }
+  },
+  "visual": {
+    "src": "./assets/scene-a1-16-stage2.svg",
+    "alt": "کمد لباس و دو شخصیت",
+    "caption": "کمد لباس و دو شخصیت"
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "is wearing"
+    ],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": false
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "بخش اول · کشف و تمرین",
+      "intro": "واژه → عبارت → جملهٔ زنده → سنجش → ساختن",
+      "masteryActivityIds": [
+        "a1-16-puzzle",
+        "a1-16-build",
+        "a1-16-mission"
+      ],
+      "activities": [
+        {
+          "id": "a1-16-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "ابتدا نمونهٔ موقعیت را گوش کن",
+          "description": "با این چند جمله آشنا شو؛ هنوز لازم نیست همه را بی‌کمک بسازی.",
+          "audioSrc": null,
+          "rate": 0.8,
+          "pauseMs": 500,
+          "lines": [
+            "I am wearing a blue shirt and black pants.",
+            "She is wearing a green dress.",
+            "He is wearing a warm jacket.",
+            "My shoes are brown but my socks are white.",
+            "This coat is too big for me.",
+            "Do you like the dark or the light scarf?",
+            "My sister wears a hat in the sun.",
+            "We wear boots when it rains."
+          ]
+        },
+        {
+          "id": "a1-16-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "واژگان کلیدی و تکمیلی این موقعیت",
+          "deckRevision": 2,
+          "batchSize": 4,
+          "items": [
+            {
+              "en": "shirt",
+              "fa": "پیراهن",
+              "examples": [
+                "I wear a blue shirt."
+              ]
+            },
+            {
+              "en": "jacket",
+              "fa": "کاپشن / کت",
+              "examples": [
+                "She wears a warm jacket."
+              ]
+            },
+            {
+              "en": "shoes",
+              "fa": "کفش‌ها",
+              "examples": [
+                "My shoes are black."
+              ]
+            },
+            {
+              "en": "pants",
+              "fa": "شلوار",
+              "examples": [
+                "He wears black pants."
+              ]
+            },
+            {
+              "en": "dress",
+              "fa": "پیراهن زنانه",
+              "examples": [
+                "She wears a green dress."
+              ]
+            },
+            {
+              "en": "wear",
+              "fa": "پوشیدن",
+              "examples": [
+                "I wear my jacket today."
+              ]
+            },
+            {
+              "en": "socks",
+              "fa": "جوراب‌ها",
+              "examples": [
+                "These socks are white."
+              ]
+            },
+            {
+              "en": "hat",
+              "fa": "کلاه",
+              "examples": [
+                "This is a red hat."
+              ]
+            },
+            {
+              "en": "coat",
+              "fa": "پالتو",
+              "examples": [
+                "I wear a coat when it is cold."
+              ]
+            },
+            {
+              "en": "sweater",
+              "fa": "ژاکت بافتنی",
+              "examples": [
+                "She is wearing a red sweater."
+              ]
+            },
+            {
+              "en": "scarf",
+              "fa": "شال گردن",
+              "examples": [
+                "My scarf is green."
+              ]
+            },
+            {
+              "en": "gloves",
+              "fa": "دستکش‌ها",
+              "examples": [
+                "These gloves are warm."
+              ]
+            },
+            {
+              "en": "boots",
+              "fa": "چکمه‌ها",
+              "examples": [
+                "His boots are black."
+              ]
+            },
+            {
+              "en": "skirt",
+              "fa": "دامن",
+              "examples": [
+                "She is wearing a long skirt."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "belt",
+              "fa": "کمربند",
+              "examples": [
+                "This belt is brown."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "tie",
+              "fa": "کراوات",
+              "examples": [
+                "He is wearing a tie."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "cap",
+              "fa": "کلاه لبه‌دار",
+              "examples": [
+                "My cap is blue."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "sandals",
+              "fa": "صندل",
+              "examples": [
+                "I wear sandals in summer."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "hoodie",
+              "fa": "هودی",
+              "examples": [
+                "This hoodie is big."
+              ],
+              "role": "supplementary"
+            }
+          ]
+        },
+        {
+          "id": "a1-16-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "عبارت‌های آماده برای موقعیت واقعی",
+          "description": "عبارت‌ها را با ترجمه و نمونه ببین؛ سپس همان‌ها را در صحنهٔ تعاملی به کار ببر.",
+          "presentation": "deck",
+          "items": [
+            {
+              "en": "a blue shirt",
+              "fa": "پیراهن آبی",
+              "kind": "fixed",
+              "examples": [
+                "I am wearing a blue shirt.",
+                "I am wearing a blue shirt."
+              ]
+            },
+            {
+              "en": "black shoes",
+              "fa": "کفش مشکی",
+              "kind": "fixed",
+              "examples": [
+                "She is wearing black shoes."
+              ]
+            },
+            {
+              "en": "is wearing",
+              "fa": "پوشیده است",
+              "kind": "fixed",
+              "examples": [
+                "She is wearing a green dress.",
+                "She is wearing a green dress.",
+                "She is wearing black shoes."
+              ]
+            },
+            {
+              "en": "What are you wearing?",
+              "fa": "چه پوشیده‌ای؟",
+              "kind": "fixed",
+              "examples": [
+                "What are you wearing?"
+              ]
+            },
+            {
+              "en": "put on",
+              "fa": "پوشیدن / به تن کردن",
+              "kind": "fixed",
+              "examples": [
+                "Put on your jacket, please."
+              ]
+            },
+            {
+              "en": "take off",
+              "fa": "درآوردن لباس",
+              "kind": "fixed",
+              "examples": [
+                "Take off your shoes at home."
+              ]
+            },
+            {
+              "en": "too big",
+              "fa": "بیش از حد بزرگ",
+              "kind": "fixed",
+              "examples": [
+                "This coat is too big."
+              ]
+            },
+            {
+              "en": "too small",
+              "fa": "بیش از حد کوچک",
+              "kind": "fixed",
+              "examples": [
+                "These shoes are too small."
+              ]
+            },
+            {
+              "en": "a light-colored shirt",
+              "fa": "پیراهن روشن",
+              "kind": "fixed",
+              "examples": [
+                "She is wearing a light-colored shirt."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-16-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "جمله را با تغییر معنی بساز",
+          "description": "روی واژه‌های روشن جمله بزن؛ معنی فارسی هم‌زمان با تغییر فاعل، ویژگی یا شیء تغییر می‌کند.",
+          "targetLanguage": "en",
+          "derivedDefaults": {},
+          "wordSets": {
+            "person": [
+              {
+                "id": "option-0",
+                "label": "I am",
+                "translation": "من",
+                "forms": {
+                  "en": "I am",
+                  "fa": "من",
+                  "faVerb": "پوشیده‌ام"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "She is",
+                "translation": "او (مونث)",
+                "forms": {
+                  "en": "She is",
+                  "fa": "او",
+                  "faVerb": "پوشیده است"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "He is",
+                "translation": "او (مذکر)",
+                "forms": {
+                  "en": "He is",
+                  "fa": "او",
+                  "faVerb": "پوشیده است"
+                }
+              },
+              {
+                "id": "option-3",
+                "label": "We are",
+                "translation": "ما",
+                "forms": {
+                  "en": "We are",
+                  "fa": "ما",
+                  "faVerb": "پوشیده‌ایم"
+                }
+              }
+            ],
+            "clothing": [
+              {
+                "id": "option-0",
+                "label": "wearing a blue shirt",
+                "translation": "پیراهن آبی پوشیده",
+                "forms": {
+                  "en": "wearing a blue shirt",
+                  "fa": "پیراهن آبی پوشیده",
+                  "faClothes": "پیراهن آبی"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "wearing black shoes",
+                "translation": "کفش مشکی پوشیده",
+                "forms": {
+                  "en": "wearing black shoes",
+                  "fa": "کفش مشکی پوشیده",
+                  "faClothes": "کفش مشکی"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "wearing a warm jacket",
+                "translation": "کاپشن گرم پوشیده",
+                "forms": {
+                  "en": "wearing a warm jacket",
+                  "fa": "کاپشن گرم پوشیده",
+                  "faClothes": "کاپشن گرم"
+                }
+              },
+              {
+                "id": "option-3",
+                "label": "wearing a green dress",
+                "translation": "پیراهن سبز پوشیده",
+                "forms": {
+                  "en": "wearing a green dress",
+                  "fa": "پیراهن سبز پوشیده",
+                  "faClothes": "پیراهن سبز"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "person",
+              "label": "person",
+              "wordSet": "person",
+              "default": "option-0"
+            },
+            {
+              "id": "clothing",
+              "label": "clothing",
+              "wordSet": "clothing",
+              "default": "option-0"
+            }
+          ],
+          "defaultPattern": "wearing",
+          "patterns": [
+            {
+              "id": "wearing",
+              "label": "چه پوشیده؟",
+              "segments": [
+                {
+                  "slot": "person",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "clothing",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "person",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "clothing",
+                  "form": "faClothes"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "person",
+                  "form": "faVerb"
+                },
+                {
+                  "fixed": "."
+                }
+              ]
+            },
+            {
+              "id": "question",
+              "label": "لباس چه کسی؟",
+              "segments": [
+                {
+                  "fixed": "Look! "
+                },
+                {
+                  "slot": "person",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "clothing",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "ببین! "
+                },
+                {
+                  "slot": "person",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "clothing",
+                  "form": "faClothes"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "person",
+                  "form": "faVerb"
+                },
+                {
+                  "fixed": "."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-16-variants",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "یک جمله با دو هدف ارتباطی",
+          "description": "یک ساختار را با معنی متفاوت بساز و ترجمهٔ هر تغییر را هم ببین.",
+          "sourceActivityId": "a1-16-composer",
+          "patternIds": [
+            "wearing",
+            "question"
+          ],
+          "examples": [
+            {
+              "en": "I am wearing a blue shirt.",
+              "fa": "بگو من پیراهن آبی پوشیده‌ام."
+            },
+            {
+              "en": "She is wearing a green dress.",
+              "fa": "بگو او (خانم) پیراهن سبز پوشیده است."
+            },
+            {
+              "en": "My shoes are black.",
+              "fa": "بگو کفش‌های من مشکی هستند."
+            }
+          ]
+        },
+        {
+          "mode": "wardrobe",
+          "title": "کمد لباس دو نفر؛ از تصویر بخوان",
+          "description": "این بار باید پوشاک، رنگ و شخص را با هم تطبیق بدهی. حدس را از روی صحنه بزن.",
+          "scenes": [
+            {
+              "topic": "پیراهن و رنگ",
+              "prompt": "چه کسی پیراهن آبی پوشیده؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "Nina",
+                  "fa": "نینا؛ لباس سبز",
+                  "emoji": "👩🏻‍🦰👗",
+                  "color": "#d4e6d3"
+                },
+                {
+                  "id": "right",
+                  "en": "Ali",
+                  "fa": "علی؛ پیراهن آبی",
+                  "emoji": "👨🏽👕",
+                  "color": "#bbd9ec"
+                }
+              ],
+              "correct": "right",
+              "successEn": "Ali is wearing a blue shirt.",
+              "successFa": "علی پیراهن آبی پوشیده است.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "کاپشن گرم",
+              "prompt": "چه کسی کاپشن گرم پوشیده است؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "Reza",
+                  "fa": "رضا؛ کاپشن",
+                  "emoji": "🧍🏻🧥",
+                  "color": "#e0e8f2"
+                },
+                {
+                  "id": "right",
+                  "en": "Sara",
+                  "fa": "سارا؛ تی‌شرت",
+                  "emoji": "👩🏼👚",
+                  "color": "#ffe7e4"
+                }
+              ],
+              "correct": "left",
+              "successEn": "Reza is wearing a warm jacket.",
+              "successFa": "رضا کاپشن گرم پوشیده است.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "کفش و چکمه",
+              "prompt": "کدام جفت برای هوای بارانی مناسب‌تر است؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "sandals",
+                  "fa": "صندل",
+                  "emoji": "🩴",
+                  "color": "#e7ebe6"
+                },
+                {
+                  "id": "right",
+                  "en": "boots",
+                  "fa": "چکمه",
+                  "emoji": "🥾",
+                  "color": "#c9af90"
+                }
+              ],
+              "correct": "right",
+              "successEn": "I wear boots in the rain.",
+              "successFa": "در باران چکمه می‌پوشم.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "جوراب و کلاه",
+              "prompt": "کدام پوشاک را روی پا می‌پوشی؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "socks",
+                  "fa": "جوراب",
+                  "emoji": "🧦",
+                  "color": "#e3eaf0"
+                },
+                {
+                  "id": "right",
+                  "en": "hat",
+                  "fa": "کلاه",
+                  "emoji": "🧢",
+                  "color": "#eee3bf"
+                }
+              ],
+              "correct": "left",
+              "successEn": "These socks are for my feet.",
+              "successFa": "این جوراب‌ها برای پاهایم هستند.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "اندازه",
+              "prompt": "کدام لباس برای فرد کوچک‌جثه مناسب‌تر است؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "large coat",
+                  "fa": "پالتوی خیلی بزرگ",
+                  "emoji": "🧥",
+                  "color": "#c4d9e9"
+                },
+                {
+                  "id": "right",
+                  "en": "small shirt",
+                  "fa": "پیراهن کوچک",
+                  "emoji": "👕",
+                  "color": "#d2eee2"
+                }
+              ],
+              "correct": "right",
+              "successEn": "The small shirt fits better.",
+              "successFa": "پیراهن کوچک اندازهٔ مناسب‌تری دارد.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "لباس زنانه",
+              "prompt": "کدام تصویر پیراهن زنانه است؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "dress",
+                  "fa": "پیراهن زنانه",
+                  "emoji": "👗",
+                  "color": "#f3d6ed"
+                },
+                {
+                  "id": "right",
+                  "en": "jacket",
+                  "fa": "کاپشن",
+                  "emoji": "🧥",
+                  "color": "#dce3eb"
+                }
+              ],
+              "correct": "left",
+              "successEn": "She is wearing a green dress.",
+              "successFa": "او پیراهن سبز پوشیده است.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "شال و دستکش",
+              "prompt": "برای دست‌های سرد چه چیزی می‌پوشی؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "scarf",
+                  "fa": "شال گردن",
+                  "emoji": "🧣",
+                  "color": "#f1d6c6"
+                },
+                {
+                  "id": "right",
+                  "en": "gloves",
+                  "fa": "دستکش",
+                  "emoji": "🧤",
+                  "color": "#d5e7f1"
+                }
+              ],
+              "correct": "right",
+              "successEn": "I wear gloves when my hands are cold.",
+              "successFa": "وقتی دست‌هایم سرد است دستکش می‌پوشم.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "مقایسهٔ لباس",
+              "prompt": "کدام لباس روشن‌تر است؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "dark coat",
+                  "fa": "پالتوی تیره",
+                  "emoji": "🧥",
+                  "color": "#385a63"
+                },
+                {
+                  "id": "right",
+                  "en": "light shirt",
+                  "fa": "پیراهن روشن",
+                  "emoji": "👕",
+                  "color": "#e7f2e7"
+                }
+              ],
+              "correct": "right",
+              "successEn": "The shirt is lighter than the coat.",
+              "successFa": "پیراهن از پالتو روشن‌تر است.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            }
+          ],
+          "id": "a1-16-mission",
+          "type": "mission-lab",
+          "phase": "variants"
+        },
+        {
+          "id": "a1-16-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "چند جمله با بانک کلمات مشترک بساز",
+          "description": "هر بار جملهٔ متفاوتی پیدا کن؛ واژه‌های مشترک را به‌موقع استفاده کن.",
+          "revision": 1,
+          "goalCount": 5,
+          "reuseBank": true,
+          "sentences": [
+            {
+              "id": "sentence-1",
+              "words": [
+                "I",
+                "am",
+                "wearing",
+                "a",
+                "blue",
+                "shirt."
+              ],
+              "fa": "بگو من پیراهن آبی پوشیده‌ام."
+            },
+            {
+              "id": "sentence-2",
+              "words": [
+                "She",
+                "is",
+                "wearing",
+                "a",
+                "green",
+                "dress."
+              ],
+              "fa": "بگو او (خانم) پیراهن سبز پوشیده است."
+            },
+            {
+              "id": "sentence-3",
+              "words": [
+                "My",
+                "shoes",
+                "are",
+                "black."
+              ],
+              "fa": "بگو کفش‌های من مشکی هستند."
+            },
+            {
+              "id": "sentence-4",
+              "words": [
+                "I",
+                "am",
+                "wearing",
+                "a",
+                "warm",
+                "jacket."
+              ],
+              "fa": "بپرس تو چه پوشیده‌ای."
+            },
+            {
+              "id": "sentence-5",
+              "words": [
+                "She",
+                "is",
+                "wearing",
+                "black",
+                "shoes."
+              ],
+              "fa": "بگو من وقتی هوا سرد است پالتو می‌پوشم."
+            }
+          ]
+        },
+        {
+          "id": "a1-16-build",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "از فارسی به یک پاسخ دقیق برس",
+          "description": "از حفظ‌کردن گزینه‌ها عبور کن؛ پاسخ را خودت به انگلیسی بنویس و بعد از هر تلاش بازخورد بگیر.",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "بگو من پیراهن آبی پوشیده‌ام.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I am wearing a blue shirt.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I am wearing a blue shirt."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو او (خانم) پیراهن سبز پوشیده است.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "She is wearing a green dress.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "She is wearing a green dress."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو کفش‌های من مشکی هستند.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "My shoes are black.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My shoes are black."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بپرس تو چه پوشیده‌ای.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "What are you wearing?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "What are you wearing?"
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو من وقتی هوا سرد است پالتو می‌پوشم.",
+              "hint": "فعل و فاعل را دقیق انتخاب کن. نمونهٔ پاسخ بعد از دو تلاش می‌آید.",
+              "example": "I wear a coat when it is cold.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I wear a coat when it is cold."
+                    ],
+                    "feedback": "یک جملهٔ کامل با همین معنی بنویس."
+                  }
+                ],
+                "success": "پاسخ را با جملهٔ کامل ساختی."
+              }
+            },
+            {
+              "task": "بگو جوراب‌های من سفید هستند.",
+              "hint": "فعل و فاعل را دقیق انتخاب کن. نمونهٔ پاسخ بعد از دو تلاش می‌آید.",
+              "example": "My socks are white.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My socks are white."
+                    ],
+                    "feedback": "یک جملهٔ کامل با همین معنی بنویس."
+                  }
+                ],
+                "success": "پاسخ را با جملهٔ کامل ساختی."
+              }
+            },
+            {
+              "task": "بگو برادرم یک ژاکت قرمز پوشیده است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "My brother is wearing a red sweater.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My brother is wearing a red sweater."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بپرس کفش‌های مشکی چه کسی هستند.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "Whose black shoes are these?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Whose black shoes are these?"
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو این پالتو بیش از حد بزرگ است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "This coat is too big.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "This coat is too big."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "بخش دوم · کاربرد و تولید",
+      "intro": "پرسش‌وپاسخ → گفت‌وگو → توصیف → تولید مستقل",
+      "masteryActivityIds": [
+        "a1-16-guided",
+        "a1-16-independent"
+      ],
+      "activities": [
+        {
+          "id": "a1-16-exchange",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "گفت‌وگو با انتخاب‌های معنی‌دار",
+          "description": "اول در ذهن جواب بده؛ سپس پاسخ نمونه را آشکار کن و شکل‌های دیگر پاسخ را بررسی کن.",
+          "pairs": [
+            {
+              "question": "What are you wearing?",
+              "questionFa": "چه پوشیده‌ای؟",
+              "variants": [
+                {
+                  "label": "پیراهن آبی",
+                  "en": "I am wearing a blue shirt.",
+                  "fa": "پیراهن آبی"
+                },
+                {
+                  "label": "کاپشن",
+                  "en": "I am wearing a warm jacket.",
+                  "fa": "کاپشن"
+                },
+                {
+                  "label": "شلوار",
+                  "en": "I am wearing black pants.",
+                  "fa": "شلوار"
+                }
+              ]
+            },
+            {
+              "question": "What is she wearing?",
+              "questionFa": "او چه پوشیده؟",
+              "variants": [
+                {
+                  "label": "لباس سبز",
+                  "en": "She is wearing a green dress.",
+                  "fa": "لباس سبز"
+                },
+                {
+                  "label": "کفش مشکی",
+                  "en": "She is wearing black shoes.",
+                  "fa": "کفش مشکی"
+                },
+                {
+                  "label": "کلاه قرمز",
+                  "en": "She is wearing a red hat.",
+                  "fa": "کلاه قرمز"
+                }
+              ]
+            },
+            {
+              "question": "Whose shoes are these?",
+              "questionFa": "این کفش‌ها مال کیست؟",
+              "variants": [
+                {
+                  "label": "من",
+                  "en": "They are my shoes.",
+                  "fa": "من"
+                },
+                {
+                  "label": "خواهر",
+                  "en": "They are my sister’s shoes.",
+                  "fa": "خواهر"
+                },
+                {
+                  "label": "تو",
+                  "en": "They are your shoes.",
+                  "fa": "تو"
+                }
+              ]
+            },
+            {
+              "question": "Is this jacket big?",
+              "questionFa": "این کاپشن بزرگ است؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, it is big.",
+                  "fa": "بله"
+                },
+                {
+                  "label": "کوچک",
+                  "en": "No, it is small.",
+                  "fa": "کوچک"
+                },
+                {
+                  "label": "گرم",
+                  "en": "It is a warm jacket.",
+                  "fa": "گرم"
+                }
+              ]
+            },
+            {
+              "question": "What color is your jacket?",
+              "questionFa": "کاپشنت چه رنگ است؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "My jacket is dark blue.",
+                  "fa": "کاپشنم آبی تیره است."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "It is light green.",
+                  "fa": "سبز روشن است."
+                }
+              ]
+            },
+            {
+              "question": "Which shoes are yours?",
+              "questionFa": "کدام کفش‌ها مال توست؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "The black shoes are mine.",
+                  "fa": "کفش‌های مشکی مال من هستند."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "The brown boots are mine.",
+                  "fa": "چکمه‌های قهوه‌ای مال من‌اند."
+                }
+              ]
+            },
+            {
+              "question": "Is this coat too big?",
+              "questionFa": "این پالتو خیلی بزرگ است؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "Yes, it is too big.",
+                  "fa": "بله، خیلی بزرگ است."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "No, this one fits well.",
+                  "fa": "نه، این یکی اندازه است."
+                }
+              ]
+            },
+            {
+              "question": "What do you wear when it is cold?",
+              "questionFa": "وقتی هوا سرد است چه می‌پوشی؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "I wear my warm sweater and scarf.",
+                  "fa": "ژاکت گرم و شال گردنم را می‌پوشم."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "I put on a coat and gloves.",
+                  "fa": "پالتو و دستکش می‌پوشم."
+                }
+              ]
+            }
+          ],
+          "requireRecall": true
+        },
+        {
+          "id": "a1-16-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "یک گفت‌وگوی واقعی دربارهٔ پوشاک و آنچه می‌پوشیم",
+          "description": "پاسخ بعدی را قبل از آشکارشدنش حدس بزن؛ سپس جای نقش‌ها را عوض کن.",
+          "lines": [
+            {
+              "speaker": "Nina",
+              "en": "What are you wearing today?",
+              "fa": "امروز چه پوشیده‌ای؟"
+            },
+            {
+              "speaker": "Reza",
+              "en": "I am wearing a blue shirt.",
+              "fa": "پیراهن آبی پوشیده‌ام."
+            },
+            {
+              "speaker": "Nina",
+              "en": "Are your shoes black?",
+              "fa": "کفش‌هایت مشکی‌اند؟"
+            },
+            {
+              "speaker": "Reza",
+              "en": "Yes, and my jacket is green.",
+              "fa": "بله، و کاپشنم سبز است."
+            },
+            {
+              "speaker": "Nina",
+              "en": "Your jacket looks warm.",
+              "fa": "کاپشنت گرم به نظر می‌رسد."
+            },
+            {
+              "speaker": "Reza",
+              "en": "It is. It is cold outside.",
+              "fa": "گرم است. بیرون سرد است."
+            },
+            {
+              "speaker": "Sara",
+              "en": "What color is your jacket?",
+              "fa": "کاپشنت چه رنگ است؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "My jacket is dark blue.",
+              "fa": "بگو برادرم یک ژاکت قرمز پوشیده است."
+            },
+            {
+              "speaker": "Ali",
+              "en": "Which shoes are yours?",
+              "fa": "کدام کفش‌ها مال توست؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "The black shoes are mine.",
+              "fa": "بپرس کفش‌های مشکی چه کسی هستند."
+            }
+          ]
+        },
+        {
+          "id": "a1-16-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "title": "از صحنه به زبان؛ خودت توضیح بده",
+          "description": "از عبارت‌های ثابت تصویر فراتر برو؛ صحنهٔ جدید را با جزئیات نوشته‌شده توصیف کن.",
+          "image": "./assets/scene-a1-16-stage2.svg",
+          "imageAlt": "کمد لباس و دو شخصیت",
+          "caption": "کمد لباس و دو شخصیت",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "به کارت تصویر مربوط به «چه پوشیده‌ای؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I am wearing a blue shirt.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I am wearing a blue shirt."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «او چه پوشیده؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "She is wearing a green dress.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "She is wearing a green dress."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «این کفش‌ها مال کیست؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "They are my shoes.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "They are my shoes."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو برادرم یک ژاکت قرمز پوشیده است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "My brother is wearing a red sweater.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My brother is wearing a red sweater."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بپرس کفش‌های مشکی چه کسی هستند.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "Whose black shoes are these?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Whose black shoes are these?"
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-16-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "title": "این بار خودت در مکالمه پاسخ بده",
+          "description": "با حداقل هفت نوبت پاسخ مستقل؛ جواب را انتخاب نمی‌کنی، خودت می‌نویسی.",
+          "practiceRevision": 1,
+          "completion": "حالا بدون راهنمایی در موقعیت تازه پاسخ بساز.",
+          "turns": [
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "What are you wearing?",
+              "task": "برای «چه پوشیده‌ای؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I am wearing black pants.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I am wearing black pants."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "What is she wearing?",
+              "task": "برای «او چه پوشیده؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "She is wearing a red hat.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "She is wearing a red hat."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "Whose shoes are these?",
+              "task": "برای «این کفش‌ها مال کیست؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "They are your shoes.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "They are your shoes."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Is this jacket big?",
+              "task": "برای «این کاپشن بزرگ است؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "It is a warm jacket.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "It is a warm jacket."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "همراهت",
+              "incoming": "What color is your jacket?",
+              "task": "بگو برادرم یک ژاکت قرمز پوشیده است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "My brother is wearing a red sweater.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My brother is wearing a red sweater."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "مشتری خیالی",
+              "incoming": "Which shoes are yours?",
+              "task": "بپرس کفش‌های مشکی چه کسی هستند.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "Whose black shoes are these?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Whose black shoes are these?"
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "همراهت",
+              "incoming": "Is this coat too big?",
+              "task": "بگو این پالتو بیش از حد بزرگ است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "This coat is too big.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "This coat is too big."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-16-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "مأموریت واقعی و ساختن بدون الگو",
+          "prompt": "دو نفر را با دو لباس متفاوت تصور کن. برای هر نفر لباس و رنگ و اندازه بنویس؛ بعد بگو خودت امروز کدام را می‌پوشی.",
+          "placeholder": "دو یا سه جملهٔ انگلیسی خودت را اینجا بنویس؛ اطلاعات فرضی کافی است.",
+          "hint": "از جمله‌های درس الهام بگیر ولی فاعل، شیء، مکان یا تصمیم را خودت عوض کن.",
+          "kind": "free-text",
+          "minWords": 14,
+          "assessment": {
+            "revision": 2,
+            "required": [
+              {
+                "patterns": [
+                  "\\b(?:wear|wearing|wears)\\b"
+                ],
+                "feedback": "واژگان اصلی موقعیت را داخل جملهٔ کامل به کار ببر."
+              },
+              {
+                "patterns": [
+                  "\\b(?:shirt|jacket|shoes|pants|dress|socks|hat|coat)\\b"
+                ],
+                "feedback": "یک کار، سؤال یا دلیل مرتبط هم بنویس."
+              }
+            ],
+            "productionProof": {
+              "minWords": 10,
+              "minClauses": 2
+            },
+            "success": "دو جملهٔ مستقل با هدف درس ساختی؛ حالا سرنخ زندگی واقعی را هم امتحان کن."
+          },
+          "realWorldMission": {
+            "cue": "وقتی برای بیرون‌رفتن لباس انتخاب می‌کنی",
+            "reflection": "دو نفر را با دو لباس متفاوت تصور کن. برای هر نفر لباس و رنگ و اندازه بنویس؛ بعد بگو خودت امروز کدام را می‌پوشی."
+          }
+        },
+        {
+          "id": "a1-16-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "حالا همان جمله‌های آغاز درس را بازبگو",
+          "description": "متن شروع را بازشنوی کن و فاصلهٔ یادگیری خودت را بسنج.",
+          "sourceActivityId": "a1-16-shadowing"
+        }
+      ]
+    }
+  ]
+}

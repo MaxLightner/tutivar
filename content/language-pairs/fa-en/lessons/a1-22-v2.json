@@ -1,0 +1,1434 @@
+{
+  "id": "A1-22",
+  "revision": "2026-10-27-owner-stage2-real-interactions-v2",
+  "status": "draft",
+  "title": "مکان‌های شهر و اطراف ما",
+  "goal": "مکان‌های اصلی شهر را بشناس و دربارهٔ وجود و جای نزدیک آن‌ها سؤال کن؛ خیابان، پارک، پیاده‌رو و مغازه را از هم تمیز بده.",
+  "duration": 24,
+  "feature": "شناسایی مکان روی نقشهٔ ساده",
+  "archetype": "K2",
+  "roadmapRef": {
+    "id": "A1-22",
+    "revision": "2026-10-27-owner-a1-stage2-practical-sequence",
+    "communicativeOutcome": "خیابان، پیاده‌رو، پارک، مغازه، کافه و مکان‌های رایج شهر را نام می‌برد؛ وجود و نزدیکی آن‌ها را در جمله و سؤال به کار می‌برد."
+  },
+  "teachingModel": {
+    "type": "discovery-production",
+    "sections": 2
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "مکان‌های اصلی شهر را بشناس و دربارهٔ وجود و جای نزدیک آن‌ها سؤال کن؛ خیابان، پارک، پیاده‌رو و مغازه را از هم تمیز بده.",
+    "prerequisites": [
+      "A1-5",
+      "A1-9",
+      "A1-10",
+      "A1-19"
+    ],
+    "previously": "دانسته‌های بخش اول و درس‌های پیشین را در این موقعیت تازه دوباره به کار می‌بریم.",
+    "quickCheck": {
+      "title": "مرور آغازین",
+      "question": "Is there a park near here?",
+      "example": "Yes, there is a park.",
+      "explanation": "اگر این پاسخ تازه است، در مسیر واژه تا تولید آن را خواهی ساخت.",
+      "allowSkip": false
+    }
+  },
+  "visual": {
+    "src": "./assets/scene-a1-22-stage2.svg",
+    "alt": "نقشهٔ یک محلهٔ ساده",
+    "caption": "نقشهٔ یک محلهٔ ساده"
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "near here"
+    ],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": false
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "بخش اول · کشف و تمرین",
+      "intro": "واژه → عبارت → جملهٔ زنده → سنجش → ساختن",
+      "masteryActivityIds": [
+        "a1-22-puzzle",
+        "a1-22-build",
+        "a1-22-mission"
+      ],
+      "activities": [
+        {
+          "id": "a1-22-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "ابتدا نمونهٔ موقعیت را گوش کن",
+          "description": "با این چند جمله آشنا شو؛ هنوز لازم نیست همه را بی‌کمک بسازی.",
+          "audioSrc": null,
+          "rate": 0.8,
+          "pauseMs": 500,
+          "lines": [
+            "There is a park near my home.",
+            "The cafe is next to the bank.",
+            "The bakery is on the corner.",
+            "The hospital is across the street.",
+            "I can see the bridge on the city map.",
+            "The school is near the library.",
+            "Where is the supermarket? Find it on the map.",
+            "The square is in the middle of the city."
+          ]
+        },
+        {
+          "id": "a1-22-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "واژگان کلیدی و تکمیلی این موقعیت",
+          "deckRevision": 2,
+          "batchSize": 4,
+          "items": [
+            {
+              "en": "park",
+              "fa": "پارک",
+              "examples": [
+                "The park is near my home."
+              ]
+            },
+            {
+              "en": "sidewalk",
+              "fa": "پیاده‌رو",
+              "examples": [
+                "The sidewalk is next to the street."
+              ]
+            },
+            {
+              "en": "corner",
+              "fa": "گوشه / نبش",
+              "examples": [
+                "The café is on the corner."
+              ]
+            },
+            {
+              "en": "cafe",
+              "fa": "کافه",
+              "examples": [
+                "There is a cafe near the park."
+              ]
+            },
+            {
+              "en": "bank",
+              "fa": "بانک",
+              "examples": [
+                "The bank is next to the shop."
+              ]
+            },
+            {
+              "en": "station",
+              "fa": "ایستگاه",
+              "examples": [
+                "The station is near the school."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "city",
+              "fa": "شهر",
+              "examples": [
+                "This is a big city."
+              ]
+            },
+            {
+              "en": "place",
+              "fa": "مکان",
+              "examples": [
+                "This place is near my home."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "store",
+              "fa": "فروشگاه",
+              "examples": [
+                "The store is on this street."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "road",
+              "fa": "جاده",
+              "role": "supplementary",
+              "examples": [
+                "This road is long."
+              ]
+            },
+            {
+              "en": "hospital",
+              "fa": "بیمارستان",
+              "examples": [
+                "The hospital is next to the park."
+              ]
+            },
+            {
+              "en": "bakery",
+              "fa": "نانوایی",
+              "examples": [
+                "The bakery is near the school."
+              ]
+            },
+            {
+              "en": "museum",
+              "fa": "موزه",
+              "examples": [
+                "The museum is in the city."
+              ]
+            },
+            {
+              "en": "bridge",
+              "fa": "پل",
+              "examples": [
+                "The bridge is over the road."
+              ]
+            },
+            {
+              "en": "plaza",
+              "fa": "میدان شهری",
+              "examples": [
+                "The bank is near the plaza."
+              ]
+            },
+            {
+              "en": "postbox",
+              "fa": "صندوق پست",
+              "examples": [
+                "The postbox is near the store."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "fountain",
+              "fa": "آبنما",
+              "examples": [
+                "The fountain is in the square."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "playfield",
+              "fa": "زمین بازی",
+              "examples": [
+                "The children play in the playfield."
+              ],
+              "role": "supplementary"
+            }
+          ]
+        },
+        {
+          "id": "a1-22-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "عبارت‌های آماده برای موقعیت واقعی",
+          "description": "عبارت‌ها را با ترجمه و نمونه ببین؛ سپس همان‌ها را در صحنهٔ تعاملی به کار ببر.",
+          "presentation": "deck",
+          "items": [
+            {
+              "en": "near here",
+              "fa": "نزدیک اینجا",
+              "kind": "fixed",
+              "examples": [
+                "Is there a bank near here?",
+                "No, not near here."
+              ]
+            },
+            {
+              "en": "on the corner",
+              "fa": "سر نبش",
+              "kind": "fixed",
+              "examples": [
+                "The cafe is on the corner.",
+                "The cafe is on the corner.",
+                "Yes, on the corner."
+              ]
+            },
+            {
+              "en": "across the street",
+              "fa": "آن سوی خیابان",
+              "kind": "fixed",
+              "examples": [
+                "It is across the street."
+              ]
+            },
+            {
+              "en": "Is there a park?",
+              "fa": "اینجا پارک هست؟",
+              "kind": "fixed",
+              "examples": []
+            },
+            {
+              "en": "next to the bank",
+              "fa": "کنار بانک",
+              "kind": "fixed",
+              "examples": [
+                "The cafe is next to the bank."
+              ]
+            },
+            {
+              "en": "near the school",
+              "fa": "نزدیک مدرسه",
+              "kind": "fixed",
+              "examples": [
+                "The hospital is near the school."
+              ]
+            },
+            {
+              "en": "between two buildings",
+              "fa": "بین دو ساختمان",
+              "kind": "fixed",
+              "examples": [
+                "The cafe is between two buildings."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-22-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "جمله را با تغییر معنی بساز",
+          "description": "روی واژه‌های روشن جمله بزن؛ معنی فارسی هم‌زمان با تغییر فاعل، ویژگی یا شیء تغییر می‌کند.",
+          "targetLanguage": "en",
+          "derivedDefaults": {},
+          "wordSets": {
+            "place": [
+              {
+                "id": "option-0",
+                "label": "a park",
+                "translation": "پارک",
+                "forms": {
+                  "en": "a park",
+                  "fa": "پارک"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "a cafe",
+                "translation": "کافه",
+                "forms": {
+                  "en": "a cafe",
+                  "fa": "کافه"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "a bank",
+                "translation": "بانک",
+                "forms": {
+                  "en": "a bank",
+                  "fa": "بانک"
+                }
+              },
+              {
+                "id": "option-3",
+                "label": "a store",
+                "translation": "فروشگاه",
+                "forms": {
+                  "en": "a store",
+                  "fa": "فروشگاه"
+                }
+              }
+            ],
+            "reference": [
+              {
+                "id": "option-0",
+                "label": "my home",
+                "translation": "خانه‌ام",
+                "forms": {
+                  "en": "my home",
+                  "fa": "خانه‌ام"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "the school",
+                "translation": "مدرسه",
+                "forms": {
+                  "en": "the school",
+                  "fa": "مدرسه"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "the market",
+                "translation": "بازار",
+                "forms": {
+                  "en": "the market",
+                  "fa": "بازار"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "place",
+              "label": "place",
+              "wordSet": "place",
+              "default": "option-0"
+            },
+            {
+              "id": "reference",
+              "label": "reference",
+              "wordSet": "reference",
+              "default": "option-0"
+            }
+          ],
+          "defaultPattern": "location",
+          "patterns": [
+            {
+              "id": "location",
+              "label": "جای مکان",
+              "segments": [
+                {
+                  "fixed": "There is "
+                },
+                {
+                  "slot": "place",
+                  "form": "en"
+                },
+                {
+                  "fixed": " near "
+                },
+                {
+                  "slot": "reference",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "نزدیک "
+                },
+                {
+                  "slot": "reference",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "place",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " وجود دارد."
+                }
+              ]
+            },
+            {
+              "id": "exist",
+              "label": "سؤال مکان",
+              "segments": [
+                {
+                  "fixed": "Is there "
+                },
+                {
+                  "slot": "place",
+                  "form": "en"
+                },
+                {
+                  "fixed": " near "
+                },
+                {
+                  "slot": "reference",
+                  "form": "en"
+                },
+                {
+                  "fixed": "?"
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "آیا نزدیک "
+                },
+                {
+                  "slot": "reference",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "place",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " هست؟"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-22-variants",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "یک جمله با دو هدف ارتباطی",
+          "description": "یک ساختار را با معنی متفاوت بساز و ترجمهٔ هر تغییر را هم ببین.",
+          "sourceActivityId": "a1-22-composer",
+          "patternIds": [
+            "location",
+            "exist"
+          ],
+          "examples": [
+            {
+              "en": "There is a park near my home.",
+              "fa": "بگو نزدیک خانه‌ام یک پارک است."
+            },
+            {
+              "en": "The sidewalk is next to the street.",
+              "fa": "بگو پیاده‌رو کنار خیابان است."
+            },
+            {
+              "en": "The cafe is on the corner.",
+              "fa": "بگو کافه سر نبش است."
+            }
+          ]
+        },
+        {
+          "mode": "city",
+          "title": "شهر کوچک طوطیوار؛ مکان را واقعاً روی نقشه پیدا کن",
+          "description": "نقشه ثابت است و مکان‌ها واقعیِ همین تمرین هستند. هر بار سراغ نشانی جدید برو؛ نام مکان را از روی نقشه پیدا کن.",
+          "places": [
+            {
+              "id": "school",
+              "fa": "مدرسه",
+              "en": "school",
+              "emoji": "🏫",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "cafe",
+              "fa": "کافه",
+              "en": "cafe",
+              "emoji": "☕",
+              "x": 2,
+              "y": 0
+            },
+            {
+              "id": "bakery",
+              "fa": "نانوایی",
+              "en": "bakery",
+              "emoji": "🥖",
+              "x": 4,
+              "y": 0
+            },
+            {
+              "id": "park",
+              "fa": "پارک",
+              "en": "park",
+              "emoji": "🌳",
+              "x": 1,
+              "y": 1
+            },
+            {
+              "id": "bank",
+              "fa": "بانک",
+              "en": "bank",
+              "emoji": "🏦",
+              "x": 3,
+              "y": 0
+            },
+            {
+              "id": "hospital",
+              "fa": "بیمارستان",
+              "en": "hospital",
+              "emoji": "🏥",
+              "x": 0,
+              "y": 2
+            },
+            {
+              "id": "square",
+              "fa": "میدان",
+              "en": "square",
+              "emoji": "⛲",
+              "x": 2,
+              "y": 2
+            },
+            {
+              "id": "library",
+              "fa": "کتابخانه",
+              "en": "library",
+              "emoji": "📚",
+              "x": 4,
+              "y": 2
+            },
+            {
+              "id": "market",
+              "fa": "سوپرمارکت",
+              "en": "supermarket",
+              "emoji": "🛒",
+              "x": 1,
+              "y": 2
+            },
+            {
+              "id": "museum",
+              "fa": "موزه",
+              "en": "museum",
+              "emoji": "🏛️",
+              "x": 3,
+              "y": 3
+            },
+            {
+              "id": "station",
+              "fa": "ایستگاه",
+              "en": "station",
+              "emoji": "🚏",
+              "x": 0,
+              "y": 4
+            },
+            {
+              "id": "bridge",
+              "fa": "پل",
+              "en": "bridge",
+              "emoji": "🌉",
+              "x": 2,
+              "y": 4
+            },
+            {
+              "id": "store",
+              "fa": "مغازه",
+              "en": "store",
+              "emoji": "🏬",
+              "x": 4,
+              "y": 4
+            }
+          ],
+          "missions": [
+            {
+              "topic": "پارک",
+              "prompt": "پارک را روی نقشه پیدا کن.",
+              "correct": "park",
+              "successEn": "This is the park. It is near the market.",
+              "successFa": "این پارک است؛ نزدیک فروشگاه قرار دارد."
+            },
+            {
+              "topic": "بیمارستان",
+              "prompt": "روی نشانهٔ بیمارستان بزن.",
+              "correct": "hospital",
+              "successEn": "The hospital is on the left side of the map.",
+              "successFa": "بیمارستان در سمت چپ نقشه است."
+            },
+            {
+              "topic": "کافه",
+              "prompt": "کافه را در ردیف بالا پیدا کن.",
+              "correct": "cafe",
+              "successEn": "The cafe is near the school.",
+              "successFa": "کافه نزدیک مدرسه است."
+            },
+            {
+              "topic": "نانوایی",
+              "prompt": "نان کجا می‌خریم؟ نانوایی را پیدا کن.",
+              "correct": "bakery",
+              "successEn": "This is the bakery.",
+              "successFa": "این نانوایی است."
+            },
+            {
+              "topic": "کتابخانه",
+              "prompt": "کتابخانه را لمس کن.",
+              "correct": "library",
+              "successEn": "The library is near the square.",
+              "successFa": "کتابخانه نزدیک میدان است."
+            },
+            {
+              "topic": "ایستگاه",
+              "prompt": "برای اتوبوس کجا می‌ایستی؟",
+              "correct": "station",
+              "successEn": "This is the bus station.",
+              "successFa": "این ایستگاه اتوبوس است."
+            },
+            {
+              "topic": "سوپرمارکت",
+              "prompt": "فروشگاه مواد غذایی کجاست؟",
+              "correct": "market",
+              "successEn": "The supermarket is next to the park.",
+              "successFa": "سوپرمارکت کنار پارک است."
+            },
+            {
+              "topic": "بانک",
+              "prompt": "بانک را روی نقشه پیدا کن.",
+              "correct": "bank",
+              "successEn": "The bank is above the museum on the map.",
+              "successFa": "بانک در نقشه بالای موزه است."
+            },
+            {
+              "topic": "پل",
+              "prompt": "نشانهٔ پل را پیدا کن.",
+              "correct": "bridge",
+              "successEn": "This is the bridge.",
+              "successFa": "این پل است."
+            },
+            {
+              "topic": "موزه",
+              "prompt": "در این شهر موزه کجاست؟",
+              "correct": "museum",
+              "successEn": "The museum is near the bank.",
+              "successFa": "موزه نزدیک بانک است."
+            }
+          ],
+          "id": "a1-22-mission",
+          "type": "mission-lab",
+          "phase": "variants"
+        },
+        {
+          "id": "a1-22-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "چند جمله با بانک کلمات مشترک بساز",
+          "description": "هر بار جملهٔ متفاوتی پیدا کن؛ واژه‌های مشترک را به‌موقع استفاده کن.",
+          "revision": 1,
+          "goalCount": 5,
+          "reuseBank": true,
+          "sentences": [
+            {
+              "id": "sentence-1",
+              "words": [
+                "There",
+                "is",
+                "a",
+                "park",
+                "near",
+                "my",
+                "home."
+              ],
+              "fa": "بگو نزدیک خانه‌ام یک پارک است."
+            },
+            {
+              "id": "sentence-2",
+              "words": [
+                "The",
+                "sidewalk",
+                "is",
+                "next",
+                "to",
+                "the",
+                "street."
+              ],
+              "fa": "بگو پیاده‌رو کنار خیابان است."
+            },
+            {
+              "id": "sentence-3",
+              "words": [
+                "The",
+                "cafe",
+                "is",
+                "on",
+                "the",
+                "corner."
+              ],
+              "fa": "بگو کافه سر نبش است."
+            },
+            {
+              "id": "sentence-4",
+              "words": [
+                "Yes,",
+                "near",
+                "my",
+                "home."
+              ],
+              "fa": "بپرس نزدیک اینجا بانک هست؟"
+            },
+            {
+              "id": "sentence-5",
+              "words": [
+                "It",
+                "is",
+                "next",
+                "to",
+                "the",
+                "park."
+              ],
+              "fa": "بگو این شهر یک پارک و یک بانک دارد."
+            }
+          ]
+        },
+        {
+          "id": "a1-22-build",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "از فارسی به یک پاسخ دقیق برس",
+          "description": "از حفظ‌کردن گزینه‌ها عبور کن؛ پاسخ را خودت به انگلیسی بنویس و بعد از هر تلاش بازخورد بگیر.",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "بگو نزدیک خانه‌ام یک پارک است.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "There is a park near my home.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "There is a park near my home."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو پیاده‌رو کنار خیابان است.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "The sidewalk is next to the street.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The sidewalk is next to the street."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو کافه سر نبش است.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "The cafe is on the corner.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The cafe is on the corner."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بپرس نزدیک اینجا بانک هست؟",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Is there a bank near here?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Is there a bank near here?"
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو این شهر یک پارک و یک بانک دارد.",
+              "hint": "فعل و فاعل را دقیق انتخاب کن. نمونهٔ پاسخ بعد از دو تلاش می‌آید.",
+              "example": "This city has a park and a bank.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "This city has a park and a bank."
+                    ],
+                    "feedback": "یک جملهٔ کامل با همین معنی بنویس."
+                  }
+                ],
+                "success": "پاسخ را با جملهٔ کامل ساختی."
+              }
+            },
+            {
+              "task": "بگو در این شهر پارک و بیمارستان هست.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "There is a park and a hospital in this city.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "There is a park and a hospital in this city."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو کافه کنار بانک است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "The cafe is next to the bank.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The cafe is next to the bank."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بپرس کتابخانه کجاست.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "Where is the library?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Where is the library?"
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو میدان شهری نزدیک بانک است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "The plaza is near the bank.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The plaza is near the bank."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "بخش دوم · کاربرد و تولید",
+      "intro": "پرسش‌وپاسخ → گفت‌وگو → توصیف → تولید مستقل",
+      "masteryActivityIds": [
+        "a1-22-guided",
+        "a1-22-independent"
+      ],
+      "activities": [
+        {
+          "id": "a1-22-exchange",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "گفت‌وگو با انتخاب‌های معنی‌دار",
+          "description": "اول در ذهن جواب بده؛ سپس پاسخ نمونه را آشکار کن و شکل‌های دیگر پاسخ را بررسی کن.",
+          "pairs": [
+            {
+              "question": "Is there a park near here?",
+              "questionFa": "نزدیک اینجا پارک هست؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, there is a park.",
+                  "fa": "بله"
+                },
+                {
+                  "label": "نزدیک خانه",
+                  "en": "Yes, near my home.",
+                  "fa": "نزدیک خانه"
+                },
+                {
+                  "label": "نه",
+                  "en": "No, there is no park here.",
+                  "fa": "نه"
+                }
+              ]
+            },
+            {
+              "question": "Where is the cafe?",
+              "questionFa": "کافه کجاست؟",
+              "variants": [
+                {
+                  "label": "نبش",
+                  "en": "The cafe is on the corner.",
+                  "fa": "نبش"
+                },
+                {
+                  "label": "پارک",
+                  "en": "It is next to the park.",
+                  "fa": "پارک"
+                },
+                {
+                  "label": "خیابان",
+                  "en": "It is across the street.",
+                  "fa": "خیابان"
+                }
+              ]
+            },
+            {
+              "question": "Where is the sidewalk?",
+              "questionFa": "پیاده‌رو کجاست؟",
+              "variants": [
+                {
+                  "label": "کنار خیابان",
+                  "en": "The sidewalk is next to the street.",
+                  "fa": "کنار خیابان"
+                },
+                {
+                  "label": "اینجا",
+                  "en": "It is here.",
+                  "fa": "اینجا"
+                },
+                {
+                  "label": "کنار پارک",
+                  "en": "It is near the park.",
+                  "fa": "کنار پارک"
+                }
+              ]
+            },
+            {
+              "question": "Is there a bank in this city?",
+              "questionFa": "در این شهر بانک هست؟",
+              "variants": [
+                {
+                  "label": "بله",
+                  "en": "Yes, there is a bank.",
+                  "fa": "بله"
+                },
+                {
+                  "label": "نبش",
+                  "en": "Yes, on the corner.",
+                  "fa": "نبش"
+                },
+                {
+                  "label": "نه",
+                  "en": "No, not near here.",
+                  "fa": "نه"
+                }
+              ]
+            },
+            {
+              "question": "Where is the park?",
+              "questionFa": "پارک کجاست؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "The park is near the market.",
+                  "fa": "پارک نزدیک بازار است."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "The park is on the map, near the cafe.",
+                  "fa": "پارک روی نقشه، نزدیک کافه است."
+                }
+              ]
+            },
+            {
+              "question": "Is there a hospital in this city?",
+              "questionFa": "در این شهر بیمارستان هست؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "Yes, the hospital is near the school.",
+                  "fa": "بله، بیمارستان نزدیک مدرسه است."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "Yes, there is a hospital on the west side.",
+                  "fa": "بله، در سمت غرب شهر بیمارستان هست."
+                }
+              ]
+            },
+            {
+              "question": "What is next to the park?",
+              "questionFa": "کنار پارک چیست؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "The supermarket is next to the park.",
+                  "fa": "سوپرمارکت کنار پارک است."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "There is a market near the park.",
+                  "fa": "نزدیک پارک یک فروشگاه هست."
+                }
+              ]
+            },
+            {
+              "question": "Where can I buy bread?",
+              "questionFa": "از کجا نان بخرم؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "At the bakery on the corner.",
+                  "fa": "در نانوایی سر نبش."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "At the bakery near the school.",
+                  "fa": "در نانوایی نزدیک مدرسه."
+                }
+              ]
+            }
+          ],
+          "requireRecall": true
+        },
+        {
+          "id": "a1-22-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "یک گفت‌وگوی واقعی دربارهٔ مکان‌های شهر و اطراف ما",
+          "description": "پاسخ بعدی را قبل از آشکارشدنش حدس بزن؛ سپس جای نقش‌ها را عوض کن.",
+          "lines": [
+            {
+              "speaker": "Visitor",
+              "en": "Is there a cafe near here?",
+              "fa": "نزدیک اینجا کافه هست؟"
+            },
+            {
+              "speaker": "Local",
+              "en": "Yes. There is a cafe near the park.",
+              "fa": "بله. نزدیک پارک کافه‌ای هست."
+            },
+            {
+              "speaker": "Visitor",
+              "en": "Where is the park?",
+              "fa": "پارک کجاست؟"
+            },
+            {
+              "speaker": "Local",
+              "en": "It is across the street.",
+              "fa": "آن‌طرف خیابان است."
+            },
+            {
+              "speaker": "Visitor",
+              "en": "And the bank?",
+              "fa": "و بانک؟"
+            },
+            {
+              "speaker": "Local",
+              "en": "The bank is on the corner.",
+              "fa": "بانک سر نبش است."
+            },
+            {
+              "speaker": "Sara",
+              "en": "Where is the park?",
+              "fa": "پارک کجاست؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "The park is near the market.",
+              "fa": "بگو در این شهر پارک و بیمارستان هست."
+            },
+            {
+              "speaker": "Ali",
+              "en": "Is there a hospital in this city?",
+              "fa": "در این شهر بیمارستان هست؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "Yes, the hospital is near the school.",
+              "fa": "بگو کافه کنار بانک است."
+            }
+          ]
+        },
+        {
+          "id": "a1-22-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "title": "از صحنه به زبان؛ خودت توضیح بده",
+          "description": "از عبارت‌های ثابت تصویر فراتر برو؛ صحنهٔ جدید را با جزئیات نوشته‌شده توصیف کن.",
+          "image": "./assets/scene-a1-22-stage2.svg",
+          "imageAlt": "نقشهٔ یک محلهٔ ساده",
+          "caption": "نقشهٔ یک محلهٔ ساده",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "به کارت تصویر مربوط به «نزدیک اینجا پارک هست؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Yes, there is a park.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Yes, there is a park."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «کافه کجاست؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "The cafe is on the corner.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The cafe is on the corner."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «پیاده‌رو کجاست؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "The sidewalk is next to the street.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The sidewalk is next to the street."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو در این شهر پارک و بیمارستان هست.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "There is a park and a hospital in this city.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "There is a park and a hospital in this city."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو کافه کنار بانک است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "The cafe is next to the bank.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The cafe is next to the bank."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-22-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "title": "این بار خودت در مکالمه پاسخ بده",
+          "description": "با حداقل هفت نوبت پاسخ مستقل؛ جواب را انتخاب نمی‌کنی، خودت می‌نویسی.",
+          "practiceRevision": 1,
+          "completion": "حالا بدون راهنمایی در موقعیت تازه پاسخ بساز.",
+          "turns": [
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "Is there a park near here?",
+              "task": "برای «نزدیک اینجا پارک هست؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "No, there is no park here.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "No, there is no park here."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is the cafe?",
+              "task": "برای «کافه کجاست؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "It is across the street.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "It is across the street."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "Where is the sidewalk?",
+              "task": "برای «پیاده‌رو کجاست؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "It is near the park.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "It is near the park."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Is there a bank in this city?",
+              "task": "برای «در این شهر بانک هست؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "No, not near here.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "No, not near here."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "همراهت",
+              "incoming": "Where is the park?",
+              "task": "بگو در این شهر پارک و بیمارستان هست.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "There is a park and a hospital in this city.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "There is a park and a hospital in this city."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "مشتری خیالی",
+              "incoming": "Is there a hospital in this city?",
+              "task": "بگو کافه کنار بانک است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "The cafe is next to the bank.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The cafe is next to the bank."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "همراهت",
+              "incoming": "What is next to the park?",
+              "task": "بپرس کتابخانه کجاست.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "Where is the library?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Where is the library?"
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "مشتری خیالی",
+              "incoming": "Where can I buy bread?",
+              "task": "بگو میدان شهری نزدیک بانک است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "The plaza is near the bank.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "The plaza is near the bank."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-22-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "مأموریت واقعی و ساختن بدون الگو",
+          "prompt": "خانهٔ خیالی‌ات را روی نقشهٔ شهر تصور کن. سه مکان نزدیک را نام ببر، جای نسبی دو مکان را بگو و از یک رهگذر مکان سوم را بپرس.",
+          "placeholder": "دو یا سه جملهٔ انگلیسی خودت را اینجا بنویس؛ اطلاعات فرضی کافی است.",
+          "hint": "از جمله‌های درس الهام بگیر ولی فاعل، شیء، مکان یا تصمیم را خودت عوض کن.",
+          "kind": "free-text",
+          "minWords": 14,
+          "assessment": {
+            "revision": 2,
+            "required": [
+              {
+                "patterns": [
+                  "\\b(?:park|sidewalk|cafe|bank|store|station|city)\\b",
+                  "\\b(?:hospital|bakery|museum|bridge|plaza|library|supermarket)\\b"
+                ],
+                "feedback": "واژگان اصلی موقعیت را داخل جملهٔ کامل به کار ببر."
+              },
+              {
+                "patterns": [
+                  "\\b(?:near|next to|on the corner|across)\\b"
+                ],
+                "feedback": "یک کار، سؤال یا دلیل مرتبط هم بنویس."
+              }
+            ],
+            "productionProof": {
+              "minWords": 10,
+              "minClauses": 2
+            },
+            "success": "دو جملهٔ مستقل با هدف درس ساختی؛ حالا سرنخ زندگی واقعی را هم امتحان کن."
+          },
+          "realWorldMission": {
+            "cue": "وقتی در خیابان اطرافت را نگاه می‌کنی",
+            "reflection": "خانهٔ خیالی‌ات را روی نقشهٔ شهر تصور کن. سه مکان نزدیک را نام ببر، جای نسبی دو مکان را بگو و از یک رهگذر مکان سوم را بپرس."
+          }
+        },
+        {
+          "id": "a1-22-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "حالا همان جمله‌های آغاز درس را بازبگو",
+          "description": "متن شروع را بازشنوی کن و فاصلهٔ یادگیری خودت را بسنج.",
+          "sourceActivityId": "a1-22-shadowing"
+        }
+      ]
+    }
+  ]
+}

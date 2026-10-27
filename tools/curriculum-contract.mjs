@@ -210,7 +210,7 @@ export function validatePublishedCatalog({ manifest, runtimeCourse, legacy, read
       errors.push('A1 stage three changed during the stage-two-only amendment');
     for(let n=15;n<=24;n++){
       const id='A1-'+n,entry=entries.find(item=>item.id===id);
-      if (entry?.status!=='sample'||entry.file!==amendment?.newFiles?.[id])
+      if (entry?.status!=='sample'||entry.file!==(amendment?.depthRevision?.replacementFiles?.[id] || amendment?.newFiles?.[id]))
         errors.push(id+': owner-approved stage-two lesson file not active');
     }
   }

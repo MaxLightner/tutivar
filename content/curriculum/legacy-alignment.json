@@ -548,6 +548,24 @@
     "stage3Fingerprint": {
       "rows": "87b270580cf16092cfac393973c3266d6e1b087f",
       "catalog": "a10237de1bf02b5b55a6632bddf54735c909a5d8"
+    },
+    "depthRevision": {
+      "revision": "2026-10-27-owner-stage2-real-interactions-v2",
+      "reason": "Owner feedback: meaningful interactive comparison, clothing translations and optional vocabulary, deeper symptoms and jobs, actual shopping lists, bill/receipt, map search and multi-step routing",
+      "preserveProgress": true,
+      "source": "2026-10-27 Tutivar A1.2 owner lesson-by-lesson review",
+      "replacementFiles": {
+        "A1-15": "lessons/a1-15-v2.json",
+        "A1-16": "lessons/a1-16-v2.json",
+        "A1-17": "lessons/a1-17-v2.json",
+        "A1-18": "lessons/a1-18-v2.json",
+        "A1-19": "lessons/a1-19-v2.json",
+        "A1-20": "lessons/a1-20-v2.json",
+        "A1-21": "lessons/a1-21-v2.json",
+        "A1-22": "lessons/a1-22-v2.json",
+        "A1-23": "lessons/a1-23-v2.json",
+        "A1-24": "lessons/a1-24-v2.json"
+      }
     }
   }
 }

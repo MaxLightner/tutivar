@@ -1,0 +1,1563 @@
+{
+  "id": "A1-17",
+  "revision": "2026-10-27-owner-stage2-real-interactions-v2",
+  "status": "draft",
+  "title": "اعضای بدن و جای آن‌ها",
+  "goal": "نام و جای اعضای معمول بدن را بفهم و بگو؛ اعضایی را که از درس ظاهر می‌شناسی در جمله‌های تازه دوباره به کار ببر.",
+  "duration": 24,
+  "feature": "نشان‌دادن، نام‌بردن و توصیف بدن",
+  "archetype": "K2",
+  "roadmapRef": {
+    "id": "A1-17",
+    "revision": "2026-10-27-owner-a1-stage2-practical-sequence",
+    "communicativeOutcome": "اعضای اصلی بدن را نام می‌برد و روی تصویر یا شخص خیالی مشخص می‌کند؛ جای سادهٔ عضو را شرح می‌دهد و میان مفرد و جمع رایج مانند foot/feet تمایز می‌گذارد."
+  },
+  "teachingModel": {
+    "type": "discovery-production",
+    "sections": 2
+  },
+  "lessonTemplate": "discovery-production-v1",
+  "orientation": {
+    "goal": "نام و جای اعضای معمول بدن را بفهم و بگو؛ اعضایی را که از درس ظاهر می‌شناسی در جمله‌های تازه دوباره به کار ببر.",
+    "prerequisites": [
+      "A1-2",
+      "A1-5",
+      "A1-7",
+      "A1-16"
+    ],
+    "previously": "دانسته‌های بخش اول و درس‌های پیشین را در این موقعیت تازه دوباره به کار می‌بریم.",
+    "quickCheck": {
+      "title": "مرور آغازین",
+      "question": "Where is your neck?",
+      "example": "My neck is under my head.",
+      "explanation": "اگر این پاسخ تازه است، در مسیر واژه تا تولید آن را خواهی ساخت.",
+      "allowSkip": false
+    }
+  },
+  "visual": {
+    "src": "./assets/scene-a1-17-stage2.svg",
+    "alt": "بدن از سر تا پا",
+    "caption": "بدن از سر تا پا"
+  },
+  "learningAudit": {
+    "focusExpressions": [
+      "two feet"
+    ],
+    "specificIndependentExpressions": [],
+    "minDownstreamActivities": 2,
+    "minGuidedActivities": 1,
+    "requireIndependentProduction": false
+  },
+  "sections": [
+    {
+      "id": "foundation",
+      "label": "بخش اول · کشف و تمرین",
+      "intro": "واژه → عبارت → جملهٔ زنده → سنجش → ساختن",
+      "masteryActivityIds": [
+        "a1-17-puzzle",
+        "a1-17-build",
+        "a1-17-mission"
+      ],
+      "activities": [
+        {
+          "id": "a1-17-shadowing",
+          "type": "shadowing",
+          "phase": "shadowing",
+          "title": "ابتدا نمونهٔ موقعیت را گوش کن",
+          "description": "با این چند جمله آشنا شو؛ هنوز لازم نیست همه را بی‌کمک بسازی.",
+          "audioSrc": null,
+          "rate": 0.8,
+          "pauseMs": 500,
+          "lines": [
+            "I have two eyes and one nose.",
+            "My leg is longer than my foot.",
+            "I have two hands and ten fingers.",
+            "My feet are under my knees.",
+            "This is my elbow, not my wrist.",
+            "My shoulder is bigger than my finger.",
+            "I have one head and two shoulders.",
+            "Foot becomes feet when we speak about two."
+          ]
+        },
+        {
+          "id": "a1-17-vocabulary",
+          "type": "vocabulary",
+          "phase": "words",
+          "title": "واژگان کلیدی و تکمیلی این موقعیت",
+          "deckRevision": 2,
+          "batchSize": 4,
+          "items": [
+            {
+              "en": "head",
+              "fa": "سر",
+              "examples": [
+                "My head is above my shoulders."
+              ]
+            },
+            {
+              "en": "leg",
+              "fa": "پا (از ران تا مچ)",
+              "examples": [
+                "I have two legs."
+              ]
+            },
+            {
+              "en": "foot",
+              "fa": "پا (مچ به پایین)",
+              "examples": [
+                "This is my left foot."
+              ]
+            },
+            {
+              "en": "stomach",
+              "fa": "شکم",
+              "examples": [
+                "My stomach is below my chest."
+              ]
+            },
+            {
+              "en": "back",
+              "fa": "پشت",
+              "examples": [
+                "This is my back."
+              ]
+            },
+            {
+              "en": "neck",
+              "fa": "گردن",
+              "examples": [
+                "My neck is under my head."
+              ]
+            },
+            {
+              "en": "knee",
+              "fa": "زانو",
+              "examples": [
+                "My knee is on my leg."
+              ]
+            },
+            {
+              "en": "shoulder",
+              "fa": "شانه",
+              "examples": [
+                "My shoulder is next to my neck."
+              ]
+            },
+            {
+              "en": "elbow",
+              "fa": "آرنج",
+              "examples": [
+                "My elbow is between my shoulder and my hand."
+              ]
+            },
+            {
+              "en": "wrist",
+              "fa": "مچ دست",
+              "examples": [
+                "My wrist is smaller than my arm."
+              ]
+            },
+            {
+              "en": "ankle",
+              "fa": "مچ پا",
+              "examples": [
+                "My ankle is above my foot."
+              ]
+            },
+            {
+              "en": "finger",
+              "fa": "انگشت دست",
+              "examples": [
+                "I have ten fingers."
+              ]
+            },
+            {
+              "en": "toe",
+              "fa": "انگشت پا",
+              "examples": [
+                "I have ten toes."
+              ]
+            },
+            {
+              "en": "chest",
+              "fa": "قفسهٔ سینه",
+              "examples": [
+                "My chest is above my stomach."
+              ]
+            },
+            {
+              "en": "chin",
+              "fa": "چانه",
+              "examples": [
+                "My chin is under my mouth."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "heel",
+              "fa": "پاشنه",
+              "examples": [
+                "My heel is part of my foot."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "thumb",
+              "fa": "شست دست",
+              "examples": [
+                "I have two thumbs."
+              ],
+              "role": "supplementary"
+            },
+            {
+              "en": "waist",
+              "fa": "کمر / میان‌تنه",
+              "examples": [
+                "My waist is below my chest."
+              ],
+              "role": "supplementary"
+            }
+          ]
+        },
+        {
+          "id": "a1-17-expressions",
+          "type": "expression-study",
+          "phase": "phrases",
+          "title": "عبارت‌های آماده برای موقعیت واقعی",
+          "description": "عبارت‌ها را با ترجمه و نمونه ببین؛ سپس همان‌ها را در صحنهٔ تعاملی به کار ببر.",
+          "presentation": "deck",
+          "items": [
+            {
+              "en": "two feet",
+              "fa": "دو پا",
+              "kind": "fixed",
+              "examples": []
+            },
+            {
+              "en": "left hand",
+              "fa": "دست چپ",
+              "kind": "fixed",
+              "examples": []
+            },
+            {
+              "en": "right leg",
+              "fa": "پای راست",
+              "kind": "fixed",
+              "examples": []
+            },
+            {
+              "en": "above the knee",
+              "fa": "بالای زانو",
+              "kind": "fixed",
+              "examples": []
+            },
+            {
+              "en": "ten fingers",
+              "fa": "ده انگشت دست",
+              "kind": "fixed",
+              "examples": [
+                "I have ten fingers."
+              ]
+            },
+            {
+              "en": "one nose",
+              "fa": "یک بینی",
+              "kind": "fixed",
+              "examples": [
+                "I have one nose."
+              ]
+            },
+            {
+              "en": "longer than",
+              "fa": "بلندتر از",
+              "kind": "fixed",
+              "examples": [
+                "My leg is longer than my hand."
+              ]
+            },
+            {
+              "en": "both hands",
+              "fa": "هر دو دست",
+              "kind": "fixed",
+              "examples": [
+                "I can move both hands."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-17-composer",
+          "type": "sentence-composer",
+          "phase": "sentence",
+          "title": "جمله را با تغییر معنی بساز",
+          "description": "روی واژه‌های روشن جمله بزن؛ معنی فارسی هم‌زمان با تغییر فاعل، ویژگی یا شیء تغییر می‌کند.",
+          "targetLanguage": "en",
+          "derivedDefaults": {},
+          "wordSets": {
+            "first": [
+              {
+                "id": "option-0",
+                "label": "My arm",
+                "translation": "دست من",
+                "forms": {
+                  "en": "My arm",
+                  "fa": "دست من",
+                  "enWithin": "my arm"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "My leg",
+                "translation": "پای من",
+                "forms": {
+                  "en": "My leg",
+                  "fa": "پای من",
+                  "enWithin": "my leg"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "My shoulder",
+                "translation": "شانهٔ من",
+                "forms": {
+                  "en": "My shoulder",
+                  "fa": "شانهٔ من",
+                  "enWithin": "my shoulder"
+                }
+              },
+              {
+                "id": "option-3",
+                "label": "My hand",
+                "translation": "دست من",
+                "forms": {
+                  "en": "My hand",
+                  "fa": "دست من",
+                  "enWithin": "my hand"
+                }
+              }
+            ],
+            "second": [
+              {
+                "id": "option-0",
+                "label": "my finger",
+                "translation": "انگشت من",
+                "forms": {
+                  "en": "my finger",
+                  "fa": "انگشت من"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "my foot",
+                "translation": "کف پای من",
+                "forms": {
+                  "en": "my foot",
+                  "fa": "کف پای من"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "my wrist",
+                "translation": "مچ دست من",
+                "forms": {
+                  "en": "my wrist",
+                  "fa": "مچ دست من"
+                }
+              },
+              {
+                "id": "option-3",
+                "label": "my knee",
+                "translation": "زانوی من",
+                "forms": {
+                  "en": "my knee",
+                  "fa": "زانوی من"
+                }
+              }
+            ],
+            "feature": [
+              {
+                "id": "option-0",
+                "label": "longer than",
+                "translation": "بلندتر از",
+                "forms": {
+                  "en": "longer than",
+                  "fa": "بلندتر"
+                }
+              },
+              {
+                "id": "option-1",
+                "label": "bigger than",
+                "translation": "بزرگ‌تر از",
+                "forms": {
+                  "en": "bigger than",
+                  "fa": "بزرگ‌تر"
+                }
+              },
+              {
+                "id": "option-2",
+                "label": "smaller than",
+                "translation": "کوچک‌تر از",
+                "forms": {
+                  "en": "smaller than",
+                  "fa": "کوچک‌تر"
+                }
+              }
+            ]
+          },
+          "slots": [
+            {
+              "id": "first",
+              "label": "first",
+              "wordSet": "first",
+              "default": "option-0"
+            },
+            {
+              "id": "second",
+              "label": "second",
+              "wordSet": "second",
+              "default": "option-0"
+            },
+            {
+              "id": "feature",
+              "label": "feature",
+              "wordSet": "feature",
+              "default": "option-0"
+            }
+          ],
+          "defaultPattern": "compare",
+          "patterns": [
+            {
+              "id": "compare",
+              "label": "مقایسه کن",
+              "segments": [
+                {
+                  "slot": "first",
+                  "form": "en"
+                },
+                {
+                  "fixed": " is "
+                },
+                {
+                  "slot": "feature",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "second",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "slot": "first",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " از "
+                },
+                {
+                  "slot": "second",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "feature",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " است."
+                }
+              ]
+            },
+            {
+              "id": "opinion",
+              "label": "به نظرت چطور؟",
+              "segments": [
+                {
+                  "fixed": "I think "
+                },
+                {
+                  "slot": "first",
+                  "form": "enWithin"
+                },
+                {
+                  "fixed": " is "
+                },
+                {
+                  "slot": "feature",
+                  "form": "en"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "second",
+                  "form": "en"
+                },
+                {
+                  "fixed": "."
+                }
+              ],
+              "translationSegments": [
+                {
+                  "fixed": "فکر می‌کنم "
+                },
+                {
+                  "slot": "first",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " از "
+                },
+                {
+                  "slot": "second",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " "
+                },
+                {
+                  "slot": "feature",
+                  "form": "fa"
+                },
+                {
+                  "fixed": " است."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1-17-variants",
+          "type": "composer-view",
+          "phase": "variants",
+          "title": "یک جمله با دو هدف ارتباطی",
+          "description": "یک ساختار را با معنی متفاوت بساز و ترجمهٔ هر تغییر را هم ببین.",
+          "sourceActivityId": "a1-17-composer",
+          "patternIds": [
+            "compare",
+            "opinion"
+          ],
+          "examples": [
+            {
+              "en": "I have two legs.",
+              "fa": "بگو من دو پا دارم."
+            },
+            {
+              "en": "My neck is under my head.",
+              "fa": "بگو گردنم زیر سرم است."
+            },
+            {
+              "en": "My knee is on my leg.",
+              "fa": "بگو زانوی من روی پایم است."
+            }
+          ]
+        },
+        {
+          "mode": "body",
+          "title": "بدن را مقایسه کن؛ مفرد، جمع، اندازه",
+          "description": "به جای پرسیدن «عضو کجاست؟» دو عضو یا دو تعداد را مقایسه کن و عضو صحیح را لمس کن.",
+          "scenes": [
+            {
+              "topic": "یک یا دو؟",
+              "prompt": "از کدام عضو معمولاً دو تا داریم؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "head",
+                  "fa": "سر",
+                  "emoji": "🙂",
+                  "color": "#f2d8c1"
+                },
+                {
+                  "id": "right",
+                  "en": "hands",
+                  "fa": "دست‌ها",
+                  "emoji": "👐",
+                  "color": "#d6e5e1"
+                }
+              ],
+              "correct": "right",
+              "successEn": "We have two hands but one head.",
+              "successFa": "دو دست داریم اما یک سر.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "پا و ساق",
+              "prompt": "کدام عضو معمولاً بلندتر است؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "leg",
+                  "fa": "پا از ران تا مچ",
+                  "emoji": "🦵",
+                  "color": "#e9d8c4"
+                },
+                {
+                  "id": "right",
+                  "en": "foot",
+                  "fa": "کف پا",
+                  "emoji": "🦶",
+                  "color": "#e4e6da"
+                }
+              ],
+              "correct": "left",
+              "successEn": "My leg is longer than my foot.",
+              "successFa": "پای من از کف پایم بلندتر است.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "foot یا feet",
+              "prompt": "کدام تصویر با feet سازگار است؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "one foot",
+                  "fa": "یک پا",
+                  "emoji": "🦶",
+                  "color": "#f5e7d3"
+                },
+                {
+                  "id": "right",
+                  "en": "two feet",
+                  "fa": "دو پا",
+                  "emoji": "🦶🦶",
+                  "color": "#e6efde"
+                }
+              ],
+              "correct": "right",
+              "successEn": "One foot, two feet.",
+              "successFa": "یک پا foot و دو پا feet است.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "انگشت و بازو",
+              "prompt": "کدام عضو بلندتر است؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "arm",
+                  "fa": "بازو / دست",
+                  "emoji": "💪",
+                  "color": "#e4d6ce"
+                },
+                {
+                  "id": "right",
+                  "en": "finger",
+                  "fa": "انگشت",
+                  "emoji": "☝️",
+                  "color": "#e9edf3"
+                }
+              ],
+              "correct": "left",
+              "successEn": "An arm is longer than a finger.",
+              "successFa": "دست از انگشت بلندتر است.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "مچ دست یا پا",
+              "prompt": "کدام عضو به hand وصل است؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "wrist",
+                  "fa": "مچ دست",
+                  "emoji": "✋",
+                  "color": "#d8e7e8"
+                },
+                {
+                  "id": "right",
+                  "en": "ankle",
+                  "fa": "مچ پا",
+                  "emoji": "🦶",
+                  "color": "#e5d8d6"
+                }
+              ],
+              "correct": "left",
+              "successEn": "The wrist is part of the hand and arm.",
+              "successFa": "مچ دست به دست و بازو مربوط است.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "بینی و چشم",
+              "prompt": "کدام عضو معمولاً یک عدد است؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "eyes",
+                  "fa": "چشم‌ها",
+                  "emoji": "👀",
+                  "color": "#e8f0d8"
+                },
+                {
+                  "id": "right",
+                  "en": "nose",
+                  "fa": "بینی",
+                  "emoji": "👃",
+                  "color": "#f1dacb"
+                }
+              ],
+              "correct": "right",
+              "successEn": "I have two eyes and one nose.",
+              "successFa": "دو چشم و یک بینی دارم.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "آرنج و زانو",
+              "prompt": "کدام عضو بخشی از پا است؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "elbow",
+                  "fa": "آرنج",
+                  "emoji": "💪",
+                  "color": "#e9ddd1"
+                },
+                {
+                  "id": "right",
+                  "en": "knee",
+                  "fa": "زانو",
+                  "emoji": "🦵",
+                  "color": "#dde8e5"
+                }
+              ],
+              "correct": "right",
+              "successEn": "My knee is part of my leg.",
+              "successFa": "زانو بخشی از پا است.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            },
+            {
+              "topic": "شانه و انگشت",
+              "prompt": "کدام عضو بزرگ‌تر است؟",
+              "options": [
+                {
+                  "id": "left",
+                  "en": "shoulder",
+                  "fa": "شانه",
+                  "emoji": "🧍",
+                  "color": "#d8e9f1"
+                },
+                {
+                  "id": "right",
+                  "en": "finger",
+                  "fa": "انگشت",
+                  "emoji": "☝️",
+                  "color": "#e8e3d8"
+                }
+              ],
+              "correct": "left",
+              "successEn": "My shoulder is bigger than my finger.",
+              "successFa": "شانهٔ من از انگشتم بزرگ‌تر است.",
+              "retryFa": "به رنگ، تعداد، قیمت، شکل یا موقعیتِ دو تصویر دقت کن."
+            }
+          ],
+          "id": "a1-17-mission",
+          "type": "mission-lab",
+          "phase": "variants"
+        },
+        {
+          "id": "a1-17-puzzle",
+          "type": "sentence-builder",
+          "phase": "puzzle",
+          "title": "چند جمله با بانک کلمات مشترک بساز",
+          "description": "هر بار جملهٔ متفاوتی پیدا کن؛ واژه‌های مشترک را به‌موقع استفاده کن.",
+          "revision": 1,
+          "goalCount": 5,
+          "reuseBank": true,
+          "sentences": [
+            {
+              "id": "sentence-1",
+              "words": [
+                "I",
+                "have",
+                "two",
+                "legs."
+              ],
+              "fa": "بگو من دو پا دارم."
+            },
+            {
+              "id": "sentence-2",
+              "words": [
+                "My",
+                "neck",
+                "is",
+                "under",
+                "my",
+                "head."
+              ],
+              "fa": "بگو گردنم زیر سرم است."
+            },
+            {
+              "id": "sentence-3",
+              "words": [
+                "My",
+                "knee",
+                "is",
+                "on",
+                "my",
+                "leg."
+              ],
+              "fa": "بگو زانوی من روی پایم است."
+            },
+            {
+              "id": "sentence-4",
+              "words": [
+                "My",
+                "neck",
+                "is",
+                "above",
+                "my",
+                "shoulders."
+              ],
+              "fa": "بپرس شانهٔ تو کجاست."
+            },
+            {
+              "id": "sentence-5",
+              "words": [
+                "This",
+                "picture",
+                "has",
+                "one",
+                "leg."
+              ],
+              "fa": "بگو شکمم پایین‌تر از سرم است."
+            }
+          ]
+        },
+        {
+          "id": "a1-17-build",
+          "type": "response-practice",
+          "phase": "construction",
+          "title": "از فارسی به یک پاسخ دقیق برس",
+          "description": "از حفظ‌کردن گزینه‌ها عبور کن؛ پاسخ را خودت به انگلیسی بنویس و بعد از هر تلاش بازخورد بگیر.",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "بگو من دو پا دارم.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I have two legs.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I have two legs."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو گردنم زیر سرم است.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "My neck is under my head.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My neck is under my head."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو زانوی من روی پایم است.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "My knee is on my leg.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My knee is on my leg."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بپرس شانهٔ تو کجاست.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Where is your shoulder?",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Where is your shoulder?"
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو شکمم پایین‌تر از سرم است.",
+              "hint": "فعل و فاعل را دقیق انتخاب کن. نمونهٔ پاسخ بعد از دو تلاش می‌آید.",
+              "example": "My stomach is below my head.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My stomach is below my head."
+                    ],
+                    "feedback": "یک جملهٔ کامل با همین معنی بنویس."
+                  }
+                ],
+                "success": "پاسخ را با جملهٔ کامل ساختی."
+              }
+            },
+            {
+              "task": "بگو من دو پا دارم (جمع نامنظمِ foot).",
+              "hint": "فعل و فاعل را دقیق انتخاب کن. نمونهٔ پاسخ بعد از دو تلاش می‌آید.",
+              "example": "I have two feet.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I have two feet."
+                    ],
+                    "feedback": "یک جملهٔ کامل با همین معنی بنویس."
+                  }
+                ],
+                "success": "پاسخ را با جملهٔ کامل ساختی."
+              }
+            },
+            {
+              "task": "بگو دو پا ولی یک سر دارم.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "I have two feet but one head.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I have two feet but one head."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو دست من از انگشتم بلندتر است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "My arm is longer than my finger.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My arm is longer than my finger."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو من ده انگشت دست دارم.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "I have ten fingers.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I have ten fingers."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو ده انگشت پا دارم.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "I have ten toes.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I have ten toes."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو قفسهٔ سینه‌ام بالای شکمم قرار دارد.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "My chest is above my stomach.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My chest is above my stomach."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "production",
+      "label": "بخش دوم · کاربرد و تولید",
+      "intro": "پرسش‌وپاسخ → گفت‌وگو → توصیف → تولید مستقل",
+      "masteryActivityIds": [
+        "a1-17-guided",
+        "a1-17-independent"
+      ],
+      "activities": [
+        {
+          "id": "a1-17-exchange",
+          "type": "exchange-lab",
+          "phase": "correspondence",
+          "title": "گفت‌وگو با انتخاب‌های معنی‌دار",
+          "description": "اول در ذهن جواب بده؛ سپس پاسخ نمونه را آشکار کن و شکل‌های دیگر پاسخ را بررسی کن.",
+          "pairs": [
+            {
+              "question": "Where is your neck?",
+              "questionFa": "گردنت کجاست؟",
+              "variants": [
+                {
+                  "label": "زیر سر",
+                  "en": "My neck is under my head.",
+                  "fa": "زیر سر"
+                },
+                {
+                  "label": "بالای شانه",
+                  "en": "My neck is above my shoulders.",
+                  "fa": "بالای شانه"
+                },
+                {
+                  "label": "همین‌جا",
+                  "en": "Here is my neck.",
+                  "fa": "همین‌جا"
+                }
+              ]
+            },
+            {
+              "question": "How many legs do you have?",
+              "questionFa": "چند پا داری؟",
+              "variants": [
+                {
+                  "label": "دو",
+                  "en": "I have two legs.",
+                  "fa": "دو"
+                },
+                {
+                  "label": "یک (خیالی)",
+                  "en": "This picture has one leg.",
+                  "fa": "یک (خیالی)"
+                },
+                {
+                  "label": "پای من",
+                  "en": "These are my legs.",
+                  "fa": "پای من"
+                }
+              ]
+            },
+            {
+              "question": "What is below your knee?",
+              "questionFa": "زیر زانو چیست؟",
+              "variants": [
+                {
+                  "label": "پا",
+                  "en": "My foot is below my knee.",
+                  "fa": "پا"
+                },
+                {
+                  "label": "دو پا",
+                  "en": "My feet are below my knees.",
+                  "fa": "دو پا"
+                },
+                {
+                  "label": "مچ",
+                  "en": "My ankle is below my knee.",
+                  "fa": "مچ"
+                }
+              ]
+            },
+            {
+              "question": "Where is your back?",
+              "questionFa": "پشتت کجاست؟",
+              "variants": [
+                {
+                  "label": "پشت بدن",
+                  "en": "My back is behind my stomach.",
+                  "fa": "پشت بدن"
+                },
+                {
+                  "label": "اینجاست",
+                  "en": "Here is my back.",
+                  "fa": "اینجاست"
+                },
+                {
+                  "label": "درد نیست",
+                  "en": "This is my back.",
+                  "fa": "درد نیست"
+                }
+              ]
+            },
+            {
+              "question": "How many fingers do you have?",
+              "questionFa": "چند انگشت دست داری؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "I have ten fingers.",
+                  "fa": "ده انگشت دست دارم."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "I have ten fingers and ten toes.",
+                  "fa": "ده انگشت دست و ده انگشت پا دارم."
+                }
+              ]
+            },
+            {
+              "question": "Which is longer, your arm or finger?",
+              "questionFa": "دست بلندتر است یا انگشت؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "My arm is longer than my finger.",
+                  "fa": "دستم از انگشتم بلندتر است."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "My leg is longer than my foot.",
+                  "fa": "پایم از کف پایم بلندتر است."
+                }
+              ]
+            },
+            {
+              "question": "Do you have one foot or two feet?",
+              "questionFa": "یک پا داری یا دو پا؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "I have two feet.",
+                  "fa": "دو پا دارم."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "I have two feet and two hands.",
+                  "fa": "دو پا و دو دست دارم."
+                }
+              ]
+            },
+            {
+              "question": "Is your knee part of your arm?",
+              "questionFa": "زانو بخشی از دست است؟",
+              "variants": [
+                {
+                  "label": "پاسخ اول",
+                  "en": "No, my knee is part of my leg.",
+                  "fa": "نه، زانو بخشی از پای من است."
+                },
+                {
+                  "label": "پاسخ دیگر",
+                  "en": "No, my elbow is part of my arm.",
+                  "fa": "نه، آرنج من بخشی از دستم است."
+                }
+              ]
+            }
+          ],
+          "requireRecall": true
+        },
+        {
+          "id": "a1-17-dialogue",
+          "type": "dialogue",
+          "phase": "context",
+          "title": "یک گفت‌وگوی واقعی دربارهٔ اعضای بدن و جای آن‌ها",
+          "description": "پاسخ بعدی را قبل از آشکارشدنش حدس بزن؛ سپس جای نقش‌ها را عوض کن.",
+          "lines": [
+            {
+              "speaker": "Teacher",
+              "en": "Point to your head.",
+              "fa": "به سرت اشاره کن."
+            },
+            {
+              "speaker": "Student",
+              "en": "This is my head.",
+              "fa": "این سر من است."
+            },
+            {
+              "speaker": "Teacher",
+              "en": "Where is your neck?",
+              "fa": "گردنت کجاست؟"
+            },
+            {
+              "speaker": "Student",
+              "en": "It is under my head.",
+              "fa": "زیر سرم است."
+            },
+            {
+              "speaker": "Teacher",
+              "en": "How many feet do you have?",
+              "fa": "چند پا داری؟"
+            },
+            {
+              "speaker": "Student",
+              "en": "I have two feet.",
+              "fa": "دو پا دارم."
+            },
+            {
+              "speaker": "Sara",
+              "en": "How many fingers do you have?",
+              "fa": "چند انگشت دست داری؟"
+            },
+            {
+              "speaker": "Ali",
+              "en": "I have ten fingers.",
+              "fa": "بگو دو پا ولی یک سر دارم."
+            },
+            {
+              "speaker": "Ali",
+              "en": "Which is longer, your arm or finger?",
+              "fa": "دست بلندتر است یا انگشت؟"
+            },
+            {
+              "speaker": "Sara",
+              "en": "My arm is longer than my finger.",
+              "fa": "بگو دست من از انگشتم بلندتر است."
+            }
+          ]
+        },
+        {
+          "id": "a1-17-picture",
+          "type": "picture-description",
+          "phase": "picture",
+          "title": "از صحنه به زبان؛ خودت توضیح بده",
+          "description": "از عبارت‌های ثابت تصویر فراتر برو؛ صحنهٔ جدید را با جزئیات نوشته‌شده توصیف کن.",
+          "image": "./assets/scene-a1-17-stage2.svg",
+          "imageAlt": "بدن از سر تا پا",
+          "caption": "بدن از سر تا پا",
+          "practiceRevision": 1,
+          "tasks": [
+            {
+              "task": "به کارت تصویر مربوط به «گردنت کجاست؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "My neck is under my head.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My neck is under my head."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «چند پا داری؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "I have two legs.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I have two legs."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "به کارت تصویر مربوط به «زیر زانو چیست؟» نگاه کن؛ یکی از پاسخ‌های درست را بنویس.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "My foot is below my knee.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My foot is below my knee."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "task": "بگو دو پا ولی یک سر دارم.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "I have two feet but one head.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I have two feet but one head."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "task": "بگو دست من از انگشتم بلندتر است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "My arm is longer than my finger.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My arm is longer than my finger."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-17-guided",
+          "type": "guided-dialogue",
+          "phase": "guided",
+          "title": "این بار خودت در مکالمه پاسخ بده",
+          "description": "با حداقل هفت نوبت پاسخ مستقل؛ جواب را انتخاب نمی‌کنی، خودت می‌نویسی.",
+          "practiceRevision": 1,
+          "completion": "حالا بدون راهنمایی در موقعیت تازه پاسخ بساز.",
+          "turns": [
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "Where is your neck?",
+              "task": "برای «گردنت کجاست؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "Here is my neck.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "Here is my neck."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "How many legs do you have?",
+              "task": "برای «چند پا داری؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "These are my legs.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "These are my legs."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "مخاطب خیالی",
+              "incoming": "What is below your knee?",
+              "task": "برای «زیر زانو چیست؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "My ankle is below my knee.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My ankle is below my knee."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "دوستت",
+              "incoming": "Where is your back?",
+              "task": "برای «پشتت کجاست؟» جواب مناسب بده.",
+              "hint": "کلمات کلیدی را پیدا کن؛ نمونهٔ کامل پس از دو تلاش نشان داده می‌شود.",
+              "example": "This is my back.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "This is my back."
+                    ],
+                    "feedback": "جملهٔ انگلیسی با همین معنی بساز؛ به فاعل، فعل و ترتیب توجه کن."
+                  }
+                ],
+                "success": "این موقعیت را ساختی."
+              }
+            },
+            {
+              "speaker": "همراهت",
+              "incoming": "How many fingers do you have?",
+              "task": "بگو دو پا ولی یک سر دارم.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "I have two feet but one head.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I have two feet but one head."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "مشتری خیالی",
+              "incoming": "Which is longer, your arm or finger?",
+              "task": "بگو دست من از انگشتم بلندتر است.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "My arm is longer than my finger.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My arm is longer than my finger."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "همراهت",
+              "incoming": "Do you have one foot or two feet?",
+              "task": "بگو من ده انگشت دست دارم.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "I have ten fingers.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I have ten fingers."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "مشتری خیالی",
+              "incoming": "Is your knee part of your arm?",
+              "task": "بگو ده انگشت پا دارم.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "I have ten toes.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "I have ten toes."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            },
+            {
+              "speaker": "همراهت",
+              "incoming": "How many fingers do you have?",
+              "task": "بگو قفسهٔ سینه‌ام بالای شکمم قرار دارد.",
+              "hint": "اول جمله را در ذهنت بساز، سپس به ترتیب فاعل، فعل و واژهٔ هدف دقت کن. پاسخ نمونه فقط پس از دو تلاش نمایش داده می‌شود.",
+              "example": "My chest is above my stomach.",
+              "assessment": {
+                "required": [
+                  {
+                    "any": [
+                      "My chest is above my stomach."
+                    ],
+                    "feedback": "جملهٔ کامل انگلیسی را با همان معنی و فعل درست بنویس."
+                  }
+                ],
+                "success": "معنای این موقعیت را درست بیان کردی."
+              }
+            }
+          ]
+        },
+        {
+          "id": "a1-17-independent",
+          "type": "free-write",
+          "phase": "independent",
+          "title": "مأموریت واقعی و ساختن بدون الگو",
+          "prompt": "در ذهن دو عضو بدن خودت را انتخاب کن. تعداد، اندازه یا تفاوتشان را مقایسه کن و از foot/feet یا یک مفرد و جمع دیگر استفاده کن.",
+          "placeholder": "دو یا سه جملهٔ انگلیسی خودت را اینجا بنویس؛ اطلاعات فرضی کافی است.",
+          "hint": "از جمله‌های درس الهام بگیر ولی فاعل، شیء، مکان یا تصمیم را خودت عوض کن.",
+          "kind": "free-text",
+          "minWords": 14,
+          "assessment": {
+            "revision": 2,
+            "required": [
+              {
+                "patterns": [
+                  "\\b(?:head|neck|shoulder|knee|foot|feet|leg|stomach|back)\\b",
+                  "\\b(?:arm|wrist|ankle|finger|toe|chest|elbow|feet)\\b"
+                ],
+                "feedback": "واژگان اصلی موقعیت را داخل جملهٔ کامل به کار ببر."
+              },
+              {
+                "patterns": [
+                  "\\b(?:is|are|have)\\b"
+                ],
+                "feedback": "یک کار، سؤال یا دلیل مرتبط هم بنویس."
+              }
+            ],
+            "productionProof": {
+              "minWords": 10,
+              "minClauses": 2
+            },
+            "success": "دو جملهٔ مستقل با هدف درس ساختی؛ حالا سرنخ زندگی واقعی را هم امتحان کن."
+          },
+          "realWorldMission": {
+            "cue": "وقتی دست و پا و صورتت را در آینه می‌بینی",
+            "reflection": "در ذهن دو عضو بدن خودت را انتخاب کن. تعداد، اندازه یا تفاوتشان را مقایسه کن و از foot/feet یا یک مفرد و جمع دیگر استفاده کن."
+          }
+        },
+        {
+          "id": "a1-17-shadowing-review",
+          "type": "shadowing-review",
+          "phase": "independent",
+          "title": "حالا همان جمله‌های آغاز درس را بازبگو",
+          "description": "متن شروع را بازشنوی کن و فاصلهٔ یادگیری خودت را بسنج.",
+          "sourceActivityId": "a1-17-shadowing"
+        }
+      ]
+    }
+  ]
+}

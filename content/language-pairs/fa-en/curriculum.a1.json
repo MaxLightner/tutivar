@@ -189,7 +189,7 @@
               "icon": "layers",
               "feature": "انتخاب با دلیل و مقایسهٔ واقعی",
               "status": "sample",
-              "file": "lessons/a1-15-v1.json"
+              "file": "lessons/a1-15-v2.json"
             },
             {
               "id": "A1-16",
@@ -198,7 +198,7 @@
               "icon": "person",
               "feature": "توصیف پوشش با تغییر رنگ و فاعل",
               "status": "sample",
-              "file": "lessons/a1-16-v1.json"
+              "file": "lessons/a1-16-v2.json"
             }
           ]
         },
@@ -214,7 +214,7 @@
               "icon": "person",
               "feature": "نشان‌دادن، نام‌بردن و توصیف بدن",
               "status": "sample",
-              "file": "lessons/a1-17-v1.json"
+              "file": "lessons/a1-17-v2.json"
             },
             {
               "id": "A1-18",
@@ -223,7 +223,7 @@
               "icon": "heart",
               "feature": "تشخیص موقعیت و درخواست روشن کمک",
               "status": "sample",
-              "file": "lessons/a1-18-v1.json"
+              "file": "lessons/a1-18-v2.json"
             },
             {
               "id": "A1-19",
@@ -232,7 +232,7 @@
               "icon": "briefcase",
               "feature": "چه کسی چه کاری می‌کند و کجا؟",
               "status": "sample",
-              "file": "lessons/a1-19-v1.json"
+              "file": "lessons/a1-19-v2.json"
             },
             {
               "id": "A1-20",
@@ -241,7 +241,7 @@
               "icon": "bag",
               "feature": "انتخاب کالا، اندازه و تعداد",
               "status": "sample",
-              "file": "lessons/a1-20-v1.json"
+              "file": "lessons/a1-20-v2.json"
             }
           ]
         },
@@ -257,7 +257,7 @@
               "icon": "wallet",
               "feature": "شبیه‌سازی حساب‌کردن سفارش",
               "status": "sample",
-              "file": "lessons/a1-21-v1.json"
+              "file": "lessons/a1-21-v2.json"
             },
             {
               "id": "A1-22",
@@ -266,7 +266,7 @@
               "icon": "pin",
               "feature": "شناسایی مکان روی نقشهٔ ساده",
               "status": "sample",
-              "file": "lessons/a1-22-v1.json"
+              "file": "lessons/a1-22-v2.json"
             },
             {
               "id": "A1-23",
@@ -275,7 +275,7 @@
               "icon": "map",
               "feature": "اجرای چند دستور روی نقشه",
               "status": "sample",
-              "file": "lessons/a1-23-v1.json"
+              "file": "lessons/a1-23-v2.json"
             },
             {
               "id": "A1-24",
@@ -284,7 +284,7 @@
               "icon": "bus",
               "feature": "انتخاب وسیله و گفت‌وگوی ایستگاه",
               "status": "sample",
-              "file": "lessons/a1-24-v1.json"
+              "file": "lessons/a1-24-v2.json"
             }
           ]
         }

@@ -4,6 +4,7 @@ import { renderActivity } from './lesson-modules.js';
 import { advanceDeck, answerDeck, deckState, jumpDeck, resumeDeck, startDeckTest, wordId } from './word-review.js';
 import { evaluateResponse, practiceState, submitPractice } from './practice-engine.js';
 import { migrateLegacyProgress } from './progress-migration.js';
+import { reduceStage2Mission } from './stage2-missions.js';
 
 const $root = document.getElementById('app');
 // The compiled JS URL carries the deployment SHA. Use it for lesson and course
@@ -50,7 +51,7 @@ const ICONS = {
 const icon = (name, size = '') => `<span class="icon ${size}"><svg aria-hidden="true" viewBox="0 0 24 24">${ICONS[name] || ICONS.star}</svg></span>`;
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const en = (text) => `<span class="en" lang="en" dir="ltr">${escapeHtml(text)}</span>`;
-const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, expressionIndexes: {}, sentenceLabs: {}, sentenceComposers: {}, meaningChoices: {}, spatialChoices: {}, familyPeople: {}, agreementChoices: {}, pluralChoices: {}, mathChoices: {}, mathOps: {}, attributeChoices: {}, oppositeChoices: {}, countSceneStates: {}, featureHuntStates: {}, cumulativeLabStates: {}, cumulativeQuestStates: {}, questionExplorerStates: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
+const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, expressionIndexes: {}, sentenceLabs: {}, sentenceComposers: {}, meaningChoices: {}, spatialChoices: {}, familyPeople: {}, agreementChoices: {}, pluralChoices: {}, mathChoices: {}, mathOps: {}, attributeChoices: {}, oppositeChoices: {}, countSceneStates: {}, featureHuntStates: {}, cumulativeLabStates: {}, cumulativeQuestStates: {}, missionLabStates: {}, questionExplorerStates: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
 function readProgress() { try { const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); const migrated = migrateLegacyProgress(saved); if(migrated!==saved)localStorage.setItem(STORAGE_KEY,JSON.stringify(migrated)); return { ...defaultProgress(), ...migrated, settings: { ...defaultProgress().settings, ...(migrated.settings || {}) } }; } catch { return defaultProgress(); } }
 const progress = readProgress();
 // Historical completion records predate skill evidence. Preserve them in storage,
@@ -179,6 +180,10 @@ function masteryMissing(lesson, section) {
     if (!activity) return true;
     const key = `${lesson.id}:${id}`;
     if (activity.type === 'free-write') return !progress.assessments?.[key]?.passed || progress.assessments[key].revision !== (activity.assessment?.revision || 1);
+    if (activity.type === 'mission-lab') {
+      const state=progress.missionLabStates?.[key]||{},missions=activity.scenes||activity.missions||[];
+      return !state.solved || Number(state.round)!==missions.length-1 || (activity.checkout && !state.paid);
+    }
     return practiceState(progress.practiceStates?.[key], activity).answers.length < (activity.tasks || activity.turns || []).length;
   });
 }
@@ -454,7 +459,7 @@ function wordKeydown(event) {
   document.querySelector('[data-word-swipe]')?.focus({ preventScroll: true });
 }
 function onClick(event) {
-  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-meaning-key],button[data-expression-key],button[data-opposite-key],button[data-plural-lab-key],button[data-count-math-key],button[data-count-scene-key],button[data-feature-hunt-key],button[data-cumulative-lab-key],button[data-daily-choice-key],button[data-cumulative-quest-key],button[data-cumulative-number-key],button[data-place-key],button[data-question-explorer-key],button[data-attribute-key],button[data-spatial-key],button[data-family-key],button[data-agreement-key],button[data-finish-section],button[data-review],button[data-planned],button[data-shadowing-key],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-build-submit],button[data-build-undo],button[data-build-clear],button[data-roleplay],button[data-word-key],button[data-composer-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
+  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-meaning-key],button[data-expression-key],button[data-opposite-key],button[data-mission-key],button[data-plural-lab-key],button[data-count-math-key],button[data-count-scene-key],button[data-feature-hunt-key],button[data-cumulative-lab-key],button[data-daily-choice-key],button[data-cumulative-quest-key],button[data-cumulative-number-key],button[data-place-key],button[data-question-explorer-key],button[data-attribute-key],button[data-spatial-key],button[data-family-key],button[data-agreement-key],button[data-finish-section],button[data-review],button[data-planned],button[data-shadowing-key],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-build-submit],button[data-build-undo],button[data-build-clear],button[data-roleplay],button[data-word-key],button[data-composer-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
   if (!el) return;
   if (el.dataset.nav) { modal = null; navigate(el.dataset.nav); return; }
   if (el.dataset.openLesson) { modal = null; activePerson = 0; ownerIdx = 0; objectIdx = 0; navigate('lesson', el.dataset.openLesson, el.dataset.startSection || null); return; }
@@ -468,6 +473,13 @@ function onClick(event) {
     const isRevealed = el.closest('.example-mini-card')?.classList.toggle('is-revealed') || false;
     el.setAttribute('aria-expanded', String(isRevealed));
     return;
+  }
+  if (el.dataset.missionKey) {
+    const key=el.dataset.missionKey,activity=lessonActivity(key);
+    if (activity?.type !== 'mission-lab') return;
+    progress.missionLabStates ||= {};
+    progress.missionLabStates[key] = reduceStage2Mission(activity,progress.missionLabStates[key],el.dataset.missionAction,el.dataset.missionValue);
+    persist(); updateInline(); return;
   }
   if(el.dataset.expressionKey) {
     const key=el.dataset.expressionKey,activity=lessonActivity(key);
@@ -828,12 +840,14 @@ function onClick(event) {
     const current = progress.exchangeChoices[key] || { pair: 0, variant: 0 };
     const pair = el.dataset.exchangePair !== undefined ? Number(el.dataset.exchangePair) : current.pair;
     const validPair = Math.max(0, Math.min(activity.pairs.length - 1, pair));
-    const variant = el.dataset.exchangePair !== undefined ? 0 : Number(el.dataset.exchangeVariant);
+    const variant = el.dataset.exchangePair !== undefined || el.dataset.exchangeReveal !== undefined ? 0 : Number(el.dataset.exchangeVariant);
     const validVariant = Math.max(0, Math.min(activity.pairs[validPair].variants.length - 1, variant));
-    progress.exchangeChoices[key] = { pair: validPair, variant: validVariant };
+    const revealed = el.dataset.exchangePair !== undefined ? false : true;
+    progress.exchangeChoices[key] = { pair: validPair, variant: validVariant, revealed };
     persist(); updateInline();
     const entry = activity.pairs[validPair];
-    speakPair([entry.question, entry.variants[validVariant].en]);
+    if (revealed) speakPair([entry.question, entry.variants[validVariant].en]);
+    else speech(entry.question);
     return;
   }
   if (el.dataset.questionExplorerKey) {
@@ -956,7 +970,7 @@ function onClick(event) {
     const missing = masteryMissing(lesson, section);
     if (missing.length) {
       showToast('برای ثبت تسلط، تمرین‌های اصلی این بخش را کامل کن.');
-      const pendingPanel = document.querySelector(`[data-practice-key="${id}:${missing[0]}"]`) || document.querySelector('[data-module="free-write"]');
+      const pendingPanel = document.querySelector(`[data-practice-key="${id}:${missing[0]}"]`) || document.querySelector(`[data-mission-key="${id}:${missing[0]}"]`) || document.querySelector('[data-module="free-write"]');
       pendingPanel?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
