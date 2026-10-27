@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tutivar.github.io/schemas/learner-domain.v1.schema.json",
+  "title": "Tutivar learner-domain contracts v1",
+  "$defs": {
+    "User": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "interfaceLanguage",
+        "learningPairId"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0.0"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "interfaceLanguage": {
+          "type": "string",
+          "minLength": 2
+        },
+        "learningPairId": {
+          "type": "string",
+          "minLength": 3
+        }
+      }
+    },
+    "Lesson": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "title",
+        "status",
+        "courseRevision"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0.0"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "sample",
+            "planned",
+            "published",
+            "archived"
+          ]
+        },
+        "courseRevision": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "LessonProgress": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "userId",
+        "lessonId",
+        "courseRevision",
+        "completedSectionIds",
+        "lastSectionId",
+        "completedAt"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0.0"
+        },
+        "userId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lessonId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "courseRevision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "completedSectionIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "lastSectionId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "completedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    },
+    "ReviewCard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "userId",
+        "pairId",
+        "front",
+        "back",
+        "source",
+        "createdAt",
+        "schedule"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0.0"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "userId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pairId": {
+          "type": "string"
+        },
+        "front": {
+          "type": "string",
+          "minLength": 1
+        },
+        "back": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "lessonId": {
+              "type": "string"
+            },
+            "activityId": {
+              "type": "string"
+            },
+            "sectionId": {
+              "type": "string"
+            }
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "schedule": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "dueAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "intervalDays": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "repetitions": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "ReviewHistory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "id",
+        "userId",
+        "cardId",
+        "reviewedAt",
+        "answer",
+        "nextDueAt"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0.0"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "userId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cardId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "answer": {
+          "enum": [
+            "again",
+            "hard",
+            "good",
+            "easy"
+          ]
+        },
+        "nextDueAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

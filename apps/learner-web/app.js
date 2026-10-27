@@ -1,3 +1,4 @@
+import { summarizeLearningProgress, selectResumeLesson, describeLessonState } from './learning-contracts.js';
 import { cycleComposerSlot } from './sentence-composer.js';
 import { addPuzzleWord, canAppendPuzzleWord, undoPuzzleWord, clearPuzzleSentence, submitPuzzleSentence } from './sentence-puzzle.js';
 import { renderActivity } from './lesson-modules.js';
@@ -79,7 +80,7 @@ let toastTimeout;
 
 const levelChapters = (level) => (manifest.levels[level]?.stages || [{ chapters: manifest.levels[level]?.chapters || [] }]).flatMap((stage) => stage.chapters);
 const samples = () => levelChapters('A1').flatMap((chapter) => chapter.lessons).filter((entry) => entry.status === 'sample');
-const nextLesson = () => samples().find((entry) => !progress.completed.includes(entry.id)) || samples()[0];
+const nextLesson = () => selectResumeLesson(samples(), progress);
 function persist() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); } catch { /* local preview works without persistence */ } }
 const allLeitnerCards = () => {
   const cards = [...(progress.leitnerAdded || []), ...manifest.leitner.cards];
@@ -92,17 +93,17 @@ function addToLeitner(entry, lessonId) {
 }
 function today() { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; }
 function streak() { const days = new Set(progress.historyDates); let cursor = new Date(); if (!days.has(today())) cursor.setDate(cursor.getDate() - 1); let count = 0; for (let i = 0; i < 365; i++) { const date = `${cursor.getFullYear()}-${String(cursor.getMonth() + 1).padStart(2, '0')}-${String(cursor.getDate()).padStart(2, '0')}`; if (!days.has(date)) break; count++; cursor.setDate(cursor.getDate() - 1); } return count; }
-function navButton(page, label, name) { return `<button class="nav-link ${route.page === page ? 'active' : ''}" data-nav="${page}" aria-label="${label}">${icon(name, 'nav-icon')}<span>${label}</span></button>`; }
-function mobileButton(page, label, name) { return `<button class="${route.page === page ? 'active' : ''}" data-nav="${page}" aria-label="${label}">${icon(name, 'nav-icon')}<span>${label}</span></button>`; }
+function navButton(page, label, name) { return `<button class="nav-link ${route.page === page ? 'active' : ''}" data-nav="${page}" aria-label="${label}" ${route.page === page ? 'aria-current="page"' : ''}>${icon(name, 'nav-icon')}<span>${label}</span></button>`; }
+function mobileButton(page, label, name) { return `<button class="${route.page === page ? 'active' : ''}" data-nav="${page}" aria-label="${label}" ${route.page === page ? 'aria-current="page"' : ''}>${icon(name, 'nav-icon')}<span>${label}</span></button>`; }
 function logo() { return `<span class="brand-icon" aria-hidden="true">t.</span><span><span class="brand-word en">tutivar</span><span class="brand-caption">یاد بگیر، زندگی کن</span></span>`; }
 function languageButton() { return `<button class="language-chip" data-action="language" aria-label="زبان یادگیری: ${escapeHtml(manifest.target.name)}"><span class="flag">${manifest.target.flag}</span><span>${escapeHtml(manifest.target.name)}</span></button>`; }
 function shell(content) {
-  return `<div class="shell">
+  return `<a class="tv-skip" href="#main-content">رفتن به محتوای اصلی</a><div class="shell">
     <aside class="sidebar"><div class="brand-row"><div class="logo-line">${logo()}</div>${languageButton()}</div><nav class="sidenav" aria-label="منوی اصلی">${navButton('home', 'خانه', 'home')}${navButton('lessons', 'مسیر یادگیری', 'book')}${navButton('leitner', 'لایتنر', 'layers')}${navButton('dashboard', 'داشبورد', 'user')}</nav>
       <div class="side-bottom"><div class="side-notice"><div class="caps">THE LITTLE STEPS</div><h3>هر روز، یک قدم.</h3></div><div class="side-profile"><div class="avatar">تو</div><div><strong class="body-sm">زبان‌آموز توتیوار</strong><div class="small muted">سطح فعلی · ${escapeHtml(progress.activeLevel)}</div></div></div></div>
     </aside>
     <div><div class="mobile-head"><div class="logo-line">${logo()}</div>${languageButton()}</div>
-      <div class="page"><main class="main">${content}</main></div></div>
+      <div class="page"><main class="main" id="main-content" tabindex="-1">${content}</main></div></div>
     <nav class="mobile-nav" aria-label="پیمایش پایین صفحه">${mobileButton('home', 'خانه', 'home')}${mobileButton('lessons', 'درس‌ها', 'book')}${mobileButton('leitner', 'لایتنر', 'layers')}${mobileButton('dashboard', 'داشبورد', 'user')}</nav>
   </div>${modal ? renderModal() : ''}<div id="toast-anchor"></div>`;
 }
@@ -110,14 +111,33 @@ function shell(content) {
 function sectionHeading(title, linkText, page) { return `<div class="section-head"><h2>${escapeHtml(title)}</h2>${page ? `<button class="link-button" data-nav="${page}">${escapeHtml(linkText)} ${icon('chevron')}</button>` : ''}</div>`; }
 function statCard(name, count, label, color) { return `<div class="card stat-card"><span class="stat-icon ${color}">${icon(name)}</span><span><span class="stat-number">${count}</span><br><span class="stat-label">${label}</span></span></div>`; }
 function homeView() {
-  const lesson = nextLesson(); const done = progress.completed.length;
-  return `<div class="hero"><div><span class="eyebrow">آماده‌ای شروع کنیم؟</span><h1>هر روز یه چیز تازه،<br>به زبان خودت.</h1><p>انگلیسی را با گفت‌وگو و تمرین واقعی یاد بگیر.</p><button class="primary-btn" data-open-lesson="${lesson.id}" data-start-section="${nextSection(lesson.id)}">ادامه یادگیری ${icon('arrow')}</button></div><div class="hero-art" aria-hidden="true"><div class="art-circle"><div class="art-sheet"><small class="en">LET'S GO</small><div class="en">Hello!</div><small>سلام!</small></div></div><span class="art-speech">✳</span><span class="art-bubble">✦</span></div></div>
-    <div class="stats-row">${statCard('flame', streak(), 'روز استمرار', 'soft-peach')}${statCard('book', done, 'درس تکمیل‌شده', 'soft-green')}${statCard('bolt', progress.reviewCount, 'کارت مرورشده', 'soft-lilac')}</div>
-    <div class="two-col"><div class="stack"><div class="card mission-card"><div><span class="eyebrow">ماموریت امروز</span><h3 style="font-size:21px;margin-top:6px">${escapeHtml(manifest.home.dailyMission.title)}</h3><p class="muted body-sm">${escapeHtml(manifest.home.dailyMission.description)}</p><div class="micro-step">${icon('check')} ${progress.historyDates.includes(today()) ? 'امروز یک درس به پایان رساندی' : 'هنوز درس امروز را شروع نکردی'}</div><button class="link-button" style="margin-top:12px" data-open-lesson="${lesson.id}">برو سراغ درس ${icon('arrow')}</button></div><div class="round-progress" style="--progress:${progress.historyDates.includes(today()) ? 65 : 0}%"><strong>${progress.historyDates.includes(today()) ? '۱/۲' : '۰/۲'}</strong></div></div>
-      <div class="card activity-card"><span class="eyebrow">ادامه مسیر</span><h3>${escapeHtml(lesson.title)}</h3><p>${escapeHtml(lesson.subtitle)} · ${escapeHtml(lesson.feature)}</p><button class="secondary-btn" data-open-lesson="${lesson.id}" data-start-section="${nextSection(lesson.id)}">ادامه درس ${icon('chevron')}</button></div></div>
-      <div class="stack"><div class="card activity-card" style="background:#ece8fa"><span class="caps" style="color:#806dba">REVIEW TIME</span><h3>مرورهای بین‌درسی</h3><p>کلمه‌ها و جمله‌هایی که ارزش یک بار دیگر دیدن دارند.</p><button class="outline-btn" data-nav="leitner">مرور کارت‌ها ${icon('cards')}</button><div class="feature-spark">✳</div></div><div class="card activity-card" style="background:#e7f3ed"><span class="caps" style="color:#397965">YOUR COACH</span><h3>مربی همراه</h3><p>پرسش و تمرین آزاد با مربی هوشمند.</p><button class="outline-btn" data-action="coach">ورود به چت ${icon('message')}</button><div class="feature-spark">✧</div></div></div></div>
-    ${sectionHeading('کمی فراتر از درس', '', null)}
-    <div class="palette-row"><div class="card activity-card"><h3>موضوع آزاد امروز</h3><p>${en(manifest.home.dailyDiscussion.topic)}</p><p>${escapeHtml(manifest.home.dailyDiscussion.translation)}</p><button class="link-button" data-action="discussion">گفت‌وگوی آزاد ${icon('chevron')}</button></div><div class="card activity-card"><h3>کارت بازار</h3><p>${escapeHtml(manifest.home.market.description)}</p><button class="link-button" data-action="market">مشاهده کارت ${icon('bag')}</button></div></div>`;
+  const lesson = nextLesson();
+  const snapshot = summarizeLearningProgress(samples(), progress);
+  const cards = allLeitnerCards();
+  const position = Math.max(0, samples().findIndex((item) => item.id === lesson?.id));
+  const upcoming = samples().slice(position, position + 3);
+  const action = lesson ? `<button class="primary-btn tv-primary" data-open-lesson="${escapeHtml(lesson.id)}" data-start-section="${nextSection(lesson.id)}">${describeLessonState(lesson, progress) === 'available' ? 'شروع این درس' : 'ادامه این درس'} ${icon('arrow')}</button>` : `<button class="primary-btn" data-nav="lessons">نمایش درس‌ها</button>`;
+  return `<div class="tv-home">
+    <section class="tv-hero" aria-labelledby="tv-home-title">
+      <div class="tv-hero-copy"><span class="tv-kicker">مسیر یادگیری · ${escapeHtml(progress.activeLevel)}</span><h1 id="tv-home-title">یک قدم واقعی، هر روز.</h1>
+      <p>درس‌هایت همیشه اینجا هستند؛ از همان‌جا که مانده‌ای ادامه بده.</p>
+      <div class="tv-hero-actions">${action}<button class="tv-text-button" data-nav="lessons">دیدن همه درس‌ها ${icon('chevron')}</button></div></div>
+      <div class="tv-hero-progress" style="--tv-percent:${snapshot.percent}"><div class="tv-ring"><strong>${snapshot.percent}٪</strong><span>پیشرفت درس‌های فعال</span></div><span class="tv-ring-caption">${snapshot.completedCount} از ${snapshot.availableCount} درس</span></div>
+    </section>
+    <div class="tv-quick-grid" aria-label="دسترسی سریع">
+      <button class="tv-quick-card" data-nav="lessons"><span class="tv-quick-icon">${icon('book')}</span><span><strong>مسیر درس‌ها</strong><small>${snapshot.remainingCount} درس باقی‌مانده</small></span>${icon('chevron')}</button>
+      <button class="tv-quick-card" data-nav="leitner"><span class="tv-quick-icon tv-quick-lilac">${icon('layers')}</span><span><strong>کارت‌های مرور</strong><small>${cards.length} کارت · مرور آزمایشی</small></span>${icon('chevron')}</button>
+      <button class="tv-quick-card" data-nav="dashboard"><span class="tv-quick-icon tv-quick-peach">${icon('chart')}</span><span><strong>پیشرفت من</strong><small>${snapshot.completedCount} درس تکمیل‌شده</small></span>${icon('chevron')}</button>
+    </div>
+    <section class="tv-home-section" aria-labelledby="tv-next-title">
+      <div class="tv-section-heading"><div><span class="tv-kicker">مسیر بعدی</span><h2 id="tv-next-title">از اینجا ادامه بده</h2></div><button class="tv-text-button" data-nav="lessons">همه درس‌ها ${icon('chevron')}</button></div>
+      <div class="tv-next-list">${upcoming.length ? upcoming.map((item) => {
+        const state = describeLessonState(item, progress);
+        return `<button class="tv-next-card" data-open-lesson="${escapeHtml(item.id)}" data-start-section="${nextSection(item.id)}"><span class="tv-next-number" dir="ltr">${escapeHtml(item.id)}</span><span class="tv-next-copy"><strong>${escapeHtml(item.title)}</strong><small>${escapeHtml(item.subtitle || (state === 'in-progress' ? 'در حال یادگیری' : 'آماده شروع'))}</small></span><span class="tv-state ${state}">${state === 'completed' ? 'انجام‌شده' : state === 'in-progress' ? 'در حال انجام' : 'آماده'}</span>${icon('chevron')}</button>`;
+      }).join('') : '<div class="tv-empty">هنوز درسی برای نمایش وجود ندارد.</div>'}</div>
+    </section>
+    <p class="tv-storage-note">پیشرفت فعلاً فقط در همین مرورگر نگه‌داری می‌شود؛ همگام‌سازی بین دستگاه‌ها هنوز فعال نیست.</p>
+  </div>`;
 }
 
 function pathPartButton(lesson, part, isSecond = false) {
@@ -127,24 +147,35 @@ function pathPartButton(lesson, part, isSecond = false) {
   const partLabel = part === 'foundation' ? 'واژه تا جمله' : 'دیالوگ تا تمرین';
   return `<button class="${isSecond ? 'path-subnode' : 'path-node'} ${done ? 'done' : ready ? 'sample' : 'planned'}" ${ready ? `data-open-lesson="${escapeHtml(lesson.id)}" data-start-section="${part}"` : 'disabled'} aria-label="${escapeHtml(lesson.title)}، ${partLabel}" title="${partLabel}">${icon(done ? 'check' : name)}</button>`;
 }
-function pathLesson(lesson, index) {
-  const isWorkshop = lesson.kind === 'workshop';
-  const done = progress.completed.includes(lesson.id) && completedSections(lesson.id).length === (lessonCache.get(lesson.id)?.sections.length || 2);
-  return `<div class="path-stop ${index % 2 ? 'swing-left' : 'swing-right'} ${isWorkshop ? 'workshop-stop' : ''}">
-    <div class="path-orbit">${pathPartButton(lesson, 'foundation')}${isWorkshop ? '' : `<span class="path-link" aria-hidden="true"></span>${pathPartButton(lesson, 'production', true)}`}</div>
-    <div class="node-info"><span class="node-code">${escapeHtml(lesson.id)}</span><h3>${escapeHtml(lesson.title)}</h3>${lesson.subtitle ? `<p>${escapeHtml(lesson.subtitle)}</p>` : ''}<div class="node-parts">${isWorkshop ? `<span>${icon('trophy')} کارگاه</span>` : `<span>۱ · واژه تا جمله</span><span>۲ · دیالوگ تا تمرین</span>`}${done ? `<span class="node-complete">✓ تکمیل شده</span>` : ''}</div></div>
-  </div>`;
+function pathLesson(lesson) {
+  const ready = lesson.status === 'sample';
+  const state = describeLessonState(lesson, progress);
+  const completed = progress.completed.includes(lesson.id);
+  const recordedSections = progress.sectionCompleted?.[lesson.id] || [];
+  const statusLabel = !ready ? 'به‌زودی' : completed ? 'تکمیل‌شده' : state === 'in-progress' ? 'در حال انجام' : 'آماده';
+  const statusIcon = !ready ? 'lock' : completed ? 'check' : 'book';
+  return `<button class="tv-lesson-row ${state}" ${ready ? `data-open-lesson="${escapeHtml(lesson.id)}" data-start-section="${nextSection(lesson.id)}"` : 'disabled'} aria-label="${escapeHtml(lesson.id)}، ${escapeHtml(lesson.title)}، ${statusLabel}">
+    <span class="tv-lesson-id" dir="ltr">${escapeHtml(lesson.id)}</span>
+    <span class="tv-lesson-body"><strong>${escapeHtml(lesson.title)}</strong><small>${escapeHtml(lesson.subtitle || (lesson.kind === 'workshop' ? 'کارگاه تمرین' : 'درس و تمرین'))}</small><span class="tv-section-flags">${ready ? `<span class="${recordedSections.includes('foundation') ? 'done' : ''}">۱ · واژه تا جمله</span><span class="${recordedSections.includes('production') ? 'done' : ''}">۲ · تولید مستقل</span>` : 'محتوا در حال آماده‌سازی'}</span></span>
+    <span class="tv-lesson-end"><span class="tv-state ${state}">${statusLabel}</span>${icon(statusIcon)}</span>
+  </button>`;
 }
+
 function lessonsView() {
-  const level = progress.activeLevel; const data = manifest.levels[level];
+  const level = progress.activeLevel;
+  const data = manifest.levels[level] || {};
   const stages = data.stages || [];
   const stage = stages.find((entry) => entry.id === progress.activeStage) || stages[0];
-  const levels = `<div class="levels" role="tablist" aria-label="سطح آموزش">${manifest.availableLevels.map((key) => `<button class="level ${key === level ? 'active' : ''}" data-level="${key}" role="tab" aria-selected="${key === level}">${key}</button>`).join('')}</div>`;
-  const stageTabs = stage ? `<div class="stage-tabs" role="tablist" aria-label="بخش‌های سطح ${level}">${stages.map((entry) => `<button class="stage-tab ${stage.id === entry.id ? 'active' : ''}" data-stage="${entry.id}" role="tab" aria-selected="${stage.id === entry.id}"><strong class="en">${escapeHtml(entry.id)}</strong><span>${escapeHtml(entry.title)}</span></button>`).join('')}</div>` : '';
+  const levels = `<div class="levels tv-levels" role="tablist" aria-label="سطح آموزش">${manifest.availableLevels.map((key) => `<button class="level ${key === level ? 'active' : ''}" data-level="${key}" role="tab" aria-selected="${key === level}">${key}</button>`).join('')}</div>`;
+  const stageTabs = stage ? `<div class="stage-tabs tv-stages" role="tablist" aria-label="بخش‌های سطح ${level}">${stages.map((entry) => `<button class="stage-tab ${stage.id === entry.id ? 'active' : ''}" data-stage="${escapeHtml(entry.id)}" role="tab" aria-selected="${stage.id === entry.id}"><strong class="en">${escapeHtml(entry.id)}</strong><span>${escapeHtml(entry.title)}</span></button>`).join('')}</div>` : '';
   const chapters = stage?.chapters || data.chapters || [];
-  return `<div class="path-intro"><div><span class="eyebrow">مسیر یادگیری</span><h2>درس‌ها</h2></div>${levels}</div>${stageTabs}
-    ${stage ? `<div class="stage-summary"><div><span class="en">${escapeHtml(stage.id)}</span><strong>${escapeHtml(stage.title)}</strong><p>${escapeHtml(stage.description)}</p></div><span class="stage-count">${chapters.length} فصل</span></div>` : ''}
-    ${chapters.length ? chapters.map((chapter, chapterIndex) => `<section class="chapter-section" aria-label="${escapeHtml(chapter.title)}"><div class="chapter-banner"><div><span class="chapter-index">فصل ${chapterIndex + 1}</span><h3>${escapeHtml(chapter.title)}</h3><p>${escapeHtml(chapter.description)}</p></div><span class="chapter-mark">${icon(chapter.icon || 'star')}</span></div><div class="path-card"><div class="trail">${chapter.lessons.map(pathLesson).join('')}</div></div></section>`).join('') : `<div class="card empty-level"><div><div class="empty-illustration">${icon('book')}</div><h2>${escapeHtml(data.title)}</h2><p>${escapeHtml(data.subtitle)}</p></div></div>`}`;
+  const available = chapters.flatMap((chapter) => chapter.lessons).filter((lesson) => lesson.status === 'sample').length;
+  return `<div class="tv-lessons">
+    <header class="tv-list-header"><div><span class="tv-kicker">نقشه یادگیری</span><h1>درس‌ها</h1><p>بخش موردنظر را انتخاب کن؛ درس‌های آماده بلافاصله باز می‌شوند.</p></div>${levels}</header>
+    ${stageTabs}
+    ${stage ? `<section class="tv-stage-summary"><div><span class="tv-kicker en">${escapeHtml(stage.id)}</span><h2>${escapeHtml(stage.title)}</h2><p>${escapeHtml(stage.description || '')}</p></div><span class="tv-stage-total">${available} درس آماده</span></section>` : ''}
+    ${chapters.length ? chapters.map((chapter, chapterIndex) => `<section class="tv-chapter" aria-label="${escapeHtml(chapter.title)}"><header class="tv-chapter-head"><div><span class="tv-chapter-number">فصل ${chapterIndex + 1}</span><h3>${escapeHtml(chapter.title)}</h3><p>${escapeHtml(chapter.description || '')}</p></div></header><div class="tv-lesson-list">${chapter.lessons.map(pathLesson).join('')}</div></section>`).join('') : `<div class="tv-empty" role="status"><h2>${escapeHtml(data.title || 'در انتظار محتوای جدید')}</h2><p>${escapeHtml(data.subtitle || 'درس‌های این سطح هنوز آماده نیستند.')}</p><button class="secondary-btn" data-level="A1">بازگشت به درس‌های A1</button></div>`}
+  </div>`;
 }
 
 function vocabularyBlock(section) { return `<div class="lesson-block"><div class="block-top"><div><span class="block-label">۰۱ / بانک واژه</span><h3>اول واژه‌ها را بشناس</h3></div><span class="preview-tag">شنیدن تلفظ</span></div><div class="vocab-grid">${section.vocabulary.map((word) => `<div class="word-card"><div><div>${en(word.en)}</div><p>${escapeHtml(word.fa)}</p><span class="word-hint">${escapeHtml(word.hint)}</span></div><button class="sound-btn" data-speak="${escapeHtml(word.en)}" aria-label="شنیدن تلفظ ${escapeHtml(word.en)}">${icon('sound')}</button></div>`).join('')}</div></div>`; }
@@ -205,14 +236,15 @@ function lessonView(lesson) { if (!lesson) return `<div class="empty-level">در
   const isLast = activeIndex === lesson.sections.length - 1;
   const alreadyDone = completedSections(lesson.id).includes(activePart);
   const missing = masteryMissing(lesson, activeSection);
-  return `<div class="lesson-page"><div class="lesson-top-navigation"><button class="back-link" data-nav="lessons">${icon('arrow')} مسیر درس‌ها</button><nav class="lesson-tabs lesson-tabs-compact" aria-label="بخش‌های مستقل درس">${lesson.sections.map((section, index) => `<button class="lesson-tab ${section.id === activePart ? 'active' : ''}" data-section="${escapeHtml(section.id)}" aria-current="${section.id === activePart ? 'step' : 'false'}">${completedSections(lesson.id).includes(section.id) ? '✓' : String(index + 1).padStart(2, '0')} · ${escapeHtml(section.label)}</button>`).join('')}</nav></div>
+  const lessonPercent = Math.round(100 * completedSections(lesson.id).length / Math.max(1, lesson.sections.length));
+  return `<div class="lesson-page"><div class="tv-lesson-meter" aria-label="پیشرفت این درس"><div><strong>${escapeHtml(lesson.title)}</strong><span>${lessonPercent}٪ پیشرفت · ${escapeHtml(lesson.id)}</span></div><div class="tv-lesson-meter-track" role="progressbar" aria-valuenow="${lessonPercent}" aria-valuemin="0" aria-valuemax="100" aria-label="درصد تکمیل درس"><span style="width:${lessonPercent}%"></span></div></div><div class="lesson-top-navigation"><button class="back-link" data-nav="lessons">${icon('arrow')} مسیر درس‌ها</button><nav class="lesson-tabs lesson-tabs-compact" aria-label="بخش‌های مستقل درس">${lesson.sections.map((section, index) => `<button class="lesson-tab ${section.id === activePart ? 'active' : ''}" data-section="${escapeHtml(section.id)}" aria-current="${section.id === activePart ? 'step' : 'false'}">${completedSections(lesson.id).includes(section.id) ? '✓' : String(index + 1).padStart(2, '0')} · ${escapeHtml(section.label)}</button>`).join('')}</nav></div>
     <section class="lesson-overview" aria-label="هدف درس"><div class="lesson-overview-main"><span class="caps">${escapeHtml(lesson.id)} · ${escapeHtml(lesson.title)}</span><h1>در این درس چه یاد می‌گیری؟</h1><p>${escapeHtml(lesson.orientation?.goal || lesson.goal)}</p><div class="lesson-meta"><span class="meta-chip">◷ ${escapeHtml(lesson.duration)}</span><span class="meta-chip">✳ ${escapeHtml(lesson.feature)}</span></div></div>${activeIndex === 0 ? lessonOrientation(lesson) : ''}</section>
     <div class="lesson-flow"><section id="lesson-${escapeHtml(activePart)}" class="lesson-section"><div class="phase-heading"><span class="phase-number">${String(activeIndex + 1).padStart(2, '0')}</span><div><h2>${escapeHtml(activeSection.label)}</h2><p>${escapeHtml(activeSection.intro || '')}</p></div></div>${sectionActivities(activeSection, lesson.id)}</section></div>
     <div class="lesson-end"><div><h3>${missing.length ? 'برای ثبت یادگیری، یک تمرین مانده' : alreadyDone ? 'این بخش قبلاً تمام شده ✓' : 'آمادهٔ پایان این بخش هستی ✓'}</h3><p>${missing.length ? `${missing.length} فعالیتِ هدف هنوز تأیید نشده. مرور کلمات اجباری نیست؛ پاسخ‌های اصلی را بساز.` : 'پاسخ‌های اصلی بررسی شده‌اند؛ حالا می‌توانی وارد مرحلهٔ بعد شوی.'}</p></div><div class="lesson-end-actions"><button class="dark-btn" data-finish-section="${escapeHtml(activePart)}">${isLast ? 'ثبت یادگیری و بازگشت به مسیر' : 'ثبت بخش اول · ورود به بخش دوم'}</button>${missing.length ? `<button class="outline-btn" ${isLast ? 'data-nav="lessons"' : `data-section="${escapeHtml(lesson.sections[activeIndex + 1].id)}"`}>${isLast ? 'بازگشت بدون ثبت' : 'فعلاً ادامه می‌دهم'}</button>` : ''}</div></div></div>`;
 }
 
 function leitnerView() { const cards = allLeitnerCards(); const card = cards[progress.currentReview % cards.length]; const completedThisReview = progress.reviewCount % cards.length;
-  return `<div class="path-intro"><div><span class="eyebrow">مرور واژه‌ها</span><h1>لایتنر هفت‌کلیدی</h1><p>کلمه را ببین، معنی‌اش را به خاطر بیاور و پاسخ را آشکار کن.</p></div></div><div class="review-layout"><div><div class="flash-card"><div><span class="caps">TAP TO REVEAL</span><div style="margin:23px 0">${en(card.front)}</div>${progress.showTranslation ? `<div class="translation">${escapeHtml(card.back)}</div><p class="example">${en(card.example)}</p>` : '<p class="body-sm" style="color:#a4c8b4">معنی را در ذهن مرور کن</p>'}<button class="primary-btn" style="margin-top:20px" data-action="reveal">${progress.showTranslation ? 'پنهان‌کردن پاسخ' : 'نمایش پاسخ'}</button></div></div><div class="review-buttons" aria-label="کلیدهای هفت‌گانه مرور">${[1, 2, 3, 4, 5, 6, 7].map((key) => `<button class="review-key" data-review="${key}" title="کلید ${key}">${key}</button>`).join('')}</div></div><div class="card review-aside"><span class="eyebrow">جلسه مرور</span><h3 style="margin-top:10px">یک مرور کوتاه</h3><p>${escapeHtml(manifest.leitner.note)}</p><div class="review-tally">${progress.reviewCount} <span class="body-sm muted">مرور ثبت‌شده</span></div><div class="review-sequence">${cards.map((_, index) => `<span class="review-dot ${index < completedThisReview ? 'filled' : ''}"></span>`).join('')}</div><button class="outline-btn" style="margin-top:15px" data-nav="dashboard">تنظیمات لایتنر ${icon('settings')}</button></div></div>`;
+  return `<div class="path-intro"><div><span class="eyebrow">مرور واژه‌ها</span><h1>مرور کارت‌ها</h1><p>این بخش پیش‌نمایش مرور است؛ زمان‌بندی واقعی لایتنر در فاز بعد پیاده‌سازی می‌شود.</p></div></div><div class="review-layout"><div><div class="flash-card"><div><span class="caps">TAP TO REVEAL</span><div style="margin:23px 0">${en(card.front)}</div>${progress.showTranslation ? `<div class="translation">${escapeHtml(card.back)}</div><p class="example">${en(card.example)}</p>` : '<p class="body-sm" style="color:#a4c8b4">معنی را در ذهن مرور کن</p>'}<button class="primary-btn" style="margin-top:20px" data-action="reveal">${progress.showTranslation ? 'پنهان‌کردن پاسخ' : 'نمایش پاسخ'}</button></div></div><div class="review-buttons" aria-label="کلیدهای هفت‌گانه مرور">${[1, 2, 3, 4, 5, 6, 7].map((key) => `<button class="review-key" data-review="${key}" title="کلید ${key}">${key}</button>`).join('')}</div></div><div class="card review-aside"><span class="eyebrow">جلسه مرور</span><h3 style="margin-top:10px">یک مرور کوتاه</h3><p>${escapeHtml(manifest.leitner.note)}</p><div class="review-tally">${progress.reviewCount} <span class="body-sm muted">مرور ثبت‌شده</span></div><div class="review-sequence">${cards.map((_, index) => `<span class="review-dot ${index < completedThisReview ? 'filled' : ''}"></span>`).join('')}</div><button class="outline-btn" style="margin-top:15px" data-nav="dashboard">دیدن آمار مرور ${icon('settings')}</button></div></div>`;
 }
 function dashboardView() { return `<div class="path-intro"><div><span class="eyebrow">فضای شخصی</span><h2>داشبورد</h2></div><div class="avatar" style="width:66px;height:66px;border-radius:24px">تو</div></div><div class="stats-row">${statCard('book', progress.completed.length, 'درس کامل', 'soft-green')}${statCard('flame', streak(), 'روز استمرار', 'soft-peach')}${statCard('cards', progress.reviewCount, 'مرور کارت', 'soft-lilac')}</div><div class="dashboard-grid">
     <div class="card dash-card"><h3>${icon('settings')} تنظیمات یادگیری</h3><div class="settings-row"><span>زبان یادگیری</span><button class="language-chip" data-action="language">🇬🇧 انگلیسی</button></div><div class="settings-row"><span>زبان رابط</span><strong>🇮🇷 فارسی</strong></div><div class="settings-row"><span>سطح فعال</span><button class="outline-btn" data-nav="lessons">${escapeHtml(progress.activeLevel)}</button></div><div class="settings-row"><span>یادآوری روزانه</span><span class="muted">غیرفعال</span></div></div>
@@ -462,7 +494,7 @@ function onClick(event) {
   const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-meaning-key],button[data-expression-key],button[data-opposite-key],button[data-mission-key],button[data-plural-lab-key],button[data-count-math-key],button[data-count-scene-key],button[data-feature-hunt-key],button[data-cumulative-lab-key],button[data-daily-choice-key],button[data-cumulative-quest-key],button[data-cumulative-number-key],button[data-place-key],button[data-question-explorer-key],button[data-attribute-key],button[data-spatial-key],button[data-family-key],button[data-agreement-key],button[data-finish-section],button[data-review],button[data-planned],button[data-shadowing-key],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-build-submit],button[data-build-undo],button[data-build-clear],button[data-roleplay],button[data-word-key],button[data-composer-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
   if (!el) return;
   if (el.dataset.nav) { modal = null; navigate(el.dataset.nav); return; }
-  if (el.dataset.openLesson) { modal = null; activePerson = 0; ownerIdx = 0; objectIdx = 0; navigate('lesson', el.dataset.openLesson, el.dataset.startSection || null); return; }
+  if (el.dataset.openLesson) { progress.lastLessonId = el.dataset.openLesson; persist(); modal = null; activePerson = 0; ownerIdx = 0; objectIdx = 0; navigate('lesson', el.dataset.openLesson, el.dataset.startSection || null); return; }
   if (el.dataset.level) { progress.activeLevel = el.dataset.level; persist(); updateInline(); return; }
   if (el.dataset.stage) { progress.activeStage = el.dataset.stage; persist(); updateInline(); document.querySelector('.stage-summary')?.scrollIntoView({behavior:'smooth',block:'start'}); return; }
   if (el.dataset.planned) { showModal('درس قفل است', 'با آماده‌شدن این درس، امکان شروع آن فعال می‌شود.'); return; }
