@@ -1,4 +1,5 @@
 import { auditCurriculum } from './curriculum-contract.mjs';
+import { buildCourseWordBank } from './build-word-bank.mjs';
 import { cpSync, mkdirSync, copyFileSync, rmSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -21,6 +22,8 @@ cpSync(source, target, { recursive: true });
 copyFileSync(join(content, 'preview-manifest.json'), join(target, 'data/manifest.json'));
 copyFileSync(join(content, 'curriculum.a1.json'), join(target, 'data/curriculum.a1.json'));
 cpSync(join(content, 'lessons'), join(target, 'data/lessons'), { recursive: true });
+const bank=buildCourseWordBank();
+writeFileSync(join(target,'data/word-bank.json'),JSON.stringify(bank));
 
 // Use a new URL for each build's JS/CSS so an older installed service worker
 // cannot accidentally serve obsolete UI assets immediately after deployment.
@@ -36,6 +39,7 @@ const rewrite = (file, replacements) => {
 };
 rewrite('index.html', [
   ['./ui-v2.css', `./ui-v2.css?v=${revision}`],
+  ['./leitner.css', `./leitner.css?v=${revision}`],
   ['src="./app.js"', `src="./app.js?v=${revision}"`]
 ]);
 rewrite('app.js', [
@@ -45,6 +49,12 @@ rewrite('app.js', [
   ["from './sentence-puzzle.js'", `from './sentence-puzzle.js?v=${revision}'`],
   ["from './progress-migration.js'", `from './progress-migration.js?v=${revision}'`],
   ["from './learning-contracts.js'", `from './learning-contracts.js?v=${revision}'`],
+  ["from './leitner-engine.js'", `from './leitner-engine.js?v=${revision}'`],
+  ["from './word-bank.js'", `from './word-bank.js?v=${revision}'`],
+  ["from './leitner-ui.js'", `from './leitner-ui.js?v=${revision}'`],
+  ["from './lesson-review.js'", `from './lesson-review.js?v=${revision}'`],
+  ["from './review-extension-ui.js'", `from './review-extension-ui.js?v=${revision}'`],
+  ["from './progress-storage.js'", `from './progress-storage.js?v=${revision}'`],
 ]);
 rewrite('lesson-modules.js', [
   ["from './word-review.js'", `from './word-review.js?v=${revision}'`],
@@ -71,7 +81,14 @@ rewrite('sw.js', [
   ["'./sentence-puzzle.js'", `'./sentence-puzzle.js?v=${revision}'`],
   ["'./visual-learning.js'", `'./visual-learning.js?v=${revision}'`],
   ["'./progress-migration.js'", `'./progress-migration.js?v=${revision}'`],
-  ["'./learning-contracts.js'", `'./learning-contracts.js?v=${revision}'`]
+  ["'./learning-contracts.js'", `'./learning-contracts.js?v=${revision}'`],
+  ["'./leitner-engine.js'", `'./leitner-engine.js?v=${revision}'`],
+  ["'./word-bank.js'", `'./word-bank.js?v=${revision}'`],
+  ["'./leitner-ui.js'", `'./leitner-ui.js?v=${revision}'`],
+  ["'./lesson-review.js'", `'./lesson-review.js?v=${revision}'`],
+  ["'./review-extension-ui.js'", `'./review-extension-ui.js?v=${revision}'`],
+  ["'./leitner.css'", `'./leitner.css?v=${revision}'`],
+  ["'./progress-storage.js'", `'./progress-storage.js?v=${revision}'`]
 ]);
 rewrite('lesson-flow.js', [
   ["from './sentence-puzzle.js'", `from './sentence-puzzle.js?v=${revision}'`],
