@@ -1,4 +1,10 @@
 import { summarizeLearningProgress, selectResumeLesson, describeLessonState } from './learning-contracts.js';
+import { createLeitnerState, ensureDailySession, answerCard, reviewSummary, normalizeReviewSettings } from './leitner-engine.js';
+import { mergeLegacyCards } from './word-bank.js';
+import { renderLeitner, renderWordBank, renderLeitnerSettings } from './leitner-ui.js';
+import { addFromLesson } from './lesson-review.js';
+import { renderLessonReviewPanel,summarizeActualReview,renderActualProgress } from './review-extension-ui.js';
+import { createProgressStore, createProgressBackup, parseProgressBackup, resolveResumeSection, DEFAULT_PROGRESS_KEY } from './progress-storage.js';
 import { cycleComposerSlot } from './sentence-composer.js';
 import { addPuzzleWord, canAppendPuzzleWord, undoPuzzleWord, clearPuzzleSentence, submitPuzzleSentence } from './sentence-puzzle.js';
 import { renderActivity } from './lesson-modules.js';
@@ -12,7 +18,9 @@ const $root = document.getElementById('app');
 // data too, so old service-worker/CDN caches cannot mix versions after a push.
 const CONTENT_REVISION = new URL(import.meta.url).searchParams.get('v') || 'dev';
 const contentUrl = (path) => `./data/${path}?v=${encodeURIComponent(CONTENT_REVISION)}`;
-const STORAGE_KEY = 'tutivar:fa-en:preview:v1';
+const STORAGE_KEY = DEFAULT_PROGRESS_KEY;
+const progressStore = createProgressStore({ getItem: key => localStorage.getItem(key), setItem: (key, value) => localStorage.setItem(key, value) }, { key: STORAGE_KEY });
+let storageWarning = null;
 const ICONS = {
   home: '<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/>',
   book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
@@ -52,8 +60,24 @@ const ICONS = {
 const icon = (name, size = '') => `<span class="icon ${size}"><svg aria-hidden="true" viewBox="0 0 24 24">${ICONS[name] || ICONS.star}</svg></span>`;
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const en = (text) => `<span class="en" lang="en" dir="ltr">${escapeHtml(text)}</span>`;
-const defaultProgress = () => ({ completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, expressionIndexes: {}, sentenceLabs: {}, sentenceComposers: {}, meaningChoices: {}, spatialChoices: {}, familyPeople: {}, agreementChoices: {}, pluralChoices: {}, mathChoices: {}, mathOps: {}, attributeChoices: {}, oppositeChoices: {}, countSceneStates: {}, featureHuntStates: {}, cumulativeLabStates: {}, cumulativeQuestStates: {}, missionLabStates: {}, questionExplorerStates: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
-function readProgress() { try { const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); const migrated = migrateLegacyProgress(saved); if(migrated!==saved)localStorage.setItem(STORAGE_KEY,JSON.stringify(migrated)); return { ...defaultProgress(), ...migrated, settings: { ...defaultProgress().settings, ...(migrated.settings || {}) } }; } catch { return defaultProgress(); } }
+const defaultProgress = () => ({ lastLessonId: null, lastSectionByLesson: {}, completed: [], sectionCompleted: {}, quizAnswers: {}, chatAnswers: {}, written: {}, reviewCount: 0, historyDates: [], showTranslation: false, showDialogueTranslation: true, currentReview: 0, activeLevel: 'A1', activeStage: 'A1.1', matchAnswers: {}, sentenceAnswers: {}, roleplayAnswers: {}, wordProgress: {}, leitnerAdded: [], phraseChoices: {}, expressionIndexes: {}, sentenceLabs: {}, sentenceComposers: {}, meaningChoices: {}, spatialChoices: {}, familyPeople: {}, agreementChoices: {}, pluralChoices: {}, mathChoices: {}, mathOps: {}, attributeChoices: {}, oppositeChoices: {}, countSceneStates: {}, featureHuntStates: {}, cumulativeLabStates: {}, cumulativeQuestStates: {}, missionLabStates: {}, questionExplorerStates: {}, guidedAnswers: {}, transformChoices: {}, transformStages: {}, dialogueSteps: {}, exchangeChoices: {}, practiceStates: {}, assessments: {}, settings: { reminders: false, sound: true } });
+function readProgress() {
+  const record = progressStore.load();
+  storageWarning = record.warning;
+  // Never overwrite damaged records. A recovered backup remains memory-only
+  // until the learner explicitly confirms recovery.
+  const saved = record.data || {};
+  let migrated;
+  try { migrated = migrateLegacyProgress(saved); }
+  catch { storageWarning = 'corrupt'; return defaultProgress(); }
+  const result = { ...defaultProgress(), ...migrated, settings: { ...defaultProgress().settings, ...(migrated.settings || {}) } };
+  if ((record.source === 'primary' || record.source === 'empty') && migrated !== saved) {
+    const outcome = progressStore.save(result);
+    if (!outcome.ok) storageWarning = outcome.error;
+    else if (outcome.warning) storageWarning = outcome.warning;
+  }
+  return result;
+}
 const progress = readProgress();
 // Historical completion records predate skill evidence. Preserve them in storage,
 // but don't label a revised activity as mastered before its new checks are passed.
@@ -66,7 +90,13 @@ function completedSections(lessonId) {
     return section && masteryMissing(lesson, section).length === 0;
   });
 }
-function nextSection(lessonId) { return completedSections(lessonId).includes('foundation') ? 'production' : 'foundation'; }
+function nextSection(lessonId) {
+  const lesson = lessonCache.get(lessonId);
+  if (lesson) return resolveResumeSection(lessonId, lesson, progress, completedSections);
+  const completed = progress.sectionCompleted?.[lessonId] || [];
+  const saved = progress.lastSectionByLesson?.[lessonId];
+  return saved && !completed.includes(saved) ? saved : completed.includes('foundation') ? 'production' : 'foundation';
+}
 let manifest;
 let route = { page: 'home', lessonId: null, part: null };
 let lessonCache = new Map();
@@ -77,11 +107,51 @@ let shadowingRunId = 0;
 let activeShadowing = null;
 let modal = null;
 let toastTimeout;
+let vocabularyBank = {schemaVersion:1,pairId:'fa-en',targetLanguage:'en',entries:[]};
+let bankLoadWarning = null;
+let leitnerPending = null;
+let lastAutoSpokenCard = null;
+function reviewCatalog(){
+  // The existing lesson-to-Leitner entries are preserved, but the bank is
+  // canonical and exact duplicates are never introduced into the daily deck.
+  return mergeLegacyCards(vocabularyBank, progress.leitnerAdded||[]);
+}
+function learnerReviewState(){
+  progress.leitnerV2 ||= createLeitnerState();
+  return progress.leitnerV2;
+}
+function openDailyReview(){
+  const before = progress.leitnerV2;
+  const next = ensureDailySession(before,reviewCatalog(),new Date(),{priorityIds:progress.pinnedReviewIds||[]});
+  const changed = JSON.stringify(before||null)!==JSON.stringify(next);
+  progress.leitnerV2=next;
+  if(changed)persist();
+  return next;
+}
+function wordBankCount(){return reviewCatalog().entries.length;}
+function currentReviewWord(state){
+  const id=state?.day?.queue?.[0];
+  return reviewCatalog().entries.find(word=>word.id===id);
+}
+function maybeAutoSpeak(){
+  if(route.page!=='leitner')return;
+  const state=learnerReviewState();
+  const card=currentReviewWord(state);
+  if(!card || !state.settings?.tts || !state.settings?.autoSpeak || state.settings?.direction==='meaning-first' || leitnerPending)return;
+  const key=state.day.key+':'+card.id+':'+(state.cards[card.id]?.attempts||0);
+  if(lastAutoSpokenCard===key)return;
+  lastAutoSpokenCard=key;
+  speech(card.target);
+}
 
 const levelChapters = (level) => (manifest.levels[level]?.stages || [{ chapters: manifest.levels[level]?.chapters || [] }]).flatMap((stage) => stage.chapters);
 const samples = () => levelChapters('A1').flatMap((chapter) => chapter.lessons).filter((entry) => entry.status === 'sample');
 const nextLesson = () => selectResumeLesson(samples(), progress);
-function persist() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); } catch { /* local preview works without persistence */ } }
+function persist() {
+  const result = progressStore.save(progress);
+  storageWarning = result.ok ? (result.warning || null) : (result.error === 'corrupt' && storageWarning === 'recovered' ? 'recovered' : result.error);
+  return result.ok;
+}
 const allLeitnerCards = () => {
   const cards = [...(progress.leitnerAdded || []), ...manifest.leitner.cards];
   return cards.filter((card, index) => cards.findIndex((other) => other.front.toLowerCase().trim() === card.front.toLowerCase().trim()) === index);
@@ -98,7 +168,7 @@ function mobileButton(page, label, name) { return `<button class="${route.page =
 function logo() { return `<span class="brand-icon" aria-hidden="true">t.</span><span><span class="brand-word en">tutivar</span><span class="brand-caption">یاد بگیر، زندگی کن</span></span>`; }
 function languageButton() { return `<button class="language-chip" data-action="language" aria-label="زبان یادگیری: ${escapeHtml(manifest.target.name)}"><span class="flag">${manifest.target.flag}</span><span>${escapeHtml(manifest.target.name)}</span></button>`; }
 function shell(content) {
-  return `<a class="tv-skip" href="#main-content">رفتن به محتوای اصلی</a><div class="shell">
+  return `<a class="tv-skip" href="#main-content">رفتن به محتوای اصلی</a>${storageWarning ? `<aside class="tv-storage-warning" role="alert"><strong>${storageWarning === 'recovered' ? 'نسخه قبلی پیشرفت پیدا شد' : 'هشدار ذخیره پیشرفت'}</strong><span>${storageWarning === 'recovered' ? 'نسخه فعلی آسیب دیده و پیشرفت از پشتیبان در حافظه باز شده؛ برای ذخیره مجدد تأیید کن.' : storageWarning === 'corrupt' ? 'داده ذخیره‌شده آسیب دیده؛ برای جلوگیری از حذف، ذخیره خودکار متوقف است.' : storageWarning === 'conflict' ? 'این صفحه قدیمی است و پیشرفت در برگه دیگر تغییر کرده؛ برای جلوگیری از حذف اطلاعات، ذخیره متوقف شد.' : 'مرورگر نتوانست پیشرفت را با اطمینان ذخیره کند. از خروجی پشتیبان استفاده کن.'}</span><button data-action="export-progress">دریافت پشتیبان</button><button data-nav="dashboard">بازیابی از فایل</button>${storageWarning === 'conflict' ? '<button data-action="reload-progress">بارگذاری پیشرفت جدید</button>' : ''}${storageWarning === 'recovered' ? '<button data-action="recover-progress">بازیابی تأییدشده</button>' : ''}</aside>` : ''}<div class="shell">
     <aside class="sidebar"><div class="brand-row"><div class="logo-line">${logo()}</div>${languageButton()}</div><nav class="sidenav" aria-label="منوی اصلی">${navButton('home', 'خانه', 'home')}${navButton('lessons', 'مسیر یادگیری', 'book')}${navButton('leitner', 'لایتنر', 'layers')}${navButton('dashboard', 'داشبورد', 'user')}</nav>
       <div class="side-bottom"><div class="side-notice"><div class="caps">THE LITTLE STEPS</div><h3>هر روز، یک قدم.</h3></div><div class="side-profile"><div class="avatar">تو</div><div><strong class="body-sm">زبان‌آموز توتیوار</strong><div class="small muted">سطح فعلی · ${escapeHtml(progress.activeLevel)}</div></div></div></div>
     </aside>
@@ -126,7 +196,7 @@ function homeView() {
     </section>
     <div class="tv-quick-grid" aria-label="دسترسی سریع">
       <button class="tv-quick-card" data-nav="lessons"><span class="tv-quick-icon">${icon('book')}</span><span><strong>مسیر درس‌ها</strong><small>${snapshot.remainingCount} درس باقی‌مانده</small></span>${icon('chevron')}</button>
-      <button class="tv-quick-card" data-nav="leitner"><span class="tv-quick-icon tv-quick-lilac">${icon('layers')}</span><span><strong>کارت‌های مرور</strong><small>${cards.length} کارت · مرور آزمایشی</small></span>${icon('chevron')}</button>
+      <button class="tv-quick-card" data-nav="leitner"><span class="tv-quick-icon tv-quick-lilac">${icon('layers')}</span><span><strong>کارت‌های مرور</strong><small>${wordBankCount()} واژه · مرور فعال</small></span>${icon('chevron')}</button>
       <button class="tv-quick-card" data-nav="dashboard"><span class="tv-quick-icon tv-quick-peach">${icon('chart')}</span><span><strong>پیشرفت من</strong><small>${snapshot.completedCount} درس تکمیل‌شده</small></span>${icon('chevron')}</button>
     </div>
     <section class="tv-home-section" aria-labelledby="tv-next-title">
@@ -239,28 +309,65 @@ function lessonView(lesson) { if (!lesson) return `<div class="empty-level">در
   const lessonPercent = Math.round(100 * completedSections(lesson.id).length / Math.max(1, lesson.sections.length));
   return `<div class="lesson-page"><div class="tv-lesson-meter" aria-label="پیشرفت این درس"><div><strong>${escapeHtml(lesson.title)}</strong><span>${lessonPercent}٪ پیشرفت · ${escapeHtml(lesson.id)}</span></div><div class="tv-lesson-meter-track" role="progressbar" aria-valuenow="${lessonPercent}" aria-valuemin="0" aria-valuemax="100" aria-label="درصد تکمیل درس"><span style="width:${lessonPercent}%"></span></div></div><div class="lesson-top-navigation"><button class="back-link" data-nav="lessons">${icon('arrow')} مسیر درس‌ها</button><nav class="lesson-tabs lesson-tabs-compact" aria-label="بخش‌های مستقل درس">${lesson.sections.map((section, index) => `<button class="lesson-tab ${section.id === activePart ? 'active' : ''}" data-section="${escapeHtml(section.id)}" aria-current="${section.id === activePart ? 'step' : 'false'}">${completedSections(lesson.id).includes(section.id) ? '✓' : String(index + 1).padStart(2, '0')} · ${escapeHtml(section.label)}</button>`).join('')}</nav></div>
     <section class="lesson-overview" aria-label="هدف درس"><div class="lesson-overview-main"><span class="caps">${escapeHtml(lesson.id)} · ${escapeHtml(lesson.title)}</span><h1>در این درس چه یاد می‌گیری؟</h1><p>${escapeHtml(lesson.orientation?.goal || lesson.goal)}</p><div class="lesson-meta"><span class="meta-chip">◷ ${escapeHtml(lesson.duration)}</span><span class="meta-chip">✳ ${escapeHtml(lesson.feature)}</span></div></div>${activeIndex === 0 ? lessonOrientation(lesson) : ''}</section>
+    ${renderLessonReviewPanel({lessonId:lesson.id,bank:reviewCatalog(),pinnedIds:progress.pinnedReviewIds||[]})}
     <div class="lesson-flow"><section id="lesson-${escapeHtml(activePart)}" class="lesson-section"><div class="phase-heading"><span class="phase-number">${String(activeIndex + 1).padStart(2, '0')}</span><div><h2>${escapeHtml(activeSection.label)}</h2><p>${escapeHtml(activeSection.intro || '')}</p></div></div>${sectionActivities(activeSection, lesson.id)}</section></div>
     <div class="lesson-end"><div><h3>${missing.length ? 'برای ثبت یادگیری، یک تمرین مانده' : alreadyDone ? 'این بخش قبلاً تمام شده ✓' : 'آمادهٔ پایان این بخش هستی ✓'}</h3><p>${missing.length ? `${missing.length} فعالیتِ هدف هنوز تأیید نشده. مرور کلمات اجباری نیست؛ پاسخ‌های اصلی را بساز.` : 'پاسخ‌های اصلی بررسی شده‌اند؛ حالا می‌توانی وارد مرحلهٔ بعد شوی.'}</p></div><div class="lesson-end-actions"><button class="dark-btn" data-finish-section="${escapeHtml(activePart)}">${isLast ? 'ثبت یادگیری و بازگشت به مسیر' : 'ثبت بخش اول · ورود به بخش دوم'}</button>${missing.length ? `<button class="outline-btn" ${isLast ? 'data-nav="lessons"' : `data-section="${escapeHtml(lesson.sections[activeIndex + 1].id)}"`}>${isLast ? 'بازگشت بدون ثبت' : 'فعلاً ادامه می‌دهم'}</button>` : ''}</div></div></div>`;
 }
 
-function leitnerView() { const cards = allLeitnerCards(); const card = cards[progress.currentReview % cards.length]; const completedThisReview = progress.reviewCount % cards.length;
-  return `<div class="path-intro"><div><span class="eyebrow">مرور واژه‌ها</span><h1>مرور کارت‌ها</h1><p>این بخش پیش‌نمایش مرور است؛ زمان‌بندی واقعی لایتنر در فاز بعد پیاده‌سازی می‌شود.</p></div></div><div class="review-layout"><div><div class="flash-card"><div><span class="caps">TAP TO REVEAL</span><div style="margin:23px 0">${en(card.front)}</div>${progress.showTranslation ? `<div class="translation">${escapeHtml(card.back)}</div><p class="example">${en(card.example)}</p>` : '<p class="body-sm" style="color:#a4c8b4">معنی را در ذهن مرور کن</p>'}<button class="primary-btn" style="margin-top:20px" data-action="reveal">${progress.showTranslation ? 'پنهان‌کردن پاسخ' : 'نمایش پاسخ'}</button></div></div><div class="review-buttons" aria-label="کلیدهای هفت‌گانه مرور">${[1, 2, 3, 4, 5, 6, 7].map((key) => `<button class="review-key" data-review="${key}" title="کلید ${key}">${key}</button>`).join('')}</div></div><div class="card review-aside"><span class="eyebrow">جلسه مرور</span><h3 style="margin-top:10px">یک مرور کوتاه</h3><p>${escapeHtml(manifest.leitner.note)}</p><div class="review-tally">${progress.reviewCount} <span class="body-sm muted">مرور ثبت‌شده</span></div><div class="review-sequence">${cards.map((_, index) => `<span class="review-dot ${index < completedThisReview ? 'filled' : ''}"></span>`).join('')}</div><button class="outline-btn" style="margin-top:15px" data-nav="dashboard">دیدن آمار مرور ${icon('settings')}</button></div></div>`;
+function leitnerView(){
+  const state=openDailyReview();
+  if(leitnerPending && leitnerPending.id!==state.day.queue[0])leitnerPending=null;
+  const catalog=reviewCatalog();
+  const summary=reviewSummary(state,catalog);
+  return (bankLoadWarning ? '<p class="tv-l-load-warning" role="alert">بانک لغات درس‌ها بارگذاری نشده؛ اتصال یا نسخه سایت را بررسی کن.</p>' : '') +
+    renderLeitner({state,bank:catalog,summary,pending:leitnerPending});
 }
-function dashboardView() { return `<div class="path-intro"><div><span class="eyebrow">فضای شخصی</span><h2>داشبورد</h2></div><div class="avatar" style="width:66px;height:66px;border-radius:24px">تو</div></div><div class="stats-row">${statCard('book', progress.completed.length, 'درس کامل', 'soft-green')}${statCard('flame', streak(), 'روز استمرار', 'soft-peach')}${statCard('cards', progress.reviewCount, 'مرور کارت', 'soft-lilac')}</div><div class="dashboard-grid">
-    <div class="card dash-card"><h3>${icon('settings')} تنظیمات یادگیری</h3><div class="settings-row"><span>زبان یادگیری</span><button class="language-chip" data-action="language">🇬🇧 انگلیسی</button></div><div class="settings-row"><span>زبان رابط</span><strong>🇮🇷 فارسی</strong></div><div class="settings-row"><span>سطح فعال</span><button class="outline-btn" data-nav="lessons">${escapeHtml(progress.activeLevel)}</button></div><div class="settings-row"><span>یادآوری روزانه</span><span class="muted">غیرفعال</span></div></div>
-    <div class="card dash-card"><h3>${icon('cards')} تنظیمات لایتنر</h3><div class="settings-list"><div class="setting-item"><span>جعبه‌های مرور</span><strong>۷ کلید</strong></div><div class="setting-item"><span>کارت‌های موجود</span><strong>${allLeitnerCards().length}</strong></div></div><button class="secondary-btn" style="margin-top:19px" data-nav="leitner">رفتن به لایتنر ${icon('arrow')}</button></div>
-    <div class="card dash-card"><h3>${icon('chart')} آمار پیشرفت</h3><div class="settings-list"><div class="setting-item"><span>درس‌های کامل‌شده</span><strong>${progress.completed.length}</strong></div><div class="setting-item"><span>آخرین روز فعالیت</span><strong>${progress.historyDates.at(-1) || 'ثبت نشده'}</strong></div><div class="setting-item"><span>جمله‌های تمرینی ذخیره‌شده</span><strong>${Object.values(progress.written).filter(Boolean).length}</strong></div></div></div>
-    <div class="card dash-card"><h3>${icon('users')} دوستان و رقابت</h3><div class="placeholder-callout" style="margin-top:15px"><div style="font-size:36px;margin-bottom:5px">✳</div>دوستان · لیگ هفتگی · رتبه‌بندی ماهانه</div></div>
-    <div class="card dash-card"><h3>${icon('trophy')} نشان‌های من</h3><div class="badge-grid"><div class="achievement ${progress.completed.length ? '' : 'locked'}"><span class="emoji">🌱</span><strong>اولین قدم</strong><span>${progress.completed.length ? 'دریافت‌شده' : 'قفل'}</span></div><div class="achievement locked"><span class="emoji">🔥</span><strong>هفت روز</strong><span>بعداً</span></div><div class="achievement locked"><span class="emoji">⭐</span><strong>استاد جمله</strong><span>بعداً</span></div></div></div>
-    <div class="card dash-card"><h3>${icon('user')} حساب کاربری</h3><p class="body-sm muted" style="margin-top:9px">پیشرفت فعلاً روی این دستگاه ذخیره می‌شود.</p><div class="settings-row"><span>ورود و همگام‌سازی</span><span class="muted">غیرفعال</span></div><button class="outline-btn" style="margin-top:16px" data-action="account">گزینه‌های حساب ${icon('chevron')}</button></div>
-    </div>`; }
+function wordBankView(){return renderWordBank({bank:reviewCatalog(),reviewState:learnerReviewState()});}
+function dashboardView() {
+  const lessonSnapshot = summarizeLearningProgress(samples(), progress);
+  const review = reviewSummary(learnerReviewState(), reviewCatalog());
+  const metrics = summarizeActualReview({reviewState: learnerReviewState(), reviewSummary: review, lessonSnapshot, historyDates: progress.historyDates || []});
+  return `<div class="tv-actual-dashboard">
+    <header class="tv-l-header"><div><span class="tv-kicker">آمار واقعی مطالعه</span><h1>پیشرفت من</h1><p>بر اساس درس‌ها و مرورهای ثبت‌شده در همین دستگاه</p></div><button class="outline-btn" data-nav="leitner">مرور کارت‌ها</button></header>
+    ${renderActualProgress({metrics})}
+    <div class="dashboard-grid tv-actual-settings">
+      <div class="card dash-card"><h3>${icon('cards')} تنظیمات لایتنر</h3>${renderLeitnerSettings({settings:learnerReviewState().settings,summary:review})}</div>
+      <div class="card dash-card"><h3>${icon('settings')} ذخیره و بازیابی پیشرفت</h3><p class="body-sm muted">پیشرفت فقط در همین مرورگر نگهداری می‌شود. برای انتقال از فایل پشتیبان استفاده کن.</p><div class="tv-backup-actions"><button class="secondary-btn" data-action="export-progress">دریافت پشتیبان</button><button class="outline-btn" data-action="import-progress">بازیابی از فایل</button></div>
+        <input class="tv-import-input" id="tv-import-progress-file" type="file" accept=".json,application/json" data-import-progress aria-label="انتخاب فایل پشتیبان" hidden>
+        <p class="tiny muted">بازیابی، پیشرفت فعلی را جایگزین می‌کند؛ ابتدا از آن خروجی بگیر.</p></div>
+    </div>
+  </div>`;
+}
 
 function renderModal() { return `<div class="demo-modal" role="dialog" aria-modal="true" aria-labelledby="modal-heading"><div class="modal-content"><span class="eyebrow">در نقشه محصول</span><h2 id="modal-heading">${escapeHtml(modal.title)}</h2><p>${escapeHtml(modal.body)}</p><button class="dark-btn" data-action="close-modal">متوجه شدم</button></div></div>`; }
 function showModal(title, body) { modal = { title, body }; draw(true); }
 function showToast(message) { clearTimeout(toastTimeout); document.getElementById('toast-anchor')?.replaceChildren(); const toast = document.createElement('div'); toast.className = 'toast'; toast.textContent = message; document.getElementById('toast-anchor')?.append(toast); toastTimeout = setTimeout(() => toast.remove(), 3200); }
-function draw(keepScroll = false) { const scroll = window.scrollY; let content = route.page === 'home' ? homeView() : route.page === 'lessons' ? lessonsView() : route.page === 'leitner' ? leitnerView() : route.page === 'dashboard' ? dashboardView() : lessonView(lessonCache.get(route.lessonId)); $root.className = ''; $root.innerHTML = shell(content); for (const view of $root.querySelectorAll('[data-dialogue-window]')) { const step = Number(view.dataset.dialoguePosition) || 0; view.scrollTop = step * (view.querySelector('.dialogue-line')?.offsetHeight || 124); } if (keepScroll) window.scrollTo({ top: scroll, behavior: 'instant' }); }
-function parseHash() { const [page, id, part] = location.hash.replace(/^#\/?/, '').split('/'); if (page === 'lesson' && id) return { page: 'lesson', lessonId: decodeURIComponent(id), part: ['foundation', 'production'].includes(part) ? part : 'foundation' }; return { page: ['home', 'lessons', 'leitner', 'dashboard'].includes(page) ? page : 'home', lessonId: null, part: null }; }
-async function syncRoute() { route = parseHash(); if (route.page === 'lesson') { try { const lesson = await loadLesson(route.lessonId); if (!lesson) { route = { page: 'lessons', lessonId: null, part: null }; } } catch { showModal('بارگذاری درس', 'محتوای این درس بارگذاری نشد. اتصال اینترنت را بررسی کن یا صفحه را تازه‌سازی کن.'); route = { page: 'lessons', lessonId: null, part: null }; } } draw(); window.scrollTo(0, 0); }
+function draw(keepScroll = false) { const scroll = window.scrollY; let content = route.page === 'home' ? homeView() : route.page === 'lessons' ? lessonsView() : route.page === 'leitner' ? leitnerView() : route.page === 'wordbank' ? wordBankView() : route.page === 'dashboard' ? dashboardView() : lessonView(lessonCache.get(route.lessonId)); $root.className = ''; $root.innerHTML = shell(content); for (const view of $root.querySelectorAll('[data-dialogue-window]')) { const step = Number(view.dataset.dialoguePosition) || 0; view.scrollTop = step * (view.querySelector('.dialogue-line')?.offsetHeight || 124); } if (keepScroll) window.scrollTo({ top: scroll, behavior: 'instant' }); }
+function parseHash() { const [page, id, part] = location.hash.replace(/^#\/?/, '').split('/'); if (page === 'lesson' && id) return { page: 'lesson', lessonId: decodeURIComponent(id), part: ['foundation', 'production'].includes(part) ? part : null }; return { page: ['home', 'lessons', 'leitner', 'wordbank', 'dashboard'].includes(page) ? page : 'home', lessonId: null, part: null }; }
+async function syncRoute() {
+  route = parseHash();
+  if (route.page === 'lesson') {
+    try {
+      const lesson = await loadLesson(route.lessonId);
+      if (!lesson) route = { page: 'lessons', lessonId: null, part: null };
+      else {
+        const selected = lesson.sections.some(section => section.id === route.part) ? route.part :
+          resolveResumeSection(route.lessonId, lesson, progress, completedSections);
+        route.part = selected;
+        progress.lastSectionByLesson ||= {};
+        if (progress.lastLessonId !== lesson.id || progress.lastSectionByLesson[lesson.id] !== selected) {
+          progress.lastLessonId = lesson.id;
+          progress.lastSectionByLesson[lesson.id] = selected;
+          persist();
+        }
+      }
+    } catch {
+      showModal('بارگذاری درس', 'محتوای این درس بارگذاری نشد. اتصال اینترنت را بررسی کن یا صفحه را تازه‌سازی کن.');
+      route = { page: 'lessons', lessonId: null, part: null };
+    }
+  }
+  draw(); window.scrollTo(0, 0);
+}
 function navigate(page, id = null, part = null) { stopShadowing(); const target = page === 'lesson' ? `#/lesson/${id}${part ? '/' + part : ''}` : `#/${page}`; if (location.hash === target) { syncRoute(); return; } location.hash = target; }
 function updateInline() { draw(true); }
 const lessonVocabulary = (key) => lessonCache.get(route.lessonId)?.sections.flatMap((section) => section.activities || []).find((item) => item.type === 'vocabulary' && `${route.lessonId}:${item.id}` === key);
@@ -491,8 +598,39 @@ function wordKeydown(event) {
   document.querySelector('[data-word-swipe]')?.focus({ preventScroll: true });
 }
 function onClick(event) {
-  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-meaning-key],button[data-expression-key],button[data-opposite-key],button[data-mission-key],button[data-plural-lab-key],button[data-count-math-key],button[data-count-scene-key],button[data-feature-hunt-key],button[data-cumulative-lab-key],button[data-daily-choice-key],button[data-cumulative-quest-key],button[data-cumulative-number-key],button[data-place-key],button[data-question-explorer-key],button[data-attribute-key],button[data-spatial-key],button[data-family-key],button[data-agreement-key],button[data-finish-section],button[data-review],button[data-planned],button[data-shadowing-key],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-build-submit],button[data-build-undo],button[data-build-clear],button[data-roleplay],button[data-word-key],button[data-composer-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
+  const el = event.target.closest('button[data-nav],button[data-open-lesson],button[data-action],button[data-pin-review],button[data-level],button[data-stage],button[data-section],button[data-quiz],button[data-chat],button[data-person],button[data-meaning-key],button[data-expression-key],button[data-opposite-key],button[data-mission-key],button[data-plural-lab-key],button[data-count-math-key],button[data-count-scene-key],button[data-feature-hunt-key],button[data-cumulative-lab-key],button[data-daily-choice-key],button[data-cumulative-quest-key],button[data-cumulative-number-key],button[data-place-key],button[data-question-explorer-key],button[data-attribute-key],button[data-spatial-key],button[data-family-key],button[data-agreement-key],button[data-finish-section],button[data-review],button[data-planned],button[data-shadowing-key],button[data-speak],button[data-example-reveal],button[data-match],button[data-build-token],button[data-build-reset],button[data-build-submit],button[data-build-undo],button[data-build-clear],button[data-roleplay],button[data-word-key],button[data-composer-key],button[data-phrase-key],button[data-lab-key],button[data-transform-key],button[data-transform-stage-key],button[data-exchange-key],button[data-dialogue-key],button[data-dialogue-play],button[data-practice-reset],button[data-quick-skip]');
   if (!el) return;
+    if (el.dataset.pinReview) {
+    try {
+      const entry = reviewCatalog().entries.find(word => word.id === el.dataset.pinReview);
+      if (!entry?.sources?.some(source => source.lessonId === route.lessonId)) throw Error('Unrelated card');
+      const result = addFromLesson(progress, reviewCatalog(), {lessonId: route.lessonId, entryId: entry.id});
+      progress.pinnedReviewIds = result.progress.pinnedReviewIds;
+      if (!persist()) showToast('اولویت مرور تعیین شد، ولی ذخیره انجام نشد.');
+      el.disabled = true; el.textContent = 'در اولویت مرور';
+      showToast(result.alreadyPinned ? 'از قبل در اولویت مرور است.' : 'به اولویت مرور اضافه شد.');
+    } catch (error) { console.error(error); showToast('افزودن واژه ممکن نشد.'); }
+    return;
+  }
+  if(el.dataset.action==='open-wordbank'){navigate('wordbank');return;}
+  if(['leitner-known','leitner-unknown','leitner-correct','leitner-wrong'].includes(el.dataset.action)){
+    const state=learnerReviewState();
+    const id=state.day.queue[0];
+    if(!id)return;
+    if(el.dataset.action==='leitner-known'||el.dataset.action==='leitner-unknown'){
+      leitnerPending={id,guess:el.dataset.action==='leitner-known'?'known':'unknown'};
+      draw(true);return;
+    }
+    if(!leitnerPending||leitnerPending.id!==id)return;
+    try{
+      progress.leitnerV2=answerCard(state,id,{guess:leitnerPending.guess,correct:el.dataset.action==='leitner-correct'});
+      progress.reviewCount=(Number(progress.reviewCount)||0)+1;
+      leitnerPending=null;
+      if(!persist())showToast('ذخیره پاسخ موفق نبود؛ از پیشرفت نسخه پشتیبان بگیر.');
+      draw(true);maybeAutoSpeak();
+    }catch(error){console.error(error);showToast('پاسخ ثبت نشد.');}
+    return;
+  }
   if (el.dataset.nav) { modal = null; navigate(el.dataset.nav); return; }
   if (el.dataset.openLesson) { progress.lastLessonId = el.dataset.openLesson; persist(); modal = null; activePerson = 0; ownerIdx = 0; objectIdx = 0; navigate('lesson', el.dataset.openLesson, el.dataset.startSection || null); return; }
   if (el.dataset.level) { progress.activeLevel = el.dataset.level; persist(); updateInline(); return; }
@@ -1039,10 +1177,59 @@ function onClick(event) {
       } else { persist(); showToast('جمله روی همین دستگاه ذخیره شد.'); }
       break;
     }
+    case 'reload-progress': location.reload(); break;
+    case 'export-progress': exportProgressFile(); break;
+    case 'import-progress': document.getElementById('tv-import-progress-file')?.click(); break;
+    case 'recover-progress': {
+      if (!confirm('نسخه پشتیبان بازیابی و اطلاعات آسیب‌دیده فعلی جایگزین شود؟')) break;
+      const result = progressStore.save(progress, { allowCorruptReplace: true });
+      storageWarning = result.ok ? null : result.error;
+      draw(true); showToast(result.ok ? 'پیشرفت بازیابی و ذخیره شد.' : 'بازیابی ذخیره نشد؛ نسخه پشتیبان را نگه دار.');
+      break;
+    }
     case 'close-modal': modal = null; draw(true); break;
   }
 }
+function exportProgressFile() {
+  const payload = JSON.stringify(createProgressBackup(progress), null, 2);
+  const blob = new Blob([payload], { type: 'application/json;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'tutivar-progress-' + today() + '.json';
+  document.body.appendChild(link);
+  link.click(); link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 60000);
+}
+async function restoreProgressFile(input) {
+  const file = input.files?.[0];
+  input.value = '';
+  if (!file) return;
+  try {
+    if (file.size > 5_000_000) throw new Error('حجم فایل بیش از حد مجاز است.');
+    const imported = parseProgressBackup(await file.text());
+    const migrated = migrateLegacyProgress(imported);
+    const candidate = { ...defaultProgress(), ...migrated, settings: { ...defaultProgress().settings, ...(migrated.settings || {}) } };
+    if (!confirm('اطلاعات فعلی این مرورگر با نسخه داخل فایل جایگزین شود؟ ابتدا از پیشرفت فعلی خروجی بگیر.')) return;
+    const saved = progressStore.save(candidate, { allowCorruptReplace: true });
+    if (!saved.ok) throw new Error('ذخیره در مرورگر ممکن نیست؛ اطلاعات قبلی تغییری نکرد.');
+    for (const key of Object.keys(progress)) delete progress[key];
+    Object.assign(progress, candidate);
+    storageWarning = saved.warning || null;
+    navigate('home'); draw(true);
+    showToast('پیشرفت از فایل پشتیبان بازیابی شد.');
+  } catch (error) {
+    showToast('بازیابی انجام نشد: ' + (error?.message || 'فایل نامعتبر'));
+  }
+}
+
 function onInput(event) {
+  if(event.target.dataset.wordbankFilter!==undefined){
+    const query=event.target.value.trim().toLocaleLowerCase('en-US');
+    for(const item of $root.querySelectorAll('[data-bank-entry]'))item.hidden=!item.dataset.search.includes(query);
+    return;
+  }
+
   if (event.target.dataset.dialogueSlider) {
     const key = event.target.dataset.dialogueSlider;
     const view = [...document.querySelectorAll('[data-dialogue-window]')].find((item) => item.dataset.dialogueWindow === key);
@@ -1053,6 +1240,24 @@ function onInput(event) {
   if (event.target.dataset.wordSlider) scrubWord(event.target.dataset.wordSlider, Number(event.target.value) - 1, { save: false });
 }
 function onChange(event) {
+  const field=event.target.dataset.leitnerSetting;
+  const grammar=event.target.dataset.leitnerForm;
+  if(field||grammar){
+    const state=learnerReviewState();
+    state.settings=normalizeReviewSettings(state.settings);
+    if(field==='dailyLimit')state.settings.dailyLimit=Number(event.target.value);
+    else if(field==='direction')state.settings.direction=event.target.value;
+    else if(field==='tts'||field==='autoSpeak')state.settings[field]=event.target.checked;
+    if(grammar)state.settings.forms[grammar]=event.target.checked;
+    state.settings=normalizeReviewSettings(state.settings);
+    if(!persist())showToast('تنظیمات در مرورگر ذخیره نشد.');
+    draw(true);return;
+  }
+
+  if (event.target.dataset.importProgress !== undefined) {
+    restoreProgressFile(event.target);
+    return;
+  }
   if (event.target.dataset.shadowingSpeed) {
     const audio = event.target.closest('.module-shadowing')?.querySelector('audio[data-shadowing-audio]');
     if (audio) audio.playbackRate = Math.max(0.55, Math.min(1, Number(event.target.value) || 1));
@@ -1105,5 +1310,27 @@ async function hydrateCurricula() {
     }));
   }
 }
-async function main() { try { const response = await fetch(contentUrl('manifest.json')); if (!response.ok) throw new Error(`HTTP ${response.status}`); manifest = await response.json(); if (manifest.pairId !== 'fa-en' || manifest.status !== 'draft') throw new Error('wrong course manifest'); await hydrateCurricula(); $root.addEventListener('click', onClick); $root.addEventListener('input', onInput); $root.addEventListener('change', onChange); $root.addEventListener('scroll', onDialogueScroll, true); $root.addEventListener('submit', (event) => { const form = event.target.closest('form[data-word-form],form[data-practice-form]'); if (!form) return; event.preventDefault(); if (form.dataset.wordForm) submitWordAnswer(form.dataset.wordForm, form.querySelector('[data-word-answer]')?.value || ''); else submitPracticeAnswer(form.dataset.practiceForm, form.elements.response?.value || ''); }); $root.addEventListener('touchstart', wordSwipeStart, { passive: true }); $root.addEventListener('touchend', wordSwipeEnd, { passive: true }); $root.addEventListener('keydown', wordKeydown); addEventListener('hashchange', syncRoute); await syncRoute(); if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('./sw.js').catch(() => {}); } catch (error) { console.error(error); $root.innerHTML = `<div class="boot"><span class="boot-logo">t.</span><strong>صفحه بارگذاری نشد</strong><p class="muted">اتصال را بررسی کن و دوباره تلاش کن.</p></div>`; } }
+async function main() { try { const response = await fetch(contentUrl('manifest.json')); if (!response.ok) throw new Error(`HTTP ${response.status}`); manifest = await response.json(); if (manifest.pairId !== 'fa-en' || manifest.status !== 'draft') throw new Error('wrong course manifest'); await hydrateCurricula();
+    try {
+      const bankResponse=await fetch(contentUrl('word-bank.json'));
+      if(!bankResponse.ok)throw Error('word bank HTTP '+bankResponse.status);
+      const bank=await bankResponse.json();
+      if(!Array.isArray(bank.entries)||bank.pairId!=='fa-en')throw Error('wrong word bank');
+      vocabularyBank=bank;
+    }catch(error){console.error('word bank load failed',error);bankLoadWarning='unavailable';}
+ $root.addEventListener('click', onClick); $root.addEventListener('input', onInput); $root.addEventListener('change', onChange); $root.addEventListener('scroll', onDialogueScroll, true); $root.addEventListener('submit', (event) => { const form = event.target.closest('form[data-word-form],form[data-practice-form],form[data-lesson-card-form]'); if (!form) return; event.preventDefault();     if (form.dataset.lessonCardForm !== undefined) {
+      try {
+        const result = addFromLesson(progress, reviewCatalog(), {
+          lessonId: route.lessonId, sectionId: route.part,
+          target: form.elements.target.value, meaning: form.elements.meaning.value
+        });
+        progress.pinnedReviewIds = result.progress.pinnedReviewIds;
+        progress.leitnerAdded = result.progress.leitnerAdded;
+        if (!persist()) showToast('عبارت اضافه شد، ولی ذخیره‌سازی موفق نبود.');
+        form.reset();
+        showToast(result.alreadyPinned ? 'قبلاً در اولویت مرور ثبت شده.' : 'عبارت به لایتنر فرستاده شد.');
+      } catch (error) { console.error(error); showToast('عبارت و معنی معتبر وارد کن.'); }
+      return;
+    }
+    if (form.dataset.wordForm) submitWordAnswer(form.dataset.wordForm, form.querySelector('[data-word-answer]')?.value || ''); else submitPracticeAnswer(form.dataset.practiceForm, form.elements.response?.value || ''); }); $root.addEventListener('touchstart', wordSwipeStart, { passive: true }); $root.addEventListener('touchend', wordSwipeEnd, { passive: true }); $root.addEventListener('keydown', wordKeydown); addEventListener('hashchange', async()=>{await syncRoute();maybeAutoSpeak();}); await syncRoute(); maybeAutoSpeak(); if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('./sw.js').catch(() => {}); } catch (error) { console.error(error); $root.innerHTML = `<div class="boot"><span class="boot-logo">t.</span><strong>صفحه بارگذاری نشد</strong><p class="muted">اتصال را بررسی کن و دوباره تلاش کن.</p></div>`; } }
 main();

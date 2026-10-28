@@ -1345,3 +1345,11 @@ button.city-map-cell{cursor:pointer}.city-map-cell.city-place{background:#eff4db
 .tv-lesson-meter-track>span{display:block;height:100%;background:#4a946c;border-radius:inherit;transition:width .2s ease}
 @media(max-width:720px){.tv-ring span{font-size:13px}.tv-ring{width:104px;height:104px}.tv-next-number,.tv-lesson-id,.tv-section-flags span,.tv-lesson-end .tv-state{font-size:13px}.tv-lesson-meter{padding:13px}}
 @media(prefers-reduced-motion:reduce){.tv-lesson-meter-track>span{transition:none}}
+
+/* Phase 3: visible persistence health and portable offline backup */
+.tv-storage-warning{position:relative;z-index:200;display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:12px max(16px,5vw);background:#fff0df;color:#704a22;font-size:14px;border-bottom:1px solid #e6c69b}
+.tv-storage-warning strong{font-size:14px}.tv-storage-warning span{flex:1;min-width:200px;line-height:1.7}
+.tv-storage-warning button{border:1px solid #b18759;border-radius:10px;padding:9px 13px;background:#fffaf2;color:#714b26;min-height:44px;font-size:14px;font-weight:750}
+.tv-backup-card{display:grid;gap:10px;align-content:start}.tv-backup-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.tv-backup-actions button{min-height:44px}
+@media(max-width:720px){.tv-storage-warning{padding:10px 14px}.tv-backup-actions{flex-direction:column}.tv-backup-actions button{width:100%}}
