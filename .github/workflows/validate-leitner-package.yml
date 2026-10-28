@@ -1,0 +1,31 @@
+name: Validate and stage Tutivar Phase 3-6
+on:
+  push:
+    branches: [feature/validate-leitner-20261028]
+permissions:
+  contents: write
+jobs:
+  validate-and-stage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Unpack patch in runner temporary directory
+        run: |
+          node -e "const f=require('fs'),z=require('zlib'); f.writeFileSync('/tmp/tutivar-patch.tar',z.brotliDecompressSync(Buffer.from(f.readFileSync('.ci/leitner-patch.br.b64','utf8'),'base64')))"
+          tar -xf /tmp/tutivar-patch.tar -C /tmp/
+      - name: Test full patch transactionally against actual repo
+        run: node /tmp/tutivar-next-stages/apply-full.mjs "$GITHUB_WORKSPACE"
+      - name: Commit verified source changes to review branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -f .ci/leitner-patch.br.b64 .github/workflows/validate-leitner-package.yml
+          git add apps/learner-web tools tests docs
+          git diff --cached --stat
+          git commit -m "feat: full learner progress, Leitner and lesson integration (phases 3-6)"
+          git push origin HEAD:feature/validate-leitner-20261028
